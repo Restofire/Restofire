@@ -10,6 +10,15 @@
 		35B19DDF1BEE134E001D3952 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B19DDE1BEE134E001D3952 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35B19DE61BEE134E001D3952 /* Reactofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Reactofire.framework */; };
 		35B19DEB1BEE134E001D3952 /* ReactofireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B19DEA1BEE134E001D3952 /* ReactofireTests.swift */; };
+		35B19DF81BEE136B001D3952 /* Alamofire+ARGOResponseSerializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B19DF51BEE136B001D3952 /* Alamofire+ARGOResponseSerializers.swift */; };
+		35B19DF91BEE136B001D3952 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B19DF61BEE136B001D3952 /* Alamofire+GlossResponseSerializer.swift */; };
+		35B19DFA1BEE136B001D3952 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B19DF71BEE136B001D3952 /* Reactofire.swift */; };
+		35B19DFC1BEE13A0001D3952 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 35B19DFB1BEE13A0001D3952 /* Cartfile */; };
+		35B19E021BEE17D2001D3952 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
+		35B19E031BEE17D2001D3952 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFE1BEE17D2001D3952 /* Argo.framework */; };
+		35B19E041BEE17D2001D3952 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; };
+		35B19E051BEE17D2001D3952 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */; };
+		35B19E061BEE17D2001D3952 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E011BEE17D2001D3952 /* Result.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +38,15 @@
 		35B19DE51BEE134E001D3952 /* ReactofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReactofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DEA1BEE134E001D3952 /* ReactofireTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactofireTests.swift; sourceTree = "<group>"; };
 		35B19DEC1BEE134E001D3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35B19DF51BEE136B001D3952 /* Alamofire+ARGOResponseSerializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Alamofire+ARGOResponseSerializers.swift"; path = "../../RKiOSKit/RKiOSKit/Alamofire+ARGOResponseSerializers.swift"; sourceTree = "<group>"; };
+		35B19DF61BEE136B001D3952 /* Alamofire+GlossResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Alamofire+GlossResponseSerializer.swift"; path = "../../RKiOSKit/RKiOSKit/Alamofire+GlossResponseSerializer.swift"; sourceTree = "<group>"; };
+		35B19DF71BEE136B001D3952 /* Reactofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reactofire.swift; path = ../../RKiOSKit/RKiOSKit/Reactofire.swift; sourceTree = "<group>"; };
+		35B19DFB1BEE13A0001D3952 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		35B19DFD1BEE17D2001D3952 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		35B19DFE1BEE17D2001D3952 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
+		35B19DFF1BEE17D2001D3952 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/iOS/Gloss.framework; sourceTree = "<group>"; };
+		35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		35B19E011BEE17D2001D3952 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +54,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B19E021BEE17D2001D3952 /* Alamofire.framework in Frameworks */,
+				35B19E031BEE17D2001D3952 /* Argo.framework in Frameworks */,
+				35B19E041BEE17D2001D3952 /* Gloss.framework in Frameworks */,
+				35B19E051BEE17D2001D3952 /* ReactiveCocoa.framework in Frameworks */,
+				35B19E061BEE17D2001D3952 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +78,9 @@
 			children = (
 				35B19DDD1BEE134E001D3952 /* Reactofire */,
 				35B19DE91BEE134E001D3952 /* ReactofireTests */,
+				35B19E071BEE17D8001D3952 /* Frameworks */,
 				35B19DDC1BEE134E001D3952 /* Products */,
+				35B19DFB1BEE13A0001D3952 /* Cartfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +97,9 @@
 			isa = PBXGroup;
 			children = (
 				35B19DDE1BEE134E001D3952 /* Reactofire.h */,
+				35B19DF71BEE136B001D3952 /* Reactofire.swift */,
+				35B19DF51BEE136B001D3952 /* Alamofire+ARGOResponseSerializers.swift */,
+				35B19DF61BEE136B001D3952 /* Alamofire+GlossResponseSerializer.swift */,
 				35B19DE01BEE134E001D3952 /* Info.plist */,
 			);
 			path = Reactofire;
@@ -84,6 +112,18 @@
 				35B19DEC1BEE134E001D3952 /* Info.plist */,
 			);
 			path = ReactofireTests;
+			sourceTree = "<group>";
+		};
+		35B19E071BEE17D8001D3952 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35B19DFD1BEE17D2001D3952 /* Alamofire.framework */,
+				35B19DFE1BEE17D2001D3952 /* Argo.framework */,
+				35B19DFF1BEE17D2001D3952 /* Gloss.framework */,
+				35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */,
+				35B19E011BEE17D2001D3952 /* Result.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B19DFC1BEE13A0001D3952 /* Cartfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +235,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B19DF91BEE136B001D3952 /* Alamofire+GlossResponseSerializer.swift in Sources */,
+				35B19DFA1BEE136B001D3952 /* Reactofire.swift in Sources */,
+				35B19DF81BEE136B001D3952 /* Alamofire+ARGOResponseSerializers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,26 +352,37 @@
 		35B19DF01BEE134E001D3952 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Reactofire/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		35B19DF11BEE134E001D3952 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Reactofire/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

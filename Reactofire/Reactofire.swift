@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 import ReactiveCocoa
 import Gloss
-import Argo
 
 public class ReactofireConfiguration {
     
@@ -65,7 +64,7 @@ public class Reactofire {
     
     public init() { }
     
-    public func executeGlossRequest<T: Gloss.Decodable>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<T, NSError> {
+    public func executeRequest<T: Gloss.Decodable>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<T, NSError> {
         return SignalProducer { sink, disposable in
             let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
             
@@ -83,7 +82,7 @@ public class Reactofire {
         }
     }
     
-    public func executeGlossRequest<T: Gloss.Decodable>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
+    public func executeRequest<T: Gloss.Decodable>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
         return SignalProducer { sink, disposable in
             let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
             
@@ -92,43 +91,6 @@ public class Reactofire {
             request.responseGLOSS(rootKey: rootKey, completionHandler: { (response: Response<[T], NSError>) -> Void in
                 if let GLOSS = response.result.value {
                     sink.sendNext(GLOSS)
-                    sink.sendCompleted()
-                } else {
-                    sink.sendFailed(response.result.error!)
-                }
-            })
-            
-            
-        }
-    }
-    
-    public func executeARGORequest<T: Argo.Decodable where T == T.DecodedType>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<T, NSError> {
-        return SignalProducer { sink, disposable in
-            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
-            
-            print(request.debugDescription)
-            
-            request.responseARGO(rootKey: rootKey, completionHandler: { (response: Response<T, NSError>) -> Void in
-                if let ARGO = response.result.value {
-                    sink.sendNext(ARGO)
-                    sink.sendCompleted()
-                } else {
-                    sink.sendFailed(response.result.error!)
-                }
-            })
-            
-        }
-    }
-    
-    public func executeARGORequest<T: Argo.Decodable where T == T.DecodedType>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
-        return SignalProducer { sink, disposable in
-            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
-            
-            print(request.debugDescription)
-            
-            request.responseARGO(rootKey: rootKey, completionHandler: { (response: Response<[T], NSError>) -> Void in
-                if let ARGO = response.result.value {
-                    sink.sendNext(ARGO)
                     sink.sendCompleted()
                 } else {
                     sink.sendFailed(response.result.error!)

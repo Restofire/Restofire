@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3565D4A11C1D823C00CEDCC9 /* Alamofire+ARGOResponseSerializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A01C1D823C00CEDCC9 /* Alamofire+ARGOResponseSerializers.swift */; };
 		3565D4A31C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */; };
 		3565D4A51C1D824F00CEDCC9 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */; };
 		35B19DDF1BEE134E001D3952 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B19DDE1BEE134E001D3952 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3565D4A01C1D823C00CEDCC9 /* Alamofire+ARGOResponseSerializers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+ARGOResponseSerializers.swift"; sourceTree = "<group>"; };
 		3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+GlossResponseSerializer.swift"; sourceTree = "<group>"; };
 		3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reactofire.swift; sourceTree = "<group>"; };
 		35B19DDB1BEE134E001D3952 /* Reactofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reactofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +96,6 @@
 			children = (
 				35B19DDE1BEE134E001D3952 /* Reactofire.h */,
 				3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */,
-				3565D4A01C1D823C00CEDCC9 /* Alamofire+ARGOResponseSerializers.swift */,
 				3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */,
 				35B19DE01BEE134E001D3952 /* Info.plist */,
 			);
@@ -237,7 +234,6 @@
 			files = (
 				3565D4A51C1D824F00CEDCC9 /* Reactofire.swift in Sources */,
 				3565D4A31C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift in Sources */,
-				3565D4A11C1D823C00CEDCC9 /* Alamofire+ARGOResponseSerializers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

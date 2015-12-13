@@ -14,7 +14,6 @@
 		35B19DEB1BEE134E001D3952 /* ReactofireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B19DEA1BEE134E001D3952 /* ReactofireTests.swift */; };
 		35B19DFC1BEE13A0001D3952 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 35B19DFB1BEE13A0001D3952 /* Cartfile */; };
 		35B19E021BEE17D2001D3952 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
-		35B19E031BEE17D2001D3952 /* Argo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFE1BEE17D2001D3952 /* Argo.framework */; };
 		35B19E041BEE17D2001D3952 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; };
 		35B19E051BEE17D2001D3952 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */; };
 		35B19E061BEE17D2001D3952 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E011BEE17D2001D3952 /* Result.framework */; };
@@ -41,7 +40,6 @@
 		35B19DEC1BEE134E001D3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35B19DFB1BEE13A0001D3952 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		35B19DFD1BEE17D2001D3952 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		35B19DFE1BEE17D2001D3952 /* Argo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Argo.framework; path = Carthage/Build/iOS/Argo.framework; sourceTree = "<group>"; };
 		35B19DFF1BEE17D2001D3952 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/iOS/Gloss.framework; sourceTree = "<group>"; };
 		35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		35B19E011BEE17D2001D3952 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -53,7 +51,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35B19E021BEE17D2001D3952 /* Alamofire.framework in Frameworks */,
-				35B19E031BEE17D2001D3952 /* Argo.framework in Frameworks */,
 				35B19E041BEE17D2001D3952 /* Gloss.framework in Frameworks */,
 				35B19E051BEE17D2001D3952 /* ReactiveCocoa.framework in Frameworks */,
 				35B19E061BEE17D2001D3952 /* Result.framework in Frameworks */,
@@ -115,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				35B19DFD1BEE17D2001D3952 /* Alamofire.framework */,
-				35B19DFE1BEE17D2001D3952 /* Argo.framework */,
 				35B19DFF1BEE17D2001D3952 /* Gloss.framework */,
 				35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */,
 				35B19E011BEE17D2001D3952 /* Result.framework */,

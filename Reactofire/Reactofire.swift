@@ -35,8 +35,6 @@ public protocol ReactofireProtocol {
     var parameters: [String : AnyObject]? { get set }
     var rootKey: String? { get set }
     
-    func execute<T: Gloss.Decodable>() -> SignalProducer<T, NSError>
-    func execute<T: Gloss.Decodable>() -> SignalProducer<[T], NSError>
 }
 
 public extension ReactofireProtocol {
@@ -55,7 +53,7 @@ public extension ReactofireProtocol {
     }
     public var headers: [String: String]? {
         get { return ReactofireConfiguration.defaultConfiguration.headers }
-        set { headers = newValue } //TODO:+ ReactofireConfiguration.defaultConfiguration.headers }
+        set { headers = newValue + ReactofireConfiguration.defaultConfiguration.headers }
     }
     public var parameters: [String: AnyObject]? {
         get { return nil }
@@ -64,14 +62,6 @@ public extension ReactofireProtocol {
     public var rootKey: String? {
         get { return nil }
         set {}
-    }
-    
-    public func execute<T: Gloss.Decodable>() -> SignalProducer<T, NSError> {
-        return Reactofire().executeRequest(self)
-    }
-    
-    public func execute<T: Gloss.Decodable>() -> SignalProducer<[T], NSError> {
-        return Reactofire().executeRequest(self)
     }
     
 }

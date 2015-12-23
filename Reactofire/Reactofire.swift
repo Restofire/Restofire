@@ -33,6 +33,10 @@ public protocol ReactofireProtocol {
     var encoding: Alamofire.ParameterEncoding { get set }
     var headers: [String : String]? { get set }
     var parameters: [String : AnyObject]? { get set }
+    var rootKey: String? { get set }
+    
+    func execute<T: Gloss.Decodable>() -> SignalProducer<T, NSError>
+    func execute<T: Gloss.Decodable>() -> SignalProducer<[T], NSError>
 }
 
 public extension ReactofireProtocol {
@@ -57,6 +61,18 @@ public extension ReactofireProtocol {
         get { return nil }
         set {}
     }
+    public var rootKey: String? {
+        get { return nil }
+        set {}
+    }
+    
+    public func execute<T: Gloss.Decodable>() -> SignalProducer<T, NSError> {
+        return Reactofire().executeRequest(self)
+    }
+    
+    public func execute<T: Gloss.Decodable>() -> SignalProducer<[T], NSError> {
+        return Reactofire().executeRequest(self)
+    }
     
 }
 
@@ -64,31 +80,35 @@ public class Reactofire {
     
     public init() { }
     
-    public func executeRequest<T: Gloss.Decodable>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<T, NSError> {
+    public func executeRequest<T: Gloss.Decodable>(object: ReactofireProtocol) -> SignalProducer<T, NSError> {
         return SignalProducer { sink, disposable in
             let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
             
             print(request.debugDescription)
             
-            request.responseGLOSS(rootKey: rootKey, completionHandler: { (response: Response<T, NSError>) -> Void in
+            request.responseGLOSS(rootKey: object.rootKey, completionHandler: { (response: Response<T, NSError>) -> Void in
                 if let GLOSS = response.result.value {
                     sink.sendNext(GLOSS)
                     sink.sendCompleted()
                 } else {
                     sink.sendFailed(response.result.error!)
                 }
+            })
+            
+            disposable.addDisposable({ () -> () in
+                request.task.cancel()
             })
             
         }
     }
     
-    public func executeRequest<T: Gloss.Decodable>(rootKey:String? = nil, object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
+    public func executeRequest<T: Gloss.Decodable>(object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
         return SignalProducer { sink, disposable in
             let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
             
             print(request.debugDescription)
             
-            request.responseGLOSS(rootKey: rootKey, completionHandler: { (response: Response<[T], NSError>) -> Void in
+            request.responseGLOSS(rootKey: object.rootKey, completionHandler: { (response: Response<[T], NSError>) -> Void in
                 if let GLOSS = response.result.value {
                     sink.sendNext(GLOSS)
                     sink.sendCompleted()
@@ -96,7 +116,10 @@ public class Reactofire {
                     sink.sendFailed(response.result.error!)
                 }
             })
-            
+        
+            disposable.addDisposable({ () -> () in
+                request.task.cancel()
+            })
             
         }
     }

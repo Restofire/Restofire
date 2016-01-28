@@ -32,7 +32,7 @@ public protocol ReactofireProtocol {
     var method: Alamofire.Method { get set }
     var encoding: Alamofire.ParameterEncoding { get set }
     var headers: [String : String]? { get set }
-    var parameters: [String : AnyObject]? { get set }
+    var parameters: AnyObject? { get set }
     var rootKey: String? { get set }
     
 }
@@ -52,10 +52,10 @@ public extension ReactofireProtocol {
         set {}
     }
     public var headers: [String: String]? {
-        get { return ReactofireConfiguration.defaultConfiguration.headers }
-        set { headers = newValue + ReactofireConfiguration.defaultConfiguration.headers }
+        get { return [:] }
+        set { }
     }
-    public var parameters: [String: AnyObject]? {
+    public var parameters: AnyObject? {
         get { return nil }
         set {}
     }
@@ -70,9 +70,9 @@ public class Reactofire {
     
     public init() { }
     
-    public func executeRequest<T: Gloss.Decodable>(object: ReactofireProtocol) -> SignalProducer<T, NSError> {
+    public func executeRequest<T: Decodable>(object: ReactofireProtocol) -> SignalProducer<T, NSError> {
         return SignalProducer { sink, disposable in
-            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
+            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers + ReactofireConfiguration.defaultConfiguration.headers)
             
             print(request.debugDescription)
             
@@ -92,9 +92,9 @@ public class Reactofire {
         }
     }
     
-    public func executeRequest<T: Gloss.Decodable>(object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
+    public func executeRequest<T: Decodable>(object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
         return SignalProducer { sink, disposable in
-            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters, encoding: object.encoding, headers: object.headers)
+            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers)
             
             print(request.debugDescription)
             

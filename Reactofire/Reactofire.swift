@@ -15,6 +15,7 @@ public class ReactofireConfiguration {
     
     public static let defaultConfiguration = ReactofireConfiguration()
     
+    public var logging: Bool = false
     public var baseURL: String!
     public var encoding: Alamofire.ParameterEncoding
     public var headers: [String : String]?
@@ -74,42 +75,46 @@ public class Reactofire {
         return SignalProducer { sink, disposable in
             let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers + ReactofireConfiguration.defaultConfiguration.headers)
             
-            print(request.debugDescription)
-            
-            request.responseGLOSS(rootKey: object.rootKey, completionHandler: { (response: Response<T, NSError>) -> Void in
+            request.responseGLOSS(rootKey: object.rootKey) { (response: Response<T, NSError>) -> Void in
                 if let GLOSS = response.result.value {
+                    if ReactofireConfiguration.defaultConfiguration.logging {
+                        print(request.debugDescription)
+                        print(GLOSS)
+                    }
                     sink.sendNext(GLOSS)
                     sink.sendCompleted()
                 } else {
                     sink.sendFailed(response.result.error!)
                 }
-            })
+            }
             
-            disposable.addDisposable({ () -> () in
+            disposable.addDisposable {
                 request.task.cancel()
-            })
+            }
             
         }
     }
     
     public func executeRequest<T: Decodable>(object: ReactofireProtocol) -> SignalProducer<[T], NSError> {
         return SignalProducer { sink, disposable in
-            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers)
+            let request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers + ReactofireConfiguration.defaultConfiguration.headers)
             
-            print(request.debugDescription)
-            
-            request.responseGLOSS(rootKey: object.rootKey, completionHandler: { (response: Response<[T], NSError>) -> Void in
+            request.responseGLOSS(rootKey: object.rootKey) { (response: Response<[T], NSError>) -> Void in
                 if let GLOSS = response.result.value {
+                    if ReactofireConfiguration.defaultConfiguration.logging {
+                        print(request.debugDescription)
+                        print(GLOSS)
+                    }
                     sink.sendNext(GLOSS)
                     sink.sendCompleted()
                 } else {
                     sink.sendFailed(response.result.error!)
                 }
-            })
+            }
         
-            disposable.addDisposable({ () -> () in
+            disposable.addDisposable {
                 request.task.cancel()
-            })
+            }
             
         }
     }

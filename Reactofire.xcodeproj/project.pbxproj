@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		352260A01C5E2BBD000AE7C0 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
 		352260A21C5E2BCA000AE7C0 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
-		352260A41C5E2BF5000AE7C0 /* ReactofireSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352260A31C5E2BF5000AE7C0 /* ReactofireSpec.swift */; };
 		352260A81C5E2CC9000AE7C0 /* ReactofireTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352260A61C5E2CC9000AE7C0 /* ReactofireTests.swift */; };
 		352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AB1C5E2D1A000AE7C0 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -67,7 +66,6 @@
 		352260721C5E2684000AE7C0 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		3522609F1C5E2BBD000AE7C0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		352260A11C5E2BCA000AE7C0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		352260A31C5E2BF5000AE7C0 /* ReactofireSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactofireSpec.swift; sourceTree = "<group>"; };
 		352260A51C5E2CC9000AE7C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		352260A61C5E2CC9000AE7C0 /* ReactofireTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactofireTests.swift; sourceTree = "<group>"; };
 		35360A5A1C2ABE4200A17524 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			children = (
 				352260A51C5E2CC9000AE7C0 /* Info.plist */,
 				352260A61C5E2CC9000AE7C0 /* ReactofireTests.swift */,
-				352260A31C5E2BF5000AE7C0 /* ReactofireSpec.swift */,
 			);
 			path = ReactofireTests;
 			sourceTree = "<group>";
@@ -288,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				352260A41C5E2BF5000AE7C0 /* ReactofireSpec.swift in Sources */,
 				352260A81C5E2CC9000AE7C0 /* ReactofireTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,13 +7,46 @@
 //
 
 import XCTest
+import Gloss
+import ReactiveCocoa
+import Alamofire
 @testable import Reactofire
 
 class ReactofireTests: XCTestCase {
     
+    class PersonGetService: ReactofireProtocol {
+        
+        var path: String = "get"
+        var parameters: AnyObject?
+        var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
+        
+        func executeRequest() -> SignalProducer<Person, NSError> {
+            let service = PersonGetService()
+            service.parameters = ["id" : "123456789", "name" : "Rahul"]
+            return Reactofire().executeRequest(service)
+        }
+    }
+    
+    struct Person: Decodable {
+        
+        let id: String?
+        let name: String?
+        
+        // MARK: - Deserialization
+        
+        init?(json: JSON) {
+            self.id = "args.id" <~~ json
+            self.name = "args.name" <~~ json
+        }
+        
+    }
+    
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        ReactofireConfiguration.defaultConfiguration.baseURL = "http://httpbin.org/"
+        ReactofireConfiguration.defaultConfiguration.logging = true
+        ReactofireConfiguration.defaultConfiguration.headers = ["Content-Type":"application/json"]
     }
     
     override func tearDown() {
@@ -24,6 +57,17 @@ class ReactofireTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let expectation = expectationWithDescription("GET request should succeed")
+        
+        PersonGetService().executeRequest()
+            .on(next: { _ in
+                expectation.fulfill()
+            })
+            .start()
+        
+        waitForExpectationsWithTimeout(10, handler: nil)
+        XCTAssert(true, "Pass")
     }
     
     func testPerformanceExample() {

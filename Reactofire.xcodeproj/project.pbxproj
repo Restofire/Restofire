@@ -27,6 +27,10 @@
 		35B19E041BEE17D2001D3952 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; };
 		35B19E051BEE17D2001D3952 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */; };
 		35B19E061BEE17D2001D3952 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E011BEE17D2001D3952 /* Result.framework */; };
+		35CBA0A01C5E3ACC005B62F3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
+		35CBA0A11C5E3AD9005B62F3 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; };
+		35CBA0A21C5E3AE6005B62F3 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */; };
+		35CBA0A31C5E3AF1005B62F3 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E011BEE17D2001D3952 /* Result.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35CBA0A31C5E3AF1005B62F3 /* Result.framework in Frameworks */,
+				35CBA0A21C5E3AE6005B62F3 /* ReactiveCocoa.framework in Frameworks */,
+				35CBA0A11C5E3AD9005B62F3 /* Gloss.framework in Frameworks */,
+				35CBA0A01C5E3ACC005B62F3 /* Alamofire.framework in Frameworks */,
 				352260A21C5E2BCA000AE7C0 /* Nimble.framework in Frameworks */,
 				352260A01C5E2BBD000AE7C0 /* Quick.framework in Frameworks */,
 				35B19DE61BEE134E001D3952 /* Reactofire.framework in Frameworks */,

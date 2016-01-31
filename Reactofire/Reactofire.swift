@@ -77,11 +77,10 @@ public class Reactofire {
             let request = self.alamofireRequest(object)
             
             request.responseGLOSS(rootKey: object.rootKey) { (response: Response<T, NSError>) -> Void in
+                if ReactofireConfiguration.defaultConfiguration.logging {
+                    print(request.debugDescription)
+                }
                 if let GLOSS = response.result.value {
-                    if ReactofireConfiguration.defaultConfiguration.logging {
-                        print(request.debugDescription)
-                        print(GLOSS)
-                    }
                     sink.sendNext(GLOSS)
                     sink.sendCompleted()
                 } else {
@@ -102,11 +101,10 @@ public class Reactofire {
             let request = self.alamofireRequest(object)
             
             request.responseGLOSS(rootKey: object.rootKey) { (response: Response<[T], NSError>) -> Void in
+                if ReactofireConfiguration.defaultConfiguration.logging {
+                    print(request.debugDescription)
+                }
                 if let GLOSS = response.result.value {
-                    if ReactofireConfiguration.defaultConfiguration.logging {
-                        print(request.debugDescription)
-                        print(GLOSS)
-                    }
                     sink.sendNext(GLOSS)
                     sink.sendCompleted()
                 } else {

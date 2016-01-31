@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "35B19DE41BEE134E001D3952"
+               BuildableName = "ReactofireTests.xctest"
+               BlueprintName = "ReactofireTests"
+               ReferencedContainer = "container:Reactofire.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "35B19DDA1BEE134E001D3952"
+            BuildableName = "Reactofire.framework"
+            BlueprintName = "Reactofire"
+            ReferencedContainer = "container:Reactofire.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>

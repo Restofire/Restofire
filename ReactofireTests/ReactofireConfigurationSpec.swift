@@ -27,7 +27,7 @@ class ReactofireConfigurationSpec: ReactofireSpec {
                 expect(ReactofireConfiguration.defaultConfiguration.headers) == ["Content-Type": "application/json"]
             }
             
-            it("has default headers") {
+            it("has logging enabled") {
                 expect(ReactofireConfiguration.defaultConfiguration.logging) == true
             }
             

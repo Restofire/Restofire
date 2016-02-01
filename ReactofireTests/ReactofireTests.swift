@@ -20,11 +20,23 @@ class ReactofireTests: XCTestCase {
         var parameters: AnyObject?
         var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
         
-        func executeRequest() -> SignalProducer<Person, NSError> {
+        func executeRequest() -> SignalProducer<PersonArgs, NSError> {
             let service = PersonGetService()
             service.parameters = ["id" : "123456789", "name" : "Rahul"]
             return Reactofire().executeRequest(service)
         }
+    }
+    
+    struct PersonArgs: Decodable {
+        
+        let person: Person?
+        
+        // MARK: - Deserialization
+        
+        init?(json: JSON) {
+            self.person = "args" <~~ json
+        }
+        
     }
     
     struct Person: Decodable {
@@ -35,8 +47,8 @@ class ReactofireTests: XCTestCase {
         // MARK: - Deserialization
         
         init?(json: JSON) {
-            self.id = "args.id" <~~ json
-            self.name = "args.name" <~~ json
+            self.id = "id" <~~ json
+            self.name = "name" <~~ json
         }
         
     }
@@ -61,7 +73,8 @@ class ReactofireTests: XCTestCase {
         let expectation = expectationWithDescription("GET request should succeed")
         
         PersonGetService().executeRequest()
-            .on(next: { _ in
+            .on(next: {
+                print($0)
                 expectation.fulfill()
             })
             .start()

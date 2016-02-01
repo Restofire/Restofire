@@ -89,6 +89,8 @@
 		35B19DFF1BEE17D2001D3952 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/iOS/Gloss.framework; sourceTree = "<group>"; };
 		35B19E001BEE17D2001D3952 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		35B19E011BEE17D2001D3952 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		35B1F0BD1C5F5B8C0065779B /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		35B1F0BF1C5F5C9C0065779B /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		35D109ED1C5F32A900FC831F /* _Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Person.swift; sourceTree = "<group>"; };
 		35D109EE1C5F32A900FC831F /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		35D109F01C5F32A900FC831F /* _PersonArgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _PersonArgs.swift; sourceTree = "<group>"; };
@@ -153,6 +155,8 @@
 				35B19DDC1BEE134E001D3952 /* Products */,
 				35B19DFB1BEE13A0001D3952 /* Cartfile */,
 				352260721C5E2684000AE7C0 /* Cartfile.private */,
+				35B1F0BD1C5F5B8C0065779B /* Readme.md */,
+				35B1F0BF1C5F5C9C0065779B /* LICENCE */,
 			);
 			sourceTree = "<group>";
 		};

@@ -19,7 +19,7 @@ class RequestSpec: ReactofireSpec {
         
         describe("Request") {
             
-            it("should succeed", closure: { () -> () in
+            it("PersonGetRequest should succeed", closure: { () -> () in
                 var person: PersonArgs!
                 
                 PersonGETService().executeRequest(params: ["id" : "123456789", "name" : "Rahul"])
@@ -28,7 +28,7 @@ class RequestSpec: ReactofireSpec {
                     })
                     .start()
                 
-                expect(person?.args.id).toEventually(equal("123456789"), timeout: 10, pollInterval: 3)
+                expect(person?.args).toEventually(equal(Person(id: "123456789", name: "Rahul")), timeout: 10, pollInterval: 3)
                 
             })
             

@@ -36,3 +36,9 @@ struct Person: Glossy {
     }
 
 }
+
+extension Person: Equatable { }
+
+func == (lhs: Person, rhs: Person) -> Bool {
+    return lhs.id == rhs.id && lhs.name == rhs.name
+} 

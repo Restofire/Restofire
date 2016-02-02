@@ -17,12 +17,8 @@ public class ReactofireConfiguration {
     
     public var logging: Bool = false
     public var baseURL: String!
-    public var encoding: Alamofire.ParameterEncoding
+    public var encoding: Alamofire.ParameterEncoding = .JSON
     public var headers: [String : String]?
-    
-    init() {
-        encoding = .JSON
-    }
     
 }
 
@@ -53,8 +49,8 @@ public extension ReactofireProtocol {
         set {}
     }
     public var headers: [String: String]? {
-        get { return [:] }
-        set { }
+        get { return nil }
+        set {}
     }
     public var parameters: AnyObject? {
         get { return nil }

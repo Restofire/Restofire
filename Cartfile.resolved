@@ -1,0 +1,6 @@
+github "Alamofire/Alamofire" "3.2.0"
+github "hkellaway/Gloss" "ebe80cd8164191664f4b0d474c8483fbd4b03a77"
+github "Quick/Nimble" "v3.1.0"
+github "Quick/Quick" "v0.9.1"
+github "antitypical/Result" "1.0.2"
+github "ReactiveCocoa/ReactiveCocoa" "v4.0.1"

@@ -8,26 +8,19 @@
 //  Copyright (c) 2015 RahulKatariya. All rights reserved.
 //
 
-import Gloss
+import Reactofire
+import Alamofire
+import ReactiveCocoa
 
-struct Args<T>: Glossy {
-    
-    var args: T
+class PersonPOSTService: ReactofireProtocol {
 
-    init(args: T) { 
-        self.args = args
-    }
+    var path: String = "post"
+    var method = Alamofire.Method.POST
+    var parameters: AnyObject?
 
-    init?(json: JSON) { 
-        guard let args: T = "args" <~~ json else { return nil } 
-        
-        self.args = args
-    }
-
-    func toJSON() -> JSON? {
-        return jsonify([ 
-            "args" ~~> self.args
-        ])
+    func executeRequest(params params: AnyObject?) -> SignalProducer<PersonJson, NSError> { 
+        parameters = params
+        return Reactofire().executeRequest(self)
     }
 
 }

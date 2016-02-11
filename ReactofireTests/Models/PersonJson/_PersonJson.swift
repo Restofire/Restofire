@@ -10,7 +10,7 @@
 
 import Gloss
 
-struct Person: Glossy {
+struct PersonJson: Glossy {
     
     var id: String
     var name: String
@@ -21,8 +21,8 @@ struct Person: Glossy {
     }
 
     init?(json: JSON) { 
-        guard let id: String = "id" <~~ json,
-            let name: String = "name" <~~ json else { return nil } 
+        guard let id: String = "json.id" <~~ json,
+            let name: String = "json.name" <~~ json else { return nil } 
         
         self.id = id
         self.name = name
@@ -30,15 +30,15 @@ struct Person: Glossy {
 
     func toJSON() -> JSON? {
         return jsonify([ 
-            "id" ~~> self.id,
-            "name" ~~> self.name
+            "json.id" ~~> self.id,
+            "json.name" ~~> self.name
         ])
     }
 
 }
 
-extension Person: Equatable { }
+extension PersonJson: Equatable { }
 
-func == (lhs: Person, rhs: Person) -> Bool {
+func == (lhs: PersonJson, rhs: PersonJson) -> Bool {
     return lhs.id == rhs.id && lhs.name == rhs.name
 } 

@@ -8,8 +8,20 @@
 //  Copyright (c) 2015 RahulKatariya. All rights reserved.
 //
 
-import Foundation
+import Quick
+import Nimble
 
-extension Person {
+class ServiceSpec: QuickSpec {
+
+    let timeout: NSTimeInterval = 10
+    let pollInterval: NSTimeInterval = 3
+
+    override func spec() {
+
+        beforeSuite {
+            
+        }
+
+    }
 
 }

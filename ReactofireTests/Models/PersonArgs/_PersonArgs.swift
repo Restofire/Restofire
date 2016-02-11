@@ -12,22 +12,33 @@ import Gloss
 
 struct PersonArgs: Glossy {
     
-    var args: Person
+    var id: String
+    var name: String
 
-    init(args: Person) { 
-        self.args = args
+    init(id: String, name: String) { 
+        self.id = id
+        self.name = name
     }
 
     init?(json: JSON) { 
-        guard let args: Person = "args" <~~ json else { return nil } 
+        guard let id: String = "args.id" <~~ json,
+            let name: String = "args.name" <~~ json else { return nil } 
         
-        self.args = args
+        self.id = id
+        self.name = name
     }
 
     func toJSON() -> JSON? {
         return jsonify([ 
-            "args" ~~> self.args
+            "args.id" ~~> self.id,
+            "args.name" ~~> self.name
         ])
     }
 
 }
+
+extension PersonArgs: Equatable { }
+
+func == (lhs: PersonArgs, rhs: PersonArgs) -> Bool {
+    return lhs.id == rhs.id && lhs.name == rhs.name
+} 

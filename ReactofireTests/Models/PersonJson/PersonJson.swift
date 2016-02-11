@@ -8,10 +8,8 @@
 //  Copyright (c) 2015 RahulKatariya. All rights reserved.
 //
 
-import Reactofire
-import Alamofire
-import ReactiveCocoa
+import Foundation
 
-extension PersonGETService {
-    
+extension PersonJson {
+
 }

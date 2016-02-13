@@ -11,25 +11,25 @@
 import Quick
 import Nimble
 
-class PersonGETServiceSpec: ServiceSpec {
+class PersonJsonPOSTServiceSpec: ServiceSpec {
 
     override func spec() { 
 
-        describe("PersonGETService") {
+        describe("PersonJsonPOSTService") {
 
             let requestJSONString = "{\"id\":\"123456789\",\"name\":\"Rahul\"}"
             let requestJSON = try! NSJSONSerialization.JSONObjectWithData(requestJSONString.dataUsingEncoding(NSUTF8StringEncoding)!, options: .AllowFragments) as! [String : AnyObject]
 
-            let responseJSONString = "{\"args\":{\"id\":\"123456789\",\"name\":\"Rahul\"}}"
+            let responseJSONString = "{\"json\":{\"id\":\"123456789\",\"name\":\"Rahul\"}}"
             let responseJSON = try! NSJSONSerialization.JSONObjectWithData(responseJSONString.dataUsingEncoding(NSUTF8StringEncoding)!, options: .AllowFragments) as! [String : AnyObject]
 
-            let actual = Args<Person>(json: responseJSON)!
-            var expected: Args<Person>!
+            let actual = PersonJson(json: responseJSON)!
+            var expected: PersonJson!
 
 
             it("should Execute", closure: {
 
-                PersonGETService().executeRequest(params: requestJSON)
+                PersonJsonPOSTService().executeRequest(params: requestJSON)
                     .on(next: {
                         expected = $0
                     })

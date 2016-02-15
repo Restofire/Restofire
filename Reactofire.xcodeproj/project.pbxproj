@@ -236,10 +236,10 @@
 		356A63E11C6C597C005793A5 /* ServiceSpec */ = {
 			isa = PBXGroup;
 			children = (
+				356A63E51C6C597C005793A5 /* ServiceSpec.swift */,
 				355254EC1C6F437000B50452 /* PersonArgsSpec */,
 				355254EE1C6F437000B50452 /* PersonJsonSpec */,
 				355254F01C6F437000B50452 /* PersonSpec */,
-				356A63E51C6C597C005793A5 /* ServiceSpec.swift */,
 			);
 			path = ServiceSpec;
 			sourceTree = "<group>";

@@ -67,6 +67,30 @@ public class Reactofire {
     
     public init() { }
     
+    public func executeRequest<T>(object: ReactofireProtocol) -> SignalProducer<T, NSError> {
+        return SignalProducer { sink, disposable in
+            
+            let request = self.alamofireRequest(object)
+            
+            request.responseGLOSS(rootKey: object.rootKey) { (response: Response<T, NSError>) -> Void in
+                if ReactofireConfiguration.defaultConfiguration.logging {
+                    print(request.debugDescription)
+                }
+                if let GLOSS = response.result.value {
+                    sink.sendNext(GLOSS)
+                    sink.sendCompleted()
+                } else {
+                    sink.sendFailed(response.result.error!)
+                }
+            }
+            
+            disposable.addDisposable {
+                request.task.cancel()
+            }
+            
+        }
+    }
+    
     public func executeRequest<T: Decodable>(object: ReactofireProtocol) -> SignalProducer<T, NSError> {
         return SignalProducer { sink, disposable in
             

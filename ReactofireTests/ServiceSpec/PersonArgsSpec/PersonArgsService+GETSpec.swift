@@ -5,7 +5,7 @@
 //  \____|__  (____  /__|    |____|__ (____  / ____|
 //          \/     \/                \/    \/\/
 //
-//  Copyright (c) 2015 RahulKatariya. All rights reserved.
+//  Copyright (c) 2016 RahulKatariya. All rights reserved.
 //
 
 import Quick

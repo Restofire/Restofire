@@ -97,7 +97,12 @@ extension Request {
             
             do {
                 let JSONObject = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
-                let value = JSONObject as? T
+                var value: T?
+                if let rootKey = rootKey where JSONObject is [String: AnyObject] {
+                    value = JSONObject.valueForKeyPath(rootKey) as? T
+                } else {
+                    value = JSONObject as? T
+                }
                 if let value = value {
                     return .Success(value)
                 } else {
@@ -136,8 +141,8 @@ extension Request {
             do {
                 let JSONObject = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: T?
-                if let rootKey = rootKey {
-                    value = T(json: JSONObject.objectForKey(rootKey) as! JSON)
+                if let rootKey = rootKey where JSONObject is [String: AnyObject] {
+                    value = T(json: JSONObject.valueForKeyPath(rootKey) as! JSON)
                 } else {
                     value = T(json: JSONObject as! JSON)
                 }
@@ -179,8 +184,8 @@ extension Request {
             do {
                 let JSONObject = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: [T]?
-                if let rootKey = rootKey {
-                    value = T.modelsFromJSONArray(JSONObject.objectForKey(rootKey) as! [JSON])
+                if let rootKey = rootKey where JSONObject is [String: AnyObject] {
+                    value = T.modelsFromJSONArray(JSONObject.valueForKeyPath(rootKey) as! [JSON])
                 } else {
                     value = T.modelsFromJSONArray(JSONObject as! [JSON])
                 }

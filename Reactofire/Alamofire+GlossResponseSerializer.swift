@@ -185,9 +185,9 @@ extension Request {
                 let JSONObject = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: [T]?
                 if let rootKey = rootKey where JSONObject is [String: AnyObject] {
-                    value = T.modelsFromJSONArray(JSONObject.valueForKeyPath(rootKey) as! [JSON])
+                    value = [T].fromJSONArray(JSONObject.valueForKeyPath(rootKey) as! [JSON])
                 } else {
-                    value = T.modelsFromJSONArray(JSONObject as! [JSON])
+                    value = [T].fromJSONArray(JSONObject as! [JSON])
                 }
                 if let value = value {
                     return .Success(value)

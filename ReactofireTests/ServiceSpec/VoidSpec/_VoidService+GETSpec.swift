@@ -11,17 +11,17 @@
 import Quick
 import Nimble
 
-class FloatGETServiceSpec: ServiceSpec {
+class VoidGETServiceSpec: ServiceSpec {
 
     override func spec() { 
-        describe("FloatGETService") {
+        describe("VoidGETService") {
             
             it("should succeed") {
                 
-                let actual: Float = 12345.6789
-                var expected: Float!
+                let actual = [:]
+                var expected: NSDictionary!
                 
-                FloatGETService().executeRequest()
+                VoidGETService().executeRequest()
                     .startWithNext {
                         expected = $0
                 }

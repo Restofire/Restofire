@@ -14,7 +14,7 @@ import Nimble
 class InstituteGETServiceSpec: ServiceSpec {
 
     override func spec() { 
-        describe("InstituteGetService") {
+        describe("InstituteGETService") {
             
             it("should succeed") {
                 

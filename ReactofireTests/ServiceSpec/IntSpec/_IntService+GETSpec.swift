@@ -14,7 +14,7 @@ import Nimble
 class IntGETServiceSpec: ServiceSpec {
 
     override func spec() { 
-        describe("IntGetService") {
+        describe("IntGETService") {
             
             it("should succeed") {
                 

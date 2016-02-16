@@ -12,14 +12,12 @@ import Reactofire
 import Alamofire
 import ReactiveCocoa
 
-class PersonArgsGETService: ReactofireProtocol {
+class FloatGETService: ReactofireProtocol {
 
-    var path: String = "get"
-    var parameters: AnyObject?
+    var path: String = "56c2bfd61200006c2473f1a0"
     var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
-    func executeRequest(params params: AnyObject?) -> SignalProducer<PersonArgs, NSError> { 
-        parameters = params
+    func executeRequest() -> SignalProducer<Float, NSError> { 
         return Reactofire().executeRequest(self)
     }
 

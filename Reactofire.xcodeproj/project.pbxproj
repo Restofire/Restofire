@@ -19,17 +19,21 @@
 		355251441C6F403700B50452 /* _Args.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3552513F1C6F403700B50452 /* _Args.swift */; };
 		355251451C6F403700B50452 /* Args.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355251401C6F403700B50452 /* Args.swift */; };
 		355251461C6F403700B50452 /* _Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355251421C6F403700B50452 /* _Person.swift */; };
-		355254F21C6F437000B50452 /* PersonArgsService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355254ED1C6F437000B50452 /* PersonArgsService+GETSpec.swift */; };
-		355254F31C6F437000B50452 /* PersonJsonService+POSTSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355254EF1C6F437000B50452 /* PersonJsonService+POSTSpec.swift */; };
-		355254F41C6F437000B50452 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355254F11C6F437000B50452 /* PersonService+GETSpec.swift */; };
-		355254FB1C6F439700B50452 /* _PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355254F61C6F439700B50452 /* _PersonService+GET.swift */; };
-		355254FC1C6F439700B50452 /* _PersonArgsService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355254F81C6F439700B50452 /* _PersonArgsService+GET.swift */; };
-		355254FD1C6F439700B50452 /* _PersonJsonService+POST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355254FA1C6F439700B50452 /* _PersonJsonService+POST.swift */; };
+		355970441C72EFA700E924FE /* _StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355970431C72EFA700E924FE /* _StringService+GETSpec.swift */; };
 		3565D4A31C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */; };
 		3565D4A51C1D824F00CEDCC9 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */; };
 		356A63D81C6C58F4005793A5 /* _PersonArgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A63D31C6C58F4005793A5 /* _PersonArgs.swift */; };
 		356A63DA1C6C58F4005793A5 /* _PersonJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A63D61C6C58F4005793A5 /* _PersonJson.swift */; };
 		356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A63E51C6C597C005793A5 /* ServiceSpec.swift */; };
+		35848B911C72F60500081ADB /* _BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848B901C72F60500081ADB /* _BoolService+GETSpec.swift */; };
+		35848B961C72F61500081ADB /* _BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848B931C72F61500081ADB /* _BoolService+GET.swift */; };
+		35848B971C72F61500081ADB /* _StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848B951C72F61500081ADB /* _StringService+GET.swift */; };
+		35848B9F1C72F7B300081ADB /* _IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848B9B1C72F7B300081ADB /* _IntService+GETSpec.swift */; };
+		35848BA81C72F7D400081ADB /* _IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BA41C72F7D400081ADB /* _IntService+GET.swift */; };
+		35848BAC1C72F92800081ADB /* _FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BAB1C72F92800081ADB /* _FloatService+GET.swift */; };
+		35848BAF1C72F94B00081ADB /* _FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BAE1C72F94B00081ADB /* _FloatService+GETSpec.swift */; };
+		35848BB21C72FF7700081ADB /* _StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BB11C72FF7700081ADB /* _StringArrayService+GET.swift */; };
+		35848BB51C72FF8600081ADB /* _StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BB41C72FF8600081ADB /* _StringArrayService+GETSpec.swift */; };
 		35B19DDF1BEE134E001D3952 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B19DDE1BEE134E001D3952 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35B19DE61BEE134E001D3952 /* Reactofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Reactofire.framework */; };
 		35B19E021BEE17D2001D3952 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
@@ -42,7 +46,6 @@
 		35CBA0A31C5E3AF1005B62F3 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19E011BEE17D2001D3952 /* Result.framework */; };
 		35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35D109FE1C5F340C00FC831F /* RestofireSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D109FD1C5F340C00FC831F /* RestofireSpec.swift */; };
-		35D10A001C5F34E000FC831F /* ReactofireConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D109FF1C5F34E000FC831F /* ReactofireConfigurationSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,17 +87,21 @@
 		3552513F1C6F403700B50452 /* _Args.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Args.swift; sourceTree = "<group>"; };
 		355251401C6F403700B50452 /* Args.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Args.swift; sourceTree = "<group>"; };
 		355251421C6F403700B50452 /* _Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Person.swift; sourceTree = "<group>"; };
-		355254ED1C6F437000B50452 /* PersonArgsService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonArgsService+GETSpec.swift"; sourceTree = "<group>"; };
-		355254EF1C6F437000B50452 /* PersonJsonService+POSTSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonJsonService+POSTSpec.swift"; sourceTree = "<group>"; };
-		355254F11C6F437000B50452 /* PersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonService+GETSpec.swift"; sourceTree = "<group>"; };
-		355254F61C6F439700B50452 /* _PersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PersonService+GET.swift"; sourceTree = "<group>"; };
-		355254F81C6F439700B50452 /* _PersonArgsService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PersonArgsService+GET.swift"; sourceTree = "<group>"; };
-		355254FA1C6F439700B50452 /* _PersonJsonService+POST.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PersonJsonService+POST.swift"; sourceTree = "<group>"; };
+		355970431C72EFA700E924FE /* _StringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_StringService+GETSpec.swift"; sourceTree = "<group>"; };
 		3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+GlossResponseSerializer.swift"; sourceTree = "<group>"; };
 		3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reactofire.swift; sourceTree = "<group>"; };
 		356A63D31C6C58F4005793A5 /* _PersonArgs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _PersonArgs.swift; sourceTree = "<group>"; };
 		356A63D61C6C58F4005793A5 /* _PersonJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _PersonJson.swift; sourceTree = "<group>"; };
 		356A63E51C6C597C005793A5 /* ServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSpec.swift; sourceTree = "<group>"; };
+		35848B901C72F60500081ADB /* _BoolService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_BoolService+GETSpec.swift"; sourceTree = "<group>"; };
+		35848B931C72F61500081ADB /* _BoolService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_BoolService+GET.swift"; sourceTree = "<group>"; };
+		35848B951C72F61500081ADB /* _StringService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_StringService+GET.swift"; sourceTree = "<group>"; };
+		35848B9B1C72F7B300081ADB /* _IntService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_IntService+GETSpec.swift"; sourceTree = "<group>"; };
+		35848BA41C72F7D400081ADB /* _IntService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_IntService+GET.swift"; sourceTree = "<group>"; };
+		35848BAB1C72F92800081ADB /* _FloatService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_FloatService+GET.swift"; sourceTree = "<group>"; };
+		35848BAE1C72F94B00081ADB /* _FloatService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_FloatService+GETSpec.swift"; sourceTree = "<group>"; };
+		35848BB11C72FF7700081ADB /* _StringArrayService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_StringArrayService+GET.swift"; sourceTree = "<group>"; };
+		35848BB41C72FF8600081ADB /* _StringArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_StringArrayService+GETSpec.swift"; sourceTree = "<group>"; };
 		35B19DDB1BEE134E001D3952 /* Reactofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reactofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DDE1BEE134E001D3952 /* Reactofire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reactofire.h; sourceTree = "<group>"; };
 		35B19DE01BEE134E001D3952 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,7 +114,6 @@
 		35B1F0BD1C5F5B8C0065779B /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		35B1F0BF1C5F5C9C0065779B /* LICENCE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENCE; sourceTree = "<group>"; };
 		35D109FD1C5F340C00FC831F /* RestofireSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireSpec.swift; sourceTree = "<group>"; };
-		35D109FF1C5F34E000FC831F /* ReactofireConfigurationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactofireConfigurationSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,7 +150,6 @@
 			children = (
 				352260A51C5E2CC9000AE7C0 /* Info.plist */,
 				35D109FD1C5F340C00FC831F /* RestofireSpec.swift */,
-				35D109FF1C5F34E000FC831F /* ReactofireConfigurationSpec.swift */,
 				356A63E11C6C597C005793A5 /* ServiceSpec */,
 				35D109F61C5F336200FC831F /* Services */,
 				35D109EB1C5F32A900FC831F /* Models */,
@@ -169,52 +174,12 @@
 			path = Person;
 			sourceTree = "<group>";
 		};
-		355254EC1C6F437000B50452 /* PersonArgsSpec */ = {
+		355970421C72EFA700E924FE /* StringSpec */ = {
 			isa = PBXGroup;
 			children = (
-				355254ED1C6F437000B50452 /* PersonArgsService+GETSpec.swift */,
+				355970431C72EFA700E924FE /* _StringService+GETSpec.swift */,
 			);
-			path = PersonArgsSpec;
-			sourceTree = "<group>";
-		};
-		355254EE1C6F437000B50452 /* PersonJsonSpec */ = {
-			isa = PBXGroup;
-			children = (
-				355254EF1C6F437000B50452 /* PersonJsonService+POSTSpec.swift */,
-			);
-			path = PersonJsonSpec;
-			sourceTree = "<group>";
-		};
-		355254F01C6F437000B50452 /* PersonSpec */ = {
-			isa = PBXGroup;
-			children = (
-				355254F11C6F437000B50452 /* PersonService+GETSpec.swift */,
-			);
-			path = PersonSpec;
-			sourceTree = "<group>";
-		};
-		355254F51C6F439700B50452 /* Person */ = {
-			isa = PBXGroup;
-			children = (
-				355254F61C6F439700B50452 /* _PersonService+GET.swift */,
-			);
-			path = Person;
-			sourceTree = "<group>";
-		};
-		355254F71C6F439700B50452 /* PersonArgs */ = {
-			isa = PBXGroup;
-			children = (
-				355254F81C6F439700B50452 /* _PersonArgsService+GET.swift */,
-			);
-			path = PersonArgs;
-			sourceTree = "<group>";
-		};
-		355254F91C6F439700B50452 /* PersonJson */ = {
-			isa = PBXGroup;
-			children = (
-				355254FA1C6F439700B50452 /* _PersonJsonService+POST.swift */,
-			);
-			path = PersonJson;
+			path = StringSpec;
 			sourceTree = "<group>";
 		};
 		356A63D21C6C58F4005793A5 /* PersonArgs */ = {
@@ -237,11 +202,85 @@
 			isa = PBXGroup;
 			children = (
 				356A63E51C6C597C005793A5 /* ServiceSpec.swift */,
-				355254EC1C6F437000B50452 /* PersonArgsSpec */,
-				355254EE1C6F437000B50452 /* PersonJsonSpec */,
-				355254F01C6F437000B50452 /* PersonSpec */,
+				35848B8F1C72F60500081ADB /* BoolSpec */,
+				355970421C72EFA700E924FE /* StringSpec */,
+				35848BAD1C72F94B00081ADB /* FloatSpec */,
+				35848B9A1C72F7B300081ADB /* IntSpec */,
+				35848BB31C72FF8600081ADB /* StringArraySpec */,
 			);
 			path = ServiceSpec;
+			sourceTree = "<group>";
+		};
+		35848B8F1C72F60500081ADB /* BoolSpec */ = {
+			isa = PBXGroup;
+			children = (
+				35848B901C72F60500081ADB /* _BoolService+GETSpec.swift */,
+			);
+			path = BoolSpec;
+			sourceTree = "<group>";
+		};
+		35848B921C72F61500081ADB /* Bool */ = {
+			isa = PBXGroup;
+			children = (
+				35848B931C72F61500081ADB /* _BoolService+GET.swift */,
+			);
+			path = Bool;
+			sourceTree = "<group>";
+		};
+		35848B941C72F61500081ADB /* String */ = {
+			isa = PBXGroup;
+			children = (
+				35848B951C72F61500081ADB /* _StringService+GET.swift */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		35848B9A1C72F7B300081ADB /* IntSpec */ = {
+			isa = PBXGroup;
+			children = (
+				35848B9B1C72F7B300081ADB /* _IntService+GETSpec.swift */,
+			);
+			path = IntSpec;
+			sourceTree = "<group>";
+		};
+		35848BA31C72F7D400081ADB /* Int */ = {
+			isa = PBXGroup;
+			children = (
+				35848BA41C72F7D400081ADB /* _IntService+GET.swift */,
+			);
+			path = Int;
+			sourceTree = "<group>";
+		};
+		35848BAA1C72F92800081ADB /* Float */ = {
+			isa = PBXGroup;
+			children = (
+				35848BAB1C72F92800081ADB /* _FloatService+GET.swift */,
+			);
+			path = Float;
+			sourceTree = "<group>";
+		};
+		35848BAD1C72F94B00081ADB /* FloatSpec */ = {
+			isa = PBXGroup;
+			children = (
+				35848BAE1C72F94B00081ADB /* _FloatService+GETSpec.swift */,
+			);
+			path = FloatSpec;
+			sourceTree = "<group>";
+		};
+		35848BB01C72FF7700081ADB /* StringArray */ = {
+			isa = PBXGroup;
+			children = (
+				35848BB11C72FF7700081ADB /* _StringArrayService+GET.swift */,
+			);
+			path = StringArray;
+			sourceTree = "<group>";
+		};
+		35848BB31C72FF8600081ADB /* StringArraySpec */ = {
+			isa = PBXGroup;
+			children = (
+				35848BB41C72FF8600081ADB /* _StringArrayService+GETSpec.swift */,
+			);
+			path = StringArraySpec;
 			sourceTree = "<group>";
 		};
 		35B19DD11BEE134E001D3952 = {
@@ -306,9 +345,11 @@
 		35D109F61C5F336200FC831F /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				355254F51C6F439700B50452 /* Person */,
-				355254F71C6F439700B50452 /* PersonArgs */,
-				355254F91C6F439700B50452 /* PersonJson */,
+				35848BAA1C72F92800081ADB /* Float */,
+				35848BA31C72F7D400081ADB /* Int */,
+				35848B921C72F61500081ADB /* Bool */,
+				35848B941C72F61500081ADB /* String */,
+				35848BB01C72FF7700081ADB /* StringArray */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -433,18 +474,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				35D109FE1C5F340C00FC831F /* RestofireSpec.swift in Sources */,
-				35D10A001C5F34E000FC831F /* ReactofireConfigurationSpec.swift in Sources */,
 				355251441C6F403700B50452 /* _Args.swift in Sources */,
-				355254F21C6F437000B50452 /* PersonArgsService+GETSpec.swift in Sources */,
 				356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */,
+				35848B911C72F60500081ADB /* _BoolService+GETSpec.swift in Sources */,
 				356A63DA1C6C58F4005793A5 /* _PersonJson.swift in Sources */,
-				355254FB1C6F439700B50452 /* _PersonService+GET.swift in Sources */,
+				35848BA81C72F7D400081ADB /* _IntService+GET.swift in Sources */,
+				35848BB21C72FF7700081ADB /* _StringArrayService+GET.swift in Sources */,
+				35848BAC1C72F92800081ADB /* _FloatService+GET.swift in Sources */,
+				35848BB51C72FF8600081ADB /* _StringArrayService+GETSpec.swift in Sources */,
+				35848B971C72F61500081ADB /* _StringService+GET.swift in Sources */,
 				355251451C6F403700B50452 /* Args.swift in Sources */,
-				355254FD1C6F439700B50452 /* _PersonJsonService+POST.swift in Sources */,
-				355254FC1C6F439700B50452 /* _PersonArgsService+GET.swift in Sources */,
-				355254F41C6F437000B50452 /* PersonService+GETSpec.swift in Sources */,
+				355970441C72EFA700E924FE /* _StringService+GETSpec.swift in Sources */,
+				35848B9F1C72F7B300081ADB /* _IntService+GETSpec.swift in Sources */,
+				35848BAF1C72F94B00081ADB /* _FloatService+GETSpec.swift in Sources */,
 				356A63D81C6C58F4005793A5 /* _PersonArgs.swift in Sources */,
-				355254F31C6F437000B50452 /* PersonJsonService+POSTSpec.swift in Sources */,
+				35848B961C72F61500081ADB /* _BoolService+GET.swift in Sources */,
 				355251461C6F403700B50452 /* _Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

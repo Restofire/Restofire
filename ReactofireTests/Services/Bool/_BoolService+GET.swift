@@ -12,14 +12,12 @@ import Reactofire
 import Alamofire
 import ReactiveCocoa
 
-class PersonJsonPOSTService: ReactofireProtocol {
+class BoolGETService: ReactofireProtocol {
 
-    var path: String = "post"
-    var method = Alamofire.Method.POST
-    var parameters: AnyObject?
+    var path: String = "56c2be50120000842473f19e"
+    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
-    func executeRequest(params params: AnyObject?) -> SignalProducer<PersonJson, NSError> { 
-        parameters = params
+    func executeRequest() -> SignalProducer<Bool, NSError> { 
         return Reactofire().executeRequest(self)
     }
 

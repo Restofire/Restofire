@@ -14,12 +14,6 @@ class ReactofireSpec: QuickSpec {
     
     override func spec() {
         
-        beforeSuite {
-            ReactofireConfiguration.defaultConfiguration.baseURL = "http://httpbin.org/"
-            ReactofireConfiguration.defaultConfiguration.headers = ["Content-Type": "application/json"]
-            ReactofireConfiguration.defaultConfiguration.logging = true
-        }
-        
     }
     
 }

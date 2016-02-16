@@ -10,6 +10,7 @@
 
 import Quick
 import Nimble
+@testable import Reactofire
 
 class ServiceSpec: QuickSpec {
 
@@ -19,7 +20,9 @@ class ServiceSpec: QuickSpec {
     override func spec() {
 
         beforeSuite {
-            
+            ReactofireConfiguration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+            ReactofireConfiguration.defaultConfiguration.headers = ["Content-Type": "application/json"]
+            ReactofireConfiguration.defaultConfiguration.logging = true
         }
 
     }

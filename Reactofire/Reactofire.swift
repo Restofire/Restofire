@@ -75,6 +75,7 @@ public class Reactofire {
             request.responseGLOSS(rootKey: object.rootKey) { (response: Response<T, NSError>) -> Void in
                 if ReactofireConfiguration.defaultConfiguration.logging {
                     print(request.debugDescription)
+                    print(response)
                 }
                 if let GLOSS = response.result.value {
                     sink.sendNext(GLOSS)
@@ -99,6 +100,7 @@ public class Reactofire {
             request.responseGLOSS(rootKey: object.rootKey) { (response: Response<T, NSError>) -> Void in
                 if ReactofireConfiguration.defaultConfiguration.logging {
                     print(request.debugDescription)
+                    print(response)
                 }
                 if let GLOSS = response.result.value {
                     sink.sendNext(GLOSS)
@@ -123,6 +125,7 @@ public class Reactofire {
             request.responseGLOSS(rootKey: object.rootKey) { (response: Response<[T], NSError>) -> Void in
                 if ReactofireConfiguration.defaultConfiguration.logging {
                     print(request.debugDescription)
+                    print(response)
                 }
                 if let GLOSS = response.result.value {
                     sink.sendNext(GLOSS)

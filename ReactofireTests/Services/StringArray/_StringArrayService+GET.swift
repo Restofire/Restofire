@@ -8,13 +8,17 @@
 //  Copyright (c) 2016 RahulKatariya. All rights reserved.
 //
 
-import Quick
-import Nimble
+import Reactofire
+import Alamofire
+import ReactiveCocoa
 
-class PersonJsonPOSTServiceSpec: ServiceSpec {
+class StringArrayGETService: ReactofireProtocol {
 
-    override func spec() { 
+    var path: String = "56c2c74d120000082673f1ae"
+    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
+    func executeRequest() -> SignalProducer<[String], NSError> { 
+        return Reactofire().executeRequest(self)
     }
 
 }

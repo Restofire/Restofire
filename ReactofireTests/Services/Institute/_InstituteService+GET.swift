@@ -8,26 +8,17 @@
 //  Copyright (c) 2016 RahulKatariya. All rights reserved.
 //
 
-import Gloss
+import Reactofire
+import Alamofire
+import ReactiveCocoa
 
-struct Args<T: Decodable where T: Equatable>: Glossy {
-    
-    var args: T
+class InstituteGETService: ReactofireProtocol {
 
-    init(args: T) { 
-        self.args = args
-    }
+    var path: String = "56c2cc9c120000c22673f1b7"
+    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
-    init?(json: JSON) { 
-        guard let args: T = "args" <~~ json else { return nil } 
-        
-        self.args = args
-    }
-
-    func toJSON() -> JSON? {
-        return jsonify([ 
-            "args" ~~> self.args
-        ])
+    func executeRequest() -> SignalProducer<Institute, NSError> { 
+        return Reactofire().executeRequest(self)
     }
 
 }

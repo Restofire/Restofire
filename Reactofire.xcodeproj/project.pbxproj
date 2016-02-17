@@ -712,9 +712,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Alamofire/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Carthage/Checkouts/ReactiveCocoa/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Result/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Reactofire/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -738,9 +735,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Alamofire/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Carthage/Checkouts/ReactiveCocoa/build/Debug-iphoneos",
-					"$(PROJECT_DIR)/Carthage/Checkouts/Result/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Reactofire/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";

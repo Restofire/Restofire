@@ -51,28 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 import Gloss
 
-struct PersonArgs: Glossy {
-
-    var args: Person
-
-    init(args: Person) {
-        self.args = args
-    }
-
-    init?(json: JSON) {
-        guard let args: Person = "args" <~~ json else { return nil }
-
-        self.args = args
-    }
-
-    func toJSON() -> JSON? {
-        return jsonify([
-            "args" ~~> self.args
-        ])
-    }
-
-}
-
 struct Person: Glossy {
 
     var id: String
@@ -84,8 +62,8 @@ struct Person: Glossy {
     }
 
     init?(json: JSON) {
-        guard let id: String = "id" <~~ json,
-            let name: String = "name" <~~ json else { return nil }
+        guard let id: String = "args.id" <~~ json,
+            let name: String = "args.name" <~~ json else { return nil }
 
         self.id = id
         self.name = name

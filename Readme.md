@@ -1,5 +1,6 @@
 ## Reactofire
 
+[![Travis](https://img.shields.io/travis/RahulKatariya/Restofire.svg)](https://img.shields.io/travis/RahulKatariya/Restofire.svg)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Reactofire.svg)](https://img.shields.io/cocoapods/v/Reactofire.svg)

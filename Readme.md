@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
 
-    ReactofireConfiguration.defaultConfiguration.baseURL = "http://httpbin.org/"
+    ReactofireConfiguration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
     ReactofireConfiguration.defaultConfiguration.headers = ["Content-Type": "application/json"]
     ReactofireConfiguration.defaultConfiguration.logging = true
 

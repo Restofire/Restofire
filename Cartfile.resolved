@@ -1,5 +1,5 @@
 github "Alamofire/Alamofire" "3.2.0"
-github "rahulkatariya/Gloss" "57031774d1f36ead51dbdc9969c991406c683fb0"
+github "hkellaway/Gloss" "0.7.1"
 github "Quick/Nimble" "v3.1.0"
 github "Quick/Quick" "v0.9.1"
 github "antitypical/Result" "1.0.2"

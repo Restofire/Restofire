@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		350062321C7C34510078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */; };
+		350062331C7C34510078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */; };
+		350062341C7C34520078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A41C1D824F00CEDCC9 /* Reactofire.swift */; };
+		350062351C7C34550078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */; };
+		350062361C7C34550078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */; };
+		350062371C7C34560078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3565D4A21C1D824500CEDCC9 /* Alamofire+GlossResponseSerializer.swift */; };
+		350062381C7C34590078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B19DDE1BEE134E001D3952 /* Reactofire.h */; };
+		350062391C7C34590078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B19DDE1BEE134E001D3952 /* Reactofire.h */; };
+		3500623A1C7C345A0078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 35B19DDE1BEE134E001D3952 /* Reactofire.h */; };
+		3500623B1C7C345D0078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35360A5A1C2ABE4200A17524 /* Dictionary.swift */; };
+		3500623C1C7C345E0078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35360A5A1C2ABE4200A17524 /* Dictionary.swift */; };
+		3500623D1C7C345E0078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35360A5A1C2ABE4200A17524 /* Dictionary.swift */; };
+		3500624B1C7C38500078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062461C7C38500078B589 /* Alamofire.framework */; };
+		3500624C1C7C38500078B589 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062471C7C38500078B589 /* Gloss.framework */; };
+		3500624E1C7C38500078B589 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062491C7C38500078B589 /* ReactiveCocoa.framework */; };
+		3500624F1C7C38500078B589 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500624A1C7C38500078B589 /* Result.framework */; };
+		350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
+		350062551C7C386A0078B589 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062511C7C386A0078B589 /* Gloss.framework */; };
+		350062561C7C386A0078B589 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062521C7C386A0078B589 /* ReactiveCocoa.framework */; };
+		350062571C7C386A0078B589 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062531C7C386A0078B589 /* Result.framework */; };
+		350062581C7C387C0078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623E1C7C382C0078B589 /* Alamofire.framework */; };
+		350062591C7C387C0078B589 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623F1C7C382C0078B589 /* Gloss.framework */; };
+		3500625A1C7C387C0078B589 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062401C7C382C0078B589 /* ReactiveCocoa.framework */; };
+		3500625B1C7C387C0078B589 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062411C7C382C0078B589 /* Result.framework */; };
 		352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AC1C5E2D33000AE7C0 /* Reactofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Reactofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AD1C5E2D5F000AE7C0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,6 +112,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		350061F21C7C33910078B589 /* Reactofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reactofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3500620E1C7C33EB0078B589 /* Reactofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reactofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3500622A1C7C343D0078B589 /* Reactofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reactofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3500623E1C7C382C0078B589 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/tvOS/Alamofire.framework; sourceTree = "<group>"; };
+		3500623F1C7C382C0078B589 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/tvOS/Gloss.framework; sourceTree = "<group>"; };
+		350062401C7C382C0078B589 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/tvOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		350062411C7C382C0078B589 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		350062461C7C38500078B589 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
+		350062471C7C38500078B589 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/Mac/Gloss.framework; sourceTree = "<group>"; };
+		350062481C7C38500078B589 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
+		350062491C7C38500078B589 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		3500624A1C7C38500078B589 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		350062501C7C386A0078B589 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
+		350062511C7C386A0078B589 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/watchOS/Gloss.framework; sourceTree = "<group>"; };
+		350062521C7C386A0078B589 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/watchOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		350062531C7C386A0078B589 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
 		352260721C5E2684000AE7C0 /* Cartfile.private */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		3522609F1C5E2BBD000AE7C0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		352260A11C5E2BCA000AE7C0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -135,6 +175,39 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		350061EE1C7C33910078B589 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062581C7C387C0078B589 /* Alamofire.framework in Frameworks */,
+				350062591C7C387C0078B589 /* Gloss.framework in Frameworks */,
+				3500625A1C7C387C0078B589 /* ReactiveCocoa.framework in Frameworks */,
+				3500625B1C7C387C0078B589 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3500620A1C7C33EB0078B589 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3500624B1C7C38500078B589 /* Alamofire.framework in Frameworks */,
+				3500624C1C7C38500078B589 /* Gloss.framework in Frameworks */,
+				3500624E1C7C38500078B589 /* ReactiveCocoa.framework in Frameworks */,
+				3500624F1C7C38500078B589 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		350062261C7C343D0078B589 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */,
+				350062551C7C386A0078B589 /* Gloss.framework in Frameworks */,
+				350062561C7C386A0078B589 /* ReactiveCocoa.framework in Frameworks */,
+				350062571C7C386A0078B589 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35B19DD71BEE134E001D3952 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,6 +389,9 @@
 			children = (
 				35B19DDB1BEE134E001D3952 /* Reactofire.framework */,
 				35B19DE51BEE134E001D3952 /* ReactofireTests.xctest */,
+				350061F21C7C33910078B589 /* Reactofire.framework */,
+				3500620E1C7C33EB0078B589 /* Reactofire.framework */,
+				3500622A1C7C343D0078B589 /* Reactofire.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -335,6 +411,19 @@
 		35B19E071BEE17D8001D3952 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				350062501C7C386A0078B589 /* Alamofire.framework */,
+				350062511C7C386A0078B589 /* Gloss.framework */,
+				350062521C7C386A0078B589 /* ReactiveCocoa.framework */,
+				350062531C7C386A0078B589 /* Result.framework */,
+				350062461C7C38500078B589 /* Alamofire.framework */,
+				350062471C7C38500078B589 /* Gloss.framework */,
+				350062481C7C38500078B589 /* Nimble.framework */,
+				350062491C7C38500078B589 /* ReactiveCocoa.framework */,
+				3500624A1C7C38500078B589 /* Result.framework */,
+				3500623E1C7C382C0078B589 /* Alamofire.framework */,
+				3500623F1C7C382C0078B589 /* Gloss.framework */,
+				350062401C7C382C0078B589 /* ReactiveCocoa.framework */,
+				350062411C7C382C0078B589 /* Result.framework */,
 				352260A11C5E2BCA000AE7C0 /* Nimble.framework */,
 				3522609F1C5E2BBD000AE7C0 /* Quick.framework */,
 				35B19DFD1BEE17D2001D3952 /* Alamofire.framework */,
@@ -456,6 +545,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		350061EF1C7C33910078B589 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062381C7C34590078B589 /* Reactofire.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3500620B1C7C33EB0078B589 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062391C7C34590078B589 /* Reactofire.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		350062271C7C343D0078B589 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3500623A1C7C345A0078B589 /* Reactofire.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35B19DD81BEE134E001D3952 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -467,9 +580,63 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35B19DDA1BEE134E001D3952 /* Reactofire */ = {
+		350061F11C7C33910078B589 /* Reactofire-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35B19DEF1BEE134E001D3952 /* Build configuration list for PBXNativeTarget "Reactofire" */;
+			buildConfigurationList = 350062031C7C33910078B589 /* Build configuration list for PBXNativeTarget "Reactofire-tvOS" */;
+			buildPhases = (
+				350061ED1C7C33910078B589 /* Sources */,
+				350061EE1C7C33910078B589 /* Frameworks */,
+				350061EF1C7C33910078B589 /* Headers */,
+				350061F01C7C33910078B589 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reactofire-tvOS";
+			productName = "Reactofire-tvOS";
+			productReference = 350061F21C7C33910078B589 /* Reactofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		3500620D1C7C33EB0078B589 /* Reactofire-Mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3500621F1C7C33EB0078B589 /* Build configuration list for PBXNativeTarget "Reactofire-Mac" */;
+			buildPhases = (
+				350062091C7C33EB0078B589 /* Sources */,
+				3500620A1C7C33EB0078B589 /* Frameworks */,
+				3500620B1C7C33EB0078B589 /* Headers */,
+				3500620C1C7C33EB0078B589 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reactofire-Mac";
+			productName = "Reactofire-Mac";
+			productReference = 3500620E1C7C33EB0078B589 /* Reactofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		350062291C7C343D0078B589 /* Reactofire-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3500622F1C7C343D0078B589 /* Build configuration list for PBXNativeTarget "Reactofire-watchOS" */;
+			buildPhases = (
+				350062251C7C343D0078B589 /* Sources */,
+				350062261C7C343D0078B589 /* Frameworks */,
+				350062271C7C343D0078B589 /* Headers */,
+				350062281C7C343D0078B589 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Reactofire-watchOS";
+			productName = "Reactofire-watchOS";
+			productReference = 3500622A1C7C343D0078B589 /* Reactofire.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		35B19DDA1BEE134E001D3952 /* Reactofire-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35B19DEF1BEE134E001D3952 /* Build configuration list for PBXNativeTarget "Reactofire-iOS" */;
 			buildPhases = (
 				35B19DD61BEE134E001D3952 /* Sources */,
 				35B19DD71BEE134E001D3952 /* Frameworks */,
@@ -480,7 +647,7 @@
 			);
 			dependencies = (
 			);
-			name = Reactofire;
+			name = "Reactofire-iOS";
 			productName = Reactofire;
 			productReference = 35B19DDB1BEE134E001D3952 /* Reactofire.framework */;
 			productType = "com.apple.product-type.framework";
@@ -514,6 +681,15 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = AarKay;
 				TargetAttributes = {
+					350061F11C7C33910078B589 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					3500620D1C7C33EB0078B589 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					350062291C7C343D0078B589 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					35B19DDA1BEE134E001D3952 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -534,13 +710,37 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35B19DDA1BEE134E001D3952 /* Reactofire */,
+				35B19DDA1BEE134E001D3952 /* Reactofire-iOS */,
 				35B19DE41BEE134E001D3952 /* ReactofireTests */,
+				350061F11C7C33910078B589 /* Reactofire-tvOS */,
+				3500620D1C7C33EB0078B589 /* Reactofire-Mac */,
+				350062291C7C343D0078B589 /* Reactofire-watchOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		350061F01C7C33910078B589 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3500620C1C7C33EB0078B589 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		350062281C7C343D0078B589 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35B19DD91BEE134E001D3952 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -558,6 +758,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		350061ED1C7C33910078B589 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062351C7C34550078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */,
+				350062321C7C34510078B589 /* Reactofire.swift in Sources */,
+				3500623B1C7C345D0078B589 /* Dictionary.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		350062091C7C33EB0078B589 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062361C7C34550078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */,
+				350062331C7C34510078B589 /* Reactofire.swift in Sources */,
+				3500623C1C7C345E0078B589 /* Dictionary.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		350062251C7C343D0078B589 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				350062371C7C34560078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */,
+				350062341C7C34520078B589 /* Reactofire.swift in Sources */,
+				3500623D1C7C345E0078B589 /* Dictionary.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		35B19DD61BEE134E001D3952 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -606,12 +836,156 @@
 /* Begin PBXTargetDependency section */
 		35B19DE81BEE134E001D3952 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 35B19DDA1BEE134E001D3952 /* Reactofire */;
+			target = 35B19DDA1BEE134E001D3952 /* Reactofire-iOS */;
 			targetProxy = 35B19DE71BEE134E001D3952 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		350062041C7C33910078B589 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Reactofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		350062051C7C33910078B589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = Reactofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+		350062201C7C33EB0078B589 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Reactofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		350062211C7C33EB0078B589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Reactofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		350062301C7C343D0078B589 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = Reactofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		350062311C7C343D0078B589 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/watchOS",
+				);
+				INFOPLIST_FILE = Reactofire/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 		35B19DED1BEE134E001D3952 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -718,7 +1092,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -741,7 +1115,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Reactofire;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -780,6 +1154,30 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		350062031C7C33910078B589 /* Build configuration list for PBXNativeTarget "Reactofire-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				350062041C7C33910078B589 /* Debug */,
+				350062051C7C33910078B589 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3500621F1C7C33EB0078B589 /* Build configuration list for PBXNativeTarget "Reactofire-Mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				350062201C7C33EB0078B589 /* Debug */,
+				350062211C7C33EB0078B589 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3500622F1C7C343D0078B589 /* Build configuration list for PBXNativeTarget "Reactofire-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				350062301C7C343D0078B589 /* Debug */,
+				350062311C7C343D0078B589 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		35B19DD51BEE134E001D3952 /* Build configuration list for PBXProject "Reactofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -789,7 +1187,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35B19DEF1BEE134E001D3952 /* Build configuration list for PBXNativeTarget "Reactofire" */ = {
+		35B19DEF1BEE134E001D3952 /* Build configuration list for PBXNativeTarget "Reactofire-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35B19DF01BEE134E001D3952 /* Debug */,

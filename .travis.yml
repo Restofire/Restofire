@@ -15,17 +15,17 @@ script:
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=iPhone 6,OS=9.2'
 
-  xcodebuild test -project Reactofire.xcodeproj
+  xcodebuild -project Reactofire.xcodeproj
     -scheme Reactofire-Mac
     -sdk macosx ONLY_ACTIVE_ARCH=NO
     -destination 'arch=x86_64'
 
-  xcodebuild test -project Reactofire.xcodeproj
+  xcodebuild -project Reactofire.xcodeproj
     -scheme Reactofire-watchOS
     -sdk watchsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple Watch - 38mm,OS=2.1'
 
-  xcodebuild test -project Reactofire.xcodeproj
+  xcodebuild -project Reactofire.xcodeproj
     -scheme Reactofire-tvOS
     -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple TV 1080p,OS=9.1'

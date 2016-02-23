@@ -15,7 +15,6 @@ import ReactiveCocoa
 class FloatGETService: ReactofireProtocol {
 
     var path: String = "56c2bfd61200006c2473f1a0"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
     func executeRequest() -> SignalProducer<Float, NSError> { 
         return Reactofire().executeRequest(self)

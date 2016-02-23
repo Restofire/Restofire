@@ -15,7 +15,6 @@ import ReactiveCocoa
 class GenericStringGETService: ReactofireProtocol {
 
     var path: String = "56c2d280120000512773f1ba"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
     func executeRequest() -> SignalProducer<GenericResponse<String>, NSError> { 
         return Reactofire().executeRequest(self)

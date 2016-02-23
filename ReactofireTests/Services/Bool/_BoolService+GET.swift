@@ -15,7 +15,6 @@ import ReactiveCocoa
 class BoolGETService: ReactofireProtocol {
 
     var path: String = "56c2be50120000842473f19e"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
     func executeRequest() -> SignalProducer<Bool, NSError> { 
         return Reactofire().executeRequest(self)

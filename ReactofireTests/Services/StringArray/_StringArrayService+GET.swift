@@ -15,7 +15,6 @@ import ReactiveCocoa
 class StringArrayGETService: ReactofireProtocol {
 
     var path: String = "56c2c74d120000082673f1ae"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
     func executeRequest() -> SignalProducer<[String], NSError> { 
         return Reactofire().executeRequest(self)

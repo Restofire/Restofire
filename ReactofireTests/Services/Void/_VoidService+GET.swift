@@ -15,9 +15,8 @@ import ReactiveCocoa
 class VoidGETService: ReactofireProtocol {
 
     var path: String = "56c31578120000743173f22e"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
-    func executeRequest() -> SignalProducer<NSDictionary, NSError> {
+    func executeRequest() -> SignalProducer<Dictionary<String, String>, NSError> { 
         return Reactofire().executeRequest(self)
     }
 

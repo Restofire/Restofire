@@ -15,7 +15,6 @@ import ReactiveCocoa
 class PersonGETService: ReactofireProtocol {
 
     var path: String = "56c2cc70120000c12673f1b5"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
     func executeRequest() -> SignalProducer<Person, NSError> { 
         return Reactofire().executeRequest(self)

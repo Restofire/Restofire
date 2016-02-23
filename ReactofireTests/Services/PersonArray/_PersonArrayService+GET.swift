@@ -12,11 +12,11 @@ import Reactofire
 import Alamofire
 import ReactiveCocoa
 
-class IntGETService: ReactofireProtocol {
+class PersonArrayGETService: ReactofireProtocol {
 
-    var path: String = "56c2beee1200007b2473f19f"
+    var path: String = "56cc51f32800009900219dc9"
 
-    func executeRequest() -> SignalProducer<Int, NSError> { 
+    func executeRequest() -> SignalProducer<[Person], NSError> { 
         return Reactofire().executeRequest(self)
     }
 

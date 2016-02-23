@@ -15,7 +15,6 @@ import ReactiveCocoa
 class InstituteGETService: ReactofireProtocol {
 
     var path: String = "56c2cc9c120000c22673f1b7"
-    var encoding = Alamofire.ParameterEncoding.URLEncodedInURL
 
     func executeRequest() -> SignalProducer<Institute, NSError> { 
         return Reactofire().executeRequest(self)

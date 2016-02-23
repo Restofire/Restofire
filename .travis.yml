@@ -6,20 +6,14 @@ before_install:
   - brew upgrade carthage
 
 install:
-  - carthage update Nimble Quick --platform iOS
-  - carthage update Alamofire Gloss ReactiveCocoa
+  - carthage update Nimble Quick --platform iOS --no-use-binaries
+  - carthage build Alamofire Gloss ReactiveCocoa
 
 script:
   xcodebuild test -project Reactofire.xcodeproj
     -scheme Reactofire-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.2'
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1'
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.0'
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.4'
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.3'
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.2'
-    -destination 'platform=iOS Simulator,name=iPhone 6,OS=8.1'
+    -destination 'name=iPhone 6,OS=9.2'
 
   xcodebuild test -project Reactofire.xcodeproj
     -scheme Reactofire-Mac
@@ -30,10 +24,8 @@ script:
     -scheme Reactofire-watchOS
     -sdk watchsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple Watch - 38mm,OS=2.1'
-    -destination 'name=Apple Watch - 38mm,OS=2.0'
 
   xcodebuild test -project Reactofire.xcodeproj
     -scheme Reactofire-tvOS
     -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple TV 1080p,OS=9.1'
-    -destination 'name=Apple TV 1080p,OS=9.0'

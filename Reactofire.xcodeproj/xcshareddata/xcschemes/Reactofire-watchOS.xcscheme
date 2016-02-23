@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "350062291C7C343D0078B589"
-               BuildableName = "Reactofire-watchOS.framework"
+               BuildableName = "Reactofire.framework"
                BlueprintName = "Reactofire-watchOS"
                ReferencedContainer = "container:Reactofire.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "350062291C7C343D0078B589"
-            BuildableName = "Reactofire-watchOS.framework"
+            BuildableName = "Reactofire.framework"
             BlueprintName = "Reactofire-watchOS"
             ReferencedContainer = "container:Reactofire.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "350062291C7C343D0078B589"
-            BuildableName = "Reactofire-watchOS.framework"
+            BuildableName = "Reactofire.framework"
             BlueprintName = "Reactofire-watchOS"
             ReferencedContainer = "container:Reactofire.xcodeproj">
          </BuildableReference>

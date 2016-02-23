@@ -57,7 +57,7 @@ $ brew install carthage
 To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Reactofire" ~> 0.2
+github "RahulKatariya/Reactofire" ~> 0.3
 ```
 ### Swift Package Manager
 

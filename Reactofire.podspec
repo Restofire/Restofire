@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
  s.name = 'Reactofire'
- s.version = '0.2.0'
+ s.version = '0.3.0'
  s.license = { :type => "MIT", :file => "LICENSE" }
  s.summary = 'Reactofire is a protocol oriented networking library in swift'
  s.description = 'Reactofire is a protocol oriented networking library in swift that is built on top of Alamofire, Gloss and ReactiveCocoa to use services in a declartive way'

@@ -1,13 +1,47 @@
-## Reactofire [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+## Reactofire
+
+
+
+[![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Reactofire.svg)](https://img.shields.io/cocoapods/v/Reactofire.svg)
+[![Platforms](https://img.shields.io/cocoapods/p/Reactofire.svg)](http://cocoapods.org/pods/Reactofire)
+[![License](https://img.shields.io/cocoapods/l/Reactofire.svg)](https://raw.githubusercontent.com/rahulkatariya/Reactofire/master/LICENSE)
 
 Reactofire is a protocol oriented networking library in swift that is built on top of Alamofire, Gloss and ReactiveCocoa to use services in a declartive way
 
 ## Requirements
 
-- iOS 8.0+
-- Xcode 7.0+
+- iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 7.2+
 
 ## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+> CocoaPods 0.39.0+ is required to build Reactofire 0.3.0+.
+
+To integrate Reactofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Reactofire', '~> 0.3'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
 
 ### Carthage
 
@@ -24,6 +58,20 @@ To integrate Reactofire into your Xcode project using Carthage, specify it in yo
 
 ```ogdl
 github "RahulKatariya/Reactofire" ~> 0.2
+```
+### Installation with Swift Package Manager
+
+To use Gloss as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+
+``` swift
+import PackageDescription
+
+let package = Package(
+    name: "HelloReactofire",
+    dependencies: [
+        .Package(url: "https://github.com/RahulKatariya/Reactofire.git", majorVersion: 0)
+    ]
+)
 ```
 
 ## Usage

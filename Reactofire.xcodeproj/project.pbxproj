@@ -21,11 +21,11 @@
 		3500625B1C7C387C0078B589 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062411C7C382C0078B589 /* Result.framework */; };
 		350062711C7C40510078B589 /* Alamofire+GlossResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626A1C7C40510078B589 /* Alamofire+GlossResponseSerializer.swift */; };
 		350062721C7C40510078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		350062741C7C40510078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; };
+		350062741C7C40510078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350062751C7C40510078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350062701C7C40510078B589 /* Reactofire.swift */; };
-		350062761C7C40610078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; };
-		350062771C7C40620078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; };
-		350062781C7C40620078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; };
+		350062761C7C40610078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		350062771C7C40620078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		350062781C7C40620078B589 /* Reactofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Reactofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350062791C7C40650078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350062701C7C40510078B589 /* Reactofire.swift */; };
 		3500627A1C7C40650078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350062701C7C40510078B589 /* Reactofire.swift */; };
 		3500627B1C7C40660078B589 /* Reactofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350062701C7C40510078B589 /* Reactofire.swift */; };

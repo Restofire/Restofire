@@ -120,6 +120,15 @@ class ViewController: UIViewController {
 }
 ```
 
+## Examples
+
+* [String Response Service](https://github.com/RahulKatariya/Reactofire/wiki/String-Response-Service-Example)
+* [Int Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Int-Response-Service-Example)
+* [Float Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Float-Response-Service-Example)
+* [Bool Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Bool-Response-Service-Example)
+* [Void Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Void-Response-Service-Example)
+* [String Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/String-Array-Response-Service-Example)
+
 ## TODO
 
 - [x] Add Default Protocol Implementations in Swift 2.0

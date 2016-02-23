@@ -127,7 +127,9 @@ class ViewController: UIViewController {
 * [Float Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Float-Response-Service-Example)
 * [Bool Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Bool-Response-Service-Example)
 * [Void Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Void-Response-Service-Example)
-* [String Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/String-Array-Response-Service-Example)
+* [Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Array-Response-Service-Example)
+* [Gloss Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Response-Service-Example)
+* [Gloss Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Array-Response-Service-Example)
 
 ## TODO
 

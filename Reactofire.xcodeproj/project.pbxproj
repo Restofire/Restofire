@@ -121,7 +121,6 @@
 		350062411C7C382C0078B589 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 		350062461C7C38500078B589 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		350062471C7C38500078B589 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/Mac/Gloss.framework; sourceTree = "<group>"; };
-		350062481C7C38500078B589 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = "<group>"; };
 		350062491C7C38500078B589 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		3500624A1C7C38500078B589 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		350062501C7C386A0078B589 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/watchOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -417,7 +416,6 @@
 				350062531C7C386A0078B589 /* Result.framework */,
 				350062461C7C38500078B589 /* Alamofire.framework */,
 				350062471C7C38500078B589 /* Gloss.framework */,
-				350062481C7C38500078B589 /* Nimble.framework */,
 				350062491C7C38500078B589 /* ReactiveCocoa.framework */,
 				3500624A1C7C38500078B589 /* Result.framework */,
 				3500623E1C7C382C0078B589 /* Alamofire.framework */,

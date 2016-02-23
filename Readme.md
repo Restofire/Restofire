@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
 
-    ReactofireConfiguration.defaultConfiguration.baseURL = "http://httpbin.org/"
+    ReactofireConfiguration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
     ReactofireConfiguration.defaultConfiguration.headers = ["Content-Type": "application/json"]
     ReactofireConfiguration.defaultConfiguration.logging = true
 
@@ -119,6 +119,17 @@ class ViewController: UIViewController {
 
 }
 ```
+
+## Examples
+
+* [String Response Service](https://github.com/RahulKatariya/Reactofire/wiki/String-Response-Service-Example)
+* [Int Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Int-Response-Service-Example)
+* [Float Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Float-Response-Service-Example)
+* [Bool Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Bool-Response-Service-Example)
+* [Void Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Void-Response-Service-Example)
+* [Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Array-Response-Service-Example)
+* [Gloss Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Response-Service-Example)
+* [Gloss Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Array-Response-Service-Example)
 
 ## TODO
 

@@ -6,7 +6,8 @@ before_install:
   - brew upgrade carthage
 
 install:
-  - carthage bootstrap
+  - carthage update Nimble Quick --platform iOS
+  - carthage update Alamofire Gloss ReactiveCocoa
 
 script:
   xcodebuild test -project Reactofire.xcodeproj

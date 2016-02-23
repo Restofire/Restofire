@@ -1,7 +1,5 @@
 ## Reactofire
 
-
-
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Reactofire.svg)](https://img.shields.io/cocoapods/v/Reactofire.svg)
@@ -17,62 +15,9 @@ Reactofire is a protocol oriented networking library in swift that is built on t
 
 ## Installation
 
-### CocoaPods
-
-[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
-
-```bash
-$ gem install cocoapods
-```
-
-> CocoaPods 0.39.0+ is required to build Reactofire 0.3.0+.
-
-To integrate Reactofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-use_frameworks!
-
-pod 'Reactofire', '~> 0.3'
-```
-
-Then, run the following command:
-
-```bash
-$ pod install
-```
-
-### Carthage
-
-[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
-
-You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
-
-```bash
-$ brew update
-$ brew install carthage
-```
-
-To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "RahulKatariya/Reactofire" ~> 0.3
-```
-### Swift Package Manager
-
-To use Reactofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
-
-``` swift
-import PackageDescription
-
-let package = Package(
-    name: "HelloReactofire",
-    dependencies: [
-        .Package(url: "https://github.com/RahulKatariya/Reactofire.git", majorVersion: 0)
-    ]
-)
-```
+* [CocoaPods](https://github.com/RahulKatariya/Reactofire/wiki/Installation-Guide#cocoapods)
+* [Carthage](https://github.com/RahulKatariya/Reactofire/wiki/Installation-Guide#carthage)
+* [Swift Package Manager](https://github.com/RahulKatariya/Reactofire/wiki/Installation-Guide#swift-package-manager)
 
 ## Usage
 

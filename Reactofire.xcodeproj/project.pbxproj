@@ -77,7 +77,6 @@
 		35DFD4531C73034500BF7B1E /* _GenericStringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD44D1C73034500BF7B1E /* _GenericStringService+GET.swift */; };
 		35DFD4541C73034500BF7B1E /* _InstituteService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD44F1C73034500BF7B1E /* _InstituteService+GET.swift */; };
 		35DFD4551C73034500BF7B1E /* _PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4511C73034500BF7B1E /* _PersonService+GET.swift */; };
-		35DFD45E1C73037500BF7B1E /* _GenericPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4571C73037500BF7B1E /* _GenericPersonService+GETSpec.swift */; };
 		35DFD45F1C73037500BF7B1E /* _GenericStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4591C73037500BF7B1E /* _GenericStringService+GETSpec.swift */; };
 		35DFD4601C73037500BF7B1E /* _InstituteService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD45B1C73037500BF7B1E /* _InstituteService+GETSpec.swift */; };
 		35DFD4611C73037500BF7B1E /* _PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD45D1C73037500BF7B1E /* _PersonService+GETSpec.swift */; };
@@ -815,7 +814,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35DFD45E1C73037500BF7B1E /* _GenericPersonService+GETSpec.swift in Sources */,
 				35D109FE1C5F340C00FC831F /* RestofireSpec.swift in Sources */,
 				356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */,
 				35DFD4481C73031400BF7B1E /* _Institute.swift in Sources */,

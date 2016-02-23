@@ -142,4 +142,4 @@ class ViewController: UIViewController {
 
 ## License
 
-Reactofire is released under the MIT license. See LICENSE for details.
+Reactofire is released under the MIT license. See [LICENSE](https://github.com/RahulKatariya/Reactofire/blob/master/LICENSE) for details.

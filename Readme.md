@@ -59,9 +59,9 @@ To integrate Reactofire into your Xcode project using Carthage, specify it in yo
 ```ogdl
 github "RahulKatariya/Reactofire" ~> 0.2
 ```
-### Installation with Swift Package Manager
+### Swift Package Manager
 
-To use Gloss as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+To use Reactofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
 ``` swift
 import PackageDescription

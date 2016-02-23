@@ -1,7 +1,5 @@
 language: objective-c
 osx_image: xcode7.2
 
-before_install: gem install cocoapods -v '= 0.39.0'
-
 script:
-   - xcodebuild test -project Reactofire.xcodeproj -scheme Reactofire
+   - xcodebuild test -project Reactofire.xcodeproj -scheme Reactofire-iOS -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO

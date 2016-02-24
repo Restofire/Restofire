@@ -29,13 +29,57 @@ Reactofire is a protocol oriented networking library in swift that is built on t
 ## Examples
 
 * [String Response Service](https://github.com/RahulKatariya/Reactofire/wiki/String-Response-Service-Example)
+
+    ```json
+    "Reactofire is Awesome"
+    ```
 * [Int Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Int-Response-Service-Example)
+
+    ```json
+    123456789
+    ```
 * [Float Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Float-Response-Service-Example)
+
+    ```json
+    12345.6789
+    ```
 * [Bool Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Bool-Response-Service-Example)
+
+    ```json
+    true
+    ```
 * [Void Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Void-Response-Service-Example)
+
+    ```json
+    {}
+    ```
 * [Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Array-Response-Service-Example)
+
+    ```json
+    ["Reactofire","is","Awesome"]
+    ```
 * [Gloss Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Response-Service-Example)
+
+    ```json
+    {
+      "id" : 12345,
+      "name" : "Rahul Katariya"
+    }
+    ```
 * [Gloss Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Array-Response-Service-Example)
+
+    ```json
+    [
+      {
+        "id" : 12345,
+        "name" : "Rahul Katariya"
+      },
+      {
+        "id" : 12346,
+        "name" : "Aar Kay"
+      }
+    ]
+    ```
 
 ## TODO
 

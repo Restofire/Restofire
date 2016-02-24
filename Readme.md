@@ -1,3 +1,5 @@
+![Reactofire: A Protocol Oriented Networking Abstraction Layer](.github/reactofire.png)
+
 ## Reactofire
 
 [![Travis](https://img.shields.io/travis/RahulKatariya/Reactofire.svg)](https://img.shields.io/travis/RahulKatariya/Reactofire.svg)
@@ -7,7 +9,7 @@
 [![Platforms](https://img.shields.io/cocoapods/p/Reactofire.svg)](http://cocoapods.org/pods/Reactofire)
 [![License](https://img.shields.io/cocoapods/l/Reactofire.svg)](https://raw.githubusercontent.com/rahulkatariya/Reactofire/master/LICENSE)
 
-Reactofire is a protocol oriented networking library in swift that is built on top of Alamofire, Gloss and ReactiveCocoa to use services in a declartive way
+Reactofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire, Gloss and ReactiveCocoa to use services in a declartive way
 
 ## Requirements
 

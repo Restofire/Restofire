@@ -6,7 +6,7 @@
 //  Copyright © 2015 AarKay. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for Reactofire.
 FOUNDATION_EXPORT double ReactofireVersionNumber;

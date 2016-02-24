@@ -7,7 +7,7 @@ before_install:
 
 install:
   - carthage update Nimble Quick --platform iOS --no-use-binaries
-  - carthage build Alamofire Gloss ReactiveCocoa
+  - carthage update Alamofire Gloss ReactiveCocoa
 
 script:
   xcodebuild test -project Reactofire.xcodeproj

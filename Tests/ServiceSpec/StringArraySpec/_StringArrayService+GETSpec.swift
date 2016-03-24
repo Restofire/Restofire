@@ -18,7 +18,7 @@ class StringArrayGETServiceSpec: ServiceSpec {
             
             it("should succeed") {
                 
-                let actual = ["Restofire","is","Awesome"]
+                let actual = ["Reactofire","is","Awesome"]
                 var expected: [String]!
                 
                 StringArrayGETService().executeRequest() {

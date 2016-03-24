@@ -18,7 +18,7 @@ class GenericStringGETServiceSpec: ServiceSpec {
             
             it("should succeed") {
                 
-                let actual = GenericResponse(args: "Restofire is Awesome")
+                let actual = GenericResponse(args: "Reactofire is Awesome")
                 var expected: GenericResponse<String>!
                 
                 GenericStringGETService().executeRequest() {

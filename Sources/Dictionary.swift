@@ -19,7 +19,7 @@ extension Dictionary {
         var keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
-            print("[Reactofire] Unable to use string as key on type: \(Key.self)")
+            print("[Restofire] Unable to use string as key on type: \(Key.self)")
             return nil
         }
         

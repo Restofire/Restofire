@@ -1,6 +1,6 @@
 //
 //  Alamofire+GlossResponseSerializer.swift
-//  Reactofire
+//  Restofire
 //
 //  Created by Rahul Katariya on 31/10/15.
 //  Copyright © 2015 AarKay. All rights reserved.

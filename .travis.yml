@@ -1,31 +1,31 @@
 language: objective-c
-osx_image: xcode7.2
+osx_image: xcode7.3
 
 before_install:
   - brew update
   - brew upgrade carthage
 
 install:
-  - carthage update Nimble Quick --platform iOS --no-use-binaries
-  - carthage update Alamofire Gloss ReactiveCocoa
+  - carthage update Nimble Quick --platform iOS
+  - carthage update Alamofire Gloss
 
 script:
-  - xcodebuild test -project Reactofire.xcodeproj
-    -scheme Reactofire-iOS
+  - xcodebuild test -project Restofire.xcodeproj
+    -scheme Restofire-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=iPhone 6,OS=9.2'
 
-  - xcodebuild -project Reactofire.xcodeproj
-    -scheme Reactofire-Mac
+  - xcodebuild -project Restofire.xcodeproj
+    -scheme Restofire-Mac
     -sdk macosx ONLY_ACTIVE_ARCH=NO
     -destination 'arch=x86_64'
 
-  - xcodebuild -project Reactofire.xcodeproj
-    -scheme Reactofire-watchOS
+  - xcodebuild -project Restofire.xcodeproj
+    -scheme Restofire-watchOS
     -sdk watchsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple Watch - 38mm,OS=2.1'
 
-  - xcodebuild -project Reactofire.xcodeproj
-    -scheme Reactofire-tvOS
+  - xcodebuild -project Restofire.xcodeproj
+    -scheme Restofire-tvOS
     -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple TV 1080p,OS=9.1'

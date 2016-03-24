@@ -1,6 +1,6 @@
-![Reactofire: A Protocol Oriented Networking Abstraction Layer](.github/reactofire.png)
+![Restofire: A Protocol Oriented Networking Abstraction Layer](.github/Restofire.png)
 
-## Reactofire
+## Restofire
 
 [![Platforms](https://img.shields.io/cocoapods/p/Reactofire.svg)](https://cocoapods.org/pods/Reactofire)
 [![License](https://img.shields.io/cocoapods/l/Reactofire.svg)](https://raw.githubusercontent.com/rahulkatariya/Reactofire/master/LICENSE)
@@ -11,9 +11,9 @@
 
 [![Travis](https://img.shields.io/travis/RahulKatariya/Reactofire/master.svg)](https://travis-ci.org/RahulKatariya/Reactofire/branches)
 
-[![Join the chat at https://gitter.im/RahulKatariya/Restofire](https://badges.gitter.im/RahulKatariya/Restofire.svg)](https://gitter.im/RahulKatariya/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/Restofire/Restofire](https://badges.gitter.im/Restofire/Restofire.svg)](https://gitter.im/Restofire/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Reactofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire, Gloss and ReactiveCocoa to use services in a declartive way
+Restofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire and Gloss to use services in a declartive way.
 
 ## Requirements
 
@@ -22,49 +22,49 @@ Reactofire is a protocol oriented networking abstraction layer in swift that is 
 
 ## Installation
 
-* [CocoaPods](https://github.com/RahulKatariya/Reactofire/wiki/Installation-Guide#cocoapods)
-* [Carthage](https://github.com/RahulKatariya/Reactofire/wiki/Installation-Guide#carthage)
-* [Swift Package Manager](https://github.com/RahulKatariya/Reactofire/wiki/Installation-Guide#swift-package-manager)
+* [CocoaPods](https://github.com/Restofire/Restofire/wiki/Installation-Guide#cocoapods)
+* [Carthage](https://github.com/Restofire/Restofire/wiki/Installation-Guide#carthage)
+* [Swift Package Manager](https://github.com/Restofire/Restofire/wiki/Installation-Guide#swift-package-manager)
 
 ## Usage
 
-* [Configuring Reactofire](https://github.com/RahulKatariya/Reactofire/wiki/Configuring-Reactofire)
-* [Creating Gloss Models](https://github.com/RahulKatariya/Reactofire/wiki/Creating-Gloss-Models)
-* [Creating Reactofire Service](https://github.com/RahulKatariya/Reactofire/wiki/Creating-Reactofire-Service)
+* [Configuring Restofire](https://github.com/Restofire/Restofire/wiki/Configuring-Restofire)
+* [Creating Gloss Models](https://github.com/Restofire/Restofire/wiki/Creating-Gloss-Models)
+* [Creating Restofire Service](https://github.com/Restofire/Restofire/wiki/Creating-Restofire-Service)
 
 ## Examples
 
-* [String Response Service](https://github.com/RahulKatariya/Reactofire/wiki/String-Response-Service-Example)
+* [String Response Service](https://github.com/Restofire/Restofire/wiki/String-Response-Service-Example)
 
     ```json
-    "Reactofire is Awesome"
+    "Restofire is Awesome"
     ```
-* [Int Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Int-Response-Service-Example)
+* [Int Response Service](https://github.com/Restofire/Restofire/wiki/Int-Response-Service-Example)
 
     ```json
     123456789
     ```
-* [Float Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Float-Response-Service-Example)
+* [Float Response Service](https://github.com/Restofire/Restofire/wiki/Float-Response-Service-Example)
 
     ```json
     12345.6789
     ```
-* [Bool Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Bool-Response-Service-Example)
+* [Bool Response Service](https://github.com/Restofire/Restofire/wiki/Bool-Response-Service-Example)
 
     ```json
     true
     ```
-* [Void Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Void-Response-Service-Example)
+* [Void Response Service](https://github.com/Restofire/Restofire/wiki/Void-Response-Service-Example)
 
     ```json
     {}
     ```
-* [Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Array-Response-Service-Example)
+* [Array Response Service](https://github.com/Restofire/Restofire/wiki/Array-Response-Service-Example)
 
     ```json
-    ["Reactofire","is","Awesome"]
+    ["Restofire","is","Awesome"]
     ```
-* [Gloss Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Response-Service-Example)
+* [Gloss Response Service](https://github.com/Restofire/Restofire/wiki/Gloss-Response-Service-Example)
 
     ```json
     {
@@ -72,7 +72,7 @@ Reactofire is a protocol oriented networking abstraction layer in swift that is 
       "name" : "Rahul Katariya"
     }
     ```
-* [Gloss Array Response Service](https://github.com/RahulKatariya/Reactofire/wiki/Gloss-Array-Response-Service-Example)
+* [Gloss Array Response Service](https://github.com/Restofire/Restofire/wiki/Gloss-Array-Response-Service-Example)
 
     ```json
     [
@@ -98,4 +98,4 @@ Reactofire is a protocol oriented networking abstraction layer in swift that is 
 
 ## License
 
-Reactofire is released under the MIT license. See [LICENSE](https://github.com/RahulKatariya/Reactofire/blob/master/LICENSE) for details.
+Restofire is released under the MIT license. See [LICENSE](https://github.com/Restofire/Restofire/blob/master/LICENSE) for details.

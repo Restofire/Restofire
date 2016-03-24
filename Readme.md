@@ -1,4 +1,4 @@
-![Restofire: A Protocol Oriented Networking Abstraction Layer](.github/Restofire.png)
+![Restofire: A Protocol Oriented Networking Abstraction Layer](.github/restofire.png)
 
 ## Restofire
 

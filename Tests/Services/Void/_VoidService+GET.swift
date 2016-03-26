@@ -13,10 +13,7 @@ import Alamofire
 
 class VoidGETService: RestofireProtocol {
 
+    typealias Model = [String: AnyObject]
     var path: String = "56c31578120000743173f22e"
-
-    func executeRequest(completionHandler: Response<NSDictionary, NSError> -> Void) {
-        return Restofire().executeRequest(self, completionHandler: completionHandler)
-    }
 
 }

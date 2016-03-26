@@ -19,7 +19,7 @@ class VoidGETServiceSpec: ServiceSpec {
             it("should succeed") {
                 
                 let actual = [:]
-                var expected: NSDictionary!
+                var expected: [String: AnyObject]!
                 
                 VoidGETService().executeRequest() {
                     if let value = $0.result.value {

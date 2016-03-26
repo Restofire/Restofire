@@ -13,10 +13,7 @@ import Alamofire
 
 class InstituteGETService: RestofireProtocol {
 
+    typealias Model = Institute
     var path: String = "56c2cc9c120000c22673f1b7"
-
-    func executeRequest(completionHandler: Response<Institute, NSError> -> Void) {
-        return Restofire().executeRequest(self, completionHandler: completionHandler)
-    }
 
 }

@@ -13,10 +13,7 @@ import Alamofire
 
 class BoolGETService: RestofireProtocol {
 
+    typealias Model = Bool
     var path: String = "56c2be50120000842473f19e"
-
-    func executeRequest(completionHandler: Response<Bool, NSError> -> Void) { 
-        return Restofire().executeRequest(self, completionHandler: completionHandler)
-    }
 
 }

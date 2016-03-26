@@ -13,10 +13,7 @@ import Alamofire
 
 class PersonGETService: RestofireProtocol {
 
+    typealias Model = Person
     var path: String = "56c2cc70120000c12673f1b5"
-
-    func executeRequest(completionHandler: Response<Person, NSError> -> Void) { 
-        return Restofire().executeRequest(self, completionHandler: completionHandler)
-    }
 
 }

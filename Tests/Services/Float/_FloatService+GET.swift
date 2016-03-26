@@ -13,10 +13,7 @@ import Alamofire
 
 class FloatGETService: RestofireProtocol {
 
+    typealias Model = Float
     var path: String = "56c2bfd61200006c2473f1a0"
-
-    func executeRequest(completionHandler: Response<Float, NSError> -> Void) { 
-        return Restofire().executeRequest(self, completionHandler: completionHandler)
-    }
 
 }

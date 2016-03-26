@@ -64,6 +64,11 @@
 		35B79EBE1CA68BD3004C03A0 /* _IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848B9B1C72F7B300081ADB /* _IntService+GETSpec.swift */; };
 		35B79EBF1CA68BD9004C03A0 /* _StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BB41C72FF8600081ADB /* _StringArrayService+GETSpec.swift */; };
 		35B79EC01CA68BDE004C03A0 /* _VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579C9F11C734E5700ED7BF2 /* _VoidService+GETSpec.swift */; };
+		35B79EC61CA6BF95004C03A0 /* _PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD45D1C73037500BF7B1E /* _PersonService+GETSpec.swift */; };
+		35B79EC71CA6BFC8004C03A0 /* _InstituteService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD45B1C73037500BF7B1E /* _InstituteService+GETSpec.swift */; };
+		35B79EC81CA6BFCC004C03A0 /* _GenericStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4591C73037500BF7B1E /* _GenericStringService+GETSpec.swift */; };
+		35B79EC91CA6BFCF004C03A0 /* _GenericPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4571C73037500BF7B1E /* _GenericPersonService+GETSpec.swift */; };
+		35B79ECA1CA6C053004C03A0 /* _PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352EB5981C7C8A8F00017587 /* _PersonArrayService+GETSpec.swift */; };
 		35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35DFD4481C73031400BF7B1E /* Institute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4441C73031400BF7B1E /* Institute.swift */; };
 /* End PBXBuildFile section */
@@ -776,16 +781,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B79EC81CA6BFCC004C03A0 /* _GenericStringService+GETSpec.swift in Sources */,
+				35B79EC71CA6BFC8004C03A0 /* _InstituteService+GETSpec.swift in Sources */,
 				35B79EBE1CA68BD3004C03A0 /* _IntService+GETSpec.swift in Sources */,
 				35B79EBD1CA68BC9004C03A0 /* _FloatService+GETSpec.swift in Sources */,
 				35B79EB81CA68B7D004C03A0 /* _InstituteService+GET.swift in Sources */,
 				356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */,
 				35B79EBF1CA68BD9004C03A0 /* _StringArrayService+GETSpec.swift in Sources */,
 				35B79EB51CA68B7D004C03A0 /* _StringArrayService+GET.swift in Sources */,
+				35B79ECA1CA6C053004C03A0 /* _PersonArrayService+GETSpec.swift in Sources */,
 				35DFD4481C73031400BF7B1E /* Institute.swift in Sources */,
+				35B79EC91CA6BFCF004C03A0 /* _GenericPersonService+GETSpec.swift in Sources */,
 				35B79EB41CA68B7D004C03A0 /* _StringService+GET.swift in Sources */,
 				35B79EB61CA68B7D004C03A0 /* _GenericPersonService+GET.swift in Sources */,
 				35B79EB71CA68B7D004C03A0 /* _GenericStringService+GET.swift in Sources */,
+				35B79EC61CA6BF95004C03A0 /* _PersonService+GETSpec.swift in Sources */,
 				35B79EB91CA68B7D004C03A0 /* _PersonService+GET.swift in Sources */,
 				35B79EBA1CA68B7D004C03A0 /* _PersonArrayService+GET.swift in Sources */,
 				35848B911C72F60500081ADB /* _BoolService+GETSpec.swift in Sources */,

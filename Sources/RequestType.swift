@@ -56,8 +56,8 @@ public extension RestofireProtocol {
     }
     
     public func executeRequest(completionHandler: Response<Model, NSError> -> Void) {
-        let request = self.alamofireRequest()
-        request.responseGLOSS(rootKey: self.rootKey) { (response: Response<Model, NSError>) -> Void in
+        let request = alamofireRequest()
+        request.responseGLOSS(rootKey: rootKey) { (response: Response<Model, NSError>) -> Void in
             completionHandler(response)
             //TODO: - Better Logging
             if self.logging {
@@ -80,10 +80,10 @@ extension RestofireProtocol {
     private func alamofireRequest() -> Alamofire.Request {
         var request: Alamofire.Request!
         
-        request = Alamofire.request(self.method, self.baseURL + self.path, parameters: self.parameters as? [String: AnyObject], encoding: self.encoding, headers: self.headers)
+        request = Alamofire.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)
         
-        if let parameters = self.parameters as? [AnyObject] where self.method != .GET {
-            let encodedURLRequest = self.encodeURLRequest(request.request!, parameters: parameters).0
+        if let parameters = parameters as? [AnyObject] where method != .GET {
+            let encodedURLRequest = encodeURLRequest(request.request!, parameters: parameters).0
             request = Alamofire.request(encodedURLRequest)
         }
         
@@ -99,7 +99,7 @@ extension RestofireProtocol {
         
         var encodingError: NSError? = nil
         
-        switch self.encoding {
+        switch encoding {
         case .JSON:
             do {
                 let options = NSJSONWritingOptions()

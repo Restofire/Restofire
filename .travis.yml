@@ -2,19 +2,14 @@ language: objective-c
 osx_image: xcode7.3
 
 install:
-  - carthage update Nimble Quick --platform iOS
-  - carthage update Alamofire Gloss
+  - carthage update Nimble Quick --platform iOS --no-use-binaries
+  - carthage update Alamofire Gloss --no-use-binaries
 
 script:
   - xcodebuild test -project Restofire.xcodeproj
     -scheme Restofire-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=iPhone 6,OS=9.3'
-
-  - xcodebuild test -project Restofire.xcodeproj
-    -scheme Restofire-iOS
-    -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=iPhone 6,OS=8.1'
 
   - xcodebuild -project Restofire.xcodeproj
     -scheme Restofire-Mac
@@ -27,26 +22,6 @@ script:
     -destination 'name=Apple Watch - 38mm,OS=2.2'
 
   - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-watchOS
-    -sdk watchsimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=Apple Watch - 38mm,OS=2.1'
-
-  - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-watchOS
-    -sdk watchsimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=Apple Watch - 38mm,OS=2.0'
-
-  - xcodebuild -project Restofire.xcodeproj
     -scheme Restofire-tvOS
     -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=Apple TV 1080p,OS=9.2'
-
-  - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-tvOS
-    -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=Apple TV 1080p,OS=9.1'
-
-  - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-tvOS
-    -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=Apple TV 1080p,OS=9.0'

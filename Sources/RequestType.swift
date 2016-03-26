@@ -22,7 +22,6 @@ public protocol RestofireProtocol {
     var rootKey: String? { get }
     var logging: Bool { get }
     
-    func executeRequest(completionHandler: Response<Model, NSError> -> Void)
 }
 
 public extension RestofireProtocol {

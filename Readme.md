@@ -29,7 +29,6 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 ## Usage
 
 * [Configuring Restofire](https://github.com/Restofire/Restofire/wiki/Configuring-Restofire)
-* [Creating Gloss Models](https://github.com/Restofire/Restofire/wiki/Creating-Gloss-Models)
 * [Creating Restofire Service](https://github.com/Restofire/Restofire/wiki/Creating-Restofire-Service)
 
 ## Examples
@@ -64,27 +63,13 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
     ```json
     ["Restofire","is","Awesome"]
     ```
-* [Gloss Response Service](https://github.com/Restofire/Restofire/wiki/Gloss-Response-Service-Example)
+* [JSON Response Service](https://github.com/Restofire/Restofire/wiki/JSON-Response-Service-Example)
 
     ```json
     {
       "id" : 12345,
       "name" : "Rahul Katariya"
     }
-    ```
-* [Gloss Array Response Service](https://github.com/Restofire/Restofire/wiki/Gloss-Array-Response-Service-Example)
-
-    ```json
-    [
-      {
-        "id" : 12345,
-        "name" : "Rahul Katariya"
-      },
-      {
-        "id" : 12346,
-        "name" : "Aar Kay"
-      }
-    ]
     ```
 
 ## TODO
@@ -94,6 +79,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [ ] Add Request Validations
 - [ ] Add Download Task
 - [ ] Add Upload Task
+- [ ] Add Request Queues to execute Requests when internet is reachable
 
 
 ## License

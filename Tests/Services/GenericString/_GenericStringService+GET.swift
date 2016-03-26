@@ -11,7 +11,7 @@
 import Restofire
 import Alamofire
 
-class GenericStringGETService: RestofireProtocol {
+class GenericStringGETService: RequestType {
 
     typealias Model = GenericResponse<String>
     var path: String = "56c2d280120000512773f1ba"

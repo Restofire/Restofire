@@ -11,7 +11,7 @@
 import Restofire
 import Alamofire
 
-class PersonArrayGETService: RestofireProtocol {
+class PersonArrayGETService: RequestType {
 
     typealias Model = [Person]
     var path: String = "56cc51f32800009900219dc9"

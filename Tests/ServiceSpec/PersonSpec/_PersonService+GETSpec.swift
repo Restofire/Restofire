@@ -19,8 +19,8 @@ class PersonGETServiceSpec: ServiceSpec {
             
             it("should succeed") {
                 
-                let actual = Person(id: 12345, name: "Rahul Katariya")
-                var expected: Person!
+                let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
+                var expected: [String: AnyObject]!
                 
                 PersonGETService().executeRequest() {
                     if let value = $0.result.value {

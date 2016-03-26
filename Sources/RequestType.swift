@@ -8,7 +8,7 @@
 
 import Alamofire
 
-public protocol RestofireProtocol {
+public protocol RequestType {
 
     associatedtype Model
     var path: String { get set }
@@ -24,7 +24,7 @@ public protocol RestofireProtocol {
     
 }
 
-public extension RestofireProtocol {
+public extension RequestType {
     
     public var baseURL: String {
         get { return Configuration.defaultConfiguration.baseURL }
@@ -57,9 +57,8 @@ public extension RestofireProtocol {
     
     public func executeRequest(completionHandler: Response<Model, NSError> -> Void) {
         let request = alamofireRequest()
-        request.responseGLOSS(rootKey: rootKey) { (response: Response<Model, NSError>) -> Void in
+        request.responseJSON(rootKey: rootKey) { (response: Response<Model, NSError>) -> Void in
             completionHandler(response)
-            //TODO: - Better Logging
             if self.logging {
                 print(response.request.debugDescription)
                 print(response.timeline)
@@ -75,9 +74,9 @@ public extension RestofireProtocol {
     
 }
 
-extension RestofireProtocol {
+extension RequestType {
     
-    private func alamofireRequest() -> Alamofire.Request {
+    public func alamofireRequest() -> Alamofire.Request {
         var request: Alamofire.Request!
         
         request = Alamofire.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)

@@ -22,7 +22,7 @@ class RestofireSpec: QuickSpec {
         
         describe("I dont Know") {
             
-            class SampleService: RestofireProtocol {
+            class SampleService: RequestType {
                 var path: String = "Yo/"
                 var headers: [String : String]?
                 

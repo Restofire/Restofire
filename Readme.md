@@ -2,6 +2,8 @@
 
 ## Reactofire
 
+[![Join the chat at https://gitter.im/RahulKatariya/Restofire](https://badges.gitter.im/RahulKatariya/Restofire.svg)](https://gitter.im/RahulKatariya/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Travis](https://img.shields.io/travis/RahulKatariya/Reactofire.svg)](https://img.shields.io/travis/RahulKatariya/Reactofire.svg)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)

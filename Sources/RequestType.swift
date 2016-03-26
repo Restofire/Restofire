@@ -18,6 +18,7 @@ public protocol RestofireProtocol {
     var headers: [String : String]? { get set }
     var parameters: AnyObject? { get set }
     var rootKey: String? { get set }
+    var logging: Bool { get set }
     
 }
 
@@ -45,6 +46,10 @@ public extension RestofireProtocol {
     }
     public var rootKey: String? {
         get { return nil }
+        set {}
+    }
+    public var logging: Bool {
+        get { return Configuration.defaultConfiguration.logging }
         set {}
     }
     

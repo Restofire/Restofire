@@ -13,8 +13,7 @@ class Utils {
     class func alamofireRequest(object: RestofireProtocol) -> Alamofire.Request {
         var request: Alamofire.Request!
         
-        //TODO: - Move Configuration.defaultConfiguration.headers Dependency to Extension
-        request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers + Configuration.defaultConfiguration.headers)
+        request = Alamofire.request(object.method, object.baseURL + object.path, parameters: object.parameters as? [String: AnyObject], encoding: object.encoding, headers: object.headers)
         
         if let parameters = object.parameters as? [AnyObject] where object.method != .GET {
             let encodedURLRequest = self.encode(object, URLRequest: request.request!, parameters: parameters).0

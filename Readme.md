@@ -13,11 +13,11 @@
 
 [![Join the chat at https://gitter.im/Restofire/Restofire](https://badges.gitter.im/Restofire/Restofire.svg)](https://gitter.im/Restofire/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Restofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire and Gloss to use services in a declartive way.
+Restofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire to use services in a declartive way.
 
 ## Requirements
 
-- iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
 - Xcode 7.2+
 
 ## Installation

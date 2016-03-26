@@ -2,14 +2,16 @@
 
 ## Reactofire
 
-[![Join the chat at https://gitter.im/RahulKatariya/Restofire](https://badges.gitter.im/RahulKatariya/Restofire.svg)](https://gitter.im/RahulKatariya/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Platforms](https://img.shields.io/cocoapods/p/Reactofire.svg)](https://cocoapods.org/pods/Reactofire)
+[![License](https://img.shields.io/cocoapods/l/Reactofire.svg)](https://raw.githubusercontent.com/rahulkatariya/Reactofire/master/LICENSE)
 
-[![Travis](https://img.shields.io/travis/RahulKatariya/Reactofire.svg)](https://img.shields.io/travis/RahulKatariya/Reactofire.svg)
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Reactofire.svg)](https://img.shields.io/cocoapods/v/Reactofire.svg)
-[![Platforms](https://img.shields.io/cocoapods/p/Reactofire.svg)](http://cocoapods.org/pods/Reactofire)
-[![License](https://img.shields.io/cocoapods/l/Reactofire.svg)](https://raw.githubusercontent.com/rahulkatariya/Reactofire/master/LICENSE)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Reactofire.svg)](https://cocoapods.org/pods/Reactofire)
+
+[![Travis](https://img.shields.io/travis/RahulKatariya/Reactofire/master.svg)](https://travis-ci.org/RahulKatariya/Reactofire/branches)
+
+[![Join the chat at https://gitter.im/RahulKatariya/Restofire](https://badges.gitter.im/RahulKatariya/Restofire.svg)](https://gitter.im/RahulKatariya/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Reactofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire, Gloss and ReactiveCocoa to use services in a declartive way
 

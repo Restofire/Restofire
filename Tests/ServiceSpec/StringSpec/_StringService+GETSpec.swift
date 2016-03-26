@@ -22,7 +22,7 @@ class StringGETServiceSpec: ServiceSpec {
                 var expected: String!
                 
                 StringGETService().executeRequest() {
-                    if let value = $0.result.value {
+                    if let value = $0.value {
                         expected = value
                     }
                 }

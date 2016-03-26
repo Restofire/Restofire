@@ -23,7 +23,7 @@ class GenericPersonGETServiceSpec: ServiceSpec {
                 var expected: GenericResponse<Person>!
                 
                 GenericPersonGETService().executeRequest() {
-                    if let value = $0.result.value {
+                    if let value = $0.value {
                         expected = value
                     }
                 }

@@ -12,20 +12,20 @@ import Quick
 import Nimble
 
 class PersonArrayGETServiceSpec: ServiceSpec {
-
-    override func spec() { 
+    
+    override func spec() {
         describe("PersonArrayGETService") {
             
             it("should succeed") {
                 
-                let actual = [
-                                Person(id: 12345, name: "Rahul Katariya"),
-                                Person(id: 12346, name: "Aar Kay")
-                            ]
-                var expected: [Person]!
+                let actual: [NSDictionary] = [
+                    ["id": 12345, "name": "Rahul Katariya"],
+                    ["id": 12346, "name": "Aar Kay"]
+                ]
+                var expected: [[String: AnyObject]]!
                 
                 PersonArrayGETService().executeRequest() {
-                    if let value = $0.result.value {
+                    if let value = $0.value {
                         expected = value
                     }
                 }
@@ -35,5 +35,5 @@ class PersonArrayGETServiceSpec: ServiceSpec {
             }
         }
     }
-
+    
 }

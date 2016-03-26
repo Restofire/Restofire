@@ -18,6 +18,7 @@
 		3500627F1C7C406C0078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
 		350062801C7C406C0078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
 		350062811C7C406D0078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
+		35164C2A1CA71CA60036A28F /* _PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352EB5981C7C8A8F00017587 /* _PersonArrayService+GETSpec.swift */; };
 		351A7A7B1CA6D82500640678 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
 		351A7A7C1CA6D82500640678 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
 		351A7A7D1CA6D82500640678 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
@@ -25,8 +26,6 @@
 		352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AC1C5E2D33000AE7C0 /* Restofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AD1C5E2D5F000AE7C0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		353DCB611C73092900AE2CB6 /* GenericResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353DCB601C73092900AE2CB6 /* GenericResponse.swift */; };
-		355251461C6F403700B50452 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355251421C6F403700B50452 /* Person.swift */; };
 		356624641CA712A800D8CA99 /* _PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD45D1C73037500BF7B1E /* _PersonService+GETSpec.swift */; };
 		356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A63E51C6C597C005793A5 /* ServiceSpec.swift */; };
 		3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
@@ -50,9 +49,6 @@
 		35B79EB31CA68B7D004C03A0 /* _IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BA41C72F7D400081ADB /* _IntService+GET.swift */; };
 		35B79EB41CA68B7D004C03A0 /* _StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848B951C72F61500081ADB /* _StringService+GET.swift */; };
 		35B79EB51CA68B7D004C03A0 /* _StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BB11C72FF7700081ADB /* _StringArrayService+GET.swift */; };
-		35B79EB61CA68B7D004C03A0 /* _GenericPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD44B1C73034500BF7B1E /* _GenericPersonService+GET.swift */; };
-		35B79EB71CA68B7D004C03A0 /* _GenericStringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD44D1C73034500BF7B1E /* _GenericStringService+GET.swift */; };
-		35B79EB81CA68B7D004C03A0 /* _InstituteService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD44F1C73034500BF7B1E /* _InstituteService+GET.swift */; };
 		35B79EB91CA68B7D004C03A0 /* _PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4511C73034500BF7B1E /* _PersonService+GET.swift */; };
 		35B79EBA1CA68B7D004C03A0 /* _PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352EB5951C7C8A7400017587 /* _PersonArrayService+GET.swift */; };
 		35B79EBB1CA68B7D004C03A0 /* _VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579C9F41C734E6400ED7BF2 /* _VoidService+GET.swift */; };
@@ -62,7 +58,6 @@
 		35B79EBF1CA68BD9004C03A0 /* _StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35848BB41C72FF8600081ADB /* _StringArrayService+GETSpec.swift */; };
 		35B79EC01CA68BDE004C03A0 /* _VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3579C9F11C734E5700ED7BF2 /* _VoidService+GETSpec.swift */; };
 		35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35DFD4481C73031400BF7B1E /* Institute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DFD4441C73031400BF7B1E /* Institute.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +107,6 @@
 		352260A51C5E2CC9000AE7C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		352EB5951C7C8A7400017587 /* _PersonArrayService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_PersonArrayService+GET.swift"; sourceTree = "<group>"; };
 		352EB5981C7C8A8F00017587 /* _PersonArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_PersonArrayService+GETSpec.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		353DCB601C73092900AE2CB6 /* GenericResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponse.swift; sourceTree = "<group>"; };
-		355251421C6F403700B50452 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		355970431C72EFA700E924FE /* _StringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_StringService+GETSpec.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		356A63E51C6C597C005793A5 /* ServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSpec.swift; sourceTree = "<group>"; };
 		3579C9F11C734E5700ED7BF2 /* _VoidService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_VoidService+GETSpec.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -134,10 +127,6 @@
 		35B19DFD1BEE17D2001D3952 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		35B19DFF1BEE17D2001D3952 /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/iOS/Gloss.framework; sourceTree = "<group>"; };
 		35D109FD1C5F340C00FC831F /* RestofireSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireSpec.swift; sourceTree = "<group>"; };
-		35DFD4441C73031400BF7B1E /* Institute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Institute.swift; sourceTree = "<group>"; };
-		35DFD44B1C73034500BF7B1E /* _GenericPersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_GenericPersonService+GET.swift"; sourceTree = "<group>"; };
-		35DFD44D1C73034500BF7B1E /* _GenericStringService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "_GenericStringService+GET.swift"; sourceTree = "<group>"; };
-		35DFD44F1C73034500BF7B1E /* _InstituteService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_InstituteService+GET.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		35DFD4511C73034500BF7B1E /* _PersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_PersonService+GET.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		35DFD4571C73037500BF7B1E /* _GenericPersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_GenericPersonService+GETSpec.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		35DFD4591C73037500BF7B1E /* _GenericStringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "_GenericStringService+GETSpec.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -214,7 +203,6 @@
 				35D109FD1C5F340C00FC831F /* RestofireSpec.swift */,
 				356A63E11C6C597C005793A5 /* ServiceSpec */,
 				35D109F61C5F336200FC831F /* Services */,
-				35D109EB1C5F32A900FC831F /* Models */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -233,14 +221,6 @@
 				352EB5981C7C8A8F00017587 /* _PersonArrayService+GETSpec.swift */,
 			);
 			path = PersonArraySpec;
-			sourceTree = "<group>";
-		};
-		355251411C6F403700B50452 /* Person */ = {
-			isa = PBXGroup;
-			children = (
-				355251421C6F403700B50452 /* Person.swift */,
-			);
-			path = Person;
 			sourceTree = "<group>";
 		};
 		355970421C72EFA700E924FE /* StringSpec */ = {
@@ -397,16 +377,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		35D109EB1C5F32A900FC831F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				35DFD4401C73031400BF7B1E /* GenericResponse */,
-				35DFD4431C73031400BF7B1E /* Institute */,
-				355251411C6F403700B50452 /* Person */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		35D109F61C5F336200FC831F /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,54 +385,11 @@
 				35848B921C72F61500081ADB /* Bool */,
 				35848B941C72F61500081ADB /* String */,
 				35848BB01C72FF7700081ADB /* StringArray */,
-				35DFD44A1C73034500BF7B1E /* GenericPerson */,
-				35DFD44C1C73034500BF7B1E /* GenericString */,
-				35DFD44E1C73034500BF7B1E /* Institute */,
 				35DFD4501C73034500BF7B1E /* Person */,
 				352EB5941C7C8A7400017587 /* PersonArray */,
 				3579C9F31C734E6400ED7BF2 /* Void */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		35DFD4401C73031400BF7B1E /* GenericResponse */ = {
-			isa = PBXGroup;
-			children = (
-				353DCB601C73092900AE2CB6 /* GenericResponse.swift */,
-			);
-			path = GenericResponse;
-			sourceTree = "<group>";
-		};
-		35DFD4431C73031400BF7B1E /* Institute */ = {
-			isa = PBXGroup;
-			children = (
-				35DFD4441C73031400BF7B1E /* Institute.swift */,
-			);
-			path = Institute;
-			sourceTree = "<group>";
-		};
-		35DFD44A1C73034500BF7B1E /* GenericPerson */ = {
-			isa = PBXGroup;
-			children = (
-				35DFD44B1C73034500BF7B1E /* _GenericPersonService+GET.swift */,
-			);
-			path = GenericPerson;
-			sourceTree = "<group>";
-		};
-		35DFD44C1C73034500BF7B1E /* GenericString */ = {
-			isa = PBXGroup;
-			children = (
-				35DFD44D1C73034500BF7B1E /* _GenericStringService+GET.swift */,
-			);
-			path = GenericString;
-			sourceTree = "<group>";
-		};
-		35DFD44E1C73034500BF7B1E /* Institute */ = {
-			isa = PBXGroup;
-			children = (
-				35DFD44F1C73034500BF7B1E /* _InstituteService+GET.swift */,
-			);
-			path = Institute;
 			sourceTree = "<group>";
 		};
 		35DFD4501C73034500BF7B1E /* Person */ = {
@@ -771,25 +698,20 @@
 			files = (
 				35B79EBE1CA68BD3004C03A0 /* _IntService+GETSpec.swift in Sources */,
 				35B79EBD1CA68BC9004C03A0 /* _FloatService+GETSpec.swift in Sources */,
-				35B79EB81CA68B7D004C03A0 /* _InstituteService+GET.swift in Sources */,
 				356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */,
 				35B79EBF1CA68BD9004C03A0 /* _StringArrayService+GETSpec.swift in Sources */,
 				35B79EB51CA68B7D004C03A0 /* _StringArrayService+GET.swift in Sources */,
-				35DFD4481C73031400BF7B1E /* Institute.swift in Sources */,
+				35164C2A1CA71CA60036A28F /* _PersonArrayService+GETSpec.swift in Sources */,
 				35B79EB41CA68B7D004C03A0 /* _StringService+GET.swift in Sources */,
-				35B79EB61CA68B7D004C03A0 /* _GenericPersonService+GET.swift in Sources */,
-				35B79EB71CA68B7D004C03A0 /* _GenericStringService+GET.swift in Sources */,
 				356624641CA712A800D8CA99 /* _PersonService+GETSpec.swift in Sources */,
 				35B79EB91CA68B7D004C03A0 /* _PersonService+GET.swift in Sources */,
 				35B79EBA1CA68B7D004C03A0 /* _PersonArrayService+GET.swift in Sources */,
 				35848B911C72F60500081ADB /* _BoolService+GETSpec.swift in Sources */,
 				35B79EC01CA68BDE004C03A0 /* _VoidService+GETSpec.swift in Sources */,
-				353DCB611C73092900AE2CB6 /* GenericResponse.swift in Sources */,
 				35848B961C72F61500081ADB /* _BoolService+GET.swift in Sources */,
 				35B79EB21CA68B7D004C03A0 /* _FloatService+GET.swift in Sources */,
 				35B79EB31CA68B7D004C03A0 /* _IntService+GET.swift in Sources */,
 				35B79EBB1CA68B7D004C03A0 /* _VoidService+GET.swift in Sources */,
-				355251461C6F403700B50452 /* Person.swift in Sources */,
 				35B79EBC1CA68BC3004C03A0 /* _StringService+GETSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

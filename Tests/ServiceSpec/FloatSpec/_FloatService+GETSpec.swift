@@ -22,7 +22,7 @@ class FloatGETServiceSpec: ServiceSpec {
                 var expected: Float!
                 
                 FloatGETService().executeRequest() {
-                    if let value = $0.result.value {
+                    if let value = $0.value {
                         expected = value
                     }
                 }

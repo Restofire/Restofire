@@ -22,7 +22,7 @@ class VoidGETServiceSpec: ServiceSpec {
                 var expected: [String: AnyObject]!
                 
                 VoidGETService().executeRequest() {
-                    if let value = $0.result.value {
+                    if let value = $0.value {
                         expected = value
                     }
                 }

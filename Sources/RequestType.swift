@@ -55,10 +55,10 @@ public extension RequestType {
         get { return Configuration.defaultConfiguration.logging }
     }
     
-    public func executeRequest(completionHandler: Response<Model, NSError> -> Void) {
+    public func executeRequest(completionHandler: Result<Model, NSError> -> Void) {
         let request = alamofireRequest()
         request.responseJSON(rootKey: rootKey) { (response: Response<Model, NSError>) -> Void in
-            completionHandler(response)
+            completionHandler(response.result)
             if self.logging {
                 print(response.request.debugDescription)
                 print(response.timeline)

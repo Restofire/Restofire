@@ -8,11 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3500624B1C7C38500078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062461C7C38500078B589 /* Alamofire.framework */; };
-		3500624C1C7C38500078B589 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062471C7C38500078B589 /* Gloss.framework */; };
 		350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
-		350062551C7C386A0078B589 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062511C7C386A0078B589 /* Gloss.framework */; };
 		350062581C7C387C0078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623E1C7C382C0078B589 /* Alamofire.framework */; };
-		350062591C7C387C0078B589 /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623F1C7C382C0078B589 /* Gloss.framework */; };
 		350062721C7C40510078B589 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
 		350062741C7C40510078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350062761C7C40610078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,7 +43,6 @@
 		3596CBFE1CA3B5030089A03E /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* RequestType.swift */; };
 		3596CBFF1CA3B5030089A03E /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* RequestType.swift */; };
 		3596CC001CA3B5030089A03E /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* RequestType.swift */; };
-		35A0F7041C7474A100152AAC /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; };
 		35A0F7051C7474B700152AAC /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; };
 		35A0F7071C7474C600152AAC /* Gloss.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFF1BEE17D2001D3952 /* Gloss.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
@@ -155,7 +151,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				350062581C7C387C0078B589 /* Alamofire.framework in Frameworks */,
-				350062591C7C387C0078B589 /* Gloss.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,7 +159,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3500624B1C7C38500078B589 /* Alamofire.framework in Frameworks */,
-				3500624C1C7C38500078B589 /* Gloss.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +167,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */,
-				350062551C7C386A0078B589 /* Gloss.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,7 +174,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35A0F7041C7474A100152AAC /* Gloss.framework in Frameworks */,
 				3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

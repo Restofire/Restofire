@@ -2,14 +2,14 @@
 
 ## Restofire
 
-[![Platforms](https://img.shields.io/cocoapods/p/Reactofire.svg)](https://cocoapods.org/pods/Reactofire)
-[![License](https://img.shields.io/cocoapods/l/Reactofire.svg)](https://raw.githubusercontent.com/rahulkatariya/Reactofire/master/LICENSE)
+[![Platforms](https://img.shields.io/cocoapods/p/Restofire.svg)](https://cocoapods.org/pods/Restofire)
+[![License](https://img.shields.io/cocoapods/l/Restofire.svg)](https://raw.githubusercontent.com/Restofire/Restofire/master/LICENSE)
 
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Reactofire.svg)](https://cocoapods.org/pods/Reactofire)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/Restofire.svg)](https://cocoapods.org/pods/Restofire)
 
-[![Travis](https://img.shields.io/travis/RahulKatariya/Reactofire/master.svg)](https://travis-ci.org/RahulKatariya/Reactofire/branches)
+[![Travis](https://img.shields.io/travis/Restofire/Restofire/master.svg)](https://travis-ci.org/Restofire/Restofire/branches)
 
 [![Join the chat at https://gitter.im/Restofire/Restofire](https://badges.gitter.im/Restofire/Restofire.svg)](https://gitter.im/Restofire/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 

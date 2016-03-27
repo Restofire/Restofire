@@ -59,22 +59,24 @@ public extension RequestType {
         let request = alamofireRequest()
         request.responseJSON(rootKey: rootKey) { (response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
-            if self.logging {
-                print(response.request.debugDescription)
-                print(response.timeline)
-                print(response.response)
-                if response.result.isSuccess {
-                    print(response.result.value!)
-                } else {
-                    print(response.result.error!)
-                }
-            }
+            if self.logging { self.logResponse(response) }
         }
     }
     
 }
 
 extension RequestType {
+
+    public func logResponse(response: Response<Model, NSError>) {
+        print(response.request.debugDescription)
+        print(response.timeline)
+        print(response.response)
+        if response.result.isSuccess {
+            print("SUCCESS: -", response.result.value!)
+        } else {
+            print("ERROR: -", response.result.error!)
+        }
+    }
     
     public func alamofireRequest() -> Alamofire.Request {
         var request: Alamofire.Request!

@@ -19,13 +19,13 @@ extension Request {
      - returns: The request.
      */
     public func responseJSON<T>(
-        rootKey rootKey: String? = nil,
+        rootKeyPath rootKeyPath: String? = nil,
                 options: NSJSONReadingOptions = .AllowFragments,
                 completionHandler: Response<T, NSError> -> Void)
         -> Self
     {
         return response(
-            responseSerializer: Request.JSONResponseSerializer(rootKey: rootKey, options: options),
+            responseSerializer: Request.JSONResponseSerializer(rootKeyPath: rootKeyPath, options: options),
             completionHandler: completionHandler
         )
     }
@@ -39,7 +39,7 @@ extension Request {
      - returns: A JSON object response serializer.
      */
     public static func JSONResponseSerializer<T>(
-        rootKey rootKey: String? = nil,
+        rootKeyPath rootKeyPath: String? = nil,
                 options: NSJSONReadingOptions = .AllowFragments)
         -> ResponseSerializer<T, NSError>
     {
@@ -55,8 +55,8 @@ extension Request {
             do {
                 let JSONObject = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: T?
-                if let rootKey = rootKey where JSONObject is [String: AnyObject] {
-                    value = JSONObject.valueForKeyPath(rootKey) as? T
+                if let rootKeyPath = rootKeyPath where JSONObject is [String: AnyObject] {
+                    value = JSONObject.valueForKeyPath(rootKeyPath) as? T
                 } else {
                     value = JSONObject as? T
                 }

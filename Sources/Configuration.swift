@@ -17,7 +17,7 @@ public class Configuration {
     public var method: Alamofire.Method = .GET
     public var encoding: Alamofire.ParameterEncoding = .JSON
     public var headers: [String : String]?
-    public var rootKey: String? = nil
+    public var rootKeyPath: String? = nil
     public var logging: Bool = false
     
 }

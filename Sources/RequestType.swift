@@ -19,7 +19,7 @@ public protocol RequestType {
     var encoding: Alamofire.ParameterEncoding { get }
     var headers: [String : String]? { get }
     var parameters: AnyObject? { get set }
-    var rootKey: String? { get }
+    var rootKeyPath: String? { get }
     var logging: Bool { get }
     
 }
@@ -47,8 +47,8 @@ public extension RequestType {
         set {}
     }
     
-    public var rootKey: String? {
-        get { return Configuration.defaultConfiguration.rootKey }
+    public var rootKeyPath: String? {
+        get { return Configuration.defaultConfiguration.rootKeyPath }
     }
     
     public var logging: Bool {
@@ -57,7 +57,7 @@ public extension RequestType {
     
     public func executeRequest(completionHandler: Result<Model, NSError> -> Void) {
         let request = alamofireRequest()
-        request.responseJSON(rootKey: rootKey) { (response: Response<Model, NSError>) -> Void in
+        request.responseJSON(rootKeyPath: rootKeyPath) { (response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
             if self.logging { self.logResponse(response) }
         }

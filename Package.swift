@@ -1,6 +1,6 @@
 //
-//  Reactofire.swift
-//  Reactofire
+//  Restofire.swift
+//  Restofire
 //
 //  Created by Rahul Katariya on 23/10/15.
 //  Copyright © 2015 AarKay. All rights reserved.
@@ -27,5 +27,5 @@
 import PackageDescription
 
 let package = Package(
-    name: "Reactofire"
+    name: "Restofire"
 )

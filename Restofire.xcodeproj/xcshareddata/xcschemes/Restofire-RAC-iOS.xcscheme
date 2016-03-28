@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0710"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35B19DDA1BEE134E001D3952"
-               BuildableName = "Restofire.framework"
-               BlueprintName = "Restofire-iOS"
+               BlueprintIdentifier = "354308391CA90FCA00C75960"
+               BuildableName = "Restofire_RAC.framework"
+               BlueprintName = "Restofire-RAC-iOS"
+               ReferencedContainer = "container:Restofire.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "354308AD1CA92DB600C75960"
+               BuildableName = "Restofire_RACTests.xctest"
+               BlueprintName = "Restofire_RACTests"
                ReferencedContainer = "container:Restofire.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +46,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35B19DE41BEE134E001D3952"
-               BuildableName = "RestofireTests.xctest"
-               BlueprintName = "RestofireTests"
+               BlueprintIdentifier = "354308AD1CA92DB600C75960"
+               BuildableName = "Restofire_RACTests.xctest"
+               BlueprintName = "Restofire_RACTests"
                ReferencedContainer = "container:Restofire.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +56,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35B19DDA1BEE134E001D3952"
-            BuildableName = "Restofire.framework"
-            BlueprintName = "Restofire-iOS"
+            BlueprintIdentifier = "354308391CA90FCA00C75960"
+            BuildableName = "Restofire_RAC.framework"
+            BlueprintName = "Restofire-RAC-iOS"
             ReferencedContainer = "container:Restofire.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +78,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35B19DDA1BEE134E001D3952"
-            BuildableName = "Restofire.framework"
-            BlueprintName = "Restofire-iOS"
+            BlueprintIdentifier = "354308391CA90FCA00C75960"
+            BuildableName = "Restofire_RAC.framework"
+            BlueprintName = "Restofire-RAC-iOS"
             ReferencedContainer = "container:Restofire.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +96,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35B19DDA1BEE134E001D3952"
-            BuildableName = "Restofire.framework"
-            BlueprintName = "Restofire-iOS"
+            BlueprintIdentifier = "354308391CA90FCA00C75960"
+            BuildableName = "Restofire_RAC.framework"
+            BlueprintName = "Restofire-RAC-iOS"
             ReferencedContainer = "container:Restofire.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -24,7 +24,7 @@ extension Dictionary {
             return nil
         }
         
-        guard let subDict = self[first] as? AnyObject else {
+        guard let subDict = self[first] as? [String: AnyObject] else {
             return nil
         }
         

@@ -55,6 +55,10 @@ public extension RequestType {
         get { return Configuration.defaultConfiguration.logging }
     }
     
+}
+
+public extension RequestType {
+    
     public func executeRequest(completionHandler: Result<Model, NSError> -> Void) {
         let request = alamofireRequest()
         request.responseJSON(rootKeyPath: rootKeyPath) { (response: Response<Model, NSError>) -> Void in
@@ -65,7 +69,7 @@ public extension RequestType {
     
 }
 
-extension RequestType {
+public extension RequestType {
 
     public func logResponse(response: Response<Model, NSError>) {
         print(response.request.debugDescription)

@@ -57,6 +57,10 @@ extension Request {
                 var value: T?
                 if let rootKeyPath = rootKeyPath where JSONObject is [String: AnyObject] {
                     value = JSONObject.valueForKeyPath(rootKeyPath) as? T
+                } else if let rootKeyPath = rootKeyPath {
+                    let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
+                    let error = Error.errorWithCode(-1, failureReason: failureReason)
+                    return .Failure(error)
                 } else {
                     value = JSONObject as? T
                 }

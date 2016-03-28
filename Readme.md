@@ -147,7 +147,7 @@ class ViewController: UIViewController {
     func getPerson() {
         PersonGETService().executeRequest()
             .subscribe(onNext: {
-                expected = $0
+                person = $0
             }).addDisposableTo(disposeBag)
     }
 
@@ -164,7 +164,7 @@ class ViewController: UIViewController {
     func getPerson() {
         PersonGETService().executeRequest()
             .startWithNext {
-                expected = $0
+                person = $0
             }
     }
 

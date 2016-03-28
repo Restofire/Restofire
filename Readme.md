@@ -1,4 +1,4 @@
-![Restofire: A Protocol Oriented Networking Abstraction Layer](.github/restofire.png)
+![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](.github/restofire.png)
 
 ## Restofire
 
@@ -47,6 +47,10 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Restofire', '~> 0.5'
+OR
+pod 'Restofire/RxSwift', '~> 0.5'
+OR
+pod 'Restofire/ReactiveCocoa', '~> 0.5'
 ```
 
 Then, run the following command:
@@ -88,7 +92,7 @@ let package = Package(
 
 ## Usage
 
-###Configuring Restofire
+### Configuring Restofire
 
 ```swift
 import Restofire
@@ -104,6 +108,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     return true
   }
+
+}
+```
+
+### Creating a Service
+
+```swift
+import Restofire
+
+class PersonGETService: RequestType {
+
+    typealias Model = [String: AnyObject]
+    var path: String = "56c2cc70120000c12673f1b5"
+
+}
+
+```
+
+### Consuming the Service
+
+```swift
+class ViewController: UIViewController {
+
+    var person: [String: AnyObject]!
+    
+    func getPerson() {
+        PersonGETService().executeRequest() {
+            if let value = $0.value {
+                person = value
+            }
+        }
+    }
+
+}
+```
+
+### RxSwift
+
+```swift
+class ViewController: UIViewController {
+
+    let disposeBag = DisposeBag()
+    var person: [String: AnyObject]!
+    
+    func getPerson() {
+        PersonGETService().executeRequest()
+            .subscribe(onNext: {
+                expected = $0
+            }).addDisposableTo(disposeBag)
+    }
+
+}
+```
+
+### ReactiveCocoa
+
+```swift
+class ViewController: UIViewController {
+
+    var person: [String: AnyObject]!
+    
+    func getPerson() {
+        PersonGETService().executeRequest()
+            .startWithNext {
+                expected = $0
+            }
+    }
 
 }
 ```

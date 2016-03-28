@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "35A936B31CA93EA000AC584F"
-               BuildableName = "Restofire-RAC-tvOS.framework"
+               BuildableName = "Restofire_RAC.framework"
                BlueprintName = "Restofire-RAC-tvOS"
                ReferencedContainer = "container:Restofire.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35A936B31CA93EA000AC584F"
-            BuildableName = "Restofire-RAC-tvOS.framework"
+            BuildableName = "Restofire_RAC.framework"
             BlueprintName = "Restofire-RAC-tvOS"
             ReferencedContainer = "container:Restofire.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35A936B31CA93EA000AC584F"
-            BuildableName = "Restofire-RAC-tvOS.framework"
+            BuildableName = "Restofire_RAC.framework"
             BlueprintName = "Restofire-RAC-tvOS"
             ReferencedContainer = "container:Restofire.xcodeproj">
          </BuildableReference>

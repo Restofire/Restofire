@@ -58,20 +58,23 @@
 		354308C21CA92E9000C75960 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
 		354308C31CA92E9000C75960 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; };
 		354308C41CA92E9000C75960 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; };
-		354308C51CA92F7900C75960 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C411CA8E53F0036A28F /* BoolService+GET.swift */; };
-		354308C61CA92F7900C75960 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C421CA8E53F0036A28F /* FloatService+GET.swift */; };
-		354308C71CA92F7900C75960 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C431CA8E53F0036A28F /* IntService+GET.swift */; };
-		354308C81CA92F7900C75960 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C441CA8E53F0036A28F /* PersonArrayService+GET.swift */; };
-		354308C91CA92F7900C75960 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C451CA8E53F0036A28F /* PersonService+GET.swift */; };
-		354308CA1CA92F7900C75960 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C461CA8E53F0036A28F /* StringArrayService+GET.swift */; };
-		354308CB1CA92F7900C75960 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C471CA8E53F0036A28F /* StringService+GET.swift */; };
-		354308CC1CA92F7900C75960 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C481CA8E53F0036A28F /* VoidService+GET.swift */; };
-		354308CD1CA92F7900C75960 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C511CA8E5E70036A28F /* RootKeyPathService+Get.swift */; };
 		356A63E81C6C597C005793A5 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356A63E51C6C597C005793A5 /* ServiceSpec.swift */; };
 		3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EB1C732E4C00ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EC1C732E4C00ED7BF2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
 		3579C9ED1C732E4C00ED7BF2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
+		35950D8F1CA94872003127F9 /* RACPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950D8A1CA9485E003127F9 /* RACPersonService+GET.swift */; };
+		35950D901CA9487F003127F9 /* RxPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950D8C1CA9485E003127F9 /* RxPersonService+GET.swift */; };
+		35950D941CA94904003127F9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D951CA94915003127F9 /* Restofire_RAC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354308471CA90FCA00C75960 /* Restofire_RAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D961CA94921003127F9 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D971CA94928003127F9 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D991CA94946003127F9 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35A9366F1CA93B9700AC584F /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D9A1CA94946003127F9 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D9B1CA94946003127F9 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D9C1CA94946003127F9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D9D1CA94983003127F9 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35950D9E1CA94983003127F9 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
@@ -95,15 +98,6 @@
 		35A936871CA93CA500AC584F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
 		35A936881CA93CA500AC584F /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
 		35A936891CA93CA500AC584F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A9366F1CA93B9700AC584F /* RxSwift.framework */; };
-		35A9368A1CA93CC600AC584F /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C411CA8E53F0036A28F /* BoolService+GET.swift */; };
-		35A9368B1CA93CC600AC584F /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C421CA8E53F0036A28F /* FloatService+GET.swift */; };
-		35A9368C1CA93CC600AC584F /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C431CA8E53F0036A28F /* IntService+GET.swift */; };
-		35A9368D1CA93CC600AC584F /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C441CA8E53F0036A28F /* PersonArrayService+GET.swift */; };
-		35A9368E1CA93CC600AC584F /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C451CA8E53F0036A28F /* PersonService+GET.swift */; };
-		35A9368F1CA93CC600AC584F /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C461CA8E53F0036A28F /* StringArrayService+GET.swift */; };
-		35A936901CA93CC600AC584F /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C471CA8E53F0036A28F /* StringService+GET.swift */; };
-		35A936911CA93CC600AC584F /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C481CA8E53F0036A28F /* VoidService+GET.swift */; };
-		35A936921CA93CC600AC584F /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35164C511CA8E5E70036A28F /* RootKeyPathService+Get.swift */; };
 		35A936951CA93E9B00AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		35A936961CA93E9B00AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
 		35A936971CA93E9B00AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
@@ -189,6 +183,36 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35950D921CA948CE003127F9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				35950D9D1CA94983003127F9 /* Result.framework in Embed Frameworks */,
+				35950D9E1CA94983003127F9 /* ReactiveCocoa.framework in Embed Frameworks */,
+				35950D971CA94928003127F9 /* Quick.framework in Embed Frameworks */,
+				35950D961CA94921003127F9 /* Nimble.framework in Embed Frameworks */,
+				35950D951CA94915003127F9 /* Restofire_RAC.framework in Embed Frameworks */,
+				35950D941CA94904003127F9 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35950D981CA9492E003127F9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				35950D991CA94946003127F9 /* RxSwift.framework in Embed Frameworks */,
+				35950D9A1CA94946003127F9 /* Nimble.framework in Embed Frameworks */,
+				35950D9B1CA94946003127F9 /* Quick.framework in Embed Frameworks */,
+				35950D9C1CA94946003127F9 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -231,6 +255,8 @@
 		354308A71CA91D9600C75960 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		354308AE1CA92DB600C75960 /* Restofire_RACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Restofire_RACTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		356A63E51C6C597C005793A5 /* ServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSpec.swift; sourceTree = "<group>"; };
+		35950D8A1CA9485E003127F9 /* RACPersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACPersonService+GET.swift"; sourceTree = "<group>"; };
+		35950D8C1CA9485E003127F9 /* RxPersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxPersonService+GET.swift"; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		35A9365D1CA9334800AC584F /* RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift.swift; sourceTree = "<group>"; };
@@ -409,6 +435,8 @@
 			children = (
 				35D109FD1C5F340C00FC831F /* RestofireSpec.swift */,
 				35D109F61C5F336200FC831F /* Services */,
+				35950D891CA9485E003127F9 /* RACServices */,
+				35950D8B1CA9485E003127F9 /* RxServices */,
 				356A63E11C6C597C005793A5 /* ServiceSpec */,
 				354308931CA91A9F00C75960 /* RACServiceSpec */,
 				35A936711CA93BDA00AC584F /* RxServiceSpec */,
@@ -449,6 +477,22 @@
 				35164C531CA8E6310036A28F /* RootKeyPathService+GETSpec.swift */,
 			);
 			path = ServiceSpec;
+			sourceTree = "<group>";
+		};
+		35950D891CA9485E003127F9 /* RACServices */ = {
+			isa = PBXGroup;
+			children = (
+				35950D8A1CA9485E003127F9 /* RACPersonService+GET.swift */,
+			);
+			path = RACServices;
+			sourceTree = "<group>";
+		};
+		35950D8B1CA9485E003127F9 /* RxServices */ = {
+			isa = PBXGroup;
+			children = (
+				35950D8C1CA9485E003127F9 /* RxPersonService+GET.swift */,
+			);
+			path = RxServices;
 			sourceTree = "<group>";
 		};
 		35A9365C1CA9330000AC584F /* RxSwift */ = {
@@ -713,6 +757,7 @@
 				354308AA1CA92DB600C75960 /* Sources */,
 				354308AB1CA92DB600C75960 /* Frameworks */,
 				354308AC1CA92DB600C75960 /* Resources */,
+				35950D921CA948CE003127F9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -749,6 +794,7 @@
 				35A936761CA93C0F00AC584F /* Sources */,
 				35A936771CA93C0F00AC584F /* Frameworks */,
 				35A936781CA93C0F00AC584F /* Resources */,
+				35950D981CA9492E003127F9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1128,16 +1174,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				354308BE1CA92E6C00C75960 /* RACPersonService+GETSpec.swift in Sources */,
-				354308CA1CA92F7900C75960 /* StringArrayService+GET.swift in Sources */,
+				35950D8F1CA94872003127F9 /* RACPersonService+GET.swift in Sources */,
 				354308BF1CA92E6F00C75960 /* RACServiceSpec.swift in Sources */,
-				354308C51CA92F7900C75960 /* BoolService+GET.swift in Sources */,
-				354308CC1CA92F7900C75960 /* VoidService+GET.swift in Sources */,
-				354308C71CA92F7900C75960 /* IntService+GET.swift in Sources */,
-				354308CB1CA92F7900C75960 /* StringService+GET.swift in Sources */,
-				354308C61CA92F7900C75960 /* FloatService+GET.swift in Sources */,
-				354308C81CA92F7900C75960 /* PersonArrayService+GET.swift in Sources */,
-				354308CD1CA92F7900C75960 /* RootKeyPathService+Get.swift in Sources */,
-				354308C91CA92F7900C75960 /* PersonService+GET.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1157,17 +1195,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35A9368C1CA93CC600AC584F /* IntService+GET.swift in Sources */,
-				35A936921CA93CC600AC584F /* RootKeyPathService+Get.swift in Sources */,
-				35A936911CA93CC600AC584F /* VoidService+GET.swift in Sources */,
-				35A9368F1CA93CC600AC584F /* StringArrayService+GET.swift in Sources */,
-				35A9368A1CA93CC600AC584F /* BoolService+GET.swift in Sources */,
-				35A936901CA93CC600AC584F /* StringService+GET.swift in Sources */,
 				35A936851CA93C8100AC584F /* RxPersonService+GETSpec.swift in Sources */,
-				35A9368D1CA93CC600AC584F /* PersonArrayService+GET.swift in Sources */,
-				35A9368B1CA93CC600AC584F /* FloatService+GET.swift in Sources */,
-				35A9368E1CA93CC600AC584F /* PersonService+GET.swift in Sources */,
 				35A936861CA93C8400AC584F /* RxServiceSpec.swift in Sources */,
+				35950D901CA9487F003127F9 /* RxPersonService+GET.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2115,6 +2145,7 @@
 				35A936841CA93C1000AC584F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		35A9369E1CA93E9B00AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-Mac" */ = {
 			isa = XCConfigurationList;

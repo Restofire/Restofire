@@ -77,6 +77,9 @@
 		35950DF01CA952EE003127F9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */; };
 		35950DF11CA952EE003127F9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA81CA94B6B003127F9 /* StringService+GET.swift */; };
 		35950DF21CA952EE003127F9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA91CA94B6B003127F9 /* VoidService+GET.swift */; };
+		35950DF71CA99958003127F9 /* HTTPBinRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DF51CA99954003127F9 /* HTTPBinRequestType.swift */; };
+		35950DFA1CA99AFE003127F9 /* HTTPBinService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DF81CA99AE6003127F9 /* HTTPBinService+Get.swift */; };
+		35950DFD1CA99BB8003127F9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */; };
 		3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
@@ -259,6 +262,9 @@
 		35950DBD1CA94B6B003127F9 /* RxPersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxPersonService+GET.swift"; sourceTree = "<group>"; };
 		35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxPersonService+GETSpec.swift"; sourceTree = "<group>"; };
 		35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxServiceSpec.swift; sourceTree = "<group>"; };
+		35950DF51CA99954003127F9 /* HTTPBinRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinRequestType.swift; sourceTree = "<group>"; };
+		35950DF81CA99AE6003127F9 /* HTTPBinService+Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinService+Get.swift"; sourceTree = "<group>"; };
+		35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinStringService+GETSpec.swift"; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		35A9365D1CA9334800AC584F /* RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift.swift; sourceTree = "<group>"; };
@@ -450,6 +456,7 @@
 		35950D9F1CA94B6B003127F9 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				35950DF41CA99945003127F9 /* RequestTypes */,
 				35950DA01CA94B6B003127F9 /* Services */,
 				35950DAA1CA94B6B003127F9 /* ServiceSpec */,
 			);
@@ -468,6 +475,7 @@
 				35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */,
 				35950DA81CA94B6B003127F9 /* StringService+GET.swift */,
 				35950DA91CA94B6B003127F9 /* VoidService+GET.swift */,
+				35950DF81CA99AE6003127F9 /* HTTPBinService+Get.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -485,6 +493,7 @@
 				35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */,
 				35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */,
 				35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */,
+				35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */,
 			);
 			path = ServiceSpec;
 			sourceTree = "<group>";
@@ -539,6 +548,14 @@
 				35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */,
 			);
 			path = RxServiceSpec;
+			sourceTree = "<group>";
+		};
+		35950DF41CA99945003127F9 /* RequestTypes */ = {
+			isa = PBXGroup;
+			children = (
+				35950DF51CA99954003127F9 /* HTTPBinRequestType.swift */,
+			);
+			path = RequestTypes;
 			sourceTree = "<group>";
 		};
 		35A9365C1CA9330000AC584F /* RxSwift */ = {
@@ -1309,6 +1326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35950DFA1CA99AFE003127F9 /* HTTPBinService+Get.swift in Sources */,
 				35950DEE1CA952EE003127F9 /* PersonService+GET.swift in Sources */,
 				35950DE71CA952E8003127F9 /* StringArrayService+GETSpec.swift in Sources */,
 				35950DE31CA952E8003127F9 /* PersonArrayService+GETSpec.swift in Sources */,
@@ -1320,10 +1338,12 @@
 				35950DE61CA952E8003127F9 /* ServiceSpec.swift in Sources */,
 				35950DE01CA952E8003127F9 /* BoolService+GETSpec.swift in Sources */,
 				35950DE81CA952E8003127F9 /* StringService+GETSpec.swift in Sources */,
+				35950DFD1CA99BB8003127F9 /* HTTPBinStringService+GETSpec.swift in Sources */,
 				35950DEA1CA952EE003127F9 /* BoolService+GET.swift in Sources */,
 				35950DE91CA952E8003127F9 /* VoidService+GETSpec.swift in Sources */,
 				35950DF01CA952EE003127F9 /* StringArrayService+GET.swift in Sources */,
 				35950DE51CA952E8003127F9 /* RootKeyPathService+GETSpec.swift in Sources */,
+				35950DF71CA99958003127F9 /* HTTPBinRequestType.swift in Sources */,
 				35950DF21CA952EE003127F9 /* VoidService+GET.swift in Sources */,
 				35950DEF1CA952EE003127F9 /* RootKeyPathService+Get.swift in Sources */,
 				35950DE41CA952E8003127F9 /* PersonService+GETSpec.swift in Sources */,

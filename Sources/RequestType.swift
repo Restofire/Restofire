@@ -22,24 +22,30 @@ public protocol RequestType {
     var rootKeyPath: String? { get }
     var logging: Bool { get }
     
+    var configuration: Configuration { get }
+    
 }
 
 public extension RequestType {
+
+    public var configuration: Configuration {
+        get { return Configuration.defaultConfiguration }
+    }
     
     public var baseURL: String {
-        get { return Configuration.defaultConfiguration.baseURL }
+        get { return configuration.baseURL }
     }
     
     public var method: Alamofire.Method {
-        get { return Configuration.defaultConfiguration.method }
+        get { return configuration.method }
     }
     
     public var encoding: Alamofire.ParameterEncoding {
-        get { return Configuration.defaultConfiguration.encoding }
+        get { return configuration.encoding }
     }
     
     public var headers: [String: String]? {
-        get { return Configuration.defaultConfiguration.headers }
+        get { return configuration.headers }
     }
     
     public var parameters: AnyObject? {
@@ -48,11 +54,11 @@ public extension RequestType {
     }
     
     public var rootKeyPath: String? {
-        get { return Configuration.defaultConfiguration.rootKeyPath }
+        get { return configuration.rootKeyPath }
     }
     
     public var logging: Bool {
-        get { return Configuration.defaultConfiguration.logging }
+        get { return configuration.logging }
     }
     
 }

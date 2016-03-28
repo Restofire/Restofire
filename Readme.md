@@ -23,12 +23,6 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 
 ## Installation
 
-* [CocoaPods](#cocoapods)
-* [Carthage](#carthage)
-* [Swift Package Manager](#swift-package-manager)
-
-***
-
 ### CocoaPods
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -47,10 +41,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Restofire', '~> 0.5'
-OR
-pod 'Restofire/RxSwift', '~> 0.5'
-OR
-pod 'Restofire/ReactiveCocoa', '~> 0.5'
+# OR pod 'Restofire/RxSwift', '~> 0.5'
+# OR pod 'Restofire/ReactiveCocoa', '~> 0.5'
 ```
 
 Then, run the following command:

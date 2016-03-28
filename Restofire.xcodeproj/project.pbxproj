@@ -140,6 +140,12 @@
 		35A936E81CA93EA700AC584F /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* RequestType.swift */; };
 		35A936EA1CA93EA700AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
 		35A936EC1CA93EA700AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35A936F31CA9412000AC584F /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
+		35A936F41CA9412100AC584F /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
+		35A936F51CA9412200AC584F /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
+		35A936F61CA9413200AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
+		35A936F71CA9413300AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
+		35A936F81CA9413500AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
 		35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -401,12 +407,12 @@
 		3522609E1C5E2B55000AE7C0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				352260A51C5E2CC9000AE7C0 /* Info.plist */,
 				35D109FD1C5F340C00FC831F /* RestofireSpec.swift */,
 				35D109F61C5F336200FC831F /* Services */,
 				356A63E11C6C597C005793A5 /* ServiceSpec */,
 				354308931CA91A9F00C75960 /* RACServiceSpec */,
 				35A936711CA93BDA00AC584F /* RxServiceSpec */,
+				352260A51C5E2CC9000AE7C0 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1171,6 +1177,7 @@
 			files = (
 				35A936951CA93E9B00AC584F /* Configuration.swift in Sources */,
 				35A936961CA93E9B00AC584F /* ResponseSerializer.swift in Sources */,
+				35A936F31CA9412000AC584F /* ReactiveCocoa.swift in Sources */,
 				35A936971CA93E9B00AC584F /* Dictionary.swift in Sources */,
 				35A936981CA93E9B00AC584F /* RequestType.swift in Sources */,
 			);
@@ -1183,6 +1190,7 @@
 				35A936A51CA93E9D00AC584F /* Configuration.swift in Sources */,
 				35A936A61CA93E9D00AC584F /* ResponseSerializer.swift in Sources */,
 				35A936A71CA93E9D00AC584F /* Dictionary.swift in Sources */,
+				35A936F61CA9413200AC584F /* RxSwift.swift in Sources */,
 				35A936A81CA93E9D00AC584F /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1193,6 +1201,7 @@
 			files = (
 				35A936B51CA93EA000AC584F /* Configuration.swift in Sources */,
 				35A936B61CA93EA000AC584F /* ResponseSerializer.swift in Sources */,
+				35A936F41CA9412100AC584F /* ReactiveCocoa.swift in Sources */,
 				35A936B71CA93EA000AC584F /* Dictionary.swift in Sources */,
 				35A936B81CA93EA000AC584F /* RequestType.swift in Sources */,
 			);
@@ -1205,6 +1214,7 @@
 				35A936C51CA93EA200AC584F /* Configuration.swift in Sources */,
 				35A936C61CA93EA200AC584F /* ResponseSerializer.swift in Sources */,
 				35A936C71CA93EA200AC584F /* Dictionary.swift in Sources */,
+				35A936F71CA9413300AC584F /* RxSwift.swift in Sources */,
 				35A936C81CA93EA200AC584F /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1215,6 +1225,7 @@
 			files = (
 				35A936D51CA93EA500AC584F /* Configuration.swift in Sources */,
 				35A936D61CA93EA500AC584F /* ResponseSerializer.swift in Sources */,
+				35A936F51CA9412200AC584F /* ReactiveCocoa.swift in Sources */,
 				35A936D71CA93EA500AC584F /* Dictionary.swift in Sources */,
 				35A936D81CA93EA500AC584F /* RequestType.swift in Sources */,
 			);
@@ -1227,6 +1238,7 @@
 				35A936E51CA93EA700AC584F /* Configuration.swift in Sources */,
 				35A936E61CA93EA700AC584F /* ResponseSerializer.swift in Sources */,
 				35A936E71CA93EA700AC584F /* Dictionary.swift in Sources */,
+				35A936F81CA9413500AC584F /* RxSwift.swift in Sources */,
 				35A936E81CA93EA700AC584F /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

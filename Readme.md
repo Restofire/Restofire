@@ -72,6 +72,20 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
       "name" : "Rahul Katariya"
     }
     ```
+* [JSON Array Response Service](https://github.com/Restofire/Restofire/wiki/JSON-Array-Response-Service-Example)
+
+    ```json
+    [
+      {
+        "id" : 12345,
+        "name" : "Rahul Katariya"
+      },
+      {
+        "id" : 12346,
+        "name" : "Aar Kay"
+      }
+    ]
+    ```
 
 ## TODO
 

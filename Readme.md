@@ -23,14 +23,90 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 
 ## Installation
 
-* [CocoaPods](https://github.com/Restofire/Restofire/wiki/Installation-Guide#cocoapods)
-* [Carthage](https://github.com/Restofire/Restofire/wiki/Installation-Guide#carthage)
-* [Swift Package Manager](https://github.com/Restofire/Restofire/wiki/Installation-Guide#swift-package-manager)
+* [CocoaPods](#cocoapods)
+* [Carthage](#carthage)
+* [Swift Package Manager](#swift-package-manager)
+
+***
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+> CocoaPods 0.39.0+ is required to build Reactofire 0.3.0+.
+
+To integrate Reactofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'Restofire', '~> 0.5'
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "RahulKatariya/Restofire" ~> 0.5
+```
+### Swift Package Manager
+
+To use Reactofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+
+``` swift
+import PackageDescription
+
+let package = Package(
+    name: "HelloRestofire",
+    dependencies: [
+        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 0)
+    ]
+)
+```
 
 ## Usage
 
-* [Configuring Restofire](https://github.com/Restofire/Restofire/wiki/Configuring-Restofire)
-* [Creating Restofire Service](https://github.com/Restofire/Restofire/wiki/Creating-Restofire-Service)
+###Configuring Restofire
+
+```swift
+import Restofire
+
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    // Override point for customization after application launch.
+
+    Configuration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+    Configuration.defaultConfiguration.headers = ["Content-Type": "application/json"]
+    Configuration.defaultConfiguration.logging = true
+
+    return true
+  }
+
+}
+```
 
 ## Examples
 

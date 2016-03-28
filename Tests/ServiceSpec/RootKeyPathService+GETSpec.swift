@@ -11,18 +11,17 @@
 import Quick
 import Nimble
 
-class GenericPersonGETServiceSpec: ServiceSpec {
-
-    override func spec() { 
-        describe("GenericPersonGETService") {
+class RootKeyPathGETServiceSpec: ServiceSpec {
+    
+    override func spec() {
+        describe("RootKeyPathGETService") {
             
             it("should succeed") {
                 
-                let person = Person(id: 12345, name: "Rahul Katariya")
-                let actual = GenericResponse(args: person)
-                var expected: GenericResponse<Person>!
+                let actual = "Restofire is awesome."
+                var expected: String!
                 
-                GenericPersonGETService().executeRequest() {
+                RootKeyPathGETService().executeRequest() {
                     if let value = $0.value {
                         expected = value
                     }
@@ -33,5 +32,5 @@ class GenericPersonGETServiceSpec: ServiceSpec {
             }
         }
     }
-
+    
 }

@@ -414,7 +414,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		350062691C7C40510078B589 /* Restofire */ = {
+		350062691C7C40510078B589 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				3500626F1C7C40510078B589 /* Restofire.h */,
@@ -426,7 +426,6 @@
 				35A9365C1CA9330000AC584F /* RxSwift */,
 				3500626E1C7C40510078B589 /* Info.plist */,
 			);
-			name = Restofire;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -555,7 +554,7 @@
 		35B19DD11BEE134E001D3952 = {
 			isa = PBXGroup;
 			children = (
-				350062691C7C40510078B589 /* Restofire */,
+				350062691C7C40510078B589 /* Sources */,
 				3522609E1C5E2B55000AE7C0 /* Tests */,
 				35B19E071BEE17D8001D3952 /* Frameworks */,
 				35B19DDC1BEE134E001D3952 /* Products */,

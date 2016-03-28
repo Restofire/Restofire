@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
  s.version = '0.4.0'
  s.license = { :type => "MIT", :file => "LICENSE" }
  s.summary = 'Restofire is a protocol oriented networking abstraction layer in swift'
- s.description = 'Restofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire and Gloss to use services in a declartive way.'
+ s.description = 'Restofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire to use services in a declartive way.'
  s.homepage = 'https://github.com/Restofire/Restofire'
  s.social_media_url = 'https://twitter.com/rahulkatariya91'
  s.authors = { "Rahul Katariya" => "rahulkatariya@me.com" }

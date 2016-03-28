@@ -52,31 +52,31 @@
 		35950D9C1CA94946003127F9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35950D9D1CA94983003127F9 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35950D9E1CA94983003127F9 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950DC11CA94B6B003127F9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA11CA94B6B003127F9 /* BoolService+GET.swift */; };
-		35950DC21CA94B6B003127F9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA21CA94B6B003127F9 /* FloatService+GET.swift */; };
-		35950DC31CA94B6B003127F9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA31CA94B6B003127F9 /* IntService+GET.swift */; };
-		35950DC41CA94B6B003127F9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA41CA94B6B003127F9 /* PersonArrayService+GET.swift */; };
-		35950DC51CA94B6B003127F9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA51CA94B6B003127F9 /* PersonService+GET.swift */; };
-		35950DC61CA94B6B003127F9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA61CA94B6B003127F9 /* RootKeyPathService+Get.swift */; };
-		35950DC71CA94B6B003127F9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */; };
-		35950DC81CA94B6B003127F9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA81CA94B6B003127F9 /* StringService+GET.swift */; };
-		35950DC91CA94B6B003127F9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA91CA94B6B003127F9 /* VoidService+GET.swift */; };
-		35950DCA1CA94B6B003127F9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAB1CA94B6B003127F9 /* BoolService+GETSpec.swift */; };
-		35950DCB1CA94B6B003127F9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAC1CA94B6B003127F9 /* FloatService+GETSpec.swift */; };
-		35950DCC1CA94B6B003127F9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAD1CA94B6B003127F9 /* IntService+GETSpec.swift */; };
-		35950DCD1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAE1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift */; };
-		35950DCE1CA94B6B003127F9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAF1CA94B6B003127F9 /* PersonService+GETSpec.swift */; };
-		35950DCF1CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB01CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift */; };
-		35950DD01CA94B6B003127F9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB11CA94B6B003127F9 /* ServiceSpec.swift */; };
-		35950DD11CA94B6B003127F9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */; };
-		35950DD21CA94B6B003127F9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */; };
-		35950DD31CA94B6B003127F9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */; };
-		35950DD41CA94B6B003127F9 /* RACPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB71CA94B6B003127F9 /* RACPersonService+GET.swift */; };
-		35950DD51CA94B6B003127F9 /* RACPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */; };
-		35950DD61CA94B6B003127F9 /* RACServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBA1CA94B6B003127F9 /* RACServiceSpec.swift */; };
-		35950DD71CA94B6B003127F9 /* RxPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBD1CA94B6B003127F9 /* RxPersonService+GET.swift */; };
-		35950DD81CA94B6B003127F9 /* RxPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */; };
-		35950DD91CA94B6B003127F9 /* RxServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */; };
+		35950DDA1CA952C7003127F9 /* RxPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */; };
+		35950DDB1CA952CC003127F9 /* RxServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */; };
+		35950DDC1CA952D2003127F9 /* RxPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBD1CA94B6B003127F9 /* RxPersonService+GET.swift */; };
+		35950DDD1CA952D9003127F9 /* RACServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBA1CA94B6B003127F9 /* RACServiceSpec.swift */; };
+		35950DDE1CA952DB003127F9 /* RACPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */; };
+		35950DDF1CA952E1003127F9 /* RACPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB71CA94B6B003127F9 /* RACPersonService+GET.swift */; };
+		35950DE01CA952E8003127F9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAB1CA94B6B003127F9 /* BoolService+GETSpec.swift */; };
+		35950DE11CA952E8003127F9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAC1CA94B6B003127F9 /* FloatService+GETSpec.swift */; };
+		35950DE21CA952E8003127F9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAD1CA94B6B003127F9 /* IntService+GETSpec.swift */; };
+		35950DE31CA952E8003127F9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAE1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift */; };
+		35950DE41CA952E8003127F9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAF1CA94B6B003127F9 /* PersonService+GETSpec.swift */; };
+		35950DE51CA952E8003127F9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB01CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift */; };
+		35950DE61CA952E8003127F9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB11CA94B6B003127F9 /* ServiceSpec.swift */; };
+		35950DE71CA952E8003127F9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */; };
+		35950DE81CA952E8003127F9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */; };
+		35950DE91CA952E8003127F9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */; };
+		35950DEA1CA952EE003127F9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA11CA94B6B003127F9 /* BoolService+GET.swift */; };
+		35950DEB1CA952EE003127F9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA21CA94B6B003127F9 /* FloatService+GET.swift */; };
+		35950DEC1CA952EE003127F9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA31CA94B6B003127F9 /* IntService+GET.swift */; };
+		35950DED1CA952EE003127F9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA41CA94B6B003127F9 /* PersonArrayService+GET.swift */; };
+		35950DEE1CA952EE003127F9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA51CA94B6B003127F9 /* PersonService+GET.swift */; };
+		35950DEF1CA952EE003127F9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA61CA94B6B003127F9 /* RootKeyPathService+Get.swift */; };
+		35950DF01CA952EE003127F9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */; };
+		35950DF11CA952EE003127F9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA81CA94B6B003127F9 /* StringService+GET.swift */; };
+		35950DF21CA952EE003127F9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA91CA94B6B003127F9 /* VoidService+GET.swift */; };
 		3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
@@ -274,7 +274,6 @@
 		35B19DDB1BEE134E001D3952 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DE51BEE134E001D3952 /* RestofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DFD1BEE17D2001D3952 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		35D109FD1C5F340C00FC831F /* RestofireSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -432,7 +431,6 @@
 		3522609E1C5E2B55000AE7C0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				35D109FD1C5F340C00FC831F /* RestofireSpec.swift */,
 				35950D9F1CA94B6B003127F9 /* Core */,
 				35950DB51CA94B6B003127F9 /* ReactiveCocoa */,
 				35950DBB1CA94B6B003127F9 /* RxSwift */,
@@ -477,13 +475,13 @@
 		35950DAA1CA94B6B003127F9 /* ServiceSpec */ = {
 			isa = PBXGroup;
 			children = (
+				35950DB11CA94B6B003127F9 /* ServiceSpec.swift */,
 				35950DAB1CA94B6B003127F9 /* BoolService+GETSpec.swift */,
 				35950DAC1CA94B6B003127F9 /* FloatService+GETSpec.swift */,
 				35950DAD1CA94B6B003127F9 /* IntService+GETSpec.swift */,
 				35950DAE1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift */,
 				35950DAF1CA94B6B003127F9 /* PersonService+GETSpec.swift */,
 				35950DB01CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift */,
-				35950DB11CA94B6B003127F9 /* ServiceSpec.swift */,
 				35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */,
 				35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */,
 				35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */,
@@ -511,8 +509,8 @@
 		35950DB81CA94B6B003127F9 /* RACServiceSpec */ = {
 			isa = PBXGroup;
 			children = (
-				35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */,
 				35950DBA1CA94B6B003127F9 /* RACServiceSpec.swift */,
+				35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */,
 			);
 			path = RACServiceSpec;
 			sourceTree = "<group>";
@@ -537,8 +535,8 @@
 		35950DBE1CA94B6B003127F9 /* RxServiceSpec */ = {
 			isa = PBXGroup;
 			children = (
-				35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */,
 				35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */,
+				35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */,
 			);
 			path = RxServiceSpec;
 			sourceTree = "<group>";
@@ -1196,6 +1194,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35950DDD1CA952D9003127F9 /* RACServiceSpec.swift in Sources */,
+				35950DDF1CA952E1003127F9 /* RACPersonService+GET.swift in Sources */,
+				35950DDE1CA952DB003127F9 /* RACPersonService+GETSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,6 +1216,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35950DDB1CA952CC003127F9 /* RxServiceSpec.swift in Sources */,
+				35950DDA1CA952C7003127F9 /* RxPersonService+GETSpec.swift in Sources */,
+				35950DDC1CA952D2003127F9 /* RxPersonService+GET.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1294,35 +1298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35950DCE1CA94B6B003127F9 /* PersonService+GETSpec.swift in Sources */,
 				3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */,
-				35950DD21CA94B6B003127F9 /* StringService+GETSpec.swift in Sources */,
-				35950DC71CA94B6B003127F9 /* StringArrayService+GET.swift in Sources */,
-				35950DC41CA94B6B003127F9 /* PersonArrayService+GET.swift in Sources */,
 				351A7A7B1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
-				35950DC51CA94B6B003127F9 /* PersonService+GET.swift in Sources */,
-				35950DCC1CA94B6B003127F9 /* IntService+GETSpec.swift in Sources */,
-				35950DCF1CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift in Sources */,
-				35950DC81CA94B6B003127F9 /* StringService+GET.swift in Sources */,
 				350062721C7C40510078B589 /* Dictionary.swift in Sources */,
-				35950DD11CA94B6B003127F9 /* StringArrayService+GETSpec.swift in Sources */,
-				35950DC91CA94B6B003127F9 /* VoidService+GET.swift in Sources */,
-				35950DC31CA94B6B003127F9 /* IntService+GET.swift in Sources */,
-				35950DD01CA94B6B003127F9 /* ServiceSpec.swift in Sources */,
-				35950DC11CA94B6B003127F9 /* BoolService+GET.swift in Sources */,
-				35950DCB1CA94B6B003127F9 /* FloatService+GETSpec.swift in Sources */,
-				35950DCD1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift in Sources */,
-				35950DD51CA94B6B003127F9 /* RACPersonService+GETSpec.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* RequestType.swift in Sources */,
-				35950DD81CA94B6B003127F9 /* RxPersonService+GETSpec.swift in Sources */,
-				35950DC21CA94B6B003127F9 /* FloatService+GET.swift in Sources */,
-				35950DC61CA94B6B003127F9 /* RootKeyPathService+Get.swift in Sources */,
-				35950DCA1CA94B6B003127F9 /* BoolService+GETSpec.swift in Sources */,
-				35950DD71CA94B6B003127F9 /* RxPersonService+GET.swift in Sources */,
-				35950DD61CA94B6B003127F9 /* RACServiceSpec.swift in Sources */,
-				35950DD91CA94B6B003127F9 /* RxServiceSpec.swift in Sources */,
-				35950DD41CA94B6B003127F9 /* RACPersonService+GET.swift in Sources */,
-				35950DD31CA94B6B003127F9 /* VoidService+GETSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1330,6 +1309,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35950DEE1CA952EE003127F9 /* PersonService+GET.swift in Sources */,
+				35950DE71CA952E8003127F9 /* StringArrayService+GETSpec.swift in Sources */,
+				35950DE31CA952E8003127F9 /* PersonArrayService+GETSpec.swift in Sources */,
+				35950DE11CA952E8003127F9 /* FloatService+GETSpec.swift in Sources */,
+				35950DED1CA952EE003127F9 /* PersonArrayService+GET.swift in Sources */,
+				35950DF11CA952EE003127F9 /* StringService+GET.swift in Sources */,
+				35950DE21CA952E8003127F9 /* IntService+GETSpec.swift in Sources */,
+				35950DEC1CA952EE003127F9 /* IntService+GET.swift in Sources */,
+				35950DE61CA952E8003127F9 /* ServiceSpec.swift in Sources */,
+				35950DE01CA952E8003127F9 /* BoolService+GETSpec.swift in Sources */,
+				35950DE81CA952E8003127F9 /* StringService+GETSpec.swift in Sources */,
+				35950DEA1CA952EE003127F9 /* BoolService+GET.swift in Sources */,
+				35950DE91CA952E8003127F9 /* VoidService+GETSpec.swift in Sources */,
+				35950DF01CA952EE003127F9 /* StringArrayService+GET.swift in Sources */,
+				35950DE51CA952E8003127F9 /* RootKeyPathService+GETSpec.swift in Sources */,
+				35950DF21CA952EE003127F9 /* VoidService+GET.swift in Sources */,
+				35950DEF1CA952EE003127F9 /* RootKeyPathService+Get.swift in Sources */,
+				35950DE41CA952E8003127F9 /* PersonService+GETSpec.swift in Sources */,
+				35950DEB1CA952EE003127F9 /* FloatService+GET.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

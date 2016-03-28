@@ -11,20 +11,5 @@ script:
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=iPhone 6,OS=9.3' GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
 
-  - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-Mac
-    -sdk macosx ONLY_ACTIVE_ARCH=NO
-    -destination 'arch=x86_64'
-
-  - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-watchOS
-    -sdk watchsimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=Apple Watch - 38mm,OS=2.2'
-
-  - xcodebuild -project Restofire.xcodeproj
-    -scheme Restofire-tvOS
-    -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=Apple TV 1080p,OS=9.2'
-
 after_success:
   - bash <(curl -s https://codecov.io/bash)

@@ -1,5 +1,6 @@
 // pure merge for Dictionaries
-func + <T, U>(var lhs: [T: U]?, rhs: [T: U]?) -> [T: U]? {
+func + <T, U>(lhs: [T: U]?, rhs: [T: U]?) -> [T: U]? {
+    var lhs = lhs
     if rhs == nil {
         return lhs
     } else if lhs == nil {
@@ -19,7 +20,7 @@ extension Dictionary {
         var keys = keyPath.componentsSeparatedByString(delimiter)
         
         guard let first = keys.first as? Key else {
-            print("[Reactofire] Unable to use string as key on type: \(Key.self)")
+            print("[Restofire] Unable to use string as key on type: \(Key.self)")
             return nil
         }
         

@@ -65,9 +65,9 @@ public extension RequestType {
 public extension RequestType {
     
     public func executeRequest(completionHandler: Result<Model, NSError> -> Void) {
-        request.responseJSON(rootKeyPath: rootKeyPath) { [weak self] (response: Response<Model, NSError>) -> Void in
-            guard let weakSelf = self else { return }
+        request.response(rootKeyPath: rootKeyPath) { [weak self] (response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
+            guard let weakSelf = self else { return }
             if weakSelf.logging { weakSelf.logResponse(response) }
         }
     }

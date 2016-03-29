@@ -18,7 +18,7 @@ extension Request {
      
      - returns: The request.
      */
-    public func responseJSON<T>(
+    public func response<T>(
         rootKeyPath rootKeyPath: String? = nil,
                 options: NSJSONReadingOptions = .AllowFragments,
                 completionHandler: Response<T, NSError> -> Void)
@@ -38,7 +38,7 @@ extension Request {
      
      - returns: A JSON object response serializer.
      */
-    public static func JSONResponseSerializer<T>(
+    private static func JSONResponseSerializer<T>(
         rootKeyPath rootKeyPath: String? = nil,
                 options: NSJSONReadingOptions = .AllowFragments)
         -> ResponseSerializer<T, NSError>

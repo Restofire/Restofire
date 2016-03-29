@@ -121,6 +121,8 @@ class PersonGETService: RequestType {
 ### Consuming the Service
 
 ```swift
+import Restofire
+
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
@@ -139,6 +141,8 @@ class ViewController: UIViewController {
 ### RxSwift
 
 ```swift
+import Restofire_Rx
+
 class ViewController: UIViewController {
 
     let disposeBag = DisposeBag()
@@ -157,6 +161,8 @@ class ViewController: UIViewController {
 ### ReactiveCocoa
 
 ```swift
+import Restofire_RAC
+
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!

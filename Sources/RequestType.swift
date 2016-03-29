@@ -68,24 +68,13 @@ public extension RequestType {
         request.response(rootKeyPath: rootKeyPath) { [weak self] (response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
             guard let weakSelf = self else { return }
-            if weakSelf.logging { weakSelf.logResponse(response) }
+            if weakSelf.logging { debugPrint(response) }
         }
     }
     
 }
 
 public extension RequestType {
-
-    public func logResponse(response: Response<Model, NSError>) {
-        print(response.request.debugDescription)
-        print(response.timeline)
-        print(response.response)
-        if response.result.isSuccess {
-            print("SUCCESS: -", response.result.value!)
-        } else {
-            print("ERROR: -", response.result.error!)
-        }
-    }
     
     public var request: Alamofire.Request {
         var request: Alamofire.Request!

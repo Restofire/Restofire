@@ -18,7 +18,7 @@ public protocol RequestType: class {
     var method: Alamofire.Method { get }
     var encoding: Alamofire.ParameterEncoding { get }
     var headers: [String : String]? { get }
-    var parameters: AnyObject? { get set }
+    var parameters: AnyObject? { get }
     var rootKeyPath: String? { get }
     var logging: Bool { get }
     
@@ -50,7 +50,6 @@ public extension RequestType {
     
     public var parameters: AnyObject? {
         get { return nil }
-        set {}
     }
     
     public var rootKeyPath: String? {

@@ -8,7 +8,7 @@
 
 import Alamofire
 
-public protocol RequestType {
+public protocol RequestType: class {
 
     associatedtype Model
     var path: String { get set }
@@ -66,10 +66,10 @@ public extension RequestType {
 public extension RequestType {
     
     public func executeRequest(completionHandler: Result<Model, NSError> -> Void) {
-        let request = alamofireRequest()
-        request.responseJSON(rootKeyPath: rootKeyPath) { (response: Response<Model, NSError>) -> Void in
+        request.responseJSON(rootKeyPath: rootKeyPath) { [weak self] (response: Response<Model, NSError>) -> Void in
+            guard let weakSelf = self else { return }
             completionHandler(response.result)
-            if self.logging { self.logResponse(response) }
+            if weakSelf.logging { weakSelf.logResponse(response) }
         }
     }
     
@@ -88,7 +88,7 @@ public extension RequestType {
         }
     }
     
-    public func alamofireRequest() -> Alamofire.Request {
+    public var request: Alamofire.Request {
         var request: Alamofire.Request!
         
         request = Alamofire.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)

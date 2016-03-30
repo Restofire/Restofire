@@ -1,4 +1,4 @@
-![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](.github/restofire.png)
+![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](https://raw.githubusercontent.com/Restofire/Restofire/master/.github/restofire.png)
 
 ## Restofire
 

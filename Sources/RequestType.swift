@@ -28,7 +28,7 @@ public protocol RequestType: class {
 public extension RequestType {
 
     public var configuration: Configuration {
-        get { return Configuration.defaultConfiguration }
+        get { return Restofire.defaultConfiguration }
     }
     
     public var baseURL: String {

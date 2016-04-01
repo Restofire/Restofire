@@ -21,9 +21,9 @@ class RACServiceSpec: QuickSpec {
     override func spec() {
 
         beforeSuite {
-            Configuration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
-            Configuration.defaultConfiguration.headers = ["Content-Type": "application/json"]
-            Configuration.defaultConfiguration.logging = true
+            Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+            Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+            Restofire.defaultConfiguration.logging = true
         }
 
     }

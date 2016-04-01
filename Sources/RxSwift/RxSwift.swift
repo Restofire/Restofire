@@ -11,11 +11,11 @@ import RxSwift
 
 public extension RequestType {
     
-    public func executeRequest() -> Observable<Model> {
+    public func executeRequest<Model: Any>() -> Observable<Model> {
 
         return Observable.create { [weak self] observer in
             guard let weakSelf = self else { return NopDisposable.instance }
-            weakSelf.executeRequest({ (result: Result<Self.Model, NSError>) in
+            weakSelf.executeRequest({ (result: Result<Model, NSError>) in
                 if let error = result.error {
                     observer.on(.Error(error))
                 } else {

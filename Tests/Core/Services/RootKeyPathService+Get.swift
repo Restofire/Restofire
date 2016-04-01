@@ -9,11 +9,9 @@
 //
 
 import Restofire
-import Alamofire
 
 class RootKeyPathGETService: RequestType {
     
-    typealias Model = String
     var path: String = "56f8ae49240000ff227866e5"
     var rootKeyPath: String? = "firstKey.secondKey"
     

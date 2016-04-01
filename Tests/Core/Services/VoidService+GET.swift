@@ -9,11 +9,9 @@
 //
 
 import Restofire
-import Alamofire
 
 class VoidGETService: RequestType {
 
-    typealias Model = [String: AnyObject]
     var path: String = "56c31578120000743173f22e"
 
 }

@@ -10,21 +10,22 @@
 
 import Quick
 import Nimble
+import Alamofire
 @testable import Restofire_RAC
 
 class RACServiceSpec: QuickSpec {
-    
+
     let timeout: NSTimeInterval = 10
     let pollInterval: NSTimeInterval = 3
-    
+
     override func spec() {
-        
+
         beforeSuite {
             Configuration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
             Configuration.defaultConfiguration.headers = ["Content-Type": "application/json"]
             Configuration.defaultConfiguration.logging = true
         }
-        
+
     }
-    
+
 }

@@ -10,25 +10,26 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class FloatGETServiceSpec: ServiceSpec {
 
-    override func spec() { 
+    override func spec() {
         describe("FloatGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual: Float = 12345.6789
                 var expected: Float!
-                
-                FloatGETService().executeRequest() {
-                    if let value = $0.value {
+
+                FloatGETService().executeRequest() { (result: Result<Float, NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }

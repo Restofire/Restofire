@@ -14,23 +14,24 @@ import Alamofire
 import ReactiveCocoa
 
 class RACPersonGETServiceSpec: RACServiceSpec {
-    
+
     override func spec() {
         describe("RACPersonGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
-                
-                PersonGETService().executeRequest().startWithNext {
+
+                let service: SignalProducer<[String: AnyObject], NSError> = PersonGETService().executeRequest()
+                service.startWithNext {
                     expected = $0
                 }
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }
-    
+
 }

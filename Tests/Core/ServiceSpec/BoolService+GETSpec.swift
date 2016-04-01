@@ -10,25 +10,28 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class BoolGETServiceSpec: ServiceSpec {
 
     override func spec() {
         describe("BoolGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = true
                 var expected: Bool!
-                
-                BoolGETService().executeRequest() {
-                    if let value = $0.value {
+
+                BoolGETService().executeRequest() { (result: Result<Bool, NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
                 
-                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
                 
+
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+
             }
         }
     }

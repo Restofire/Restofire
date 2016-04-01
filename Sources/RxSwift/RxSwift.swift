@@ -13,9 +13,8 @@ public extension RequestType {
     
     public func executeRequest<Model: Any>() -> Observable<Model> {
 
-        return Observable.create { [weak self] observer in
-            guard let weakSelf = self else { return NopDisposable.instance }
-            weakSelf.executeRequest({ (result: Result<Model, NSError>) in
+        return Observable.create { observer in
+            self.executeRequest({ (result: Result<Model, NSError>) in
                 if let error = result.error {
                     observer.on(.Error(error))
                 } else {

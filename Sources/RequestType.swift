@@ -8,7 +8,7 @@
 
 import Alamofire
 
-public protocol RequestType: class {
+public protocol RequestType {
 
     var path: String { get set }
     
@@ -64,10 +64,9 @@ public extension RequestType {
 public extension RequestType {
     
     public func executeRequest<Model: Any>(completionHandler: Result<Model, NSError> -> Void) {
-        request.response(rootKeyPath: rootKeyPath) { [weak self] (response: Response<Model, NSError>) -> Void in
+        request.response(rootKeyPath: rootKeyPath) {(response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
-            guard let weakSelf = self else { return }
-            if weakSelf.logging { debugPrint(response) }
+            if self.logging { debugPrint(response) }
         }
     }
     

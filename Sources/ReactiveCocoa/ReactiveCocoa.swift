@@ -13,9 +13,8 @@ public extension RequestType {
     
     public func executeRequest<Model: Any>() -> SignalProducer<Model, NSError> {
         
-        return SignalProducer { [weak self] sink, disposable in
-            guard let weakSelf = self else { return }
-            weakSelf.executeRequest({ (result: Result<Model, NSError>) in
+        return SignalProducer { sink, disposable in
+            self.executeRequest({ (result: Result<Model, NSError>) in
                 if let error = result.error {
                     sink.sendFailed(error)
                 } else {

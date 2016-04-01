@@ -11,5 +11,6 @@ import Foundation
 public class Restofire {
     
     public static let defaultConfiguration = Configuration()
+    public static let defaultRequestEventuallyQueue = RequestEventuallyQueue()
     
 }

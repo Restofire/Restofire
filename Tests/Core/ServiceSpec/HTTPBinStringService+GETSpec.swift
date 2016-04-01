@@ -10,29 +10,30 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class HTTPBinStringGETServiceSpec: ServiceSpec {
-    
+
     override func spec() {
         describe("StringGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = "Rahul Katariya"
                 var expected: String!
-                
+
                 let service = HTTPBinStringGETService()
                 service.parameters = ["name": "Rahul Katariya"]
-                service.executeRequest() {
-                    if let value = $0.value {
+                service.executeTask() { (result: Result<String, NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }
-    
+
 }

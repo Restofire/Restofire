@@ -10,21 +10,22 @@
 
 import Quick
 import Nimble
+import Alamofire
 @testable import Restofire_Rx
 
 class RXServiceSpec: QuickSpec {
-    
+
     let timeout: NSTimeInterval = 10
     let pollInterval: NSTimeInterval = 3
-    
+
     override func spec() {
-        
+
         beforeSuite {
-            Configuration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
-            Configuration.defaultConfiguration.headers = ["Content-Type": "application/json"]
-            Configuration.defaultConfiguration.logging = true
+            Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+            Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+            Restofire.defaultConfiguration.logging = true
         }
-        
+
     }
-    
+
 }

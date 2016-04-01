@@ -10,27 +10,28 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class RootKeyPathGETServiceSpec: ServiceSpec {
-    
+
     override func spec() {
         describe("RootKeyPathGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = "Restofire is awesome."
                 var expected: String!
-                
-                RootKeyPathGETService().executeRequest() {
-                    if let value = $0.value {
+
+                RootKeyPathGETService().executeTask() { (result: Result<String, NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }
-    
+
 }

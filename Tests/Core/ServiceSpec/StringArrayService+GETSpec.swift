@@ -10,25 +10,26 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class StringArrayGETServiceSpec: ServiceSpec {
 
-    override func spec() { 
+    override func spec() {
         describe("StringArrayGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = ["Reactofire","is","Awesome"]
                 var expected: [String]!
-                
-                StringArrayGETService().executeRequest() {
-                    if let value = $0.value {
+
+                StringArrayGETService().executeTask() { (result: Result<[String], NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }

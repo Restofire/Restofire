@@ -9,11 +9,9 @@
 //
 
 import Restofire
-import Alamofire
 
 class PersonArrayGETService: RequestType {
 
-    typealias Model = [[String: AnyObject]]
     var path: String = "56cc51f32800009900219dc9"
 
 }

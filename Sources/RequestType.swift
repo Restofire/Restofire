@@ -10,7 +10,6 @@ import Alamofire
 
 public protocol RequestType {
 
-    associatedtype Model
     var path: String { get set }
     
     //Optionals
@@ -18,7 +17,7 @@ public protocol RequestType {
     var method: Alamofire.Method { get }
     var encoding: Alamofire.ParameterEncoding { get }
     var headers: [String : String]? { get }
-    var parameters: AnyObject? { get set }
+    var parameters: AnyObject? { get }
     var rootKeyPath: String? { get }
     var logging: Bool { get }
     
@@ -29,7 +28,7 @@ public protocol RequestType {
 public extension RequestType {
 
     public var configuration: Configuration {
-        get { return Configuration.defaultConfiguration }
+        get { return Restofire.defaultConfiguration }
     }
     
     public var baseURL: String {
@@ -50,7 +49,6 @@ public extension RequestType {
     
     public var parameters: AnyObject? {
         get { return nil }
-        set {}
     }
     
     public var rootKeyPath: String? {
@@ -65,30 +63,18 @@ public extension RequestType {
 
 public extension RequestType {
     
-    public func executeRequest(completionHandler: Result<Model, NSError> -> Void) {
-        let request = alamofireRequest()
-        request.responseJSON(rootKeyPath: rootKeyPath) { (response: Response<Model, NSError>) -> Void in
+    public func executeTask<Model: Any>(completionHandler: Result<Model, NSError> -> Void) {
+        request.response(rootKeyPath: rootKeyPath) {(response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
-            if self.logging { self.logResponse(response) }
+            if self.logging { debugPrint(response) }
         }
     }
     
 }
 
 public extension RequestType {
-
-    public func logResponse(response: Response<Model, NSError>) {
-        print(response.request.debugDescription)
-        print(response.timeline)
-        print(response.response)
-        if response.result.isSuccess {
-            print("SUCCESS: -", response.result.value!)
-        } else {
-            print("ERROR: -", response.result.error!)
-        }
-    }
     
-    public func alamofireRequest() -> Alamofire.Request {
+    public var request: Alamofire.Request {
         var request: Alamofire.Request!
         
         request = Alamofire.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)

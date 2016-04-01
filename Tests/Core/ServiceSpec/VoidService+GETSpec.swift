@@ -10,25 +10,26 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class VoidGETServiceSpec: ServiceSpec {
 
-    override func spec() { 
+    override func spec() {
         describe("VoidGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = [:]
                 var expected: [String: AnyObject]!
-                
-                VoidGETService().executeRequest() {
-                    if let value = $0.value {
+
+                VoidGETService().executeTask() { (result: Result<[String: AnyObject], NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }

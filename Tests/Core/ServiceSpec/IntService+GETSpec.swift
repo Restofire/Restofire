@@ -10,25 +10,26 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class IntGETServiceSpec: ServiceSpec {
 
-    override func spec() { 
+    override func spec() {
         describe("IntGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = 123456789
                 var expected: Int!
-                
-                IntGETService().executeRequest() {
-                    if let value = $0.value {
+
+                IntGETService().executeTask() { (result: Result<Int, NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }

@@ -9,11 +9,9 @@
 //
 
 import Restofire
-import Alamofire
 
 class IntGETService: RequestType {
 
-    typealias Model = Int
     var path: String = "56c2beee1200007b2473f19f"
 
 }

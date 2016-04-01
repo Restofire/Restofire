@@ -11,25 +11,26 @@
 import Quick
 import Nimble
 import Alamofire
+import Alamofire
 
 class PersonGETServiceSpec: ServiceSpec {
 
-    override func spec() { 
+    override func spec() {
         describe("PersonGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
-                
-                PersonGETService().executeRequest() {
-                    if let value = $0.value {
+
+                PersonGETService().executeTask() { (result: Result<[String: AnyObject], NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }

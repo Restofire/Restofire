@@ -11,8 +11,6 @@ import enum Alamofire.ParameterEncoding
 
 public class Configuration {
     
-    public static let defaultConfiguration = Configuration()
-    
     public var baseURL: String!
     public var method: Alamofire.Method = .GET
     public var encoding: Alamofire.ParameterEncoding = .JSON

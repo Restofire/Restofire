@@ -10,25 +10,26 @@
 
 import Quick
 import Nimble
+import Alamofire
 
 class StringGETServiceSpec: ServiceSpec {
 
     override func spec() {
         describe("StringGETService") {
-            
+
             it("should succeed") {
-                
+
                 let actual = "Reactofire is Awesome"
                 var expected: String!
-                
-                StringGETService().executeRequest() {
-                    if let value = $0.value {
+
+                StringGETService().executeTask() { (result: Result<String, NSError>) in
+                    if let value = result.value {
                         expected = value
                     }
                 }
-                
+
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-                
+
             }
         }
     }

@@ -40,9 +40,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 0.5'
-# OR pod 'Restofire/RxSwift', '~> 0.5'
-# OR pod 'Restofire/ReactiveCocoa', '~> 0.5'
+pod 'Restofire', '~> 0.6'
+# OR pod 'Restofire/RxSwift', '~> 0.6'
+# OR pod 'Restofire/ReactiveCocoa', '~> 0.6'
 ```
 
 Then, run the following command:
@@ -65,7 +65,7 @@ $ brew install carthage
 To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 0.5
+github "RahulKatariya/Restofire" ~> 0.6
 ```
 ### Swift Package Manager
 
@@ -94,9 +94,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
 
-    Configuration.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
-    Configuration.defaultConfiguration.headers = ["Content-Type": "application/json"]
-    Configuration.defaultConfiguration.logging = true
+    Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+    Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+    Restofire.defaultConfiguration.logging = true
 
     return true
   }
@@ -111,7 +111,7 @@ import Restofire
 
 class PersonGETService: RequestType {
 
-    typealias Model = [String: AnyObject]
+
     var path: String = "56c2cc70120000c12673f1b5"
 
 }
@@ -122,14 +122,15 @@ class PersonGETService: RequestType {
 
 ```swift
 import Restofire
+import Alamofire
 
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
     
     func getPerson() {
-        PersonGETService().executeRequest() {
-            if let value = $0.value {
+        PersonGETService().executeTask() { (result: Result<[String: AnyObject], NSError>) in
+            if let value = result.value {
                 person = value
             }
         }
@@ -149,10 +150,10 @@ class ViewController: UIViewController {
     var person: [String: AnyObject]!
     
     func getPerson() {
-        PersonGETService().executeRequest()
-            .subscribe(onNext: {
-                person = $0
-            }).addDisposableTo(disposeBag)
+        let service: Observable<[String: AnyObject]> = PersonGETService().executeTask()
+        service.subscribe(onNext: {
+            person = $0
+        }).addDisposableTo(disposeBag)
     }
 
 }
@@ -168,10 +169,10 @@ class ViewController: UIViewController {
     var person: [String: AnyObject]!
     
     func getPerson() {
-        PersonGETService().executeRequest()
-            .startWithNext {
-                person = $0
-            }
+        let service: SignalProducer<[String: AnyObject], NSError> = PersonGETService().executeTask()
+        service.startWithNext {
+            person = $0
+        }
     }
 
 }

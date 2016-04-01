@@ -11,26 +11,21 @@ import ReactiveCocoa
 
 public extension RequestType {
     
-    public func executeRequest() -> SignalProducer<Model, NSError> {
-        
-        let request = alamofireRequest()
-        let keyPath = rootKeyPath
+    public func executeTask<Model: Any>() -> SignalProducer<Model, NSError> {
         
         return SignalProducer { sink, disposable in
-            request.responseJSON(rootKeyPath: keyPath) { (response: Response<Model, NSError>) -> Void in
-                if let error = response.result.error {
+            self.executeTask({ (result: Result<Model, NSError>) in
+                if let error = result.error {
                     sink.sendFailed(error)
                 } else {
-                    sink.sendNext(response.result.value!)
+                    sink.sendNext(result.value!)
                     sink.sendCompleted()
                 }
-                if self.logging { self.logResponse(response) }
-            }
+            })
             
             disposable.addDisposable {
-                request.cancel()
+                
             }
-            
         }
     }
     

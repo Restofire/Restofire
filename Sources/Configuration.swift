@@ -9,7 +9,7 @@
 import enum Alamofire.Method
 import enum Alamofire.ParameterEncoding
 
-public class Configuration {
+public struct Configuration {
     
     public var baseURL: String!
     public var method: Alamofire.Method = .GET

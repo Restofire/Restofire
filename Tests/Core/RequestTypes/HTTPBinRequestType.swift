@@ -14,7 +14,7 @@ extension HTTPBinRequestType {
 
     var configuration: Configuration {
         
-        let config = Configuration()
+        var config = Configuration()
         config.baseURL = "https://httpbin.org/"
         config.logging = true
         return config

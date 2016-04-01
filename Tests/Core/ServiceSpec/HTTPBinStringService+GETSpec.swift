@@ -24,7 +24,7 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
 
                 let service = HTTPBinStringGETService()
                 service.parameters = ["name": "Rahul Katariya"]
-                service.executeRequest() { (result: Result<String, NSError>) in
+                service.executeTask() { (result: Result<String, NSError>) in
                     if let value = result.value {
                         expected = value
                     }

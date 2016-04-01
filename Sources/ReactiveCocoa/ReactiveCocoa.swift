@@ -11,10 +11,10 @@ import ReactiveCocoa
 
 public extension RequestType {
     
-    public func executeRequest<Model: Any>() -> SignalProducer<Model, NSError> {
+    public func executeTask<Model: Any>() -> SignalProducer<Model, NSError> {
         
         return SignalProducer { sink, disposable in
-            self.executeRequest({ (result: Result<Model, NSError>) in
+            self.executeTask({ (result: Result<Model, NSError>) in
                 if let error = result.error {
                     sink.sendFailed(error)
                 } else {

@@ -22,7 +22,7 @@ class StringGETServiceSpec: ServiceSpec {
                 let actual = "Reactofire is Awesome"
                 var expected: String!
 
-                StringGETService().executeRequest() { (result: Result<String, NSError>) in
+                StringGETService().executeTask() { (result: Result<String, NSError>) in
                     if let value = result.value {
                         expected = value
                     }

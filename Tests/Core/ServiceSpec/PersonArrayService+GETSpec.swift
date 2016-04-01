@@ -25,7 +25,7 @@ class PersonArrayGETServiceSpec: ServiceSpec {
                 ]
                 var expected: [[String: AnyObject]]!
 
-                PersonArrayGETService().executeRequest() { (result: Result<[[String: AnyObject]], NSError>) in
+                PersonArrayGETService().executeTask() { (result: Result<[[String: AnyObject]], NSError>) in
                     if let value = result.value {
                         expected = value
                     }

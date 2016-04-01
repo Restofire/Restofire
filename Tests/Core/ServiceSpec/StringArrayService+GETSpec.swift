@@ -22,7 +22,7 @@ class StringArrayGETServiceSpec: ServiceSpec {
                 let actual = ["Reactofire","is","Awesome"]
                 var expected: [String]!
 
-                StringArrayGETService().executeRequest() { (result: Result<[String], NSError>) in
+                StringArrayGETService().executeTask() { (result: Result<[String], NSError>) in
                     if let value = result.value {
                         expected = value
                     }

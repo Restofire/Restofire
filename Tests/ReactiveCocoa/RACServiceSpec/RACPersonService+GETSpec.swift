@@ -23,7 +23,7 @@ class RACPersonGETServiceSpec: RACServiceSpec {
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
 
-                let service: SignalProducer<[String: AnyObject], NSError> = PersonGETService().executeRequest()
+                let service: SignalProducer<[String: AnyObject], NSError> = PersonGETService().executeTask()
                 service.startWithNext {
                     expected = $0
                 }

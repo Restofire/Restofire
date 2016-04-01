@@ -22,7 +22,7 @@ class BoolGETServiceSpec: ServiceSpec {
                 let actual = true
                 var expected: Bool!
 
-                BoolGETService().executeRequest() { (result: Result<Bool, NSError>) in
+                BoolGETService().executeTask() { (result: Result<Bool, NSError>) in
                     if let value = result.value {
                         expected = value
                     }

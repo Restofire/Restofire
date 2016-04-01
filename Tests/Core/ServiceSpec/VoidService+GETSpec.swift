@@ -22,7 +22,7 @@ class VoidGETServiceSpec: ServiceSpec {
                 let actual = [:]
                 var expected: [String: AnyObject]!
 
-                VoidGETService().executeRequest() { (result: Result<[String: AnyObject], NSError>) in
+                VoidGETService().executeTask() { (result: Result<[String: AnyObject], NSError>) in
                     if let value = result.value {
                         expected = value
                     }

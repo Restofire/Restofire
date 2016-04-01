@@ -25,7 +25,7 @@ class RXPersonGETServiceSpec: RXServiceSpec {
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
 
-                let service: Observable<[String: AnyObject]> = PersonGETService().executeRequest()
+                let service: Observable<[String: AnyObject]> = PersonGETService().executeTask()
                 service.subscribe(onNext: {
                         expected = $0
                     }).addDisposableTo(disposeBag)

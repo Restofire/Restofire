@@ -11,10 +11,10 @@ import RxSwift
 
 public extension RequestType {
     
-    public func executeRequest<Model: Any>() -> Observable<Model> {
+    public func executeTask<Model: Any>() -> Observable<Model> {
 
         return Observable.create { observer in
-            self.executeRequest({ (result: Result<Model, NSError>) in
+            self.executeTask({ (result: Result<Model, NSError>) in
                 if let error = result.error {
                     observer.on(.Error(error))
                 } else {

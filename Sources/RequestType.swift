@@ -63,7 +63,7 @@ public extension RequestType {
 
 public extension RequestType {
     
-    public func executeRequest<Model: Any>(completionHandler: Result<Model, NSError> -> Void) {
+    public func executeTask<Model: Any>(completionHandler: Result<Model, NSError> -> Void) {
         request.response(rootKeyPath: rootKeyPath) {(response: Response<Model, NSError>) -> Void in
             completionHandler(response.result)
             if self.logging { debugPrint(response) }

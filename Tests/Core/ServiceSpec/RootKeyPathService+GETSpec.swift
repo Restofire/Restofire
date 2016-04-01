@@ -22,8 +22,8 @@ class RootKeyPathGETServiceSpec: ServiceSpec {
                 let actual = "Restofire is awesome."
                 var expected: String!
 
-                RootKeyPathGETService().executeTask() { (result: Result<String, NSError>) in
-                    if let value = result.value {
+                RootKeyPathGETService().executeTask() { (response: Response<String, NSError>) in
+                    if let value = response.result.value {
                         expected = value
                     }
                 }

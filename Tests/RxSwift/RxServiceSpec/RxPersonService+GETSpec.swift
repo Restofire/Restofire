@@ -25,9 +25,9 @@ class RXPersonGETServiceSpec: RXServiceSpec {
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
 
-                let service: Observable<[String: AnyObject]> = PersonGETService().executeTask()
+                let service: Observable<Response<[String: AnyObject], NSError>> = PersonGETService().executeTask()
                 service.subscribe(onNext: {
-                        expected = $0
+                        expected = $0.result.value
                     }).addDisposableTo(disposeBag)
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)

@@ -22,8 +22,8 @@ class IntGETServiceSpec: ServiceSpec {
                 let actual = 123456789
                 var expected: Int!
 
-                IntGETService().executeTask() { (result: Result<Int, NSError>) in
-                    if let value = result.value {
+                IntGETService().executeTask() { (response: Response<Int, NSError>) in
+                    if let value = response.result.value {
                         expected = value
                     }
                 }

@@ -129,8 +129,8 @@ class ViewController: UIViewController {
     var person: [String: AnyObject]!
     
     func getPerson() {
-        PersonGETService().executeTask() { (result: Result<[String: AnyObject], NSError>) in
-            if let value = result.value {
+        PersonGETService().executeTask() { (response: Response<[String: AnyObject], NSError>) in
+            if let value = response.result.value {
                 person = value
             }
         }

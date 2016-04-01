@@ -22,8 +22,8 @@ class FloatGETServiceSpec: ServiceSpec {
                 let actual: Float = 12345.6789
                 var expected: Float!
 
-                FloatGETService().executeTask() { (result: Result<Float, NSError>) in
-                    if let value = result.value {
+                FloatGETService().executeTask() { (response: Response<Float, NSError>) in
+                    if let value = response.result.value {
                         expected = value
                     }
                 }

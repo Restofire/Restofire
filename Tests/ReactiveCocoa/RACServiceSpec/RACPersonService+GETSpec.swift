@@ -23,9 +23,9 @@ class RACPersonGETServiceSpec: RACServiceSpec {
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
 
-                let service: SignalProducer<[String: AnyObject], NSError> = PersonGETService().executeTask()
+                let service: SignalProducer<Response<[String: AnyObject], NSError>, NSError> = PersonGETService().executeTask()
                 service.startWithNext {
-                    expected = $0
+                    expected = $0.result.value
                 }
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)

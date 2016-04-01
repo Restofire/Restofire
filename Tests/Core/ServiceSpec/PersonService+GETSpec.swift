@@ -23,8 +23,8 @@ class PersonGETServiceSpec: ServiceSpec {
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
 
-                PersonGETService().executeTask() { (result: Result<[String: AnyObject], NSError>) in
-                    if let value = result.value {
+                PersonGETService().executeTask() { (response: Response<[String: AnyObject], NSError>) in
+                    if let value = response.result.value {
                         expected = value
                     }
                 }

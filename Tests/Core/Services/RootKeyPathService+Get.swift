@@ -10,7 +10,7 @@
 
 import Restofire
 
-class RootKeyPathGETService: RequestType {
+class RootKeyPathGETService: Requestable {
     
     var path: String = "56f8ae49240000ff227866e5"
     var rootKeyPath: String? = "firstKey.secondKey"

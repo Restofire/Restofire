@@ -9,7 +9,7 @@
 import Alamofire
 import RxSwift
 
-public extension RequestType {
+public extension Requestable {
     
     public func executeTask<Model: Any>() -> Observable<Response<Model, NSError>> {
 
@@ -23,9 +23,7 @@ public extension RequestType {
                 }
             })
             
-            return AnonymousDisposable {
-                
-            }
+            return AnonymousDisposable { }
         }
         
     }

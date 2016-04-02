@@ -10,7 +10,7 @@
 
 import Restofire
 
-class VoidGETService: RequestType {
+class VoidGETService: Requestable {
 
     var path: String = "56c31578120000743173f22e"
 

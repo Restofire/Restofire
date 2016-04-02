@@ -1,5 +1,5 @@
 //
-//  RequestType.swift
+//  Requestable.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 24/03/16.
@@ -9,11 +9,11 @@
 import Alamofire
 import ReactiveCocoa
 
-public extension RequestType {
+public extension Requestable {
     
     public func executeTask<Model: Any>() -> SignalProducer<Response<Model, NSError>, NSError> {
         
-        return SignalProducer { sink, disposable in
+        return SignalProducer { sink, _ in
             self.executeTask({ (response: Response<Model, NSError>) in
                 if let error = response.result.error {
                     sink.sendFailed(error)
@@ -22,10 +22,6 @@ public extension RequestType {
                     sink.sendCompleted()
                 }
             })
-            
-            disposable.addDisposable {
-                
-            }
         }
     }
     

@@ -10,7 +10,7 @@
 
 import Restofire
 
-class FloatGETService: RequestType {
+class FloatGETService: Requestable {
 
     var path: String = "56c2bfd61200006c2473f1a0"
 

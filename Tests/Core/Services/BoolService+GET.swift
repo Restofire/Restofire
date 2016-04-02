@@ -10,7 +10,7 @@
 
 import Restofire
 
-class BoolGETService: RequestType {
+class BoolGETService: Requestable {
 
     var path: String = "56c2be50120000842473f19e"
 

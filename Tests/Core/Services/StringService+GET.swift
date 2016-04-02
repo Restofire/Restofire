@@ -10,7 +10,7 @@
 
 import Restofire
 
-class StringGETService: RequestType {
+class StringGETService: Requestable {
 
     var path: String = "56c2bcde120000022473f19b"
 

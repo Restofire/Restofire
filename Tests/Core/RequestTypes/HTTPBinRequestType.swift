@@ -1,5 +1,5 @@
 //
-//  HTTPBinRequestType.swift
+//  HTTPBinRequestable.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/03/16.
@@ -8,9 +8,9 @@
 
 @testable import Restofire
 
-protocol HTTPBinRequestType: RequestType { }
+protocol HTTPBinRequestable: Requestable { }
 
-extension HTTPBinRequestType {
+extension HTTPBinRequestable {
 
     var configuration: Configuration {
         

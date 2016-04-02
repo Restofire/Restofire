@@ -8,7 +8,7 @@
 
 import Alamofire
 
-extension Request {
+extension Alamofire.Request {
     
     /**
      Adds a handler to be called once the request has finished.
@@ -25,7 +25,7 @@ extension Request {
         -> Self
     {
         return response(
-            responseSerializer: Request.JSONResponseSerializer(rootKeyPath: rootKeyPath, options: options),
+            responseSerializer: Alamofire.Request.JSONResponseSerializer(rootKeyPath: rootKeyPath, options: options),
             completionHandler: completionHandler
         )
     }

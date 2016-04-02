@@ -10,23 +10,36 @@ import Alamofire
 
 public class RequestEventuallyQueue {
     
-    var q: RequestType!
-    var queue = [RequestType]()
+    var requestEventuallyQueue = [Requestable]()
     let networkReachabilityManager = NetworkReachabilityManager()
     
     init() {
         networkReachabilityManager?.listener = { status in
-            print("Network Status Changed: \(status)")
-            
+            switch status {
+            case .Reachable(_):
+                self.startExecutingQueue()
+            default:
+                break
+            }
         }
-        
         networkReachabilityManager?.startListening()
     }
     
+    func startExecutingQueue() {
+        for request in requestEventuallyQueue {
+            if let manager = networkReachabilityManager where manager.isReachable {
+                self.executeRequest(request)
+            } else { break }
+        }
+    }
     
-    func queueStart() {
-        q.executeTask { (response: Response<Any, NSError>) in
-            
+    func executeRequest(request: Requestable) {
+        request.executeTask { (response: Response<Any, NSError>) in
+            if let _ = response.result.error {
+                
+            } else {
+                
+            }
         }
     }
 }

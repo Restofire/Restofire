@@ -9,7 +9,7 @@
 import Restofire
 import Alamofire
 
-class HTTPBinStringGETService: HTTPBinRequestType {
+class HTTPBinStringGETService: HTTPBinRequestable {
     
     var path: String = "get"
     var rootKeyPath: String? = "args.name"

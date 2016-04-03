@@ -22,7 +22,17 @@ public class RequestEventuallyQueue {
                 break
             }
         }
-        networkReachabilityManager?.startListening()
+        startListeningForNetworkChanges()
+    }
+    
+    func startListeningForNetworkChanges() {
+        if let manger = networkReachabilityManager where !manger.startListening() {
+            startListeningForNetworkChanges()
+        }
+    }
+    
+    public func enqueuRequestable(requestable: Requestable) {
+        requestEventuallyQueue.append(requestable)
     }
     
     func startExecutingQueue() {
@@ -42,4 +52,9 @@ public class RequestEventuallyQueue {
             }
         }
     }
+    
+    deinit {
+        networkReachabilityManager?.stopListening()
+    }
+    
 }

@@ -12,5 +12,6 @@ import Restofire
 
 class StringArrayGETService: Requestable {
 
+    typealias Model = [String]
     var path: String = "56c2c74d120000082673f1ae"
 }

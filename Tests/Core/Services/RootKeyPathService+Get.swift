@@ -12,6 +12,7 @@ import Restofire
 
 class RootKeyPathGETService: Requestable {
     
+    typealias Model = String
     var path: String = "56f8ae49240000ff227866e5"
     var rootKeyPath: String? = "firstKey.secondKey"
     

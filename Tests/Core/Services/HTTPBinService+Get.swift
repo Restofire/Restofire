@@ -11,6 +11,7 @@ import Alamofire
 
 class HTTPBinStringGETService: HTTPBinRequestable {
     
+    typealias Model = String
     var path: String = "get"
     var rootKeyPath: String? = "args.name"
     var encoding: ParameterEncoding = .URLEncodedInURL

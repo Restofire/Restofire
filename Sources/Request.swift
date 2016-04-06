@@ -8,14 +8,30 @@
 
 import Alamofire
 
-class Request {
+class Request<T: Requestable> {
     
-    let requestable: Requestable!
+    let requestable: T!
     var request: Alamofire.Request!
+    var requestCompletionHandler: (Response<T.Model, NSError> -> Void)!
     
-    init(requestable: Requestable) {
+    init(requestable: T) {
         self.requestable = requestable
-        request = RequestConstructor.requestFromRequestable(requestable)
+        request = requestFromRequestable(requestable)
+    }
+    
+    func requestFromRequestable(requestable: T) -> Alamofire.Request {
+        
+        var request: Alamofire.Request!
+        
+        request = Alamofire.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
+        
+        if let parameters = requestable.parameters as? [AnyObject] where requestable.method != .GET {
+            let encodedURLRequest = RequestConstructor.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
+            request = Alamofire.request(encodedURLRequest)
+        }
+        
+        return request
+        
     }
     
     func executeTask<Model: Any>(completionHandler: Response<Model, NSError> -> Void) {

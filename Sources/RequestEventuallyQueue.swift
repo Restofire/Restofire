@@ -10,7 +10,7 @@ import Alamofire
 
 public class RequestEventuallyQueue {
     
-    var requestEventuallyQueue = [Requestable]()
+    var requestEventuallyQueue = [Request]()
     let networkReachabilityManager = NetworkReachabilityManager()
     
     init() {
@@ -31,8 +31,8 @@ public class RequestEventuallyQueue {
         }
     }
     
-    public func enqueuRequestable(requestable: Requestable) {
-        requestEventuallyQueue.append(requestable)
+    func enqueuRequest(request: Request) {
+        requestEventuallyQueue.append(request)
     }
     
     func startExecutingQueue() {
@@ -43,7 +43,7 @@ public class RequestEventuallyQueue {
         }
     }
     
-    func executeRequest(request: Requestable) {
+    func executeRequest(request: Request) {
         request.executeTask { (response: Response<Any, NSError>) in
             if let _ = response.result.error {
                 

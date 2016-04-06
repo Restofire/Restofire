@@ -1,5 +1,5 @@
 github "Alamofire/Alamofire" "3.3.0"
-github "Quick/Nimble" "v3.2.0"
+github "Quick/Nimble" "v4.0.0"
 github "Quick/Quick" "v0.9.1"
 github "antitypical/Result" "1.0.2"
 github "ReactiveX/RxSwift" "2.3.1"

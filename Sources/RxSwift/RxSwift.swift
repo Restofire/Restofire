@@ -11,17 +11,17 @@ import RxSwift
 
 public extension Requestable {
     
-    public func executeTask<Model: Any>() -> Observable<Response<Model, NSError>> {
+    public func executeTask() -> Observable<Response<Model, NSError>> {
 
         return Observable.create { observer in
-            self.executeTask({ (response: Response<Model, NSError>) in
+            self.executeTask() { (response: Response<Model, NSError>) in
                 if let error = response.result.error {
                     observer.on(.Error(error))
                 } else {
                     observer.on(.Next(response))
                     observer.on(.Completed)
                 }
-            })
+            }
             
             return AnonymousDisposable { }
         }

@@ -10,21 +10,6 @@ import Alamofire
 
 class RequestConstructor {
     
-    static func requestFromRequestable(requestable: Requestable) -> Alamofire.Request {
-        
-        var request: Alamofire.Request!
-        
-        request = Alamofire.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
-        
-        if let parameters = requestable.parameters as? [AnyObject] where requestable.method != .GET {
-            let encodedURLRequest = encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
-            request = Alamofire.request(encodedURLRequest)
-        }
-        
-        return request
-        
-    }
-    
     static func encodeURLRequest(URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (NSMutableURLRequest, NSError?) {
         let mutableURLRequest = URLRequest.URLRequest
         

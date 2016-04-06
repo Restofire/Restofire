@@ -12,6 +12,7 @@ import Restofire
 
 class BoolGETService: Requestable {
 
+    typealias Model = Bool
     var path: String = "56c2be50120000842473f19e"
 
 }

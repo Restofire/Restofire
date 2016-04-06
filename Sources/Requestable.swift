@@ -10,6 +10,7 @@ import Alamofire
 
 public protocol Requestable: class {
 
+    associatedtype Model
     var path: String { get set }
     
     //Optionals
@@ -63,7 +64,7 @@ public extension Requestable {
 
 public extension Requestable {
     
-    public func executeTask<Model: Any>(completionHandler: Response<Model, NSError> -> Void) {
+    public func executeTask(completionHandler: Response<Model, NSError> -> Void) {
         let request = Request(requestable: self)
         request.executeTask { (response: Response<Model, NSError>) in
             completionHandler(response)

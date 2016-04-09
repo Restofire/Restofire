@@ -34,12 +34,25 @@ class Request<T: Requestable> {
         
     }
     
-    func executeTask<Model>(completionHandler: Response<Model, NSError> -> Void) {
-        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<Model, NSError>) -> Void in
+    func executeTask(completionHandler: Response<T.Model, NSError> -> Void) {
+        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<T.Model, NSError>) -> Void in
             completionHandler(response)
             if self.requestable.logging { debugPrint(response) }
         }
     }
+    
+    func executeTaskEventually(completionHandler: Response<T.Model, NSError> -> Void) {
+        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<T.Model, NSError>) -> Void in
+            if response.result.error != nil {
+                completionHandler(response)
+            } else {
+                self.requestCompletionHandler = completionHandler
+                
+            }
+            if self.requestable.logging { debugPrint(response) }
+        }
+    }
+    
     
     deinit {
         request.cancel()

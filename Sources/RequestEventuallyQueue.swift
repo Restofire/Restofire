@@ -44,8 +44,8 @@ public class RequestEventuallyQueue<Element> {
         }
     }
     
-    func executeRequest(request: AnyRequestable<Element>) {
-        request.executeTask { (response: Response<Element, NSError>) in
+    func executeRequest<T: Requestable>(request: Request) {
+        request.executeTask { (response: Response<Request.requestable.Model, NSError>) in
             if let _ = response.result.error {
                 
             } else {

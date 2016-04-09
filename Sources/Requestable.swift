@@ -71,4 +71,11 @@ public extension Requestable {
         }
     }
     
+    public func executeTaskEvenually(completionHandler: Response<Model, NSError> -> Void) {
+        let request = Request(requestable: self)
+        request.executeTaskEventually { (response: Response<Model, NSError>) in
+            completionHandler(response)
+        }
+    }
+    
 }

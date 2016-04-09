@@ -28,8 +28,6 @@ class BoolGETServiceSpec: ServiceSpec {
                     }
                 }
                 
-                
-
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
             }

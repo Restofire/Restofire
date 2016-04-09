@@ -38,34 +38,10 @@
 		354308C21CA92E9000C75960 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
 		354308C31CA92E9000C75960 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; };
 		354308C41CA92E9000C75960 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; };
-		355641321CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641331CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641341CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641351CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641361CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641371CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641381CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		355641391CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3556413A1CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3556413B1CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3556413C1CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3556413D1CAFB73F009738B8 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
 		3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EB1C732E4C00ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EC1C732E4C00ED7BF2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
 		3579C9ED1C732E4C00ED7BF2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
-		357E56A31CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56A41CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56A51CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56A61CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56A71CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56A81CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56A91CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56AA1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56AB1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56AC1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56AD1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
-		357E56AE1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */; };
 		357E56B01CB00343009FF295 /* RestofireError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56AF1CB00343009FF295 /* RestofireError.swift */; };
 		357E56B11CB00343009FF295 /* RestofireError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56AF1CB00343009FF295 /* RestofireError.swift */; };
 		357E56B21CB00343009FF295 /* RestofireError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E56AF1CB00343009FF295 /* RestofireError.swift */; };
@@ -124,6 +100,7 @@
 		3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		3596CC001CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
+		35A871761CB7BF9700669ED4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
 		35A9365B1CA9327700AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		35A936601CA93B7000AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		35A936611CA93B7000AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
@@ -287,7 +264,6 @@
 		354308AE1CA92DB600C75960 /* Restofire_RACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Restofire_RACTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		355641311CAFB73F009738B8 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEventuallyQueue.swift; sourceTree = "<group>"; };
-		357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestConstructor.swift; sourceTree = "<group>"; };
 		357E56AF1CB00343009FF295 /* RestofireError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireError.swift; sourceTree = "<group>"; };
 		35950DA11CA94B6B003127F9 /* BoolService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GET.swift"; sourceTree = "<group>"; };
 		35950DA21CA94B6B003127F9 /* FloatService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatService+GET.swift"; sourceTree = "<group>"; };
@@ -319,6 +295,7 @@
 		35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinStringService+GETSpec.swift"; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		35A8715D1CB7AA4100669ED4 /* AnyRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRequestable.swift; sourceTree = "<group>"; };
 		35A9365D1CA9334800AC584F /* RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift.swift; sourceTree = "<group>"; };
 		35A9366C1CA93B7000AC584F /* Restofire_Rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_Rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A9366F1CA93B9700AC584F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -479,11 +456,11 @@
 				35C385141CAE43ED003CE0BE /* Restofire.swift */,
 				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
+				35A8715D1CB7AA4100669ED4 /* AnyRequestable.swift */,
 				351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */,
 				3500626B1C7C40510078B589 /* Dictionary.swift */,
 				357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */,
 				355641311CAFB73F009738B8 /* Request.swift */,
-				357E56A21CAFBFA9009FF295 /* RequestConstructor.swift */,
 				357E56AF1CB00343009FF295 /* RestofireError.swift */,
 				354308371CA90F6700C75960 /* ReactiveCocoa */,
 				35A9365C1CA9330000AC584F /* RxSwift */,
@@ -1226,10 +1203,8 @@
 			files = (
 				3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */,
 				351A7A7C1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
-				357E56A41CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				3500627F1C7C406C0078B589 /* Dictionary.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
-				355641331CAFB73F009738B8 /* Request.swift in Sources */,
 				357E56B11CB00343009FF295 /* RestofireError.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -1241,10 +1216,8 @@
 			files = (
 				3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */,
 				351A7A7D1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
-				357E56A51CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				350062801C7C406C0078B589 /* Dictionary.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
-				355641341CAFB73F009738B8 /* Request.swift in Sources */,
 				357E56B21CB00343009FF295 /* RestofireError.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -1256,10 +1229,8 @@
 			files = (
 				3596CBFB1CA3B4D70089A03E /* Configuration.swift in Sources */,
 				351A7A7E1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
-				357E56A61CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				350062811C7C406D0078B589 /* Dictionary.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
-				355641351CAFB73F009738B8 /* Request.swift in Sources */,
 				357E56B31CB00343009FF295 /* RestofireError.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -1269,10 +1240,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56A71CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				3543083B1CA90FCA00C75960 /* Configuration.swift in Sources */,
 				3543083C1CA90FCA00C75960 /* ResponseSerializer.swift in Sources */,
-				355641361CAFB73F009738B8 /* Request.swift in Sources */,
 				354308491CA90FDA00C75960 /* ReactiveCocoa.swift in Sources */,
 				3543083D1CA90FCA00C75960 /* Dictionary.swift in Sources */,
 				357E56B41CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1295,10 +1264,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56A81CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936601CA93B7000AC584F /* Configuration.swift in Sources */,
 				35A936611CA93B7000AC584F /* ResponseSerializer.swift in Sources */,
-				355641371CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936621CA93B7000AC584F /* Dictionary.swift in Sources */,
 				35A9366E1CA93B7E00AC584F /* RxSwift.swift in Sources */,
 				357E56B51CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1321,10 +1288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56A91CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936951CA93E9B00AC584F /* Configuration.swift in Sources */,
 				35A936961CA93E9B00AC584F /* ResponseSerializer.swift in Sources */,
-				355641381CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936F31CA9412000AC584F /* ReactiveCocoa.swift in Sources */,
 				35A936971CA93E9B00AC584F /* Dictionary.swift in Sources */,
 				357E56B61CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1337,10 +1302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56AA1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936A51CA93E9D00AC584F /* Configuration.swift in Sources */,
 				35A936A61CA93E9D00AC584F /* ResponseSerializer.swift in Sources */,
-				355641391CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936A71CA93E9D00AC584F /* Dictionary.swift in Sources */,
 				35A936F61CA9413200AC584F /* RxSwift.swift in Sources */,
 				357E56B71CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1353,10 +1316,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56AB1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936B51CA93EA000AC584F /* Configuration.swift in Sources */,
 				35A936B61CA93EA000AC584F /* ResponseSerializer.swift in Sources */,
-				3556413A1CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936F41CA9412100AC584F /* ReactiveCocoa.swift in Sources */,
 				35A936B71CA93EA000AC584F /* Dictionary.swift in Sources */,
 				357E56B81CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1369,10 +1330,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56AC1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936C51CA93EA200AC584F /* Configuration.swift in Sources */,
 				35A936C61CA93EA200AC584F /* ResponseSerializer.swift in Sources */,
-				3556413B1CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936C71CA93EA200AC584F /* Dictionary.swift in Sources */,
 				35A936F71CA9413300AC584F /* RxSwift.swift in Sources */,
 				357E56B91CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1385,10 +1344,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56AD1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936D51CA93EA500AC584F /* Configuration.swift in Sources */,
 				35A936D61CA93EA500AC584F /* ResponseSerializer.swift in Sources */,
-				3556413C1CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936F51CA9412200AC584F /* ReactiveCocoa.swift in Sources */,
 				35A936D71CA93EA500AC584F /* Dictionary.swift in Sources */,
 				357E56BA1CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1401,10 +1358,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				357E56AE1CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				35A936E51CA93EA700AC584F /* Configuration.swift in Sources */,
 				35A936E61CA93EA700AC584F /* ResponseSerializer.swift in Sources */,
-				3556413D1CAFB73F009738B8 /* Request.swift in Sources */,
 				35A936E71CA93EA700AC584F /* Dictionary.swift in Sources */,
 				35A936F81CA9413500AC584F /* RxSwift.swift in Sources */,
 				357E56BB1CB00343009FF295 /* RestofireError.swift in Sources */,
@@ -1418,11 +1373,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */,
+				35A871761CB7BF9700669ED4 /* Request.swift in Sources */,
 				351A7A7B1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
-				357E56A31CAFBFA9009FF295 /* RequestConstructor.swift in Sources */,
 				350062721C7C40510078B589 /* Dictionary.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
-				355641321CAFB73F009738B8 /* Request.swift in Sources */,
 				357E56B01CB00343009FF295 /* RestofireError.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);

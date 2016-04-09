@@ -26,7 +26,7 @@ class Request<T: Requestable> {
         request = Alamofire.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
         
         if let parameters = requestable.parameters as? [AnyObject] where requestable.method != .GET {
-            let encodedURLRequest = RequestConstructor.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
+            let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
             request = Alamofire.request(encodedURLRequest)
         }
         
@@ -34,7 +34,7 @@ class Request<T: Requestable> {
         
     }
     
-    func executeTask<Model: Any>(completionHandler: Response<Model, NSError> -> Void) {
+    func executeTask<Model>(completionHandler: Response<Model, NSError> -> Void) {
         request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<Model, NSError>) -> Void in
             completionHandler(response)
             if self.requestable.logging { debugPrint(response) }
@@ -43,6 +43,49 @@ class Request<T: Requestable> {
     
     deinit {
         request.cancel()
+    }
+    
+}
+
+extension Request {
+    
+    static func encodeURLRequest(URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (NSMutableURLRequest, NSError?) {
+        let mutableURLRequest = URLRequest.URLRequest
+        
+        guard let parameters = parameters where !parameters.isEmpty else {
+            return (mutableURLRequest, nil)
+        }
+        
+        var encodingError: NSError? = nil
+        
+        switch encoding {
+        case .JSON:
+            do {
+                let options = NSJSONWritingOptions()
+                let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: options)
+                
+                mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                mutableURLRequest.HTTPBody = data
+            } catch {
+                encodingError = error as NSError
+            }
+        case .PropertyList(let format, let options):
+            do {
+                let data = try NSPropertyListSerialization.dataWithPropertyList(
+                    parameters,
+                    format: format,
+                    options: options
+                )
+                mutableURLRequest.setValue("application/x-plist", forHTTPHeaderField: "Content-Type")
+                mutableURLRequest.HTTPBody = data
+            } catch {
+                encodingError = error as NSError
+            }
+        default:
+            break
+        }
+        
+        return (mutableURLRequest, encodingError)
     }
     
 }

@@ -11,11 +11,15 @@ import Alamofire
 class Request<T: Requestable> {
     
     let requestable: T!
+    let manager: Alamofire.Manager!
     var request: Alamofire.Request!
     var requestCompletionHandler: (Response<T.Model, NSError> -> Void)!
     
     init(requestable: T) {
         self.requestable = requestable
+        requestable.sessionConfiguration.timeoutIntervalForRequest = requestable.timeoutIntervalForRequest
+        requestable.sessionConfiguration.timeoutIntervalForResource = requestable.timeoutIntervalForResource
+        self.manager = Alamofire.Manager(configuration: requestable.sessionConfiguration)
         request = requestFromRequestable(requestable)
     }
     
@@ -23,7 +27,7 @@ class Request<T: Requestable> {
         
         var request: Alamofire.Request!
         
-        request = Alamofire.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
+        request = manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
         
         if let parameters = requestable.parameters as? [AnyObject] where requestable.method != .GET {
             let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
@@ -41,18 +45,17 @@ class Request<T: Requestable> {
         }
     }
     
-    func executeTaskEventually(completionHandler: Response<T.Model, NSError> -> Void) {
-        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<T.Model, NSError>) -> Void in
-            if response.result.error != nil {
-                completionHandler(response)
-            } else {
-                self.requestCompletionHandler = completionHandler
-                
-            }
-            if self.requestable.logging { debugPrint(response) }
-        }
-    }
-    
+//    func executeTaskEventually(completionHandler: Response<T.Model, NSError> -> Void) {
+//        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<T.Model, NSError>) -> Void in
+//            if response.result.error != nil {
+//                completionHandler(response)
+//            } else {
+//                self.requestCompletionHandler = completionHandler
+//                
+//            }
+//            if self.requestable.logging { debugPrint(response) }
+//        }
+//    }
     
     deinit {
         request.cancel()

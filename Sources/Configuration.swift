@@ -17,5 +17,8 @@ public struct Configuration {
     public var headers: [String : String]?
     public var rootKeyPath: String? = nil
     public var logging: Bool = false
+    public var timeoutIntervalForRequest: NSTimeInterval = 60
+    public var timeoutIntervalForResource: NSTimeInterval = 60
+    public var sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
     
 }

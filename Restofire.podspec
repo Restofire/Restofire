@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
  s.source = { :git => "https://github.com/Restofire/Restofire.git", :tag => "v"+s.version.to_s }
  s.platforms     = { :ios => "8.0", :osx => "10.9", :tvos => "9.0", :watchos => "2.0" }
  s.requires_arc = true
- 
+
  s.default_subspec = "Core"
  s.subspec "Core" do |ss|
      ss.source_files  = "Sources/*.swift"
@@ -27,5 +27,5 @@ Pod::Spec.new do |s|
      ss.dependency "Restofire/Core"
      ss.dependency "RxSwift", "~> 2.0"
  end
- 
+
 end

@@ -9,17 +9,14 @@ script:
   - xcodebuild clean test -project Restofire.xcodeproj
     -scheme Restofire-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=iPhone 6,OS=9.3' GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    -destination 'name=iPhone 6,OS=9.3'
 
   - xcodebuild clean test -project Restofire.xcodeproj
     -scheme Restofire-RAC-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=iPhone 6,OS=9.3' GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+    -destination 'name=iPhone 6,OS=9.3'
 
   - xcodebuild clean test -project Restofire.xcodeproj
     -scheme Restofire-Rx-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=iPhone 6,OS=9.3' GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+    -destination 'name=iPhone 6,OS=9.3'

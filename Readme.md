@@ -10,16 +10,15 @@
 [![CocoaPods compatible](https://img.shields.io/cocoapods/v/Restofire.svg)](https://cocoapods.org/pods/Restofire)
 
 [![Travis](https://img.shields.io/travis/Restofire/Restofire/master.svg)](https://travis-ci.org/Restofire/Restofire/branches)
-[![codecov.io](http://codecov.io/github/Restofire/Restofire/coverage.svg?branch=master)](http://codecov.io/github/Restofire/Restofire?branch=master)
 
 [![Join the chat at https://gitter.im/Restofire/Restofire](https://badges.gitter.im/Restofire/Restofire.svg)](https://gitter.im/Restofire/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Restofire is a protocol oriented networking abstraction layer in swift that is built on top of Alamofire to use services in a declartive way.
+Restofire is a protocol oriented networking abstraction layer in swift that is built on top of [Alamofire](https://github.com/Alamofire/Alamofire) to use services in a declartive way.
 
 ## Requirements
 
 - iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 7.2+
+- Xcode 7.3+
 
 ## Installation
 
@@ -31,7 +30,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build Reactofire 0.3.0+.
+> CocoaPods 0.39.0+ is required to build Restofire 0.7.0+.
 
 To integrate Reactofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -40,9 +39,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 0.6'
-# OR pod 'Restofire/RxSwift', '~> 0.6'
-# OR pod 'Restofire/ReactiveCocoa', '~> 0.6'
+pod 'Restofire', '~> 0.7'
+# OR pod 'Restofire/RxSwift', '~> 0.7'
+# OR pod 'Restofire/ReactiveCocoa', '~> 0.7'
 ```
 
 Then, run the following command:
@@ -65,7 +64,7 @@ $ brew install carthage
 To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 0.6
+github "RahulKatariya/Restofire" ~> 0.7
 ```
 ### Swift Package Manager
 
@@ -111,7 +110,7 @@ import Restofire
 
 class PersonGETService: RequestType {
 
-
+    typealias Model = [String: AnyObject]
     var path: String = "56c2cc70120000c12673f1b5"
 
 }
@@ -127,10 +126,10 @@ import Alamofire
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
-    
+
     func getPerson() {
-        PersonGETService().executeTask() { (response: Response<[String: AnyObject], NSError>) in
-            if let value = response.result.value {
+        PersonGETService().executeTask() {
+            if let value = $0.result.value {
                 person = value
             }
         }
@@ -143,18 +142,22 @@ class ViewController: UIViewController {
 
 ```swift
 import Restofire_Rx
+import Alamofire
+import RxSwift
 
 class ViewController: UIViewController {
 
     let disposeBag = DisposeBag()
     var person: [String: AnyObject]!
-    
+
     func getPerson() {
-        let service: Observable<[String: AnyObject]> = PersonGETService().executeTask()
-        service.subscribe(onNext: {
-            person = $0
+      PersonGETService().executeTask()
+      .subscribe(onNext: {
+          if let value = $0.result.value {
+            expected = value
+          }
         }).addDisposableTo(disposeBag)
-    }
+      }
 
 }
 ```
@@ -163,16 +166,20 @@ class ViewController: UIViewController {
 
 ```swift
 import Restofire_RAC
+import Alamofire
+import ReactiveCocoa
 
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
-    
+
     func getPerson() {
-        let service: SignalProducer<[String: AnyObject], NSError> = PersonGETService().executeTask()
-        service.startWithNext {
-            person = $0
+      PersonGETService().executeTask()
+      .startWithNext {
+        if let value = $0.result.value {
+          expected = value
         }
+      }
     }
 
 }

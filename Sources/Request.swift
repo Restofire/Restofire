@@ -17,8 +17,6 @@ class Request<T: Requestable> {
     
     init(requestable: T) {
         self.requestable = requestable
-        requestable.sessionConfiguration.timeoutIntervalForRequest = requestable.timeoutIntervalForRequest
-        requestable.sessionConfiguration.timeoutIntervalForResource = requestable.timeoutIntervalForResource
         self.manager = Alamofire.Manager(configuration: requestable.sessionConfiguration)
         request = requestFromRequestable(requestable)
     }

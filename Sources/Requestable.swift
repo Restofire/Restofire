@@ -22,8 +22,6 @@ public protocol Requestable: class {
     var rootKeyPath: String? { get }
     var logging: Bool { get }
     var sessionConfiguration: NSURLSessionConfiguration { get }
-    var timeoutIntervalForRequest: NSTimeInterval { get }
-    var timeoutIntervalForResource: NSTimeInterval { get }
     
     var configuration: Configuration { get }
     
@@ -65,14 +63,6 @@ public extension Requestable {
     
     public var sessionConfiguration: NSURLSessionConfiguration {
         get { return configuration.sessionConfiguration }
-    }
-    
-    public var timeoutIntervalForRequest: NSTimeInterval {
-        get { return configuration.timeoutIntervalForRequest }
-    }
-    
-    public var timeoutIntervalForResource: NSTimeInterval {
-        get { return configuration.timeoutIntervalForResource }
     }
     
 }

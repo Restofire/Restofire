@@ -15,6 +15,19 @@
 
 Restofire is a protocol oriented networking abstraction layer in swift that is built on top of [Alamofire](https://github.com/Alamofire/Alamofire) to use services in a declartive way.
 
+## Features
+
+- [x] No Learning Curve Needed
+- [x] Default Configuration object for Base URL / headers / parameters / rootKeyPath etc
+- [x] Multiple Configurations with different Base URLs
+- [x] Single Request Configuration
+- [ ] Download and Upload Tasks
+- [ ] Response Validations
+- [ ] Authentication
+- [ ] Request Eventually when internet is reachable
+- [x] Comprehensive Unit Test Coverage
+- [ ] [Complete Documentation](http://cocoadocs.org/docsets/Alamofire)
+
 ## Requirements
 
 - iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
@@ -96,7 +109,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
     Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
     Restofire.defaultConfiguration.logging = true
-
+    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 5
+    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 5
     return true
   }
 
@@ -239,16 +253,6 @@ class ViewController: UIViewController {
       }
     ]
     ```
-
-## TODO
-
-- [x] Add Default Protocol Implementations in Swift 2.0
-- [ ] Add Authentication
-- [ ] Add Request Validations
-- [ ] Add Download Task
-- [ ] Add Upload Task
-- [ ] Add Request Queues to execute Requests when internet is reachable
-
 
 ## License
 

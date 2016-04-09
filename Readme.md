@@ -21,12 +21,13 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [x] Default Configuration object for Base URL / headers / parameters / rootKeyPath etc
 - [x] Multiple Configurations with different Base URLs
 - [x] Single Request Configuration
+- [x] Request and Resource Timeout Intervals
 - [ ] Download and Upload Tasks
 - [ ] Response Validations
 - [ ] Authentication
 - [ ] Request Eventually when internet is reachable
 - [x] Comprehensive Unit Test Coverage
-- [ ] [Complete Documentation](http://cocoadocs.org/docsets/Alamofire)
+- [ ] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
 
 ## Requirements
 
@@ -111,6 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Restofire.defaultConfiguration.logging = true
     Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 5
     Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 5
+
     return true
   }
 

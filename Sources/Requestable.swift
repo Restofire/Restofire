@@ -6,6 +6,7 @@
 //  Copyright © 2016 AarKay. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
 public protocol Requestable: class {

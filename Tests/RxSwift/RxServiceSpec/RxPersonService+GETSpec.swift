@@ -14,25 +14,28 @@ import Alamofire
 import RxSwift
 
 class RXPersonGETServiceSpec: RXServiceSpec {
-
+    
     override func spec() {
         describe("RxPersonGETService") {
-
+            
             it("should succeed") {
-
+                
                 let disposeBag = DisposeBag()
-
+                
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
-
-                PersonGETService().executeTask().subscribe(onNext: {
-                        expected = $0.result.value
+                
+                PersonGETService().executeTask()
+                    .subscribe(onNext: {
+                        if let value = $0.result.value {
+                            expected = value
+                        }
                     }).addDisposableTo(disposeBag)
-
+                
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-
+                
             }
         }
     }
-
+    
 }

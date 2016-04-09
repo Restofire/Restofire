@@ -15,12 +15,8 @@ public extension Requestable {
 
         return Observable.create { observer in
             self.executeTask() { (response: Response<Model, NSError>) in
-                if let error = response.result.error {
-                    observer.on(.Error(error))
-                } else {
-                    observer.on(.Next(response))
-                    observer.on(.Completed)
-                }
+                observer.on(.Next(response))
+                observer.on(.Completed)
             }
             
             return AnonymousDisposable { }

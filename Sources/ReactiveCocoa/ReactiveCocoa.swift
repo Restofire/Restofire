@@ -8,19 +8,16 @@
 
 import Alamofire
 import ReactiveCocoa
+import enum Result.NoError
 
 public extension Requestable {
     
-    public func executeTask() -> SignalProducer<Response<Model, NSError>, NSError> {
+    public func executeTask() -> SignalProducer<Response<Model, NSError>, NoError> {
         
         return SignalProducer { sink, _ in
             self.executeTask() { (response: Response<Model, NSError>) in
-                if let error = response.result.error {
-                    sink.sendFailed(error)
-                } else {
-                    sink.sendNext(response)
-                    sink.sendCompleted()
-                }
+                sink.sendNext(response)
+                sink.sendCompleted()
             }
         }
     }

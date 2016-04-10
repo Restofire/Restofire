@@ -10,7 +10,7 @@ import Alamofire
 
 class RequestEventuallyQueue {
     
-    var queue = [Request]()
+    var queue = [RequestEventually]()
     let networkReachabilityManager = NetworkReachabilityManager()
     
     init() {
@@ -31,25 +31,29 @@ class RequestEventuallyQueue {
         }
     }
     
-    func enqueuRequest(request: Request) {
-        queue.append(request)
+    func enqueuRequestEventually(requestEventually: RequestEventually) {
+        if let manager = networkReachabilityManager where manager.isReachable {
+            requestEventually.request.executeTask({ (response: Response<AnyObject, NSError>) in
+                requestEventually.requestCompletionHandler(response)
+            })
+        } else {
+            queue.append(requestEventually)
+        }
     }
     
     func startExecutingQueue() {
         for request in queue {
             if let manager = networkReachabilityManager where manager.isReachable {
-                self.executeRequest(request)
+                self.executeRequestEventually(request)
             } else { break }
         }
     }
     
-    func executeRequest(request: Request) {
-        request.executeTask { (response: Response<AnyObject, NSError>) in
+    func executeRequestEventually(requestEventually: RequestEventually) {
+        requestEventually.request.executeTask { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
-                request.requestCompletionHandler!(response)
-            } else {
-                
-            }
+
+            } else { }
         }
     }
     

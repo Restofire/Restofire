@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public protocol Requestable: class {
+public protocol Requestable {
 
     var path: String { get set }
     
@@ -67,39 +67,20 @@ public extension Requestable {
     
 }
 
-private struct AssociatedKeys {
-    static var requestKey = "requestKey"
-}
-
 public extension Requestable {
     
-    private var request: Request? {
-        get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.requestKey) as? Request
-        }
-        set {
-            if let newValue = newValue {
-                objc_setAssociatedObject(self, &AssociatedKeys.requestKey, newValue as Request?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            }
-        }
-    }
-    
     public func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
-        request = Request(requestable: self)
-        request!.executeTask { (response: Response<AnyObject, NSError>) in
+        let request = Request(requestable: self)
+        request.executeTask { (response: Response<AnyObject, NSError>) in
             completionHandler(response)
         }
     }
     
     public func executeTaskEvenually(completionHandler: Response<AnyObject, NSError> -> Void) {
-        request = Request(requestable: self)
-        request!.executeTaskEventually { (response: Response<AnyObject, NSError>) in
+        let request = Request(requestable: self)
+        request.executeTaskEventually { (response: Response<AnyObject, NSError>) in
             completionHandler(response)
         }
-    }
-    
-    public func cancel() {
-        request?.request.cancel()
     }
 
 }

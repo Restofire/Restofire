@@ -3,20 +3,10 @@ osx_image: xcode7.3
 
 install:
   - carthage update Nimble Quick --platform iOS --no-use-binaries
-  - carthage update Alamofire ReactiveCocoa RxSwift --no-use-binaries
+  - carthage update Alamofire --no-use-binaries
 
 script:
   - xcodebuild clean test -project Restofire.xcodeproj
     -scheme Restofire-iOS
-    -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=iPhone 6,OS=9.3'
-
-  - xcodebuild clean test -project Restofire.xcodeproj
-    -scheme Restofire-RAC-iOS
-    -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-    -destination 'name=iPhone 6,OS=9.3'
-
-  - xcodebuild clean test -project Restofire.xcodeproj
-    -scheme Restofire-Rx-iOS
     -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
     -destination 'name=iPhone 6,OS=9.3'

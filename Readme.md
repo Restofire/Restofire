@@ -25,7 +25,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [ ] Download and Upload Tasks
 - [ ] Response Validations
 - [ ] Authentication
-- [ ] Request Eventually when internet is reachable
+- [x] Request Eventually when internet is reachable
 - [ ] Comprehensive Unit Test Coverage
 - [ ] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
 
@@ -54,8 +54,6 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'Restofire', '~> 0.7'
-# OR pod 'Restofire/RxSwift', '~> 0.7'
-# OR pod 'Restofire/ReactiveCocoa', '~> 0.7'
 ```
 
 Then, run the following command:
@@ -149,53 +147,6 @@ class ViewController: UIViewController {
                 person = value
             }
         }
-    }
-
-}
-```
-
-### RxSwift
-
-```swift
-import Restofire_Rx
-import Alamofire
-import RxSwift
-
-class ViewController: UIViewController {
-
-    let disposeBag = DisposeBag()
-    var person: [String: AnyObject]!
-
-    func getPerson() {
-      PersonGETService().executeTask()
-      .subscribe(onNext: {
-          if let value = $0.result.value {
-            expected = value
-          }
-        }).addDisposableTo(disposeBag)
-      }
-
-}
-```
-
-### ReactiveCocoa
-
-```swift
-import Restofire_RAC
-import Alamofire
-import ReactiveCocoa
-
-class ViewController: UIViewController {
-
-    var person: [String: AnyObject]!
-
-    func getPerson() {
-      PersonGETService().executeTask()
-      .startWithNext {
-        if let value = $0.result.value {
-          expected = value
-        }
-      }
     }
 
 }

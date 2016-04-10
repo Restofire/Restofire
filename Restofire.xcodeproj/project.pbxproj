@@ -25,106 +25,109 @@
 		352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AC1C5E2D33000AE7C0 /* Restofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AD1C5E2D5F000AE7C0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		3543083B1CA90FCA00C75960 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		3543083C1CA90FCA00C75960 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		3543083D1CA90FCA00C75960 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		354308401CA90FCA00C75960 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
-		354308421CA90FCA00C75960 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		354308491CA90FDA00C75960 /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
-		3543084B1CA90FFD00C75960 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; };
-		354308B31CA92DB600C75960 /* Restofire_RAC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354308471CA90FCA00C75960 /* Restofire_RAC.framework */; };
-		354308C01CA92E9000C75960 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
-		354308C11CA92E9000C75960 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
-		354308C21CA92E9000C75960 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
-		354308C31CA92E9000C75960 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; };
-		354308C41CA92E9000C75960 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; };
 		3544EC921CB8DD8E00CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
 		3544EC931CB8DD8E00CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
 		3544EC941CB8DD8F00CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC951CB8DD8F00CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC961CB8DD9000CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC971CB8DD9100CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC981CB8DD9100CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC991CB8DD9200CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC9A1CB8DD9200CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC9B1CB8DD9400CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544EC9C1CB8DD9500CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		3544ECA11CB959AA00CDF3C9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECA01CB959AA00CDF3C9 /* RxSwift.framework */; };
-		3544ECA41CB959BD00CDF3C9 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECA21CB959BD00CDF3C9 /* ReactiveCocoa.framework */; };
-		3544ECA51CB959BD00CDF3C9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECA31CB959BD00CDF3C9 /* Result.framework */; };
-		3544ECA71CB959DF00CDF3C9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECA61CB959DF00CDF3C9 /* RxSwift.framework */; };
-		3544ECAA1CB95A1500CDF3C9 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECA81CB95A1500CDF3C9 /* ReactiveCocoa.framework */; };
-		3544ECAB1CB95A1500CDF3C9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECA91CB95A1500CDF3C9 /* Result.framework */; };
-		3544ECAD1CB95A3100CDF3C9 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECAC1CB95A3100CDF3C9 /* RxSwift.framework */; };
-		3544ECB01CB95A4400CDF3C9 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECAE1CB95A4400CDF3C9 /* ReactiveCocoa.framework */; };
-		3544ECB11CB95A4400CDF3C9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECAF1CB95A4400CDF3C9 /* Result.framework */; };
-		3544ECB21CB95A6000CDF3C9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; };
 		3544ECB31CBA2BE300CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
 		3544ECFA1CBA35D200CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
 		3544ECFB1CBA35D300CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
 		3544ECFC1CBA35D400CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ECFD1CBA35D400CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ECFE1CBA35D500CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ECFF1CBA35D600CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ED001CBA35D700CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ED011CBA35D700CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ED021CBA35D800CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ED031CBA35D800CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
-		3544ED041CBA35DA00CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
 		3544ED061CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
 		3544ED071CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
 		3544ED081CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
 		3544ED091CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED0A1CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED0B1CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED0C1CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED0D1CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED0E1CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED0F1CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED101CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
-		3544ED111CBA381600CDF3C9 /* RequestEventually.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED051CBA381600CDF3C9 /* RequestEventually.swift */; };
+		3544ED2D1CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED151CBA40F700CDF3C9 /* HTTPBinRequestType.swift */; };
+		3544ED2E1CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED151CBA40F700CDF3C9 /* HTTPBinRequestType.swift */; };
+		3544ED2F1CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED151CBA40F700CDF3C9 /* HTTPBinRequestType.swift */; };
+		3544ED301CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED151CBA40F700CDF3C9 /* HTTPBinRequestType.swift */; };
+		3544ED311CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */; };
+		3544ED321CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */; };
+		3544ED331CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */; };
+		3544ED341CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */; };
+		3544ED351CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */; };
+		3544ED361CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */; };
+		3544ED371CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */; };
+		3544ED381CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */; };
+		3544ED391CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED191CBA40F700CDF3C9 /* HTTPBinService+Get.swift */; };
+		3544ED3A1CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED191CBA40F700CDF3C9 /* HTTPBinService+Get.swift */; };
+		3544ED3B1CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED191CBA40F700CDF3C9 /* HTTPBinService+Get.swift */; };
+		3544ED3C1CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED191CBA40F700CDF3C9 /* HTTPBinService+Get.swift */; };
+		3544ED3D1CBA40F700CDF3C9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */; };
+		3544ED3E1CBA40F700CDF3C9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */; };
+		3544ED3F1CBA40F700CDF3C9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */; };
+		3544ED401CBA40F700CDF3C9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */; };
+		3544ED411CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1B1CBA40F700CDF3C9 /* PersonArrayService+GET.swift */; };
+		3544ED421CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1B1CBA40F700CDF3C9 /* PersonArrayService+GET.swift */; };
+		3544ED431CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1B1CBA40F700CDF3C9 /* PersonArrayService+GET.swift */; };
+		3544ED441CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1B1CBA40F700CDF3C9 /* PersonArrayService+GET.swift */; };
+		3544ED451CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1C1CBA40F700CDF3C9 /* PersonService+GET.swift */; };
+		3544ED461CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1C1CBA40F700CDF3C9 /* PersonService+GET.swift */; };
+		3544ED471CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1C1CBA40F700CDF3C9 /* PersonService+GET.swift */; };
+		3544ED481CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1C1CBA40F700CDF3C9 /* PersonService+GET.swift */; };
+		3544ED491CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1D1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift */; };
+		3544ED4A1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1D1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift */; };
+		3544ED4B1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1D1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift */; };
+		3544ED4C1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1D1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift */; };
+		3544ED4D1CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1E1CBA40F700CDF3C9 /* StringArrayService+GET.swift */; };
+		3544ED4E1CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1E1CBA40F700CDF3C9 /* StringArrayService+GET.swift */; };
+		3544ED4F1CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1E1CBA40F700CDF3C9 /* StringArrayService+GET.swift */; };
+		3544ED501CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1E1CBA40F700CDF3C9 /* StringArrayService+GET.swift */; };
+		3544ED511CBA40F700CDF3C9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1F1CBA40F700CDF3C9 /* StringService+GET.swift */; };
+		3544ED521CBA40F700CDF3C9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1F1CBA40F700CDF3C9 /* StringService+GET.swift */; };
+		3544ED531CBA40F700CDF3C9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1F1CBA40F700CDF3C9 /* StringService+GET.swift */; };
+		3544ED541CBA40F700CDF3C9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1F1CBA40F700CDF3C9 /* StringService+GET.swift */; };
+		3544ED551CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED201CBA40F700CDF3C9 /* VoidService+GET.swift */; };
+		3544ED561CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED201CBA40F700CDF3C9 /* VoidService+GET.swift */; };
+		3544ED571CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED201CBA40F700CDF3C9 /* VoidService+GET.swift */; };
+		3544ED581CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED201CBA40F700CDF3C9 /* VoidService+GET.swift */; };
+		3544ED591CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */; };
+		3544ED5A1CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */; };
+		3544ED5B1CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */; };
+		3544ED5C1CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */; };
+		3544ED5D1CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */; };
+		3544ED5E1CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */; };
+		3544ED5F1CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */; };
+		3544ED601CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */; };
+		3544ED611CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */; };
+		3544ED621CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */; };
+		3544ED631CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */; };
+		3544ED641CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */; };
+		3544ED651CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */; };
+		3544ED661CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */; };
+		3544ED671CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */; };
+		3544ED681CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */; };
+		3544ED691CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */; };
+		3544ED6A1CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */; };
+		3544ED6B1CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */; };
+		3544ED6C1CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */; };
+		3544ED6D1CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */; };
+		3544ED6E1CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */; };
+		3544ED6F1CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */; };
+		3544ED701CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */; };
+		3544ED711CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */; };
+		3544ED721CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */; };
+		3544ED731CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */; };
+		3544ED741CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */; };
+		3544ED751CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */; };
+		3544ED761CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */; };
+		3544ED771CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */; };
+		3544ED781CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */; };
+		3544ED791CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */; };
+		3544ED7A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */; };
+		3544ED7B1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */; };
+		3544ED7C1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */; };
+		3544ED7D1CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */; };
+		3544ED7E1CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */; };
+		3544ED7F1CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */; };
+		3544ED801CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */; };
+		3544ED811CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
+		3544ED821CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
+		3544ED831CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
+		3544ED841CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
 		3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EB1C732E4C00ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EC1C732E4C00ED7BF2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
 		3579C9ED1C732E4C00ED7BF2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
-		35950D941CA94904003127F9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D951CA94915003127F9 /* Restofire_RAC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354308471CA90FCA00C75960 /* Restofire_RAC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D961CA94921003127F9 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D971CA94928003127F9 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D991CA94946003127F9 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35A9366F1CA93B9700AC584F /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D9A1CA94946003127F9 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D9B1CA94946003127F9 /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D9C1CA94946003127F9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D9D1CA94983003127F9 /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950D9E1CA94983003127F9 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35950DDA1CA952C7003127F9 /* RxPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */; };
-		35950DDB1CA952CC003127F9 /* RxServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */; };
-		35950DDC1CA952D2003127F9 /* RxPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBD1CA94B6B003127F9 /* RxPersonService+GET.swift */; };
-		35950DDD1CA952D9003127F9 /* RACServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DBA1CA94B6B003127F9 /* RACServiceSpec.swift */; };
-		35950DDE1CA952DB003127F9 /* RACPersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */; };
-		35950DDF1CA952E1003127F9 /* RACPersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB71CA94B6B003127F9 /* RACPersonService+GET.swift */; };
-		35950DE01CA952E8003127F9 /* BoolService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAB1CA94B6B003127F9 /* BoolService+GETSpec.swift */; };
-		35950DE11CA952E8003127F9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAC1CA94B6B003127F9 /* FloatService+GETSpec.swift */; };
-		35950DE21CA952E8003127F9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAD1CA94B6B003127F9 /* IntService+GETSpec.swift */; };
-		35950DE31CA952E8003127F9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAE1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift */; };
-		35950DE41CA952E8003127F9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DAF1CA94B6B003127F9 /* PersonService+GETSpec.swift */; };
-		35950DE51CA952E8003127F9 /* RootKeyPathService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB01CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift */; };
-		35950DE61CA952E8003127F9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB11CA94B6B003127F9 /* ServiceSpec.swift */; };
-		35950DE71CA952E8003127F9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */; };
-		35950DE81CA952E8003127F9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */; };
-		35950DE91CA952E8003127F9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */; };
-		35950DEA1CA952EE003127F9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA11CA94B6B003127F9 /* BoolService+GET.swift */; };
-		35950DEB1CA952EE003127F9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA21CA94B6B003127F9 /* FloatService+GET.swift */; };
-		35950DEC1CA952EE003127F9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA31CA94B6B003127F9 /* IntService+GET.swift */; };
-		35950DED1CA952EE003127F9 /* PersonArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA41CA94B6B003127F9 /* PersonArrayService+GET.swift */; };
-		35950DEE1CA952EE003127F9 /* PersonService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA51CA94B6B003127F9 /* PersonService+GET.swift */; };
-		35950DEF1CA952EE003127F9 /* RootKeyPathService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA61CA94B6B003127F9 /* RootKeyPathService+Get.swift */; };
-		35950DF01CA952EE003127F9 /* StringArrayService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */; };
-		35950DF11CA952EE003127F9 /* StringService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA81CA94B6B003127F9 /* StringService+GET.swift */; };
-		35950DF21CA952EE003127F9 /* VoidService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DA91CA94B6B003127F9 /* VoidService+GET.swift */; };
-		35950DF71CA99958003127F9 /* HTTPBinRequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DF51CA99954003127F9 /* HTTPBinRequestType.swift */; };
-		35950DFA1CA99AFE003127F9 /* HTTPBinService+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DF81CA99AE6003127F9 /* HTTPBinService+Get.swift */; };
-		35950DFD1CA99BB8003127F9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */; };
 		3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
@@ -134,92 +137,15 @@
 		3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		3596CC001CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		35A871761CB7BF9700669ED4 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
-		35A9365B1CA9327700AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936601CA93B7000AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936611CA93B7000AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936621CA93B7000AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936631CA93B7000AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936651CA93B7000AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
-		35A936671CA93B7000AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A9366E1CA93B7E00AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
-		35A936701CA93B9700AC584F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A9366F1CA93B9700AC584F /* RxSwift.framework */; };
-		35A9367F1CA93C1000AC584F /* Restofire_Rx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A9366C1CA93B7000AC584F /* Restofire_Rx.framework */; };
-		35A936871CA93CA500AC584F /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
-		35A936881CA93CA500AC584F /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
-		35A936891CA93CA500AC584F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35A9366F1CA93B9700AC584F /* RxSwift.framework */; };
-		35A936951CA93E9B00AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936961CA93E9B00AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936971CA93E9B00AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936981CA93E9B00AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A9369A1CA93E9B00AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062461C7C38500078B589 /* Alamofire.framework */; };
-		35A9369C1CA93E9B00AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A936A51CA93E9D00AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936A61CA93E9D00AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936A71CA93E9D00AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936A81CA93E9D00AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936AA1CA93E9D00AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062461C7C38500078B589 /* Alamofire.framework */; };
-		35A936AC1CA93E9D00AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A936B51CA93EA000AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936B61CA93EA000AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936B71CA93EA000AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936B81CA93EA000AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936BA1CA93EA000AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623E1C7C382C0078B589 /* Alamofire.framework */; };
-		35A936BC1CA93EA000AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A936C51CA93EA200AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936C61CA93EA200AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936C71CA93EA200AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936C81CA93EA200AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936CA1CA93EA200AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623E1C7C382C0078B589 /* Alamofire.framework */; };
-		35A936CC1CA93EA200AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A936D51CA93EA500AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936D61CA93EA500AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936D71CA93EA500AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936D81CA93EA500AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936DA1CA93EA500AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
-		35A936DC1CA93EA500AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A936E51CA93EA700AC584F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
-		35A936E61CA93EA700AC584F /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
-		35A936E71CA93EA700AC584F /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3500626B1C7C40510078B589 /* Dictionary.swift */; };
-		35A936E81CA93EA700AC584F /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A936EA1CA93EA700AC584F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
-		35A936EC1CA93EA700AC584F /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		35A936F31CA9412000AC584F /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
-		35A936F41CA9412100AC584F /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
-		35A936F51CA9412200AC584F /* ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354308381CA90F7D00C75960 /* ReactiveCocoa.swift */; };
-		35A936F61CA9413200AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
-		35A936F71CA9413300AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
-		35A936F81CA9413500AC584F /* RxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A9365D1CA9334800AC584F /* RxSwift.swift */; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
 		35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C385191CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C3851A1CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C3851B1CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C3851C1CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C3851D1CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C3851E1CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C3851F1CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
-		35C385201CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		354308B41CA92DB600C75960 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 35B19DD21BEE134E001D3952 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 354308391CA90FCA00C75960;
-			remoteInfo = "Restofire-RAC-iOS";
-		};
-		35A936801CA93C1000AC584F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 35B19DD21BEE134E001D3952 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 35A9365E1CA93B7000AC584F;
-			remoteInfo = "Restofire-Rx-iOS";
-		};
 		35B19DE71BEE134E001D3952 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 35B19DD21BEE134E001D3952 /* Project object */;
@@ -244,36 +170,6 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		35950D921CA948CE003127F9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				35950D9D1CA94983003127F9 /* Result.framework in Embed Frameworks */,
-				35950D9E1CA94983003127F9 /* ReactiveCocoa.framework in Embed Frameworks */,
-				35950D971CA94928003127F9 /* Quick.framework in Embed Frameworks */,
-				35950D961CA94921003127F9 /* Nimble.framework in Embed Frameworks */,
-				35950D951CA94915003127F9 /* Restofire_RAC.framework in Embed Frameworks */,
-				35950D941CA94904003127F9 /* Alamofire.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35950D981CA9492E003127F9 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				35950D991CA94946003127F9 /* RxSwift.framework in Embed Frameworks */,
-				35950D9A1CA94946003127F9 /* Nimble.framework in Embed Frameworks */,
-				35950D9B1CA94946003127F9 /* Quick.framework in Embed Frameworks */,
-				35950D9C1CA94946003127F9 /* Alamofire.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -290,11 +186,8 @@
 		3522609F1C5E2BBD000AE7C0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		352260A11C5E2BCA000AE7C0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		352260A51C5E2CC9000AE7C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		354308381CA90F7D00C75960 /* ReactiveCocoa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveCocoa.swift; sourceTree = "<group>"; };
-		354308471CA90FCA00C75960 /* Restofire_RAC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_RAC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3543084A1CA90FFD00C75960 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		354308A71CA91D9600C75960 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
-		354308AE1CA92DB600C75960 /* Restofire_RACTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Restofire_RACTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3544ECA01CB959AA00CDF3C9 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/watchOS/RxSwift.framework; sourceTree = "<group>"; };
 		3544ECA21CB959BD00CDF3C9 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/watchOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		3544ECA31CB959BD00CDF3C9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/watchOS/Result.framework; sourceTree = "<group>"; };
@@ -305,48 +198,33 @@
 		3544ECAE1CB95A4400CDF3C9 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		3544ECAF1CB95A4400CDF3C9 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
 		3544ED051CBA381600CDF3C9 /* RequestEventually.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEventually.swift; sourceTree = "<group>"; };
+		3544ED151CBA40F700CDF3C9 /* HTTPBinRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinRequestType.swift; sourceTree = "<group>"; };
+		3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GET.swift"; sourceTree = "<group>"; };
+		3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatService+GET.swift"; sourceTree = "<group>"; };
+		3544ED191CBA40F700CDF3C9 /* HTTPBinService+Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinService+Get.swift"; sourceTree = "<group>"; };
+		3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IntService+GET.swift"; sourceTree = "<group>"; };
+		3544ED1B1CBA40F700CDF3C9 /* PersonArrayService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonArrayService+GET.swift"; sourceTree = "<group>"; };
+		3544ED1C1CBA40F700CDF3C9 /* PersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonService+GET.swift"; sourceTree = "<group>"; };
+		3544ED1D1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootKeyPathService+Get.swift"; sourceTree = "<group>"; };
+		3544ED1E1CBA40F700CDF3C9 /* StringArrayService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringArrayService+GET.swift"; sourceTree = "<group>"; };
+		3544ED1F1CBA40F700CDF3C9 /* StringService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringService+GET.swift"; sourceTree = "<group>"; };
+		3544ED201CBA40F700CDF3C9 /* VoidService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VoidService+GET.swift"; sourceTree = "<group>"; };
+		3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinStringService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IntService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonArrayService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootKeyPathService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSpec.swift; sourceTree = "<group>"; };
+		3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringArrayService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringService+GETSpec.swift"; sourceTree = "<group>"; };
+		3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VoidService+GETSpec.swift"; sourceTree = "<group>"; };
 		355641311CAFB73F009738B8 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEventuallyQueue.swift; sourceTree = "<group>"; };
-		35950DA11CA94B6B003127F9 /* BoolService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GET.swift"; sourceTree = "<group>"; };
-		35950DA21CA94B6B003127F9 /* FloatService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatService+GET.swift"; sourceTree = "<group>"; };
-		35950DA31CA94B6B003127F9 /* IntService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IntService+GET.swift"; sourceTree = "<group>"; };
-		35950DA41CA94B6B003127F9 /* PersonArrayService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonArrayService+GET.swift"; sourceTree = "<group>"; };
-		35950DA51CA94B6B003127F9 /* PersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonService+GET.swift"; sourceTree = "<group>"; };
-		35950DA61CA94B6B003127F9 /* RootKeyPathService+Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootKeyPathService+Get.swift"; sourceTree = "<group>"; };
-		35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringArrayService+GET.swift"; sourceTree = "<group>"; };
-		35950DA81CA94B6B003127F9 /* StringService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringService+GET.swift"; sourceTree = "<group>"; };
-		35950DA91CA94B6B003127F9 /* VoidService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VoidService+GET.swift"; sourceTree = "<group>"; };
-		35950DAB1CA94B6B003127F9 /* BoolService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DAC1CA94B6B003127F9 /* FloatService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DAD1CA94B6B003127F9 /* IntService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IntService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DAE1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonArrayService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DAF1CA94B6B003127F9 /* PersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DB01CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RootKeyPathService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DB11CA94B6B003127F9 /* ServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceSpec.swift; sourceTree = "<group>"; };
-		35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringArrayService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VoidService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DB71CA94B6B003127F9 /* RACPersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACPersonService+GET.swift"; sourceTree = "<group>"; };
-		35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RACPersonService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DBA1CA94B6B003127F9 /* RACServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACServiceSpec.swift; sourceTree = "<group>"; };
-		35950DBD1CA94B6B003127F9 /* RxPersonService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxPersonService+GET.swift"; sourceTree = "<group>"; };
-		35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RxPersonService+GETSpec.swift"; sourceTree = "<group>"; };
-		35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxServiceSpec.swift; sourceTree = "<group>"; };
-		35950DF51CA99954003127F9 /* HTTPBinRequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinRequestType.swift; sourceTree = "<group>"; };
-		35950DF81CA99AE6003127F9 /* HTTPBinService+Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinService+Get.swift"; sourceTree = "<group>"; };
-		35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinStringService+GETSpec.swift"; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
-		35A9365D1CA9334800AC584F /* RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift.swift; sourceTree = "<group>"; };
-		35A9366C1CA93B7000AC584F /* Restofire_Rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_Rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A9366F1CA93B9700AC584F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		35A9367A1CA93C0F00AC584F /* Restofire_RxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Restofire_RxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A936A11CA93E9B00AC584F /* Restofire_RAC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_RAC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A936B11CA93E9D00AC584F /* Restofire_Rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_Rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A936C11CA93EA000AC584F /* Restofire_RAC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_RAC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A936D11CA93EA200AC584F /* Restofire_Rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_Rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A936E11CA93EA500AC584F /* Restofire_RAC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_RAC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		35A936F11CA93EA700AC584F /* Restofire_Rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_Rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DDB1BEE134E001D3952 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DE51BEE134E001D3952 /* RestofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DFD1BEE17D2001D3952 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -375,106 +253,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3543083F1CA90FCA00C75960 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECB21CB95A6000CDF3C9 /* Result.framework in Frameworks */,
-				3543084B1CA90FFD00C75960 /* ReactiveCocoa.framework in Frameworks */,
-				354308401CA90FCA00C75960 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		354308AB1CA92DB600C75960 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				354308C01CA92E9000C75960 /* Alamofire.framework in Frameworks */,
-				354308C11CA92E9000C75960 /* Nimble.framework in Frameworks */,
-				354308C21CA92E9000C75960 /* Quick.framework in Frameworks */,
-				354308C31CA92E9000C75960 /* ReactiveCocoa.framework in Frameworks */,
-				354308C41CA92E9000C75960 /* Result.framework in Frameworks */,
-				354308B31CA92DB600C75960 /* Restofire_RAC.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936641CA93B7000AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936701CA93B9700AC584F /* RxSwift.framework in Frameworks */,
-				35A936651CA93B7000AC584F /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936771CA93C0F00AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936871CA93CA500AC584F /* Nimble.framework in Frameworks */,
-				35A936881CA93CA500AC584F /* Quick.framework in Frameworks */,
-				35A936891CA93CA500AC584F /* RxSwift.framework in Frameworks */,
-				35A9367F1CA93C1000AC584F /* Restofire_Rx.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936991CA93E9B00AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECB01CB95A4400CDF3C9 /* ReactiveCocoa.framework in Frameworks */,
-				3544ECB11CB95A4400CDF3C9 /* Result.framework in Frameworks */,
-				35A9369A1CA93E9B00AC584F /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936A91CA93E9D00AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECAD1CB95A3100CDF3C9 /* RxSwift.framework in Frameworks */,
-				35A936AA1CA93E9D00AC584F /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936B91CA93EA000AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECAA1CB95A1500CDF3C9 /* ReactiveCocoa.framework in Frameworks */,
-				3544ECAB1CB95A1500CDF3C9 /* Result.framework in Frameworks */,
-				35A936BA1CA93EA000AC584F /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936C91CA93EA200AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECA71CB959DF00CDF3C9 /* RxSwift.framework in Frameworks */,
-				35A936CA1CA93EA200AC584F /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936D91CA93EA500AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECA41CB959BD00CDF3C9 /* ReactiveCocoa.framework in Frameworks */,
-				3544ECA51CB959BD00CDF3C9 /* Result.framework in Frameworks */,
-				35A936DA1CA93EA500AC584F /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936E91CA93EA700AC584F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3544ECA11CB959AA00CDF3C9 /* RxSwift.framework in Frameworks */,
-				35A936EA1CA93EA700AC584F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,8 +290,6 @@
 				3500626B1C7C40510078B589 /* Dictionary.swift */,
 				3544ED051CBA381600CDF3C9 /* RequestEventually.swift */,
 				357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */,
-				354308371CA90F6700C75960 /* ReactiveCocoa */,
-				35A9365C1CA9330000AC584F /* RxSwift */,
 				3500626E1C7C40510078B589 /* Info.plist */,
 			);
 			path = Sources;
@@ -522,133 +298,55 @@
 		3522609E1C5E2B55000AE7C0 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				35950D9F1CA94B6B003127F9 /* Core */,
-				35950DB51CA94B6B003127F9 /* ReactiveCocoa */,
-				35950DBB1CA94B6B003127F9 /* RxSwift */,
+				3544ED141CBA40F700CDF3C9 /* RequestTypes */,
+				3544ED161CBA40F700CDF3C9 /* Services */,
+				3544ED211CBA40F700CDF3C9 /* ServiceSpec */,
 				352260A51C5E2CC9000AE7C0 /* Info.plist */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		354308371CA90F6700C75960 /* ReactiveCocoa */ = {
+		3544ED141CBA40F700CDF3C9 /* RequestTypes */ = {
 			isa = PBXGroup;
 			children = (
-				354308381CA90F7D00C75960 /* ReactiveCocoa.swift */,
-			);
-			path = ReactiveCocoa;
-			sourceTree = "<group>";
-		};
-		35950D9F1CA94B6B003127F9 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				35950DF41CA99945003127F9 /* RequestTypes */,
-				35950DA01CA94B6B003127F9 /* Services */,
-				35950DAA1CA94B6B003127F9 /* ServiceSpec */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		35950DA01CA94B6B003127F9 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				35950DA11CA94B6B003127F9 /* BoolService+GET.swift */,
-				35950DA21CA94B6B003127F9 /* FloatService+GET.swift */,
-				35950DA31CA94B6B003127F9 /* IntService+GET.swift */,
-				35950DA41CA94B6B003127F9 /* PersonArrayService+GET.swift */,
-				35950DA51CA94B6B003127F9 /* PersonService+GET.swift */,
-				35950DA61CA94B6B003127F9 /* RootKeyPathService+Get.swift */,
-				35950DA71CA94B6B003127F9 /* StringArrayService+GET.swift */,
-				35950DA81CA94B6B003127F9 /* StringService+GET.swift */,
-				35950DA91CA94B6B003127F9 /* VoidService+GET.swift */,
-				35950DF81CA99AE6003127F9 /* HTTPBinService+Get.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		35950DAA1CA94B6B003127F9 /* ServiceSpec */ = {
-			isa = PBXGroup;
-			children = (
-				35950DB11CA94B6B003127F9 /* ServiceSpec.swift */,
-				35950DAB1CA94B6B003127F9 /* BoolService+GETSpec.swift */,
-				35950DAC1CA94B6B003127F9 /* FloatService+GETSpec.swift */,
-				35950DAD1CA94B6B003127F9 /* IntService+GETSpec.swift */,
-				35950DAE1CA94B6B003127F9 /* PersonArrayService+GETSpec.swift */,
-				35950DAF1CA94B6B003127F9 /* PersonService+GETSpec.swift */,
-				35950DB01CA94B6B003127F9 /* RootKeyPathService+GETSpec.swift */,
-				35950DB21CA94B6B003127F9 /* StringArrayService+GETSpec.swift */,
-				35950DB31CA94B6B003127F9 /* StringService+GETSpec.swift */,
-				35950DB41CA94B6B003127F9 /* VoidService+GETSpec.swift */,
-				35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */,
-			);
-			path = ServiceSpec;
-			sourceTree = "<group>";
-		};
-		35950DB51CA94B6B003127F9 /* ReactiveCocoa */ = {
-			isa = PBXGroup;
-			children = (
-				35950DB61CA94B6B003127F9 /* RACServices */,
-				35950DB81CA94B6B003127F9 /* RACServiceSpec */,
-			);
-			path = ReactiveCocoa;
-			sourceTree = "<group>";
-		};
-		35950DB61CA94B6B003127F9 /* RACServices */ = {
-			isa = PBXGroup;
-			children = (
-				35950DB71CA94B6B003127F9 /* RACPersonService+GET.swift */,
-			);
-			path = RACServices;
-			sourceTree = "<group>";
-		};
-		35950DB81CA94B6B003127F9 /* RACServiceSpec */ = {
-			isa = PBXGroup;
-			children = (
-				35950DBA1CA94B6B003127F9 /* RACServiceSpec.swift */,
-				35950DB91CA94B6B003127F9 /* RACPersonService+GETSpec.swift */,
-			);
-			path = RACServiceSpec;
-			sourceTree = "<group>";
-		};
-		35950DBB1CA94B6B003127F9 /* RxSwift */ = {
-			isa = PBXGroup;
-			children = (
-				35950DBC1CA94B6B003127F9 /* RxServices */,
-				35950DBE1CA94B6B003127F9 /* RxServiceSpec */,
-			);
-			path = RxSwift;
-			sourceTree = "<group>";
-		};
-		35950DBC1CA94B6B003127F9 /* RxServices */ = {
-			isa = PBXGroup;
-			children = (
-				35950DBD1CA94B6B003127F9 /* RxPersonService+GET.swift */,
-			);
-			path = RxServices;
-			sourceTree = "<group>";
-		};
-		35950DBE1CA94B6B003127F9 /* RxServiceSpec */ = {
-			isa = PBXGroup;
-			children = (
-				35950DC01CA94B6B003127F9 /* RxServiceSpec.swift */,
-				35950DBF1CA94B6B003127F9 /* RxPersonService+GETSpec.swift */,
-			);
-			path = RxServiceSpec;
-			sourceTree = "<group>";
-		};
-		35950DF41CA99945003127F9 /* RequestTypes */ = {
-			isa = PBXGroup;
-			children = (
-				35950DF51CA99954003127F9 /* HTTPBinRequestType.swift */,
+				3544ED151CBA40F700CDF3C9 /* HTTPBinRequestType.swift */,
 			);
 			path = RequestTypes;
 			sourceTree = "<group>";
 		};
-		35A9365C1CA9330000AC584F /* RxSwift */ = {
+		3544ED161CBA40F700CDF3C9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				35A9365D1CA9334800AC584F /* RxSwift.swift */,
+				3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */,
+				3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */,
+				3544ED191CBA40F700CDF3C9 /* HTTPBinService+Get.swift */,
+				3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */,
+				3544ED1B1CBA40F700CDF3C9 /* PersonArrayService+GET.swift */,
+				3544ED1C1CBA40F700CDF3C9 /* PersonService+GET.swift */,
+				3544ED1D1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift */,
+				3544ED1E1CBA40F700CDF3C9 /* StringArrayService+GET.swift */,
+				3544ED1F1CBA40F700CDF3C9 /* StringService+GET.swift */,
+				3544ED201CBA40F700CDF3C9 /* VoidService+GET.swift */,
 			);
-			path = RxSwift;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3544ED211CBA40F700CDF3C9 /* ServiceSpec */ = {
+			isa = PBXGroup;
+			children = (
+				3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */,
+				3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */,
+				3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */,
+				3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */,
+				3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */,
+				3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */,
+				3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */,
+				3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */,
+				3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */,
+				3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */,
+				3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */,
+			);
+			path = ServiceSpec;
 			sourceTree = "<group>";
 		};
 		35B19DD11BEE134E001D3952 = {
@@ -669,16 +367,6 @@
 				350061F21C7C33910078B589 /* Restofire.framework */,
 				3500620E1C7C33EB0078B589 /* Restofire.framework */,
 				3500622A1C7C343D0078B589 /* Restofire.framework */,
-				354308471CA90FCA00C75960 /* Restofire_RAC.framework */,
-				354308AE1CA92DB600C75960 /* Restofire_RACTests.xctest */,
-				35A9366C1CA93B7000AC584F /* Restofire_Rx.framework */,
-				35A9367A1CA93C0F00AC584F /* Restofire_RxTests.xctest */,
-				35A936A11CA93E9B00AC584F /* Restofire_RAC.framework */,
-				35A936B11CA93E9D00AC584F /* Restofire_Rx.framework */,
-				35A936C11CA93EA000AC584F /* Restofire_RAC.framework */,
-				35A936D11CA93EA200AC584F /* Restofire_Rx.framework */,
-				35A936E11CA93EA500AC584F /* Restofire_RAC.framework */,
-				35A936F11CA93EA700AC584F /* Restofire_Rx.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -732,70 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				350062781C7C40620078B589 /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		354308411CA90FCA00C75960 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				354308421CA90FCA00C75960 /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936661CA93B7000AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936671CA93B7000AC584F /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A9369B1CA93E9B00AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A9369C1CA93E9B00AC584F /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936AB1CA93E9D00AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936AC1CA93E9D00AC584F /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936BB1CA93EA000AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936BC1CA93EA000AC584F /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936CB1CA93EA200AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936CC1CA93EA200AC584F /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936DB1CA93EA500AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936DC1CA93EA500AC584F /* Restofire.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936EB1CA93EA700AC584F /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936EC1CA93EA700AC584F /* Restofire.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,188 +488,6 @@
 			productReference = 3500622A1C7C343D0078B589 /* Restofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		354308391CA90FCA00C75960 /* Restofire-RAC-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 354308441CA90FCA00C75960 /* Build configuration list for PBXNativeTarget "Restofire-RAC-iOS" */;
-			buildPhases = (
-				3543083A1CA90FCA00C75960 /* Sources */,
-				3543083F1CA90FCA00C75960 /* Frameworks */,
-				354308411CA90FCA00C75960 /* Headers */,
-				354308431CA90FCA00C75960 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-RAC-iOS";
-			productName = Restofire;
-			productReference = 354308471CA90FCA00C75960 /* Restofire_RAC.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		354308AD1CA92DB600C75960 /* Restofire_RACTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 354308B61CA92DB600C75960 /* Build configuration list for PBXNativeTarget "Restofire_RACTests" */;
-			buildPhases = (
-				354308AA1CA92DB600C75960 /* Sources */,
-				354308AB1CA92DB600C75960 /* Frameworks */,
-				354308AC1CA92DB600C75960 /* Resources */,
-				35950D921CA948CE003127F9 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				354308B51CA92DB600C75960 /* PBXTargetDependency */,
-			);
-			name = Restofire_RACTests;
-			productName = Restofire_RACTests;
-			productReference = 354308AE1CA92DB600C75960 /* Restofire_RACTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		35A9365E1CA93B7000AC584F /* Restofire-Rx-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936691CA93B7000AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-iOS" */;
-			buildPhases = (
-				35A9365F1CA93B7000AC584F /* Sources */,
-				35A936641CA93B7000AC584F /* Frameworks */,
-				35A936661CA93B7000AC584F /* Headers */,
-				35A936681CA93B7000AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-Rx-iOS";
-			productName = Restofire;
-			productReference = 35A9366C1CA93B7000AC584F /* Restofire_Rx.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		35A936791CA93C0F00AC584F /* Restofire_RxTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936821CA93C1000AC584F /* Build configuration list for PBXNativeTarget "Restofire_RxTests" */;
-			buildPhases = (
-				35A936761CA93C0F00AC584F /* Sources */,
-				35A936771CA93C0F00AC584F /* Frameworks */,
-				35A936781CA93C0F00AC584F /* Resources */,
-				35950D981CA9492E003127F9 /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				35A936811CA93C1000AC584F /* PBXTargetDependency */,
-			);
-			name = Restofire_RxTests;
-			productName = Restofire_RxTests;
-			productReference = 35A9367A1CA93C0F00AC584F /* Restofire_RxTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		35A936931CA93E9B00AC584F /* Restofire-RAC-Mac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A9369E1CA93E9B00AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-Mac" */;
-			buildPhases = (
-				35A936941CA93E9B00AC584F /* Sources */,
-				35A936991CA93E9B00AC584F /* Frameworks */,
-				35A9369B1CA93E9B00AC584F /* Headers */,
-				35A9369D1CA93E9B00AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-RAC-Mac";
-			productName = "Restofire-Mac";
-			productReference = 35A936A11CA93E9B00AC584F /* Restofire_RAC.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		35A936A31CA93E9D00AC584F /* Restofire-Rx-Mac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936AE1CA93E9D00AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-Mac" */;
-			buildPhases = (
-				35A936A41CA93E9D00AC584F /* Sources */,
-				35A936A91CA93E9D00AC584F /* Frameworks */,
-				35A936AB1CA93E9D00AC584F /* Headers */,
-				35A936AD1CA93E9D00AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-Rx-Mac";
-			productName = "Restofire-Mac";
-			productReference = 35A936B11CA93E9D00AC584F /* Restofire_Rx.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		35A936B31CA93EA000AC584F /* Restofire-RAC-tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936BE1CA93EA000AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-tvOS" */;
-			buildPhases = (
-				35A936B41CA93EA000AC584F /* Sources */,
-				35A936B91CA93EA000AC584F /* Frameworks */,
-				35A936BB1CA93EA000AC584F /* Headers */,
-				35A936BD1CA93EA000AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-RAC-tvOS";
-			productName = "Restofire-tvOS";
-			productReference = 35A936C11CA93EA000AC584F /* Restofire_RAC.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		35A936C31CA93EA200AC584F /* Restofire-Rx-tvOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936CE1CA93EA200AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-tvOS" */;
-			buildPhases = (
-				35A936C41CA93EA200AC584F /* Sources */,
-				35A936C91CA93EA200AC584F /* Frameworks */,
-				35A936CB1CA93EA200AC584F /* Headers */,
-				35A936CD1CA93EA200AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-Rx-tvOS";
-			productName = "Restofire-tvOS";
-			productReference = 35A936D11CA93EA200AC584F /* Restofire_Rx.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		35A936D31CA93EA500AC584F /* Restofire-RAC-watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936DE1CA93EA500AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-watchOS" */;
-			buildPhases = (
-				35A936D41CA93EA500AC584F /* Sources */,
-				35A936D91CA93EA500AC584F /* Frameworks */,
-				35A936DB1CA93EA500AC584F /* Headers */,
-				35A936DD1CA93EA500AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-RAC-watchOS";
-			productName = "Restofire-watchOS";
-			productReference = 35A936E11CA93EA500AC584F /* Restofire_RAC.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		35A936E31CA93EA700AC584F /* Restofire-Rx-watchOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 35A936EE1CA93EA700AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-watchOS" */;
-			buildPhases = (
-				35A936E41CA93EA700AC584F /* Sources */,
-				35A936E91CA93EA700AC584F /* Frameworks */,
-				35A936EB1CA93EA700AC584F /* Headers */,
-				35A936ED1CA93EA700AC584F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Restofire-Rx-watchOS";
-			productName = "Restofire-watchOS";
-			productReference = 35A936F11CA93EA700AC584F /* Restofire_Rx.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		35B19DDA1BEE134E001D3952 /* Restofire-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 35B19DEF1BEE134E001D3952 /* Build configuration list for PBXNativeTarget "Restofire-iOS" */;
@@ -1102,12 +544,6 @@
 					350062291C7C343D0078B589 = {
 						CreatedOnToolsVersion = 7.2;
 					};
-					354308AD1CA92DB600C75960 = {
-						CreatedOnToolsVersion = 7.3;
-					};
-					35A936791CA93C0F00AC584F = {
-						CreatedOnToolsVersion = 7.3;
-					};
 					35B19DDA1BEE134E001D3952 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -1133,16 +569,6 @@
 				350061F11C7C33910078B589 /* Restofire-tvOS */,
 				3500620D1C7C33EB0078B589 /* Restofire-Mac */,
 				350062291C7C343D0078B589 /* Restofire-watchOS */,
-				354308391CA90FCA00C75960 /* Restofire-RAC-iOS */,
-				354308AD1CA92DB600C75960 /* Restofire_RACTests */,
-				35A9365E1CA93B7000AC584F /* Restofire-Rx-iOS */,
-				35A936791CA93C0F00AC584F /* Restofire_RxTests */,
-				35A936931CA93E9B00AC584F /* Restofire-RAC-Mac */,
-				35A936A31CA93E9D00AC584F /* Restofire-Rx-Mac */,
-				35A936B31CA93EA000AC584F /* Restofire-RAC-tvOS */,
-				35A936C31CA93EA200AC584F /* Restofire-Rx-tvOS */,
-				35A936D31CA93EA500AC584F /* Restofire-RAC-watchOS */,
-				35A936E31CA93EA700AC584F /* Restofire-Rx-watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -1163,76 +589,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		350062281C7C343D0078B589 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		354308431CA90FCA00C75960 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		354308AC1CA92DB600C75960 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936681CA93B7000AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936781CA93C0F00AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A9369D1CA93E9B00AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936AD1CA93E9D00AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936BD1CA93EA000AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936CD1CA93EA200AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936DD1CA93EA500AC584F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936ED1CA93EA700AC584F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1260,13 +616,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3544ED461CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */,
+				3544ED3A1CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */,
 				3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */,
+				3544ED5A1CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */,
 				351A7A7C1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
+				3544ED421CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */,
+				3544ED521CBA40F700CDF3C9 /* StringService+GET.swift in Sources */,
+				3544ED821CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */,
 				3500627F1C7C406C0078B589 /* Dictionary.swift in Sources */,
+				3544ED6A1CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */,
+				3544ED3E1CBA40F700CDF3C9 /* IntService+GET.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3544ED071CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
+				3544ED2E1CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */,
+				3544ED621CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */,
 				3544EC921CB8DD8E00CDF3C9 /* Request.swift in Sources */,
+				3544ED5E1CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3544ED661CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */,
+				3544ED4E1CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */,
+				3544ED761CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */,
+				3544ED6E1CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */,
+				3544ED321CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */,
+				3544ED561CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */,
+				3544ED7E1CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */,
+				3544ED4A1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */,
+				3544ED7A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */,
+				3544ED361CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */,
+				3544ED721CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */,
 				3544ECFA1CBA35D200CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1275,13 +653,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3544ED471CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */,
+				3544ED3B1CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */,
 				3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */,
+				3544ED5B1CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */,
 				351A7A7D1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
+				3544ED431CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */,
+				3544ED531CBA40F700CDF3C9 /* StringService+GET.swift in Sources */,
+				3544ED831CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */,
 				350062801C7C406C0078B589 /* Dictionary.swift in Sources */,
+				3544ED6B1CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */,
+				3544ED3F1CBA40F700CDF3C9 /* IntService+GET.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3544ED081CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
+				3544ED2F1CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */,
+				3544ED631CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */,
 				3544EC931CB8DD8E00CDF3C9 /* Request.swift in Sources */,
+				3544ED5F1CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3544ED671CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */,
+				3544ED4F1CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */,
+				3544ED771CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */,
+				3544ED6F1CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */,
+				3544ED331CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */,
+				3544ED571CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */,
+				3544ED7F1CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */,
+				3544ED4B1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */,
+				3544ED7B1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */,
+				3544ED371CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */,
+				3544ED731CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */,
 				3544ECFB1CBA35D300CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1290,162 +690,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3544ED481CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */,
+				3544ED3C1CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */,
 				3596CBFB1CA3B4D70089A03E /* Configuration.swift in Sources */,
+				3544ED5C1CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */,
 				351A7A7E1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
+				3544ED441CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */,
+				3544ED541CBA40F700CDF3C9 /* StringService+GET.swift in Sources */,
+				3544ED841CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */,
 				350062811C7C406D0078B589 /* Dictionary.swift in Sources */,
+				3544ED6C1CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */,
+				3544ED401CBA40F700CDF3C9 /* IntService+GET.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				3544ED091CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
+				3544ED301CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */,
+				3544ED641CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */,
 				3544EC941CB8DD8F00CDF3C9 /* Request.swift in Sources */,
+				3544ED601CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3544ED681CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */,
+				3544ED501CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */,
+				3544ED781CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */,
+				3544ED701CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */,
+				3544ED341CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */,
+				3544ED581CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */,
+				3544ED801CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */,
+				3544ED4C1CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */,
+				3544ED7C1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */,
+				3544ED381CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */,
+				3544ED741CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */,
 				3544ECFC1CBA35D400CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3543083A1CA90FCA00C75960 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3543083B1CA90FCA00C75960 /* Configuration.swift in Sources */,
-				3544EC951CB8DD8F00CDF3C9 /* Request.swift in Sources */,
-				3543083C1CA90FCA00C75960 /* ResponseSerializer.swift in Sources */,
-				354308491CA90FDA00C75960 /* ReactiveCocoa.swift in Sources */,
-				3543083D1CA90FCA00C75960 /* Dictionary.swift in Sources */,
-				35A9365B1CA9327700AC584F /* Requestable.swift in Sources */,
-				3544ECFD1CBA35D400CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C385191CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED0A1CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		354308AA1CA92DB600C75960 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35950DDD1CA952D9003127F9 /* RACServiceSpec.swift in Sources */,
-				35950DDF1CA952E1003127F9 /* RACPersonService+GET.swift in Sources */,
-				35950DDE1CA952DB003127F9 /* RACPersonService+GETSpec.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A9365F1CA93B7000AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936601CA93B7000AC584F /* Configuration.swift in Sources */,
-				3544EC961CB8DD9000CDF3C9 /* Request.swift in Sources */,
-				35A936611CA93B7000AC584F /* ResponseSerializer.swift in Sources */,
-				35A936621CA93B7000AC584F /* Dictionary.swift in Sources */,
-				35A9366E1CA93B7E00AC584F /* RxSwift.swift in Sources */,
-				35A936631CA93B7000AC584F /* Requestable.swift in Sources */,
-				3544ECFE1CBA35D500CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C3851A1CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED0B1CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936761CA93C0F00AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35950DDB1CA952CC003127F9 /* RxServiceSpec.swift in Sources */,
-				35950DDA1CA952C7003127F9 /* RxPersonService+GETSpec.swift in Sources */,
-				35950DDC1CA952D2003127F9 /* RxPersonService+GET.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936941CA93E9B00AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936951CA93E9B00AC584F /* Configuration.swift in Sources */,
-				3544EC971CB8DD9100CDF3C9 /* Request.swift in Sources */,
-				35A936961CA93E9B00AC584F /* ResponseSerializer.swift in Sources */,
-				35A936F31CA9412000AC584F /* ReactiveCocoa.swift in Sources */,
-				35A936971CA93E9B00AC584F /* Dictionary.swift in Sources */,
-				35A936981CA93E9B00AC584F /* Requestable.swift in Sources */,
-				3544ECFF1CBA35D600CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C3851B1CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED0C1CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936A41CA93E9D00AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936A51CA93E9D00AC584F /* Configuration.swift in Sources */,
-				3544EC981CB8DD9100CDF3C9 /* Request.swift in Sources */,
-				35A936A61CA93E9D00AC584F /* ResponseSerializer.swift in Sources */,
-				35A936A71CA93E9D00AC584F /* Dictionary.swift in Sources */,
-				35A936F61CA9413200AC584F /* RxSwift.swift in Sources */,
-				35A936A81CA93E9D00AC584F /* Requestable.swift in Sources */,
-				3544ED001CBA35D700CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C3851C1CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED0D1CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936B41CA93EA000AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936B51CA93EA000AC584F /* Configuration.swift in Sources */,
-				3544EC991CB8DD9200CDF3C9 /* Request.swift in Sources */,
-				35A936B61CA93EA000AC584F /* ResponseSerializer.swift in Sources */,
-				35A936F41CA9412100AC584F /* ReactiveCocoa.swift in Sources */,
-				35A936B71CA93EA000AC584F /* Dictionary.swift in Sources */,
-				35A936B81CA93EA000AC584F /* Requestable.swift in Sources */,
-				3544ED011CBA35D700CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C3851D1CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED0E1CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936C41CA93EA200AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936C51CA93EA200AC584F /* Configuration.swift in Sources */,
-				3544EC9A1CB8DD9200CDF3C9 /* Request.swift in Sources */,
-				35A936C61CA93EA200AC584F /* ResponseSerializer.swift in Sources */,
-				35A936C71CA93EA200AC584F /* Dictionary.swift in Sources */,
-				35A936F71CA9413300AC584F /* RxSwift.swift in Sources */,
-				35A936C81CA93EA200AC584F /* Requestable.swift in Sources */,
-				3544ED021CBA35D800CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C3851E1CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED0F1CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936D41CA93EA500AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936D51CA93EA500AC584F /* Configuration.swift in Sources */,
-				3544EC9B1CB8DD9400CDF3C9 /* Request.swift in Sources */,
-				35A936D61CA93EA500AC584F /* ResponseSerializer.swift in Sources */,
-				35A936F51CA9412200AC584F /* ReactiveCocoa.swift in Sources */,
-				35A936D71CA93EA500AC584F /* Dictionary.swift in Sources */,
-				35A936D81CA93EA500AC584F /* Requestable.swift in Sources */,
-				3544ED031CBA35D800CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C3851F1CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED101CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		35A936E41CA93EA700AC584F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				35A936E51CA93EA700AC584F /* Configuration.swift in Sources */,
-				3544EC9C1CB8DD9500CDF3C9 /* Request.swift in Sources */,
-				35A936E61CA93EA700AC584F /* ResponseSerializer.swift in Sources */,
-				35A936E71CA93EA700AC584F /* Dictionary.swift in Sources */,
-				35A936F81CA9413500AC584F /* RxSwift.swift in Sources */,
-				35A936E81CA93EA700AC584F /* Requestable.swift in Sources */,
-				3544ED041CBA35DA00CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
-				35C385201CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				3544ED111CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1453,13 +727,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3544ED451CBA40F700CDF3C9 /* PersonService+GET.swift in Sources */,
+				3544ED391CBA40F700CDF3C9 /* HTTPBinService+Get.swift in Sources */,
 				3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */,
+				3544ED591CBA40F700CDF3C9 /* BoolService+GETSpec.swift in Sources */,
 				35A871761CB7BF9700669ED4 /* Request.swift in Sources */,
+				3544ED411CBA40F700CDF3C9 /* PersonArrayService+GET.swift in Sources */,
+				3544ED511CBA40F700CDF3C9 /* StringService+GET.swift in Sources */,
+				3544ED811CBA40F700CDF3C9 /* VoidService+GETSpec.swift in Sources */,
 				351A7A7B1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
+				3544ED691CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */,
+				3544ED3D1CBA40F700CDF3C9 /* IntService+GET.swift in Sources */,
 				350062721C7C40510078B589 /* Dictionary.swift in Sources */,
 				3544ED061CBA381600CDF3C9 /* RequestEventually.swift in Sources */,
+				3544ED2D1CBA40F700CDF3C9 /* HTTPBinRequestType.swift in Sources */,
+				3544ED611CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
+				3544ED5D1CBA40F700CDF3C9 /* FloatService+GETSpec.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3544ED651CBA40F700CDF3C9 /* IntService+GETSpec.swift in Sources */,
+				3544ED4D1CBA40F700CDF3C9 /* StringArrayService+GET.swift in Sources */,
+				3544ED751CBA40F700CDF3C9 /* ServiceSpec.swift in Sources */,
+				3544ED6D1CBA40F700CDF3C9 /* PersonService+GETSpec.swift in Sources */,
+				3544ED311CBA40F700CDF3C9 /* BoolService+GET.swift in Sources */,
+				3544ED551CBA40F700CDF3C9 /* VoidService+GET.swift in Sources */,
+				3544ED7D1CBA40F700CDF3C9 /* StringService+GETSpec.swift in Sources */,
+				3544ED491CBA40F700CDF3C9 /* RootKeyPathService+Get.swift in Sources */,
+				3544ED791CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift in Sources */,
+				3544ED351CBA40F700CDF3C9 /* FloatService+GET.swift in Sources */,
+				3544ED711CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift in Sources */,
 				3544ECB31CBA2BE300CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1468,44 +764,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35950DFA1CA99AFE003127F9 /* HTTPBinService+Get.swift in Sources */,
-				35950DEE1CA952EE003127F9 /* PersonService+GET.swift in Sources */,
-				35950DE71CA952E8003127F9 /* StringArrayService+GETSpec.swift in Sources */,
-				35950DE31CA952E8003127F9 /* PersonArrayService+GETSpec.swift in Sources */,
-				35950DE11CA952E8003127F9 /* FloatService+GETSpec.swift in Sources */,
-				35950DED1CA952EE003127F9 /* PersonArrayService+GET.swift in Sources */,
-				35950DF11CA952EE003127F9 /* StringService+GET.swift in Sources */,
-				35950DE21CA952E8003127F9 /* IntService+GETSpec.swift in Sources */,
-				35950DEC1CA952EE003127F9 /* IntService+GET.swift in Sources */,
-				35950DE61CA952E8003127F9 /* ServiceSpec.swift in Sources */,
-				35950DE01CA952E8003127F9 /* BoolService+GETSpec.swift in Sources */,
-				35950DE81CA952E8003127F9 /* StringService+GETSpec.swift in Sources */,
-				35950DFD1CA99BB8003127F9 /* HTTPBinStringService+GETSpec.swift in Sources */,
-				35950DEA1CA952EE003127F9 /* BoolService+GET.swift in Sources */,
-				35950DE91CA952E8003127F9 /* VoidService+GETSpec.swift in Sources */,
-				35950DF01CA952EE003127F9 /* StringArrayService+GET.swift in Sources */,
-				35950DE51CA952E8003127F9 /* RootKeyPathService+GETSpec.swift in Sources */,
-				35950DF71CA99958003127F9 /* HTTPBinRequestType.swift in Sources */,
-				35950DF21CA952EE003127F9 /* VoidService+GET.swift in Sources */,
-				35950DEF1CA952EE003127F9 /* RootKeyPathService+Get.swift in Sources */,
-				35950DE41CA952E8003127F9 /* PersonService+GETSpec.swift in Sources */,
-				35950DEB1CA952EE003127F9 /* FloatService+GET.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		354308B51CA92DB600C75960 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 354308391CA90FCA00C75960 /* Restofire-RAC-iOS */;
-			targetProxy = 354308B41CA92DB600C75960 /* PBXContainerItemProxy */;
-		};
-		35A936811CA93C1000AC584F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 35A9365E1CA93B7000AC584F /* Restofire-Rx-iOS */;
-			targetProxy = 35A936801CA93C1000AC584F /* PBXContainerItemProxy */;
-		};
 		35B19DE81BEE134E001D3952 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 35B19DDA1BEE134E001D3952 /* Restofire-iOS */;
@@ -1651,448 +915,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
-			};
-			name = Release;
-		};
-		354308451CA90FCA00C75960 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		354308461CA90FCA00C75960 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		354308B71CA92DB600C75960 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rahulkatariya.Restofire-RACTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		354308B81CA92DB600C75960 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rahulkatariya.Restofire-RACTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		35A9366A1CA93B7000AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-			};
-			name = Debug;
-		};
-		35A9366B1CA93B7000AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		35A936831CA93C1000AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rahulkatariya.Restofire-RxTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		35A936841CA93C1000AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
-				INFOPLIST_FILE = Tests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rahulkatariya.Restofire-RxTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		35A9369F1CA93E9B00AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		35A936A01CA93E9B00AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		35A936AF1CA93E9D00AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		35A936B01CA93E9D00AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		35A936BF1CA93EA000AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		35A936C01CA93EA000AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		35A936CF1CA93EA200AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Debug;
-		};
-		35A936D01CA93EA200AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/tvOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
-			};
-			name = Release;
-		};
-		35A936DF1CA93EA500AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
-			};
-			name = Debug;
-		};
-		35A936E01CA93EA500AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_RAC;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
-			};
-			name = Release;
-		};
-		35A936EF1CA93EA700AC584F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
-			};
-			name = Debug;
-		};
-		35A936F01CA93EA700AC584F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/watchOS",
-				);
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Restofire;
-				PRODUCT_NAME = Restofire_Rx;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
@@ -2290,96 +1112,6 @@
 			buildConfigurations = (
 				350062301C7C343D0078B589 /* Debug */,
 				350062311C7C343D0078B589 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		354308441CA90FCA00C75960 /* Build configuration list for PBXNativeTarget "Restofire-RAC-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				354308451CA90FCA00C75960 /* Debug */,
-				354308461CA90FCA00C75960 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		354308B61CA92DB600C75960 /* Build configuration list for PBXNativeTarget "Restofire_RACTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				354308B71CA92DB600C75960 /* Debug */,
-				354308B81CA92DB600C75960 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936691CA93B7000AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A9366A1CA93B7000AC584F /* Debug */,
-				35A9366B1CA93B7000AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936821CA93C1000AC584F /* Build configuration list for PBXNativeTarget "Restofire_RxTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A936831CA93C1000AC584F /* Debug */,
-				35A936841CA93C1000AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A9369E1CA93E9B00AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-Mac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A9369F1CA93E9B00AC584F /* Debug */,
-				35A936A01CA93E9B00AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936AE1CA93E9D00AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-Mac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A936AF1CA93E9D00AC584F /* Debug */,
-				35A936B01CA93E9D00AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936BE1CA93EA000AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A936BF1CA93EA000AC584F /* Debug */,
-				35A936C01CA93EA000AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936CE1CA93EA200AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A936CF1CA93EA200AC584F /* Debug */,
-				35A936D01CA93EA200AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936DE1CA93EA500AC584F /* Build configuration list for PBXNativeTarget "Restofire-RAC-watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A936DF1CA93EA500AC584F /* Debug */,
-				35A936E01CA93EA500AC584F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		35A936EE1CA93EA700AC584F /* Build configuration list for PBXNativeTarget "Restofire-Rx-watchOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				35A936EF1CA93EA700AC584F /* Debug */,
-				35A936F01CA93EA700AC584F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

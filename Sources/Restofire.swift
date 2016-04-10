@@ -11,8 +11,10 @@ import Foundation
 public class Restofire {
     
     public static var defaultConfiguration = Configuration()
-    static let requestEventuallyQueue = RequestEventuallyQueue()
     public static var defaultRequestEventuallyTimeOut: NSTimeInterval = 600
-    public static var defaultMaxAttempts: NSTimeInterval = 6
+    public static var defaultMaxAttempts: UInt8 = 5
+    
+    static let requestEventuallyQueue = RequestEventuallyQueue()
+    let internetReachableAfterTimeWait: NSTimeInterval = 5
     
 }

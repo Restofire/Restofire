@@ -10,8 +10,8 @@ import Alamofire
 
 class RequestEventuallyQueue {
     
-    var queue = [RequestEventually]()
-    let networkReachabilityManager = NetworkReachabilityManager()
+    private var queue = [RequestEventually]()
+    private let networkReachabilityManager = NetworkReachabilityManager()
     
     init() {
         networkReachabilityManager?.listener = { status in
@@ -25,7 +25,7 @@ class RequestEventuallyQueue {
         startListeningForNetworkChanges()
     }
     
-    func startListeningForNetworkChanges() {
+    private func startListeningForNetworkChanges() {
         if let manger = networkReachabilityManager where !manger.startListening() {
             startListeningForNetworkChanges()
         }
@@ -33,27 +33,33 @@ class RequestEventuallyQueue {
     
     func enqueuRequestEventually(requestEventually: RequestEventually) {
         if let manager = networkReachabilityManager where manager.isReachable {
-            requestEventually.request.executeTask({ (response: Response<AnyObject, NSError>) in
-                requestEventually.requestCompletionHandler(response)
-            })
+            self.executeRequestEventually(requestEventually)
         } else {
             queue.append(requestEventually)
         }
     }
     
-    func startExecutingQueue() {
-        for request in queue {
+    private func startExecutingQueue() {
+        for (index, requestEventually) in queue.enumerate() {
             if let manager = networkReachabilityManager where manager.isReachable {
-                self.executeRequestEventually(request)
+                self.executeRequestEventually(requestEventually, atIndex: index)
             } else { break }
         }
     }
     
-    func executeRequestEventually(requestEventually: RequestEventually) {
-        requestEventually.request.executeTask { (response: Response<AnyObject, NSError>) in
-            if response.result.error == nil {
-
-            } else { }
+    private func executeRequestEventually(requestEventually: RequestEventually, atIndex index: Int = -1) {
+        if requestEventually.maxAttempts > 0 {
+            requestEventually.request.executeTask({ (response: Response<AnyObject, NSError>) in
+                if response.result.error == nil {
+                    requestEventually.requestCompletionHandler(response)
+                    if index != -1 { self.queue.removeAtIndex(index) }
+                } else {
+                    requestEventually.maxAttempts -= 1
+                    if index == -1 { self.queue.append(requestEventually) }
+                }
+            })
+        } else {
+            self.queue.removeAtIndex(index)
         }
     }
     

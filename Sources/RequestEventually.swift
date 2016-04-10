@@ -6,13 +6,15 @@
 //  Copyright © 2016 AarKay. All rights reserved.
 //
 
+import Foundation
 import Alamofire
 
-struct RequestEventually {
+class RequestEventually {
     
     let request: Request
     let requestCompletionHandler: (Response<AnyObject, NSError> -> Void)
-    let internetReachableTimeWait: NSTimeInterval = 10
+    var timeOut: NSTimeInterval = Restofire.defaultRequestEventuallyTimeOut
+    var maxAttempts: UInt8 = Restofire.defaultMaxAttempts + 1
     
     init(request: Request, requestCompletionHandler: (Response<AnyObject, NSError> -> Void)) {
         self.request = request

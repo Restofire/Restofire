@@ -14,6 +14,11 @@
 		3544ECCE1CBA2EA000CDF3C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3544ECCD1CBA2EA000CDF3C9 /* Assets.xcassets */; };
 		3544ECD11CBA2EA000CDF3C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3544ECCF1CBA2EA000CDF3C9 /* LaunchScreen.storyboard */; };
 		3544ECDC1CBA2EA000CDF3C9 /* RestofireDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ECDB1CBA2EA000CDF3C9 /* RestofireDemoUITests.swift */; };
+		3544ECE71CBA2FAC00CDF3C9 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECE61CBA2FAC00CDF3C9 /* Restofire.framework */; };
+		3544ECE81CBA2FAC00CDF3C9 /* Restofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECE61CBA2FAC00CDF3C9 /* Restofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3544ECEF1CBA2FD900CDF3C9 /* AppVersionGETService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ECEE1CBA2FD900CDF3C9 /* AppVersionGETService.swift */; };
+		3544ECF81CBA345A00CDF3C9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECF71CBA345A00CDF3C9 /* Alamofire.framework */; };
+		3544ECF91CBA345A00CDF3C9 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECF71CBA345A00CDF3C9 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +30,21 @@
 			remoteInfo = RestofireDemo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3544ECE91CBA2FAC00CDF3C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3544ECE81CBA2FAC00CDF3C9 /* Restofire.framework in Embed Frameworks */,
+				3544ECF91CBA345A00CDF3C9 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3544ECC01CBA2EA000CDF3C9 /* RestofireDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestofireDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +58,9 @@
 		3544ECD71CBA2EA000CDF3C9 /* RestofireDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestofireDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3544ECDB1CBA2EA000CDF3C9 /* RestofireDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestofireDemoUITests.swift; sourceTree = "<group>"; };
 		3544ECDD1CBA2EA000CDF3C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3544ECE61CBA2FAC00CDF3C9 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Restofire.framework; path = "/Users/rahulkatariya/Library/Developer/Xcode/DerivedData/Restofire-cnwlpcowbnkaacghadgasqneeyyv/Build/Products/Debug-iphonesimulator/Restofire.framework"; sourceTree = "<absolute>"; };
+		3544ECEE1CBA2FD900CDF3C9 /* AppVersionGETService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionGETService.swift; sourceTree = "<group>"; };
+		3544ECF71CBA345A00CDF3C9 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3544ECE71CBA2FAC00CDF3C9 /* Restofire.framework in Frameworks */,
+				3544ECF81CBA345A00CDF3C9 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +88,7 @@
 			children = (
 				3544ECC21CBA2EA000CDF3C9 /* RestofireDemo */,
 				3544ECDA1CBA2EA000CDF3C9 /* RestofireDemoUITests */,
+				3544ECEA1CBA2FB300CDF3C9 /* Frameworks */,
 				3544ECC11CBA2EA000CDF3C9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -82,10 +108,8 @@
 				3544ECC31CBA2EA000CDF3C9 /* AppDelegate.swift */,
 				3544ECC51CBA2EA000CDF3C9 /* ViewController.swift */,
 				3544ECC71CBA2EA000CDF3C9 /* Main.storyboard */,
-				3544ECCD1CBA2EA000CDF3C9 /* Assets.xcassets */,
-				3544ECCF1CBA2EA000CDF3C9 /* LaunchScreen.storyboard */,
-				3544ECD21CBA2EA000CDF3C9 /* Info.plist */,
-				3544ECCA1CBA2EA000CDF3C9 /* RestofireDemo.xcdatamodeld */,
+				3544ECED1CBA2FD900CDF3C9 /* Services */,
+				3544ECF01CBA2FE300CDF3C9 /* Resources */,
 			);
 			path = RestofireDemo;
 			sourceTree = "<group>";
@@ -99,6 +123,34 @@
 			path = RestofireDemoUITests;
 			sourceTree = "<group>";
 		};
+		3544ECEA1CBA2FB300CDF3C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3544ECF71CBA345A00CDF3C9 /* Alamofire.framework */,
+				3544ECE61CBA2FAC00CDF3C9 /* Restofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3544ECED1CBA2FD900CDF3C9 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3544ECEE1CBA2FD900CDF3C9 /* AppVersionGETService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3544ECF01CBA2FE300CDF3C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3544ECCD1CBA2EA000CDF3C9 /* Assets.xcassets */,
+				3544ECCF1CBA2EA000CDF3C9 /* LaunchScreen.storyboard */,
+				3544ECD21CBA2EA000CDF3C9 /* Info.plist */,
+				3544ECCA1CBA2EA000CDF3C9 /* RestofireDemo.xcdatamodeld */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +161,7 @@
 				3544ECBC1CBA2EA000CDF3C9 /* Sources */,
 				3544ECBD1CBA2EA000CDF3C9 /* Frameworks */,
 				3544ECBE1CBA2EA000CDF3C9 /* Resources */,
+				3544ECE91CBA2FAC00CDF3C9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3544ECC61CBA2EA000CDF3C9 /* ViewController.swift in Sources */,
+				3544ECEF1CBA2FD900CDF3C9 /* AppVersionGETService.swift in Sources */,
 				3544ECCC1CBA2EA000CDF3C9 /* RestofireDemo.xcdatamodeld in Sources */,
 				3544ECC41CBA2EA000CDF3C9 /* AppDelegate.swift in Sources */,
 			);
@@ -331,6 +385,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RestofireDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.RestofireDemo;
@@ -342,6 +400,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RestofireDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.RestofireDemo;
@@ -390,6 +452,7 @@
 				3544ECE21CBA2EA000CDF3C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3544ECE31CBA2EA000CDF3C9 /* Build configuration list for PBXNativeTarget "RestofireDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +461,7 @@
 				3544ECE51CBA2EA000CDF3C9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

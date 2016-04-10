@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Restofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+        Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+        Restofire.defaultConfiguration.logging = true
+        Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 5
+        Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 5
+        
         return true
     }
 

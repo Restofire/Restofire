@@ -26,7 +26,7 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
                 service.parameters = ["name": "Rahul Katariya"]
                 service.executeTask() {
                     if let value = $0.result.value {
-                        expected = value
+                        expected = value as! String
                     }
                 }
 

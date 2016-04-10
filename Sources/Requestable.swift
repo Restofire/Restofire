@@ -9,9 +9,8 @@
 import Foundation
 import Alamofire
 
-public protocol Requestable: class {
+public protocol Requestable {
 
-    associatedtype Model
     var path: String { get set }
     
     //Optionals
@@ -70,18 +69,18 @@ public extension Requestable {
 
 public extension Requestable {
     
-    public func executeTask(completionHandler: Response<Model, NSError> -> Void) {
+    public func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
         let request = Request(requestable: self)
-        request.executeTask { (response: Response<Model, NSError>) in
+        request.executeTask { (response: Response<AnyObject, NSError>) in
             completionHandler(response)
         }
     }
     
-//    public func executeTaskEvenually(completionHandler: Response<Model, NSError> -> Void) {
-//        let request = Request(requestable: self)
-//        request.executeTaskEventually { (response: Response<Model, NSError>) in
-//            completionHandler(response)
-//        }
-//    }
+    public func executeTaskEvenually(completionHandler: Response<AnyObject, NSError> -> Void) {
+        let request = Request(requestable: self)
+        request.executeTaskEventually { (response: Response<AnyObject, NSError>) in
+            completionHandler(response)
+        }
+    }
     
 }

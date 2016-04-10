@@ -8,20 +8,20 @@
 
 import Alamofire
 
-class Request<T: Requestable> {
+class Request {
     
-    let requestable: T!
+    let requestable: Requestable!
     let manager: Alamofire.Manager!
     var request: Alamofire.Request!
-    var requestCompletionHandler: (Response<T.Model, NSError> -> Void)!
+    var requestCompletionHandler: (Response<AnyObject, NSError> -> Void)!
     
-    init(requestable: T) {
+    init(requestable: Requestable) {
         self.requestable = requestable
         self.manager = Alamofire.Manager(configuration: requestable.sessionConfiguration)
         request = requestFromRequestable(requestable)
     }
     
-    func requestFromRequestable(requestable: T) -> Alamofire.Request {
+    func requestFromRequestable(requestable: Requestable) -> Alamofire.Request {
         
         var request: Alamofire.Request!
         
@@ -36,24 +36,24 @@ class Request<T: Requestable> {
         
     }
     
-    func executeTask(completionHandler: Response<T.Model, NSError> -> Void) {
-        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<T.Model, NSError>) -> Void in
+    func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
+        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<AnyObject, NSError>) -> Void in
             completionHandler(response)
             if self.requestable.logging { debugPrint(response) }
         }
     }
     
-//    func executeTaskEventually(completionHandler: Response<T.Model, NSError> -> Void) {
-//        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<T.Model, NSError>) -> Void in
-//            if response.result.error != nil {
-//                completionHandler(response)
-//            } else {
-//                self.requestCompletionHandler = completionHandler
-//                
-//            }
-//            if self.requestable.logging { debugPrint(response) }
-//        }
-//    }
+    func executeTaskEventually(completionHandler: Response<AnyObject, NSError> -> Void) {
+        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<AnyObject, NSError>) -> Void in
+            if response.result.error != nil {
+                completionHandler(response)
+            } else {
+                self.requestCompletionHandler = completionHandler
+                
+            }
+            if self.requestable.logging { debugPrint(response) }
+        }
+    }
     
     deinit {
         request.cancel()

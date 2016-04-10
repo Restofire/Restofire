@@ -24,7 +24,7 @@ class StringGETServiceSpec: ServiceSpec {
 
                 StringGETService().executeTask() {
                     if let value = $0.result.value {
-                        expected = value
+                        expected = value as! String
                     }
                 }
 

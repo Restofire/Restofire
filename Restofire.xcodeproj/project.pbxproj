@@ -312,7 +312,6 @@
 		35950DFB1CA99BB5003127F9 /* HTTPBinStringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinStringService+GETSpec.swift"; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
-		35A8715D1CB7AA4100669ED4 /* AnyRequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyRequestable.swift; sourceTree = "<group>"; };
 		35A9365D1CA9334800AC584F /* RxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwift.swift; sourceTree = "<group>"; };
 		35A9366C1CA93B7000AC584F /* Restofire_Rx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire_Rx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35A9366F1CA93B9700AC584F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -486,7 +485,6 @@
 				351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */,
 				355641311CAFB73F009738B8 /* Request.swift */,
 				3500626B1C7C40510078B589 /* Dictionary.swift */,
-				35A8715D1CB7AA4100669ED4 /* AnyRequestable.swift */,
 				357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */,
 				354308371CA90F6700C75960 /* ReactiveCocoa */,
 				35A9365C1CA9330000AC584F /* RxSwift */,

@@ -24,7 +24,7 @@ class RootKeyPathGETServiceSpec: ServiceSpec {
 
                 RootKeyPathGETService().executeTask() {
                     if let value = $0.result.value {
-                        expected = value
+                        expected = value as! String
                     }
                 }
 

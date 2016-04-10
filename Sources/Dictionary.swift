@@ -1,17 +1,10 @@
-// pure merge for Dictionaries
-func + <T, U>(lhs: [T: U]?, rhs: [T: U]?) -> [T: U]? {
-    var lhs = lhs
-    if rhs == nil {
-        return lhs
-    } else if lhs == nil {
-        return rhs
-    } else {
-        for (key, val) in rhs! {
-            lhs![key] = val
-        }
-        return lhs
-    }
-}
+//
+//  Dictionary.swift
+//  Restofire
+//
+//  Created by Rahul Katariya on 24/03/16.
+//  Copyright © 2016 AarKay. All rights reserved.
+//
 
 extension Dictionary {
 

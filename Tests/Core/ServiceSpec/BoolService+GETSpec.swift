@@ -24,7 +24,7 @@ class BoolGETServiceSpec: ServiceSpec {
 
                 BoolGETService().executeTask() {
                     if let value = $0.result.value {
-                        expected = value
+                        expected = value as! Bool
                     }
                 }
                 

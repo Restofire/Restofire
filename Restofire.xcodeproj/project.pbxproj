@@ -59,6 +59,7 @@
 		3544ECB01CB95A4400CDF3C9 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECAE1CB95A4400CDF3C9 /* ReactiveCocoa.framework */; };
 		3544ECB11CB95A4400CDF3C9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3544ECAF1CB95A4400CDF3C9 /* Result.framework */; };
 		3544ECB21CB95A6000CDF3C9 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 354308A71CA91D9600C75960 /* Result.framework */; };
+		3544ECB31CBA2BE300CDF3C9 /* RequestEventuallyQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357D8DC41CAE57E5008A9FE0 /* RequestEventuallyQueue.swift */; };
 		3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EB1C732E4C00ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EC1C732E4C00ED7BF2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
@@ -1411,6 +1412,7 @@
 				350062721C7C40510078B589 /* Dictionary.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3544ECB31CBA2BE300CDF3C9 /* RequestEventuallyQueue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

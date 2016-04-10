@@ -13,7 +13,7 @@ class Request {
     let requestable: Requestable!
     let manager: Alamofire.Manager!
     var request: Alamofire.Request!
-    var requestCompletionHandler: (Response<AnyObject, NSError> -> Void)!
+    var requestCompletionHandler: (Response<AnyObject, NSError> -> Void)?
     
     init(requestable: Requestable) {
         self.requestable = requestable
@@ -37,19 +37,19 @@ class Request {
     }
     
     func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
-        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<AnyObject, NSError>) -> Void in
+        request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) -> Void in
             completionHandler(response)
             if self.requestable.logging { debugPrint(response) }
         }
     }
     
     func executeTaskEventually(completionHandler: Response<AnyObject, NSError> -> Void) {
-        request.response(rootKeyPath: requestable.rootKeyPath) {(response: Response<AnyObject, NSError>) -> Void in
-            if response.result.error != nil {
+        request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) -> Void in
+            if response.result.error == nil {
                 completionHandler(response)
             } else {
                 self.requestCompletionHandler = completionHandler
-                
+                Restofire.requestEventuallyQueue.enqueuRequest(self)
             }
             if self.requestable.logging { debugPrint(response) }
         }

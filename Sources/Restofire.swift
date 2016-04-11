@@ -8,13 +8,9 @@
 
 import Foundation
 
-public class Restofire {
-    
-    public static var defaultConfiguration = Configuration()
-    public static var defaultRequestEventuallyTimeOut: NSTimeInterval = 600
-    public static var defaultMaxAttempts: UInt8 = 5
-    
-    static let requestEventuallyQueue = RequestEventuallyQueue()
-    let internetReachableAfterTimeWait: NSTimeInterval = 5
-    
-}
+public var defaultConfiguration = Configuration()
+public var defaultRequestEventuallyTimeOut: NSTimeInterval = 600
+public var defaultMaxAttempts: UInt8 = 5
+
+let requestEventuallyQueue = RequestEventuallyQueue()
+let internetReachableAfterTimeWait: NSTimeInterval = 5

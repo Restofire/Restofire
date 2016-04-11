@@ -47,8 +47,12 @@ class Request {
         Restofire.requestEventuallyQueue.enqueuRequestEventually(requestEventually)
     }
     
-    deinit {
+    func cancel() {
         request.cancel()
+    }
+    
+    deinit {
+        cancel()
     }
     
 }

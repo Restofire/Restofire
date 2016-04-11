@@ -76,13 +76,5 @@ public extension Requestable {
         }
         return request.request
     }
-    
-    public func executeTaskEvenually(completionHandler: Response<AnyObject, NSError> -> Void) -> Alamofire.Request {
-        let request = Request(requestable: self)
-        request.executeTaskEventually { (response: Response<AnyObject, NSError>) in
-            completionHandler(response)
-        }
-        return request.request
-    }
 
 }

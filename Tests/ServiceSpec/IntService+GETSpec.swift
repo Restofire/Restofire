@@ -23,8 +23,8 @@ class IntGETServiceSpec: ServiceSpec {
                 var expected: Int!
 
                 IntGETService().executeTask() {
-                    if let value = $0.result.value {
-                        expected = value as! Int
+                    if let value = $0.result.value as? Int {
+                        expected = value
                     }
                 }
 

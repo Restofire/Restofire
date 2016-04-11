@@ -18,6 +18,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 ## Features
 
 - [x] No Learning Curve Needed
+- [x] Services are first class citizens and are testable
 - [x] Default Configuration object for Base URL / headers / parameters / rootKeyPath etc
 - [x] Multiple Configurations with different Base URLs
 - [x] Single Request Configuration
@@ -25,7 +26,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [ ] Download and Upload Tasks
 - [ ] Response Validations
 - [ ] Authentication
-- [x] Request Eventually when internet is reachable
+- [ ] Request Eventually when internet is reachable
 - [ ] Comprehensive Unit Test Coverage
 - [ ] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
 
@@ -124,7 +125,6 @@ import Restofire
 
 class PersonGETService: RequestType {
 
-    typealias Model = [String: AnyObject]
     var path: String = "56c2cc70120000c12673f1b5"
 
 }
@@ -140,13 +140,18 @@ import Alamofire
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
+    var request: Request!
 
     func getPerson() {
-        PersonGETService().executeTask() {
-            if let value = $0.result.value {
+        request = PersonGETService().executeTask() {
+            if let value = $0.result.value as? [String: AnyObject] {
                 person = value
             }
         }
+    }
+    
+    deinit {
+        request.cancel()
     }
 
 }

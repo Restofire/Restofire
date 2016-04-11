@@ -23,8 +23,8 @@ class BoolGETServiceSpec: ServiceSpec {
                 var expected: Bool!
 
                 BoolGETService().executeTask() {
-                    if let value = $0.result.value {
-                        expected = value as! Bool
+                    if let value = $0.result.value as? Bool {
+                        expected = value
                     }
                 }
                 

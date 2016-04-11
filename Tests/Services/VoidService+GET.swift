@@ -12,7 +12,6 @@ import Restofire
 
 class VoidGETService: Requestable {
 
-    typealias Model = [String: AnyObject]
     var path: String = "56c31578120000743173f22e"
 
 }

@@ -42,17 +42,8 @@ class Request {
         }
     }
     
-    func executeTaskEventually(completionHandler: Response<AnyObject, NSError> -> Void) {
-        let requestEventually = RequestEventually(request: self, requestCompletionHandler: completionHandler)
-        Restofire.requestEventuallyQueue.enqueuRequestEventually(requestEventually)
-    }
-    
-    func cancel() {
-        request.cancel()
-    }
-    
     deinit {
-        cancel()
+        request.cancel()
     }
     
 }

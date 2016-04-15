@@ -10,8 +10,8 @@
 
 import Restofire
 
-class IntGETService: Requestable {
+struct IntGETService: Requestable {
 
-    var path: String = "56c2beee1200007b2473f19f"
+    let path: String = "56c2beee1200007b2473f19f"
 
 }

@@ -37,8 +37,8 @@ class Request {
     
     func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
         request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) -> Void in
-            if self.requestable.logging { debugPrint(response) }
             completionHandler(response)
+            if self.requestable.logging { debugPrint(response) }
         }
     }
     

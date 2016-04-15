@@ -9,29 +9,77 @@
 import Foundation
 import Alamofire
 
-public protocol Requestable {
-
-    var path: String { get set }
+/// Requestable defines a protocol to implement when creating a service class.
+/// ```swift
+/// import Restofire
+///
+/// class PersonPOSTService: Requestable {
+///
+///     let path: String
+///     let method: Alamofire.Method = .POST
+///     let parameters: AnyObject?
+///     
+///     init(id: String, parameters: AnyObject? = nil) {
+///         self.path = "person/\(id)"
+///         self.parameters = parameters
+///     }
+///
+/// }
+/// ```
+public protocol Requestable: Configurable {
     
-    //Optionals
+    /// The base URL. `configuration.BaseURL` by default.
     var baseURL: String { get }
-    var method: Alamofire.Method { get }
-    var encoding: Alamofire.ParameterEncoding { get }
-    var headers: [String : String]? { get }
-    var parameters: AnyObject? { get }
-    var rootKeyPath: String? { get }
-    var logging: Bool { get }
-    var sessionConfiguration: NSURLSessionConfiguration { get }
     
-    var configuration: Configuration { get }
+    /// The path relative to base URL.
+    var path: String { get }
+    
+    /// The HTTP Method. `configuration.method` by default.
+    var method: Alamofire.Method { get }
+    
+    /// The request parameter encoding. `configuration.encoding` by default.
+    var encoding: Alamofire.ParameterEncoding { get }
+    
+    /// The HTTP headers. `configuration.headers` by default.
+    var headers: [String : String]? { get }
+    
+    /// The request parameters. `nil` by default.
+    var parameters: AnyObject? { get }
+    
+    /// The root keypath. `configuration.rootKeyPath` by default.
+    var rootKeyPath: String? { get }
+    
+    /// The logging. `configuration.logging` by default.
+    var logging: Bool { get }
+    
+    /// The NSURL session configuration. `configuration.sessionConfiguration`
+    /// by default.
+    var sessionConfiguration: NSURLSessionConfiguration { get }
     
 }
 
 public extension Requestable {
-
-    public var configuration: Configuration {
-        get { return Restofire.defaultConfiguration }
+    
+    /// Creates a request for the specified requestable object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the request 
+    ///                                has finished.
+    ///
+    /// - returns: The created Alamofire request.
+    public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> Alamofire.Request {
+        let request = Request(requestable: self)
+        request.executeTask { (response: Response<AnyObject, NSError>) in
+            if let completionHandler = completionHandler {
+                completionHandler(response)
+            }
+        }
+        return request.request
     }
+    
+}
+
+public extension Requestable {
     
     public var baseURL: String {
         get { return configuration.baseURL }
@@ -65,16 +113,4 @@ public extension Requestable {
         get { return configuration.sessionConfiguration }
     }
     
-}
-
-public extension Requestable {
-    
-    public func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) -> Alamofire.Request {
-        let request = Request(requestable: self)
-        request.executeTask { (response: Response<AnyObject, NSError>) in
-            completionHandler(response)
-        }
-        return request.request
-    }
-
 }

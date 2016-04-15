@@ -10,9 +10,9 @@
 
 import Restofire
 
-class RootKeyPathGETService: Requestable {
+struct RootKeyPathGETService: Requestable {
     
-    var path: String = "56f8ae49240000ff227866e5"
-    var rootKeyPath: String? = "firstKey.secondKey"
+    let path: String = "56f8ae49240000ff227866e5"
+    let rootKeyPath: String? = "firstKey.secondKey"
     
 }

@@ -22,10 +22,9 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
                 let actual = "Rahul Katariya"
                 var expected: String!
 
-                let service = HTTPBinStringGETService()
-                service.parameters = ["name": "Rahul Katariya"]
+                let service = HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"])
                 service.executeTask() {
-                    if let value = $0.result.value as? String {
+                    if let response = $0.result.value as? [String: AnyObject], value = response["name"] as? String {
                         expected = value
                     }
                 }

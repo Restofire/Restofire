@@ -10,8 +10,8 @@
 
 import Restofire
 
-class VoidGETService: Requestable {
+struct VoidGETService: Requestable {
 
-    var path: String = "56c31578120000743173f22e"
+    let path: String = "56c31578120000743173f22e"
 
 }

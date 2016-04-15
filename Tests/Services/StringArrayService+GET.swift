@@ -10,7 +10,7 @@
 
 import Restofire
 
-class StringArrayGETService: Requestable {
+struct StringArrayGETService: Requestable {
 
-    var path: String = "56c2c74d120000082673f1ae"
+    let path: String = "56c2c74d120000082673f1ae"
 }

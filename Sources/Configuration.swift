@@ -10,14 +10,37 @@ import Foundation
 import enum Alamofire.Method
 import enum Alamofire.ParameterEncoding
 
+/// ```swift
+/// var configuration = Configuration()
+/// configuration.baseURL = "http://www.mocky.io/v2/"
+/// configuration.headers = ["Content-Type": "application/json"]
+/// configuration.logging = true
+/// configuration.sessionConfiguration.timeoutIntervalForRequest = 5
+/// configuration.sessionConfiguration.timeoutIntervalForResource = 5
+/// ```
 public struct Configuration {
     
+    /// The base URL. `nil` by default.
     public var baseURL: String!
+    
+    /// The HTTP Method. `.GET` by default.
     public var method: Alamofire.Method = .GET
+    
+    /// The request parameter encoding. `.JSON` by default.
     public var encoding: Alamofire.ParameterEncoding = .JSON
+    
+    /// The HTTP headers. `nil` by default.
     public var headers: [String : String]?
-    public var rootKeyPath: String? = nil
+    
+    /// The root keypath. `nil` by default.
+    public var rootKeyPath: String?
+    
+    /// The logging, if enabled prints the debug textual representation of the 
+    /// request when the response is recieved. `false` by default.
     public var logging: Bool = false
+    
+    /// The NSURL session configuration. 
+    /// `NSURLSessionConfiguration.defaultSessionConfiguration()` by default.
     public var sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
     
 }

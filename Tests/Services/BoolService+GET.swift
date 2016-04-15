@@ -10,8 +10,8 @@
 
 import Restofire
 
-class BoolGETService: Requestable {
+struct BoolGETService: Requestable {
 
-    var path: String = "56c2be50120000842473f19e"
+    let path: String = "56c2be50120000842473f19e"
 
 }

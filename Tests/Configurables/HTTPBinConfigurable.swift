@@ -1,24 +1,23 @@
 //
-//  HTTPBinRequestable.swift
+//  HTTPBinConfigurable.swift
 //  Restofire
 //
-//  Created by Rahul Katariya on 28/03/16.
+//  Created by Rahul Katariya on 15/04/16.
 //  Copyright © 2016 AarKay. All rights reserved.
 //
 
+import Foundation
 @testable import Restofire
 
-protocol HTTPBinRequestable: Requestable { }
+protocol HTTPBinConfigurable: Configurable { }
 
-extension HTTPBinRequestable {
-
+extension HTTPBinConfigurable {
+    
     var configuration: Configuration {
-        
         var config = Configuration()
         config.baseURL = "https://httpbin.org/"
         config.logging = true
         return config
-        
     }
     
 }

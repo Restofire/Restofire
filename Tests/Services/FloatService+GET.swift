@@ -10,8 +10,8 @@
 
 import Restofire
 
-class FloatGETService: Requestable {
+struct FloatGETService: Requestable {
 
-    var path: String = "56c2bfd61200006c2473f1a0"
+    let path: String = "56c2bfd61200006c2473f1a0"
 
 }

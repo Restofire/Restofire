@@ -10,8 +10,8 @@
 
 import Restofire
 
-class PersonArrayGETService: Requestable {
+struct PersonArrayGETService: Requestable {
 
-    var path: String = "56cc51f32800009900219dc9"
+    let path: String = "56cc51f32800009900219dc9"
 
 }

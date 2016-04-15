@@ -10,6 +10,9 @@ import Foundation
 import enum Alamofire.Method
 import enum Alamofire.ParameterEncoding
 
+/// A Configuration object represents a configuration that will be used by 
+/// requestable objects.
+///
 /// ```swift
 /// var configuration = Configuration()
 /// configuration.baseURL = "http://www.mocky.io/v2/"

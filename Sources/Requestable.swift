@@ -9,19 +9,41 @@
 import Foundation
 import Alamofire
 
-/// Requestable defines a protocol to implement when creating a service class.
+/// Requestable represents an HTTP request that can be asynchronously executed.
+/// 
+/// ### Creating a request.
 /// ```swift
 /// import Restofire
 ///
-/// class PersonPOSTService: Requestable {
+/// struct PersonPOSTService: Requestable {
 ///
 ///     let path: String
 ///     let method: Alamofire.Method = .POST
 ///     let parameters: AnyObject?
-///     
+///
 ///     init(id: String, parameters: AnyObject? = nil) {
 ///         self.path = "person/\(id)"
 ///         self.parameters = parameters
+///     }
+///
+/// }
+/// ```
+///
+/// ### Consuming the request.
+/// ```swift
+/// import Restofire
+///
+/// class ViewController: UIViewController  {
+///
+///     var request: Request!
+///     var person: AnyObject!
+///
+///     func createPerson() {
+///         request = PersonPOSTService(id: "123456789", parameters: person).executeTask()
+///     }
+///
+///     deinit {
+///         request.cancel()
 ///     }
 ///
 /// }

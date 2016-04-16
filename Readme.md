@@ -25,7 +25,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [x] Request and Resource Timeout Intervals
 - [ ] Download and Upload Tasks
 - [x] Response Validations
-- [ ] Authentication
+- [x] Authentication
 - [ ] Request Eventually when internet is reachable
 - [ ] Comprehensive Unit Test Coverage
 - [ ] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)

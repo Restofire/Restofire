@@ -68,6 +68,15 @@ public protocol Requestable: Configurable {
     /// The request parameters. `nil` by default.
     var parameters: AnyObject? { get }
     
+    /// The Alamofire validation. `configuration.validation` by default.
+    var validation: Alamofire.Request.Validation? { get }
+    
+    /// The acceptable status codes. `configuration.acceptableStatusCodes` by default.
+    var acceptableStatusCodes: [Range<Int>]? { get }
+    
+    /// The acceptable content types. `configuration.acceptableContentTypes` by default.
+    var acceptableContentTypes: [String]? { get }
+    
     /// The root keypath. `configuration.rootKeyPath` by default.
     var rootKeyPath: String? { get }
     
@@ -104,35 +113,47 @@ public extension Requestable {
 public extension Requestable {
     
     public var baseURL: String {
-        get { return configuration.baseURL }
+        return configuration.baseURL
     }
     
     public var method: Alamofire.Method {
-        get { return configuration.method }
+        return configuration.method
     }
     
     public var encoding: Alamofire.ParameterEncoding {
-        get { return configuration.encoding }
+        return configuration.encoding
     }
     
     public var headers: [String: String]? {
-        get { return configuration.headers }
+        return configuration.headers
     }
     
     public var parameters: AnyObject? {
-        get { return nil }
+        return nil
+    }
+    
+    public var validation: Alamofire.Request.Validation? {
+        return configuration.validation
+    }
+    
+    public var acceptableStatusCodes: [Range<Int>]? {
+        return configuration.acceptableStatusCodes
+    }
+    
+    public var acceptableContentTypes: [String]? {
+        return configuration.acceptableContentTypes
     }
     
     public var rootKeyPath: String? {
-        get { return configuration.rootKeyPath }
+        return configuration.rootKeyPath
     }
     
     public var logging: Bool {
-        get { return configuration.logging }
+        return configuration.logging
     }
     
     public var sessionConfiguration: NSURLSessionConfiguration {
-        get { return configuration.sessionConfiguration }
+        return configuration.sessionConfiguration
     }
     
 }

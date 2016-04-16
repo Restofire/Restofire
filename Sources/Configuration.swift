@@ -7,8 +7,7 @@
 //
 
 import Foundation
-import enum Alamofire.Method
-import enum Alamofire.ParameterEncoding
+import Alamofire
 
 /// A Configuration object represents a configuration that will be used by 
 /// requestable objects.
@@ -34,6 +33,15 @@ public struct Configuration {
     
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String]?
+
+    /// The Alamofire validation. `nil` by default.
+    public var validation: Alamofire.Request.Validation?
+    
+    /// The acceptable status codes. `nil` by default.
+    public var acceptableStatusCodes: [Range<Int>]?
+    
+    /// The acceptable content types. `nil` by default.
+    public var acceptableContentTypes: [String]?
     
     /// The root keypath. `nil` by default.
     public var rootKeyPath: String?

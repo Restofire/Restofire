@@ -8,7 +8,7 @@
 
 extension Dictionary {
 
-    public func valueForKeyPath(keyPath: String) -> AnyObject? {
+    func valueForKeyPath(keyPath: String) -> AnyObject? {
         let delimiter = "."
         var keys = keyPath.componentsSeparatedByString(delimiter)
         

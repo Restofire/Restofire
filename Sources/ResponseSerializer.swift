@@ -10,18 +10,17 @@ import Alamofire
 
 extension Alamofire.Request {
     
-    /**
-     Adds a handler to be called once the request has finished.
-     
-     - parameter options:           The JSON serialization reading options. `.AllowFragments` by default.
-     - parameter completionHandler: A closure to be executed once the request has finished.
-     
-     - returns: The request.
-     */
-    public func response<T>(
+    /// Adds a handler to be called once the request has finished.
+    ///
+    /// - parameter rootKeyPath:       The root keypath. `nil` by default.
+    /// - parameter options:           The JSON serialization reading options. `.AllowFragments` by default.
+    /// - parameter completionHandler: A closure to be executed once the request has finished.
+    ///
+    /// - returns: The request.
+    func response(
         rootKeyPath rootKeyPath: String? = nil,
-                options: NSJSONReadingOptions = .AllowFragments,
-                completionHandler: Response<T, NSError> -> Void)
+                    options: NSJSONReadingOptions = .AllowFragments,
+                    completionHandler: Response<AnyObject, NSError> -> Void)
         -> Self
     {
         return response(
@@ -30,20 +29,20 @@ extension Alamofire.Request {
         )
     }
     
-    /**
-     Creates a response serializer that returns a JSON object constructed from the response data using
-     `NSJSONSerialization` with the specified reading options.
-     
-     - parameter options: The JSON serialization reading options. `.AllowFragments` by default.
-     
-     - returns: A JSON object response serializer.
-     */
-    private static func JSONResponseSerializer<T>(
+    /// Creates a response serializer that returns a JSON object constructed from the response data using
+    /// `NSJSONSerialization` with the specified reading options.
+    ///
+    /// - parameter rootKeyPath: The root keypath. `nil` by default.
+    /// - parameter options:     The JSON serialization reading options. `.AllowFragments` by default.
+    ///
+    /// - returns: A JSON object response serializer.
+    private static func JSONResponseSerializer(
         rootKeyPath rootKeyPath: String? = nil,
-                options: NSJSONReadingOptions = .AllowFragments)
-        -> ResponseSerializer<T, NSError>
+                    options: NSJSONReadingOptions = .AllowFragments)
+        -> ResponseSerializer<AnyObject, NSError>
     {
         return ResponseSerializer { _, _, data, error in
+        
             guard error == nil else { return .Failure(error!) }
             
             guard let validData = data where validData.length > 0 else {
@@ -53,27 +52,24 @@ extension Alamofire.Request {
             }
             
             do {
-                let JSONObject = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
-                var value: T?
-                if let rootKeyPath = rootKeyPath where JSONObject is [String: AnyObject] {
-                    value = JSONObject.valueForKeyPath(rootKeyPath) as? T
-                } else if let rootKeyPath = rootKeyPath {
-                    let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
-                    let error = Error.errorWithCode(-1, failureReason: failureReason)
-                    return .Failure(error)
+                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
+                var value: AnyObject!
+                if let rootKeyPath = rootKeyPath {
+                    if let JSON = JSON as? [String: AnyObject] {
+                       value = JSON.valueForKeyPath(rootKeyPath)
+                    } else {
+                        let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
+                        let error = Error.errorWithCode(-1, failureReason: failureReason)
+                        return .Failure(error)
+                    }
                 } else {
-                    value = JSONObject as? T
+                    value = JSON
                 }
-                if let value = value {
-                    return .Success(value)
-                } else {
-                    let failureReason = "JSON parsing to object Failed"
-                    let error = Error.errorWithCode(-1, failureReason: failureReason)
-                    return .Failure(error)
-                }
+                return .Success(value)
             } catch {
                 return .Failure(error as NSError)
             }
+            
         }
     }
     

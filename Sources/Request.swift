@@ -36,6 +36,9 @@ class Request {
     }
     
     func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
+        validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
+        validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
+        validateRequest(request, forValidation: requestable.validation)
         request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) -> Void in
             completionHandler(response)
             if self.requestable.logging { debugPrint(response) }
@@ -44,6 +47,28 @@ class Request {
     
     deinit {
         request.cancel()
+    }
+    
+}
+
+// MARK: - Validations
+extension Request {
+    
+    func validateRequest(request: Alamofire.Request, forAcceptableContentTypes contentTypes:[String]?) {
+        guard let contentTypes = contentTypes else { return }
+        request.validate(contentType: contentTypes)
+    }
+    
+    func validateRequest(request: Alamofire.Request, forAcceptableStatusCodes statusCodes:[Range<Int>]?) {
+        guard let statusCodes = statusCodes else { return }
+        for statusCode in statusCodes {
+            request.validate(statusCode: statusCode)
+        }
+    }
+    
+    func validateRequest(request: Alamofire.Request, forValidation validation:Alamofire.Request.Validation?) {
+        guard let validation = validation else { return }
+        request.validate(validation)
     }
     
 }

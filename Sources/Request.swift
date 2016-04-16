@@ -11,12 +11,10 @@ import Alamofire
 class Request {
     
     let requestable: Requestable!
-    let manager: Alamofire.Manager!
     var request: Alamofire.Request!
     
     init(requestable: Requestable) {
         self.requestable = requestable
-        self.manager = Alamofire.Manager(configuration: requestable.sessionConfiguration)
         request = requestFromRequestable(requestable)
     }
     
@@ -24,7 +22,7 @@ class Request {
         
         var request: Alamofire.Request!
         
-        request = manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
+        request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
         
         if let parameters = requestable.parameters as? [AnyObject] where requestable.method != .GET {
             let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0

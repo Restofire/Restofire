@@ -19,8 +19,11 @@ import Alamofire
 /// configuration.acceptableStatusCodes = [200..<300]
 /// configuration.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
-/// configuration.sessionConfiguration.timeoutIntervalForRequest = 10
-/// configuration.sessionConfiguration.timeoutIntervalForResource = 10
+/// let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+/// sessionConfiguration.timeoutIntervalForRequest = 7
+/// sessionConfiguration.timeoutIntervalForResource = 7
+/// sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+/// Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
 /// ```
 public struct Configuration {
     
@@ -52,8 +55,7 @@ public struct Configuration {
     /// request when the response is recieved. `false` by default.
     public var logging: Bool = false
     
-    /// The NSURL session configuration. 
-    /// `NSURLSessionConfiguration.defaultSessionConfiguration()` by default.
-    public var sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    /// The Alamofire Manager. `Alamofire.Manager.sharedInstance` by default.
+    public var manager = Alamofire.Manager.sharedInstance
     
 }

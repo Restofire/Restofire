@@ -83,9 +83,8 @@ public protocol Requestable: Configurable {
     /// The logging. `configuration.logging` by default.
     var logging: Bool { get }
     
-    /// The NSURL session configuration. `configuration.sessionConfiguration`
-    /// by default.
-    var sessionConfiguration: NSURLSessionConfiguration { get }
+    /// The Alamofire Manager. `configuration.manager` by default.
+    var manager: Alamofire.Manager { get }
     
 }
 
@@ -152,8 +151,8 @@ public extension Requestable {
         return configuration.logging
     }
     
-    public var sessionConfiguration: NSURLSessionConfiguration {
-        return configuration.sessionConfiguration
+    public var manager: Alamofire.Manager {
+        return configuration.manager
     }
     
 }

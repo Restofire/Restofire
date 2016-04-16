@@ -10,6 +10,7 @@
 
 import Quick
 import Nimble
+import Alamofire
 @testable import Restofire
 
 class ServiceSpec: QuickSpec {
@@ -25,8 +26,12 @@ class ServiceSpec: QuickSpec {
             Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
             Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
             Restofire.defaultConfiguration.logging = true
-            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 7
-            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 7
+            
+            let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            sessionConfiguration.timeoutIntervalForRequest = 7
+            sessionConfiguration.timeoutIntervalForResource = 7
+            sessionConfiguration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
+            Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
         }
 
     }

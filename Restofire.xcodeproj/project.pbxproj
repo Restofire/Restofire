@@ -23,7 +23,6 @@
 		351A7A7D1CA6D82500640678 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
 		351A7A7E1CA6D82500640678 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */; };
 		352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		352260AC1C5E2D33000AE7C0 /* Restofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		352260AD1C5E2D5F000AE7C0 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3544EC921CB8DD8E00CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
 		3544EC931CB8DD8E00CDF3C9 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355641311CAFB73F009738B8 /* Request.swift */; };
@@ -94,7 +93,6 @@
 			files = (
 				35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */,
 				352260AD1C5E2D5F000AE7C0 /* Alamofire.framework in Embed Frameworks */,
-				352260AC1C5E2D33000AE7C0 /* Restofire.framework in Embed Frameworks */,
 				352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";

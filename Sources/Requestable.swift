@@ -110,6 +110,27 @@ public extension Requestable {
         return request.request
     }
     
+    func request() -> Alamofire.Request {
+        
+        var request: Alamofire.Request!
+        
+        request = manager.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)
+        
+        if let parameters = parameters as? [AnyObject] {
+            switch method {
+            case .GET:
+                // FIXME: Check for other methods that don't support array as request parameters.
+                break
+            default:
+                let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: encoding).0
+                request = Alamofire.request(encodedURLRequest)
+            }
+        }
+        
+        return request
+        
+    }
+    
 }
 
 public extension Requestable {

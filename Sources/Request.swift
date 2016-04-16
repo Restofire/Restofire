@@ -10,33 +10,12 @@ import Alamofire
 
 class Request {
     
-    let requestable: Requestable!
-    var request: Alamofire.Request!
+    let requestable: Requestable
+    let request: Alamofire.Request
     
     init(requestable: Requestable) {
         self.requestable = requestable
-        request = requestFromRequestable(requestable)
-    }
-    
-    func requestFromRequestable(requestable: Requestable) -> Alamofire.Request {
-        
-        var request: Alamofire.Request!
-        
-        request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
-        
-        if let parameters = requestable.parameters as? [AnyObject] {
-            switch requestable.method {
-            case .GET:
-                // FIXME: Check for other methods that don't support array as request parameters.
-                break
-            default:
-                let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
-                request = Alamofire.request(encodedURLRequest)
-            }
-        }
-        
-        return request
-        
+        self.request = requestable.request()
     }
     
     func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {

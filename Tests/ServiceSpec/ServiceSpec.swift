@@ -25,8 +25,8 @@ class ServiceSpec: QuickSpec {
             Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
             Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
             Restofire.defaultConfiguration.logging = true
-            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 5
-            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 10
+            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 7
+            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 7
         }
 
     }

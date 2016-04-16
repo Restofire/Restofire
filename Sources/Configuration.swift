@@ -19,8 +19,8 @@ import Alamofire
 /// configuration.acceptableStatusCodes = [200..<300]
 /// configuration.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
-/// configuration.sessionConfiguration.timeoutIntervalForRequest = 5
-/// configuration.sessionConfiguration.timeoutIntervalForResource = 5
+/// configuration.sessionConfiguration.timeoutIntervalForRequest = 10
+/// configuration.sessionConfiguration.timeoutIntervalForResource = 10
 /// ```
 public struct Configuration {
     

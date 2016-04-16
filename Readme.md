@@ -54,7 +54,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 0.7'
+pod 'Restofire', '~> 0.8'
 ```
 
 Then, run the following command:
@@ -77,7 +77,7 @@ $ brew install carthage
 To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 0.7
+github "RahulKatariya/Restofire" ~> 0.8
 ```
 ### Swift Package Manager
 
@@ -108,9 +108,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
     Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+    Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
+    Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
     Restofire.defaultConfiguration.logging = true
-    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 5
-    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 5
+    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 7
+    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 7
 
     return true
   }

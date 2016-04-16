@@ -15,7 +15,7 @@ import Alamofire
 class HTTPBinStringGETServiceSpec: ServiceSpec {
 
     override func spec() {
-        describe("StringGETService") {
+        describe("HTTPBinStringGETService") {
 
             it("should succeed") {
 

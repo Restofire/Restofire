@@ -55,8 +55,8 @@ extension Alamofire.Request {
                 let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: AnyObject!
                 if let rootKeyPath = rootKeyPath {
-                    if let JSON = JSON as? [String: AnyObject] {
-                       value = JSON.valueForKeyPath(rootKeyPath)
+                    if let JSON = JSON as? [String: AnyObject], let v = JSON.valueForKeyPath(rootKeyPath) {
+                        value = v
                     } else {
                         let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
                         let error = Error.errorWithCode(-1, failureReason: failureReason)

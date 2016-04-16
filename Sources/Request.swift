@@ -26,7 +26,8 @@ class Request {
         
         if let parameters = requestable.parameters as? [AnyObject] {
             switch requestable.method {
-            case .GET, .HEAD, .DELETE:
+            case .GET:
+                // FIXME: Check for other methods that don't support array as request parameters.
                 break
             default:
                 let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0

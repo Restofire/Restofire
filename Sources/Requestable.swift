@@ -68,6 +68,9 @@ public protocol Requestable: Configurable {
     /// The request parameters. `nil` by default.
     var parameters: AnyObject? { get }
     
+    /// The credential. `configuration.credential` by default.
+    var credential: NSURLCredential? { get }
+    
     /// The Alamofire validation. `configuration.validation` by default.
     var validation: Alamofire.Request.Validation? { get }
     
@@ -129,6 +132,10 @@ public extension Requestable {
     
     public var parameters: AnyObject? {
         return nil
+    }
+    
+    public var credential: NSURLCredential? {
+        return configuration.credential
     }
     
     public var validation: Alamofire.Request.Validation? {

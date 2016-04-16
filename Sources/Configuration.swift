@@ -39,6 +39,9 @@ public struct Configuration {
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String]?
 
+    /// The credential. `nil` by default.
+    public var credential: NSURLCredential?
+    
     /// The Alamofire validation. `nil` by default.
     public var validation: Alamofire.Request.Validation?
     

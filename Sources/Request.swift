@@ -24,9 +24,14 @@ class Request {
         
         request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
         
-        if let parameters = requestable.parameters as? [AnyObject] where requestable.method != .GET {
-            let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
-            request = Alamofire.request(encodedURLRequest)
+        if let parameters = requestable.parameters as? [AnyObject] {
+            switch requestable.method {
+            case .GET, .HEAD, .DELETE:
+                break
+            default:
+                let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding).0
+                request = Alamofire.request(encodedURLRequest)
+            }
         }
         
         return request
@@ -34,6 +39,7 @@ class Request {
     }
     
     func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
+        authenticateRequest(request, usingCredential: requestable.credential)
         validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
         validateRequest(request, forValidation: requestable.validation)
@@ -45,6 +51,16 @@ class Request {
     
     deinit {
         request.cancel()
+    }
+    
+}
+
+// MARK: - Authentication
+extension Request {
+    
+    func authenticateRequest(request: Alamofire.Request, usingCredential credential:NSURLCredential?) {
+        guard let credential = credential else { return }
+        request.authenticate(usingCredential: credential)
     }
     
 }

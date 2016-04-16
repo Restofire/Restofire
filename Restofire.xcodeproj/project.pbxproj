@@ -242,6 +242,7 @@
 		3544ED211CBA40F700CDF3C9 /* ServiceSpec */ = {
 			isa = PBXGroup;
 			children = (
+				3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */,
 				3544ED221CBA40F700CDF3C9 /* BoolService+GETSpec.swift */,
 				3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */,
 				3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */,
@@ -249,7 +250,6 @@
 				3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */,
 				3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */,
 				3544ED281CBA40F700CDF3C9 /* RootKeyPathService+GETSpec.swift */,
-				3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */,
 				3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */,
 				3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */,
 				3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */,

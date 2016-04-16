@@ -16,6 +16,7 @@ import Alamofire
 /// var configuration = Configuration()
 /// configuration.baseURL = "http://www.mocky.io/v2/"
 /// configuration.headers = ["Content-Type": "application/json"]
+/// configuration.acceptableStatusCodes = [200..<300]
 /// configuration.logging = true
 /// configuration.sessionConfiguration.timeoutIntervalForRequest = 5
 /// configuration.sessionConfiguration.timeoutIntervalForResource = 5

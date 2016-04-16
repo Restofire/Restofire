@@ -14,7 +14,7 @@ import Nimble
 
 class ServiceSpec: QuickSpec {
 
-    let timeout: NSTimeInterval = 10
+    let timeout: NSTimeInterval = 15
     let pollInterval: NSTimeInterval = 3
 
     override func spec() {
@@ -22,9 +22,11 @@ class ServiceSpec: QuickSpec {
         beforeSuite {
             Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
             Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+            Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
+            Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
             Restofire.defaultConfiguration.logging = true
             Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 5
-            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 5
+            Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 10
         }
 
     }

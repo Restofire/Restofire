@@ -16,13 +16,11 @@ class Request {
     init(requestable: Requestable) {
         self.requestable = requestable
         self.request = requestable.request
+        authenticateRequests()
+        validateRequests()
     }
     
     func execute(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) {
-        authenticateRequest(request, usingCredential: requestable.credential)
-        validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
-        validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
-        validateRequest(request, forValidation: requestable.validation)
         request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) -> Void in
             if let completionHandler = completionHandler { completionHandler(response) }
             if self.requestable.logging { debugPrint(response) }
@@ -37,6 +35,10 @@ class Request {
 
 // MARK: - Authentication
 extension Request {
+
+    func authenticateRequests() {
+        authenticateRequest(request, usingCredential: requestable.credential)
+    }
     
     func authenticateRequest(request: Alamofire.Request, usingCredential credential:NSURLCredential?) {
         guard let credential = credential else { return }
@@ -47,6 +49,12 @@ extension Request {
 
 // MARK: - Validations
 extension Request {
+
+    func validateRequests() {
+        validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
+        validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
+        validateRequest(request, forValidation: requestable.validation)
+    }
     
     func validateRequest(request: Alamofire.Request, forAcceptableContentTypes contentTypes:[String]?) {
         guard let contentTypes = contentTypes else { return }

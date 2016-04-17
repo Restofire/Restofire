@@ -60,6 +60,10 @@ public class RequestOperation: NSOperation {
             didChangeValueForKey("isFinished")
         }
     }
+    public var successful = false
+    public var failed = false
+    
+    public var maxAttempts = 6
     
     public override func start() {
         if cancelled {
@@ -68,6 +72,11 @@ public class RequestOperation: NSOperation {
         }
         executing = true
         taskRequest.execute { (response: Response<AnyObject, NSError>) in
+            if response.result.error == nil {
+                self.successful = true
+            } else {
+                self.failed = true
+            }
             self.executing = false
             self.finished = true
             if let completionHandler = self.completionHandler { completionHandler(response) }

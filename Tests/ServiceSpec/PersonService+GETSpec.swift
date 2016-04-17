@@ -18,7 +18,7 @@ class PersonGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("PersonGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
                 var expected: [String: AnyObject]!
@@ -31,6 +31,23 @@ class PersonGETServiceSpec: ServiceSpec {
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
+                var expected: [String: AnyObject]!
+                
+                let requestOperation = PersonGETService().requestOperation() {
+                    if let value = $0.result.value as? [String: AnyObject] {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

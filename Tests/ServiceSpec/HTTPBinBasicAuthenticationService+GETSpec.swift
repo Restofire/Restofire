@@ -15,17 +15,32 @@ class HTTPBinBasicAuthenticationGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("HTTPBinBasicAuthenticationGETService") {
             
-            it("should succeed") {
+            it("executeTask") {
                 
                 let actual = true
                 var expected: Bool!
                 
-                let service = HTTPBinBasicAuthenticationGETService()
-                service.executeTask() {
+                HTTPBinBasicAuthenticationGETService().executeTask() {
                     if let response = $0.result.value as? [String: AnyObject], value = response["authenticated"] as? Bool {
                         expected = value
                     }
                 }
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
+            }
+            
+            it("executeRequestOperation") {
+                let actual = true
+                var expected: Bool!
+                
+                let requestOperation = HTTPBinBasicAuthenticationGETService().requestOperation() {
+                    if let response = $0.result.value as? [String: AnyObject], value = response["authenticated"] as? Bool {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
                 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
                 

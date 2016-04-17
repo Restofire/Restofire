@@ -17,7 +17,7 @@ class RootKeyPathGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("RootKeyPathGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual = "Restofire is awesome."
                 var expected: String!
@@ -30,6 +30,23 @@ class RootKeyPathGETServiceSpec: ServiceSpec {
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual = "Restofire is awesome."
+                var expected: String!
+                
+                let requestOperation = RootKeyPathGETService().requestOperation() {
+                    if let value = $0.result.value as? String {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

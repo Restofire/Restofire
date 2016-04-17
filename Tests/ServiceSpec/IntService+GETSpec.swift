@@ -17,7 +17,7 @@ class IntGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("IntGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual = 123456789
                 var expected: Int!
@@ -30,6 +30,23 @@ class IntGETServiceSpec: ServiceSpec {
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual = 123456789
+                var expected: Int!
+                
+                let requestOperation = IntGETService().requestOperation() {
+                    if let value = $0.result.value as? Int {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

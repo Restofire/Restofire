@@ -17,7 +17,7 @@ class VoidGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("VoidGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual = [:]
                 var expected: [String: AnyObject]!
@@ -30,6 +30,23 @@ class VoidGETServiceSpec: ServiceSpec {
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual = [:]
+                var expected: [String: AnyObject]!
+                
+                let requestOperation = VoidGETService().requestOperation() {
+                    if let value = $0.result.value as? [String : AnyObject] {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

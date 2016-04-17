@@ -16,12 +16,12 @@ class BoolGETServiceSpec: ServiceSpec {
 
     override func spec() {
         describe("BoolGETService") {
-
-            it("should succeed") {
-
+            
+            it("executeTask") {
+                
                 let actual = true
                 var expected: Bool!
-
+                
                 BoolGETService().executeTask() {
                     if let value = $0.result.value as? Bool {
                         expected = value
@@ -29,7 +29,35 @@ class BoolGETServiceSpec: ServiceSpec {
                 }
                 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
-
+                
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual = true
+                var expected: Bool!
+                
+                let requestOperation = BoolGETService().requestOperation() {
+                    if let value = $0.result.value as? Bool {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
+            }
+            
+            it("executeRequestOperation__withoutCompletionHandler") {
+                
+                let actual = true
+                
+                let requestOperation = BoolGETService().requestOperation()
+                requestOperation.start()
+                
+                expect(requestOperation.finished).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

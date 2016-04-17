@@ -17,7 +17,7 @@ class FloatGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("FloatGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual: Float = 12345.6789
                 var expected: Float!
@@ -31,6 +31,24 @@ class FloatGETServiceSpec: ServiceSpec {
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
             }
+            
+            it("executeRequestOperation") {
+                
+                let actual: Float = 12345.6789
+                var expected: Float!
+                
+                let requestOperation = FloatGETService().requestOperation() {
+                    if let value = $0.result.value as? Float {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
+            }
+            
         }
     }
 

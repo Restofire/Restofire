@@ -15,16 +15,16 @@ class Request {
     
     init(requestable: Requestable) {
         self.requestable = requestable
-        self.request = requestable.request()
+        self.request = requestable.request
     }
     
-    func executeTask(completionHandler: Response<AnyObject, NSError> -> Void) {
+    func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) {
         authenticateRequest(request, usingCredential: requestable.credential)
         validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
         validateRequest(request, forValidation: requestable.validation)
         request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) -> Void in
-            completionHandler(response)
+            if let completionHandler = completionHandler { completionHandler(response) }
             if self.requestable.logging { debugPrint(response) }
         }
     }

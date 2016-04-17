@@ -17,7 +17,7 @@ class StringArrayGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("StringArrayGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual = ["Reactofire","is","Awesome"]
                 var expected: [String]!
@@ -30,6 +30,23 @@ class StringArrayGETServiceSpec: ServiceSpec {
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual = ["Reactofire","is","Awesome"]
+                var expected: [String]!
+                
+                let requestOperation = StringArrayGETService().requestOperation() {
+                    if let value = $0.result.value as? [String] {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

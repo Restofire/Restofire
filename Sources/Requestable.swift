@@ -97,7 +97,7 @@ public extension Requestable {
     /// asynchronously executes it.
     ///
     /// - parameter completionHandler: A closure to be executed once the request 
-    ///                                has finished.
+    ///                                has finished. `nil` by default.
     ///
     /// - returns: The created Alamofire request.
     public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> Alamofire.Request {
@@ -110,25 +110,16 @@ public extension Requestable {
         return request.request
     }
     
-    func request() -> Alamofire.Request {
-        
-        var request: Alamofire.Request!
-        
-        request = manager.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)
-        
-        if let parameters = parameters as? [AnyObject] {
-            switch method {
-            case .GET:
-                // FIXME: Check for other methods that don't support array as request parameters.
-                break
-            default:
-                let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: encoding).0
-                request = Alamofire.request(encodedURLRequest)
-            }
-        }
-        
-        return request
-        
+    /// Creates a request operation for the specified requestable object.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the operation
+    ///                                is started and the request has finished.
+    ///                                `nil` by default.
+    ///
+    /// - returns: The created RequestOperation object.
+    public func requestOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
+        let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
+        return requestOperation
     }
     
 }
@@ -181,6 +172,27 @@ public extension Requestable {
     
     public var manager: Alamofire.Manager {
         return configuration.manager
+    }
+    
+    public var request: Alamofire.Request {
+        
+        var request: Alamofire.Request!
+        
+        request = manager.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)
+        
+        if let parameters = parameters as? [AnyObject] {
+            switch method {
+            case .GET:
+                // FIXME: Check for other methods that don't support array as request parameters.
+                break
+            default:
+                let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: encoding).0
+                request = Alamofire.request(encodedURLRequest)
+            }
+        }
+        
+        return request
+        
     }
     
 }

@@ -17,13 +17,12 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
     override func spec() {
         describe("HTTPBinStringGETService") {
 
-            it("should succeed") {
+            it("executeTask") {
 
                 let actual = "Rahul Katariya"
                 var expected: String!
 
-                let service = HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"])
-                service.executeTask() {
+                HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
                     if let response = $0.result.value as? [String: AnyObject], value = response["name"] as? String {
                         expected = value
                     }
@@ -31,6 +30,23 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
 
+            }
+            
+            it("executeRequestOperation") {
+                
+                let actual = "Rahul Katariya"
+                var expected: String!
+                
+                let requestOperation = HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).requestOperation() {
+                    if let response = $0.result.value as? [String: AnyObject], value = response["name"] as? String {
+                        expected = value
+                    }
+                }
+                
+                requestOperation.start()
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
             }
         }
     }

@@ -15,7 +15,7 @@ import Alamofire
 
 class ServiceSpec: QuickSpec {
 
-    let timeout: NSTimeInterval = 15
+    let timeout: NSTimeInterval = 21
     let pollInterval: NSTimeInterval = 3
 
     override func spec() {
@@ -28,8 +28,8 @@ class ServiceSpec: QuickSpec {
             Restofire.defaultConfiguration.logging = true
             
             let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-            sessionConfiguration.timeoutIntervalForRequest = 7
-            sessionConfiguration.timeoutIntervalForResource = 7
+            sessionConfiguration.timeoutIntervalForRequest = 10
+            sessionConfiguration.timeoutIntervalForResource = 10
             sessionConfiguration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
             Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
         }

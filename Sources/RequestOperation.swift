@@ -66,8 +66,8 @@ public class RequestOperation: NSOperation {
         }
         executing = true
         _request.executeTask { (response: Response<AnyObject, NSError>) in
-            self.finished = true
             self.executing = false
+            self.finished = true
             if let completionHandler = self.completionHandler { completionHandler(response) }
         }
     }

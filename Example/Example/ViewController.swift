@@ -18,16 +18,13 @@ struct StringGETService: Requestable {
 }
 
 class ViewController: UIViewController {
-    
-    let operationQueue = NSOperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let requestOperation = StringGETService().requestEventuallyOperation() {
-            print($0)
+        StringGETService().executeTaskEventually { (response: Response<AnyObject, NSError>) in
+            print(response)
         }
-        operationQueue.addOperation(requestOperation)
     }
 
     override func didReceiveMemoryWarning() {

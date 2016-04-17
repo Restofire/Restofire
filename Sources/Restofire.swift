@@ -10,3 +10,4 @@ import Foundation
 
 /// The default configuration used for `requestable` objects.
 public var defaultConfiguration = Configuration()
+public var defaultRequestEventuallyQueue = NSOperationQueue()

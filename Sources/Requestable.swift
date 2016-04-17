@@ -101,13 +101,22 @@ public extension Requestable {
     ///
     /// - returns: The created Alamofire request.
     public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> Alamofire.Request {
-        let taskRequest = Request(requestable: self)
-        taskRequest.execute { (response: Response<AnyObject, NSError>) in
-            if let completionHandler = completionHandler {
-                completionHandler(response)
-            }
-        }
-        return taskRequest.request
+        let rq = requestOperation(completionHandler)
+        rq.start()
+        return rq.request
+    }
+    
+    /// Creates a request for the specified requestable object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created Alamofire request.
+    public func executeTaskEventually(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> Alamofire.Request {
+        let req = requestEventuallyOperation(completionHandler)
+        Restofire.defaultRequestEventuallyQueue.addOperation(req)
+        return req.request
     }
     
     /// Creates a request operation for the specified requestable object.

@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+/// RequestEventuallyOperation represents an RequestOperation object which executes
+/// the request asynchronously on start when the network is on.
 public class RequestEventuallyOperation: RequestOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()

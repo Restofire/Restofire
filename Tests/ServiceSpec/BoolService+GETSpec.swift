@@ -52,11 +52,17 @@ class BoolGETServiceSpec: ServiceSpec {
             it("executeRequestOperation__withoutCompletionHandler") {
                 
                 let actual = true
+                var expected: Bool!
                 
                 let requestOperation = BoolGETService().requestOperation()
                 requestOperation.start()
                 
-                expect(requestOperation.finished).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
+                requestOperation.completionBlock = {
+                    expected = requestOperation.finished
+                }
+                
+                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
                 
             }
         }

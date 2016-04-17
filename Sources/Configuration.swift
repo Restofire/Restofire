@@ -23,7 +23,7 @@ import Alamofire
 /// sessionConfiguration.timeoutIntervalForRequest = 7
 /// sessionConfiguration.timeoutIntervalForResource = 7
 /// sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-/// Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
+/// configuration.manager = Alamofire.Manager(configuration: sessionConfiguration)
 /// ```
 public struct Configuration {
     

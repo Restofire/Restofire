@@ -18,7 +18,7 @@ class Request {
         self.request = requestable.request
     }
     
-    func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) {
+    func execute(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) {
         authenticateRequest(request, usingCredential: requestable.credential)
         validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)

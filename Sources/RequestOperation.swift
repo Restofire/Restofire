@@ -9,16 +9,18 @@
 import Foundation
 import Alamofire
 
+/// RequestOperation represents an NSOperation object which executes the request 
+/// asynchronously on start
 public class RequestOperation: NSOperation {
     
-    let _request: Request
+    let taskRequest: Request
     var completionHandler: (Response<AnyObject, NSError> -> Void)?
     
     /// The Alamofire Request.
     public let request: Alamofire.Request
     
     public init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) {
-        self._request = Request(requestable: requestable)
+        self.taskRequest = Request(requestable: requestable)
         self.completionHandler = completionHandler
         self.request = requestable.request
     }
@@ -65,7 +67,7 @@ public class RequestOperation: NSOperation {
             return
         }
         executing = true
-        _request.executeTask { (response: Response<AnyObject, NSError>) in
+        taskRequest.executeTask { (response: Response<AnyObject, NSError>) in
             self.executing = false
             self.finished = true
             if let completionHandler = self.completionHandler { completionHandler(response) }
@@ -73,7 +75,7 @@ public class RequestOperation: NSOperation {
     }
     
     public override func cancel() {
-        _request.request.cancel()
+        taskRequest.request.cancel()
         executing = false
         cancelled = true
         finished = true

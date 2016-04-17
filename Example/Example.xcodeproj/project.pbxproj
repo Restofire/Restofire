@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		356DAA7A1CC3B0980086A456 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 356DAA791CC3B0980086A456 /* Alamofire.framework */; };
+		356DAA7C1CC3B0AE0086A456 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 356DAA791CC3B0980086A456 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		356DAA7E1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356DAA7D1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift */; };
 		35CFCD741CC3ADB4008DCE16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFCD731CC3ADB4008DCE16 /* AppDelegate.swift */; };
 		35CFCD761CC3ADB4008DCE16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFCD751CC3ADB4008DCE16 /* ViewController.swift */; };
 		35CFCD791CC3ADB4008DCE16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CFCD771CC3ADB4008DCE16 /* Main.storyboard */; };
@@ -14,7 +17,69 @@
 		35CFCD7E1CC3ADB4008DCE16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CFCD7C1CC3ADB4008DCE16 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		356DAA661CC3AEC80086A456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 35B19DDB1BEE134E001D3952;
+			remoteInfo = "Restofire-iOS";
+		};
+		356DAA681CC3AEC80086A456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 35B19DE51BEE134E001D3952;
+			remoteInfo = RestofireTests;
+		};
+		356DAA6A1CC3AEC80086A456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 350061F21C7C33910078B589;
+			remoteInfo = "Restofire-tvOS";
+		};
+		356DAA6C1CC3AEC80086A456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3500620E1C7C33EB0078B589;
+			remoteInfo = "Restofire-Mac";
+		};
+		356DAA6E1CC3AEC80086A456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3500622A1C7C343D0078B589;
+			remoteInfo = "Restofire-watchOS";
+		};
+		356DAA701CC3AED30086A456 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 35B19DDA1BEE134E001D3952;
+			remoteInfo = "Restofire-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35CFCD881CC3ADE9008DCE16 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				356DAA7C1CC3B0AE0086A456 /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Restofire.xcodeproj; path = ../Restofire.xcodeproj; sourceTree = "<group>"; };
+		356DAA791CC3B0980086A456 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		356DAA7D1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityOperationQueues.swift; sourceTree = "<group>"; };
 		35CFCD701CC3ADB4008DCE16 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CFCD731CC3ADB4008DCE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35CFCD751CC3ADB4008DCE16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,16 +94,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				356DAA7A1CC3B0980086A456 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		356DAA5F1CC3AEC80086A456 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				356DAA671CC3AEC80086A456 /* Restofire.framework */,
+				356DAA691CC3AEC80086A456 /* RestofireTests.xctest */,
+				356DAA6B1CC3AEC80086A456 /* Restofire.framework */,
+				356DAA6D1CC3AEC80086A456 /* Restofire.framework */,
+				356DAA6F1CC3AEC80086A456 /* Restofire.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		35CFCD671CC3ADB4008DCE16 = {
 			isa = PBXGroup;
 			children = (
 				35CFCD721CC3ADB4008DCE16 /* Example */,
+				35CFCD891CC3ADF3008DCE16 /* Frameworks */,
 				35CFCD711CC3ADB4008DCE16 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,8 +139,18 @@
 				35CFCD7A1CC3ADB4008DCE16 /* Assets.xcassets */,
 				35CFCD7C1CC3ADB4008DCE16 /* LaunchScreen.storyboard */,
 				35CFCD7F1CC3ADB4008DCE16 /* Info.plist */,
+				356DAA7D1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		35CFCD891CC3ADF3008DCE16 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				356DAA791CC3B0980086A456 /* Alamofire.framework */,
+				356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,10 +163,12 @@
 				35CFCD6C1CC3ADB4008DCE16 /* Sources */,
 				35CFCD6D1CC3ADB4008DCE16 /* Frameworks */,
 				35CFCD6E1CC3ADB4008DCE16 /* Resources */,
+				35CFCD881CC3ADE9008DCE16 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				356DAA711CC3AED30086A456 /* PBXTargetDependency */,
 			);
 			name = Example;
 			productName = Example;
@@ -110,12 +201,56 @@
 			mainGroup = 35CFCD671CC3ADB4008DCE16;
 			productRefGroup = 35CFCD711CC3ADB4008DCE16 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 356DAA5F1CC3AEC80086A456 /* Products */;
+					ProjectRef = 356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				35CFCD6F1CC3ADB4008DCE16 /* Example */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		356DAA671CC3AEC80086A456 /* Restofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Restofire.framework;
+			remoteRef = 356DAA661CC3AEC80086A456 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		356DAA691CC3AEC80086A456 /* RestofireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RestofireTests.xctest;
+			remoteRef = 356DAA681CC3AEC80086A456 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		356DAA6B1CC3AEC80086A456 /* Restofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Restofire.framework;
+			remoteRef = 356DAA6A1CC3AEC80086A456 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		356DAA6D1CC3AEC80086A456 /* Restofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Restofire.framework;
+			remoteRef = 356DAA6C1CC3AEC80086A456 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		356DAA6F1CC3AEC80086A456 /* Restofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Restofire.framework;
+			remoteRef = 356DAA6E1CC3AEC80086A456 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		35CFCD6E1CC3ADB4008DCE16 /* Resources */ = {
@@ -136,11 +271,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				35CFCD761CC3ADB4008DCE16 /* ViewController.swift in Sources */,
+				356DAA7E1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift in Sources */,
 				35CFCD741CC3ADB4008DCE16 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		356DAA711CC3AED30086A456 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Restofire-iOS";
+			targetProxy = 356DAA701CC3AED30086A456 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		35CFCD771CC3ADB4008DCE16 /* Main.storyboard */ = {
@@ -249,7 +393,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -260,7 +409,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/../Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rahulkatariya.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,6 +440,7 @@
 				35CFCD841CC3ADB4008DCE16 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

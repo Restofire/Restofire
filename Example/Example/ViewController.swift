@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import Foundation
+import Restofire
+import Alamofire
+
+struct StringGETService: Requestable {
+    
+    let path: String = "56c2bcde120000022473f19b"
+    
+}
 
 class ViewController: UIViewController {
+    
+    let operationQueue = NSOperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let requestOperation = StringGETService().requestEventuallyOperation() {
+            print($0)
+        }
+        operationQueue.addOperation(requestOperation)
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +37,3 @@ class ViewController: UIViewController {
 
 
 }
-

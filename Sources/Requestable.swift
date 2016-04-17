@@ -122,6 +122,19 @@ public extension Requestable {
         return requestOperation
     }
     
+    /// Creates a request eventually operation for the specified requestable object.
+    /// The operation will get its ready state only when the internet is reachable.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the operation
+    ///                                is started and the request has finished.
+    ///                                `nil` by default.
+    ///
+    /// - returns: The created RequestOperation object.
+    public func requestEventuallyOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
+        let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
+        return requestEventuallyOperation
+    }
+    
 }
 
 // MARK: - Default Implementation

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		356DAA7A1CC3B0980086A456 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 356DAA791CC3B0980086A456 /* Alamofire.framework */; };
 		356DAA7C1CC3B0AE0086A456 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 356DAA791CC3B0980086A456 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		356DAA7E1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356DAA7D1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift */; };
 		35CFCD741CC3ADB4008DCE16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFCD731CC3ADB4008DCE16 /* AppDelegate.swift */; };
 		35CFCD761CC3ADB4008DCE16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CFCD751CC3ADB4008DCE16 /* ViewController.swift */; };
 		35CFCD791CC3ADB4008DCE16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35CFCD771CC3ADB4008DCE16 /* Main.storyboard */; };
@@ -79,7 +78,6 @@
 /* Begin PBXFileReference section */
 		356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Restofire.xcodeproj; path = ../Restofire.xcodeproj; sourceTree = "<group>"; };
 		356DAA791CC3B0980086A456 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = ../Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		356DAA7D1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityOperationQueues.swift; sourceTree = "<group>"; };
 		35CFCD701CC3ADB4008DCE16 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35CFCD731CC3ADB4008DCE16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35CFCD751CC3ADB4008DCE16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,7 +137,6 @@
 				35CFCD7A1CC3ADB4008DCE16 /* Assets.xcassets */,
 				35CFCD7C1CC3ADB4008DCE16 /* LaunchScreen.storyboard */,
 				35CFCD7F1CC3ADB4008DCE16 /* Info.plist */,
-				356DAA7D1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -271,7 +268,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35CFCD761CC3ADB4008DCE16 /* ViewController.swift in Sources */,
-				356DAA7E1CC3B3230086A456 /* NetworkReachabilityOperationQueues.swift in Sources */,
 				35CFCD741CC3ADB4008DCE16 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

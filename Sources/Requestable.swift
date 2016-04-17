@@ -124,6 +124,7 @@ public extension Requestable {
     
 }
 
+// MARK: - Default Implementation
 public extension Requestable {
     
     public var baseURL: String {
@@ -186,13 +187,57 @@ public extension Requestable {
                 // FIXME: Check for other methods that don't support array as request parameters.
                 break
             default:
-                let encodedURLRequest = Request.encodeURLRequest(request.request!, parameters: parameters, encoding: encoding).0
+                let encodedURLRequest = encodeURLRequest(request.request!, parameters: parameters, encoding: encoding).0
                 request = Alamofire.request(encodedURLRequest)
             }
         }
         
         return request
         
+    }
+    
+}
+
+// MARK: - Encode URL Request
+extension Requestable {
+    
+    private func encodeURLRequest(URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (NSMutableURLRequest, NSError?) {
+        let mutableURLRequest = URLRequest.URLRequest
+        
+        guard let parameters = parameters where !parameters.isEmpty else {
+            return (mutableURLRequest, nil)
+        }
+        
+        var encodingError: NSError? = nil
+        
+        switch encoding {
+        case .JSON:
+            do {
+                let options = NSJSONWritingOptions()
+                let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: options)
+                
+                mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                mutableURLRequest.HTTPBody = data
+            } catch {
+                encodingError = error as NSError
+            }
+        case .PropertyList(let format, let options):
+            do {
+                let data = try NSPropertyListSerialization.dataWithPropertyList(
+                    parameters,
+                    format: format,
+                    options: options
+                )
+                mutableURLRequest.setValue("application/x-plist", forHTTPHeaderField: "Content-Type")
+                mutableURLRequest.HTTPBody = data
+            } catch {
+                encodingError = error as NSError
+            }
+        default:
+            break
+        }
+        
+        return (mutableURLRequest, encodingError)
     }
     
 }

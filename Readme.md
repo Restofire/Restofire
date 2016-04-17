@@ -55,7 +55,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 0.8'
+pod 'Restofire', '~> 0.9'
 ```
 
 Then, run the following command:
@@ -78,7 +78,7 @@ $ brew install carthage
 To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 0.8
+github "RahulKatariya/Restofire" ~> 0.9
 ```
 ### Swift Package Manager
 

@@ -63,8 +63,6 @@ public class RequestOperation: NSOperation {
     public var successful = false
     public var failed = false
     
-    public var maxAttempts = 6
-    
     public override func start() {
         if cancelled {
             finished = true

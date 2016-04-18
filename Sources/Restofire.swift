@@ -13,6 +13,9 @@ import Foundation
 public var defaultConfiguration = Configuration()
 
 /// The default request eventually queue to which all the request eventually
-/// operations are added when one calls executeTaskEventually: on requestable
-/// objects.
-public let defaultRequestEventuallyQueue = NSOperationQueue()
+/// operations are added.
+let defaultRequestEventuallyQueue: NSOperationQueue = {
+        let oq = NSOperationQueue()
+        oq.qualityOfService = .Utility
+        return oq
+    }()

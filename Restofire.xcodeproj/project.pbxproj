@@ -69,10 +69,6 @@
 		3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		3596CC001CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		35A0949F1CC3EA9400C58702 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
-		35A094A11CC49D5500C58702 /* HTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A094A01CC49D5500C58702 /* HTTPOperation.swift */; };
-		35A094A21CC49D5500C58702 /* HTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A094A01CC49D5500C58702 /* HTTPOperation.swift */; };
-		35A094A31CC49D5500C58702 /* HTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A094A01CC49D5500C58702 /* HTTPOperation.swift */; };
-		35A094A41CC49D5500C58702 /* HTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A094A01CC49D5500C58702 /* HTTPOperation.swift */; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
 		35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
@@ -141,7 +137,6 @@
 		3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringArrayService+GETSpec.swift"; sourceTree = "<group>"; };
 		3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StringService+GETSpec.swift"; sourceTree = "<group>"; };
 		3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VoidService+GETSpec.swift"; sourceTree = "<group>"; };
-		355641311CAFB73F009738B8 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		35607D441CC09C98004902A5 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		35856C651CC2838100ACBDB9 /* HTTPBinConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPBinConfigurable.swift; sourceTree = "<group>"; };
 		35856C661CC2838100ACBDB9 /* HTTPBinService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinService+GET.swift"; sourceTree = "<group>"; };
@@ -150,7 +145,6 @@
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEventuallyOperation.swift; sourceTree = "<group>"; };
-		35A094A01CC49D5500C58702 /* HTTPOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPOperation.swift; sourceTree = "<group>"; };
 		35B19DDB1BEE134E001D3952 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DE51BEE134E001D3952 /* RestofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DFD1BEE17D2001D3952 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -213,8 +207,6 @@
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				35607D441CC09C98004902A5 /* Configurable.swift */,
 				351A7A7A1CA6D82500640678 /* ResponseSerializer.swift */,
-				355641311CAFB73F009738B8 /* Request.swift */,
-				35A094A01CC49D5500C58702 /* HTTPOperation.swift */,
 				352108C11CC29E99006D752E /* RequestOperation.swift */,
 				35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */,
 				3500626B1C7C40510078B589 /* Dictionary.swift */,
@@ -538,7 +530,6 @@
 				3500627F1C7C406C0078B589 /* Dictionary.swift in Sources */,
 				352108C31CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */,
-				35A094A21CC49D5500C58702 /* HTTPOperation.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -553,7 +544,6 @@
 				350062801C7C406C0078B589 /* Dictionary.swift in Sources */,
 				352108C41CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */,
-				35A094A31CC49D5500C58702 /* HTTPOperation.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -568,7 +558,6 @@
 				350062811C7C406D0078B589 /* Dictionary.swift in Sources */,
 				352108C51CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */,
-				35A094A41CC49D5500C58702 /* HTTPOperation.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -580,7 +569,6 @@
 			files = (
 				3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */,
 				351A7A7B1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
-				35A094A11CC49D5500C58702 /* HTTPOperation.swift in Sources */,
 				352108C21CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F261CC0A32D0070F5D3 /* Configurable.swift in Sources */,
 				350062721C7C40510078B589 /* Dictionary.swift in Sources */,

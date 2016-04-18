@@ -10,15 +10,14 @@ import Foundation
 import Alamofire
 
 /// RequestEventuallyOperation represents an RequestOperation object which executes
-/// It gets its ready state when the network is reachable.
-public class RequestEventuallyOperation: HTTPOperation {
+/// asynchronously when the network is reachable.
+public class RequestEventuallyOperation: RequestOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()
-    var retryAttempts = 0
     
-    public override init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {
+    public override init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {        
         super.init(requestable: requestable, completionHandler: completionHandler)
-        retryAttempts = requestable.maxRetryAttempts
+        self.ready = false
         networkReachabilityManager?.listener = { status in
             switch status {
             case .Reachable(_):

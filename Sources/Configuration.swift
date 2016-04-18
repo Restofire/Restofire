@@ -69,14 +69,12 @@ public struct Configuration {
     /// NSURLErrorCannotFindHost,
     /// NSURLErrorCannotConnectToHost,
     /// NSURLErrorDNSLookupFailed,
-    /// NSURLErrorNetworkConnectionLost
-    /// NSURLErrorNotConnectedToInternet` by default.
+    /// NSURLErrorNetworkConnectionLost` by default.
     public var retryErrorCodes: Set<Int> = [NSURLErrorTimedOut,
                                   NSURLErrorCannotFindHost,
                                   NSURLErrorCannotConnectToHost,
                                   NSURLErrorDNSLookupFailed,
-                                  NSURLErrorNetworkConnectionLost,
-                                  NSURLErrorNotConnectedToInternet
+                                  NSURLErrorNetworkConnectionLost
                                   ]
     
     /// The retry interval. `10` by default.

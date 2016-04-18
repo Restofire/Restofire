@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-/// Requestable represents an HTTP request that can be asynchronously executed.
+/// Requestable represents an Alamofire request that can be asynchronously executed.
 ///
 /// ### Creating a request.
 /// ```swift
@@ -49,235 +49,173 @@ import Alamofire
 /// }
 /// ```
 public protocol Requestable: Configurable {
-  
-  /// The base URL. `configuration.BaseURL` by default.
-  var baseURL: String { get }
-  
-  /// The path relative to base URL.
-  var path: String { get }
-  
-  /// The HTTP Method. `configuration.method` by default.
-  var method: Alamofire.Method { get }
-  
-  /// The request parameter encoding. `configuration.encoding` by default.
-  var encoding: Alamofire.ParameterEncoding { get }
-  
-  /// The HTTP headers. `configuration.headers` by default.
-  var headers: [String : String]? { get }
-  
-  /// The request parameters. `nil` by default.
-  var parameters: AnyObject? { get }
-  
-  /// The credential. `configuration.credential` by default.
-  var credential: NSURLCredential? { get }
-  
-  /// The Alamofire validation. `configuration.validation` by default.
-  var validation: Alamofire.Request.Validation? { get }
-  
-  /// The acceptable status codes. `configuration.acceptableStatusCodes` by default.
-  var acceptableStatusCodes: [Range<Int>]? { get }
-  
-  /// The acceptable content types. `configuration.acceptableContentTypes` by default.
-  var acceptableContentTypes: [String]? { get }
-  
-  /// The root keypath. `configuration.rootKeyPath` by default.
-  var rootKeyPath: String? { get }
-  
-  /// The logging. `configuration.logging` by default.
-  var logging: Bool { get }
-  
-  /// The Alamofire Manager. `configuration.manager` by default.
-  var manager: Alamofire.Manager { get }
-  
-  /// The retry error codes. `configuration.retryErrorCodes` by default.
-  var retryErrorCodes: Set<Int> { get }
-  
-  /// The retry interval. `configuration.retryInterval` by default.
-  var retryInterval: NSTimeInterval { get }
-  
-  /// The max retry attempts. `configuration.maxRetryAttempts` by default.
-  var maxRetryAttempts: Int { get }
-  
+    
+    /// The base URL. `configuration.BaseURL` by default.
+    var baseURL: String { get }
+    
+    /// The path relative to base URL.
+    var path: String { get }
+    
+    /// The HTTP Method. `configuration.method` by default.
+    var method: Alamofire.Method { get }
+    
+    /// The request parameter encoding. `configuration.encoding` by default.
+    var encoding: Alamofire.ParameterEncoding { get }
+    
+    /// The HTTP headers. `configuration.headers` by default.
+    var headers: [String : String]? { get }
+    
+    /// The request parameters. `nil` by default.
+    var parameters: AnyObject? { get }
+    
+    /// The credential. `configuration.credential` by default.
+    var credential: NSURLCredential? { get }
+    
+    /// The Alamofire validation. `configuration.validation` by default.
+    var validation: Alamofire.Request.Validation? { get }
+    
+    /// The acceptable status codes. `configuration.acceptableStatusCodes` by default.
+    var acceptableStatusCodes: [Range<Int>]? { get }
+    
+    /// The acceptable content types. `configuration.acceptableContentTypes` by default.
+    var acceptableContentTypes: [String]? { get }
+    
+    /// The root keypath. `configuration.rootKeyPath` by default.
+    var rootKeyPath: String? { get }
+    
+    /// The logging. `configuration.logging` by default.
+    var logging: Bool { get }
+    
+    /// The Alamofire Manager. `configuration.manager` by default.
+    var manager: Alamofire.Manager { get }
+    
+    /// The retry error codes. `configuration.retryErrorCodes` by default.
+    var retryErrorCodes: Set<Int> { get }
+    
+    /// The retry interval. `configuration.retryInterval` by default.
+    var retryInterval: NSTimeInterval { get }
+    
+    /// The max retry attempts. `configuration.maxRetryAttempts` by default.
+    var maxRetryAttempts: Int { get }
+    
 }
 
 public extension Requestable {
-  
-  /// Creates a request for the specified requestable object and
-  /// asynchronously executes it.
-  ///
-  /// - parameter completionHandler: A closure to be executed once the request
-  ///                                has finished. `nil` by default.
-  ///
-  /// - returns: The created Alamofire request.
-  public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> Alamofire.Request {
-    let rq = requestOperation(completionHandler)
-    rq.start()
-    return rq.request
-  }
-  
-  /// Creates a request operation for the specified requestable object.
-  ///
-  /// - parameter completionHandler: A closure to be executed once the operation
-  ///                                is started and the request has finished.
-  ///                                `nil` by default.
-  ///
-  /// - returns: The created RequestOperation object.
-  public func requestOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
-    let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
-    return requestOperation
-  }
-  
-  /// Creates a request for the specified requestable object and
-  /// asynchronously executes it when internet is reachable.
-  ///
-  /// - parameter completionHandler: A closure to be executed once the request
-  ///                                has finished. `nil` by default.
-  ///
-  /// - returns: The created Alamofire request.
-  public func executeTaskEventually(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> Alamofire.Request {
-    let req = requestEventuallyOperation(completionHandler)
-    Restofire.defaultRequestEventuallyQueue.addOperation(req)
-    return req.request
-  }
-  
-  /// Creates a request eventually operation for the specified requestable object.
-  /// The operation will get its ready state when the internet is reachable.
-  ///
-  /// - parameter completionHandler: A closure to be executed once the operation
-  ///                                is started and the request has finished.
-  ///                                `nil` by default.
-  ///
-  /// - returns: The created RequestOperation object.
-  public func requestEventuallyOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
-    let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
-    return requestEventuallyOperation
-  }
-  
+    
+    /// Creates a request for the specified requestable object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created Alamofire request.
+    public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
+        let rq = requestOperation(completionHandler)
+        rq.start()
+        return rq
+    }
+    
+    /// Creates a request operation for the specified requestable object.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the operation
+    ///                                is started and the request has finished.
+    ///                                `nil` by default.
+    ///
+    /// - returns: The created RequestOperation object.
+    public func requestOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
+        let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
+        return requestOperation
+    }
+    
+    /// Creates a request for the specified requestable object and
+    /// asynchronously executes it when internet is reachable.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created Alamofire request.
+    public func executeTaskEventually(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
+        let req = requestEventuallyOperation(completionHandler)
+        Restofire.defaultRequestEventuallyQueue.addOperation(req)
+        return req
+    }
+    
+    /// Creates a request eventually operation for the specified requestable object.
+    /// The operation will get its ready state when the internet is reachable.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the operation
+    ///                                is started and the request has finished.
+    ///                                `nil` by default.
+    ///
+    /// - returns: The created RequestOperation object.
+    public func requestEventuallyOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
+        let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
+        return requestEventuallyOperation
+    }
+    
 }
 
 // MARK: - Default Implementation
 public extension Requestable {
-  
-  public var baseURL: String {
-    return configuration.baseURL
-  }
-  
-  public var method: Alamofire.Method {
-    return configuration.method
-  }
-  
-  public var encoding: Alamofire.ParameterEncoding {
-    return configuration.encoding
-  }
-  
-  public var headers: [String: String]? {
-    return configuration.headers
-  }
-  
-  public var parameters: AnyObject? {
-    return nil
-  }
-  
-  public var credential: NSURLCredential? {
-    return configuration.credential
-  }
-  
-  public var validation: Alamofire.Request.Validation? {
-    return configuration.validation
-  }
-  
-  public var acceptableStatusCodes: [Range<Int>]? {
-    return configuration.acceptableStatusCodes
-  }
-  
-  public var acceptableContentTypes: [String]? {
-    return configuration.acceptableContentTypes
-  }
-  
-  public var rootKeyPath: String? {
-    return configuration.rootKeyPath
-  }
-  
-  public var logging: Bool {
-    return configuration.logging
-  }
-  
-  public var manager: Alamofire.Manager {
-    return configuration.manager
-  }
-  
-  public var retryErrorCodes: Set<Int> {
-    return configuration.retryErrorCodes
-  }
-  
-  public var retryInterval: NSTimeInterval {
-    return configuration.retryInterval
-  }
-  
-  public var maxRetryAttempts: Int {
-    return configuration.maxRetryAttempts
-  }
-  
-}
-
-// MARK: - Alamofire Request
-extension Requestable {
-  
-  var request: Alamofire.Request {
     
-    var request = manager.request(method, baseURL + path, parameters: parameters as? [String: AnyObject], encoding: encoding, headers: headers)
-    
-    if let parameters = parameters as? [AnyObject] {
-        let (encodedURLRequest, error) = encodeURLRequest(request.request!, parameters: parameters, encoding: encoding)
-        if let error = error {
-            print("[Restofire] - Encoding Error: " + error.localizedDescription)
-        } else {
-            request = Alamofire.request(encodedURLRequest)
-        }
+    public var baseURL: String {
+        return configuration.baseURL
     }
     
-    return request
-    
-  }
-  
-  private func encodeURLRequest(URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (NSMutableURLRequest, NSError?) {
-    let mutableURLRequest = URLRequest.URLRequest
-    
-    guard let parameters = parameters where !parameters.isEmpty else {
-      return (mutableURLRequest, nil)
+    public var method: Alamofire.Method {
+        return configuration.method
     }
     
-    var encodingError: NSError? = nil
-    
-    switch encoding {
-    case .JSON:
-      do {
-        let options = NSJSONWritingOptions()
-        let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: options)
-        
-        mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        mutableURLRequest.HTTPBody = data
-      } catch {
-        encodingError = error as NSError
-      }
-    case .PropertyList(let format, let options):
-      do {
-        let data = try NSPropertyListSerialization.dataWithPropertyList(
-          parameters,
-          format: format,
-          options: options
-        )
-        mutableURLRequest.setValue("application/x-plist", forHTTPHeaderField: "Content-Type")
-        mutableURLRequest.HTTPBody = data
-      } catch {
-        encodingError = error as NSError
-      }
-    default:
-        encodingError = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire."])
-      break
+    public var encoding: Alamofire.ParameterEncoding {
+        return configuration.encoding
     }
     
-    return (mutableURLRequest, encodingError)
-  }
-  
+    public var headers: [String: String]? {
+        return configuration.headers
+    }
+    
+    public var parameters: AnyObject? {
+        return nil
+    }
+    
+    public var credential: NSURLCredential? {
+        return configuration.credential
+    }
+    
+    public var validation: Alamofire.Request.Validation? {
+        return configuration.validation
+    }
+    
+    public var acceptableStatusCodes: [Range<Int>]? {
+        return configuration.acceptableStatusCodes
+    }
+    
+    public var acceptableContentTypes: [String]? {
+        return configuration.acceptableContentTypes
+    }
+    
+    public var rootKeyPath: String? {
+        return configuration.rootKeyPath
+    }
+    
+    public var logging: Bool {
+        return configuration.logging
+    }
+    
+    public var manager: Alamofire.Manager {
+        return configuration.manager
+    }
+    
+    public var retryErrorCodes: Set<Int> {
+        return configuration.retryErrorCodes
+    }
+    
+    public var retryInterval: NSTimeInterval {
+        return configuration.retryInterval
+    }
+    
+    public var maxRetryAttempts: Int {
+        return configuration.maxRetryAttempts
+    }
+    
 }

@@ -22,12 +22,11 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [x] Default Configuration object for Base URL / headers / parameters / rootKeyPath etc
 - [x] Multiple Configurations with different Base URLs
 - [x] Single Request Configuration
-- [x] Request and Resource Timeout Intervals
-- [ ] Download and Upload Tasks
-- [x] Response Validations
+- [x] Validations
 - [x] Authentication
-- [x] NSOperation
-- [ ] Request Eventually when internet is reachable
+- [x] Request NSOperation
+- [x] RequestEventuallyOperation
+- [ ] Download and Upload Tasks
 - [ ] Comprehensive Unit Test Coverage
 - [ ] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
 
@@ -55,7 +54,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 0.9'
+pod 'Restofire', '~> 0.10'
 ```
 
 Then, run the following command:
@@ -78,7 +77,7 @@ $ brew install carthage
 To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 0.9
+github "RahulKatariya/Restofire" ~> 0.10
 ```
 ### Swift Package Manager
 

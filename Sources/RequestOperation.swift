@@ -128,17 +128,15 @@ public class RequestOperation: NSOperation {
     }
     
     func executeRequest() {
-        request.response { (response: Response<AnyObject, NSError>) in
+        request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
                 self.successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
-            } else if self.retryAttempts > 0 && self.requestable.retryErrorCodes.contains(response.result.error!.code) {
-                self.retryAttempts -= 1
-                self.performSelector(#selector(RequestOperation.startRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
             } else {
                 self.failed = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             }
+            if self.requestable.logging { debugPrint(response) }
         }
     }
     
@@ -205,13 +203,12 @@ extension RequestOperation {
                 encodingError = error as NSError
             }
         default:
-            encodingError = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire."])
+            encodingError = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey: "parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire."])
             break
         }
         
         return (mutableURLRequest, encodingError)
     }
-    
     
     private func authenticateRequest(request: Alamofire.Request, usingCredential credential:NSURLCredential?) {
         guard let credential = credential else { return }

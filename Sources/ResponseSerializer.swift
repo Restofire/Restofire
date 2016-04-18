@@ -54,7 +54,7 @@ extension Alamofire.Request {
             do {
                 let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: AnyObject!
-                if let rootKeyPath = rootKeyPath where JSON is [String: AnyObject] {
+                if let rootKeyPath = rootKeyPath where JSON is NSDictionary {
                     if let v = JSON.valueForKeyPath(rootKeyPath) {
                         value = v
                     } else {

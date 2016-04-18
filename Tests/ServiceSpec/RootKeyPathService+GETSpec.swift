@@ -38,6 +38,7 @@ class RootKeyPathGETServiceSpec: ServiceSpec {
                 var expected: String!
                 
                 let requestOperation = RootKeyPathGETService().requestOperation() {
+                    print($0)
                     if let value = $0.result.value as? String {
                         expected = value
                     }

@@ -9,5 +9,10 @@
 import Foundation
 
 /// The default configuration used for `requestable` objects.
+/// One needs to override baseURL.
 public var defaultConfiguration = Configuration()
+
+/// The default request eventually queue to which all the request eventually
+/// operations are added when one calls executeTaskEventually: on requestable
+/// objects.
 public let defaultRequestEventuallyQueue = NSOperationQueue()

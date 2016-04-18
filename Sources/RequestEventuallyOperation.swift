@@ -11,20 +11,19 @@ import Alamofire
 
 /// RequestEventuallyOperation represents an RequestOperation object which executes
 /// It gets its ready state when the network is reachable.
-public class RequestEventuallyOperation: RequestOperation {
+public class RequestEventuallyOperation: HTTPOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()
+    var retryAttempts = 0
     
     public override init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
-        retry = true
-        attempts = requestable.maxRetryAttempts
+        retryAttempts = requestable.maxRetryAttempts
         networkReachabilityManager?.listener = { status in
             switch status {
             case .Reachable(_):
                 if self.pause {
-                    self.executeRequest()
-                    self.pause = false
+                    self.resume = true
                 } else {
                     self.ready = true
                 }
@@ -35,15 +34,22 @@ public class RequestEventuallyOperation: RequestOperation {
         networkReachabilityManager?.startListening()
     }
     
-    var _ready: Bool = false
-    public override var ready: Bool {
-        get {
-            return _ready
-        }
-        set (newValue) {
-            willChangeValueForKey("isReady")
-            _ready = newValue
-            didChangeValueForKey("isReady")
+    override func executeRequest() {
+        request.response { (response: Response<AnyObject, NSError>) in
+            if response.result.error == nil {
+                self.successful = true
+                if let completionHandler = self.completionHandler { completionHandler(response) }
+            } else if self.retryAttempts > 0 {
+                if response.result.error!.code == NSURLErrorNotConnectedToInternet {
+                    self.pause = true
+                } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
+                    self.retryAttempts -= 1
+                    self.performSelector(#selector(RequestOperation.startRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
+                }
+            } else {
+                self.failed = true
+                if let completionHandler = self.completionHandler { completionHandler(response) }
+            }
         }
     }
 

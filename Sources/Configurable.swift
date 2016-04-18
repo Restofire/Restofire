@@ -17,12 +17,12 @@ import Foundation
 ///
 /// extension HTTPBinConfigurable {
 ///
-///     var configuration: Configuration {
-///         var config = Configuration()
-///         config.baseURL = "https://httpbin.org/"
-///         config.logging = true
-///         return config
-///     }
+///   var configuration: Configuration {
+///     var config = Configuration()
+///     config.baseURL = "https://httpbin.org/"
+///     config.logging = true
+///     return config
+///   }
 ///
 /// }
 /// ```
@@ -31,14 +31,14 @@ import Foundation
 /// ```swift
 /// class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
 ///
-///     let path: String = "get"
-///     var rootKeyPath: String? = "args"
-///     let encoding: ParameterEncoding = .URLEncodedInURL
-///     var parameters: AnyObject?
+///   let path: String = "get"
+///   var rootKeyPath: String? = "args"
+///   let encoding: ParameterEncoding = .URLEncodedInURL
+///   var parameters: AnyObject?
 ///
-///     init(parameters: AnyObject?) {
-///         self.parameters = parameters
-///     }
+///   init(parameters: AnyObject?) {
+///     self.parameters = parameters
+///   }
 ///
 /// }
 /// ```

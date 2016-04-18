@@ -19,6 +19,9 @@ import Alamofire
 /// configuration.acceptableStatusCodes = [200..<300]
 /// configuration.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
+/// configuration.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+/// configuration.retryInterval = 20
+/// configuration.maxRetryAttempts = 10
 /// let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
 /// sessionConfiguration.timeoutIntervalForRequest = 7
 /// sessionConfiguration.timeoutIntervalForResource = 7
@@ -60,5 +63,26 @@ public struct Configuration {
     
     /// The Alamofire Manager. `Alamofire.Manager.sharedInstance` by default.
     public var manager = Alamofire.Manager.sharedInstance
+    
+    /// The retry error codes. 
+    /// `NSURLErrorTimedOut, 
+    /// NSURLErrorCannotFindHost,
+    /// NSURLErrorCannotConnectToHost,
+    /// NSURLErrorDNSLookupFailed,
+    /// NSURLErrorNetworkConnectionLost
+    /// NSURLErrorNotConnectedToInternet` by default.
+    public var retryErrorCodes: Set<Int> = [NSURLErrorTimedOut,
+                                  NSURLErrorCannotFindHost,
+                                  NSURLErrorCannotConnectToHost,
+                                  NSURLErrorDNSLookupFailed,
+                                  NSURLErrorNetworkConnectionLost,
+                                  NSURLErrorNotConnectedToInternet
+                                  ]
+    
+    /// The retry interval. `10` by default.
+    public var retryInterval: NSTimeInterval = 10
+    
+    /// The max retry attempts. `5` by default.
+    public var maxRetryAttempts = 5
     
 }

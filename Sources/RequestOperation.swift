@@ -9,17 +9,21 @@
 import Foundation
 import Alamofire
 
-/// RequestOperation represents an NSOperation object which executes the request 
+/// RequestOperation represents an NSOperation object which executes the request
 /// asynchronously on start
 public class RequestOperation: NSOperation {
-    
-    let taskRequest: Request
-    var completionHandler: (Response<AnyObject, NSError> -> Void)?
     
     /// The Alamofire Request.
     public let request: Alamofire.Request
     
+    let taskRequest: Request
+    let requestable: Requestable
+    var completionHandler: (Response<AnyObject, NSError> -> Void)?
+    var retry: Bool = false
+    var attempts: Int = 0
+    
     public init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) {
+        self.requestable = requestable
         self.taskRequest = Request(requestable: requestable)
         self.completionHandler = completionHandler
         self.request = requestable.request
@@ -62,6 +66,13 @@ public class RequestOperation: NSOperation {
     }
     public var successful = false
     public var failed = false
+    public var pause = false {
+        didSet {
+            if pause {
+                request.suspend()
+            }
+        }
+    }
     
     public override func start() {
         if cancelled {
@@ -69,15 +80,30 @@ public class RequestOperation: NSOperation {
             return
         }
         executing = true
+        executeRequest()
+    }
+    
+    func executeRequest() {
         taskRequest.execute { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
                 self.successful = true
+                self.executing = false
+                self.finished = true
+                if let completionHandler = self.completionHandler { completionHandler(response) }
+            } else if self.retry && self.attempts > 0 {
+                if response.result.error!.code == NSURLErrorNotConnectedToInternet {
+                    self.pause = true
+                } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
+                    self.attempts -= 1
+                    print(self.attempts)
+                    self.performSelector(#selector(RequestOperation.executeRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
+                }
             } else {
                 self.failed = true
+                self.executing = false
+                self.finished = true
+                if let completionHandler = self.completionHandler { completionHandler(response) }
             }
-            self.executing = false
-            self.finished = true
-            if let completionHandler = self.completionHandler { completionHandler(response) }
         }
     }
     

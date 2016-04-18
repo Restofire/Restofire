@@ -8,6 +8,7 @@
 
 import UIKit
 import Restofire
+import Alamofire
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
         Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
         Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
+        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        sessionConfiguration.timeoutIntervalForRequest = 10
+        sessionConfiguration.timeoutIntervalForResource = 10
+        sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+        Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
         return true
     }
 

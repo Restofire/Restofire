@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         StringGETService().executeTaskEventually { (response: Response<AnyObject, NSError>) in
             print(response)
+            print(NSThread.isMainThread())
         }
     }
 

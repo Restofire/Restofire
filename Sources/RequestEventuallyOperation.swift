@@ -10,29 +10,29 @@ import Foundation
 import Alamofire
 
 /// RequestEventuallyOperation represents an RequestOperation object which executes
-/// the request asynchronously on start when the network is on.
+/// It gets its ready state when the network is reachable.
 public class RequestEventuallyOperation: RequestOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()
     
     public override init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
+        retry = true
+        attempts = requestable.maxRetryAttempts
         networkReachabilityManager?.listener = { status in
             switch status {
             case .Reachable(_):
-                self.ready = true
+                if self.pause {
+                    self.executeRequest()
+                    self.pause = false
+                } else {
+                    self.ready = true
+                }
             default:
-                self.ready = false
-                break
+                self.pause = true
             }
         }
-        startListeningForNetworkChanges()
-    }
-    
-    private func startListeningForNetworkChanges() {
-        if let manger = networkReachabilityManager where !manger.startListening() {
-            startListeningForNetworkChanges()
-        }
+        networkReachabilityManager?.startListening()
     }
     
     var _ready: Bool = false
@@ -46,5 +46,5 @@ public class RequestEventuallyOperation: RequestOperation {
             didChangeValueForKey("isReady")
         }
     }
-    
+
 }

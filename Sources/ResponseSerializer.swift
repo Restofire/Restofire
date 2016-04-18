@@ -55,21 +55,21 @@ extension Alamofire.Request {
                 let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
                 var value: AnyObject!
                 if let rootKeyPath = rootKeyPath where JSON is [String: AnyObject] {
-                    value = JSON.valueForKeyPath(rootKeyPath)
+                    if let v = JSON.valueForKeyPath(rootKeyPath) {
+                        value = v
+                    } else {
+                        let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
+                        let error = Error.errorWithCode(-1, failureReason: failureReason)
+                        return .Failure(error)
+                    }
                 } else if let rootKeyPath = rootKeyPath {
-                    let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
+                    let failureReason = "JSON expected to be a Dictionary to parse \(rootKeyPath), got Array"
                     let error = Error.errorWithCode(-1, failureReason: failureReason)
                     return .Failure(error)
                 } else {
                     value = JSON
                 }
-                if let value = value {
-                    return .Success(value)
-                } else {
-                    let failureReason = "JSON parsing to object Failed"
-                    let error = Error.errorWithCode(-1, failureReason: failureReason)
-                    return .Failure(error)
-                }
+                return .Success(value!)
             } catch {
                 return .Failure(error as NSError)
             }

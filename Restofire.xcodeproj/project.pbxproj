@@ -48,6 +48,9 @@
 		35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
+		35766C921CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
+		35766C931CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
+		35766C941CC553AA00D532C9 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
 		3579C9E81C732E2400ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EB1C732E4C00ED7BF2 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DFD1BEE17D2001D3952 /* Alamofire.framework */; };
 		3579C9EC1C732E4C00ED7BF2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
@@ -523,6 +526,7 @@
 				351A7A7C1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
 				352108C31CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */,
+				35766C921CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -536,6 +540,7 @@
 				351A7A7D1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
 				352108C41CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */,
+				35766C931CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);
@@ -549,6 +554,7 @@
 				351A7A7E1CA6D82500640678 /* ResponseSerializer.swift in Sources */,
 				352108C51CC29E99006D752E /* RequestOperation.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */,
+				35766C941CC553AA00D532C9 /* RequestEventuallyOperation.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 			);

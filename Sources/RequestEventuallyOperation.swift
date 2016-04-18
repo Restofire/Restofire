@@ -34,7 +34,7 @@ public class RequestEventuallyOperation: RequestOperation {
     }
     
     override func executeRequest() {
-        request.response { (response: Response<AnyObject, NSError>) in
+        request.response(rootKeyPath: requestable.rootKeyPath) { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
                 self.successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
@@ -49,6 +49,7 @@ public class RequestEventuallyOperation: RequestOperation {
                 self.failed = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             }
+            if self.requestable.logging { debugPrint(response) }
         }
     }
 

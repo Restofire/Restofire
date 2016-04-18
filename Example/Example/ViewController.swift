@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        StringGETService().executeTask { (response: Response<AnyObject, NSError>) in
+        StringGETService().executeTaskEventually() { (response: Response<AnyObject, NSError>) in
             print(response)
         }
     }

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
         Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
         Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
+        Restofire.defaultConfiguration.logging = true
         let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
         sessionConfiguration.timeoutIntervalForRequest = 10
         sessionConfiguration.timeoutIntervalForResource = 10

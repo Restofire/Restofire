@@ -15,7 +15,7 @@ public class RequestEventuallyOperation: RequestOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()
     
-    public override init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {        
+    override init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {        
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.ready = false
         networkReachabilityManager?.listener = { status in

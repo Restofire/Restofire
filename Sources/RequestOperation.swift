@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+/// RequestOperation represents an NSOperation object which executes
+/// asynchronously.
 public class RequestOperation: NSOperation {
     
     var request: Alamofire.Request!
@@ -24,7 +26,7 @@ public class RequestOperation: NSOperation {
         _ready = super.ready
     }
     
-    public var successful = false {
+    var successful = false {
         didSet {
             if successful {
                 executing = false
@@ -33,7 +35,7 @@ public class RequestOperation: NSOperation {
         }
     }
     
-    public var failed = false {
+    var failed = false {
         didSet {
             if failed {
                 executing = false
@@ -42,7 +44,7 @@ public class RequestOperation: NSOperation {
         }
     }
     
-    public var pause = false {
+    var pause = false {
         didSet {
             if pause {
                 resume = false
@@ -51,7 +53,7 @@ public class RequestOperation: NSOperation {
         }
     }
     
-    public var resume = false {
+    var resume = false {
         didSet {
             if resume {
                 pause = false

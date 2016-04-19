@@ -17,5 +17,5 @@ Pod::Spec.new do |s|
      ss.dependency "Alamofire", "~> 3.0"
      ss.framework  = "Foundation"
  end
- 
+
 end

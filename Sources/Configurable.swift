@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// Configurable represents a configuration that can be used by multiple
-/// `requestable` objects
+/// Configurable represents a configuration that is associated with Requestable`.
+/// `Restofire.defaultConfiguration()` by default.
 ///
 /// ### Create custom configurable
 /// ```swift

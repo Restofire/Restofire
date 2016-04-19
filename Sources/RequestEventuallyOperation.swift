@@ -11,8 +11,13 @@
 import Foundation
 import Alamofire
 
-/// RequestEventuallyOperation represents an RequestOperation object which executes
-/// asynchronously when the network is reachable.
+/// A `RequestOperation`, when added to an `NSOperationQueue` moitors the 
+/// network reachability and executes the `Requestable` when the network
+/// is reachable.
+///
+/// - Note: Do not call `start()` directly because it will begin the execution 
+/// of work regardless of network reachability which is equivalant to
+/// `RequestOperation`.
 public class RequestEventuallyOperation: RequestOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()

@@ -9,7 +9,8 @@
 import Foundation
 import Alamofire
 
-/// Requestable represents an Alamofire request that can be asynchronously executed.
+/// Represents an HTTP Request that can be asynchronously executed. You must 
+/// provide a `path`.
 ///
 /// ### Creating a request.
 /// ```swift
@@ -72,7 +73,7 @@ public protocol Requestable: Configurable {
     var credential: NSURLCredential? { get }
     
     /// The Alamofire validation. `configuration.validation` by default.
-    var validation: Alamofire.Request.Validation? { get }
+    var validation: Request.Validation? { get }
     
     /// The acceptable status codes. `configuration.acceptableStatusCodes` by default.
     var acceptableStatusCodes: [Range<Int>]? { get }
@@ -102,57 +103,58 @@ public protocol Requestable: Configurable {
 
 public extension Requestable {
     
-    /// Creates a request for the specified requestable object and
+    /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created Alamofire request.
+    /// - returns: The created `RequestOperation`.
     public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
     }
     
-    /// Creates a request operation for the specified requestable object.
+    /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
     /// - parameter completionHandler: A closure to be executed once the operation
     ///                                is started and the request has finished.
     ///                                `nil` by default.
     ///
-    /// - returns: The created RequestOperation object.
+    /// - returns: The created `RequestOperation`.
     public func requestOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
         let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
     
     #if !os(watchOS)
-    /// Creates a request for the specified requestable object and
-    /// asynchronously executes it when internet is reachable.
+    
+    /// Creates a `RequestEventuallyOperation` for the specified `Requestable`
+    /// object and asynchronously executes it when internet is reachable.
     ///
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created Alamofire request.
+    /// - returns: The created `RequestEventuallyOperation`.
     public func executeTaskEventually(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
     }
     
-    /// Creates a request eventually operation for the specified requestable object.
-    /// The operation will get its ready state when the internet is reachable.
+    /// Creates a `RequestEventuallyOperation` for the specified requestable object.
     ///
     /// - parameter completionHandler: A closure to be executed once the operation
     ///                                is started and the request has finished.
     ///                                `nil` by default.
     ///
-    /// - returns: The created RequestOperation object.
+    /// - returns: The created `RequestEventuallyOperation`.
     public func requestEventuallyOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
         let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
+    
     #endif
     
 }
@@ -184,7 +186,7 @@ public extension Requestable {
         return configuration.credential
     }
     
-    public var validation: Alamofire.Request.Validation? {
+    public var validation: Request.Validation? {
         return configuration.validation
     }
     

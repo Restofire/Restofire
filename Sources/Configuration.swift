@@ -9,8 +9,7 @@
 import Foundation
 import Alamofire
 
-/// A Configuration object represents a configuration that will be used by 
-/// requestable objects.
+/// A Configuration of RESTful Services. You must provide a `baseURL`.
 ///
 /// ```swift
 /// var configuration = Configuration()
@@ -46,7 +45,7 @@ public struct Configuration {
     public var credential: NSURLCredential?
     
     /// The Alamofire validation. `nil` by default.
-    public var validation: Alamofire.Request.Validation?
+    public var validation: Request.Validation?
     
     /// The acceptable status codes. `nil` by default.
     public var acceptableStatusCodes: [Range<Int>]?

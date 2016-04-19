@@ -9,11 +9,13 @@
 import Foundation
 import Alamofire
 
-/// RequestOperation represents an NSOperation object which executes
-/// asynchronously.
+/// An NSOperation that executes the `Requestable` asynchronously on `start()`
+/// or when added to a NSOperationQueue
+///
+/// - Note: Auto Retry is only available in `RequestEventuallyOperation`.
 public class RequestOperation: NSOperation {
     
-    var request: Alamofire.Request!
+    var request: Request!
     let requestable: Requestable
     let completionHandler: (Response<AnyObject, NSError> -> Void)?
     var retryAttempts = 0
@@ -63,7 +65,8 @@ public class RequestOperation: NSOperation {
     }
     
     var _ready: Bool = false
-    public override var ready: Bool {
+    /// A Boolean value indicating whether the operation can be performed now. (read-only)
+    public override private(set) var ready: Bool {
         get {
             return _ready
         }
@@ -75,7 +78,9 @@ public class RequestOperation: NSOperation {
     }
     
     var _executing: Bool = false
-    public override var executing: Bool {
+    
+    /// A Boolean value indicating whether the operation is currently executing. (read-only)
+    public override private(set) var executing: Bool {
         get {
             return _executing
         }
@@ -87,7 +92,8 @@ public class RequestOperation: NSOperation {
     }
     
     var _cancelled: Bool = false
-    public override var cancelled: Bool {
+    /// A Boolean value indicating whether the operation has been cancelled. (read-only)
+    public override private(set) var cancelled: Bool {
         get {
             return _cancelled
         }
@@ -99,7 +105,8 @@ public class RequestOperation: NSOperation {
     }
     
     var _finished: Bool = false
-    public override var finished: Bool {
+    /// A Boolean value indicating whether the operation has finished executing its task. (read-only)
+    public override private(set) var finished: Bool {
         get {
             return _finished
         }
@@ -110,7 +117,7 @@ public class RequestOperation: NSOperation {
         }
     }
     
-    /// Begins the execution of the HTTP operation.
+    /// Begins the execution of the operation.
     public override func start() {
         if cancelled {
             finished = true
@@ -121,11 +128,7 @@ public class RequestOperation: NSOperation {
     }
     
     func startRequest() {
-        request = alamofireRequest()
-        authenticateRequest(request, usingCredential: requestable.credential)
-        validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
-        validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
-        validateRequest(request, forValidation: requestable.validation)
+        request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
         executeRequest()
     }
     
@@ -142,96 +145,12 @@ public class RequestOperation: NSOperation {
         }
     }
     
-    /// Advises the HTTP operation object that it should stop executing its request.
+    /// Advises the operation object that it should stop executing its request.
     public override func cancel() {
         request.cancel()
         executing = false
         cancelled = true
         finished = true
-    }
-    
-}
-
-// MARK: - Alamofire Request
-extension RequestOperation {
-    
-    private func alamofireRequest() -> Alamofire.Request {
-        
-        var request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
-        
-        if let parameters = requestable.parameters as? [AnyObject] {
-            let (encodedURLRequest, error) = encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding)
-            if let error = error {
-                print("[Restofire] - Encoding Error: " + error.localizedDescription)
-            } else {
-                request = Alamofire.request(encodedURLRequest)
-            }
-        }
-        
-        return request
-        
-    }
-    
-    private func encodeURLRequest(URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (NSMutableURLRequest, NSError?) {
-        let mutableURLRequest = URLRequest.URLRequest
-        
-        guard let parameters = parameters where !parameters.isEmpty else {
-            return (mutableURLRequest, nil)
-        }
-        
-        var encodingError: NSError? = nil
-        
-        switch encoding {
-        case .JSON:
-            do {
-                let options = NSJSONWritingOptions()
-                let data = try NSJSONSerialization.dataWithJSONObject(parameters, options: options)
-                
-                mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                mutableURLRequest.HTTPBody = data
-            } catch {
-                encodingError = error as NSError
-            }
-        case .PropertyList(let format, let options):
-            do {
-                let data = try NSPropertyListSerialization.dataWithPropertyList(
-                    parameters,
-                    format: format,
-                    options: options
-                )
-                mutableURLRequest.setValue("application/x-plist", forHTTPHeaderField: "Content-Type")
-                mutableURLRequest.HTTPBody = data
-            } catch {
-                encodingError = error as NSError
-            }
-        default:
-            encodingError = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey: "parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire."])
-            break
-        }
-        
-        return (mutableURLRequest, encodingError)
-    }
-    
-    private func authenticateRequest(request: Alamofire.Request, usingCredential credential:NSURLCredential?) {
-        guard let credential = credential else { return }
-        request.authenticate(usingCredential: credential)
-    }
-    
-    private func validateRequest(request: Alamofire.Request, forAcceptableContentTypes contentTypes:[String]?) {
-        guard let contentTypes = contentTypes else { return }
-        request.validate(contentType: contentTypes)
-    }
-    
-    private func validateRequest(request: Alamofire.Request, forAcceptableStatusCodes statusCodes:[Range<Int>]?) {
-        guard let statusCodes = statusCodes else { return }
-        for statusCode in statusCodes {
-            request.validate(statusCode: statusCode)
-        }
-    }
-    
-    private func validateRequest(request: Alamofire.Request, forValidation validation:Alamofire.Request.Validation?) {
-        guard let validation = validation else { return }
-        request.validate(validation)
     }
     
 }

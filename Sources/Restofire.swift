@@ -12,9 +12,11 @@ import Foundation
 /// One needs to override baseURL.
 public var defaultConfiguration = Configuration()
 
+#if !os(watchOS)
 /// The default request eventually queue to which all the request eventually
 /// operations are added.
 let defaultRequestEventuallyQueue: NSOperationQueue = {
     let oq = NSOperationQueue()
     return oq
 }()
+#endif

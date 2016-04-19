@@ -127,6 +127,7 @@ public extension Requestable {
         return requestOperation
     }
     
+    #if !os(watchOS)
     /// Creates a request for the specified requestable object and
     /// asynchronously executes it when internet is reachable.
     ///
@@ -152,6 +153,7 @@ public extension Requestable {
         let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
+    #endif
     
 }
 

@@ -6,6 +6,8 @@
 //  Copyright © 2016 AarKay. All rights reserved.
 //
 
+#if !os(watchOS)
+
 import Foundation
 import Alamofire
 
@@ -54,3 +56,5 @@ public class RequestEventuallyOperation: RequestOperation {
     }
 
 }
+
+#endif

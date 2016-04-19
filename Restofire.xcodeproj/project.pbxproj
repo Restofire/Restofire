@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3500624B1C7C38500078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062461C7C38500078B589 /* Alamofire.framework */; };
-		350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
 		350062581C7C387C0078B589 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500623E1C7C382C0078B589 /* Alamofire.framework */; };
 		350062741C7C40510078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350062761C7C40610078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +73,7 @@
 		35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35D109FC1C5F33CC00FC831F /* Quick.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35F4A5F11CC5F95F004840E1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350062501C7C386A0078B589 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,7 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350062541C7C386A0078B589 /* Alamofire.framework in Frameworks */,
+				35F4A5F11CC5F95F004840E1 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

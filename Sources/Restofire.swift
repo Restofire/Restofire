@@ -15,7 +15,6 @@ public var defaultConfiguration = Configuration()
 /// The default request eventually queue to which all the request eventually
 /// operations are added.
 let defaultRequestEventuallyQueue: NSOperationQueue = {
-        let oq = NSOperationQueue()
-        if #available(OSX 10.10, *) { oq.qualityOfService = .Utility }
-        return oq
-    }()
+    let oq = NSOperationQueue()
+    return oq
+}()

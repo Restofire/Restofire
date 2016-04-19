@@ -8,13 +8,10 @@
 
 import Foundation
 
-/// The default configuration used for `requestable` objects.
-/// One needs to override baseURL.
+/// The default configuration.
 public var defaultConfiguration = Configuration()
 
 #if !os(watchOS)
-/// The default request eventually queue to which all the request eventually
-/// operations are added.
 let defaultRequestEventuallyQueue: NSOperationQueue = {
     let oq = NSOperationQueue()
     if #available(OSX 10.10, *) { oq.qualityOfService = .Utility }

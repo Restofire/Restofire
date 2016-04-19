@@ -66,7 +66,7 @@ public class RequestOperation: NSOperation {
     
     var _ready: Bool = false
     /// A Boolean value indicating whether the operation can be performed now. (read-only)
-    public override private(set) var ready: Bool {
+    public override internal(set) var ready: Bool {
         get {
             return _ready
         }

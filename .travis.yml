@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode7.3
+osx_image: beta-xcode6.2
 
 install:
   - carthage update Nimble Quick --platform iOS --no-use-binaries

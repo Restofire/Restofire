@@ -63,6 +63,9 @@ public struct Configuration {
     /// The Alamofire Manager. `Alamofire.Manager.sharedInstance` by default.
     public var manager = Alamofire.Manager.sharedInstance
     
+    /// The response serializer. `JSON(.AllowFragments)` by default.
+    public var responseSerializer: ResponseSerializerType = .JSON(.AllowFragments)
+    
     /// The retry error codes. 
     /// `NSURLErrorTimedOut, 
     /// NSURLErrorCannotFindHost,

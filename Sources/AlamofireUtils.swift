@@ -108,14 +108,18 @@ extension Alamofire.Request {
     /// - returns: The request.
     func response(
         rootKeyPath rootKeyPath: String? = nil,
-                    options: NSJSONReadingOptions = .AllowFragments,
+                    type: ResponseSerializerType,
                     completionHandler: Response<AnyObject, NSError> -> Void)
         -> Self
     {
-        return response(
-            responseSerializer: Alamofire.Request.JSONResponseSerializer(rootKeyPath: rootKeyPath, options: options),
-            completionHandler: completionHandler
-        )
+        switch type {
+        case .JSON(let options):
+            return response(
+                responseSerializer: Alamofire.Request.JSONResponseSerializer(rootKeyPath: rootKeyPath, options: options),
+                completionHandler: completionHandler
+            )
+        }
+        
     }
     
     /// Creates a response serializer that returns a JSON object constructed from the response data using

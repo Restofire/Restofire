@@ -12,7 +12,7 @@ env:
     - LANG=en_US.UTF-8
     - PROJECT=Restofire.xcodeproj
     - IOS_FRAMEWORK_SCHEME="Restofire-iOS"
-    - OSX_FRAMEWORK_SCHEME="Restofire-OSX"
+    - OSX_FRAMEWORK_SCHEME="Restofire-Mac"
     - TVOS_FRAMEWORK_SCHEME="Restofire-tvOS"
     - WATCHOS_FRAMEWORK_SCHEME="Restofire-watchOS"
     - IOS_SDK=iphonesimulator9.3
@@ -34,7 +34,6 @@ env:
     - DESTINATION="OS=9.0,name=Apple TV 1080p"     SCHEME="$TVOS_FRAMEWORK_SCHEME"    SDK="$TVOS_SDK"    RUN_TESTS="NO"
     - DESTINATION="OS=2.2,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
     - DESTINATION="OS=2.1,name=Apple Watch - 38mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
-    - DESTINATION="OS=2.0,name=Apple Watch - 42mm" SCHEME="$WATCHOS_FRAMEWORK_SCHEME" SDK="$WATCHOS_SDK" RUN_TESTS="NO"
 
 before_install:
   - brew update

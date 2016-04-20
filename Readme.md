@@ -51,7 +51,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 0.10'
+pod 'Restofire', '~> 1.0'
 ```
 
 Then, run the following command:
@@ -74,7 +74,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 0.10
+github "RahulKatariya/Restofire" ~> 1.0
 ```
 ### Swift Package Manager
 
@@ -86,7 +86,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 0)
+        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 1)
     ]
 )
 ```
@@ -105,11 +105,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
     Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
-    Restofire.defaultConfiguration.acceptableStatusCodes = [200..<201]
+    Restofire.defaultConfiguration.acceptableStatusCodes = [200..<300]
     Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
     Restofire.defaultConfiguration.logging = true
-    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForRequest = 7
-    Restofire.defaultConfiguration.sessionConfiguration.timeoutIntervalForResource = 7
+    Restofire.defaultConfiguration.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+    Restofire.defaultConfiguration.retryInterval = 20
+    Restofire.defaultConfiguration.maxRetryAttempts = 10
+    let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    sessionConfiguration.timeoutIntervalForRequest = 7
+    sessionConfiguration.timeoutIntervalForResource = 7
+    sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+    Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
 
     return true
   }

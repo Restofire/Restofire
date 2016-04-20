@@ -12,7 +12,7 @@ import Alamofire
 /// An NSOperation that executes the `Requestable` asynchronously on `start()`
 /// or when added to a NSOperationQueue
 ///
-/// - Note: Auto Retry is only available in `RequestEventuallyOperation`.
+/// - Note: Auto Retry is available only in `RequestEventuallyOperation`.
 public class RequestOperation: NSOperation {
     
     var request: Request!

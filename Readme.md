@@ -17,18 +17,15 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 
 ## Features
 
-- [x] No Learning Curve Needed
-- [x] Services are first class citizens and are testable
-- [x] Default Configuration object for Base URL / headers / parameters / rootKeyPath etc
-- [x] Multiple Configurations with different Base URLs
+- [x] No Learning Curve
+- [x] Default Configuration for Base URL / headers / parameters / rootKeyPath etc
+- [x] Multiple Configurations
 - [x] Single Request Configuration
-- [x] Validations
 - [x] Authentication
+- [x] Response Validations
 - [x] Request NSOperation
-- [x] RequestEventuallyOperation
-- [ ] Download and Upload Tasks
-- [ ] Comprehensive Unit Test Coverage
-- [ ] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
+- [x] RequestEventuallyOperation with Auto Retry
+- [x] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
 
 ## Requirements
 
@@ -47,7 +44,7 @@ $ gem install cocoapods
 
 > CocoaPods 0.39.0+ is required to build Restofire 0.7.0+.
 
-To integrate Reactofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -74,14 +71,14 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate Reactofire into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "RahulKatariya/Restofire" ~> 0.10
 ```
 ### Swift Package Manager
 
-To use Reactofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+To use Restofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
 ``` swift
 import PackageDescription
@@ -137,23 +134,22 @@ class PersonGETService: Requestable {
 
 ```swift
 import Restofire
-import Alamofire
 
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
-    var request: Request!
+    var requestOp: RequestOperation!
 
     func getPerson() {
-        request = PersonGETService().executeTask() {
+        requestOp = PersonGETService().executeTask() {
             if let value = $0.result.value as? [String: AnyObject] {
                 person = value
             }
         }
     }
-    
+
     deinit {
-        request.cancel()
+        requestOp.cancel()
     }
 
 }

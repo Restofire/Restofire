@@ -15,9 +15,9 @@ import Alamofire
 /// network reachability and executes the `Requestable` when the network
 /// is reachable.
 ///
-/// - Note: Do not call `start()` directly because it will begin the execution 
-/// of work regardless of network reachability which is equivalant to
-/// `RequestOperation`.
+/// - Note: Do not call `start()` directly instead add it to an `NSOperationQueue`
+/// because calling `start()` will begin the execution of work regardless of network reachability
+/// which is equivalant to `RequestOperation`.
 public class RequestEventuallyOperation: RequestOperation {
 
     private let networkReachabilityManager = NetworkReachabilityManager()

@@ -133,7 +133,7 @@ public class RequestOperation: NSOperation {
     }
     
     func executeRequest() {
-        request.response(type: requestable.responseSerializer) { (response: Response<AnyObject, NSError>) in
+        request.responseJSON { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
                 self.successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }

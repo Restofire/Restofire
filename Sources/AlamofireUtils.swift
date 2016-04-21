@@ -95,26 +95,3 @@ class AlamofireUtils {
     }
     
 }
-
-// MARK: - Response Serializer
-extension Alamofire.Request {
-    
-    /// Adds a handler to be called once the request has finished.
-    ///
-    /// - parameter options:           The JSON serialization reading options. `.AllowFragments` by default.
-    /// - parameter completionHandler: A closure to be executed once the request has finished.
-    ///
-    /// - returns: The request.
-    func response(
-        queue queue: dispatch_queue_t? = nil,
-              type: ResponseSerializerType,
-              completionHandler: Response<AnyObject, NSError> -> Void)
-        -> Self
-    {
-        switch type {
-        case .JSON(_):
-            return responseJSON(completionHandler: completionHandler)
-        }
-    }
-    
-}

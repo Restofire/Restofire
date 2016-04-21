@@ -41,7 +41,7 @@ public class RequestEventuallyOperation: RequestOperation {
     }
     
     override func executeRequest() {
-        request.response(rootKeyPath: requestable.rootKeyPath, type: requestable.responseSerializer) { (response: Response<AnyObject, NSError>) in
+        request.response(type: requestable.responseSerializer) { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
                 self.successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }

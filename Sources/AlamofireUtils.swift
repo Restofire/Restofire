@@ -9,7 +9,7 @@
 import Alamofire
 
 class AlamofireUtils {
-
+    
     static func alamofireRequestFromRequestable(requestable: Requestable) -> Alamofire.Request {
         
         var request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
@@ -93,7 +93,7 @@ class AlamofireUtils {
         guard let validation = validation else { return }
         request.validate(validation)
     }
-
+    
 }
 
 // MARK: - Response Serializer
@@ -101,72 +101,19 @@ extension Alamofire.Request {
     
     /// Adds a handler to be called once the request has finished.
     ///
-    /// - parameter rootKeyPath:       The root keypath. `nil` by default.
     /// - parameter options:           The JSON serialization reading options. `.AllowFragments` by default.
     /// - parameter completionHandler: A closure to be executed once the request has finished.
     ///
     /// - returns: The request.
     func response(
-        rootKeyPath rootKeyPath: String? = nil,
-                    type: ResponseSerializerType,
-                    completionHandler: Response<AnyObject, NSError> -> Void)
+        queue queue: dispatch_queue_t? = nil,
+              type: ResponseSerializerType,
+              completionHandler: Response<AnyObject, NSError> -> Void)
         -> Self
     {
         switch type {
-        case .JSON(let options):
-            return response(
-                responseSerializer: Alamofire.Request.JSONResponseSerializer(rootKeyPath: rootKeyPath, options: options),
-                completionHandler: completionHandler
-            )
-        }
-        
-    }
-    
-    /// Creates a response serializer that returns a JSON object constructed from the response data using
-    /// `NSJSONSerialization` with the specified reading options.
-    ///
-    /// - parameter rootKeyPath: The root keypath. `nil` by default.
-    /// - parameter options:     The JSON serialization reading options. `.AllowFragments` by default.
-    ///
-    /// - returns: A JSON object response serializer.
-    private static func JSONResponseSerializer(
-        rootKeyPath rootKeyPath: String? = nil,
-                    options: NSJSONReadingOptions = .AllowFragments)
-        -> ResponseSerializer<AnyObject, NSError>
-    {
-        return ResponseSerializer { _, _, data, error in
-            
-            guard error == nil else { return .Failure(error!) }
-            
-            guard let validData = data where validData.length > 0 else {
-                let failureReason = "JSON could not be serialized. Input data was nil or zero length."
-                let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
-                return .Failure(error)
-            }
-            
-            do {
-                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
-                var value: AnyObject!
-                if let rootKeyPath = rootKeyPath where JSON is NSDictionary {
-                    if let v = JSON.valueForKeyPath(rootKeyPath) {
-                        value = v
-                    } else {
-                        let failureReason = "JSON object doesn't have the rootKeyPath - \(rootKeyPath)"
-                        let error = Error.errorWithCode(-1, failureReason: failureReason)
-                        return .Failure(error)
-                    }
-                } else if let rootKeyPath = rootKeyPath {
-                    let failureReason = "JSON expected to be a Dictionary to parse \(rootKeyPath), got Array"
-                    let error = Error.errorWithCode(-1, failureReason: failureReason)
-                    return .Failure(error)
-                } else {
-                    value = JSON
-                }
-                return .Success(value!)
-            } catch {
-                return .Failure(error as NSError)
-            }
-            
+        case .JSON(_):
+            return responseJSON(completionHandler: completionHandler)
         }
     }
     

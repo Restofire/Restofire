@@ -53,9 +53,6 @@ public struct Configuration {
     /// The acceptable content types. `nil` by default.
     public var acceptableContentTypes: [String]?
     
-    /// The root keypath. `nil` by default.
-    public var rootKeyPath: String?
-    
     /// The logging, if enabled prints the debug textual representation of the 
     /// request when the response is recieved. `false` by default.
     public var logging: Bool = false

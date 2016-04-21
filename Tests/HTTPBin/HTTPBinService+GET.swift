@@ -12,7 +12,6 @@ import Alamofire
 class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
     
     let path: String = "get"
-    var rootKeyPath: String? = "args"
     let encoding: ParameterEncoding = .URLEncodedInURL
     var parameters: AnyObject?
     

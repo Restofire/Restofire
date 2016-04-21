@@ -18,7 +18,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 ## Features
 
 - [x] No Learning Curve
-- [x] Default Configuration for Base URL / headers / parameters / rootKeyPath etc
+- [x] Default Configuration for Base URL / headers / parameters etc
 - [x] Multiple Configurations
 - [x] Single Request Configuration
 - [x] Authentication

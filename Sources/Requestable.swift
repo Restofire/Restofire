@@ -81,9 +81,6 @@ public protocol Requestable: Configurable {
     /// The acceptable content types. `configuration.acceptableContentTypes` by default.
     var acceptableContentTypes: [String]? { get }
     
-    /// The root keypath. `configuration.rootKeyPath` by default.
-    var rootKeyPath: String? { get }
-    
     /// The logging. `configuration.logging` by default.
     var logging: Bool { get }
     
@@ -199,10 +196,6 @@ public extension Requestable {
     
     public var acceptableContentTypes: [String]? {
         return configuration.acceptableContentTypes
-    }
-    
-    public var rootKeyPath: String? {
-        return configuration.rootKeyPath
     }
     
     public var logging: Bool {

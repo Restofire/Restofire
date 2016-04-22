@@ -87,9 +87,6 @@ public protocol Requestable: Configurable {
     /// The Alamofire Manager. `configuration.manager` by default.
     var manager: Alamofire.Manager { get }
     
-    /// The response serializer. `configuration.responseSerializer` by default.
-    var responseSerializer: ResponseSerializerType { get }
-    
     /// The retry error codes. `configuration.retryErrorCodes` by default.
     var retryErrorCodes: Set<Int> { get }
     
@@ -204,10 +201,6 @@ public extension Requestable {
     
     public var manager: Alamofire.Manager {
         return configuration.manager
-    }
-    
-    public var responseSerializer: ResponseSerializerType {
-        return configuration.responseSerializer
     }
     
     public var retryErrorCodes: Set<Int> {

@@ -43,15 +43,16 @@ import Foundation
 /// ```
 public protocol Configurable {
     
-    /// The Restofire configuration. `Restofire.defaultConfiguration` by default.
+    /// The Restofire configuration.
     var configuration: Configuration { get }
 
 }
 
 public extension Configurable {
     
+    /// `Restofire.defaultConfiguration`
     public var configuration: Configuration {
-        get { return Restofire.defaultConfiguration }
+        return Restofire.defaultConfiguration
     }
     
 }

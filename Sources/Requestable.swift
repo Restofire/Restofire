@@ -51,19 +51,19 @@ import Alamofire
 /// ```
 public protocol Requestable: Configurable {
     
-    /// The base URL. `configuration.BaseURL` by default.
+    /// The base URL.
     var baseURL: String { get }
     
     /// The path relative to base URL.
     var path: String { get }
     
-    /// The HTTP Method. `configuration.method` by default.
+    /// The HTTP Method.
     var method: Alamofire.Method { get }
     
-    /// The request parameter encoding. `configuration.encoding` by default.
+    /// The request parameter encoding.
     var encoding: Alamofire.ParameterEncoding { get }
     
-    /// The HTTP headers. `configuration.headers` by default.
+    /// The HTTP headers.
     var headers: [String : String]? { get }
     
     /// The request parameters. `nil` by default.
@@ -159,58 +159,72 @@ public extension Requestable {
 // MARK: - Default Implementation
 public extension Requestable {
     
+    /// `configuration.BaseURL`
     public var baseURL: String {
         return configuration.baseURL
     }
     
+    /// `configuration.method`
     public var method: Alamofire.Method {
         return configuration.method
     }
     
+    /// `configuration.encoding`
     public var encoding: Alamofire.ParameterEncoding {
         return configuration.encoding
     }
     
+    /// `configuration.headers`
     public var headers: [String: String]? {
         return configuration.headers
     }
     
+    /// `nil`
     public var parameters: AnyObject? {
         return nil
     }
     
+    /// `configuration.credential`
     public var credential: NSURLCredential? {
         return configuration.credential
     }
     
+    /// `configuration.validation`
     public var validation: Request.Validation? {
         return configuration.validation
     }
     
+    /// `configuration.acceptableStatusCodes`
     public var acceptableStatusCodes: [Range<Int>]? {
         return configuration.acceptableStatusCodes
     }
     
+    /// `configuration.acceptableContentTypes`
     public var acceptableContentTypes: [String]? {
         return configuration.acceptableContentTypes
     }
     
+    /// `configuration.logging`
     public var logging: Bool {
         return configuration.logging
     }
     
+    /// `configuration.manager`
     public var manager: Alamofire.Manager {
         return configuration.manager
     }
     
+    /// `configuration.retryErrorCodes`
     public var retryErrorCodes: Set<Int> {
         return configuration.retryErrorCodes
     }
     
+    /// `configuration.retryInterval`
     public var retryInterval: NSTimeInterval {
         return configuration.retryInterval
     }
     
+    /// `configuration.maxRetryAttempts`
     public var maxRetryAttempts: Int {
         return configuration.maxRetryAttempts
     }

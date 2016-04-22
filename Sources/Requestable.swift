@@ -66,34 +66,34 @@ public protocol Requestable: Configurable {
     /// The HTTP headers.
     var headers: [String : String]? { get }
     
-    /// The request parameters. `nil` by default.
+    /// The request parameters.
     var parameters: AnyObject? { get }
     
-    /// The credential. `configuration.credential` by default.
+    /// The credential.
     var credential: NSURLCredential? { get }
     
-    /// The Alamofire validation. `configuration.validation` by default.
+    /// The Alamofire validation.
     var validation: Request.Validation? { get }
     
-    /// The acceptable status codes. `configuration.acceptableStatusCodes` by default.
+    /// The acceptable status codes.
     var acceptableStatusCodes: [Range<Int>]? { get }
     
-    /// The acceptable content types. `configuration.acceptableContentTypes` by default.
+    /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
     
-    /// The logging. `configuration.logging` by default.
+    /// The logging.
     var logging: Bool { get }
     
-    /// The Alamofire Manager. `configuration.manager` by default.
+    /// The Alamofire Manager.
     var manager: Alamofire.Manager { get }
     
-    /// The retry error codes. `configuration.retryErrorCodes` by default.
+    /// The retry error codes.
     var retryErrorCodes: Set<Int> { get }
     
-    /// The retry interval. `configuration.retryInterval` by default.
+    /// The retry interval.
     var retryInterval: NSTimeInterval { get }
     
-    /// The max retry attempts. `configuration.maxRetryAttempts` by default.
+    /// The max retry attempts.
     var maxRetryAttempts: Int { get }
     
 }

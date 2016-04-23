@@ -34,7 +34,11 @@ public class RequestEventuallyOperation: RequestOperation {
                     self.ready = true
                 }
             default:
-                self.pause = true
+                if self.finished == false && self.executing == false {
+                    self.ready = false
+                } else {
+                    self.pause = true
+                }
             }
         }
         networkReachabilityManager?.startListening()
@@ -49,8 +53,7 @@ public class RequestEventuallyOperation: RequestOperation {
                 self.performSelector(#selector(RequestOperation.executeRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
             }
         } else {
-            self.failed = true
-            if let completionHandler = self.completionHandler { completionHandler(response) }
+           super.handleErrorResponse(response)
         }
     }
 

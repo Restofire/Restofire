@@ -40,23 +40,17 @@ public class RequestEventuallyOperation: RequestOperation {
         networkReachabilityManager?.startListening()
     }
     
-    override func executeRequest() {
-        request.responseJSON { (response: Response<AnyObject, NSError>) in
-            if response.result.error == nil {
-                self.successful = true
-                if let completionHandler = self.completionHandler { completionHandler(response) }
-            } else if self.retryAttempts > 0 {
-                if response.result.error!.code == NSURLErrorNotConnectedToInternet {
-                    self.pause = true
-                } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
-                    self.retryAttempts -= 1
-                    self.performSelector(#selector(RequestOperation.startRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
-                }
-            } else {
-                self.failed = true
-                if let completionHandler = self.completionHandler { completionHandler(response) }
+    override func handleErrorResponse(response: Response<AnyObject, NSError>) {
+        if self.retryAttempts > 0 {
+            if response.result.error!.code == NSURLErrorNotConnectedToInternet {
+                self.pause = true
+            } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
+                self.retryAttempts -= 1
+                self.performSelector(#selector(RequestOperation.executeRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
             }
-            if self.requestable.logging { debugPrint(response) }
+        } else {
+            self.failed = true
+            if let completionHandler = self.completionHandler { completionHandler(response) }
         }
     }
 

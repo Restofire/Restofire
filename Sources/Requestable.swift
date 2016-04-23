@@ -87,6 +87,9 @@ public protocol Requestable: Configurable {
     /// The Alamofire Manager.
     var manager: Alamofire.Manager { get }
     
+    /// The queue on which reponse will be delivered.
+    var queue: dispatch_queue_t? { get }
+    
     /// The retry error codes.
     var retryErrorCodes: Set<Int> { get }
     
@@ -212,6 +215,11 @@ public extension Requestable {
     /// `configuration.manager`
     public var manager: Alamofire.Manager {
         return configuration.manager
+    }
+    
+    /// `configuration.queue`
+    public var queue: dispatch_queue_t? {
+        return configuration.queue
     }
     
     /// `configuration.retryErrorCodes`

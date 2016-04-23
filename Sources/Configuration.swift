@@ -60,6 +60,10 @@ public struct Configuration {
     /// The Alamofire Manager. `Alamofire.Manager.sharedInstance` by default.
     public var manager = Alamofire.Manager.sharedInstance
     
+    /// The queue on which reponse will be delivered. `dispatch_get_main_queue()`
+    /// by default.
+    public var queue: dispatch_queue_t? = dispatch_get_main_queue()
+    
     /// The retry error codes. 
     /// `NSURLErrorTimedOut, 
     /// NSURLErrorCannotFindHost,

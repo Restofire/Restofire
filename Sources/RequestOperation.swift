@@ -59,7 +59,7 @@ public class RequestOperation: NSOperation {
         didSet {
             if resume {
                 pause = false
-                startRequest()
+                executeRequest()
             }
         }
     }
@@ -124,25 +124,26 @@ public class RequestOperation: NSOperation {
             return
         }
         executing = true
-        startRequest()
-    }
-    
-    func startRequest() {
-        request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
         executeRequest()
     }
     
     func executeRequest() {
-        request.responseJSON { (response: Response<AnyObject, NSError>) in
+        request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
+        request.responseJSON(queue: requestable.queue) { (response: Response<AnyObject, NSError>) in
             if response.result.error == nil {
                 self.successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
-                self.failed = true
-                if let completionHandler = self.completionHandler { completionHandler(response) }
+                self.handleErrorResponse(response)
             }
-            if self.requestable.logging { debugPrint(response) }
+            if self.requestable.logging { debugPrint(self.request) }
         }
+        
+    }
+    
+    func handleErrorResponse(response: Response<AnyObject, NSError>) {
+        self.failed = true
+        if let completionHandler = self.completionHandler { completionHandler(response) }
     }
     
     /// Advises the operation object that it should stop executing its request.

@@ -10,7 +10,7 @@ import Alamofire
 
 class AlamofireUtils {
     
-    static func alamofireRequestFromRequestable(requestable: Requestable) -> Alamofire.Request {
+    static func alamofireRequestFromRequestable(requestable: AnyRequestable) -> Alamofire.Request {
         
         var request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
         

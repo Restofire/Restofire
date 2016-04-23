@@ -124,7 +124,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     public func requestOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
-        let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
+        let requestOperation = RequestOperation(requestable: AnyRequestable(self), completionHandler: completionHandler)
         return requestOperation
     }
     
@@ -151,7 +151,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestEventuallyOperation`.
     public func requestEventuallyOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
-        let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
+        let requestEventuallyOperation = RequestEventuallyOperation(requestable: AnyRequestable(self), completionHandler: completionHandler)
         return requestEventuallyOperation
     }
     

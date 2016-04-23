@@ -16,11 +16,11 @@ import Alamofire
 public class RequestOperation: NSOperation {
     
     var request: Request!
-    let requestable: Requestable
+    let requestable: AnyRequestable
     let completionHandler: (Response<AnyObject, NSError> -> Void)?
     var retryAttempts = 0
     
-    init(requestable: Requestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {
+    init(requestable: AnyRequestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {
         self.requestable = requestable
         retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -136,7 +136,10 @@ public class RequestOperation: NSOperation {
             } else {
                 self.handleErrorResponse(response)
             }
-            if self.requestable.logging { debugPrint(self.request) }
+            if self.requestable.logging {
+                debugPrint(self.request)
+                debugPrint(response)
+            }
         }
         
     }

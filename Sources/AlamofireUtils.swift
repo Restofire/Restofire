@@ -32,10 +32,7 @@ class AlamofireUtils {
         
     }
 
-    static func JSONResponseSerializer<M>(
-        options: NSJSONReadingOptions = .AllowFragments)
-        -> ResponseSerializer<M, NSError>
-    {
+    static func JSONResponseSerializer<M>() -> ResponseSerializer<M, NSError> {
         return ResponseSerializer { _, _, data, error in
             
             guard error == nil else { return .Failure(error!) }
@@ -47,11 +44,11 @@ class AlamofireUtils {
             }
             
             do {
-                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
+                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: .AllowFragments)
                 if let JSON = JSON as? M {
                     return .Success(JSON)
                 } else {
-                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: nil)
+                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"TypeMismatch(Expected \(M.self), got \(JSON.dynamicType))"])
                     return .Failure(error)
                 }
                 

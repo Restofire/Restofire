@@ -13,9 +13,16 @@ import Alamofire
 
 struct StringGETService: Requestable {
 
-    typealias Model = String
+    typealias Model = Int
     let path: String = "56c2bcde120000022473f19b"
     
+    func didSucceedWithModel(model: Model) {
+        print(model)
+    }
+    
+    func didFailWithError(error: NSError) {
+        print(error)
+    }
 }
 
 class ViewController: UIViewController {
@@ -23,7 +30,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        StringGETService().executeTaskEventually() {
+        StringGETService().executeTask() {
             print($0)
         }
     }

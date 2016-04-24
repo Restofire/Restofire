@@ -11,7 +11,6 @@
 import Quick
 import Nimble
 import Alamofire
-import Alamofire
 
 class PersonGETServiceSpec: ServiceSpec {
 

@@ -231,14 +231,8 @@
 		350062691C7C40510078B589 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				3500626F1C7C40510078B589 /* Restofire.h */,
 				35C385141CAE43ED003CE0BE /* Restofire.swift */,
-				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
-				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
-				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
-				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
-				352108C11CC29E99006D752E /* RequestOperation.swift */,
-				35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */,
+				3525FB111CCCC9A3009CEC35 /* Core */,
 				35E6D3701CCBED65007ABC05 /* Protocols */,
 				35E6D3721CCBED9F007ABC05 /* Supporting Files */,
 			);
@@ -253,6 +247,19 @@
 				3544ED211CBA40F700CDF3C9 /* ServiceSpec */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		3525FB111CCCC9A3009CEC35 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
+				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
+				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
+				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
+				352108C11CC29E99006D752E /* RequestOperation.swift */,
+				35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 		3544ED161CBA40F700CDF3C9 /* Services */ = {
@@ -349,6 +356,7 @@
 		35E6D3721CCBED9F007ABC05 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3500626F1C7C40510078B589 /* Restofire.h */,
 				35F4A5F21CC61E52004840E1 /* AlamofireUtils.swift */,
 				3500626E1C7C40510078B589 /* Info.plist */,
 				3502C2EC1CC738F9009B06EA /* Info-tvOS.plist */,

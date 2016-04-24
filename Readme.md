@@ -21,6 +21,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [x] Default Configuration for Base URL / headers / parameters etc
 - [x] Multiple Configurations
 - [x] Single Request Configuration
+- [x] Custom Response Serializer
 - [x] Authentication
 - [x] Response Validations
 - [x] Request NSOperation
@@ -100,24 +101,25 @@ import Restofire
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // Override point for customization after application launch.
 
-    Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
-    Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
-    Restofire.defaultConfiguration.acceptableStatusCodes = [200..<300]
-    Restofire.defaultConfiguration.acceptableContentTypes = ["application/json"]
-    Restofire.defaultConfiguration.logging = true
-    Restofire.defaultConfiguration.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
-    Restofire.defaultConfiguration.retryInterval = 20
-    Restofire.defaultConfiguration.maxRetryAttempts = 10
-    let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-    sessionConfiguration.timeoutIntervalForRequest = 7
-    sessionConfiguration.timeoutIntervalForResource = 7
-    sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-    Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
+        Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+        Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
+        Restofire.defaultConfiguration.logging = true
+        Restofire.defaultConfiguration.authentication.credential = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+        Restofire.defaultConfiguration.validation.acceptableStatusCodes = [200..<300]
+        Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]
+        Restofire.defaultConfiguration.retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+        Restofire.defaultConfiguration.retry.retryInterval = 20
+        Restofire.defaultConfiguration.retry.maxRetryAttempts = 10
+        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        sessionConfiguration.timeoutIntervalForRequest = 7
+        sessionConfiguration.timeoutIntervalForResource = 7
+        sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+        Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
 
-    return true
+        return true
   }
 
 }
@@ -130,6 +132,7 @@ import Restofire
 
 class PersonGETService: Requestable {
 
+    typealias Model = [String: AnyObject]
     var path: String = "56c2cc70120000c12673f1b5"
 
 }
@@ -148,7 +151,7 @@ class ViewController: UIViewController {
 
     func getPerson() {
         requestOp = PersonGETService().executeTask() {
-            if let value = $0.result.value as? [String: AnyObject] {
+            if let value = $0.result.value {
                 person = value
             }
         }

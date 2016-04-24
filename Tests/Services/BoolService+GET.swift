@@ -12,6 +12,7 @@ import Restofire
 
 struct BoolGETService: Requestable {
 
+    typealias Model = Bool
     let path: String = "56c2be50120000842473f19e"
 
 }

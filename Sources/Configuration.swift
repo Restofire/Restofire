@@ -15,12 +15,13 @@ import Alamofire
 /// var configuration = Configuration()
 /// configuration.baseURL = "http://www.mocky.io/v2/"
 /// configuration.headers = ["Content-Type": "application/json"]
-/// configuration.acceptableStatusCodes = [200..<300]
-/// configuration.acceptableContentTypes = ["application/json"]
+/// configuration.authentication.credential = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+/// configuration.validation.acceptableStatusCodes = [200..<300]
+/// configuration.validation.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
-/// configuration.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
-/// configuration.retryInterval = 20
-/// configuration.maxRetryAttempts = 10
+/// configuration.retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+/// configuration.retry.retryInterval = 20
+/// configuration.retry.maxRetryAttempts = 10
 /// let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
 /// sessionConfiguration.timeoutIntervalForRequest = 7
 /// sessionConfiguration.timeoutIntervalForResource = 7
@@ -41,17 +42,14 @@ public struct Configuration {
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String]?
 
-    /// The credential. `nil` by default.
-    public var credential: NSURLCredential?
+    /// The `Authentication`.
+    public var authentication = Authentication()
     
-    /// The Alamofire validation. `nil` by default.
-    public var validation: Request.Validation?
+    /// The `Validation`.
+    public var validation = Validation()
     
-    /// The acceptable status codes. `nil` by default.
-    public var acceptableStatusCodes: [Range<Int>]?
-    
-    /// The acceptable content types. `nil` by default.
-    public var acceptableContentTypes: [String]?
+    /// The `Retry`.
+    public var retry = Retry()
     
     /// The logging, if enabled prints the debug textual representation of the 
     /// request when the response is recieved. `false` by default.
@@ -64,23 +62,5 @@ public struct Configuration {
     /// by default.
     public var queue: dispatch_queue_t? = dispatch_get_main_queue()
     
-    /// The retry error codes. 
-    /// `NSURLErrorTimedOut, 
-    /// NSURLErrorCannotFindHost,
-    /// NSURLErrorCannotConnectToHost,
-    /// NSURLErrorDNSLookupFailed,
-    /// NSURLErrorNetworkConnectionLost` by default.
-    public var retryErrorCodes: Set<Int> = [NSURLErrorTimedOut,
-                                  NSURLErrorCannotFindHost,
-                                  NSURLErrorCannotConnectToHost,
-                                  NSURLErrorDNSLookupFailed,
-                                  NSURLErrorNetworkConnectionLost
-                                  ]
-    
-    /// The retry interval. `10` by default.
-    public var retryInterval: NSTimeInterval = 10
-    
-    /// The max retry attempts. `5` by default.
-    public var maxRetryAttempts = 5
     
 }

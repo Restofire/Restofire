@@ -49,7 +49,10 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Requestable: Configurable {
+public protocol Requestable: Configurable, ResponseSerializable, Authenticable, Validatable, Retryable {
+    
+    /// The type of object returned in response.
+    associatedtype Model
     
     /// The base URL.
     var baseURL: String { get }
@@ -69,6 +72,15 @@ public protocol Requestable: Configurable {
     /// The request parameters.
     var parameters: AnyObject? { get }
     
+    /// The logging.
+    var logging: Bool { get }
+    
+    /// The Alamofire Manager.
+    var manager: Alamofire.Manager { get }
+    
+    /// The queue on which reponse will be delivered.
+    var queue: dispatch_queue_t? { get }
+    
     /// The credential.
     var credential: NSURLCredential? { get }
     
@@ -80,15 +92,6 @@ public protocol Requestable: Configurable {
     
     /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
-    
-    /// The logging.
-    var logging: Bool { get }
-    
-    /// The Alamofire Manager.
-    var manager: Alamofire.Manager { get }
-    
-    /// The queue on which reponse will be delivered.
-    var queue: dispatch_queue_t? { get }
     
     /// The retry error codes.
     var retryErrorCodes: Set<Int> { get }
@@ -110,7 +113,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func executeTask(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
+    public func executeTask(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -123,8 +126,8 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func requestOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestOperation {
-        let requestOperation = RequestOperation(requestable: AnyRequestable(self), completionHandler: completionHandler)
+    public func requestOperation(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestOperation<Self> {
+        let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
     
@@ -137,7 +140,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
-    public func executeTaskEventually(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
+    public func executeTaskEventually(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -150,8 +153,8 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
-    public func requestEventuallyOperation(completionHandler: (Response<AnyObject, NSError> -> Void)? = nil) -> RequestEventuallyOperation {
-        let requestEventuallyOperation = RequestEventuallyOperation(requestable: AnyRequestable(self), completionHandler: completionHandler)
+    public func requestEventuallyOperation(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+        let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
     
@@ -187,26 +190,6 @@ public extension Requestable {
         return nil
     }
     
-    /// `configuration.credential`
-    public var credential: NSURLCredential? {
-        return configuration.credential
-    }
-    
-    /// `configuration.validation`
-    public var validation: Request.Validation? {
-        return configuration.validation
-    }
-    
-    /// `configuration.acceptableStatusCodes`
-    public var acceptableStatusCodes: [Range<Int>]? {
-        return configuration.acceptableStatusCodes
-    }
-    
-    /// `configuration.acceptableContentTypes`
-    public var acceptableContentTypes: [String]? {
-        return configuration.acceptableContentTypes
-    }
-    
     /// `configuration.logging`
     public var logging: Bool {
         return configuration.logging
@@ -222,19 +205,39 @@ public extension Requestable {
         return configuration.queue
     }
     
-    /// `configuration.retryErrorCodes`
+    /// `authentication.credential`
+    public var credential: NSURLCredential? {
+        return authentication.credential
+    }
+    
+    /// `validation.validation`
+    public var validation: Request.Validation? {
+        return validation.validation
+    }
+    
+    /// `validation.acceptableStatusCodes`
+    public var acceptableStatusCodes: [Range<Int>]? {
+        return validation.acceptableStatusCodes
+    }
+    
+    /// `validation.acceptableContentTypes`
+    public var acceptableContentTypes: [String]? {
+        return validation.acceptableContentTypes
+    }
+    
+    /// `retry.retryErrorCodes`
     public var retryErrorCodes: Set<Int> {
-        return configuration.retryErrorCodes
+        return retry.retryErrorCodes
     }
     
-    /// `configuration.retryInterval`
+    /// `retry.retryInterval`
     public var retryInterval: NSTimeInterval {
-        return configuration.retryInterval
+        return retry.retryInterval
     }
     
-    /// `configuration.maxRetryAttempts`
+    /// `retry.maxRetryAttempts`
     public var maxRetryAttempts: Int {
-        return configuration.maxRetryAttempts
+        return retry.maxRetryAttempts
     }
     
 }

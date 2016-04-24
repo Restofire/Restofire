@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Configurable represents a configuration that is associated with `Requestable`.
+/// Represents a `Configuration` that is associated with `Requestable`.
 /// `Restofire.defaultConfiguration()` by default.
 ///
 /// ### Create custom configurable
@@ -48,7 +48,7 @@ public protocol Configurable {
 
 }
 
-public extension Configurable {
+public extension Configurable where Self: Requestable {
     
     /// `Restofire.defaultConfiguration`
     public var configuration: Configuration {

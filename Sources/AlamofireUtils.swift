@@ -10,7 +10,7 @@ import Alamofire
 
 class AlamofireUtils {
     
-    static func alamofireRequestFromRequestable(requestable: AnyRequestable) -> Alamofire.Request {
+    static func alamofireRequestFromRequestable<R: Requestable>(requestable: R) -> Alamofire.Request {
         
         var request = requestable.manager.request(requestable.method, requestable.baseURL + requestable.path, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
         
@@ -30,6 +30,36 @@ class AlamofireUtils {
         
         return request
         
+    }
+
+    static func JSONResponseSerializer<M>(
+        options: NSJSONReadingOptions = .AllowFragments)
+        -> ResponseSerializer<M, NSError>
+    {
+        return ResponseSerializer { _, _, data, error in
+            
+            guard error == nil else { return .Failure(error!) }
+            
+            guard let validData = data where validData.length > 0 else {
+                let failureReason = "JSON could not be serialized. Input data was nil or zero length."
+                let error = Error.errorWithCode(.JSONSerializationFailed, failureReason: failureReason)
+                return .Failure(error)
+            }
+            
+            do {
+                let JSON = try NSJSONSerialization.JSONObjectWithData(validData, options: options)
+                if let JSON = JSON as? M {
+                    return .Success(JSON)
+                } else {
+                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: nil)
+                    return .Failure(error)
+                }
+                
+            } catch {
+                return .Failure(error as NSError)
+            }
+            
+        }
     }
     
     private static func encodeURLRequest(URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (NSMutableURLRequest, NSError?) {
@@ -92,6 +122,24 @@ class AlamofireUtils {
     private static func validateRequest(request: Alamofire.Request, forValidation validation:Alamofire.Request.Validation?) {
         guard let validation = validation else { return }
         request.validate(validation)
+    }
+    
+}
+
+extension Alamofire.Request {
+    
+    func restofireResponse<M>(
+        queue queue: dispatch_queue_t? = nil,
+              responseSerializer: ResponseSerializer<M, NSError>,
+              completionHandler: Response<M, NSError> -> Void)
+        -> Self
+    {
+        return response(
+            queue: queue,
+            responseSerializer: responseSerializer,
+            completionHandler: completionHandler
+        )
+        
     }
     
 }

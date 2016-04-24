@@ -13,14 +13,14 @@ import Alamofire
 /// or when added to a NSOperationQueue
 ///
 /// - Note: Auto Retry is available only in `RequestEventuallyOperation`.
-public class RequestOperation: NSOperation {
+public class RequestOperation<R: Requestable>: NSOperation {
     
     var request: Request!
-    let requestable: AnyRequestable
-    let completionHandler: (Response<AnyObject, NSError> -> Void)?
+    let requestable: R
+    let completionHandler: (Response<R.Model, NSError> -> Void)?
     var retryAttempts = 0
     
-    init(requestable: AnyRequestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {
+    init(requestable: R, completionHandler: (Response<R.Model, NSError> -> Void)?) {
         self.requestable = requestable
         retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -78,7 +78,6 @@ public class RequestOperation: NSOperation {
     }
     
     var _executing: Bool = false
-    
     /// A Boolean value indicating whether the operation is currently executing. (read-only)
     public override private(set) var executing: Bool {
         get {
@@ -129,7 +128,7 @@ public class RequestOperation: NSOperation {
     
     func executeRequest() {
         request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
-        request.responseJSON(queue: requestable.queue) { (response: Response<AnyObject, NSError>) in
+        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Response<R.Model, NSError>) in
             if response.result.error == nil {
                 self.successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
@@ -144,7 +143,7 @@ public class RequestOperation: NSOperation {
         
     }
     
-    func handleErrorResponse(response: Response<AnyObject, NSError>) {
+    func handleErrorResponse(response: Response<R.Model, NSError>) {
         self.failed = true
         if let completionHandler = self.completionHandler { completionHandler(response) }
     }

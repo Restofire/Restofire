@@ -18,11 +18,10 @@ import Alamofire
 /// - Note: Do not call `start()` directly instead add it to an `NSOperationQueue`
 /// because calling `start()` will begin the execution of work regardless of network reachability
 /// which is equivalant to `RequestOperation`.
-public class RequestEventuallyOperation: RequestOperation {
+public class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
 
     private let networkReachabilityManager = NetworkReachabilityManager()
-    
-    override init(requestable: AnyRequestable, completionHandler: (Response<AnyObject, NSError> -> Void)?) {        
+    override init(requestable: R, completionHandler: (Response<R.Model, NSError> -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.ready = false
         networkReachabilityManager?.listener = { status in
@@ -44,13 +43,13 @@ public class RequestEventuallyOperation: RequestOperation {
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorResponse(response: Response<AnyObject, NSError>) {
+    override func handleErrorResponse(response: Response<R.Model, NSError>) {
         if self.retryAttempts > 0 {
             if response.result.error!.code == NSURLErrorNotConnectedToInternet {
                 self.pause = true
             } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
                 self.retryAttempts -= 1
-                self.performSelector(#selector(RequestOperation.executeRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
+                self.performSelector(#selector(RequestOperation<R>.executeRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
             }
         } else {
            super.handleErrorResponse(response)

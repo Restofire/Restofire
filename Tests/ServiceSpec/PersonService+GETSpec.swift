@@ -24,7 +24,7 @@ class PersonGETServiceSpec: ServiceSpec {
                 var expected: [String: AnyObject]!
 
                 PersonGETService().executeTask() {
-                    if let value = $0.result.value as? [String : AnyObject] {
+                    if let value = $0.result.value {
                         expected = value
                     }
                 }
@@ -39,7 +39,7 @@ class PersonGETServiceSpec: ServiceSpec {
                 var expected: [String: AnyObject]!
                 
                 let requestOperation = PersonGETService().requestOperation() {
-                    if let value = $0.result.value as? [String: AnyObject] {
+                    if let value = $0.result.value {
                         expected = value
                     }
                 }

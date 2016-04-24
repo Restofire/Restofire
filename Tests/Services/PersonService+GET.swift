@@ -12,6 +12,7 @@ import Restofire
 
 struct PersonGETService: Requestable {
 
+    typealias Model = [String: AnyObject]
     let path: String = "56c2cc70120000c12673f1b5"
 
 }

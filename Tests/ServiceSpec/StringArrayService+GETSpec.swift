@@ -23,7 +23,7 @@ class StringArrayGETServiceSpec: ServiceSpec {
                 var expected: [String]!
 
                 StringArrayGETService().executeTask() {
-                    if let value = $0.result.value as? [String] {
+                    if let value = $0.result.value {
                         expected = value
                     }
                 }
@@ -38,7 +38,7 @@ class StringArrayGETServiceSpec: ServiceSpec {
                 var expected: [String]!
                 
                 let requestOperation = StringArrayGETService().requestOperation() {
-                    if let value = $0.result.value as? [String] {
+                    if let value = $0.result.value {
                         expected = value
                     }
                 }

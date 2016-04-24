@@ -62,5 +62,4 @@ public struct Configuration {
     /// by default.
     public var queue: dispatch_queue_t? = dispatch_get_main_queue()
     
-    
 }

@@ -102,6 +102,16 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     /// The max retry attempts.
     var maxRetryAttempts: Int { get }
     
+    /// Called when the Request succeeds.
+    ///
+    /// - parameter model: The Self.Model
+    func didSucceedWithModel(model: Model)
+    
+    /// Called when the Request fails.
+    ///
+    /// - parameter error: The error
+    func didFailWithError(error: NSError)
+    
 }
 
 public extension Requestable {
@@ -159,6 +169,12 @@ public extension Requestable {
     }
     
     #endif
+    
+    /// Does nothing.
+    func didSucceedWithModel(model: Model) { }
+    
+    /// Does nothing.
+    func didFailWithError(error: NSError) { }
     
 }
 

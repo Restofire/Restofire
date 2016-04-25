@@ -43,7 +43,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build Restofire 0.7.0+.
+> CocoaPods 0.39.0+ is required to build Restofire 1.0.0+.
 
 To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 

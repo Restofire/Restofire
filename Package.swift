@@ -28,4 +28,7 @@ import PackageDescription
 
 let package = Package(
     name: "Restofire"
+    dependencies: [
+        .Package(url: "https://github.com/Alamofire/Alamofire.git", versions: Version(3, 3, 0)..<Version(4, 0, 0))
+    ]
 )

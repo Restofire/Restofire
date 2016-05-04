@@ -123,6 +123,7 @@ public class RequestOperation<R: Requestable>: NSOperation {
             return
         }
         executing = true
+        requestable.didStartRequest()
         executeRequest()
     }
     
@@ -131,7 +132,7 @@ public class RequestOperation<R: Requestable>: NSOperation {
         request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Response<R.Model, NSError>) in
             if response.result.error == nil {
                 self.successful = true
-                self.requestable.didSucceedWithModel(response.result.value!)
+                self.requestable.didCompleteWithResponse(response)
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
                 self.handleErrorResponse(response)
@@ -141,12 +142,11 @@ public class RequestOperation<R: Requestable>: NSOperation {
                 debugPrint(response)
             }
         }
-        
     }
     
     func handleErrorResponse(response: Response<R.Model, NSError>) {
         self.failed = true
-        self.requestable.didFailWithError(response.result.error!)
+        self.requestable.didCompleteWithResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }
     }
     

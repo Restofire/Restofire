@@ -25,7 +25,7 @@ extension PersonGETService {
         print("Request Started")
     }
     
-    func didCompleteWithResponse(response: Response<Model, NSError>) {
+    func didCompleteRequestWithResponse(response: Response<Model, NSError>) {
         print(response)
     }
     

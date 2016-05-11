@@ -132,7 +132,7 @@ public class RequestOperation<R: Requestable>: NSOperation {
         request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Response<R.Model, NSError>) in
             if response.result.error == nil {
                 self.successful = true
-                self.requestable.didCompleteWithResponse(response)
+                self.requestable.didCompleteRequestWithResponse(response)
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
                 self.handleErrorResponse(response)
@@ -146,7 +146,7 @@ public class RequestOperation<R: Requestable>: NSOperation {
     
     func handleErrorResponse(response: Response<R.Model, NSError>) {
         self.failed = true
-        self.requestable.didCompleteWithResponse(response)
+        self.requestable.didCompleteRequestWithResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }
     }
     

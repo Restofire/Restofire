@@ -108,7 +108,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteWithResponse(response: Response<Self.Model, NSError>)
+    func didCompleteRequestWithResponse(response: Response<Self.Model, NSError>)
     
 }
 
@@ -172,7 +172,7 @@ public extension Requestable {
     func didStartRequest() { }
     
     /// Does nothing.
-    func didCompleteWithResponse(response: Response<Self.Model, NSError>) { }
+    func didCompleteRequestWithResponse(response: Response<Self.Model, NSError>) { }
     
 }
 

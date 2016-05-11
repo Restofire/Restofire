@@ -147,7 +147,7 @@ import Restofire
 class ViewController: UIViewController {
 
     var person: [String: AnyObject]!
-    var requestOp: RequestOperation!
+    var requestOp: RequestOperation<PersonGETService>!
 
     func getPerson() {
         requestOp = PersonGETService().executeTask() {

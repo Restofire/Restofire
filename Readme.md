@@ -13,7 +13,7 @@
 
 [![Join the chat at https://gitter.im/Restofire/Restofire](https://badges.gitter.im/Restofire/Restofire.svg)](https://gitter.im/Restofire/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Restofire is a protocol oriented networking abstraction layer in swift that is built on top of [Alamofire](https://github.com/Alamofire/Alamofire) to use services in a declartive way.
+Restofire is a protocol oriented network abstraction layer in swift that is built on top of [Alamofire](https://github.com/Alamofire/Alamofire) to use services in a declartive way.
 
 ## Features
 
@@ -27,6 +27,7 @@ Restofire is a protocol oriented networking abstraction layer in swift that is b
 - [x] Request NSOperation
 - [x] RequestEventuallyOperation with Auto Retry
 - [x] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
+- [x] [Tutorial](http://blog.rahulkatariya.me/2016/05/11/getting-started-swifter-http-networking-with-restofire/)
 
 ## Requirements
 
@@ -94,7 +95,7 @@ let package = Package(
 
 ## Usage
 
-### Configuring Restofire
+### Global Configuration
 
 ```swift
 import Restofire
@@ -128,9 +129,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ### Creating a Service
 
 ```swift
+
 import Restofire
 
-class PersonGETService: Requestable {
+struct PersonGETService: Requestable {
 
     typealias Model = [String: AnyObject]
     var path: String = "56c2cc70120000c12673f1b5"
@@ -162,6 +164,207 @@ class ViewController: UIViewController {
     }
 
 }
+```
+
+### URL Level Configuration
+
+```swift
+
+protocol HTTPBinConfigurable: Configurable { }
+
+extension HTTPBinConfigurable {
+
+    var configuration: Configuration {
+        var config = Configuration()
+        config.baseURL = "https://httpbin.org/"
+        config.logging = Restofire.defaultConfiguration.logging
+        return config
+    }
+
+}
+
+protocol HTTPBinValidatable: Validatable { }
+
+extension HTTPBinValidatable {
+
+  var validation: Validation {
+    var validation = Validation()
+    validation.acceptableStatusCodes = [200..<300]
+    validation.acceptableContentTypes = ["application/json"]
+    return validation
+  }
+
+}
+
+
+protocol HTTPBinRetryable: Retryable { }
+
+extension HTTPBinRetryable {
+
+  var retry: Retry {
+    var retry = Retry()
+    retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+    retry.retryInterval = 20
+    retry.maxRetryAttempts = 10
+    return retry
+  }
+
+}
+
+```
+
+### Creating the Service
+
+```swift
+
+import Restofire
+import Alamofire
+
+struct HTTPBinPersonGETService: Requestable, HTTPBinConfigurable, HTTPBinValidatable, HTTPBinRetryable {
+
+    typealias Model = [String: AnyObject]
+    let path: String = "get"
+    let encoding: ParameterEncoding = .URLEncodedInURL
+    var parameters: AnyObject?
+
+    init(parameters: AnyObject?) {
+        self.parameters = parameters
+    }
+
+}
+
+
+```
+
+### Consuming the Service
+
+```swift
+import Restofire
+
+class ViewController: UIViewController {
+
+    var person: [String: AnyObject]!
+    var requestOp: RequestOperation<PersonGETService>!
+
+    func getPerson() {
+        requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
+            if let value = $0.result.value {
+                person = value
+            }
+        }
+    }
+
+    deinit {
+        requestOp.cancel()
+    }
+
+}
+```
+
+### Request Level Configuration
+
+```swift
+
+import Restofire
+import Alamofire
+
+struct MoviesReviewGETService: Requestable {
+
+    typealias Model = AnyObject
+    var baseURL: String = "http://api.nytimes.com/svc/movies/v2/"
+    var path: String = "reviews/"
+    var parameters: AnyObject?
+    var encoding: ParameterEncoding = .URLEncodedInURL
+    var method: Alamofire.Method = .GET
+    var headers: [String: String]? = ["Content-Type": "application/json"]
+    var manager: Alamofire.Manager = {
+      let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+      sessionConfiguration.timeoutIntervalForRequest = 7
+      sessionConfiguration.timeoutIntervalForResource = 7
+      sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+      return Alamofire.Manager(configuration: sessionConfiguration)
+    }()
+    var queue: dispatch_queue_t? = dispatch_get_main_queue()
+    var logging: Bool = Restofire.defaultConfiguration.logging
+    var credential: NSURLCredential? = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+    var acceptableStatusCodes: [Range<Int>]? = [200..<300]
+    var acceptableContentTypes: [String]? = ["application/json"]
+    var retryErrorCodes: Set<Int> = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+    var retryInterval: NSTimeInterval = 20
+    var maxRetryAttempts: Int = 10
+
+    init(path: String, parameters: AnyObject) {
+        self.path += path
+        self.parameters = parameters
+    }
+
+}
+
+// MARK: - Caching
+import RealmSwift
+import SwiftyJSON
+
+extension MoviesReviewGETService {
+
+    func didCompleteRequestWithResponse(response: Response<Model, NSError>) {
+        guard let model = response.result.value else { return }
+        let realm = try! Realm()
+        let jsonMovieReview = JSON(model)
+        if let results = jsonMovieReview["results"].array {
+            for result in results {
+                let movieReview = MovieReview()
+                movieReview.displayTitle = result["display_title"].stringValue
+                movieReview.summary = result["summary_short"].stringValue
+                try! realm.write {
+                    realm.add(movieReview, update: true)
+                }
+            }
+        }
+    }
+
+}
+
+```
+
+### RequestEventually Service
+
+```swift
+
+import Restofire
+
+class MoviesReviewTableViewController: UITableViewController {
+
+  let realm = try! Realm()
+  var results: Results<MovieReview>!
+  var notificationToken: NotificationToken? = nil
+
+  override func viewDidLoad() {
+      super.viewDidLoad()
+
+      MoviesReviewGETService(path: "all.json", parameters: ["api-key":"sample-key"])
+          .executeTaskEventually()
+
+      results = realm.objects(MovieReview)
+
+      notificationToken = results.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
+          guard let _self = self else { return }
+          switch changes {
+          case .Initial, .Update(_, deletions: _, insertions: _, modifications: _):
+              _self.results = _self.realm.objects(MovieReview)
+              _self.tableView.reloadData()
+          default:
+              break
+          }
+      }
+
+  }
+
+  deinit {
+      notificationToken = nil
+  }
+
+}
+
 ```
 
 ## Examples

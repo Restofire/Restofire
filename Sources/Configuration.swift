@@ -34,10 +34,10 @@ public struct Configuration {
     public var baseURL: String!
     
     /// The HTTP Method. `.GET` by default.
-    public var method: Alamofire.Method = .GET
+    public var method: Alamofire.HTTPMethod = .get
     
     /// The request parameter encoding. `.JSON` by default.
-    public var encoding: Alamofire.ParameterEncoding = .JSON
+    public var encoding: Alamofire.ParameterEncoding = .json
     
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String]?
@@ -55,11 +55,11 @@ public struct Configuration {
     /// request when the response is recieved. `false` by default.
     public var logging: Bool = false
     
-    /// The Alamofire Manager. `Alamofire.Manager.sharedInstance` by default.
-    public var manager = Alamofire.Manager.sharedInstance
+    /// The Alamofire Session Manager. `Alamofire.SessionManager.sharedInstance` by default.
+    public var sessionManager = Alamofire.SessionManager.default
     
     /// The queue on which reponse will be delivered. `dispatch_get_main_queue()`
     /// by default.
-    public var queue: dispatch_queue_t? = dispatch_get_main_queue()
+    public var queue: DispatchQueue? = DispatchQueue.main
     
 }

@@ -32,7 +32,7 @@ public struct Retry {
     ]
     
     /// The retry interval. `10` by default.
-    public var retryInterval: NSTimeInterval = 10
+    public var retryInterval: TimeInterval = 10
     
     /// The max retry attempts. `5` by default.
     public var maxRetryAttempts = 5

@@ -18,23 +18,23 @@ import Alamofire
 /// - Note: Do not call `start()` directly instead add it to an `NSOperationQueue`
 /// because calling `start()` will begin the execution of work regardless of network reachability
 /// which is equivalant to `RequestOperation`.
-public class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
+open class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
 
-    private let networkReachabilityManager = NetworkReachabilityManager()
-    override init(requestable: R, completionHandler: (Response<R.Model, NSError> -> Void)?) {
+    fileprivate let networkReachabilityManager = NetworkReachabilityManager()
+    override init(requestable: R, completionHandler: ((Response<R.Model, NSError>) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
-        self.ready = false
+        self.isReady = false
         networkReachabilityManager?.listener = { status in
             switch status {
-            case .Reachable(_):
+            case .reachable(_):
                 if self.pause {
                     self.resume = true
                 } else {
-                    self.ready = true
+                    self.isReady = true
                 }
             default:
-                if self.finished == false && self.executing == false {
-                    self.ready = false
+                if self.isFinished == false && self.isExecuting == false {
+                    self.isReady = false
                 } else {
                     self.pause = true
                 }
@@ -43,13 +43,13 @@ public class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorResponse(response: Response<R.Model, NSError>) {
+    override func handleErrorResponse(_ response: Response<R.Model, NSError>) {
         if self.retryAttempts > 0 {
             if response.result.error!.code == NSURLErrorNotConnectedToInternet {
                 self.pause = true
             } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
                 self.retryAttempts -= 1
-                self.performSelector(#selector(RequestOperation<R>.executeRequest), withObject: nil, afterDelay: self.requestable.retryInterval)
+                self.perform(#selector(RequestOperation<R>.executeRequest), with: nil, afterDelay: self.requestable.retryInterval)
             }
         } else {
            super.handleErrorResponse(response)

@@ -13,26 +13,26 @@ import Alamofire
 /// or when added to a NSOperationQueue
 ///
 /// - Note: Auto Retry is available only in `RequestEventuallyOperation`.
-public class RequestOperation<R: Requestable>: NSOperation {
+open class RequestOperation<R: Requestable>: Operation {
     
     var request: Request!
     let requestable: R
-    let completionHandler: (Response<R.Model, NSError> -> Void)?
+    let completionHandler: ((Response<R.Model, NSError>) -> Void)?
     var retryAttempts = 0
     
-    init(requestable: R, completionHandler: (Response<R.Model, NSError> -> Void)?) {
+    init(requestable: R, completionHandler: ((Response<R.Model, NSError>) -> Void)?) {
         self.requestable = requestable
         retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
         super.init()
-        _ready = super.ready
+        _ready = super.isReady
     }
     
     var successful = false {
         didSet {
             if successful {
-                executing = false
-                finished = true
+                isExecuting = false
+                isFinished = true
             }
         }
     }
@@ -40,8 +40,8 @@ public class RequestOperation<R: Requestable>: NSOperation {
     var failed = false {
         didSet {
             if failed {
-                executing = false
-                finished = true
+                isExecuting = false
+                isFinished = true
             }
         }
     }
@@ -66,63 +66,63 @@ public class RequestOperation<R: Requestable>: NSOperation {
     
     var _ready: Bool = false
     /// A Boolean value indicating whether the operation can be performed now. (read-only)
-    public override internal(set) var ready: Bool {
+    open override internal(set) var isReady: Bool {
         get {
             return _ready
         }
         set (newValue) {
-            willChangeValueForKey("isReady")
+            willChangeValue(forKey: "isReady")
             _ready = newValue
-            didChangeValueForKey("isReady")
+            didChangeValue(forKey: "isReady")
         }
     }
     
     var _executing: Bool = false
     /// A Boolean value indicating whether the operation is currently executing. (read-only)
-    public override private(set) var executing: Bool {
+    open override fileprivate(set) var isExecuting: Bool {
         get {
             return _executing
         }
         set (newValue) {
-            willChangeValueForKey("isExecuting")
+            willChangeValue(forKey: "isExecuting")
             _executing = newValue
-            didChangeValueForKey("isExecuting")
+            didChangeValue(forKey: "isExecuting")
         }
     }
     
     var _cancelled: Bool = false
     /// A Boolean value indicating whether the operation has been cancelled. (read-only)
-    public override private(set) var cancelled: Bool {
+    open override fileprivate(set) var isCancelled: Bool {
         get {
             return _cancelled
         }
         set (newValue) {
-            willChangeValueForKey("isCancelled")
+            willChangeValue(forKey: "isCancelled")
             _cancelled = newValue
-            didChangeValueForKey("isCancelled")
+            didChangeValue(forKey: "isCancelled")
         }
     }
     
     var _finished: Bool = false
     /// A Boolean value indicating whether the operation has finished executing its task. (read-only)
-    public override private(set) var finished: Bool {
+    open override fileprivate(set) var isFinished: Bool {
         get {
             return _finished
         }
         set (newValue) {
-            willChangeValueForKey("isFinished")
+            willChangeValue(forKey: "isFinished")
             _finished = newValue
-            didChangeValueForKey("isFinished")
+            didChangeValue(forKey: "isFinished")
         }
     }
     
     /// Begins the execution of the operation.
-    public override func start() {
-        if cancelled {
-            finished = true
+    open override func start() {
+        if isCancelled {
+            isFinished = true
             return
         }
-        executing = true
+        isExecuting = true
         requestable.didStartRequest()
         executeRequest()
     }
@@ -144,18 +144,18 @@ public class RequestOperation<R: Requestable>: NSOperation {
         }
     }
     
-    func handleErrorResponse(response: Response<R.Model, NSError>) {
+    func handleErrorResponse(_ response: Response<R.Model, NSError>) {
         self.failed = true
         self.requestable.didCompleteRequestWithResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }
     }
     
     /// Advises the operation object that it should stop executing its request.
-    public override func cancel() {
+    open override func cancel() {
         request.cancel()
-        executing = false
-        cancelled = true
-        finished = true
+        isExecuting = false
+        isCancelled = true
+        isFinished = true
     }
     
 }

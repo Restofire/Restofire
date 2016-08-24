@@ -22,7 +22,7 @@ public struct Validation {
     public var validation: Request.Validation?
     
     /// The acceptable status codes. `nil` by default.
-    public var acceptableStatusCodes: [Range<Int>]?
+    public var acceptableStatusCodes: [CountableRange<Int>]?
     
     /// The acceptable content types. `nil` by default.
     public var acceptableContentTypes: [String]?

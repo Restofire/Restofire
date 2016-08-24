@@ -17,6 +17,6 @@ import Foundation
 public struct Authentication {
     
     /// The credential. `nil` by default.
-    public var credential: NSURLCredential?
+    public var credential: URLCredential?
     
 }

@@ -75,20 +75,20 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     /// The logging.
     var logging: Bool { get }
     
-    /// The Alamofire Manager.
-    var manager: Alamofire.Manager { get }
+    /// The Alamofire Session Manager.
+    var sessionManager: Alamofire.SessionManager { get }
     
     /// The queue on which reponse will be delivered.
-    var queue: dispatch_queue_t? { get }
+    var queue: DispatchQueue? { get }
     
     /// The credential.
-    var credential: NSURLCredential? { get }
+    var credential: URLCredential? { get }
     
     /// The Alamofire validation.
     var validation: Request.Validation? { get }
     
     /// The acceptable status codes.
-    var acceptableStatusCodes: [Range<Int>]? { get }
+    var acceptableStatusCodes: [CountableRange<Int>]? { get }
     
     /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
@@ -97,7 +97,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     var retryErrorCodes: Set<Int> { get }
     
     /// The retry interval.
-    var retryInterval: NSTimeInterval { get }
+    var retryInterval: TimeInterval { get }
     
     /// The max retry attempts.
     var maxRetryAttempts: Int { get }
@@ -108,7 +108,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteRequestWithResponse(response: Response<Self.Model, NSError>)
+    func didCompleteRequestWithResponse(_ response: Response<Self.Model, NSError>)
     
 }
 
@@ -121,7 +121,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func executeTask(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestOperation<Self> {
+    public func executeTask(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -134,7 +134,7 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func requestOperation(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestOperation<Self> {
+    public func requestOperation(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
         let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -148,7 +148,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
-    public func executeTaskEventually(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -161,7 +161,7 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
-    public func requestEventuallyOperation(completionHandler: (Response<Model, NSError> -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
@@ -172,7 +172,7 @@ public extension Requestable {
     func didStartRequest() { }
     
     /// Does nothing.
-    func didCompleteRequestWithResponse(response: Response<Self.Model, NSError>) { }
+    func didCompleteRequestWithResponse(_ response: Response<Self.Model, NSError>) { }
     
 }
 
@@ -185,7 +185,7 @@ public extension Requestable {
     }
     
     /// `configuration.method`
-    public var method: Alamofire.Method {
+    public var method: Alamofire.HTTPMethod {
         return configuration.method
     }
     
@@ -209,18 +209,18 @@ public extension Requestable {
         return configuration.logging
     }
     
-    /// `configuration.manager`
-    public var manager: Alamofire.Manager {
-        return configuration.manager
+    /// `configuration.sessionManager`
+    public var sessionManager: Alamofire.SessionManager {
+        return configuration.sessionManager
     }
     
     /// `configuration.queue`
-    public var queue: dispatch_queue_t? {
+    public var queue: DispatchQueue? {
         return configuration.queue
     }
     
     /// `authentication.credential`
-    public var credential: NSURLCredential? {
+    public var credential: URLCredential? {
         return authentication.credential
     }
     
@@ -230,7 +230,7 @@ public extension Requestable {
     }
     
     /// `validation.acceptableStatusCodes`
-    public var acceptableStatusCodes: [Range<Int>]? {
+    public var acceptableStatusCodes: [CountableRange<Int>]? {
         return validation.acceptableStatusCodes
     }
     
@@ -245,7 +245,7 @@ public extension Requestable {
     }
     
     /// `retry.retryInterval`
-    public var retryInterval: NSTimeInterval {
+    public var retryInterval: TimeInterval {
         return retry.retryInterval
     }
     

@@ -121,7 +121,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func executeTask(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
+    public func executeTask(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -134,7 +134,7 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func requestOperation(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
+    public func requestOperation(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
         let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -148,7 +148,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
-    public func executeTaskEventually(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -161,18 +161,12 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
-    public func requestEventuallyOperation(_ completionHandler: ((Response<Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
     
     #endif
-    
-    /// Does nothing.
-    func didStartRequest() { }
-    
-    /// Does nothing.
-    func didCompleteRequestWithResponse(_ response: Response<Self.Model, NSError>) { }
     
 }
 
@@ -253,5 +247,11 @@ public extension Requestable {
     public var maxRetryAttempts: Int {
         return retry.maxRetryAttempts
     }
+    
+    /// Does nothing.
+    public func didStartRequest() { }
+    
+    /// Does nothing.
+    public func didCompleteRequestWithResponse(_ response: Response<Self.Model, NSError>) { }
     
 }

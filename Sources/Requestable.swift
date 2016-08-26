@@ -20,9 +20,9 @@ import Alamofire
 ///
 ///   let path: String
 ///   let method: Alamofire.HTTPMethod = .POST
-///   let parameters: AnyObject?
+///   let parameters: Any?
 ///
-///   init(id: String, parameters: AnyObject? = nil) {
+///   init(id: String, parameters: Any? = nil) {
 ///     self.path = "person/\(id)"
 ///     self.parameters = parameters
 ///   }
@@ -37,7 +37,7 @@ import Alamofire
 /// class ViewController: UIViewController  {
 ///
 ///   var request: Request!
-///   var person: AnyObject!
+///   var person: Any!
 ///
 ///   func createPerson() {
 ///     request = PersonPOSTService(id: "123456789", parameters: person).executeTask()
@@ -70,7 +70,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     var headers: [String : String]? { get }
     
     /// The request parameters.
-    var parameters: AnyObject? { get }
+    var parameters: Any? { get }
     
     /// The logging.
     var logging: Bool { get }
@@ -198,7 +198,7 @@ public extension Requestable {
     }
     
     /// `nil`
-    public var parameters: AnyObject? {
+    public var parameters: Any? {
         return nil
     }
     

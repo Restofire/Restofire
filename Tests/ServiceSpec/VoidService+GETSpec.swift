@@ -19,8 +19,8 @@ class VoidGETServiceSpec: ServiceSpec {
 
             it("executeTask") {
 
-                let actual: [String: AnyObject] = [:]
-                var expected: [String: AnyObject]!
+                let actual: [String: Any] = [:]
+                var expected: [String: Any]!
 
                 VoidGETService().executeTask() {
                     if let value = $0.result.value {
@@ -34,8 +34,8 @@ class VoidGETServiceSpec: ServiceSpec {
             
             it("executeRequestOperation") {
                 
-                let actual: [String: AnyObject] = [:]
-                var expected: [String: AnyObject]!
+                let actual: [String: Any] = [:]
+                var expected: [String: Any]!
                 
                 let requestOperation = VoidGETService().requestOperation() {
                     if let value = $0.result.value {

@@ -11,7 +11,7 @@ import Alamofire
 
 class HTTPBinBasicAuthenticationGETService: Requestable, HTTPBinConfigurable {
     
-    typealias Model = [String: AnyObject]
+    typealias Model = [String: Any]
     let path: String = "basic-auth/user/password"
     let credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
     

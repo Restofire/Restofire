@@ -31,9 +31,9 @@ import Alamofire
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = .URLEncodedInURL
-///   var parameters: AnyObject?
+///   var parameters: Any?
 ///
-///   init(parameters: AnyObject?) {
+///   init(parameters: Any?) {
 ///     self.parameters = parameters
 ///   }
 ///

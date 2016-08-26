@@ -32,12 +32,9 @@
 		3544ED971CBA573400CDF3C9 /* FloatService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED231CBA40F700CDF3C9 /* FloatService+GETSpec.swift */; };
 		3544ED981CBA573400CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED241CBA40F700CDF3C9 /* HTTPBinStringService+GETSpec.swift */; };
 		3544ED991CBA573400CDF3C9 /* IntService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED251CBA40F700CDF3C9 /* IntService+GETSpec.swift */; };
-		3544ED9A1CBA573400CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */; };
-		3544ED9B1CBA573400CDF3C9 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */; };
 		3544ED9D1CBA573400CDF3C9 /* ServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED291CBA40F700CDF3C9 /* ServiceSpec.swift */; };
 		3544ED9E1CBA573400CDF3C9 /* StringArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2A1CBA40F700CDF3C9 /* StringArrayService+GETSpec.swift */; };
 		3544ED9F1CBA573400CDF3C9 /* StringService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2B1CBA40F700CDF3C9 /* StringService+GETSpec.swift */; };
-		3544EDA01CBA573400CDF3C9 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
 		35547F261CC0A32D0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
@@ -684,7 +681,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3544ED9E1CBA573400CDF3C9 /* StringArrayService+GETSpec.swift in Sources */,
-				3544ED9A1CBA573400CDF3C9 /* PersonArrayService+GETSpec.swift in Sources */,
 				3544ED951CBA572C00CDF3C9 /* VoidService+GET.swift in Sources */,
 				35856C6F1CC2838800ACBDB9 /* HTTPBinConfigurable.swift in Sources */,
 				3544ED931CBA572C00CDF3C9 /* StringArrayService+GET.swift in Sources */,
@@ -695,12 +691,10 @@
 				3544ED941CBA572C00CDF3C9 /* StringService+GET.swift in Sources */,
 				3544ED991CBA573400CDF3C9 /* IntService+GETSpec.swift in Sources */,
 				3583C3D81CC4D5290097D10B /* HTTPBinBasicAuthenticationService+GETSpec.swift in Sources */,
-				3544ED9B1CBA573400CDF3C9 /* PersonService+GETSpec.swift in Sources */,
 				3544ED8F1CBA572C00CDF3C9 /* IntService+GET.swift in Sources */,
 				3544ED971CBA573400CDF3C9 /* FloatService+GETSpec.swift in Sources */,
 				3544ED8D1CBA572C00CDF3C9 /* FloatService+GET.swift in Sources */,
 				3544ED901CBA572C00CDF3C9 /* PersonArrayService+GET.swift in Sources */,
-				3544EDA01CBA573400CDF3C9 /* VoidService+GETSpec.swift in Sources */,
 				350A60631D70309600D96150 /* HTTPBinService+GET.swift in Sources */,
 				35856C771CC2885800ACBDB9 /* HTTPBinBasicAuthenticationService+GET.swift in Sources */,
 				3544ED981CBA573400CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */,

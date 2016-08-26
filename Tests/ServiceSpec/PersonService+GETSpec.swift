@@ -19,8 +19,8 @@ class PersonGETServiceSpec: ServiceSpec {
 
             it("executeTask") {
 
-                let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
-                var expected: [String: AnyObject]!
+                let actual: [String: Any] = ["id": 12345, "name": "Rahul Katariya"]
+                var expected: [String: Any]!
 
                 PersonGETService().executeTask() {
                     if let value = $0.result.value {
@@ -34,8 +34,8 @@ class PersonGETServiceSpec: ServiceSpec {
             
             it("executeRequestOperation") {
                 
-                let actual: NSDictionary = ["id": 12345, "name": "Rahul Katariya"]
-                var expected: [String: AnyObject]!
+                let actual: [String: Any] = ["id": 12345, "name": "Rahul Katariya"]
+                var expected: [String: Any]!
                 
                 let requestOperation = PersonGETService().requestOperation() {
                     if let value = $0.result.value {

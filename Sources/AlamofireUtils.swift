@@ -12,9 +12,9 @@ class AlamofireUtils {
     
     static func alamofireRequestFromRequestable<R: Requestable>(_ requestable: R) -> Alamofire.Request {
         
-        var request = requestable.sessionManager.request(requestable.baseURL + requestable.path, withMethod: requestable.method, parameters: requestable.parameters as? [String: AnyObject], encoding: requestable.encoding, headers: requestable.headers)
+        var request = requestable.sessionManager.request(requestable.baseURL + requestable.path, withMethod: requestable.method, parameters: requestable.parameters as? [String: Any], encoding: requestable.encoding, headers: requestable.headers)
         
-        if let parameters = requestable.parameters as? [AnyObject] {
+        if let parameters = requestable.parameters as? [Any] {
             let (encodedURLRequest, error) = encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding)
             if let error = error {
                 print("[Restofire] - Encoding Error: " + error.localizedDescription)
@@ -59,7 +59,7 @@ class AlamofireUtils {
         }
     }
     
-    fileprivate static func encodeURLRequest(_ URLRequest: URLRequestConvertible, parameters: [AnyObject]?, encoding: ParameterEncoding) -> (URLRequest, NSError?) {
+    fileprivate static func encodeURLRequest(_ URLRequest: URLRequestConvertible, parameters: [Any]?, encoding: ParameterEncoding) -> (URLRequest, NSError?) {
         var mutableURLRequest = URLRequest.urlRequest
         
         guard let parameters = parameters , !parameters.isEmpty else {

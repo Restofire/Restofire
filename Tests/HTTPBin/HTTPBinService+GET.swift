@@ -11,12 +11,12 @@ import Alamofire
 
 class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
     
-    typealias Model = [String: AnyObject]
+    typealias Model = [String: Any]
     let path: String = "get"
     let encoding: ParameterEncoding = .urlEncodedInURL
-    var parameters: AnyObject?
+    var parameters: Any?
     
-    init(parameters: AnyObject?) {
+    init(parameters: Any?) {
         self.parameters = parameters
     }
     

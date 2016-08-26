@@ -23,7 +23,7 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
                 var expected: String!
 
                 HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
-                    if let response = $0.result.value?["args"] as? [String: AnyObject], let value = response["name"] as? String {
+                    if let response = $0.result.value?["args"] as? [String: Any], let value = response["name"] as? String {
                         expected = value
                     }
                 }
@@ -38,7 +38,7 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
                 var expected: String!
                 
                 let requestOperation = HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).requestOperation() {
-                    if let response = $0.result.value?["args"] as? [String: AnyObject], let value = response["name"] as? String {
+                    if let response = $0.result.value?["args"] as? [String: Any], let value = response["name"] as? String {
                         expected = value
                     }
                 }

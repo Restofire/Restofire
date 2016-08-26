@@ -1,2 +1,2 @@
-github "Quick/Quick" ~> 0.9
-github "Quick/Nimble" ~> 4.0
+github "ikesyo/Quick" "xcode8-beta6"
+github "ikesyo/Nimble" "swift3-beta-6"

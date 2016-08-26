@@ -1,3 +1,3 @@
 github "Alamofire/Alamofire" "3cc5b4e8453bec9fd6b973d60e6b0605a38e4cf4"
-github "Quick/Nimble" "v4.1.0"
-github "Quick/Quick" "v0.9.3"
+github "ikesyo/Nimble" "4f38620db52b81eef4298492fed057247308b5d6"
+github "ikesyo/Quick" "e14bf151a4c864e6f144559e7b7c09bca0fd38c1"

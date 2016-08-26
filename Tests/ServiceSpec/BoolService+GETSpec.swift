@@ -59,7 +59,7 @@ class BoolGETServiceSpec: ServiceSpec {
                 
                 
                 requestOperation.completionBlock = {
-                    expected = requestOperation.finished
+                    expected = requestOperation.isFinished
                 }
                 
                 expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)

@@ -19,7 +19,7 @@ import Alamofire
 /// struct PersonPOSTService: Requestable {
 ///
 ///   let path: String
-///   let method: Alamofire.Method = .POST
+///   let method: Alamofire.HTTPMethod = .POST
 ///   let parameters: AnyObject?
 ///
 ///   init(id: String, parameters: AnyObject? = nil) {
@@ -61,7 +61,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     var path: String { get }
     
     /// The HTTP Method.
-    var method: Alamofire.Method { get }
+    var method: Alamofire.HTTPMethod { get }
     
     /// The request parameter encoding.
     var encoding: Alamofire.ParameterEncoding { get }
@@ -121,6 +121,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
+    @discardableResult
     public func executeTask(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
@@ -134,6 +135,7 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
+    @discardableResult
     public func requestOperation(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
         let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
@@ -148,6 +150,7 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
+    @discardableResult
     public func executeTaskEventually(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
@@ -161,6 +164,7 @@ public extension Requestable {
     ///                                `nil` by default.
     ///
     /// - returns: The created `RequestEventuallyOperation`.
+    @discardableResult
     public func requestEventuallyOperation(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation

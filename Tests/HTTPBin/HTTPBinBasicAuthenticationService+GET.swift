@@ -13,6 +13,6 @@ class HTTPBinBasicAuthenticationGETService: Requestable, HTTPBinConfigurable {
     
     typealias Model = [String: AnyObject]
     let path: String = "basic-auth/user/password"
-    let credential: NSURLCredential? = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+    let credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
     
 }

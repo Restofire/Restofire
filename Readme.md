@@ -93,6 +93,11 @@ let package = Package(
 )
 ```
 
+### Manually
+1. Install [Alamofire](https://github.com/Alamofire/Alamofire)
+2. Download and drop ```/Sources```folder in your project.  
+3. Congratulations! 
+
 ## Usage
 
 ### Global Configuration

@@ -1,1 +1,1 @@
-carthage update
+carthage update --use-submodules

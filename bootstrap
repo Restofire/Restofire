@@ -1,1 +1,2 @@
-carthage update --use-submodules
+carthage update Alamofire --use-submodules
+carthage update Quick Nimble

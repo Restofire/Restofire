@@ -32,28 +32,25 @@ class AlamofireUtils {
         
     }
     
-    static func JSONResponseSerializer<M>() -> ResponseSerializer<M, NSError> {
-        return ResponseSerializer { _, _, data, error in
+    static func JSONResponseSerializer<M>() -> ResponseSerializer<M> {
+        return ResponseSerializer { _, response, data, error in
             
             guard error == nil else { return .failure(error!) }
             
-            guard let validData = data , validData.count > 0 else {
-                let failureReason = "JSON could not be serialized. Input data was nil or zero length."
-                let error = NSError(code: .jsonSerializationFailed, failureReason: failureReason)
-                return .failure(error)
+            guard let validData = data, validData.count > 0 else {
+                return .failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
             }
             
             do {
-                let JSON = try JSONSerialization.jsonObject(with: validData, options: .allowFragments)
-                if let JSON = JSON as? M {
-                    return .success(JSON)
+                let json = try JSONSerialization.jsonObject(with: validData, options: .allowFragments)
+                if let json = json as? M {
+                    return .success(json)
                 } else {
-                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"TypeMismatch(Expected \(M.self), got \(type(of: JSON)))"])
+                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"TypeMismatch(Expected \(M.self), got \(type(of: json)))"])
                     return .failure(error)
                 }
-                
             } catch {
-                return .failure(error as NSError)
+                return .failure(AFError.responseSerializationFailed(reason: .jsonSerializationFailed(error: error)))
             }
             
         }
@@ -128,8 +125,8 @@ extension Alamofire.Request {
     @discardableResult
     func restofireResponse<M>(
         queue: DispatchQueue? = nil,
-        responseSerializer: ResponseSerializer<M, NSError>,
-        completionHandler: @escaping (Response<M, NSError>) -> Void)
+        responseSerializer: ResponseSerializer<M>,
+        completionHandler: @escaping (Response<M>) -> Void)
         -> Self
     {
         return response(

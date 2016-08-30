@@ -17,10 +17,10 @@ open class RequestOperation<R: Requestable>: Operation {
     
     var request: Request!
     let requestable: R
-    let completionHandler: ((Response<R.Model, NSError>) -> Void)?
+    let completionHandler: ((Response<R.Model>) -> Void)?
     var retryAttempts = 0
     
-    init(requestable: R, completionHandler: ((Response<R.Model, NSError>) -> Void)?) {
+    init(requestable: R, completionHandler: ((Response<R.Model>) -> Void)?) {
         self.requestable = requestable
         retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -129,7 +129,7 @@ open class RequestOperation<R: Requestable>: Operation {
     
     func executeRequest() {
         request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
-        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Response<R.Model, NSError>) in
+        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Response<R.Model>) in
             if response.result.error == nil {
                 self.successful = true
                 self.requestable.didCompleteRequestWithResponse(response)
@@ -144,7 +144,7 @@ open class RequestOperation<R: Requestable>: Operation {
         }
     }
     
-    func handleErrorResponse(_ response: Response<R.Model, NSError>) {
+    func handleErrorResponse(_ response: Response<R.Model>) {
         self.failed = true
         self.requestable.didCompleteRequestWithResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }

@@ -21,7 +21,7 @@ import Alamofire
 open class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
 
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
-    override init(requestable: R, completionHandler: ((Response<R.Model, NSError>) -> Void)?) {
+    override init(requestable: R, completionHandler: ((Response<R.Model>) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.isReady = false
         networkReachabilityManager?.listener = { status in
@@ -43,11 +43,11 @@ open class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorResponse(_ response: Response<R.Model, NSError>) {
-        if self.retryAttempts > 0 {
-            if response.result.error!.code == NSURLErrorNotConnectedToInternet {
+    override func handleErrorResponse(_ response: Response<R.Model>) {
+        if let error = response.result.error as? URLError, self.retryAttempts > 0 {
+            if error.code == .notConnectedToInternet {
                 self.pause = true
-            } else if self.requestable.retryErrorCodes.contains(response.result.error!.code) {
+            } else if self.requestable.retryErrorCodes.contains(error.code) {
                 self.retryAttempts -= 1
                 self.perform(#selector(RequestOperation<R>.executeRequest), with: nil, afterDelay: self.requestable.retryInterval)
             }

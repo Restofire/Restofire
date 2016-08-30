@@ -1,1 +1,2 @@
-carthage update
+carthage update Alamofire --use-submodules
+carthage update Nimble Quick --platform iOS --no-use-binaries

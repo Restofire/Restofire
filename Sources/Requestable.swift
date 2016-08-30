@@ -94,7 +94,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     var acceptableContentTypes: [String]? { get }
     
     /// The retry error codes.
-    var retryErrorCodes: Set<Int> { get }
+    var retryErrorCodes: Set<URLError.Code> { get }
     
     /// The retry interval.
     var retryInterval: TimeInterval { get }
@@ -108,7 +108,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteRequestWithResponse(_ response: Response<Self.Model, NSError>)
+    func didCompleteRequestWithResponse(_ response: Response<Self.Model>)
     
 }
 
@@ -122,7 +122,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
+    public func executeTask(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -136,7 +136,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestOperation<Self> {
+    public func requestOperation(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestOperation<Self> {
         let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -151,7 +151,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -165,7 +165,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((Response<Self.Model, NSError>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
@@ -238,7 +238,7 @@ public extension Requestable {
     }
     
     /// `retry.retryErrorCodes`
-    public var retryErrorCodes: Set<Int> {
+    public var retryErrorCodes: Set<URLError.Code> {
         return retry.retryErrorCodes
     }
     
@@ -256,6 +256,6 @@ public extension Requestable {
     public func didStartRequest() { }
     
     /// Does nothing.
-    public func didCompleteRequestWithResponse(_ response: Response<Self.Model, NSError>) { }
+    public func didCompleteRequestWithResponse(_ response: Response<Self.Model>) { }
     
 }

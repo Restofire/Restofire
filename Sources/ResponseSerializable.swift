@@ -18,7 +18,7 @@ import Alamofire
 ///
 /// extension HTTPBinResponseSerializable {
 ///
-///   var responseSerializer: ResponseSerializer<Model, NSError> {
+///   var responseSerializer: ResponseSerializer<Model> {
 ///     return Alamofire.Request.stringResponseSerializer()
 ///   }
 ///
@@ -45,14 +45,14 @@ public protocol ResponseSerializable {
     associatedtype Model
     
     /// The `Alamofire.ResponseSerializer`.
-    var responseSerializer: ResponseSerializer<Model, NSError> { get }
+    var responseSerializer: ResponseSerializer<Model> { get }
     
 }
 
 extension ResponseSerializable {
     
     /// `CustomJSONResponseSerializer`
-    public var responseSerializer: ResponseSerializer<Model, NSError> {
+    public var responseSerializer: ResponseSerializer<Model> {
         return AlamofireUtils.JSONResponseSerializer()
     }
     

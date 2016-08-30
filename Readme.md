@@ -92,6 +92,44 @@ let package = Package(
     ]
 )
 ```
+### Manually
+
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.
+
+#### Embedded Framework
+
+- Open up Terminal, `cd` into your top-level project directory, and run the following command "if" your project is not initialized as a git repository:
+
+```bash
+$ git init
+```
+
+- Add Restofire as a git [submodule](http://git-scm.com/docs/git-submodule) by running the following command:
+
+```bash
+$ git submodule add https://github.com/Restofire/Restofire.git
+$ git submodule update --init --recursive
+```
+
+- Open the new `Restofire` folder, and drag the `Restofire.xcodeproj` into the Project Navigator of your application's Xcode project.
+
+    > It should appear nested underneath your application's blue project icon. Whether it is above or below all the other Xcode groups does not matter.
+
+- Select the `Restofire.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
+- Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
+- In the tab bar at the top of that window, open the "General" panel.
+- Click on the `+` button under the "Embedded Binaries" section.
+- You will see two different `Restofire.xcodeproj` folders each with two different versions of the `Restofire.framework` nested inside a `Products` folder.
+
+    > It does not matter which `Products` folder you choose from.
+
+- Select the `Restofire.framework`.
+
+- And that's it!
+
+> The `Restofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
+
+---
 
 ## Usage
 
@@ -108,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
         Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
         Restofire.defaultConfiguration.logging = true
-        Restofire.defaultConfiguration.authentication.credential = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+        Restofire.defaultConfiguration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .ForSession)
         Restofire.defaultConfiguration.validation.acceptableStatusCodes = [200..<300]
         Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]
         Restofire.defaultConfiguration.retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
@@ -306,7 +344,7 @@ import SwiftyJSON
 
 extension MoviesReviewGETService {
 
-    func didCompleteRequestWithResponse(response: Response<Model, NSError>) {
+    func didCompleteRequestWithResponse(response: Response<Model>) {
         guard let model = response.result.value else { return }
         let realm = try! Realm()
         let jsonMovieReview = JSON(model)

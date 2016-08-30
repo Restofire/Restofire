@@ -12,7 +12,7 @@ import Foundation
 ///
 /// ```swift
 /// var retry = Retry()
-/// retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+/// retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
 /// retry.retryInterval = 20
 /// retry.maxRetryAttempts = 10
 /// ```
@@ -24,11 +24,11 @@ public struct Retry {
     /// NSURLErrorCannotConnectToHost,
     /// NSURLErrorDNSLookupFailed,
     /// NSURLErrorNetworkConnectionLost` by default.
-    public var retryErrorCodes: Set<Int> = [NSURLErrorTimedOut,
-                                            NSURLErrorCannotFindHost,
-                                            NSURLErrorCannotConnectToHost,
-                                            NSURLErrorDNSLookupFailed,
-                                            NSURLErrorNetworkConnectionLost
+    public var retryErrorCodes: Set<URLError.Code> = [.timedOut,
+                                            .cannotFindHost,
+                                            .cannotConnectToHost,
+                                            .dnsLookupFailed,
+                                            .networkConnectionLost
     ]
     
     /// The retry interval. `10` by default.

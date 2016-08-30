@@ -42,7 +42,7 @@ before_install:
 
 install:
   - carthage update Nimble Quick --platform iOS --no-use-binaries
-  - carthage update Alamofire --no-use-binaries
+  - carthage update Alamofire --use-submodules
 
 script:
   - set -o pipefail
@@ -53,5 +53,5 @@ script:
   - if [ $RUN_TESTS == "YES" ]; then
       xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO test | xcpretty -c;
     else
-      xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c;      
+      xcodebuild -project "$PROJECT" -scheme "$SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c;
     fi

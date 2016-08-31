@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Restofire.playground">
+   </FileRef>
+   <FileRef
+      location = "group:Restofire.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:bootstrap">
+   </FileRef>
+   <FileRef
+      location = "group:Cartfile">
+   </FileRef>
+   <FileRef
+      location = "group:Cartfile.private">
+   </FileRef>
+   <FileRef
+      location = "group:Cartfile.resolved">
+   </FileRef>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:Package.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Readme.md">
+   </FileRef>
+   <FileRef
+      location = "group:Restofire.podspec">
+   </FileRef>
+</Workspace>

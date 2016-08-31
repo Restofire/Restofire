@@ -59,6 +59,9 @@
 		35A0949F1CC3EA9400C58702 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
 		35C05C641D75D0DC003D04F2 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 357C0DB31D75745F0096239A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35C05C6F1D76BBB2003D04F2 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
+		35C05C701D76BFE0003D04F2 /* PersonService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED271CBA40F700CDF3C9 /* PersonService+GETSpec.swift */; };
+		35C05C731D76C672003D04F2 /* PersonArrayService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED261CBA40F700CDF3C9 /* PersonArrayService+GETSpec.swift */; };
 		35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
 		35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C385141CAE43ED003CE0BE /* Restofire.swift */; };
@@ -798,9 +801,12 @@
 				3544ED971CBA573400CDF3C9 /* FloatService+GETSpec.swift in Sources */,
 				3544ED8D1CBA572C00CDF3C9 /* FloatService+GET.swift in Sources */,
 				3544ED901CBA572C00CDF3C9 /* PersonArrayService+GET.swift in Sources */,
+				35C05C701D76BFE0003D04F2 /* PersonService+GETSpec.swift in Sources */,
 				350A60631D70309600D96150 /* HTTPBinService+GET.swift in Sources */,
 				35856C771CC2885800ACBDB9 /* HTTPBinBasicAuthenticationService+GET.swift in Sources */,
+				35C05C6F1D76BBB2003D04F2 /* VoidService+GETSpec.swift in Sources */,
 				3544ED981CBA573400CDF3C9 /* HTTPBinStringService+GETSpec.swift in Sources */,
+				35C05C731D76C672003D04F2 /* PersonArrayService+GETSpec.swift in Sources */,
 				3544ED911CBA572C00CDF3C9 /* PersonService+GET.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

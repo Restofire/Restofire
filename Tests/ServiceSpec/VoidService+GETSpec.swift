@@ -20,32 +20,32 @@ class VoidGETServiceSpec: ServiceSpec {
             it("executeTask") {
 
                 let actual: [String: Any] = [:]
-                var expected: [String: Any]!
+                var expected: NSDictionary!
 
                 VoidGETService().executeTask() {
                     if let value = $0.result.value {
-                        expected = value
+                        expected = NSDictionary(dictionary: value)
                     }
                 }
-
-                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                
+                expect(expected).toEventually(equal(NSDictionary(dictionary: actual)), timeout: self.timeout, pollInterval: self.pollInterval)
 
             }
             
             it("executeRequestOperation") {
                 
                 let actual: [String: Any] = [:]
-                var expected: [String: Any]!
+                var expected: NSDictionary!
                 
                 let requestOperation = VoidGETService().requestOperation() {
                     if let value = $0.result.value {
-                        expected = value
+                        expected = NSDictionary(dictionary: value)
                     }
                 }
                 
                 requestOperation.start()
                 
-                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                expect(expected).toEventually(equal(NSDictionary(dictionary: actual)), timeout: self.timeout, pollInterval: self.pollInterval)
                 
             }
         }

@@ -19,11 +19,11 @@ class PersonArrayGETServiceSpec: ServiceSpec {
 
             it("executeTask") {
 
-                let actual: [[String: Any]] = [
+                let actual: [NSDictionary] = [
                     ["id": 12345, "name": "Rahul Katariya"],
                     ["id": 12346, "name": "Aar Kay"]
                 ]
-                var expected: [[String: Any]]!
+                var expected: [NSDictionary]!
 
                 PersonArrayGETService().executeTask() {
                     if let value = $0.result.value {
@@ -37,11 +37,11 @@ class PersonArrayGETServiceSpec: ServiceSpec {
             
             it("executeRequestOperation") {
                 
-                let actual: [[String: Any]] = [
+                let actual: [NSDictionary] = [
                     ["id": 12345, "name": "Rahul Katariya"],
                     ["id": 12346, "name": "Aar Kay"]
                 ]
-                var expected: [[String: Any]]!
+                var expected: [NSDictionary]!
                 
                 let requestOperation = PersonArrayGETService().requestOperation() {
                     if let value = $0.result.value {

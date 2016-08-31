@@ -21,6 +21,7 @@ import Alamofire
 open class RequestEventuallyOperation<R: Requestable>: RequestOperation<R> {
 
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
+    
     override init(requestable: R, completionHandler: ((Response<R.Model>) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.isReady = false

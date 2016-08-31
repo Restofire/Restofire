@@ -19,7 +19,7 @@ import Alamofire
 /// configuration.validation.acceptableStatusCodes = [200..<300]
 /// configuration.validation.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
-/// configuration.retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+/// configuration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
 /// configuration.retry.retryInterval = 20
 /// configuration.retry.maxRetryAttempts = 10
 /// let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -55,10 +55,10 @@ public struct Configuration {
     /// request when the response is recieved. `false` by default.
     public var logging: Bool = false
     
-    /// The Alamofire Session Manager. `Alamofire.SessionManager.sharedInstance` by default.
+    /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
     public var sessionManager = Alamofire.SessionManager.default
     
-    /// The queue on which reponse will be delivered. `dispatch_get_main_queue()`
+    /// The queue on which reponse will be delivered. `DispatchQueue.main`
     /// by default.
     public var queue: DispatchQueue? = DispatchQueue.main
     

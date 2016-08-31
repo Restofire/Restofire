@@ -31,8 +31,8 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 
 ## Requirements
 
-- iOS 8.0+ / Mac OS X 10.9+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 7.3+
+- iOS 9.0+ / Mac OS X 10.11+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 8.0 beta 6+
 
 ## Installation
 
@@ -44,16 +44,16 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required to build Restofire 1.1.0+.
+> CocoaPods 1.0.1+ is required to build Restofire 2.0.0+.
 
 To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '9.0'
 use_frameworks!
 
-pod 'Restofire', '~> 1.1'
+pod 'Restofire', '~> 2.0'
 ```
 
 Then, run the following command:
@@ -76,7 +76,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 1.1
+github "RahulKatariya/Restofire" ~> 2.0
 ```
 ### Swift Package Manager
 
@@ -88,7 +88,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", versions: Version(1, 1, 0)..<Version(1, 2, 0))
+        .Package(url: "https://github.com/Restofire/Restofire.git", versions: Version(2, 0, 0)..<Version(3, 0, 0))
     ]
 )
 ```
@@ -123,7 +123,7 @@ $ git submodule update --init --recursive
 
     > It does not matter which `Products` folder you choose from.
 
-- Select the `Restofire.framework`.
+- Select the `Restofire.framework` & `Alamofire.framework`.
 
 - And that's it!
 
@@ -146,17 +146,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
         Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
         Restofire.defaultConfiguration.logging = true
-        Restofire.defaultConfiguration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .ForSession)
+        Restofire.defaultConfiguration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
         Restofire.defaultConfiguration.validation.acceptableStatusCodes = [200..<300]
         Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]
-        Restofire.defaultConfiguration.retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+        Restofire.defaultConfiguration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
         Restofire.defaultConfiguration.retry.retryInterval = 20
         Restofire.defaultConfiguration.retry.maxRetryAttempts = 10
-        let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.timeoutIntervalForRequest = 7
         sessionConfiguration.timeoutIntervalForResource = 7
-        sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-        Restofire.defaultConfiguration.manager = Alamofire.Manager(configuration: sessionConfiguration)
+        sessionConfiguration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
+        Restofire.defaultConfiguration.sessionManager = Alamofire.SessionManager(configuration: sessionConfiguration)
 
         return true
   }
@@ -172,7 +172,7 @@ import Restofire
 
 struct PersonGETService: Requestable {
 
-    typealias Model = [String: AnyObject]
+    typealias Model = [String: Any]
     var path: String = "56c2cc70120000c12673f1b5"
 
 }
@@ -186,13 +186,13 @@ import Restofire
 
 class ViewController: UIViewController {
 
-    var person: [String: AnyObject]!
+    var person: [String: Any]!
     var requestOp: RequestOperation<PersonGETService>!
 
     func getPerson() {
         requestOp = PersonGETService().executeTask() {
             if let value = $0.result.value {
-                person = value
+                self.person = value
             }
         }
     }
@@ -241,7 +241,7 @@ extension HTTPBinRetryable {
 
   var retry: Retry {
     var retry = Retry()
-    retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+    retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
     retry.retryInterval = 20
     retry.maxRetryAttempts = 10
     return retry
@@ -260,12 +260,12 @@ import Alamofire
 
 struct HTTPBinPersonGETService: Requestable, HTTPBinConfigurable, HTTPBinValidatable, HTTPBinRetryable {
 
-    typealias Model = [String: AnyObject]
+    typealias Model = [String: Any]
     let path: String = "get"
-    let encoding: ParameterEncoding = .URLEncodedInURL
-    var parameters: AnyObject?
+    let encoding: ParameterEncoding = .urlEncodedInURL
+    var parameters: Any?
 
-    init(parameters: AnyObject?) {
+    init(parameters: Any?) {
         self.parameters = parameters
     }
 
@@ -281,13 +281,13 @@ import Restofire
 
 class ViewController: UIViewController {
 
-    var person: [String: AnyObject]!
-    var requestOp: RequestOperation<PersonGETService>!
+    var person: [String: Any]!
+    var requestOp: RequestOperation<HTTPBinPersonGETService>!
 
     func getPerson() {
         requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
             if let value = $0.result.value {
-                person = value
+                self.person = value
             }
         }
     }
@@ -308,30 +308,30 @@ import Alamofire
 
 struct MoviesReviewGETService: Requestable {
 
-    typealias Model = AnyObject
+    typealias Model = Any
     var baseURL: String = "http://api.nytimes.com/svc/movies/v2/"
     var path: String = "reviews/"
-    var parameters: AnyObject?
-    var encoding: ParameterEncoding = .URLEncodedInURL
-    var method: Alamofire.Method = .GET
+    var parameters: Any?
+    var encoding: ParameterEncoding = .urlEncodedInURL
+    var method: Alamofire.HTTPMethod = .get
     var headers: [String: String]? = ["Content-Type": "application/json"]
-    var manager: Alamofire.Manager = {
-      let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
-      sessionConfiguration.timeoutIntervalForRequest = 7
-      sessionConfiguration.timeoutIntervalForResource = 7
-      sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-      return Alamofire.Manager(configuration: sessionConfiguration)
+    var manager: Alamofire.SessionManager = {
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.timeoutIntervalForRequest = 7
+        sessionConfiguration.timeoutIntervalForResource = 7
+        sessionConfiguration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        return Alamofire.SessionManager(configuration: sessionConfiguration)
     }()
-    var queue: dispatch_queue_t? = dispatch_get_main_queue()
+    var queue: DispatchQueue? = DispatchQueue.main
     var logging: Bool = Restofire.defaultConfiguration.logging
-    var credential: NSURLCredential? = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+    var credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
     var acceptableStatusCodes: [Range<Int>]? = [200..<300]
     var acceptableContentTypes: [String]? = ["application/json"]
-    var retryErrorCodes: Set<Int> = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
-    var retryInterval: NSTimeInterval = 20
+    var retryErrorCodes: Set<URLError.Code> = [.timedOut,.networkConnectionLost]
+    var retryInterval: TimeInterval = 20
     var maxRetryAttempts: Int = 10
 
-    init(path: String, parameters: AnyObject) {
+    init(path: String, parameters: Any) {
         self.path += path
         self.parameters = parameters
     }

@@ -4,6 +4,8 @@ import UIKit
 import Alamofire
 import Restofire
 
+print(RestofireVersionNumber)
+
 Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
 Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
 Restofire.defaultConfiguration.logging = true

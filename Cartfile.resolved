@@ -1,3 +1,3 @@
-github "Alamofire/Alamofire" "4.0.0-beta.2"
-github "norio-nomura/Nimble" "3d82a185b49e8fc9f40e7b72feeb279c778f0935"
-github "norio-nomura/Quick" "4a7f1d0a7db637c3ca15b8f198a516fbc5581f87"
+github "Alamofire/Alamofire" "4.0.0"
+github "Quick/Nimble" "9dc342cdffef660414d17f27aec897d0cacfffea"
+github "Quick/Quick" "8f2bc636ecfa2cc20696f62548b38d4ab943e299"

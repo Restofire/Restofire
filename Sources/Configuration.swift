@@ -15,18 +15,18 @@ import Alamofire
 /// var configuration = Configuration()
 /// configuration.baseURL = "http://www.mocky.io/v2/"
 /// configuration.headers = ["Content-Type": "application/json"]
-/// configuration.authentication.credential = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+/// configuration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
 /// configuration.validation.acceptableStatusCodes = [200..<300]
 /// configuration.validation.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
 /// configuration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
 /// configuration.retry.retryInterval = 20
 /// configuration.retry.maxRetryAttempts = 10
-/// let sessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+/// let sessionConfiguration = URLSessionConfiguration.default
 /// sessionConfiguration.timeoutIntervalForRequest = 7
 /// sessionConfiguration.timeoutIntervalForResource = 7
 /// sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-/// configuration.manager = Alamofire.Manager(configuration: sessionConfiguration)
+/// configuration.manager = Alamofire.SessionManager(configuration: sessionConfiguration)
 /// ```
 public struct Configuration {
     
@@ -37,7 +37,7 @@ public struct Configuration {
     public var method: Alamofire.HTTPMethod = .get
     
     /// The request parameter encoding. `.JSON` by default.
-    public var encoding: Alamofire.ParameterEncoding = .json
+    public var encoding: Alamofire.ParameterEncoding = JSONEncoding.default
     
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String]?

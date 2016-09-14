@@ -10,31 +10,32 @@ import Alamofire
 
 class AlamofireUtils {
     
-    static func alamofireRequestFromRequestable<R: Requestable>(_ requestable: R) -> Alamofire.Request {
+    static func alamofireRequestFromRequestable<R: Requestable>(_ requestable: R) -> Alamofire.DataRequest {
         
-        var request = requestable.sessionManager.request(requestable.baseURL + requestable.path, withMethod: requestable.method, parameters: requestable.parameters as? [String: Any], encoding: requestable.encoding, headers: requestable.headers)
+        var request = requestable.sessionManager.request(requestable.baseURL + requestable.path, method: requestable.method, parameters: requestable.parameters as? [String: Any], encoding: requestable.encoding, headers: requestable.headers)
         
         if let parameters = requestable.parameters as? [Any] {
-            let (encodedURLRequest, error) = encodeURLRequest(request.request!, parameters: parameters, encoding: requestable.encoding)
-            if let error = error {
-                print("[Restofire] - Encoding Error: " + error.localizedDescription)
-            } else {
+            do {
+                let encodedURLRequest = try encode(request.request!, parameters: parameters, encoding: requestable.encoding)
                 request = Alamofire.request(encodedURLRequest)
+            } catch let error as NSError {
+                print("[Restofire] - Encoding Error: " + error.localizedDescription)
+            } catch let error as AFError {
+                print(error.errorDescription)
             }
         }
         
         authenticateRequest(request, usingCredential: requestable.credential)
         validateRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
-        validateRequest(request, forValidation: requestable.validation)
+        validateRequest(request, forValidation: requestable.validationBlock)
         
         return request
         
     }
     
-    static func JSONResponseSerializer<M>() -> ResponseSerializer<M> {
-        return ResponseSerializer { _, response, data, error in
-            
+    static func jsonResponseSerializer<M>() -> Alamofire.DataResponseSerializer<M> {
+        return Alamofire.DataResponseSerializer { _, response, data, error in
             guard error == nil else { return .failure(error!) }
             
             guard let validData = data, validData.count > 0 else {
@@ -56,77 +57,81 @@ class AlamofireUtils {
         }
     }
     
-    fileprivate static func encodeURLRequest(_ URLRequest: URLRequestConvertible, parameters: [Any]?, encoding: ParameterEncoding) -> (URLRequest, NSError?) {
-        var mutableURLRequest = URLRequest.urlRequest
+    fileprivate static func encode(_ urlRequest: URLRequestConvertible, parameters: [Any]?, encoding: ParameterEncoding) throws -> URLRequest {
+        var urlRequest = try urlRequest.asURLRequest()
         
         guard let parameters = parameters , !parameters.isEmpty else {
-            return (mutableURLRequest, nil)
+            return urlRequest
         }
         
-        var encodingError: NSError? = nil
-        
         switch encoding {
-        case .json:
+        case let enc as JSONEncoding:
             do {
-                let options = JSONSerialization.WritingOptions()
-                let data = try JSONSerialization.data(withJSONObject: parameters, options: options)
+                let data = try JSONSerialization.data(withJSONObject: parameters, options: enc.options)
                 
-                mutableURLRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                mutableURLRequest.httpBody = data
+                if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                }
+                
+                urlRequest.httpBody = data
             } catch {
-                encodingError = error as NSError
+                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
             }
-        case .propertyList(let format, let options):
+            return urlRequest
+        case let enc as PropertyListEncoding:
             do {
                 let data = try PropertyListSerialization.data(
                     fromPropertyList: parameters,
-                    format: format,
-                    options: options
+                    format: enc.format,
+                    options: enc.options
                 )
-                mutableURLRequest.setValue("application/x-plist", forHTTPHeaderField: "Content-Type")
-                mutableURLRequest.httpBody = data
+                
+                if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                    urlRequest.setValue("application/x-plist", forHTTPHeaderField: "Content-Type")
+                }
+                
+                urlRequest.httpBody = data
             } catch {
-                encodingError = error as NSError
+                throw AFError.parameterEncodingFailed(reason: .propertyListEncodingFailed(error: error))
             }
+            return urlRequest
         default:
-            encodingError = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey: "parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire."])
-            break
+            throw NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey: "parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire."])
         }
         
-        return (mutableURLRequest, encodingError)
     }
     
-    fileprivate static func authenticateRequest(_ request: Alamofire.Request, usingCredential credential:URLCredential?) {
+    fileprivate static func authenticateRequest(_ request: Alamofire.DataRequest, usingCredential credential:URLCredential?) {
         guard let credential = credential else { return }
         request.authenticate(usingCredential: credential)
     }
     
-    fileprivate static func validateRequest(_ request: Alamofire.Request, forAcceptableContentTypes contentTypes:[String]?) {
+    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableContentTypes contentTypes:[String]?) {
         guard let contentTypes = contentTypes else { return }
         request.validate(contentType: contentTypes)
     }
     
-    fileprivate static func validateRequest(_ request: Alamofire.Request, forAcceptableStatusCodes statusCodes:[CountableRange<Int>]?) {
+    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableStatusCodes statusCodes:[CountableRange<Int>]?) {
         guard let statusCodes = statusCodes else { return }
         for statusCode in statusCodes {
             request.validate(statusCode: statusCode)
         }
     }
     
-    fileprivate static func validateRequest(_ request: Alamofire.Request, forValidation validation:Alamofire.Request.Validation?) {
+    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forValidation validation:Alamofire.DataRequest.Validation?) {
         guard let validation = validation else { return }
         request.validate(validation)
     }
     
 }
 
-extension Alamofire.Request {
+extension Alamofire.DataRequest {
     
     @discardableResult
     func restofireResponse<M>(
         queue: DispatchQueue? = nil,
-        responseSerializer: ResponseSerializer<M>,
-        completionHandler: @escaping (Response<M>) -> Void)
+        responseSerializer: Alamofire.DataResponseSerializer<M>,
+        completionHandler: @escaping (Alamofire.DataResponse<M>) -> Void)
         -> Self
     {
         return response(

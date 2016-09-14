@@ -18,8 +18,8 @@ import Alamofire
 ///
 /// extension HTTPBinResponseSerializable {
 ///
-///   var responseSerializer: ResponseSerializer<Model> {
-///     return Alamofire.Request.stringResponseSerializer()
+///   var responseSerializer: Alamofire.DataResponseSerializer<Model> {
+///     return Alamofire.Request.customResponseSerializer()
 ///   }
 ///
 /// }
@@ -44,16 +44,16 @@ public protocol ResponseSerializable {
     /// The type of object returned in response.
     associatedtype Model
     
-    /// The `Alamofire.ResponseSerializer`.
-    var responseSerializer: ResponseSerializer<Model> { get }
+    /// The `Alamofire.DataResponseSerializer`.
+    var responseSerializer: Alamofire.DataResponseSerializer<Model> { get }
     
 }
 
 extension ResponseSerializable {
     
-    /// `CustomJSONResponseSerializer`
-    public var responseSerializer: ResponseSerializer<Model> {
-        return AlamofireUtils.JSONResponseSerializer()
+    /// `jsonResponseSerializer`
+    public var responseSerializer: Alamofire.DataResponseSerializer<Model> {
+        return AlamofireUtils.jsonResponseSerializer()
     }
     
 }

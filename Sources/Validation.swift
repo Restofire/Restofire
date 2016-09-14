@@ -17,14 +17,14 @@ import Foundation
 /// validation.acceptableContentTypes = ["application/json"]
 /// ```
 public struct Validation {
-    
+
     /// The Alamofire validation. `nil` by default.
-    public var validation: Request.Validation?
+    public var validationBlock: Alamofire.DataRequest.Validation?
     
     /// The acceptable status codes. `nil` by default.
     public var acceptableStatusCodes: [CountableRange<Int>]?
     
     /// The acceptable content types. `nil` by default.
     public var acceptableContentTypes: [String]?
-    
+
 }

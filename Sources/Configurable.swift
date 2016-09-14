@@ -20,7 +20,7 @@ import Foundation
 ///   var configuration: Configuration {
 ///     var config = Configuration()
 ///     config.baseURL = "https://httpbin.org/"
-///     config.logging = true
+///     config.logging = Restofire.defaultConfiguration.loggin
 ///     return config
 ///   }
 ///
@@ -32,7 +32,7 @@ import Foundation
 /// class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
 ///
 ///   let path: String = "get"
-///   let encoding: ParameterEncoding = .URLEncodedInURL
+///   let encoding: ParameterEncoding = URLEncoding.default
 ///   var parameters: Any?
 ///
 ///   init(parameters: Any?) {

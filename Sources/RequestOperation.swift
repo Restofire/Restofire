@@ -1,5 +1,5 @@
 //
-//  RequestOperation.swift
+//  DataRequestOperation.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 18/04/16.
@@ -12,15 +12,15 @@ import Alamofire
 /// An NSOperation that executes the `Requestable` asynchronously on `start()`
 /// or when added to a NSOperationQueue
 ///
-/// - Note: Auto Retry is available only in `RequestEventuallyOperation`.
-open class RequestOperation<R: Requestable>: Operation {
+/// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
+open class DataRequestOperation<R: Requestable>: Operation {
     
-    var request: Request!
+    var request: Alamofire.DataRequest!
     let requestable: R
-    let completionHandler: ((Response<R.Model>) -> Void)?
+    let completionHandler: ((Alamofire.DataResponse<R.Model>) -> Void)?
     var retryAttempts = 0
     
-    init(requestable: R, completionHandler: ((Response<R.Model>) -> Void)?) {
+    init(requestable: R, completionHandler: ((Alamofire.DataResponse<R.Model>) -> Void)?) {
         self.requestable = requestable
         retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -129,7 +129,7 @@ open class RequestOperation<R: Requestable>: Operation {
     
     func executeRequest() {
         request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
-        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Response<R.Model>) in
+        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Alamofire.DataResponse<R.Model>) in
             if response.result.error == nil {
                 self.successful = true
                 self.requestable.didCompleteRequestWithResponse(response)
@@ -144,7 +144,7 @@ open class RequestOperation<R: Requestable>: Operation {
         }
     }
     
-    func handleErrorResponse(_ response: Response<R.Model>) {
+    func handleErrorResponse(_ response: Alamofire.DataResponse<R.Model>) {
         self.failed = true
         self.requestable.didCompleteRequestWithResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }

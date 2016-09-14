@@ -15,11 +15,12 @@ import Alamofire
 /// ### Creating a request.
 /// ```swift
 /// import Restofire
+/// import Alamofire
 ///
 /// struct PersonPOSTService: Requestable {
 ///
 ///   let path: String
-///   let method: Alamofire.HTTPMethod = .POST
+///   let method: Alamofire.HTTPMethod = .post
 ///   let parameters: Any?
 ///
 ///   init(id: String, parameters: Any? = nil) {
@@ -33,10 +34,11 @@ import Alamofire
 /// ### Consuming the request.
 /// ```swift
 /// import Restofire
+/// import Alamofire
 ///
 /// class ViewController: UIViewController  {
 ///
-///   var request: Request!
+///   var request: PersonPOSTService!
 ///   var person: Any!
 ///
 ///   func createPerson() {
@@ -85,7 +87,7 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     var credential: URLCredential? { get }
     
     /// The Alamofire validation.
-    var validation: Request.Validation? { get }
+    var validationBlock: Alamofire.DataRequest.Validation? { get }
     
     /// The acceptable status codes.
     var acceptableStatusCodes: [CountableRange<Int>]? { get }
@@ -108,65 +110,65 @@ public protocol Requestable: Configurable, ResponseSerializable, Authenticable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteRequestWithResponse(_ response: Response<Self.Model>)
+    func didCompleteRequestWithResponse(_ response: Alamofire.DataResponse<Self.Model>)
     
 }
 
 public extension Requestable {
     
-    /// Creates a `RequestOperation` for the specified `Requestable` object and
+    /// Creates a `DataRequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created `RequestOperation`.
+    /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestOperation<Self> {
+    public func executeTask(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
     }
     
-    /// Creates a `RequestOperation` for the specified `Requestable` object.
+    /// Creates a `DataRequestOperation` for the specified `Requestable` object.
     ///
     /// - parameter completionHandler: A closure to be executed once the operation
     ///                                is started and the request has finished.
     ///                                `nil` by default.
     ///
-    /// - returns: The created `RequestOperation`.
+    /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestOperation<Self> {
-        let requestOperation = RequestOperation(requestable: self, completionHandler: completionHandler)
+    public func requestOperation(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
+        let requestOperation = DataRequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
     
     #if !os(watchOS)
     
-    /// Creates a `RequestEventuallyOperation` for the specified `Requestable`
+    /// Creates a `DataRequestEventuallyOperation` for the specified `Requestable`
     /// object and asynchronously executes it when internet is reachable.
     ///
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created `RequestEventuallyOperation`.
+    /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
     }
     
-    /// Creates a `RequestEventuallyOperation` for the specified requestable object.
+    /// Creates a `DataRequestEventuallyOperation` for the specified requestable object.
     ///
     /// - parameter completionHandler: A closure to be executed once the operation
     ///                                is started and the request has finished.
     ///                                `nil` by default.
     ///
-    /// - returns: The created `RequestEventuallyOperation`.
+    /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((Response<Self.Model>) -> Void)? = nil) -> RequestEventuallyOperation<Self> {
-        let requestEventuallyOperation = RequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
+    public func requestEventuallyOperation(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
+        let requestEventuallyOperation = DataRequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
     
@@ -223,8 +225,8 @@ public extension Requestable {
     }
     
     /// `validation.validation`
-    public var validation: Request.Validation? {
-        return validation.validation
+    public var validationBlock: Alamofire.DataRequest.Validation? {
+        return validation.validationBlock
     }
     
     /// `validation.acceptableStatusCodes`
@@ -256,6 +258,6 @@ public extension Requestable {
     public func didStartRequest() { }
     
     /// Does nothing.
-    public func didCompleteRequestWithResponse(_ response: Response<Self.Model>) { }
+    public func didCompleteRequestWithResponse(_ response: Alamofire.DataResponse<Self.Model>) { }
     
 }

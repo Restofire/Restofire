@@ -31,7 +31,7 @@ struct PersonGETService: Requestable {
 class ViewController: UIViewController {
     
     var person: [String: Any]!
-    var requestOp: RequestOperation<PersonGETService>!
+    var requestOp: DataRequestOperation<PersonGETService>!
     
     func getPerson() {
         requestOp = PersonGETService().executeTask() {

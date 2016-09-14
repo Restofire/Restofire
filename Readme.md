@@ -32,7 +32,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 ## Requirements
 
 - iOS 9.0+ / Mac OS X 10.11+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 8.0 beta 6+
+- Xcode 8.0+
 
 ## Installation
 
@@ -44,7 +44,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.0.1+ is required to build Restofire 2.0.0+.
+> CocoaPods 1.1.0+ is required to build Restofire 2.0.0+.
 
 To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -262,7 +262,7 @@ struct HTTPBinPersonGETService: Requestable, HTTPBinConfigurable, HTTPBinValidat
 
     typealias Model = [String: Any]
     let path: String = "get"
-    let encoding: ParameterEncoding = .urlEncodedInURL
+    let encoding: ParameterEncoding = URLEncoding.default
     var parameters: Any?
 
     init(parameters: Any?) {
@@ -312,7 +312,7 @@ struct MoviesReviewGETService: Requestable {
     var baseURL: String = "http://api.nytimes.com/svc/movies/v2/"
     var path: String = "reviews/"
     var parameters: Any?
-    var encoding: ParameterEncoding = .urlEncodedInURL
+    var encoding: ParameterEncoding = URLEncoding.default
     var method: Alamofire.HTTPMethod = .get
     var headers: [String: String]? = ["Content-Type": "application/json"]
     var manager: Alamofire.SessionManager = {
@@ -344,7 +344,7 @@ import SwiftyJSON
 
 extension MoviesReviewGETService {
 
-    func didCompleteRequestWithResponse(response: Response<Model>) {
+    func didCompleteRequestWithResponse(response: DataResponse<Model>) {
         guard let model = response.result.value else { return }
         let realm = try! Realm()
         let jsonMovieReview = JSON(model)

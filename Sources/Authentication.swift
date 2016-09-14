@@ -12,7 +12,7 @@ import Foundation
 ///
 /// ```swift
 /// var authentication = Authentication()
-/// authentication.credential = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+/// authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
 /// ```
 public struct Authentication {
     

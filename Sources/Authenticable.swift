@@ -19,7 +19,7 @@ import Foundation
 ///
 ///   var configuration: Configuration {
 ///     var authentication = Authentication()
-///     authentication.credential = NSURLCredential(user: "user", password: "password", persistence: .ForSession)
+///     authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
 ///     return authentication
 ///   }
 ///
@@ -31,7 +31,7 @@ import Foundation
 /// class HTTPBinStringGETService: Requestable, HTTPBinAuthenticable {
 ///
 ///   let path: String = "get"
-///   let encoding: ParameterEncoding = .URLEncodedInURL
+///   let encoding: ParameterEncoding = URLEncoding.default
 ///   var parameters: Any?
 ///
 ///   init(parameters: Any?) {

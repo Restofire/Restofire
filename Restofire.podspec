@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
  s.source = { :git => "https://github.com/Restofire/Restofire.git", :tag => "v"+s.version.to_s }
  s.platforms     = { :ios => "9.0", :osx => "10.11", :tvos => "9.0", :watchos => "2.0" }
  s.requires_arc = true
+ s.pod_target_xcconfig = { "SWIFT_OPTIMIZATION_LEVEL" => "-Owholemodule" }
 
  s.default_subspec = "Core"
  s.subspec "Core" do |ss|

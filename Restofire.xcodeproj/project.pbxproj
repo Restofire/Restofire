@@ -16,10 +16,10 @@
 		351AC43D1D759045007C993C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C0DBB1D75745F0096239A /* Alamofire.framework */; };
 		351AC43E1D75904F007C993C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C0DB71D75745F0096239A /* Alamofire.framework */; };
 		351AC43F1D75905B007C993C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357C0DBF1D75745F0096239A /* Alamofire.framework */; };
-		352108C21CC29E99006D752E /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* RequestOperation.swift */; };
-		352108C31CC29E99006D752E /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* RequestOperation.swift */; };
-		352108C41CC29E99006D752E /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* RequestOperation.swift */; };
-		352108C51CC29E99006D752E /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* RequestOperation.swift */; };
+		352108C21CC29E99006D752E /* DataRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* DataRequestOperation.swift */; };
+		352108C31CC29E99006D752E /* DataRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* DataRequestOperation.swift */; };
+		352108C41CC29E99006D752E /* DataRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* DataRequestOperation.swift */; };
+		352108C51CC29E99006D752E /* DataRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352108C11CC29E99006D752E /* DataRequestOperation.swift */; };
 		352260AA1C5E2D16000AE7C0 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3544ED8C1CBA572C00CDF3C9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */; };
 		3544ED8D1CBA572C00CDF3C9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */; };
@@ -40,9 +40,9 @@
 		35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
-		35766C921CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
-		35766C931CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
-		35766C941CC553AA00D532C9 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
+		35766C921CC553A900D532C9 /* DataRequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */; };
+		35766C931CC553A900D532C9 /* DataRequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */; };
+		35766C941CC553AA00D532C9 /* DataRequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */; };
 		3579C9EC1C732E4C00ED7BF2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 352260A11C5E2BCA000AE7C0 /* Nimble.framework */; };
 		3579C9ED1C732E4C00ED7BF2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3522609F1C5E2BBD000AE7C0 /* Quick.framework */; };
 		3583C3D81CC4D5290097D10B /* HTTPBinBasicAuthenticationService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35856C781CC2891B00ACBDB9 /* HTTPBinBasicAuthenticationService+GETSpec.swift */; };
@@ -56,7 +56,7 @@
 		3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
 		3596CC001CA3B5030089A03E /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
-		35A0949F1CC3EA9400C58702 /* RequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */; };
+		35A0949F1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
 		35C05C641D75D0DC003D04F2 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 357C0DB31D75745F0096239A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35C05C6F1D76BBB2003D04F2 /* VoidService+GETSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED2C1CBA40F700CDF3C9 /* VoidService+GETSpec.swift */; };
@@ -183,7 +183,7 @@
 		3500626E1C7C40510078B589 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3500626F1C7C40510078B589 /* Restofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restofire.h; sourceTree = "<group>"; };
 		3502C2EC1CC738F9009B06EA /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
-		352108C11CC29E99006D752E /* RequestOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestOperation.swift; sourceTree = "<group>"; };
+		352108C11CC29E99006D752E /* DataRequestOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestOperation.swift; sourceTree = "<group>"; };
 		3522609F1C5E2BBD000AE7C0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		352260A11C5E2BCA000AE7C0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GET.swift"; sourceTree = "<group>"; };
@@ -212,7 +212,7 @@
 		35856C781CC2891B00ACBDB9 /* HTTPBinBasicAuthenticationService+GETSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HTTPBinBasicAuthenticationService+GETSpec.swift"; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
-		35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestEventuallyOperation.swift; sourceTree = "<group>"; };
+		35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataRequestEventuallyOperation.swift; sourceTree = "<group>"; };
 		35B19DDB1BEE134E001D3952 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DE51BEE134E001D3952 /* RestofireTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestofireTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C385141CAE43ED003CE0BE /* Restofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restofire.swift; sourceTree = "<group>"; };
@@ -300,8 +300,8 @@
 				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
 				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
 				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
-				352108C11CC29E99006D752E /* RequestOperation.swift */,
-				35A0949E1CC3EA9400C58702 /* RequestEventuallyOperation.swift */,
+				352108C11CC29E99006D752E /* DataRequestOperation.swift */,
+				35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -708,11 +708,11 @@
 				35E6D35E1CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F41CC61E52004840E1 /* AlamofireUtils.swift in Sources */,
-				352108C31CC29E99006D752E /* RequestOperation.swift in Sources */,
+				352108C31CC29E99006D752E /* DataRequestOperation.swift in Sources */,
 				35E6D34F1CCBC68D007ABC05 /* ResponseSerializable.swift in Sources */,
 				35E6D3591CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */,
-				35766C921CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */,
+				35766C921CC553A900D532C9 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				35E6D3631CCBD75A007ABC05 /* Authentication.swift in Sources */,
@@ -729,11 +729,11 @@
 				35E6D35F1CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F51CC61E52004840E1 /* AlamofireUtils.swift in Sources */,
-				352108C41CC29E99006D752E /* RequestOperation.swift in Sources */,
+				352108C41CC29E99006D752E /* DataRequestOperation.swift in Sources */,
 				35E6D3501CCBC68D007ABC05 /* ResponseSerializable.swift in Sources */,
 				35E6D35A1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */,
-				35766C931CC553A900D532C9 /* RequestEventuallyOperation.swift in Sources */,
+				35766C931CC553A900D532C9 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				35E6D3641CCBD75A007ABC05 /* Authentication.swift in Sources */,
@@ -750,11 +750,11 @@
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F61CC61E52004840E1 /* AlamofireUtils.swift in Sources */,
-				352108C51CC29E99006D752E /* RequestOperation.swift in Sources */,
+				352108C51CC29E99006D752E /* DataRequestOperation.swift in Sources */,
 				35E6D3511CCBC68D007ABC05 /* ResponseSerializable.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */,
-				35766C941CC553AA00D532C9 /* RequestEventuallyOperation.swift in Sources */,
+				35766C941CC553AA00D532C9 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
@@ -771,11 +771,11 @@
 				35E6D35D1CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36C1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F31CC61E52004840E1 /* AlamofireUtils.swift in Sources */,
-				352108C21CC29E99006D752E /* RequestOperation.swift in Sources */,
+				352108C21CC29E99006D752E /* DataRequestOperation.swift in Sources */,
 				35E6D34E1CCBC68D007ABC05 /* ResponseSerializable.swift in Sources */,
 				35E6D3581CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35547F261CC0A32D0070F5D3 /* Configurable.swift in Sources */,
-				35A0949F1CC3EA9400C58702 /* RequestEventuallyOperation.swift in Sources */,
+				35A0949F1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				35E6D3621CCBD75A007ABC05 /* Authentication.swift in Sources */,

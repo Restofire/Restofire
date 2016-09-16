@@ -11,7 +11,7 @@ import Foundation
 /// Represents a `Retry` that is associated with `Configurable`.
 /// `configuration.retry` by default.
 ///
-/// ### Create custom retryable
+/// ### Create custom Retryable
 /// ```swift
 /// protocol HTTPBinRetryable: Retryable { }
 ///
@@ -28,7 +28,7 @@ import Foundation
 /// }
 /// ```
 ///
-/// ### Using the above configurable
+/// ### Using the above Retryable
 /// ```swift
 /// class HTTPBinStringGETService: Requestable, HTTPBinRetryable {
 ///
@@ -44,7 +44,7 @@ import Foundation
 /// ```
 public protocol Retryable {
     
-    /// The Restofire configuration.
+    /// The `retry`.
     var retry: Retry { get }
     
 }

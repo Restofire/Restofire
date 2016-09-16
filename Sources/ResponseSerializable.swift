@@ -9,10 +9,10 @@
 import Foundation
 import Alamofire
 
-/// Represents a `ResponseSerializable` that is associated with `Requestable`.
-/// `CustomJSONResponseSerializer()` by default.
+/// Represents a `ResponseSerializable` that is associated with `Configurable`.
+/// `configuration.responseSerializer` by default.
 ///
-/// ### Create custom response serializable
+/// ### Create custom ResponseSerializable
 /// ```swift
 /// protocol HTTPBinResponseSerializable: ResponseSerializable { }
 ///
@@ -25,7 +25,7 @@ import Alamofire
 /// }
 /// ```
 ///
-/// ### Using the above configurable
+/// ### Using the above ResponseSerializable
 /// ```swift
 /// class HTTPBinStringGETService: Requestable, HTTPBinResponseSerializable {
 ///
@@ -44,16 +44,16 @@ public protocol ResponseSerializable {
     /// The type of object returned in response.
     associatedtype Model
     
-    /// The `Alamofire.DataResponseSerializer`.
+    /// The `responseSerializer`.
     var responseSerializer: Alamofire.DataResponseSerializer<Model> { get }
     
 }
 
-extension ResponseSerializable {
+extension ResponseSerializable where Self: Configurable  {
     
-    /// `jsonResponseSerializer`
+    /// `configuration.responseSerializer`
     public var responseSerializer: Alamofire.DataResponseSerializer<Model> {
-        return AlamofireUtils.jsonResponseSerializer()
+        return configuration.responseSerializer()
     }
     
 }

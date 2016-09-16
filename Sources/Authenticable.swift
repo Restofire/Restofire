@@ -11,7 +11,7 @@ import Foundation
 /// Represents an `Authentication` that is associated with `Configurable`.
 /// `configuration.authentication` by default.
 ///
-/// ### Create custom authenticable
+/// ### Create custom Authenticable
 /// ```swift
 /// protocol HTTPBinAuthenticable: Authenticable { }
 ///
@@ -26,7 +26,7 @@ import Foundation
 /// }
 /// ```
 ///
-/// ### Using the above authenticable
+/// ### Using the above Authenticable
 /// ```swift
 /// class HTTPBinStringGETService: Requestable, HTTPBinAuthenticable {
 ///
@@ -42,7 +42,7 @@ import Foundation
 /// ```
 public protocol Authenticable {
     
-    /// The `Authentication`.
+    /// The `authentication`.
     var authentication: Authentication { get }
     
 }

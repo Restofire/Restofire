@@ -5,6 +5,9 @@
       location = "group:Restofire.playground">
    </FileRef>
    <FileRef
+      location = "group:Example/Example.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Restofire.xcodeproj">
    </FileRef>
    <FileRef

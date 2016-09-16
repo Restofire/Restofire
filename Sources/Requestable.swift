@@ -51,10 +51,7 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Requestable: Configurable, ResponseSerializable, Authenticable, Validatable, Retryable {
-    
-    /// The type of object returned in response.
-    associatedtype Model
+public protocol Requestable: Authenticable, Configurable, ResponseSerializable, Retryable, Validatable, Queueable {
     
     /// The base URL.
     var baseURL: String { get }

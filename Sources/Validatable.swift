@@ -11,7 +11,7 @@ import Foundation
 /// Represents a `Validation` that is associated with `Configurable`.
 /// `configuration.validation` by default.
 ///
-/// ### Create custom validatable
+/// ### Create custom Validatable
 /// ```swift
 /// protocol HTTPBinValidatable: Validatable { }
 ///
@@ -27,7 +27,7 @@ import Foundation
 /// }
 /// ```
 ///
-/// ### Using the above validatable
+/// ### Using the above Validatable
 /// ```swift
 /// class HTTPBinStringGETService: Requestable, HTTPBinValidatable {
 ///
@@ -43,7 +43,7 @@ import Foundation
 /// ```
 public protocol Validatable {
     
-    /// The `Validation`.
+    /// The `validation`.
     var validation: Validation { get }
     
 }

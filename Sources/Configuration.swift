@@ -51,6 +51,11 @@ public struct Configuration {
     /// The `Retry`.
     public var retry = Retry()
     
+    /// The `Alamofire.DataResponseSerializer`.
+    public func responseSerializer<Model>() -> Alamofire.DataResponseSerializer<Model> {
+        return AlamofireUtils.jsonResponseSerializer()
+    }
+    
     /// The logging, if enabled prints the debug textual representation of the 
     /// request when the response is recieved. `false` by default.
     public var logging: Bool = false
@@ -60,6 +65,6 @@ public struct Configuration {
     
     /// The queue on which reponse will be delivered. `DispatchQueue.main`
     /// by default.
-    public var queue: DispatchQueue? = DispatchQueue.main
+    public var queue: DispatchQueue = DispatchQueue.main
     
 }

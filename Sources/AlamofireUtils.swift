@@ -34,27 +34,26 @@ class AlamofireUtils {
         
     }
     
-    static func jsonResponseSerializer<M>() -> Alamofire.DataResponseSerializer<M> {
-        return Alamofire.DataResponseSerializer { _, response, data, error in
-            guard error == nil else { return .failure(error!) }
-            
-            guard let validData = data, validData.count > 0 else {
-                return .failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: validData, options: .allowFragments)
-                if let json = json as? M {
-                    return .success(json)
-                } else {
-                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"TypeMismatch(Expected \(M.self), got \(type(of: json)))"])
-                    return .failure(error)
-                }
-            } catch {
-                return .failure(AFError.responseSerializationFailed(reason: .jsonSerializationFailed(error: error)))
-            }
-            
+    fileprivate static func authenticateRequest(_ request: Alamofire.DataRequest, usingCredential credential:URLCredential?) {
+        guard let credential = credential else { return }
+        request.authenticate(usingCredential: credential)
+    }
+    
+    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableContentTypes contentTypes:[String]?) {
+        guard let contentTypes = contentTypes else { return }
+        request.validate(contentType: contentTypes)
+    }
+    
+    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableStatusCodes statusCodes:[CountableRange<Int>]?) {
+        guard let statusCodes = statusCodes else { return }
+        for statusCode in statusCodes {
+            request.validate(statusCode: statusCode)
         }
+    }
+    
+    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forValidation validation:Alamofire.DataRequest.Validation?) {
+        guard let validation = validation else { return }
+        request.validate(validation)
     }
     
     fileprivate static func encode(_ urlRequest: URLRequestConvertible, parameters: [Any]?, encoding: ParameterEncoding) throws -> URLRequest {
@@ -101,26 +100,31 @@ class AlamofireUtils {
         
     }
     
-    fileprivate static func authenticateRequest(_ request: Alamofire.DataRequest, usingCredential credential:URLCredential?) {
-        guard let credential = credential else { return }
-        request.authenticate(usingCredential: credential)
-    }
+}
+
+extension AlamofireUtils {
     
-    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableContentTypes contentTypes:[String]?) {
-        guard let contentTypes = contentTypes else { return }
-        request.validate(contentType: contentTypes)
-    }
-    
-    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableStatusCodes statusCodes:[CountableRange<Int>]?) {
-        guard let statusCodes = statusCodes else { return }
-        for statusCode in statusCodes {
-            request.validate(statusCode: statusCode)
+    static func jsonResponseSerializer<M>() -> Alamofire.DataResponseSerializer<M> {
+        return Alamofire.DataResponseSerializer { _, response, data, error in
+            guard error == nil else { return .failure(error!) }
+            
+            guard let validData = data, validData.count > 0 else {
+                return .failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: validData, options: .allowFragments)
+                if let json = json as? M {
+                    return .success(json)
+                } else {
+                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"TypeMismatch(Expected \(M.self), got \(type(of: json)))"])
+                    return .failure(error)
+                }
+            } catch {
+                return .failure(AFError.responseSerializationFailed(reason: .jsonSerializationFailed(error: error)))
+            }
+            
         }
-    }
-    
-    fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forValidation validation:Alamofire.DataRequest.Validation?) {
-        guard let validation = validation else { return }
-        request.validate(validation)
     }
     
 }

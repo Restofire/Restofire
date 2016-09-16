@@ -11,7 +11,7 @@ import Foundation
 /// Represents a `Configuration` that is associated with `Requestable`.
 /// `Restofire.defaultConfiguration()` by default.
 ///
-/// ### Create custom configurable
+/// ### Create custom Configurable
 /// ```swift
 /// protocol HTTPBinConfigurable: Configurable { }
 ///
@@ -27,7 +27,7 @@ import Foundation
 /// }
 /// ```
 ///
-/// ### Using the above configurable
+/// ### Using the above Configurable
 /// ```swift
 /// class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
 ///
@@ -43,7 +43,7 @@ import Foundation
 /// ```
 public protocol Configurable {
     
-    /// The Restofire configuration.
+    /// The `configuration`.
     var configuration: Configuration { get }
 
 }

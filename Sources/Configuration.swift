@@ -52,9 +52,7 @@ public struct Configuration {
     public var retry = Retry()
     
     /// The `Alamofire.DataResponseSerializer`.
-    public func responseSerializer<Model>() -> Alamofire.DataResponseSerializer<Model> {
-        return AlamofireUtils.jsonResponseSerializer()
-    }
+    public var responseSerializer: Alamofire.DataResponseSerializer<Any> = AlamofireUtils.jsonResponseSerializer()
     
     /// The logging, if enabled prints the debug textual representation of the 
     /// request when the response is recieved. `false` by default.

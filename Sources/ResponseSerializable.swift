@@ -41,19 +41,16 @@ import Alamofire
 /// ```
 public protocol ResponseSerializable {
     
-    /// The type of object returned in response.
-    associatedtype Model
-    
     /// The `responseSerializer`.
-    var responseSerializer: Alamofire.DataResponseSerializer<Model> { get }
+    var responseSerializer: Alamofire.DataResponseSerializer<Any> { get }
     
 }
 
 extension ResponseSerializable where Self: Configurable  {
     
     /// `configuration.responseSerializer`
-    public var responseSerializer: Alamofire.DataResponseSerializer<Model> {
-        return configuration.responseSerializer()
+    public var responseSerializer: Alamofire.DataResponseSerializer<Any> {
+        return configuration.responseSerializer
     }
     
 }

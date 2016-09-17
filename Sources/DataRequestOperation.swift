@@ -17,10 +17,10 @@ open class DataRequestOperation<R: Requestable>: Operation {
     
     var request: Alamofire.DataRequest!
     let requestable: R
-    let completionHandler: ((Alamofire.DataResponse<R.Model>) -> Void)?
+    let completionHandler: ((Alamofire.DataResponse<Any>) -> Void)?
     var retryAttempts = 0
     
-    init(requestable: R, completionHandler: ((Alamofire.DataResponse<R.Model>) -> Void)?) {
+    init(requestable: R, completionHandler: ((Alamofire.DataResponse<Any>) -> Void)?) {
         self.requestable = requestable
         retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -129,7 +129,7 @@ open class DataRequestOperation<R: Requestable>: Operation {
     
     func executeRequest() {
         request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
-        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Alamofire.DataResponse<R.Model>) in
+        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Alamofire.DataResponse<Any>) in
             if response.result.error == nil {
                 self.successful = true
                 self.requestable.didCompleteRequestWithResponse(response)
@@ -144,7 +144,7 @@ open class DataRequestOperation<R: Requestable>: Operation {
         }
     }
     
-    func handleErrorResponse(_ response: Alamofire.DataResponse<R.Model>) {
+    func handleErrorResponse(_ response: Alamofire.DataResponse<Any>) {
         self.failed = true
         self.requestable.didCompleteRequestWithResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }

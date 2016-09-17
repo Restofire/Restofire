@@ -107,7 +107,7 @@ extension AlamofireUtils {
         } else if let value = result.value as? M {
             return .success(value)
         } else {
-            fatalError("ResponseSerializer failed to serialize the response of type \(type(of: (result.value))) to Requestable Model of type \(M.self)")
+            fatalError("ResponseSerializer failed to serialize the response to Requestable Model of type \(M.self)")
         }
     }
     

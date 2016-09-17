@@ -12,7 +12,6 @@ import Restofire
 
 struct IntGETService: Requestable {
 
-    typealias Model = Int
     let path: String = "56c2beee1200007b2473f19f"
 
 }

@@ -23,7 +23,7 @@ class VoidGETServiceSpec: ServiceSpec {
                 var expected: NSDictionary!
 
                 VoidGETService().executeTask() {
-                    if let value = $0.result.value {
+                    if let value = $0.result.value as? [String: Any]  {
                         expected = NSDictionary(dictionary: value)
                     }
                 }
@@ -38,7 +38,7 @@ class VoidGETServiceSpec: ServiceSpec {
                 var expected: NSDictionary!
                 
                 let requestOperation = VoidGETService().requestOperation() {
-                    if let value = $0.result.value {
+                    if let value = $0.result.value as? [String: Any]  {
                         expected = NSDictionary(dictionary: value)
                     }
                 }

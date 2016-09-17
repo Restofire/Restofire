@@ -12,7 +12,6 @@ import Restofire
 
 struct FloatGETService: Requestable {
     
-    typealias Model = Float
     let path: String = "56c2bfd61200006c2473f1a0"
 
 }

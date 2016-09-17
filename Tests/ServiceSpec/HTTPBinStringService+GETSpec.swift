@@ -19,33 +19,32 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
 
             it("executeTask") {
 
-                let actual = "Rahul Katariya"
-                var expected: String!
+                let actual: [String: Any] = ["name": "Rahul Katariya"]
+                var expected: NSDictionary!
 
                 HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
-                    if let response = $0.result.value?["args"] as? [String: Any], let value = response["name"] as? String {
-                        expected = value
+                    if let response = $0.result.value as? [String: Any], let value = response["args"] as? [String: Any] {
+                        expected = NSDictionary(dictionary: value)
                     }
                 }
 
-                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                expect(expected).toEventually(equal(NSDictionary(dictionary: actual)), timeout: self.timeout, pollInterval: self.pollInterval)
 
             }
             
             it("executeRequestOperation") {
                 
-                let actual = "Rahul Katariya"
-                var expected: String!
+                let actual: [String: Any] = ["name": "Rahul Katariya"]
+                var expected: NSDictionary!
                 
                 let requestOperation = HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).requestOperation() {
-                    if let response = $0.result.value?["args"] as? [String: Any], let value = response["name"] as? String {
-                        expected = value
-                    }
+                    if let response = $0.result.value as? [String: Any], let value = response["args"] as? [String: Any] {
+                        expected = NSDictionary(dictionary: value)                    }
                 }
                 
                 requestOperation.start()
                 
-                expect(expected).toEventually(equal(actual), timeout: self.timeout, pollInterval: self.pollInterval)
+                expect(expected).toEventually(equal(NSDictionary(dictionary: actual)), timeout: self.timeout, pollInterval: self.pollInterval)
                 
             }
         }

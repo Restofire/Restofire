@@ -21,7 +21,7 @@ class HTTPBinBasicAuthenticationGETServiceSpec: ServiceSpec {
                 var expected: Bool!
                 
                 HTTPBinBasicAuthenticationGETService().executeTask() {
-                    if let response = $0.result.value, let value = response["authenticated"] as? Bool {
+                    if let response = $0.result.value as? [String: Any], let value = response["authenticated"] as? Bool {
                         expected = value
                     }
                 }
@@ -35,7 +35,7 @@ class HTTPBinBasicAuthenticationGETServiceSpec: ServiceSpec {
                 var expected: Bool!
                 
                 let requestOperation = HTTPBinBasicAuthenticationGETService().requestOperation() {
-                    if let response = $0.result.value, let value = response["authenticated"] as? Bool {
+                    if let response = $0.result.value as? [String: Any], let value = response["authenticated"] as? Bool {
                         expected = value
                     }
                 }

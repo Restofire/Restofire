@@ -19,7 +19,7 @@ import Foundation
 ///
 ///   var retry: Retry {
 ///     var retry = Retry()
-///     retry.retryErrorCodes = [NSURLErrorTimedOut,NSURLErrorNetworkConnectionLost]
+///     retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
 ///     retry.retryInterval = 20
 ///     retry.maxRetryAttempts = 10
 ///     return retry

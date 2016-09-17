@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represents an `Authentication` that is associated with `Configurable`.
+/// Represents an `Authenticable` that is associated with `Configurable`.
 /// `configuration.authentication` by default.
 ///
 /// ### Create custom Authenticable

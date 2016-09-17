@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represents a `Configuration` that is associated with `Requestable`.
+/// Represents a `Configurable` that is associated with `Requestable`.
 /// `Restofire.defaultConfiguration()` by default.
 ///
 /// ### Create custom Configurable
@@ -20,7 +20,7 @@ import Foundation
 ///   var configuration: Configuration {
 ///     var config = Configuration()
 ///     config.baseURL = "https://httpbin.org/"
-///     config.logging = Restofire.defaultConfiguration.loggin
+///     config.logging = Restofire.defaultConfiguration.logging
 ///     return config
 ///   }
 ///

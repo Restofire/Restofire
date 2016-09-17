@@ -53,6 +53,9 @@ import Alamofire
 /// ```
 public protocol Requestable: Authenticable, Configurable, ResponseSerializable, Retryable, SessionManagable, Validatable, Queueable {
     
+    /// The response type.
+    associatedtype Value
+    
     /// The base URL.
     var baseURL: String { get }
     

@@ -13,7 +13,7 @@ import Foundation
 ///
 /// ```swift
 /// var validation = Validation()
-/// validation.acceptableStatusCodes = [200..<300]
+/// validation.acceptableStatusCodes = Array(200..<300)
 /// validation.acceptableContentTypes = ["application/json"]
 /// ```
 public struct Validation {
@@ -22,7 +22,7 @@ public struct Validation {
     public var validationBlock: Alamofire.DataRequest.Validation?
     
     /// The acceptable status codes. `nil` by default.
-    public var acceptableStatusCodes: [CountableRange<Int>]?
+    public var acceptableStatusCodes: [Int]?
     
     /// The acceptable content types. `nil` by default.
     public var acceptableContentTypes: [String]?

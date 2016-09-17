@@ -42,15 +42,15 @@ import Alamofire
 public protocol ResponseSerializable {
     
     /// The `responseSerializer`.
-    var responseSerializer: Alamofire.DataResponseSerializer<Any> { get }
+    var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> { get }
     
 }
 
 extension ResponseSerializable where Self: Configurable  {
     
     /// `configuration.responseSerializer`
-    public var responseSerializer: Alamofire.DataResponseSerializer<Any> {
-        return configuration.responseSerializer
+    public var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> {
+        return configuration.dataResponseSerializer
     }
     
 }

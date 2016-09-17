@@ -16,7 +16,7 @@ import Alamofire
 /// configuration.baseURL = "http://www.mocky.io/v2/"
 /// configuration.headers = ["Content-Type": "application/json"]
 /// configuration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
-/// configuration.validation.acceptableStatusCodes = [200..<300]
+/// configuration.validation.acceptableStatusCodes = Array(200..<300)
 /// configuration.validation.acceptableContentTypes = ["application/json"]
 /// configuration.logging = true
 /// configuration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
@@ -52,7 +52,7 @@ public struct Configuration {
     public var retry = Retry()
     
     /// The `Alamofire.DataResponseSerializer`.
-    public var responseSerializer: Alamofire.DataResponseSerializer<Any> = Alamofire.DataRequest.jsonResponseSerializer()
+    public var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> = Alamofire.DataRequest.jsonResponseSerializer()
     
     /// The logging, if enabled prints the debug textual representation of the 
     /// request when the response is recieved. `false` by default.

@@ -90,7 +90,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     var validationBlock: Alamofire.DataRequest.Validation? { get }
     
     /// The acceptable status codes.
-    var acceptableStatusCodes: [CountableRange<Int>]? { get }
+    var acceptableStatusCodes: [Int]? { get }
     
     /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
@@ -110,7 +110,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteRequestWithResponse(_ response: Alamofire.DataResponse<Self.Model>)
+    func didCompleteRequestWithDataResponse(_ response: Alamofire.DataResponse<Self.Model>)
     
 }
 
@@ -230,7 +230,7 @@ public extension Requestable {
     }
     
     /// `validation.acceptableStatusCodes`
-    public var acceptableStatusCodes: [CountableRange<Int>]? {
+    public var acceptableStatusCodes: [Int]? {
         return validation.acceptableStatusCodes
     }
     
@@ -258,6 +258,6 @@ public extension Requestable {
     public func didStartRequest() { }
     
     /// Does nothing.
-    public func didCompleteRequestWithResponse(_ response: Alamofire.DataResponse<Self.Model>) { }
+    public func didCompleteRequestWithDataResponse(_ response: Alamofire.DataResponse<Self.Model>) { }
     
 }

@@ -23,9 +23,10 @@ class ServiceSpec: QuickSpec {
         beforeSuite {
             Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
             Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
-            Restofire.defaultConfiguration.validation.acceptableStatusCodes = [200..<201]
+            Restofire.defaultConfiguration.validation.acceptableStatusCodes = Array(200..<201)
             Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]
             Restofire.defaultConfiguration.logging = true
+            Restofire.defaultConfiguration.dataResponseSerializer = Alamofire.DataRequest.jsonResponseSerializer()
             
             let sessionConfiguration = URLSessionConfiguration.default
             sessionConfiguration.timeoutIntervalForRequest = 10

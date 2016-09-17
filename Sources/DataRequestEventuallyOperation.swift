@@ -44,7 +44,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorResponse(_ response: Alamofire.DataResponse<R.Model>) {
+    override func handleErrorDataResponse(_ response: Alamofire.DataResponse<R.Model>) {
         if let error = response.result.error as? URLError, self.retryAttempts > 0 {
             if error.code == .notConnectedToInternet {
                 self.pause = true
@@ -53,7 +53,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
                 self.perform(#selector(DataRequestOperation<R>.executeRequest), with: nil, afterDelay: self.requestable.retryInterval)
             }
         } else {
-           super.handleErrorResponse(response)
+           super.handleErrorDataResponse(response)
         }
     }
 

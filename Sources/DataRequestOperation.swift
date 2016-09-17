@@ -128,16 +128,16 @@ open class DataRequestOperation<R: Requestable>: Operation {
     }
     
     func executeRequest() {
-        request = AlamofireUtils.alamofireRequestFromRequestable(requestable)
-        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.responseSerializer) { (response: Alamofire.DataResponse<Any>) in
-            let transformedResult: Result<R.Model> = AlamofireUtils.serializeRequestableResponse(result: response.result)
+        request = AlamofireUtils.alamofireDataRequestFromRequestable(requestable)
+        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.dataResponseSerializer) { (response: Alamofire.DataResponse<Any>) in
+            let transformedResult: Result<R.Model> = AlamofireUtils.castAnyResultToRequestableModel(result: response.result)
             let transformedResponse = Alamofire.DataResponse<R.Model>(request: response.request, response: response.response, data: response.data, result: transformedResult, timeline: response.timeline)
             if transformedResponse.result.error == nil {
                 self.successful = true
-                self.requestable.didCompleteRequestWithResponse(transformedResponse)
+                self.requestable.didCompleteRequestWithDataResponse(transformedResponse)
                 if let completionHandler = self.completionHandler { completionHandler(transformedResponse) }
             } else {
-                self.handleErrorResponse(transformedResponse)
+                self.handleErrorDataResponse(transformedResponse)
             }
             if self.requestable.logging {
                 debugPrint(self.request)
@@ -146,9 +146,9 @@ open class DataRequestOperation<R: Requestable>: Operation {
         }
     }
     
-    func handleErrorResponse(_ response: Alamofire.DataResponse<R.Model>) {
+    func handleErrorDataResponse(_ response: Alamofire.DataResponse<R.Model>) {
         self.failed = true
-        self.requestable.didCompleteRequestWithResponse(response)
+        self.requestable.didCompleteRequestWithDataResponse(response)
         if let completionHandler = self.completionHandler { completionHandler(response) }
     }
     

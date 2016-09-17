@@ -147,7 +147,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
         Restofire.defaultConfiguration.logging = true
         Restofire.defaultConfiguration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
-        Restofire.defaultConfiguration.validation.acceptableStatusCodes = [200..<300]
+        Restofire.defaultConfiguration.validation.acceptableStatusCodes = Array(200..<300)
         Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]
         Restofire.defaultConfiguration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
         Restofire.defaultConfiguration.retry.retryInterval = 20
@@ -187,7 +187,7 @@ import Restofire
 class ViewController: UIViewController {
 
     var person: [String: Any]!
-    var requestOp: RequestOperation<PersonGETService>!
+    var requestOp: DataRequestOperation<PersonGETService>!
 
     func getPerson() {
         requestOp = PersonGETService().executeTask() {
@@ -282,7 +282,7 @@ import Restofire
 class ViewController: UIViewController {
 
     var person: [String: Any]!
-    var requestOp: RequestOperation<HTTPBinPersonGETService>!
+    var requestOp: DataRequestOperation<HTTPBinPersonGETService>!
 
     func getPerson() {
         requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
@@ -309,7 +309,7 @@ import Alamofire
 struct MoviesReviewGETService: Requestable {
 
     typealias Model = Any
-    var baseURL: String = "http://api.nytimes.com/svc/movies/v2/"
+    var host: String = "http://api.nytimes.com/svc/movies/v2/"
     var path: String = "reviews/"
     var parameters: Any?
     var encoding: ParameterEncoding = URLEncoding.default

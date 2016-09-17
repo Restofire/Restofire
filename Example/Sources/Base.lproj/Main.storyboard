@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A320" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1iR-hK-Jai">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Github-->
+        <scene sceneID="4dF-bQ-qjD">
+            <objects>
+                <viewController id="6Cn-YI-SZT" customClass="GithubLoginViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Github" id="cxl-7c-6qt"/>
+                    <connections>
+                        <segue destination="DAX-FJ-NF9" kind="show" identifier="ReposSegue" id="1aC-Ju-KCB">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s3Y-aP-GLy" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="335"/>
+        </scene>
+        <!--Repositories-->
+        <scene sceneID="4fX-oD-VYs">
+            <objects>
+                <tableViewController id="DAX-FJ-NF9" customClass="ReposTableViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Repositories" id="Sak-vm-PZK"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDj-KU-Nrj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1922" y="334"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xQK-py-gqD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1iR-hK-Jai" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sKD-q7-m3o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Cn-YI-SZT" kind="relationship" relationship="rootViewController" id="iKK-ma-8V8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XUd-4D-pWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="300" y="334"/>
+        </scene>
+    </scenes>
+</document>

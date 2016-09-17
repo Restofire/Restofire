@@ -104,26 +104,13 @@ class AlamofireUtils {
 
 extension AlamofireUtils {
     
-    static func jsonResponseSerializer<M>() -> Alamofire.DataResponseSerializer<M> {
-        return Alamofire.DataResponseSerializer { _, response, data, error in
-            guard error == nil else { return .failure(error!) }
-            
-            guard let validData = data, validData.count > 0 else {
-                return .failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
-            }
-            
-            do {
-                let json = try JSONSerialization.jsonObject(with: validData, options: .allowFragments)
-                if let json = json as? M {
-                    return .success(json)
-                } else {
-                    let error = NSError(domain: "com.rahulkatariya.Restofire", code: -1, userInfo: [NSLocalizedDescriptionKey:"TypeMismatch(Expected \(M.self), got \(type(of: json)))"])
-                    return .failure(error)
-                }
-            } catch {
-                return .failure(AFError.responseSerializationFailed(reason: .jsonSerializationFailed(error: error)))
-            }
-            
+    static func serializeRequestableResponse<M>(result: Result<Any>) -> Result<M> {
+        if let error = result.error {
+            return .failure(error)
+        } else if let value = result.value as? M {
+            return .success(value)
+        } else {
+            fatalError("Custom ResponseSerializer failed to serialize the response")
         }
     }
     
@@ -132,10 +119,10 @@ extension AlamofireUtils {
 extension Alamofire.DataRequest {
     
     @discardableResult
-    func restofireResponse<M>(
+    func restofireResponse(
         queue: DispatchQueue? = nil,
-        responseSerializer: Alamofire.DataResponseSerializer<M>,
-        completionHandler: @escaping (Alamofire.DataResponse<M>) -> Void)
+        responseSerializer: Alamofire.DataResponseSerializer<Any>,
+        completionHandler: @escaping (Alamofire.DataResponse<Any>) -> Void)
         -> Self
     {
         return response(

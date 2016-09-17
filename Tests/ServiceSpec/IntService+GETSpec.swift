@@ -24,7 +24,7 @@ class IntGETServiceSpec: ServiceSpec {
 
                 IntGETService().executeTask() {
                     if let value = $0.result.value {
-                        expected = value as! Int
+                        expected = value
                     }
                 }
 
@@ -39,7 +39,7 @@ class IntGETServiceSpec: ServiceSpec {
                 
                 let requestOperation = IntGETService().requestOperation() {
                     if let value = $0.result.value {
-                        expected = value as! Int
+                        expected = value
                     }
                 }
                 

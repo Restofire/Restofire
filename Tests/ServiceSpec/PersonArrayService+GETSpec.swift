@@ -26,7 +26,7 @@ class PersonArrayGETServiceSpec: ServiceSpec {
                 var expected: [NSDictionary]!
 
                 PersonArrayGETService().executeTask() {
-                    if let value = $0.result.value as? [NSDictionary] {
+                    if let value = $0.result.value {
                         expected = value
                     }
                 }
@@ -44,7 +44,7 @@ class PersonArrayGETServiceSpec: ServiceSpec {
                 var expected: [NSDictionary]!
                 
                 let requestOperation = PersonArrayGETService().requestOperation() {
-                    if let value = $0.result.value as? [NSDictionary] {
+                    if let value = $0.result.value {
                         expected = value
                     }
                 }

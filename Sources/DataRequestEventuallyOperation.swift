@@ -22,7 +22,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
 
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
     
-    override init(requestable: R, completionHandler: ((Alamofire.DataResponse<Any>) -> Void)?) {
+    override init(requestable: R, completionHandler: ((Alamofire.DataResponse<R.Model>) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.isReady = false
         networkReachabilityManager?.listener = { status in
@@ -44,7 +44,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorResponse(_ response: Alamofire.DataResponse<Any>) {
+    override func handleErrorResponse(_ response: Alamofire.DataResponse<R.Model>) {
         if let error = response.result.error as? URLError, self.retryAttempts > 0 {
             if error.code == .notConnectedToInternet {
                 self.pause = true

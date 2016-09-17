@@ -23,7 +23,7 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
                 var expected: NSDictionary!
 
                 HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
-                    if let response = $0.result.value as? [String: Any], let value = response["args"] as? [String: Any] {
+                    if let response = $0.result.value, let value = response["args"] as? [String: Any] {
                         expected = NSDictionary(dictionary: value)
                     }
                 }
@@ -38,7 +38,7 @@ class HTTPBinStringGETServiceSpec: ServiceSpec {
                 var expected: NSDictionary!
                 
                 let requestOperation = HTTPBinStringGETService(parameters: ["name": "Rahul Katariya"]).requestOperation() {
-                    if let response = $0.result.value as? [String: Any], let value = response["args"] as? [String: Any] {
+                    if let response = $0.result.value, let value = response["args"] as? [String: Any] {
                         expected = NSDictionary(dictionary: value)                    }
                 }
                 

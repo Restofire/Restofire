@@ -10,9 +10,13 @@
    <FileRef
       location = "group:/Users/rahulkatariya/Developer/Restofire/Restofire/Example/Example.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:bootstrap">
-   </FileRef>
+   <Group
+      location = "group:scripts"
+      name = "scripts">
+      <FileRef
+         location = "group:bootstrap">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:Cartfile">
    </FileRef>

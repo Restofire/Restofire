@@ -227,7 +227,7 @@ extension HTTPBinValidatable {
 
   var validation: Validation {
     var validation = Validation()
-    validation.acceptableStatusCodes = [200..<300]
+    validation.acceptableStatusCodes = Array(200..<300)
     validation.acceptableContentTypes = ["application/json"]
     return validation
   }
@@ -325,7 +325,7 @@ struct MoviesReviewGETService: Requestable {
     var queue: DispatchQueue? = DispatchQueue.main
     var logging: Bool = Restofire.defaultConfiguration.logging
     var credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
-    var acceptableStatusCodes: [Range<Int>]? = [200..<300]
+    var acceptableStatusCodes: [Int]? = Array(200..<300)
     var acceptableContentTypes: [String]? = ["application/json"]
     var retryErrorCodes: Set<URLError.Code> = [.timedOut,.networkConnectionLost]
     var retryInterval: TimeInterval = 20
@@ -344,7 +344,7 @@ import SwiftyJSON
 
 extension MoviesReviewGETService {
 
-    func didCompleteRequestWithResponse(response: DataResponse<Model>) {
+    func didCompleteRequestWithDataResponse(dataResponse: DataResponse<Model>) {
         guard let model = response.result.value else { return }
         let realm = try! Realm()
         let jsonMovieReview = JSON(model)

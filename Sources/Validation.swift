@@ -26,5 +26,7 @@ public struct Validation {
     
     /// The acceptable content types. `nil` by default.
     public var acceptableContentTypes: [String]?
+    
+    public init() {}
 
 }

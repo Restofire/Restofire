@@ -40,7 +40,7 @@ public struct Configuration {
     public var encoding: Alamofire.ParameterEncoding = JSONEncoding.default
     
     /// The HTTP headers. `nil` by default.
-    public var headers: [String : String]?
+    public var headers: [String : String] = [:]
 
     /// The `Authentication`.
     public var authentication = Authentication()
@@ -65,4 +65,5 @@ public struct Configuration {
     /// by default.
     public var queue: DispatchQueue = DispatchQueue.main
     
+    public init() {}
 }

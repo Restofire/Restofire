@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Restofire.defaultConfiguration.baseURL = "https://api.github.com/"
-//        Restofire.defaultConfiguration.logging = true
+        Restofire.defaultConfiguration.logging = true
         
         return true
     }

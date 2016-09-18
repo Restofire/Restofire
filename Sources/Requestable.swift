@@ -194,9 +194,9 @@ public extension Requestable {
         return configuration.encoding
     }
     
-    /// `configuration.headers`
+    /// `nil`
     public var headers: [String: String]? {
-        return configuration.headers
+        return nil
     }
     
     /// `nil`

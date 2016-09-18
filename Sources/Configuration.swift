@@ -65,5 +65,8 @@ public struct Configuration {
     /// by default.
     public var queue: DispatchQueue = DispatchQueue.main
     
+    /// `Configuration` Intializer
+    ///
+    /// - returns: new `Configuration` object
     public init() {}
 }

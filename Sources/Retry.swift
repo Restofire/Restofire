@@ -37,6 +37,9 @@ public struct Retry {
     /// The max retry attempts. `5` by default.
     public var maxRetryAttempts = 5
     
+    /// `Retry` Intializer
+    ///
+    /// - returns: new `Retry` object
     public init() {}
     
 }

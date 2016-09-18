@@ -71,23 +71,23 @@ before_deploy:
 
 deploy:
   - provider: releases
-      api_key:
-        secure: KrjeFZFxA8KFpVpZuPpHzjhJREYmOprCR072mGzEJtuf/J9Auiqqml9EEbx0jtabpajkfbDRdWVjkSG+czc13QhBT4uBRCnPiX3c2t1m1PnaZEkiPTyY17ZFIC0+cyxwpQ1KPludHEy5cJ1JS98C6vzprxhSO1p4IDOBMbZ/AmeD8i+iHIGagvdyZdI0ksPuofm9qlg7aQgAvmz+XivlIEtnp9WuDFH0X62Pg2W2M5fJ2IuMTQXAou5Me+/T2TdorGWnASN+7oemYxBHeF1SCkxxvgZ1zh6RDKWaOhBd7+Sim6Aa6KiDpwkIFHtDFw6GVbmpJOp71Ic6PjEOncbXlTvOc+urLcGwUdeGaGOTuyNjKfmrJcvUHUH3E0cvwFvGqXG1C0A8RUIYjRM+RkenxCcEOZPVhYBeZUdS6uHk1ncnQ6r6QTKP0pmbO0uGlhQ4hWUF03u0psAQfQRAYgNsiZPpP/V8Myc0nLrsHK46E+L/CVbuqg82KtcQT2CfYCV4nmG2a3ii/FXaOLJIe0CZqV0uadfXNTYazjdcXXf48OpimNv0hCoaI+od2lMu88Mb08Ff430dNx3k7T5NlWyPLezkT7OfO2dC4MaXkSdS869+G3JKg6mutBLKTAkVuEUMlDqcGSSKFream+D2AVsNKYPWW68XqzzSF6FXrNA8SqA=
-      file:
-        - Restofire.framework.zip
-        - Alamofire.framework.zip
-      skip_cleanup: true
-      overwrite: true
-      on:
-        repo: Restofire/Restofire
-        tags: true
-        condition: $RELEASE_READY = YES
+    api_key:
+      secure: KrjeFZFxA8KFpVpZuPpHzjhJREYmOprCR072mGzEJtuf/J9Auiqqml9EEbx0jtabpajkfbDRdWVjkSG+czc13QhBT4uBRCnPiX3c2t1m1PnaZEkiPTyY17ZFIC0+cyxwpQ1KPludHEy5cJ1JS98C6vzprxhSO1p4IDOBMbZ/AmeD8i+iHIGagvdyZdI0ksPuofm9qlg7aQgAvmz+XivlIEtnp9WuDFH0X62Pg2W2M5fJ2IuMTQXAou5Me+/T2TdorGWnASN+7oemYxBHeF1SCkxxvgZ1zh6RDKWaOhBd7+Sim6Aa6KiDpwkIFHtDFw6GVbmpJOp71Ic6PjEOncbXlTvOc+urLcGwUdeGaGOTuyNjKfmrJcvUHUH3E0cvwFvGqXG1C0A8RUIYjRM+RkenxCcEOZPVhYBeZUdS6uHk1ncnQ6r6QTKP0pmbO0uGlhQ4hWUF03u0psAQfQRAYgNsiZPpP/V8Myc0nLrsHK46E+L/CVbuqg82KtcQT2CfYCV4nmG2a3ii/FXaOLJIe0CZqV0uadfXNTYazjdcXXf48OpimNv0hCoaI+od2lMu88Mb08Ff430dNx3k7T5NlWyPLezkT7OfO2dC4MaXkSdS869+G3JKg6mutBLKTAkVuEUMlDqcGSSKFream+D2AVsNKYPWW68XqzzSF6FXrNA8SqA=
+    file:
+      - Restofire.framework.zip
+      - Alamofire.framework.zip
+    skip_cleanup: true
+    overwrite: true
+    on:
+      repo: Restofire/Restofire
+      tags: true
+      condition: $RELEASE_READY = YES
   - provider: script
-      script: sh scripts/cocoapods
-      on:
-        repo: Restofire/Restofire
-        tags: true
-        condition: $RELEASE_READY = YES
+    script: sh scripts/cocoapods
+    on:
+      repo: Restofire/Restofire
+      tags: true
+      condition: $RELEASE_READY = YES
 
 notifications:
   email: false

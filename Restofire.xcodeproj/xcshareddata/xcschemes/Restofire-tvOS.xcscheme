@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "350061FA1C7C33910078B589"
-               BuildableName = "Restofire-tvOSTests.xctest"
-               BlueprintName = "Restofire-tvOSTests"
+               BlueprintIdentifier = "355389CB1D8E809D001BDE66"
+               BuildableName = "RestofireTests-tvOS.xctest"
+               BlueprintName = "RestofireTests-tvOS"
                ReferencedContainer = "container:Restofire.xcodeproj">
             </BuildableReference>
          </TestableReference>

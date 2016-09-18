@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "350062161C7C33EB0078B589"
-               BuildableName = "Restofire-MacTests.xctest"
-               BlueprintName = "Restofire-MacTests"
+               BlueprintIdentifier = "355389BA1D8E7FED001BDE66"
+               BuildableName = "RestofireTests-macOS.xctest"
+               BlueprintName = "RestofireTests-macOS"
                ReferencedContainer = "container:Restofire.xcodeproj">
             </BuildableReference>
          </TestableReference>

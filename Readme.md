@@ -26,7 +26,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [x] Response Validations
 - [x] Request NSOperation
 - [x] RequestEventuallyOperation with Auto Retry
-- [x] [Complete Documentation](http://cocoadocs.org/docsets/Restofire)
+- [x] [Complete Documentation](http://restofire.github.io/Restofire/)
 - [x] [Tutorial](http://blog.rahulkatariya.me/2016/05/11/getting-started-swifter-http-networking-with-restofire/)
 
 ## Requirements

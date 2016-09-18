@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Queueable Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Queueable" class="dashAnchor"></a>
+    <a title="Queueable Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Restofire Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Restofire Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Queueable Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Authenticable.html">Authenticable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Configurable.html">Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Queueable.html">Queueable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Requestable.html">Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResponseSerializable.html">ResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Retryable.html">Retryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Authentication.html">Authentication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Validation.html">Validation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Queueable</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Queueable</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents a <code>Queueable</code> that is associated with <code><a href="../Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.queue</code> by default.</p>
+
+<p><a href='#create-custom-queueable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-queueable'>Create custom Queueable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinQueueable</span><span class="p">:</span> <span class="kt">Queueable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinQueueable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-queueable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-queueable'>Using the above Queueable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinQueueable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire9Queueable5queueCSo13DispatchQueue"></a>
+                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire9Queueable5queueCSo13DispatchQueue">queue</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The <code>queue</code>.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.queue</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

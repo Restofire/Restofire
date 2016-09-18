@@ -12,6 +12,7 @@ import Foundation
 public var defaultConfiguration = Configuration()
 
 #if !os(watchOS)
+/// The default request eventually queue.
 public let defaultRequestEventuallyQueue: OperationQueue = {
     let oq = OperationQueue()
     if #available(OSX 10.10, *) { oq.qualityOfService = .utility }

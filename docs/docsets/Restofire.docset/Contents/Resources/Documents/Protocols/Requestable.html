@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Requestable Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/Requestable" class="dashAnchor"></a>
+    <a title="Requestable Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Restofire Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Restofire Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Requestable Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Authenticable.html">Authenticable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Configurable.html">Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Queueable.html">Queueable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Requestable.html">Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ResponseSerializable.html">ResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Retryable.html">Retryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Authentication.html">Authentication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Validation.html">Validation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Requestable</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Requestable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Authenticable.html">Authenticable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Configurable.html">Configurable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/ResponseSerializable.html">ResponseSerializable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Retryable.html">Retryable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/SessionManagable.html">SessionManagable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Validatable.html">Validatable</a></span><span class="p">,</span> <span class="kt"><a href="../Protocols/Queueable.html">Queueable</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents an HTTP Request that can be asynchronously executed. You must 
+provide a <code>path</code>.</p>
+
+<p><a href='#creating-a-request' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='creating-a-request'>Creating a request.</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+<span class="kd">import</span> <span class="kt">Alamofire</span></p>
+
+<p><span class="kd">struct</span> <span class="kt">PersonPOSTService</span><span class="p">:</span> <span class="kt">Requestable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span>
+  <span class="k">let</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">HTTPMethod</span> <span class="o">=</span> <span class="o">.</span><span class="n">post</span>
+  <span class="k">let</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s"><q>person/</span><span class=</q>se<q>>\(</span><span class=</q>n<q>>id</span><span class=</q>se<q>>)</span><span class=</q>s<q>></q></span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#consuming-the-request' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='consuming-the-request'>Consuming the request.</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+<span class="kd">import</span> <span class="kt">Alamofire</span></p>
+
+<p><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span>  <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">PersonPOSTService</span><span class="o">!</span>
+  <span class="k">var</span> <span class="nv">person</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span></p>
+
+<p><span class="kd">func</span> <span class="nf">createPerson</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="kt">PersonPOSTService</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s"><q>123456789</q></span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="n">person</span><span class="p">)</span><span class="o">.</span><span class="nf">executeTask</span><span class="p">()</span>
+  <span class="p">}</span></p>
+
+<p><span class="kd">deinit</span> <span class="p">{</span>
+    <span class="n">request</span><span class="o">.</span><span class="nf">cancel</span><span class="p">()</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable7baseURLSS"></a>
+                    <a name="//apple_ref/swift/Property/baseURL" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable7baseURLSS">baseURL</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The base URL.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.BaseURL</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">baseURL</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire11Requestable5Model"></a>
+                    <a name="//apple_ref/swift/Alias/Model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire11Requestable5Model">Model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The response type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">associatedtype</span> <span class="kt">Model</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable4pathSS"></a>
+                    <a name="//apple_ref/swift/Property/path" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable4pathSS">path</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The path relative to base URL.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable6methodO9Alamofire10HTTPMethod"></a>
+                    <a name="//apple_ref/swift/Property/method" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable6methodO9Alamofire10HTTPMethod">method</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The HTTP Method.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.method</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">HTTPMethod</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable8encodingP9Alamofire17ParameterEncoding_"></a>
+                    <a name="//apple_ref/swift/Property/encoding" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable8encodingP9Alamofire17ParameterEncoding_">encoding</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The request parameter encoding.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.encoding</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">ParameterEncoding</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable7headersGSqGVs10DictionarySSSS__"></a>
+                    <a name="//apple_ref/swift/Property/headers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable7headersGSqGVs10DictionarySSSS__">headers</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The HTTP headers.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>nil</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable10parametersGSqP__"></a>
+                    <a name="//apple_ref/swift/Property/parameters" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable10parametersGSqP__">parameters</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The request parameters.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>nil</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable7loggingSb"></a>
+                    <a name="//apple_ref/swift/Property/logging" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable7loggingSb">logging</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The logging.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.logging</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">logging</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable14sessionManagerC9Alamofire14SessionManager"></a>
+                    <a name="//apple_ref/swift/Property/sessionManager" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable14sessionManagerC9Alamofire14SessionManager">sessionManager</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Alamofire Session Manager.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.sessionManager</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">sessionManager</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable5queueGSqCSo13DispatchQueue_"></a>
+                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable5queueGSqCSo13DispatchQueue_">queue</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The queue on which reponse will be delivered.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>configuration.queue</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable10credentialGSqCSo13URLCredential_"></a>
+                    <a name="//apple_ref/swift/Property/credential" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable10credentialGSqCSo13URLCredential_">credential</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The credential.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>authentication.credential</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">URLCredential</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable15validationBlockGSqFTGSqV10Foundation10URLRequest_CSo15HTTPURLResponseGSqVS1_4Data__OC9Alamofire7Request16ValidationResult_"></a>
+                    <a name="//apple_ref/swift/Property/validationBlock" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable15validationBlockGSqFTGSqV10Foundation10URLRequest_CSo15HTTPURLResponseGSqVS1_4Data__OC9Alamofire7Request16ValidationResult_">validationBlock</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Alamofire validation.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>validation.validation</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">validationBlock</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataRequest</span><span class="o">.</span><span class="kt"><a href="../Structs/Validation.html">Validation</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable21acceptableStatusCodesGSqGSaSi__"></a>
+                    <a name="//apple_ref/swift/Property/acceptableStatusCodes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable21acceptableStatusCodesGSqGSaSi__">acceptableStatusCodes</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The acceptable status codes.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>validation.acceptableStatusCodes</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">acceptableStatusCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable22acceptableContentTypesGSqGSaSS__"></a>
+                    <a name="//apple_ref/swift/Property/acceptableContentTypes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable22acceptableContentTypesGSqGSaSS__">acceptableContentTypes</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The acceptable content types.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>validation.acceptableContentTypes</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">acceptableContentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable15retryErrorCodesGVs3SetOV10Foundation8URLError4Code_"></a>
+                    <a name="//apple_ref/swift/Property/retryErrorCodes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable15retryErrorCodesGVs3SetOV10Foundation8URLError4Code_">retryErrorCodes</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The retry error codes.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>retry.retryErrorCodes</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">retryErrorCodes</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">URLError</span><span class="o">.</span><span class="kt">Code</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable13retryIntervalSd"></a>
+                    <a name="//apple_ref/swift/Property/retryInterval" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable13retryIntervalSd">retryInterval</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The retry interval.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>retry.retryInterval</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">retryInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vP9Restofire11Requestable16maxRetryAttemptsSi"></a>
+                    <a name="//apple_ref/swift/Property/maxRetryAttempts" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vP9Restofire11Requestable16maxRetryAttemptsSi">maxRetryAttempts</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The max retry attempts.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>retry.maxRetryAttempts</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">maxRetryAttempts</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP9Restofire11Requestable15didStartRequestFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/didStartRequest()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP9Restofire11Requestable15didStartRequestFT_T_">didStartRequest()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the Request starts.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Does nothing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">didStartRequest</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FP9Restofire11Requestable34didCompleteRequestWithDataResponseFGV9Alamofire12DataResponsewx5Model_T_"></a>
+                    <a name="//apple_ref/swift/Method/didCompleteRequestWithDataResponse(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FP9Restofire11Requestable34didCompleteRequestWithDataResponseFGV9Alamofire12DataResponsewx5Model_T_">didCompleteRequestWithDataResponse(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called when the Request succeeds.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Does nothing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">didCompleteRequestWithDataResponse</span><span class="p">(</span><span class="n">_</span> <span class="nv">dataResponse</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponse</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/Requestable.html#/s:P9Restofire11Requestable5Model">Model</a></span><span class="o">&gt;</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>response</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The Alamofire Response</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE9RestofirePS_11Requestable11executeTaskFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_20DataRequestOperationx_"></a>
+                    <a name="//apple_ref/swift/Method/executeTask(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9RestofirePS_11Requestable11executeTaskFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_20DataRequestOperationx_">executeTask(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code><a href="../Classes/DataRequestOperation.html">DataRequestOperation</a></code> for the specified <code>Requestable</code> object and
+asynchronously executes it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">executeTask</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponse</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/Requestable.html#/s:P9Restofire11Requestable5Model">Model</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DataRequestOperation.html">DataRequestOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to be executed once the request has finished. <code>nil</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created <code><a href="../Classes/DataRequestOperation.html">DataRequestOperation</a></code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE9RestofirePS_11Requestable16requestOperationFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_20DataRequestOperationx_"></a>
+                    <a name="//apple_ref/swift/Method/requestOperation(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9RestofirePS_11Requestable16requestOperationFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_20DataRequestOperationx_">requestOperation(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code><a href="../Classes/DataRequestOperation.html">DataRequestOperation</a></code> for the specified <code>Requestable</code> object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestOperation</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponse</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/Requestable.html#/s:P9Restofire11Requestable5Model">Model</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DataRequestOperation.html">DataRequestOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to be executed once the operation is started and the request has finished. <code>nil</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created <code><a href="../Classes/DataRequestOperation.html">DataRequestOperation</a></code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE9RestofirePS_11Requestable21executeTaskEventuallyFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_30DataRequestEventuallyOperationx_"></a>
+                    <a name="//apple_ref/swift/Method/executeTaskEventually(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9RestofirePS_11Requestable21executeTaskEventuallyFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_30DataRequestEventuallyOperationx_">executeTaskEventually(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code><a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a></code> for the specified <code>Requestable</code>
+object and asynchronously executes it when internet is reachable.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">executeTaskEventually</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponse</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/Requestable.html#/s:P9Restofire11Requestable5Model">Model</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to be executed once the request has finished. <code>nil</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created <code><a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a></code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FE9RestofirePS_11Requestable26requestEventuallyOperationFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_30DataRequestEventuallyOperationx_"></a>
+                    <a name="//apple_ref/swift/Method/requestEventuallyOperation(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FE9RestofirePS_11Requestable26requestEventuallyOperationFGSqFGV9Alamofire12DataResponsewx5Model_T__GCS_30DataRequestEventuallyOperationx_">requestEventuallyOperation(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code><a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a></code> for the specified requestable object.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">requestEventuallyOperation</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponse</span><span class="o">&lt;</span><span class="k">Self</span><span class="o">.</span><span class="kt"><a href="../Protocols/Requestable.html#/s:P9Restofire11Requestable5Model">Model</a></span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to be executed once the operation is started and the request has finished. <code>nil</code> by default.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created <code><a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a></code>.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Protocols  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Protocols  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Restofire Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Restofire Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Protocols  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DataRequestOperation.html">DataRequestOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Authenticable.html">Authenticable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Configurable.html">Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Queueable.html">Queueable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Requestable.html">Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ResponseSerializable.html">ResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Retryable.html">Retryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Validatable.html">Validatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Authentication.html">Authentication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Validation.html">Validation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire9Retryable"></a>
+                    <a name="//apple_ref/swift/Protocol/Retryable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire9Retryable">Retryable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code><a href="Structs/Retry.html">Retry</a></code> that is associated with <code><a href="Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.retry</code> by default.</p>
+
+<p><a href='#create-custom-retryable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-retryable'>Create custom Retryable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinRetryable</span><span class="p">:</span> <span class="kt">Retryable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinRetryable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">retry</span><span class="p">:</span> <span class="kt">Retry</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="kt">Retry</span><span class="p">()</span>
+    <span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
+    <span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">retry</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-retryable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-retryable'>Using the above Retryable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinRetryable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URLEncodedInURL</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/Retryable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Retryable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire9Queueable"></a>
+                    <a name="//apple_ref/swift/Protocol/Queueable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire9Queueable">Queueable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>Queueable</code> that is associated with <code><a href="Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.queue</code> by default.</p>
+
+<p><a href='#create-custom-queueable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-queueable'>Create custom Queueable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinQueueable</span><span class="p">:</span> <span class="kt">Queueable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinQueueable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-queueable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-queueable'>Using the above Queueable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinQueueable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/Queueable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Queueable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire11Validatable"></a>
+                    <a name="//apple_ref/swift/Protocol/Validatable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire11Validatable">Validatable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code><a href="Structs/Validation.html">Validation</a></code> that is associated with <code><a href="Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.validation</code> by default.</p>
+
+<p><a href='#create-custom-validatable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-validatable'>Create custom Validatable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinValidatable</span><span class="p">:</span> <span class="kt">Validatable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinValidatable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">validation</span><span class="p">:</span> <span class="kt">Validation</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="kt">Validation</span><span class="p">()</span>
+    <span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">]</span>
+    <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s"><q>application/json</q></span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">validation</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-validatable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-validatable'>Using the above Validatable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinValidatable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URLEncodedInURL</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/Validatable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Validatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire20ResponseSerializable"></a>
+                    <a name="//apple_ref/swift/Protocol/ResponseSerializable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire20ResponseSerializable">ResponseSerializable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>ResponseSerializable</code> that is associated with <code><a href="Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.responseSerializer</code> by default.</p>
+
+<p><a href='#create-custom-responseserializable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-responseserializable'>Create custom ResponseSerializable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinResponseSerializable</span><span class="p">:</span> <span class="kt">ResponseSerializable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinResponseSerializable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Model</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="nf">customResponseSerializer</span><span class="p">()</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-responseserializable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-responseserializable'>Using the above ResponseSerializable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinResponseSerializable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URLEncodedInURL</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/ResponseSerializable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResponseSerializable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire13Authenticable"></a>
+                    <a name="//apple_ref/swift/Protocol/Authenticable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire13Authenticable">Authenticable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>Authenticable</code> that is associated with <code><a href="Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.authentication</code> by default.</p>
+
+<p><a href='#create-custom-authenticable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-authenticable'>Create custom Authenticable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinAuthenticable</span><span class="p">:</span> <span class="kt">Authenticable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinAuthenticable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Configuration</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">authentication</span> <span class="o">=</span> <span class="kt">Authentication</span><span class="p">()</span>
+    <span class="n">authentication</span><span class="o">.</span><span class="n">credential</span> <span class="o">=</span> <span class="kt">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s"><q>user</q></span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s"><q>password</q></span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">authentication</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-authenticable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-authenticable'>Using the above Authenticable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinAuthenticable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/Authenticable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Authenticable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire12Configurable"></a>
+                    <a name="//apple_ref/swift/Protocol/Configurable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire12Configurable">Configurable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>Configurable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.
+<code>Restofire.defaultConfiguration()</code> by default.</p>
+
+<p><a href='#create-custom-configurable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-configurable'>Create custom Configurable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinConfigurable</span><span class="p">:</span> <span class="kt">Configurable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinConfigurable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Configuration</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s"><q>https://httpbin.org/</q></span>
+    <span class="n">config</span><span class="o">.</span><span class="n">logging</span> <span class="o">=</span> <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">logging</span>
+    <span class="k">return</span> <span class="n">config</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-configurable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-configurable'>Using the above Configurable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinConfigurable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/Configurable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Configurable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire11Requestable"></a>
+                    <a name="//apple_ref/swift/Protocol/Requestable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire11Requestable">Requestable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an HTTP Request that can be asynchronously executed. You must 
+provide a <code>path</code>.</p>
+
+<p><a href='#creating-a-request' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='creating-a-request'>Creating a request.</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+<span class="kd">import</span> <span class="kt">Alamofire</span></p>
+
+<p><span class="kd">struct</span> <span class="kt">PersonPOSTService</span><span class="p">:</span> <span class="kt">Requestable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span>
+  <span class="k">let</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">HTTPMethod</span> <span class="o">=</span> <span class="o">.</span><span class="n">post</span>
+  <span class="k">let</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="s"><q>person/</span><span class=</q>se<q>>\(</span><span class=</q>n<q>>id</span><span class=</q>se<q>>)</span><span class=</q>s<q>></q></span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#consuming-the-request' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='consuming-the-request'>Consuming the request.</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+<span class="kd">import</span> <span class="kt">Alamofire</span></p>
+
+<p><span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span>  <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">PersonPOSTService</span><span class="o">!</span>
+  <span class="k">var</span> <span class="nv">person</span><span class="p">:</span> <span class="kt">Any</span><span class="o">!</span></p>
+
+<p><span class="kd">func</span> <span class="nf">createPerson</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">request</span> <span class="o">=</span> <span class="kt">PersonPOSTService</span><span class="p">(</span><span class="nv">id</span><span class="p">:</span> <span class="s"><q>123456789</q></span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="n">person</span><span class="p">)</span><span class="o">.</span><span class="nf">executeTask</span><span class="p">()</span>
+  <span class="p">}</span></p>
+
+<p><span class="kd">deinit</span> <span class="p">{</span>
+    <span class="n">request</span><span class="o">.</span><span class="nf">cancel</span><span class="p">()</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/Requestable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Requestable</span><span class="p">:</span> <span class="kt"><a href="Protocols/Authenticable.html">Authenticable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Configurable.html">Configurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ResponseSerializable.html">ResponseSerializable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Retryable.html">Retryable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/SessionManagable.html">SessionManagable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Validatable.html">Validatable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Queueable.html">Queueable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:P9Restofire16SessionManagable"></a>
+                    <a name="//apple_ref/swift/Protocol/SessionManagable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:P9Restofire16SessionManagable">SessionManagable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>Alamofire.SessionManager</code> that is associated with <code><a href="Protocols/Configurable.html">Configurable</a></code>.
+<code>configuration.sessionManager</code> by default.</p>
+
+<p><a href='#create-custom-sessionmanagable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-sessionmanagable'>Create custom SessionManagable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinSessionManagable</span><span class="p">:</span> <span class="kt">SessionManagable</span> <span class="p">{</span> <span class="p">}</span></p>
+
+<p><span class="kd">extension</span> <span class="kt">HTTPBinSessionManagable</span> <span class="p">{</span></p>
+
+<p><span class="k">var</span> <span class="nv">sessionManager</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">sessionConfiguration</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
+    <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForResource</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">httpAdditionalHeaders</span> <span class="o">=</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span><span class="o">.</span><span class="n">defaultHTTPHeaders</span>
+    <span class="k">return</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">sessionConfiguration</span><span class="p">)</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre>
+<a href='#using-the-above-sessionmanagable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-sessionmanagable'>Using the above SessionManagable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinSessionManagable</span> <span class="p">{</span></p>
+
+<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+
+<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+  <span class="p">}</span></p>
+
+<p><span class="p">}</span>
+</code></pre></p>
+
+                        <a href="Protocols/SessionManagable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">SessionManagable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

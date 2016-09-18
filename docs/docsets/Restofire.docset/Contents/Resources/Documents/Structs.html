@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Structs  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Structs  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">Restofire Docs</a> (100% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">Restofire Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Structs  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/DataRequestOperation.html">DataRequestOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Global Variables.html">Global Variables</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Authenticable.html">Authenticable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Configurable.html">Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Queueable.html">Queueable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Requestable.html">Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ResponseSerializable.html">ResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Retryable.html">Retryable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Validatable.html">Validatable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/Authentication.html">Authentication</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Configuration.html">Configuration</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Validation.html">Validation</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Structs</h1>
+            <p>The following structs are available globally.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Restofire13Configuration"></a>
+                    <a name="//apple_ref/swift/Struct/Configuration" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Restofire13Configuration">Configuration</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Configuration of RESTful Services. You must provide a <code>baseURL</code>.</p>
+
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s">"http://www.mocky.io/v2/"</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">]</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">credential</span> <span class="o">=</span> <span class="kt">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">logging</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="k">let</span> <span class="nv">sessionConfiguration</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
+<span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForResource</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">sessionConfiguration</span><span class="o">.</span><span class="kt">HTTPAdditionalHeaders</span> <span class="o">=</span> <span class="kt">Manager</span><span class="o">.</span><span class="n">defaultHTTPHeaders</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">manager</span> <span class="o">=</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">sessionConfiguration</span><span class="p">)</span>
+</code></pre>
+
+                        <a href="Structs/Configuration.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Configuration</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Restofire10Validation"></a>
+                    <a name="//apple_ref/swift/Struct/Validation" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Restofire10Validation">Validation</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Validation of RESTful Services.</p>
+
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="kt">Validation</span><span class="p">()</span>
+<span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
+</code></pre>
+
+                        <a href="Structs/Validation.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Validation</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Restofire5Retry"></a>
+                    <a name="//apple_ref/swift/Struct/Retry" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Restofire5Retry">Retry</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Retry of RESTful Services.</p>
+
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="kt">Retry</span><span class="p">()</span>
+<span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
+<span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre>
+
+                        <a href="Structs/Retry.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Retry</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:V9Restofire14Authentication"></a>
+                    <a name="//apple_ref/swift/Struct/Authentication" class="dashAnchor"></a>
+                    <a class="token" href="#/s:V9Restofire14Authentication">Authentication</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A Authentication of RESTful Services.</p>
+
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">authentication</span> <span class="o">=</span> <span class="kt">Authentication</span><span class="p">()</span>
+<span class="n">authentication</span><span class="o">.</span><span class="n">credential</span> <span class="o">=</span> <span class="kt">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
+</code></pre>
+
+                        <a href="Structs/Authentication.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Authentication</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

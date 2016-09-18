@@ -19,4 +19,6 @@ public struct Authentication {
     /// The credential. `nil` by default.
     public var credential: URLCredential?
     
+    public init() {}
+    
 }

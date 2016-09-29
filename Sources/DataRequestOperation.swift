@@ -129,7 +129,7 @@ open class DataRequestOperation<R: Requestable>: Operation {
     
     func executeRequest() {
         request = AlamofireUtils.alamofireDataRequestFromRequestable(requestable)
-        request.restofireResponse(queue: requestable.queue, responseSerializer: requestable.dataResponseSerializer) { (response: Alamofire.DataResponse<Any>) in
+        request.response(queue: requestable.queue, responseSerializer: requestable.dataResponseSerializer) { (response: Alamofire.DataResponse<Any>) in
             let transformedResult: Result<R.Model> = AlamofireUtils.castAnyResultToRequestableModel(result: response.result)
             let transformedResponse = Alamofire.DataResponse<R.Model>(request: response.request, response: response.response, data: response.data, result: transformedResult, timeline: response.timeline)
             if transformedResponse.result.error == nil {

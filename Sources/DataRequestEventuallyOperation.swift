@@ -44,6 +44,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
         networkReachabilityManager?.startListening()
     }
     
+    
     override func handleErrorDataResponse(_ response: Alamofire.DataResponse<R.Model>) {
         if let error = response.result.error as? URLError, self.retryAttempts > 0 {
             if error.code == .notConnectedToInternet {

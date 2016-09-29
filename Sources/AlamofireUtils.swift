@@ -112,22 +112,3 @@ extension AlamofireUtils {
     }
     
 }
-
-extension Alamofire.DataRequest {
-    
-    @discardableResult
-    func restofireResponse(
-        queue: DispatchQueue? = nil,
-        responseSerializer: Alamofire.DataResponseSerializer<Any>,
-        completionHandler: @escaping (Alamofire.DataResponse<Any>) -> Void)
-        -> Self
-    {
-        return response(
-            queue: queue,
-            responseSerializer: responseSerializer,
-            completionHandler: completionHandler
-        )
-        
-    }
-    
-}

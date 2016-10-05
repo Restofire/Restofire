@@ -475,6 +475,7 @@ class MoviesReviewTableViewController: UITableViewController {
       }
     ]
     ```
+
 ## Command failed due to signal: Segmantation fault: 11
 
 In Swift compiler, there is a bug in Generics when using the associated type which cause Restofire to build in debug mode and the work around right now is to use Fast, Whole Module Optimization in the debug configuration. Please refer the image below.

@@ -20,7 +20,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
-- [Command failed due to signal: Segmantation fault: 11](#Command failed due to signal: Segmantation fault: 11)
+- [Command failed due to signal: Segmantation fault: 11](#issues)
 - [License](#license)
 
 ## Features
@@ -101,7 +101,11 @@ let package = Package(
 )
 ```
 
-### Git Submodules
+### Manually
+
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.
+
+#### Git Submodules
 
 - Open up Terminal, `cd` into your top-level project directory, and run the following command "if" your project is not initialized as a git repository:
 
@@ -134,9 +138,7 @@ $ git submodule update --init --recursive
 
 > The `Restofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
 
-### Manually
-
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.
+#### Embeded Binaries
 
 - Download the latest release from https://github.com/Restofire/Restofire/releases
 - Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
@@ -476,13 +478,11 @@ class MoviesReviewTableViewController: UITableViewController {
     ]
     ```
 
-## Command failed due to signal: Segmantation fault: 11
+## Issues
 
 In Swift compiler, there is a bug in Generics when using the associated type which cause Restofire to build in debug mode and the work around right now is to use Fast, Whole Module Optimization in the debug configuration. Please refer the image below.
 
 <img width="1206" alt="screen shot 2016-09-27 at 9 00 10 pm" src="https://cloud.githubusercontent.com/assets/1857415/18880589/fe6c78fa-84f5-11e6-8967-1ce959803167.png">
-
-
 
 ## License
 

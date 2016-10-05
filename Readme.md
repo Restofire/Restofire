@@ -15,6 +15,14 @@
 
 Restofire is a protocol oriented network abstraction layer in swift that is built on top of [Alamofire](https://github.com/Alamofire/Alamofire) to use services in a declartive way.
 
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [Command failed due to signal: Segmantation fault: 11](#Command failed due to signal: Segmantation fault: 11)
+- [License](#license)
+
 ## Features
 
 - [x] No Learning Curve
@@ -92,11 +100,8 @@ let package = Package(
     ]
 )
 ```
-### Manually
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.
-
-#### Embedded Framework
+### Git Submodules
 
 - Open up Terminal, `cd` into your top-level project directory, and run the following command "if" your project is not initialized as a git repository:
 
@@ -128,6 +133,17 @@ $ git submodule update --init --recursive
 - And that's it!
 
 > The `Restofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
+
+### Manually
+
+If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.
+
+- Download the latest release from https://github.com/Restofire/Restofire/releases
+- Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
+- In the tab bar at the top of that window, open the "General" panel.
+- Click on the `+` button under the "Embedded Binaries" section.
+- Add the downloaded `Restofire.framework` & `Alamofire.framework`.
+- And that's it!
 
 ---
 
@@ -459,6 +475,13 @@ class MoviesReviewTableViewController: UITableViewController {
       }
     ]
     ```
+## Command failed due to signal: Segmantation fault: 11
+
+In Swift compiler, there is a bug in Generics when using the associated type which cause Restofire to build in debug mode and the work around right now is to use Fast, Whole Module Optimization in the debug configuration. Please refer the image below.
+
+<img width="1206" alt="screen shot 2016-09-27 at 9 00 10 pm" src="https://cloud.githubusercontent.com/assets/1857415/18880589/fe6c78fa-84f5-11e6-8967-1ce959803167.png">
+
+
 
 ## License
 

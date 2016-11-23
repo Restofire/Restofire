@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode8.1
 
 git:
   submodules: false
@@ -13,10 +13,10 @@ env:
     - OSX_FRAMEWORK_SCHEME="Restofire-macOS"
     - TVOS_FRAMEWORK_SCHEME="Restofire-tvOS"
     - WATCHOS_FRAMEWORK_SCHEME="Restofire-watchOS"
-    - IOS_SDK=iphonesimulator10.0
+    - IOS_SDK=iphonesimulator10.1
     - OSX_SDK=macosx10.12
-    - TVOS_SDK=appletvsimulator10.0
-    - WATCHOS_SDK=watchsimulator3.0
+    - TVOS_SDK=appletvsimulator10.1
+    - WATCHOS_SDK=watchsimulator3.1
     - EXAMPLE_SCHEME="Example"
   matrix:
     - DESTINATION="OS=10.0,name=iPhone 7 Plus"     SCHEME="$IOS_FRAMEWORK_SCHEME"     SDK="$IOS_SDK"     RUN_TESTS="YES"  BUILD_EXAMPLE="YES" RELEASE_READY="YES" POD_LINT="YES"

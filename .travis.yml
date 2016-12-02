@@ -58,14 +58,14 @@ script:
     fi
 
   # Build Example in Debug if specified
-  - if [ $BUILD_EXAMPLE == "YES" ]; then
-     xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c;
-   fi
+  #- if [ $BUILD_EXAMPLE == "YES" ]; then
+  #    xcodebuild -workspace "$WORKSPACE" -scheme "$EXAMPLE_SCHEME" -sdk "$SDK" -destination "$DESTINATION" -configuration Debug ONLY_ACTIVE_ARCH=NO build | xcpretty -c;
+  #  fi
 
   # Run `pod lib lint` if specified
   - if [ $POD_LINT == "YES" ]; then
-     pod lib lint;
-   fi
+      pod lib lint;
+    fi
 
 before_deploy:
   - carthage build --no-skip-current

@@ -39,8 +39,8 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 
 ## Requirements
 
-- iOS 9.0+ / Mac OS X 10.11+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 8.0+
+- iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
+- Xcode 8.1+
 
 ## Installation
 
@@ -52,7 +52,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1.0+ is required to build Restofire 2.0.0+.
+> CocoaPods 1.1.1+ is required to build Restofire 2.1.0+.
 
 To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -61,7 +61,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'Restofire', '~> 2.0'
+pod 'Restofire', '~> 2.1'
 ```
 
 Then, run the following command:
@@ -84,7 +84,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 2.0
+github "RahulKatariya/Restofire" ~> 2.1
 ```
 ### Swift Package Manager
 
@@ -96,7 +96,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", versions: Version(2, 0, 0)..<Version(3, 0, 0))
+        .Package(url: "https://github.com/Restofire/Restofire.git", versions: Version(2, 1, 0)..<Version(3, 0, 0))
     ]
 )
 ```
@@ -162,19 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
-        Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
         Restofire.defaultConfiguration.logging = true
-        Restofire.defaultConfiguration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
-        Restofire.defaultConfiguration.validation.acceptableStatusCodes = Array(200..<300)
-        Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]
-        Restofire.defaultConfiguration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
-        Restofire.defaultConfiguration.retry.retryInterval = 20
-        Restofire.defaultConfiguration.retry.maxRetryAttempts = 10
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.timeoutIntervalForRequest = 7
-        sessionConfiguration.timeoutIntervalForResource = 7
-        sessionConfiguration.httpAdditionalHeaders = Alamofire.SessionManager.defaultHTTPHeaders
-        Restofire.defaultConfiguration.sessionManager = Alamofire.SessionManager(configuration: sessionConfiguration)
 
         return true
   }

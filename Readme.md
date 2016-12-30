@@ -486,7 +486,6 @@ post_install do |installer|
 end
 ```
 
-
 ## License
 
 Restofire is released under the MIT license. See [LICENSE](https://github.com/Restofire/Restofire/blob/master/LICENSE) for details.

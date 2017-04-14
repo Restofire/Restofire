@@ -20,7 +20,6 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [Installation](#installation)
 - [Usage](#usage)
 - [Examples](#examples)
-- [Command failed due to signal: Segmantation fault: 11](#issues)
 - [License](#license)
 
 ## Features

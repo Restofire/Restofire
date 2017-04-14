@@ -51,7 +51,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 $ gem install cocoapods
 ```
 
-> CocoaPods 1.1.1+ is required to build Restofire 2.1.0+.
+> CocoaPods 1.2.0+ is required to build Restofire 2.2.0+.
 
 To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
@@ -60,7 +60,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
-pod 'Restofire', '~> 2.1'
+pod 'Restofire', '~> 2.2'
 ```
 
 Then, run the following command:
@@ -83,7 +83,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "RahulKatariya/Restofire" ~> 2.1
+github "RahulKatariya/Restofire" ~> 2.2
 ```
 ### Swift Package Manager
 
@@ -95,7 +95,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", versions: Version(2, 1, 0)..<Version(3, 0, 0))
+        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 2)
     ]
 )
 ```

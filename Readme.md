@@ -466,26 +466,6 @@ class MoviesReviewTableViewController: UITableViewController {
     ]
     ```
 
-## Issues
-
-In Swift compiler, there is a bug in Generics when using the associated type which cause Restofire to build in debug mode and the work around right now is to use Fast, Whole Module Optimization in the debug configuration. Please refer the image below.
-
-<img width="1206" alt="screen shot 2016-09-27 at 9 00 10 pm" src="https://cloud.githubusercontent.com/assets/1857415/18880589/fe6c78fa-84f5-11e6-8967-1ce959803167.png">
-
-Please use this post_install code blocks at the end of your pod file if you do not want to encounter the error in every pod update:
-
-```ruby
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        if target.name == 'Restofire'
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_OPTIMIZATION_LEVEL'] = '-Owholemodule'
-            end
-        end
-    end
-end
-```
-
 ## License
 
 Restofire is released under the MIT license. See [LICENSE](https://github.com/Restofire/Restofire/blob/master/LICENSE) for details.

@@ -16,7 +16,6 @@ extension HTTPBinConfigurable {
     var configuration: Configuration {
         var config = Configuration()
         config.baseURL = "https://httpbin.org/"
-        config.logging = true
         return config
     }
     

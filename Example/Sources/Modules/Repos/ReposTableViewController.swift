@@ -32,6 +32,11 @@ class ReposTableViewController: TableViewController {
     override func loadView() {
         view = reposTableView
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        reposLoadingView.frame = view.bounds
+    }
 
 }
 
@@ -58,11 +63,6 @@ extension ReposTableViewController {
                 _self.hideTopView()
             }
         }
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        reposLoadingView.frame = view.bounds
     }
     
 }

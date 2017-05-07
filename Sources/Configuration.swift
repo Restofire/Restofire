@@ -54,10 +54,6 @@ public struct Configuration {
     /// The `Alamofire.DataResponseSerializer`.
     public var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> = Alamofire.DataRequest.jsonResponseSerializer()
     
-    /// The logging, if enabled prints the debug textual representation of the 
-    /// request when the response is recieved. `false` by default.
-    public var logging: Bool = false
-    
     /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
     public var sessionManager = Alamofire.SessionManager.default
     

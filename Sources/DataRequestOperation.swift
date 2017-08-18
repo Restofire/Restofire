@@ -139,9 +139,16 @@ open class DataRequestOperation<R: Requestable>: Operation {
             } else {
                 self.handleErrorDataResponse(transformedResponse)
             }
-            if self.requestable.logging {
-                debugPrint(self.request)
-                debugPrint(response)
+            let debug = ProcessInfo.processInfo.environment["-me.rahulkatariya.Restofire.Debug"]
+            if debug == "1" {
+                print(self.request.debugDescription)
+            } else if debug == "2" {
+                print(self.request.debugDescription)
+                print(response)
+            } else if debug == "3" {
+                print(self.request.debugDescription)
+                print(self.request)
+                print(response)
             }
         }
     }

@@ -3,7 +3,7 @@
 //  Restofire
 //
 //  Created by Rahul Katariya on 23/10/15.
-//  Copyright © 2015-2016 RahulKatariya. All rights reserved.
+//  Copyright © 2015-2017 RahulKatariya. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,7 @@ import PackageDescription
 let package = Package(
     name: "Restofire",
     dependencies: [
-        .Package(url: "https://github.com/Alamofire/Alamofire.git", majorVersion: 4)
+        .Package(url: "https://github.com/Alamofire/Alamofire.git", majorVersion: 4, minorVersion: 5)
     ],
     exclude: ["Tests"]
 )

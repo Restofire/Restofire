@@ -74,9 +74,6 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     /// The request parameters.
     var parameters: Any? { get }
     
-    /// The logging.
-    var logging: Bool { get }
-    
     /// The Alamofire Session Manager.
     var sessionManager: Alamofire.SessionManager { get }
     
@@ -202,11 +199,6 @@ public extension Requestable {
     /// `nil`
     public var parameters: Any? {
         return nil
-    }
-    
-    /// `configuration.logging`
-    public var logging: Bool {
-        return configuration.logging
     }
     
     /// `configuration.sessionManager`

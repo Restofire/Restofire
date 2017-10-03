@@ -30,7 +30,7 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+                <a href="Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/DataRequestOperation.html">DataRequestOperation</a>
@@ -41,10 +41,10 @@
             <a href="Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+                <a href="Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
               </li>
               <li class="nav-group-task">
-                <a href="Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+                <a href="Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
               </li>
             </ul>
           </li>
@@ -78,7 +78,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Structs.html">Structs</a>
+            <a href="Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Structs/Authentication.html">Authentication</a>
@@ -100,8 +100,8 @@
         <section>
           <section class="section">
             
-            <p><img src="https://raw.githubusercontent.com/Restofire/Restofire/master/.github/restofire.png" alt="Restofire: A Protocol Oriented Networking Abstraction Layer in Swift"></p>
-<a href='#restofire' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='restofire'>Restofire</h2>
+            <p><img src="https://raw.githubusercontent.com/Restofire/Restofire/master/Assets/restofire.png" alt="Restofire: A Protocol Oriented Networking Abstraction Layer in Swift"></p>
+<h2 id='restofire' class='heading'>Restofire</h2>
 
 <p><a href="https://cocoapods.org/pods/Restofire"><img src="https://img.shields.io/cocoapods/p/Restofire.svg" alt="Platforms"></a>
 <a href="https://raw.githubusercontent.com/Restofire/Restofire/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/Restofire.svg" alt="License"></a></p>
@@ -112,10 +112,20 @@
 
 <p><a href="https://travis-ci.org/Restofire/Restofire/branches"><img src="https://img.shields.io/travis/Restofire/Restofire/master.svg" alt="Travis"></a></p>
 
-<p><a href="https://gitter.im/Restofire/Restofire?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Restofire/Restofire.svg" alt="Join the chat at https://gitter.im/Restofire/Restofire"></a></p>
+<p><a href="https://gitter.im/Restofire/Restofire?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"><img src="https://badges.gitter.im/Restofire/Restofire.svg" alt="Join the chat at https://gitter.im/Restofire/Restofire"></a>
+<a href="https://twitter.com/rahulkatariya91"><img src="https://img.shields.io/twitter/follow/rahulkatariya91.svg?style=social&label=Follow" alt="Twitter"></a></p>
 
 <p>Restofire is a protocol oriented network abstraction layer in swift that is built on top of <a href="https://github.com/Alamofire/Alamofire">Alamofire</a> to use services in a declartive way.</p>
-<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<ul>
+<li><a href="#features">Features</a></li>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id='features' class='heading'>Features</h2>
 
 <ul>
 <li>[x] No Learning Curve</li>
@@ -127,24 +137,24 @@
 <li>[x] Response Validations</li>
 <li>[x] Request NSOperation</li>
 <li>[x] RequestEventuallyOperation with Auto Retry</li>
-<li>[x] <a href="http://cocoadocs.org/docsets/Restofire">Complete Documentation</a></li>
+<li>[x] <a href="http://restofire.github.io/Restofire/">Complete Documentation</a></li>
 <li>[x] <a href="http://blog.rahulkatariya.me/2016/05/11/getting-started-swifter-http-networking-with-restofire/">Tutorial</a></li>
 </ul>
-<a href='#requirements' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='requirements'>Requirements</h2>
+<h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
-<li>iOS 9.0+ / Mac OS X 10.11+ / tvOS 9.0+ / watchOS 2.0+</li>
-<li>Xcode 8.0+</li>
+<li>iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+</li>
+<li>Xcode 9+</li>
 </ul>
-<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation'>Installation</h2>
-<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
 
 <p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
 <pre class="highlight shell"><code><span class="gp">$ </span>gem install cocoapods
 </code></pre>
 
 <blockquote>
-<p>CocoaPods 1.1.0+ is required to build Restofire 2.0.0+.</p>
+<p>CocoaPods 1.3.1+ is required to build Restofire 2.3.0+.</p>
 </blockquote>
 
 <p>To integrate Restofire into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
@@ -152,13 +162,13 @@
 <span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'9.0'</span>
 <span class="n">use_frameworks!</span>
 
-<span class="n">pod</span> <span class="s1">'Restofire'</span><span class="p">,</span> <span class="s1">'~&gt; 2.0'</span>
+<span class="n">pod</span> <span class="s1">'Restofire'</span><span class="p">,</span> <span class="s1">'~&gt; 2.3.0'</span>
 </code></pre>
 
 <p>Then, run the following command:</p>
 <pre class="highlight shell"><code><span class="gp">$ </span>pod install
 </code></pre>
-<a href='#carthage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='carthage'>Carthage</h3>
+<h3 id='carthage' class='heading'>Carthage</h3>
 
 <p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.</p>
 
@@ -168,9 +178,9 @@
 </code></pre>
 
 <p>To integrate Restofire into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
-<pre class="highlight plaintext"><code>github "RahulKatariya/Restofire" ~&gt; 2.0
+<pre class="highlight plaintext"><code>github "RahulKatariya/Restofire" ~&gt; 2.3.0
 </code></pre>
-<a href='#swift-package-manager' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='swift-package-manager'>Swift Package Manager</h3>
+<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
 
 <p>To use Restofire as a <a href="https://swift.org/package-manager/">Swift Package Manager</a> package just add the following in your Package.swift file.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
@@ -178,14 +188,14 @@
 <span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
     <span class="nv">name</span><span class="p">:</span> <span class="s">"HelloRestofire"</span><span class="p">,</span>
     <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-        <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Restofire/Restofire.git"</span><span class="p">,</span> <span class="nv">versions</span><span class="p">:</span> <span class="kt">Version</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">..&lt;</span><span class="kt">Version</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+        <span class="o">.</span><span class="kt">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Restofire/Restofire.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">minorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
     <span class="p">]</span>
 <span class="p">)</span>
 </code></pre>
-<a href='#manually' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='manually'>Manually</h3>
+<h3 id='manually' class='heading'>Manually</h3>
 
 <p>If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.</p>
-<a href='#embedded-framework' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h4 id='embedded-framework'>Embedded Framework</h4>
+<h4 id='git-submodules' class='heading'>Git Submodules</h4>
 
 <ul>
 <li>Open up Terminal, <code>cd</code> into your top-level project directory, and run the following command <q>if</q> your project is not initialized as a git repository:</li>
@@ -222,10 +232,20 @@
 <blockquote>
 <p>The <code>Restofire.framework</code> is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.</p>
 </blockquote>
+<h4 id='embeded-binaries' class='heading'>Embeded Binaries</h4>
+
+<ul>
+<li>Download the latest release from <a href="https://github.com/Restofire/Restofire/releases">https://github.com/Restofire/Restofire/releases</a></li>
+<li>Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the <q>Targets</q> heading in the sidebar.</li>
+<li>In the tab bar at the top of that window, open the <q>General</q> panel.</li>
+<li>Click on the <code>+</code> button under the <q>Embedded Binaries</q> section.</li>
+<li>Add the downloaded <code>Restofire.framework</code> &amp; <code>Alamofire.framework</code>.</li>
+<li>And that&rsquo;s it!</li>
+</ul>
 
 <hr>
-<a href='#usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='usage'>Usage</h2>
-<a href='#global-configuration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='global-configuration'>Global Configuration</h3>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='global-configuration' class='heading'>Global Configuration</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
 <span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
@@ -234,26 +254,14 @@
         <span class="c1">// Override point for customization after application launch.</span>
 
         <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s">"http://www.mocky.io/v2/"</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">headers</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">]</span>
         <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">logging</span> <span class="o">=</span> <span class="kc">true</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">credential</span> <span class="o">=</span> <span class="kt">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
-        <span class="k">let</span> <span class="nv">sessionConfiguration</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
-        <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">7</span>
-        <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForResource</span> <span class="o">=</span> <span class="mi">7</span>
-        <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">httpAdditionalHeaders</span> <span class="o">=</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span><span class="o">.</span><span class="n">defaultHTTPHeaders</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">sessionManager</span> <span class="o">=</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">sessionConfiguration</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="kc">true</span>
   <span class="p">}</span>
 
 <span class="p">}</span>
 </code></pre>
-<a href='#creating-a-service' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='creating-a-service'>Creating a Service</h3>
+<h3 id='creating-a-service' class='heading'>Creating a Service</h3>
 <pre class="highlight swift"><code>
 <span class="kd">import</span> <span class="kt">Restofire</span>
 
@@ -265,7 +273,7 @@
 <span class="p">}</span>
 
 </code></pre>
-<a href='#consuming-the-service' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='consuming-the-service'>Consuming the Service</h3>
+<h3 id='consuming-the-service' class='heading'>Consuming the Service</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
 <span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
@@ -287,7 +295,7 @@
 
 <span class="p">}</span>
 </code></pre>
-<a href='#url-level-configuration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='url-level-configuration'>URL Level Configuration</h3>
+<h3 id='url-level-configuration' class='heading'>URL Level Configuration</h3>
 <pre class="highlight swift"><code>
 <span class="kd">protocol</span> <span class="kt">HTTPBinConfigurable</span><span class="p">:</span> <span class="kt">Configurable</span> <span class="p">{</span> <span class="p">}</span>
 
@@ -331,7 +339,7 @@
 <span class="p">}</span>
 
 </code></pre>
-<a href='#creating-the-service' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='creating-the-service'>Creating the Service</h3>
+<h3 id='creating-the-service' class='heading'>Creating the Service</h3>
 <pre class="highlight swift"><code>
 <span class="kd">import</span> <span class="kt">Restofire</span>
 <span class="kd">import</span> <span class="kt">Alamofire</span>
@@ -351,7 +359,7 @@
 
 
 </code></pre>
-<a href='#consuming-the-service' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='consuming-the-service'>Consuming the Service</h3>
+<h3 id='consuming-the-service' class='heading'>Consuming the Service</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
 <span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UIViewController</span> <span class="p">{</span>
@@ -373,7 +381,7 @@
 
 <span class="p">}</span>
 </code></pre>
-<a href='#request-level-configuration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='request-level-configuration'>Request Level Configuration</h3>
+<h3 id='request-level-configuration' class='heading'>Request Level Configuration</h3>
 <pre class="highlight swift"><code>
 <span class="kd">import</span> <span class="kt">Restofire</span>
 <span class="kd">import</span> <span class="kt">Alamofire</span>
@@ -435,7 +443,7 @@
 <span class="p">}</span>
 
 </code></pre>
-<a href='#requesteventually-service' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='requesteventually-service'>RequestEventually Service</h3>
+<h3 id='requesteventually-service' class='heading'>RequestEventually Service</h3>
 <pre class="highlight swift"><code>
 <span class="kd">import</span> <span class="kt">Restofire</span>
 
@@ -473,7 +481,7 @@
 <span class="p">}</span>
 
 </code></pre>
-<a href='#examples' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='examples'>Examples</h2>
+<h2 id='examples' class='heading'>Examples</h2>
 
 <ul>
 <li><p><a href="https://github.com/Restofire/Restofire/wiki/String-Response-Service-Example">String Response Service</a></p>
@@ -513,15 +521,15 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre></li>
 </ul>
-<a href='#license' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='license'>License</h2>
+<h2 id='license' class='heading'>License</h2>
 
 <p>Restofire is released under the MIT license. See <a href="https://github.com/Restofire/Restofire/blob/master/LICENSE">LICENSE</a> for details.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

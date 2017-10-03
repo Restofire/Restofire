@@ -31,7 +31,7 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+                <a href="../Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
@@ -42,10 +42,10 @@
             <a href="../Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+                <a href="../Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+                <a href="../Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
               </li>
             </ul>
           </li>
@@ -79,7 +79,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Structs.html">Structs</a>
+            <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/Authentication.html">Authentication</a>
@@ -109,34 +109,33 @@
               </div>
             <p>Represents a <code><a href="../Structs/Validation.html">Validation</a></code> that is associated with <code><a href="../Protocols/Configurable.html">Configurable</a></code>.
 <code>configuration.validation</code> by default.</p>
+<h3 id='create-custom-validatable' class='heading'>Create custom Validatable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinValidatable</span><span class="p">:</span> <span class="kt">Validatable</span> <span class="p">{</span> <span class="p">}</span>
 
-<p><a href='#create-custom-validatable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-validatable'>Create custom Validatable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinValidatable</span><span class="p">:</span> <span class="kt">Validatable</span> <span class="p">{</span> <span class="p">}</span></p>
+<span class="kd">extension</span> <span class="kt">HTTPBinValidatable</span> <span class="p">{</span>
 
-<p><span class="kd">extension</span> <span class="kt">HTTPBinValidatable</span> <span class="p">{</span></p>
-
-<p><span class="k">var</span> <span class="nv">validation</span><span class="p">:</span> <span class="kt">Validation</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">validation</span><span class="p">:</span> <span class="kt">Validation</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="kt">Validation</span><span class="p">()</span>
     <span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">]</span>
-    <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s"><q>application/json</q></span><span class="p">]</span>
+    <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">validation</span>
-  <span class="p">}</span></p>
+  <span class="p">}</span>
 
-<p><span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
-<a href='#using-the-above-validatable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-validatable'>Using the above Validatable</h3>
-<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinValidatable</span> <span class="p">{</span></p>
+<h3 id='using-the-above-validatable' class='heading'>Using the above Validatable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinValidatable</span> <span class="p">{</span>
 
-<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"get"</span>
   <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URLEncodedInURL</span>
-  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
 
-<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+  <span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
     <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
-  <span class="p">}</span></p>
+  <span class="p">}</span>
 
-<p><span class="p">}</span>
-</code></pre></p>
+<span class="p">}</span>
+</code></pre>
 
           </section>
           <section class="section task-group-section">
@@ -145,9 +144,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vP9Restofire11Validatable10validationVS_10Validation"></a>
+                    <a name="/s:9Restofire11ValidatableP10validationAA10ValidationVv"></a>
                     <a name="//apple_ref/swift/Property/validation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP9Restofire11Validatable10validationVS_10Validation">validation</a>
+                    <a class="token" href="#/s:9Restofire11ValidatableP10validationAA10ValidationVv">validation</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -182,8 +181,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

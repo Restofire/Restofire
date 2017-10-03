@@ -31,7 +31,7 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:C9Restofire30DataRequestEventuallyOperation">DataRequestEventuallyOperation</a>
+                <a href="../Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
@@ -42,10 +42,10 @@
             <a href="../Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:v9Restofire20defaultConfigurationVS_13Configuration">defaultConfiguration</a>
+                <a href="../Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:v9Restofire29defaultRequestEventuallyQueueCSo14OperationQueue">defaultRequestEventuallyQueue</a>
+                <a href="../Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
               </li>
             </ul>
           </li>
@@ -79,7 +79,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Structs.html">Structs</a>
+            <a href="../Structs.html">Structures</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Structs/Authentication.html">Authentication</a>
@@ -109,35 +109,34 @@
               </div>
             <p>Represents a <code><a href="../Structs/Retry.html">Retry</a></code> that is associated with <code><a href="../Protocols/Configurable.html">Configurable</a></code>.
 <code>configuration.retry</code> by default.</p>
+<h3 id='create-custom-retryable' class='heading'>Create custom Retryable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinRetryable</span><span class="p">:</span> <span class="kt">Retryable</span> <span class="p">{</span> <span class="p">}</span>
 
-<p><a href='#create-custom-retryable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='create-custom-retryable'>Create custom Retryable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinRetryable</span><span class="p">:</span> <span class="kt">Retryable</span> <span class="p">{</span> <span class="p">}</span></p>
+<span class="kd">extension</span> <span class="kt">HTTPBinRetryable</span> <span class="p">{</span>
 
-<p><span class="kd">extension</span> <span class="kt">HTTPBinRetryable</span> <span class="p">{</span></p>
-
-<p><span class="k">var</span> <span class="nv">retry</span><span class="p">:</span> <span class="kt">Retry</span> <span class="p">{</span>
+  <span class="k">var</span> <span class="nv">retry</span><span class="p">:</span> <span class="kt">Retry</span> <span class="p">{</span>
     <span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="kt">Retry</span><span class="p">()</span>
     <span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
     <span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
     <span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="k">return</span> <span class="n">retry</span>
-  <span class="p">}</span></p>
+  <span class="p">}</span>
 
-<p><span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
-<a href='#using-the-above-retryable' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='using-the-above-retryable'>Using the above Retryable</h3>
-<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinRetryable</span> <span class="p">{</span></p>
+<h3 id='using-the-above-retryable' class='heading'>Using the above Retryable</h3>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinRetryable</span> <span class="p">{</span>
 
-<p><span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s"><q>get</q></span>
+  <span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"get"</span>
   <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URLEncodedInURL</span>
-  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span></p>
+  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
 
-<p><span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+  <span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
     <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
-  <span class="p">}</span></p>
+  <span class="p">}</span>
 
-<p><span class="p">}</span>
-</code></pre></p>
+<span class="p">}</span>
+</code></pre>
 
           </section>
           <section class="section task-group-section">
@@ -146,9 +145,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vP9Restofire9Retryable5retryVS_5Retry"></a>
+                    <a name="/s:9Restofire9RetryableP5retryAA5RetryVv"></a>
                     <a name="//apple_ref/swift/Property/retry" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP9Restofire9Retryable5retryVS_5Retry">retry</a>
+                    <a class="token" href="#/s:9Restofire9RetryableP5retryAA5RetryVv">retry</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -183,8 +182,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2016 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2016-09-18)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

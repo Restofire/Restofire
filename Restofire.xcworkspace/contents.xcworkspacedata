@@ -10,13 +10,9 @@
    <FileRef
       location = "group:/Users/rahulkatariya/Developer/Restofire/Restofire/Example/Example.xcodeproj">
    </FileRef>
-   <Group
-      location = "group:scripts"
-      name = "scripts">
-      <FileRef
-         location = "group:bootstrap">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:scripts">
+   </FileRef>
    <FileRef
       location = "group:Cartfile">
    </FileRef>
@@ -25,6 +21,10 @@
    </FileRef>
    <FileRef
       location = "group:Cartfile.resolved">
+   </FileRef>
+   <FileRef
+      location = "group:Gemfile"
+      assignedFileDataType = "public.ruby-script">
    </FileRef>
    <FileRef
       location = "group:LICENSE">

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `ResponseSerializable` that is associated with `Configurable`.
 /// `configuration.responseSerializer` by default.
@@ -42,14 +41,14 @@ import Alamofire
 public protocol ResponseSerializable {
     
     /// The `responseSerializer`.
-    var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> { get }
+    var dataResponseSerializer: DataResponseSerializer<Any> { get }
     
 }
 
 extension ResponseSerializable where Self: Configurable  {
     
     /// `configuration.responseSerializer`
-    public var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> {
+    public var dataResponseSerializer: DataResponseSerializer<Any> {
         return configuration.dataResponseSerializer
     }
     

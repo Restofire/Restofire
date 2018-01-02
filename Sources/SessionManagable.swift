@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Alamofire.SessionManager` that is associated with `Configurable`.
 /// `configuration.sessionManager` by default.
@@ -46,14 +45,14 @@ import Alamofire
 public protocol SessionManagable {
     
     /// The `sessionManager`.
-    var sessionManager: Alamofire.SessionManager { get }
+    var sessionManager: SessionManager { get }
     
 }
 
 public extension SessionManagable where Self: Configurable {
     
     /// `configuration.sessionManager`
-    public var sessionManager: Alamofire.SessionManager {
+    public var sessionManager: SessionManager {
         return configuration.sessionManager
     }
     

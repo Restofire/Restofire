@@ -24,6 +24,10 @@
 		35249B031D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249B011D8E5A84005A2BAB /* DictionaryUtils.swift */; };
 		35249B041D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249B011D8E5A84005A2BAB /* DictionaryUtils.swift */; };
 		35249B051D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35249B011D8E5A84005A2BAB /* DictionaryUtils.swift */; };
+		35366E8E1FFBB39E00270EDE /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35366E8D1FFBB39E00270EDE /* TypeAliases.swift */; };
+		35366E8F1FFBB39E00270EDE /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35366E8D1FFBB39E00270EDE /* TypeAliases.swift */; };
+		35366E901FFBB39E00270EDE /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35366E8D1FFBB39E00270EDE /* TypeAliases.swift */; };
+		35366E911FFBB39E00270EDE /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35366E8D1FFBB39E00270EDE /* TypeAliases.swift */; };
 		3544ED8C1CBA572C00CDF3C9 /* BoolService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */; };
 		3544ED8D1CBA572C00CDF3C9 /* FloatService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */; };
 		3544ED8F1CBA572C00CDF3C9 /* IntService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */; };
@@ -433,6 +437,7 @@
 		3522609F1C5E2BBD000AE7C0 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		352260A11C5E2BCA000AE7C0 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		35249B011D8E5A84005A2BAB /* DictionaryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryUtils.swift; sourceTree = "<group>"; };
+		35366E8D1FFBB39E00270EDE /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		3544ED171CBA40F700CDF3C9 /* BoolService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BoolService+GET.swift"; sourceTree = "<group>"; };
 		3544ED181CBA40F700CDF3C9 /* FloatService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatService+GET.swift"; sourceTree = "<group>"; };
 		3544ED1A1CBA40F700CDF3C9 /* IntService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IntService+GET.swift"; sourceTree = "<group>"; };
@@ -555,6 +560,7 @@
 				35C385141CAE43ED003CE0BE /* Restofire.swift */,
 				3525FB111CCCC9A3009CEC35 /* Core */,
 				35E6D3701CCBED65007ABC05 /* Protocols */,
+				35366E841FFBB38900270EDE /* Alamofire */,
 				353E0D521D8D26AC000EA095 /* Utils */,
 				35E6D3721CCBED9F007ABC05 /* Supporting Files */,
 			);
@@ -586,10 +592,18 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		353E0D521D8D26AC000EA095 /* Utils */ = {
+		35366E841FFBB38900270EDE /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
 				35F4A5F21CC61E52004840E1 /* AlamofireUtils.swift */,
+				35366E8D1FFBB39E00270EDE /* TypeAliases.swift */,
+			);
+			name = Alamofire;
+			sourceTree = "<group>";
+		};
+		353E0D521D8D26AC000EA095 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
 				35249B011D8E5A84005A2BAB /* DictionaryUtils.swift */,
 			);
 			name = Utils;
@@ -1247,6 +1261,7 @@
 				35E6D3591CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B031D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */,
+				35366E901FFBB39E00270EDE /* TypeAliases.swift in Sources */,
 				35C6B78E1D8D13FC0085BD16 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
@@ -1271,6 +1286,7 @@
 				35E6D35A1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B041D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */,
+				35366E8F1FFBB39E00270EDE /* TypeAliases.swift in Sources */,
 				35C6B78F1D8D13FD0085BD16 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
@@ -1295,6 +1311,7 @@
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B051D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */,
+				35366E911FFBB39E00270EDE /* TypeAliases.swift in Sources */,
 				35C6B7901D8D13FD0085BD16 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7C1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
@@ -1377,6 +1394,7 @@
 				35E6D3581CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B021D8E5A84005A2BAB /* DictionaryUtils.swift in Sources */,
 				35547F261CC0A32D0070F5D3 /* Configurable.swift in Sources */,
+				35366E8E1FFBB39E00270EDE /* TypeAliases.swift in Sources */,
 				35C6B78D1D8D13FB0085BD16 /* DataRequestEventuallyOperation.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,

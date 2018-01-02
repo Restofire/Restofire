@@ -6,7 +6,6 @@
 //  Copyright © 2016 AarKay. All rights reserved.
 //
 
-import Alamofire
 import Foundation
 
 /// A Validation of RESTful Services.
@@ -19,7 +18,7 @@ import Foundation
 public struct Validation {
 
     /// The Alamofire validation. `nil` by default.
-    public var validationBlock: Alamofire.DataRequest.Validation?
+    public var validationBlock: DataRequest.Validation?
     
     /// The acceptable status codes. `nil` by default.
     public var acceptableStatusCodes: [Int]?

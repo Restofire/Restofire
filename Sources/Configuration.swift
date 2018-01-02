@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A Configuration of RESTful Services. You must provide a `baseURL`.
 ///
@@ -44,10 +43,10 @@ public struct Configuration {
     public var queryParameters: [String: Any]?
     
     /// The HTTP Method. `.GET` by default.
-    public var method: Alamofire.HTTPMethod = .get
+    public var method: HTTPMethod = .get
     
     /// The request parameter encoding. `.JSON` by default.
-    public var encoding: Alamofire.ParameterEncoding = JSONEncoding.default
+    public var encoding: ParameterEncoding = JSONEncoding.default
     
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String] = [:]
@@ -62,10 +61,10 @@ public struct Configuration {
     public var retry = Retry()
     
     /// The `Alamofire.DataResponseSerializer`.
-    public var dataResponseSerializer: Alamofire.DataResponseSerializer<Any> = Alamofire.DataRequest.jsonResponseSerializer()
+    public var dataResponseSerializer: DataResponseSerializer<Any> = DataRequest.jsonResponseSerializer()
     
     /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
-    public var sessionManager = Alamofire.SessionManager.default
+    public var sessionManager = SessionManager.default
     
     /// The queue on which reponse will be delivered. `DispatchQueue.main`
     /// by default.

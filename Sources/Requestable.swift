@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents an HTTP Request that can be asynchronously executed. You must 
 /// provide a `path`.
@@ -72,10 +71,10 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     var queryParameters: [String: Any]? { get }
     
     /// The HTTP Method.
-    var method: Alamofire.HTTPMethod { get }
+    var method: HTTPMethod { get }
     
     /// The request parameter encoding.
-    var encoding: Alamofire.ParameterEncoding { get }
+    var encoding: ParameterEncoding { get }
     
     /// The HTTP headers.
     var headers: [String : String]? { get }
@@ -84,7 +83,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     var parameters: Any? { get }
     
     /// The Alamofire Session Manager.
-    var sessionManager: Alamofire.SessionManager { get }
+    var sessionManager: SessionManager { get }
     
     /// The queue on which reponse will be delivered.
     var queue: DispatchQueue? { get }
@@ -93,7 +92,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     var credential: URLCredential? { get }
     
     /// The Alamofire validation.
-    var validationBlock: Alamofire.DataRequest.Validation? { get }
+    var validationBlock: DataRequest.Validation? { get }
     
     /// The acceptable status codes.
     var acceptableStatusCodes: [Int]? { get }
@@ -116,7 +115,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteRequestWithDataResponse(_ dataResponse: Alamofire.DataResponse<Self.Model>)
+    func didCompleteRequestWithDataResponse(_ dataResponse: DataResponse<Self.Model>)
     
 }
 
@@ -130,7 +129,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
+    public func executeTask(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -144,7 +143,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
+    public func requestOperation(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
         let requestOperation = DataRequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -159,7 +158,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -173,7 +172,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((Alamofire.DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
         let requestEventuallyOperation = DataRequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
@@ -206,12 +205,12 @@ public extension Requestable {
     }
     
     /// `configuration.method`
-    public var method: Alamofire.HTTPMethod {
+    public var method: HTTPMethod {
         return configuration.method
     }
     
     /// `configuration.encoding`
-    public var encoding: Alamofire.ParameterEncoding {
+    public var encoding: ParameterEncoding {
         return configuration.encoding
     }
     
@@ -226,7 +225,7 @@ public extension Requestable {
     }
     
     /// `configuration.sessionManager`
-    public var sessionManager: Alamofire.SessionManager {
+    public var sessionManager: SessionManager {
         return configuration.sessionManager
     }
     
@@ -241,7 +240,7 @@ public extension Requestable {
     }
     
     /// `validation.validation`
-    public var validationBlock: Alamofire.DataRequest.Validation? {
+    public var validationBlock: DataRequest.Validation? {
         return validation.validationBlock
     }
     
@@ -274,6 +273,6 @@ public extension Requestable {
     public func didStartRequest() { }
     
     /// Does nothing.
-    public func didCompleteRequestWithDataResponse(_ dataResponse: Alamofire.DataResponse<Self.Model>) { }
+    public func didCompleteRequestWithDataResponse(_ dataResponse: DataResponse<Self.Model>) { }
     
 }

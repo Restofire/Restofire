@@ -9,7 +9,6 @@
 #if !os(watchOS)
 
 import Foundation
-import Alamofire
 
 /// A `DataRequestOperation`, when added to an `NSOperationQueue` moitors the 
 /// network reachability and executes the `Requestable` when the network
@@ -22,7 +21,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
 
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
     
-    override init(requestable: R, completionHandler: ((Alamofire.DataResponse<R.Model>) -> Void)?) {
+    override init(requestable: R, completionHandler: ((DataResponse<R.Model>) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.isReady = false
         networkReachabilityManager?.listener = { status in
@@ -45,7 +44,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
     }
     
     
-    override func handleErrorDataResponse(_ response: Alamofire.DataResponse<R.Model>) {
+    override func handleErrorDataResponse(_ response: DataResponse<R.Model>) {
         if let error = response.result.error as? URLError, self.retryAttempts > 0 {
             if error.code == .notConnectedToInternet {
                 self.pause = true

@@ -48,7 +48,7 @@ extension GithubLoginViewController {
         githubLoginView.githubLoginButton.addTarget(self, action: #selector(loginWithGithub(_:)), for: .touchUpInside)
     }
     
-    func loginWithGithub(_ sender: AnyObject?) {
+    @objc func loginWithGithub(_ sender: AnyObject?) {
         guard let email = githubLoginView.emailTextField.text else {
             return
         }

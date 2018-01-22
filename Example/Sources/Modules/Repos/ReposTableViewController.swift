@@ -51,7 +51,7 @@ extension ReposTableViewController {
         loadData()
     }
     
-    func loadData(_ sender: AnyObject? = nil) {
+    @objc func loadData(_ sender: AnyObject? = nil) {
         showTopView(reposLoadingView)
         ReposGETService().executeTask { [weak self] in
             guard let _self = self else { return }

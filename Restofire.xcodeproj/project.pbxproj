@@ -576,12 +576,12 @@
 		3525FB111CCCC9A3009CEC35 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
 				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
-				352108C11CC29E99006D752E /* DataRequestOperation.swift */,
-				35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */,
+				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
 				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
 				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
+				352108C11CC29E99006D752E /* DataRequestOperation.swift */,
+				35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";

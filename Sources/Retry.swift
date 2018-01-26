@@ -28,8 +28,7 @@ public struct Retry {
                                             .cannotFindHost,
                                             .cannotConnectToHost,
                                             .dnsLookupFailed,
-                                            .networkConnectionLost
-    ]
+                                            .networkConnectionLost]
     
     /// The retry interval. `10` by default.
     public var retryInterval: TimeInterval = 10

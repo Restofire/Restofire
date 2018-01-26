@@ -14,12 +14,11 @@ import Foundation
 /// ### Creating a request.
 /// ```swift
 /// import Restofire
-/// import Alamofire
 ///
 /// struct PersonPOSTService: Requestable {
 ///
 ///   let path: String
-///   let method: Alamofire.HTTPMethod = .post
+///   let method: HTTPMethod = .post
 ///   let parameters: Any?
 ///
 ///   init(id: String, parameters: Any? = nil) {
@@ -33,7 +32,6 @@ import Foundation
 /// ### Consuming the request.
 /// ```swift
 /// import Restofire
-/// import Alamofire
 ///
 /// class ViewController: UIViewController  {
 ///
@@ -53,7 +51,7 @@ import Foundation
 public protocol Requestable: Authenticable, Configurable, ResponseSerializable, Retryable, SessionManagable, Validatable, Queueable {
     
     /// The response type.
-    associatedtype Model
+    associatedtype Response
     
     /// The scheme.
     var scheme: String { get }
@@ -115,7 +113,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     /// Called when the Request succeeds.
     ///
     /// - parameter response: The Alamofire Response
-    func didCompleteRequestWithDataResponse(_ dataResponse: DataResponse<Self.Model>)
+    func didCompleteRequestWithDataResponse(_ dataResponse: DataResponse<Self.Response>)
     
 }
 
@@ -129,7 +127,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
+    public func executeTask(_ completionHandler: ((DataResponse<Self.Response>) -> Void)? = nil) -> DataRequestOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -143,7 +141,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestOperation<Self> {
+    public func requestOperation(_ completionHandler: ((DataResponse<Self.Response>) -> Void)? = nil) -> DataRequestOperation<Self> {
         let requestOperation = DataRequestOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -158,7 +156,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((DataResponse<Self.Response>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -172,7 +170,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Self.Model>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Self.Response>) -> Void)? = nil) -> DataRequestEventuallyOperation<Self> {
         let requestEventuallyOperation = DataRequestEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }
@@ -273,6 +271,6 @@ public extension Requestable {
     public func didStartRequest() { }
     
     /// Does nothing.
-    public func didCompleteRequestWithDataResponse(_ dataResponse: DataResponse<Self.Model>) { }
+    public func didCompleteRequestWithDataResponse(_ dataResponse: DataResponse<Self.Response>) { }
     
 }

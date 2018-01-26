@@ -12,7 +12,19 @@ class AlamofireUtils {
     
     static func alamofireDataRequestFromRequestable<R: Requestable>(_ requestable: R) -> Alamofire.DataRequest {
         
-        var request = requestable.sessionManager.request(requestable.baseURL + requestable.path, method: requestable.method, parameters: requestable.parameters as? [String: Any], encoding: requestable.encoding, headers: requestable.headers + requestable.configuration.headers)
+        let url = [requestable.scheme + requestable.baseURL,
+                             requestable.version,
+                             requestable.path]
+            .flatMap { $0 }
+            .joined(separator: "/")
+        
+        var request = requestable.sessionManager.request(
+            url,
+            method: requestable.method,
+            parameters: requestable.parameters as? [String: Any],
+            encoding: requestable.encoding,
+            headers: requestable.headers + requestable.configuration.headers
+        )
         
         if let parameters = requestable.parameters as? [Any] {
             do {

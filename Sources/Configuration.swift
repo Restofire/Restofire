@@ -13,7 +13,8 @@ import Alamofire
 ///
 /// ```swift
 /// var configuration = Configuration()
-/// configuration.baseURL = "http://www.mocky.io/v2/"
+/// configuration.baseURL = "www.mocky.io"
+/// configuration.version = "/v2/"
 /// configuration.headers = ["Content-Type": "application/json"]
 /// configuration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
 /// configuration.validation.acceptableStatusCodes = Array(200..<300)
@@ -30,8 +31,14 @@ import Alamofire
 /// ```
 public struct Configuration {
     
+    /// The scheme. `http://` by default.
+    public var scheme: String = "http://"
+    
     /// The base URL. `nil` by default.
     public var baseURL: String!
+    
+    /// The version. `nil` by default.
+    public var version: String?
     
     /// The HTTP Method. `.GET` by default.
     public var method: Alamofire.HTTPMethod = .get

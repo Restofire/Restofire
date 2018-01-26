@@ -12,7 +12,7 @@ import Restofire
 
 struct StringArrayGETService: Requestable {
     
-    typealias Model = [String]
+    typealias Response = [String]
     let path: String = "56c2c74d120000082673f1ae"
     
 }

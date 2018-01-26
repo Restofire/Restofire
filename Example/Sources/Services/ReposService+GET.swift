@@ -12,7 +12,7 @@ import Restofire
 
 struct ReposGETService: Requestable {
 
-    typealias Model = [[String: Any]]
+    typealias Response = [[String: Any]]
     var path: String = "user/repos"
 
 }

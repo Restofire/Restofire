@@ -11,7 +11,7 @@ import Alamofire
 
 class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
     
-    typealias Model = [String: Any]
+    typealias Response = [String: Any]
     let path: String = "get"
     var queryParameters: [String: Any]?
     

@@ -9,22 +9,25 @@
 //
 
 import Restofire
-import Alamofire
 
 struct GithubLoginGETService: Requestable {
     
-    typealias Model = [String: AnyObject]
+    typealias Response = [String: AnyObject]
     var path: String = "user"
     var headers: [String : String]?
     
     init(user: String, password: String) {
-        let auth = Alamofire.Request.authorizationHeader(user: user, password: password)!
+        let auth = Request.authorizationHeader(user: user, password: password)!
         self.headers = [auth.key: auth.value]
     }
     
 }
 
 extension GithubLoginGETService {
+    
+    func didRetryRequest(attempt: Int) {
+        
+    }
     
     func didCompleteRequestWithDataResponse(_ response: DataResponse<Dictionary<String, AnyObject>>) {
         if response.result.isSuccess {

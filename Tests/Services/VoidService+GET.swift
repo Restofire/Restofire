@@ -12,7 +12,7 @@ import Restofire
 
 struct VoidGETService: Requestable {
     
-    typealias Model = [String: Any]
+    typealias Response = [String: Any]
     let path: String = "56c31578120000743173f22e"
     
 }

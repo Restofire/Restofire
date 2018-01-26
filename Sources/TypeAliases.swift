@@ -8,7 +8,6 @@
 
 import Alamofire
 
-/// Alamofire Typealiases
 public typealias SessionManager = Alamofire.SessionManager
 
 public typealias HTTPMethod = Alamofire.HTTPMethod
@@ -18,6 +17,7 @@ public typealias JSONEncoding = Alamofire.JSONEncoding
 public typealias URLEncoding = Alamofire.URLEncoding
 public typealias PropertyListEncoding = Alamofire.PropertyListEncoding
 
+public typealias Request = Alamofire.Request
 public typealias DataRequest = Alamofire.DataRequest
 public typealias DataResponse = Alamofire.DataResponse
 public typealias DataResponseSerializer = Alamofire.DataResponseSerializer

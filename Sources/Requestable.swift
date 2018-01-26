@@ -69,7 +69,7 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     var path: String { get }
     
     /// The url request parameters.
-    var urlParameters: [String: Any]? { get }
+    var queryParameters: [String: Any]? { get }
     
     /// The HTTP Method.
     var method: Alamofire.HTTPMethod { get }
@@ -201,7 +201,7 @@ public extension Requestable {
     }
     
     /// `nil`
-    public var urlParameters: [String: Any]? {
+    public var queryParameters: [String: Any]? {
         return nil
     }
     

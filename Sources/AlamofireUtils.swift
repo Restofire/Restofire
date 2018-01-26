@@ -26,12 +26,21 @@ class AlamofireUtils {
             headers: requestable.headers + requestable.configuration.headers
         )
         
+        if let queryParameters = requestable.queryParameters + requestable.configuration.queryParameters {
+            do {
+                let urlEncodedRequest = try URLEncoding(destination: .queryString).encode(request.request!, with: queryParameters)
+                request = requestable.sessionManager.request(urlEncodedRequest)
+            } catch {
+                fatalError("\(error.localizedDescription). If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire.")
+            }
+        }
+        
         if let parameters = requestable.parameters as? [Any] {
             do {
                 let encodedURLRequest = try encode(request.request!, parameters: parameters, encoding: requestable.encoding)
-                request = Alamofire.request(encodedURLRequest)
+                request = requestable.sessionManager.request(encodedURLRequest)
             } catch {
-                fatalError("Parameters cannot be of type [Any]. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire.")
+                fatalError("\(error.localizedDescription). If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire.")
             }
         }
         
@@ -41,7 +50,6 @@ class AlamofireUtils {
         validateRequest(request, forValidation: requestable.validationBlock)
         
         return request
-        
     }
     
     fileprivate static func authenticateRequest(_ request: Alamofire.DataRequest, usingCredential credential:URLCredential?) {
@@ -57,13 +65,16 @@ class AlamofireUtils {
     fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forAcceptableStatusCodes statusCodes:[Int]?) {
         guard let statusCodes = statusCodes else { return }
         request.validate(statusCode: statusCodes)
-
     }
     
     fileprivate static func validateRequest(_ request: Alamofire.DataRequest, forValidation validation:Alamofire.DataRequest.Validation?) {
         guard let validation = validation else { return }
         request.validate(validation)
     }
+    
+}
+
+extension AlamofireUtils {
     
     fileprivate static func encode(_ urlRequest: URLRequestConvertible, parameters: [Any]?, encoding: ParameterEncoding) throws -> URLRequest {
         var urlRequest = try urlRequest.asURLRequest()
@@ -107,20 +118,6 @@ class AlamofireUtils {
             fatalError("Parameters as array are only implemented in .JSON and .Propertylist parameter encoding. If you think it is an issue, please create one or send a pull request if you can solve it at http://github.com/Restofire/Restofire.")
         }
         
-    }
-    
-}
-
-extension AlamofireUtils {
-    
-    static func castAnyResultToRequestableModel<M>(result: Result<Any>) -> Result<M> {
-        if let error = result.error {
-            return .failure(error)
-        } else if let value = result.value as? M {
-            return .success(value)
-        } else {
-            fatalError("ResponseSerializer failed to serialize the response to Requestable Model of type \(M.self)")
-        }
     }
     
 }

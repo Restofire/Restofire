@@ -13,11 +13,10 @@ class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
     
     typealias Model = [String: Any]
     let path: String = "get"
-    let encoding: ParameterEncoding = URLEncoding.default
-    var parameters: Any?
+    var queryParameters: [String: Any]?
     
-    init(parameters: Any?) {
-        self.parameters = parameters
+    init(queryParameters: [String: Any]?) {
+        self.queryParameters = queryParameters
     }
     
 }

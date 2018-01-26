@@ -41,7 +41,7 @@ public struct Configuration {
     public var version: String?
     
     /// The url request parameters. `nil` by default.
-    var queryParameters: [String: Any]?
+    public var queryParameters: [String: Any]?
     
     /// The HTTP Method. `.GET` by default.
     public var method: Alamofire.HTTPMethod = .get

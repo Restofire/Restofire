@@ -126,8 +126,7 @@ open class DataRequestOperation<R: Requestable>: Operation {
         executeRequest()
     }
     
-    @objc
-    func executeRequest() {
+    @objc func executeRequest() {
         request = AlamofireUtils.alamofireDataRequestFromRequestable(requestable)
         request.response(queue: requestable.queue, responseSerializer: requestable.dataResponseSerializer) { (response: DataResponse<Any>) in
             let transformedResult: Result<R.Model> = self.castAnyResultToRequestableModel(result: response.result)

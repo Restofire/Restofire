@@ -21,7 +21,8 @@ class ServiceSpec: QuickSpec {
     override func spec() {
 
         beforeSuite {
-            Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
+            Restofire.defaultConfiguration.baseURL = "www.mocky.io"
+            Restofire.defaultConfiguration.version = "v2"
             Restofire.defaultConfiguration.headers = ["Content-Type": "application/json"]
             Restofire.defaultConfiguration.validation.acceptableStatusCodes = Array(200..<201)
             Restofire.defaultConfiguration.validation.acceptableContentTypes = ["application/json"]

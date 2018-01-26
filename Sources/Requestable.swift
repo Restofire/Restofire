@@ -56,11 +56,20 @@ public protocol Requestable: Authenticable, Configurable, ResponseSerializable, 
     /// The response type.
     associatedtype Model
     
+    /// The scheme.
+    var scheme: String { get }
+    
     /// The base URL.
     var baseURL: String { get }
     
+    /// The version.
+    var version: String? { get }
+    
     /// The path relative to base URL.
     var path: String { get }
+    
+    /// The url request parameters.
+    var urlParameters: [String: Any]? { get }
     
     /// The HTTP Method.
     var method: Alamofire.HTTPMethod { get }
@@ -176,9 +185,24 @@ public extension Requestable {
 // MARK: - Default Implementation
 public extension Requestable {
     
+    /// `configuration.scheme`
+    public var scheme: String {
+        return configuration.scheme
+    }
+    
     /// `configuration.BaseURL`
     public var baseURL: String {
         return configuration.baseURL
+    }
+    
+    /// `configuration.version`
+    public var version: String? {
+        return configuration.version
+    }
+    
+    /// `nil`
+    public var urlParameters: [String: Any]? {
+        return nil
     }
     
     /// `configuration.method`

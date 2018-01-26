@@ -12,18 +12,18 @@ before_install:
 
 env:
   global:
-  - LC_CTYPE=en_US.UTF-8
-  - LANG=en_US.UTF-8
-  - WORKSPACE=Restofire.xcworkspace
-  - IOS_FRAMEWORK_SCHEME="Restofire-iOS"
-  - OSX_FRAMEWORK_SCHEME="Restofire-macOS"
-  - TVOS_FRAMEWORK_SCHEME="Restofire-tvOS"
-  - WATCHOS_FRAMEWORK_SCHEME="Restofire-watchOS"
+    - LC_CTYPE=en_US.UTF-8
+    - LANG=en_US.UTF-8
+    - WORKSPACE=Restofire.xcworkspace
+    - IOS_FRAMEWORK_SCHEME="Restofire-iOS"
+    - OSX_FRAMEWORK_SCHEME="Restofire-macOS"
+    - TVOS_FRAMEWORK_SCHEME="Restofire-tvOS"
+    - WATCHOS_FRAMEWORK_SCHEME="Restofire-watchOS"
   matrix:
     - DESTINATION="OS=11.2,name=iPhone X"                   SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"            SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=9.0,name=iPhone 6"                    SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
-    - DESTINATION="OS=8.1,name=iPhone 4s"                   SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
+    - DESTINATION="OS=8.1,name=iPhone 5s"                   SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="arch=x86_64"                             SCHEME="$OSX_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=11.0,name=Apple TV 1080p"             SCHEME="$TVOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES"
     - DESTINATION="OS=10.2,name=Apple TV 1080p"             SCHEME="$TVOS_FRAMEWORK_SCHEME"    RUN_TESTS="YES"

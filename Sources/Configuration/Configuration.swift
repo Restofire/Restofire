@@ -60,6 +60,12 @@ public struct Configuration: Authenticable, Retryable, SessionManagable, Queueab
     /// The `Validation`.
     public var validation = Validation()
     
+    /// The `Data Validation Block`.
+    public var dataValidation: DataRequest.Validation?
+    
+    /// The `Download Validation Block`.
+    public var downloadValidation: DownloadRequest.Validation?
+    
     /// The `Retry`.
     public var retry = Retry()
     

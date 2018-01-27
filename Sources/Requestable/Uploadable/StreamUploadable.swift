@@ -27,7 +27,7 @@ public extension StreamUploadable {
 public extension StreamUploadable {
     
     public func request() -> UploadRequest {
-        return Restofire.streamUploadRequest(fromRequestable: self)
+        return RestofireRequest.streamUploadRequest(fromRequestable: self)
     }
     
 }

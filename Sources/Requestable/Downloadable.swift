@@ -12,6 +12,8 @@ public protocol Downloadable: RequestableBase {
     
     var destination: DownloadFileDestination? { get }
     
+    /// The Alamofire data request validation.
+    var validationBlock: DownloadRequest.Validation? { get }
 }
 
 public extension Downloadable {
@@ -20,13 +22,18 @@ public extension Downloadable {
     public var destination: DownloadFileDestination? {
         return nil
     }
-
+    
+    /// `configuration.downloadValidation`
+    public var validationBlock: DownloadRequest.Validation? {
+        return configuration.downloadValidation
+    }
+    
 }
 
 public extension Downloadable {
     
     public func request() -> DownloadRequest {
-        return Restofire.downloadRequest(fromRequestable: self)
+        return RestofireRequest.downloadRequest(fromRequestable: self)
     }
     
 }

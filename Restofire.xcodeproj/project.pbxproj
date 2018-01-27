@@ -421,12 +421,37 @@
 			children = (
 				35C385141CAE43ED003CE0BE /* Restofire.swift */,
 				3525FB111CCCC9A3009CEC35 /* Core */,
-				35E6D3701CCBED65007ABC05 /* Protocols */,
 				35366E841FFBB38900270EDE /* Alamofire */,
 				353E0D521D8D26AC000EA095 /* Utils */,
 				35E6D3721CCBED9F007ABC05 /* Supporting Files */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		350428A5201C5BCE00765D15 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
+				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
+				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
+				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		350428AE201C5BED00765D15 /* Requestable */ = {
+			isa = PBXGroup;
+			children = (
+				35E6D3571CCBD5EF007ABC05 /* Authenticable.swift */,
+				35607D441CC09C98004902A5 /* Configurable.swift */,
+				35E6D34D1CCBC68D007ABC05 /* ResponseSerializable.swift */,
+				35E6D3661CCBE061007ABC05 /* Retryable.swift */,
+				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
+				3593CA781D8C6B5000075A15 /* SessionManagable.swift */,
+				3593CA6B1D8C65E400075A15 /* Queueable.swift */,
+				35E6D3521CCBD50E007ABC05 /* Validatable.swift */,
+			);
+			path = Requestable;
 			sourceTree = "<group>";
 		};
 		3522609E1C5E2B55000AE7C0 /* Tests */ = {
@@ -444,10 +469,8 @@
 		3525FB111CCCC9A3009CEC35 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
-				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
-				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
-				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
+				350428A5201C5BCE00765D15 /* Configuration */,
+				350428AE201C5BED00765D15 /* Requestable */,
 				352108C11CC29E99006D752E /* DataRequestOperation.swift */,
 				35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */,
 			);
@@ -564,21 +587,6 @@
 				35538A061D8E8173001BDE66 /* Quick.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		35E6D3701CCBED65007ABC05 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				35E6D3571CCBD5EF007ABC05 /* Authenticable.swift */,
-				35607D441CC09C98004902A5 /* Configurable.swift */,
-				35E6D34D1CCBC68D007ABC05 /* ResponseSerializable.swift */,
-				35E6D3661CCBE061007ABC05 /* Retryable.swift */,
-				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
-				3593CA781D8C6B5000075A15 /* SessionManagable.swift */,
-				3593CA6B1D8C65E400075A15 /* Queueable.swift */,
-				35E6D3521CCBD50E007ABC05 /* Validatable.swift */,
-			);
-			name = Protocols;
 			sourceTree = "<group>";
 		};
 		35E6D3721CCBED9F007ABC05 /* Supporting Files */ = {

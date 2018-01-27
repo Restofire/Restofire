@@ -50,7 +50,7 @@ public struct Configuration {
     
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String] = [:]
-
+    
     /// The `Authentication`.
     public var authentication = Authentication()
     

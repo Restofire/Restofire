@@ -55,9 +55,6 @@ public protocol Configurable: Authenticable, Retryable, SessionManagable, Queuea
     /// The version.
     var version: String? { get }
     
-    /// The path relative to base URL.
-    var path: String { get }
-    
     /// The url request parameters.
     var queryParameters: [String: Any]? { get }
     

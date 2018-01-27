@@ -13,15 +13,60 @@ import Nimble
 
 class DownloadableSpec: BaseSpec {
     
-    struct Download: Downloadable {
-        typealias Response = Any
-        var baseURL: String = "upload.wikimedia.org"
-        var path: String = "wikipedia/commons/6/69/NASA-HS201427a-HubbleUltraDeepField2014-20140603.jpg"
+    private var fileURL: URL {
+        return testDirectoryURL.appendingPathComponent("\(UUID().uuidString).json")
     }
     
     override func spec() {
         describe("Download") {
-            let download = Download()
+            
+            it("request should succeed") {
+                // Given
+                struct Download: Downloadable {
+                    var path: String? = "bytes/\(4 * 1024 * 1024)"
+                    var destination: DownloadFileDestination?
+                    
+                    init(destination: @escaping DownloadFileDestination) {
+                        self.destination = destination
+                    }
+                }
+                
+                let request = Download(destination: { _, _ in (self.fileURL, []) }).request()
+                var progressValues: [Double] = []
+                var response: DefaultDownloadResponse?
+                
+                // When
+                waitUntil(timeout: self.timeout)  { done in
+                    request
+                        .downloadProgress { progress in
+                            progressValues.append(progress.fractionCompleted)
+                        }
+                        .response { resp in
+                            response = resp
+                            
+                            //Then
+                            expect(response?.request).to(beNonNil())
+                            expect(response?.response).to(beNonNil())
+                            expect(response?.destinationURL).to(beNonNil())
+                            expect(response?.resumeData).to(beNil())
+                            expect(response?.error).to(beNil())
+                            
+                            var previousProgress: Double = progressValues.first ?? 0.0
+                            
+                            for progress in progressValues {
+                                expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
+                                previousProgress = progress
+                            }
+                            
+                            if let lastProgressValue = progressValues.last {
+                                expect(lastProgressValue).to(equal(1.0))
+                            } else {
+                                fail("last item in progressValues should not be nil")
+                            }
+                            done()
+                    }
+                }
+            }
             
         }
     }

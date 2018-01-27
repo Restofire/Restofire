@@ -14,7 +14,7 @@ import Nimble
 class BaseSpec: QuickSpec {
     
     let timeout: TimeInterval = 30
-    let pollInterval: TimeInterval = 3
+    let pollInterval: TimeInterval = 1
 
     static var testDirectoryURL: URL { return URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).appendingPathComponent("org.restofire.tests") }
     var testDirectoryURL: URL { return BaseSpec.testDirectoryURL }
@@ -25,8 +25,8 @@ class BaseSpec: QuickSpec {
             self.removeAllItemsInsideDirectory(at: self.testDirectoryURL)
             self.createDirectory(at: self.testDirectoryURL)
             
-            Restofire.defaultConfiguration.scheme = "https://"
-            Restofire.defaultConfiguration.baseURL = "httpbin.org"
+            Configuration.default.scheme = "https://"
+            Configuration.default.baseURL = "httpbin.org"
         }
         
     }

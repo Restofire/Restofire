@@ -42,8 +42,8 @@ extension MultipartUploadable {
 
 public extension MultipartUploadable {
     
-    public func request() {
-        Restofire.multipartUploadRequest(fromRequestable: self)
+    public func request(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
+        Restofire.multipartUploadRequest(fromRequestable: self, encodingCompletion: encodingCompletion)
     }
     
 }

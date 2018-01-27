@@ -44,18 +44,22 @@ class Restofire {
         return request
     }
     
-    static func multipartUploadRequest<R: MultipartUploadable>(fromRequestable requestable: R) {
+    static func multipartUploadRequest<R: MultipartUploadable>(fromRequestable requestable: R, encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
+        let localEncodingCompletion = encodingCompletion
         requestable.sessionManager.upload(
             multipartFormData: requestable.multipartFormData,
             usingThreshold: requestable.threshold,
             with: requestable.asUrlRequest()!) { encodingCompletion in
                 switch encodingCompletion {
-                case .success(let request,_,_):
+                case .success(let request, let streamingFromDisk, let streamFileURL):
                     authenticateRequest(request, usingCredential: requestable.credential)
                     validateRequest(request: request, requestable: requestable)
-                    requestable.encodingCompletion?(encodingCompletion)
+                    let result = MultipartFormDataEncodingResult.success(request: request, streamingFromDisk: streamingFromDisk, streamFileURL: streamFileURL)
+                    requestable.encodingCompletion?(result)
+                    localEncodingCompletion?(result)
                 case .failure(_):
                     requestable.encodingCompletion?(encodingCompletion)
+                    localEncodingCompletion?(encodingCompletion)
                 }
         }
     }

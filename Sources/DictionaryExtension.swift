@@ -1,5 +1,5 @@
 //
-//  DictionaryUtils.swift
+//  DictionaryExtension.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 18/09/16.

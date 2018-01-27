@@ -11,7 +11,7 @@
 import Foundation
 
 /// A `DataRequestOperation`, when added to an `NSOperationQueue` moitors the 
-/// network reachability and executes the `Requestable` when the network
+/// network reachability and executes the `RequestableBase` when the network
 /// is reachable.
 ///
 /// - Note: Do not call `start()` directly instead add it to an `NSOperationQueue`
@@ -21,7 +21,7 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
 
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
     
-    override init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    override init(requestable: R, completionHandler: ((DefaultDataResponse) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.isReady = false
         networkReachabilityManager?.listener = { status in
@@ -43,8 +43,8 @@ open class DataRequestEventuallyOperation<R: Requestable>: DataRequestOperation<
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
-        if let error = response.result.error as? URLError, self.retryAttempts > 0 {
+    override func handleErrorDataResponse(_ response: DefaultDataResponse) {
+        if let error = response.error as? URLError, self.retryAttempts > 0 {
             if error.code == .notConnectedToInternet {
                 self.pause = true
             } else if self.requestable.retryErrorCodes.contains(error.code) {

@@ -30,7 +30,7 @@ import Foundation
 ///
 /// ### Using the above SessionManagable
 /// ```swift
-/// class HTTPBinStringGETService: Requestable, HTTPBinSessionManagable {
+/// class HTTPBinStringGETService: RequestableBase, HTTPBinSessionManagable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = URLEncoding.default

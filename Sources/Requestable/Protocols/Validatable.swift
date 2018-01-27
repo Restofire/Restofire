@@ -29,7 +29,7 @@ import Foundation
 ///
 /// ### Using the above Validatable
 /// ```swift
-/// class HTTPBinStringGETService: Requestable, HTTPBinValidatable {
+/// class HTTPBinStringGETService: RequestableBase, HTTPBinValidatable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = .URLEncodedInURL

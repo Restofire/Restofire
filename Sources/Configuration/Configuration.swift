@@ -30,6 +30,9 @@ import Foundation
 /// ```
 public struct Configuration {
     
+    /// The default configuration.
+    public static var `default` = Configuration()
+    
     /// The scheme. `http://` by default.
     public var scheme: String = "http://"
     

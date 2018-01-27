@@ -8,23 +8,33 @@
 
 import Alamofire
 
+public typealias HTTPMethod = Alamofire.HTTPMethod
 public typealias SessionManager = Alamofire.SessionManager
 
-public typealias HTTPMethod = Alamofire.HTTPMethod
+// Encoding
 public typealias ParameterEncoding = Alamofire.ParameterEncoding
-
 public typealias JSONEncoding = Alamofire.JSONEncoding
 public typealias URLEncoding = Alamofire.URLEncoding
 public typealias PropertyListEncoding = Alamofire.PropertyListEncoding
 
+// Request
 public typealias Request = Alamofire.Request
 public typealias DataRequest = Alamofire.DataRequest
-public typealias DataResponse = Alamofire.DataResponse
-public typealias DataResponseSerializer = Alamofire.DataResponseSerializer
+public typealias DownloadRequest = Alamofire.DownloadRequest
+public typealias DownloadFileDestination = Alamofire.DownloadRequest.DownloadFileDestination
+public typealias UploadRequest = Alamofire.UploadRequest
 
+// Response
+public typealias DefaultDataResponse = Alamofire.DefaultDataResponse
+public typealias DataResponse = Alamofire.DataResponse
+public typealias DefaultDownloadResponse = Alamofire.DefaultDownloadResponse
+public typealias DownloadResponse = Alamofire.DownloadResponse
+
+// Features
+public typealias DataResponseSerializer = Alamofire.DataResponseSerializer
 public typealias MultipartFormData = Alamofire.MultipartFormData
 public typealias MultipartFormDataEncodingResult = SessionManager.MultipartFormDataEncodingResult
-public typealias DownloadFileDestination = Alamofire.DownloadRequest.DownloadFileDestination
 
+// Internal
 internal typealias NetworkReachabilityManager = Alamofire.NetworkReachabilityManager
 internal typealias Result = Alamofire.Result

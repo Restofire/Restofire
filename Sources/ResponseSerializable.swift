@@ -26,7 +26,7 @@ import Foundation
 ///
 /// ### Using the above ResponseSerializable
 /// ```swift
-/// class HTTPBinStringGETService: Requestable, HTTPBinResponseSerializable {
+/// class HTTPBinStringGETService: RequestableBase, HTTPBinResponseSerializable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = .URLEncodedInURL

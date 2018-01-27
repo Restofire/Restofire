@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represents a `Configurable` that is associated with `Requestable`.
+/// Represents a `Configurable` that is associated with `RequestableBase`.
 /// `Restofire.defaultConfiguration()` by default.
 ///
 /// ### Create custom Configurable
@@ -29,7 +29,7 @@ import Foundation
 ///
 /// ### Using the above Configurable
 /// ```swift
-/// class HTTPBinStringGETService: Requestable, HTTPBinConfigurable {
+/// class HTTPBinStringGETService: RequestableBase, HTTPBinConfigurable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = URLEncoding.default
@@ -48,11 +48,11 @@ public protocol Configurable {
 
 }
 
-public extension Configurable where Self: Requestable {
+public extension Configurable where Self: RequestableBase {
     
     /// `Restofire.defaultConfiguration`
     public var configuration: Configuration {
-        return Restofire.defaultConfiguration
+        return Configuration.default
     }
     
 }

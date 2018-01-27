@@ -41,15 +41,15 @@ import Foundation
 public protocol ResponseSerializable {
     
     /// The `responseSerializer`.
-    var dataResponseSerializer: DataResponseSerializer<Any> { get }
+    var responseSerializer: DataResponseSerializer<Any> { get }
     
 }
 
-extension ResponseSerializable where Self: Configurable  {
+extension ResponseSerializable  {
     
     /// `configuration.responseSerializer`
-    public var dataResponseSerializer: DataResponseSerializer<Any> {
-        return configuration.dataResponseSerializer
+    public var responseSerializer: DataResponseSerializer<Any> {
+        return DataRequest.jsonResponseSerializer()
     }
     
 }

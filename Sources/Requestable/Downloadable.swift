@@ -16,19 +16,17 @@ public protocol Downloadable: RequestableBase {
 
 public extension Downloadable {
     
+    /// `nil`
     public var destination: DownloadFileDestination? {
         return nil
     }
-    
+
 }
 
 public extension Downloadable {
     
-    @discardableResult
-    public func execute(_ completionHandler: @escaping ((DefaultDownloadResponse) -> Void)) -> DownloadRequest {
-        let request = Restofire.downloadRequest(fromRequestable: self)
-        request.response(completionHandler: completionHandler)
-        return request
+    public func request() -> DownloadRequest {
+        return Restofire.downloadRequest(fromRequestable: self)
     }
     
 }

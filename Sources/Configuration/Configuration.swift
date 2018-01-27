@@ -28,7 +28,7 @@ import Foundation
 /// sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
 /// configuration.manager = Alamofire.SessionManager(configuration: sessionConfiguration)
 /// ```
-public struct Configuration {
+public struct Configuration: Authenticable, Retryable, SessionManagable, Queueable, Validatable {
     
     /// The default configuration.
     public static var `default` = Configuration()
@@ -62,9 +62,6 @@ public struct Configuration {
     
     /// The `Retry`.
     public var retry = Retry()
-    
-    /// The `Alamofire.DataResponseSerializer`.
-    public var dataResponseSerializer: DataResponseSerializer<Any> = DataRequest.jsonResponseSerializer()
     
     /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
     public var sessionManager = SessionManager.default

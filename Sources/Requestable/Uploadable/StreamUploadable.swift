@@ -21,15 +21,13 @@ public extension StreamUploadable {
     public var method: HTTPMethod {
         return .post
     }
+    
 }
 
 public extension StreamUploadable {
     
-    @discardableResult
-    public func execute(_ completionHandler: @escaping ((DefaultDataResponse) -> Void)) -> UploadRequest {
-        let request = Restofire.streamUploadRequest(fromRequestable: self)
-        request.response(completionHandler: completionHandler)
-        return request
+    public func request() -> UploadRequest {
+        return Restofire.streamUploadRequest(fromRequestable: self)
     }
     
 }

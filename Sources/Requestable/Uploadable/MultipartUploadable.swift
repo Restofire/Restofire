@@ -42,7 +42,7 @@ extension MultipartUploadable {
 
 public extension MultipartUploadable {
     
-    public func execute() {
+    public func request() {
         Restofire.multipartUploadRequest(fromRequestable: self)
     }
     

@@ -521,6 +521,7 @@
 				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
 				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
 				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
+				350428BF201C619700765D15 /* Protocols */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -532,7 +533,6 @@
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				350428ED201C7F1700765D15 /* Uploadable */,
 				350428AF201C608E00765D15 /* Downloadable.swift */,
-				350428BF201C619700765D15 /* Protocols */,
 			);
 			path = Requestable;
 			sourceTree = "<group>";
@@ -540,8 +540,8 @@
 		350428BF201C619700765D15 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				35E6D3571CCBD5EF007ABC05 /* Authenticable.swift */,
 				35607D441CC09C98004902A5 /* Configurable.swift */,
+				35E6D3571CCBD5EF007ABC05 /* Authenticable.swift */,
 				35E6D3661CCBE061007ABC05 /* Retryable.swift */,
 				3593CA781D8C6B5000075A15 /* SessionManagable.swift */,
 				3593CA6B1D8C65E400075A15 /* Queueable.swift */,
@@ -607,8 +607,8 @@
 		350428E7201C7E6000765D15 /* Refactor */ = {
 			isa = PBXGroup;
 			children = (
-				350428E1201C7D1700765D15 /* RequestOperations */,
 				35E6D34D1CCBC68D007ABC05 /* ResponseSerializable.swift */,
+				350428E1201C7D1700765D15 /* RequestOperations */,
 				35A0949E1CC3EA9400C58702 /* DataRequestEventuallyOperation.swift */,
 			);
 			name = Refactor;

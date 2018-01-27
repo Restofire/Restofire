@@ -21,15 +21,13 @@ public extension DataUploadable {
     public var method: HTTPMethod {
         return .post
     }
+    
 }
 
 public extension DataUploadable {
     
-    @discardableResult
-    public func execute(_ completionHandler: @escaping ((DefaultDataResponse) -> Void)) -> UploadRequest {
-        let request = Restofire.dataUploadRequest(fromRequestable: self)
-        request.response(completionHandler: completionHandler)
-        return request
+    public func request() -> UploadRequest {
+        return Restofire.dataUploadRequest(fromRequestable: self)
     }
     
 }

@@ -81,13 +81,9 @@ public extension Requestable {
 }
 
 public extension Requestable {
-    
-    @discardableResult
-    public func execute(_ completionHandler: @escaping ((DefaultDataResponse) -> Void)) -> DataRequest {
-        let request = Restofire.dataRequest(fromRequestable: self)
-        request.response(completionHandler: completionHandler)
-        return request
+
+    public func request() -> DataRequest {
+        return Restofire.dataRequest(fromRequestable: self)
     }
     
 }
-

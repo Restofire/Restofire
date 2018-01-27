@@ -17,9 +17,6 @@ import Foundation
 /// ```
 public struct Validation {
 
-    /// The Alamofire validation. `nil` by default.
-    public var validationBlock: DataRequest.Validation?
-    
     /// The acceptable status codes. `nil` by default.
     public var acceptableStatusCodes: [Int]?
     

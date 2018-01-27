@@ -27,7 +27,7 @@ public extension DataUploadable {
 public extension DataUploadable {
     
     public func request() -> UploadRequest {
-        return Restofire.dataUploadRequest(fromRequestable: self)
+        return RestofireRequest.dataUploadRequest(fromRequestable: self)
     }
     
 }

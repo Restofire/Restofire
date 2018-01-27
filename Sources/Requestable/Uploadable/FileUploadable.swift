@@ -27,7 +27,7 @@ extension FileUploadable {
 public extension FileUploadable {
     
     public func request() -> UploadRequest {
-        return Restofire.fileUploadRequest(fromRequestable: self)
+        return RestofireRequest.fileUploadRequest(fromRequestable: self)
     }
     
 }

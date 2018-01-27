@@ -41,7 +41,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Configurable: Authenticable, Retryable, SessionManagable, Queueable {
+public protocol Configurable: Authenticable, Retryable, SessionManagable, Queueable, Validatable {
     
     /// The `configuration`.
     var configuration: Configuration { get }
@@ -78,6 +78,12 @@ public protocol Configurable: Authenticable, Retryable, SessionManagable, Queuea
     
     /// The credential.
     var credential: URLCredential? { get }
+    
+    /// The acceptable status codes.
+    var acceptableStatusCodes: [Int]? { get }
+    
+    /// The acceptable content types.
+    var acceptableContentTypes: [String]? { get }
     
     /// The retry error codes.
     var retryErrorCodes: Set<URLError.Code> { get }
@@ -151,6 +157,16 @@ public extension Configurable {
     /// `authentication.credential`
     public var credential: URLCredential? {
         return authentication.credential
+    }
+    
+    /// `validation.acceptableStatusCodes`
+    public var acceptableStatusCodes: [Int]? {
+        return validation.acceptableStatusCodes
+    }
+    
+    /// `validation.acceptableContentTypes`
+    public var acceptableContentTypes: [String]? {
+        return validation.acceptableContentTypes
     }
     
     /// `retry.retryErrorCodes`

@@ -48,34 +48,18 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Requestable: RequestableBase, Validatable {
+public protocol Requestable: RequestableBase {
     
-    /// The Alamofire validation.
+    /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }
-    
-    /// The acceptable status codes.
-    var acceptableStatusCodes: [Int]? { get }
-    
-    /// The acceptable content types.
-    var acceptableContentTypes: [String]? { get }
     
 }
 
 public extension Requestable {
     
-    /// `validation.validation`
+    /// `configuration.dataValidation`
     public var validationBlock: DataRequest.Validation? {
-        return validation.validationBlock
-    }
-    
-    /// `validation.acceptableStatusCodes`
-    public var acceptableStatusCodes: [Int]? {
-        return validation.acceptableStatusCodes
-    }
-    
-    /// `validation.acceptableContentTypes`
-    public var acceptableContentTypes: [String]? {
-        return validation.acceptableContentTypes
+        return configuration.dataValidation
     }
     
 }
@@ -83,7 +67,7 @@ public extension Requestable {
 public extension Requestable {
 
     public func request() -> DataRequest {
-        return Restofire.dataRequest(fromRequestable: self)
+        return RestofireRequest.dataRequest(fromRequestable: self)
     }
     
 }

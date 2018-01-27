@@ -12,16 +12,32 @@ import Nimble
 @testable import Restofire
 
 class StreamUploadableSpec: BaseSpec {
-    
-    struct Upload: StreamUploadable {
-        typealias Response = Any
-        var path: String = ""
-        var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
-    }
-    
+
     override func spec() {
         describe("StreamUpload") {
-            let upload = Upload()
+            
+            it("request should succeed") {
+                // Given
+                struct Upload: StreamUploadable {
+                    var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
+                }
+                
+                let request = Upload().request()
+                
+                // When
+                waitUntil(timeout: self.timeout) { done in
+                    request
+                        .response { response in
+                            defer { done() }
+                            
+                            //Then
+                            expect(response.request).to(beNonNil())
+                            expect(response.response).to(beNonNil())
+                            expect(response.data).to(beNonNil())
+                            expect(response.error).to(beNil())
+                    }
+                }
+            }
             
         }
     }

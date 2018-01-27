@@ -13,7 +13,7 @@ import Restofire
 struct GithubLoginGETService: Requestable {
     
     typealias Response = [String: AnyObject]
-    var path: String = "user"
+    var path: String? = "user"
     var headers: [String : String]?
     
     init(user: String, password: String) {

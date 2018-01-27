@@ -11,7 +11,16 @@ import Foundation
 public protocol RequestableBase: Configurable {
     
     /// The path relative to base URL.
-    var path: String { get }
+    var path: String? { get }
+    
+}
+
+public extension RequestableBase {
+    
+    /// `nil`
+    public var path: String? {
+        return nil
+    }
     
 }
 

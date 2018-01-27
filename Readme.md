@@ -178,7 +178,7 @@ import Restofire
 struct PersonGETService: Requestable {
 
     typealias Model = [String: Any]
-    var path: String = "56c2cc70120000c12673f1b5"
+    var path: String? = "56c2cc70120000c12673f1b5"
 
 }
 
@@ -313,9 +313,9 @@ import Alamofire
 
 struct MoviesReviewGETService: Requestable {
 
-    typealias Model = Any
-    var host: String = "http://api.nytimes.com/svc/movies/v2/"
-    var path: String = "reviews/"
+    var scheme: String = "http://"
+    var baseUrl: String = "api.nytimes.com/svc/movies/v2"
+    var path: String? = "reviews"
     var parameters: Any?
     var encoding: ParameterEncoding = URLEncoding.default
     var method: Alamofire.HTTPMethod = .get

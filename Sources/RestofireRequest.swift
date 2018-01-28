@@ -8,9 +8,6 @@
 
 import Alamofire
 
-/// A set of HTTP response status code that do not contain response data.
-private let emptyDataStatusCodes: Set<Int> = [204, 205]
-
 class RestofireRequest {
     
     static func dataRequest<R: Requestable>(fromRequestable requestable: R) -> Alamofire.DataRequest {
@@ -59,10 +56,8 @@ class RestofireRequest {
                     authenticateRequest(request, usingCredential: requestable.credential)
                     RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
                     let result = MultipartFormDataEncodingResult.success(request: request, streamingFromDisk: streamingFromDisk, streamFileURL: streamFileURL)
-                    requestable.encodingCompletion?(result)
                     localEncodingCompletion?(result)
                 case .failure(_):
-                    requestable.encodingCompletion?(encodingCompletion)
                     localEncodingCompletion?(encodingCompletion)
                 }
         }

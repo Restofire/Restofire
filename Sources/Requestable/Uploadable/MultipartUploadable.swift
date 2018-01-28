@@ -15,10 +15,7 @@ public protocol MultipartUploadable: Requestable {
     
     /// The threashold.
     var threshold: UInt64 { get }
-    
-    /// The encoding completion
-    var encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? { get }
-    
+
 }
 
 extension MultipartUploadable {
@@ -31,11 +28,6 @@ extension MultipartUploadable {
     /// `SessionManager.multipartFormDataEncodingMemoryThreshold`
     public var threshold: UInt64 {
         return SessionManager.multipartFormDataEncodingMemoryThreshold
-    }
-    
-    /// `nil`
-    public var encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? {
-        return nil
     }
     
 }

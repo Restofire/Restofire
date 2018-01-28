@@ -60,7 +60,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 2.4.0'
+pod 'Restofire', '~> 3.0.0'
 ```
 
 Then, run the following command:
@@ -83,7 +83,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 2.4.0
+github "Restofire/Restofire" ~> 3.0.0
 ```
 ### Swift Package Manager
 
@@ -160,8 +160,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        Restofire.defaultConfiguration.baseURL = "http://www.mocky.io/v2/"
-        Restofire.defaultConfiguration.logging = true
+        Restofire.Configuration.default.scheme = "http://"
+        Restofire.Configuration.default.baseURL = "www.mocky.io"
+        Restofire.Configuration.default.version = "v2"
 
         return true
   }

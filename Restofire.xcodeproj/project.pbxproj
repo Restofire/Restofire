@@ -471,6 +471,8 @@
 		350428D3201C689C00765D15 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				350428D2201C688C00765D15 /* Resources */,
+				35042931201CC83600765D15 /* Extensions */,
 				355389C61D8E803A001BDE66 /* Info.plist */,
 				355389D71D8E80FD001BDE66 /* Info-tvOS.plist */,
 			);
@@ -522,8 +524,6 @@
 				350428C2201C64C200765D15 /* BaseSpec.swift */,
 				350428C1201C646A00765D15 /* Requestable */,
 				357E3370201DA8100093DCC5 /* Alamofire */,
-				350428D2201C688C00765D15 /* Resources */,
-				35042931201CC83600765D15 /* Extensions */,
 				350428D3201C689C00765D15 /* Supporting Files */,
 			);
 			path = Tests;

@@ -20,15 +20,8 @@ public struct Retry {
 
     /// The retry error codes.
     /// `NSURLErrorTimedOut,
-    /// NSURLErrorCannotFindHost,
-    /// NSURLErrorCannotConnectToHost,
-    /// NSURLErrorDNSLookupFailed,
     /// NSURLErrorNetworkConnectionLost` by default.
-    public var retryErrorCodes: Set<URLError.Code> = [.timedOut,
-                                            .cannotFindHost,
-                                            .cannotConnectToHost,
-                                            .dnsLookupFailed,
-                                            .networkConnectionLost]
+    public var retryErrorCodes: Set<URLError.Code> = [.timedOut, .networkConnectionLost]
     
     /// The retry interval. `10` by default.
     public var retryInterval: TimeInterval = 10

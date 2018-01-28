@@ -37,24 +37,15 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
         requestable.didStart(request: request)
         request.response(
             queue: requestable.queue,
-            responseSerializer: requestable.dataResponseSerializer
-        ) { (response: DataResponse<Any>) in
+            responseSerializer: requestable.responseSerializer
+        ) { (response: DataResponse<R.Response>) in
             
-            let tResult: Result<R.Response> = self.cast(result: response.result)
-            let tResponse = DataResponse<R.Response>(
-                request: response.request,
-                response: response.response,
-                data: response.data,
-                result: tResult,
-                timeline: response.timeline
-            )
-            
-            if tResponse.error == nil {
+            if response.error == nil {
                 self.successful = true
-                self.requestable.didComplete(request: self.request, with: tResponse)
-                if let completionHandler = self.completionHandler { completionHandler(tResponse) }
+                self.requestable.didComplete(request: self.request, with: response)
+                if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
-                self.handleErrorDataResponse(tResponse)
+                self.handleErrorDataResponse(response)
             }
             let debug = ProcessInfo.processInfo.environment["-me.rahulkatariya.Restofire.Debug"]
             if debug == "1" {

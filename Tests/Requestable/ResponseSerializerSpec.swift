@@ -19,8 +19,9 @@ class ResponseSerializerSpec: BaseSpec {
             it("should work with the default json serializer") {
                 // Given
                 struct Service: Requestable {
-                    typealias Response = [String: Any]
+                    typealias Response = Any
                     var path: String? = "get"
+                    var dataResponseSerializer: DataResponseSerializer<Any> = DataRequest.jsonResponseSerializer()
                 }
                 
                 let service = Service()
@@ -35,7 +36,7 @@ class ResponseSerializerSpec: BaseSpec {
                         expect(response.response).to(beNonNil())
                         expect(response.data).to(beNonNil())
                         expect(response.error).to(beNil())
-                        if let value = response.result.value,
+                        if let value = response.result.value as? [String: Any],
                             let url = value["url"] as? String {
                             expect(url).to(equal("https://httpbin.org/get"))
                         } else {

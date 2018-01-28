@@ -41,7 +41,9 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Configurable: AConfigurable, ResponseSerializable, Retryable, Queueable {
+public protocol Configurable: AConfigurable, Retryable, Queueable {
+    
+    associatedtype Response
     
     /// The queue on which reponse will be delivered.
     var queue: DispatchQueue? { get }

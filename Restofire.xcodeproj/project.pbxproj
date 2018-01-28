@@ -166,6 +166,10 @@
 		357E3414201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3412201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift */; };
 		357E3415201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3412201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift */; };
 		357E3416201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3412201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift */; };
+		357E3419201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
+		357E341A201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
+		357E341B201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
+		357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
 		3593CA6C1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6D1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6E1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
@@ -388,6 +392,7 @@
 		357E3408201DE5970093DCC5 /* BaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		357E340D201DE7C40093DCC5 /* RequestableEventuallyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableEventuallyOperation.swift; sourceTree = "<group>"; };
 		357E3412201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableEventuallyOperation.swift; sourceTree = "<group>"; };
+		357E3418201DF5260093DCC5 /* _AUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _AUploadable.swift; sourceTree = "<group>"; };
 		3593CA6B1D8C65E400075A15 /* Queueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queueable.swift; sourceTree = "<group>"; };
 		3593CA781D8C6B5000075A15 /* SessionManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagable.swift; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -669,10 +674,11 @@
 				357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */,
 				357E33CF201DD7C50093DCC5 /* ARequestable.swift */,
 				357E33CD201DD7C50093DCC5 /* ADownloadable.swift */,
+				357E3418201DF5260093DCC5 /* _AUploadable.swift */,
 				357E33CC201DD7C50093DCC5 /* ADataUploadable.swift */,
 				357E33CE201DD7C50093DCC5 /* AFileUploadable.swift */,
-				357E33D0201DD7C50093DCC5 /* AMultipartUploadable.swift */,
 				357E33D1201DD7C50093DCC5 /* AStreamUploadable.swift */,
+				357E33D0201DD7C50093DCC5 /* AMultipartUploadable.swift */,
 			);
 			path = AlamofireRequestable;
 			sourceTree = "<group>";
@@ -1102,6 +1108,7 @@
 				357E33E4201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				357E33A4201DC7180093DCC5 /* RequestableOperation.swift in Sources */,
+				357E341B201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D8201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335E201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E3387201DBC3E0093DCC5 /* JDDownloadable.swift in Sources */,
@@ -1145,6 +1152,7 @@
 				357E33E3201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				357E33A3201DC7180093DCC5 /* RequestableOperation.swift in Sources */,
+				357E341A201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D7201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335D201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E3386201DBC3E0093DCC5 /* JDDownloadable.swift in Sources */,
@@ -1188,6 +1196,7 @@
 				357E33E5201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F61CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				357E33A5201DC7180093DCC5 /* RequestableOperation.swift in Sources */,
+				357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D9201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E3388201DBC3E0093DCC5 /* JDDownloadable.swift in Sources */,
@@ -1267,6 +1276,7 @@
 				357E33E2201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				357E33A2201DC7180093DCC5 /* RequestableOperation.swift in Sources */,
+				357E3419201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D6201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335C201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E3385201DBC3E0093DCC5 /* JDDownloadable.swift in Sources */,

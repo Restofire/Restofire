@@ -8,19 +8,10 @@
 
 import Foundation
 
-public protocol ADataUploadable: ARequestable {
+public protocol ADataUploadable: _AUploadable {
     
     /// The data.
     var data: Data { get }
-    
-}
-
-public extension ADataUploadable {
-    
-    /// `.post`
-    public var method: HTTPMethod {
-        return .post
-    }
     
 }
 

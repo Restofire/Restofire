@@ -8,20 +8,11 @@
 
 import Foundation
 
-public protocol AStreamUploadable: ARequestable {
+public protocol AStreamUploadable: _Requestable, AConfigurable {
     
     /// The stream.
     var stream: InputStream { get }
-    
-}
 
-public extension AStreamUploadable {
-    
-    /// `.post`
-    public var method: HTTPMethod {
-        return .post
-    }
-    
 }
 
 public extension AStreamUploadable {

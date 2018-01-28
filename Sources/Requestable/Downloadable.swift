@@ -10,18 +10,25 @@ import Foundation
 
 public protocol Downloadable: ADownloadable, Configurable {
     
+    var downloadResponseSerializer: DataResponseSerializer<Any> { get }
+    
     func didStart(request: DownloadRequest)
     
-    func didComplete(request: DownloadRequest, with: DefaultDownloadResponse)
+    func didComplete(request: DownloadRequest, with: DownloadResponse<Response>)
 }
 
 public extension Downloadable {
+    
+    /// `responseSerializer.download`
+    public var downloadResponseSerializer: DownloadResponseSerializer<Any> {
+        return responseSerializer.download
+    }
     
     /// `Does Nothing`
     func didStart(request: DownloadRequest) {}
     
     /// `Does Nothing`
-    func didComplete(request: DownloadRequest, with: DefaultDownloadResponse) {}
+    func didComplete(request: DownloadRequest, with: DownloadResponse<Response>) {}
     
 }
 
@@ -35,7 +42,7 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadableOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((DefaultDownloadResponse) -> Void)? = nil) -> DownloadableOperation<Self> {
+    public func executeTask(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -49,7 +56,7 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadableOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((DefaultDownloadResponse) -> Void)? = nil) -> DownloadableOperation<Self> {
+    public func requestOperation(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableOperation<Self> {
         let requestOperation = DownloadableOperation(downloadable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -64,7 +71,7 @@ public extension Downloadable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((DefaultDownloadResponse) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -78,7 +85,7 @@ public extension Downloadable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((DefaultDownloadResponse) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
         let requestEventuallyOperation = DownloadableEventuallyOperation(downloadable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }

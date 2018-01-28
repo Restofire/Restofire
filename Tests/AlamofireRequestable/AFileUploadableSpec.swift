@@ -13,7 +13,6 @@ import Nimble
 
 class FileUploadableSpec: BaseSpec {
     
-
     override func spec() {
         describe("AFileUpload") {
             

@@ -10,25 +10,33 @@ import Foundation
 
 public protocol Requestable: ARequestable, Configurable {
 
+    var dataResponseSerializer: DataResponseSerializer<Any> { get }
+    
     func didStart(request: DataRequest)
     
-    func didComplete(request: DataRequest, with: DefaultDataResponse)
+    func didComplete(request: DataRequest, with: DataResponse<Response>)
+    
 }
 
 public extension Requestable {
+    
+    /// `responseSerializer.data`
+    public var dataResponseSerializer: DataResponseSerializer<Any> {
+        return responseSerializer.data
+    }
     
     /// `Does Nothing`
     func didStart(request: DataRequest) {}
     
     /// `Does Nothing`
-    func didComplete(request: DataRequest, with: DefaultDataResponse) {}
+    func didComplete(request: DataRequest, with: DataResponse<Response>) {}
     
 }
 
-public protocol FileUploadable: AFileUploadable, Requestable {}
-public protocol DataUploadable: ADataUploadable, Requestable {}
-public protocol StreamUploadable: AStreamUploadable, Requestable {}
-public protocol MultipartUploadable: AMultipartUploadable, Requestable {}
+public protocol FileUploadable: AFileUploadable {}
+public protocol DataUploadable: ADataUploadable {}
+public protocol StreamUploadable: AStreamUploadable {}
+public protocol MultipartUploadable: AMultipartUploadable {}
 
 public extension Requestable {
     
@@ -40,7 +48,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestableOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((DefaultDataResponse) -> Void)? = nil) -> RequestableOperation<Self> {
+    public func executeTask(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -54,7 +62,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestableOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((DefaultDataResponse) -> Void)? = nil) -> RequestableOperation<Self> {
+    public func requestOperation(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
         let requestOperation = RequestableOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -69,7 +77,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((DefaultDataResponse) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -83,7 +91,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((DefaultDataResponse) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestableEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }

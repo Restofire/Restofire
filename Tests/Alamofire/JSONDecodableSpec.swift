@@ -18,11 +18,11 @@ class JSONDecodableSpec: BaseSpec {
             
             it("request should decode json response to decodable object") {
                 // Given
-                struct Response: Decodable {
+                struct HTTPBin: Decodable {
                     let url: URL
                 }
                 
-                struct Request: Requestable {
+                struct Request: ARequestable {
                     var path: String? = "get"
                 }
                 
@@ -30,7 +30,7 @@ class JSONDecodableSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    request.responseJSONDecodable(completionHandler: { (response: DataResponse<Response>) in
+                    request.responseJSONDecodable(completionHandler: { (response: DataResponse<HTTPBin>) in
                         defer { done() }
                         
                         //Then

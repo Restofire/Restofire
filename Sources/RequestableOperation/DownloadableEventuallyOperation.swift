@@ -21,7 +21,7 @@ open class DownloadableEventuallyOperation<R: Downloadable>: DownloadableOperati
     
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
     
-    override init(downloadable: R, completionHandler: ((DefaultDownloadResponse) -> Void)?) {
+    override init(downloadable: R, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         super.init(downloadable: downloadable, completionHandler: completionHandler)
         self.isReady = false
         networkReachabilityManager?.listener = { status in
@@ -45,7 +45,7 @@ open class DownloadableEventuallyOperation<R: Downloadable>: DownloadableOperati
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorDataResponse(_ response: DefaultDownloadResponse) {
+    override func handleErrorDataResponse(_ response: DownloadResponse<R.Response>) {
         if let error = response.error as? URLError, error.code == .notConnectedToInternet {
             self.pause = true
         } else {

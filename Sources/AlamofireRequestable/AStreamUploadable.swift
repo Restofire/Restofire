@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AStreamUploadable: _Requestable, AConfigurable {
+public protocol AStreamUploadable: _AUploadable {
     
     /// The stream.
     var stream: InputStream { get }

@@ -116,4 +116,18 @@ open class BaseOperation: Operation {
         isFinished = true
     }
     
+    func cast<M>(result: Result<Any>) -> Result<M> {
+        if let error = result.error {
+            return .failure(error)
+        } else if let value = result.value as? M {
+            return .success(value)
+        } else {
+            return .failure(RestofireError.customResponseSerializationFailed)
+        }
+    }
+    
+}
+
+enum RestofireError: Error {
+    case customResponseSerializationFailed
 }

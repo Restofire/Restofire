@@ -42,7 +42,7 @@ extension GithubLoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let authHeader = UserDefaults.standard.value(forKey: "Authorization") as? String {
-            Restofire.defaultConfiguration.headers["Authorization"] = authHeader
+            Restofire.Configuration.default.headers["Authorization"] = authHeader
             performReposSegue()
         }
         githubLoginView.githubLoginButton.addTarget(self, action: #selector(loginWithGithub(_:)), for: .touchUpInside)

@@ -1,5 +1,5 @@
 //
-//  RFSessionManager.swift
+//  Session.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/01/18.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-public struct RFSessionManager {
+public struct Session {
     
     /// The default session manager.
-    public static var `default` = RFSessionManager()
+    public static var `default` = Session()
 
     /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
     public var sessionManager = SessionManager.default
     
-    /// `RFSessionManager` Intializer
+    /// `Session` Intializer
     ///
-    /// - returns: new `RFSessionManager` object
+    /// - returns: new `Session` object
     public init() {}
     
 }

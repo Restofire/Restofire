@@ -9,8 +9,6 @@
 import Foundation
 import Alamofire
 
-// MARK: - JSON
-
 class RequestJSONDecodableResponseSerializer {
     /// Returns a JSON object contained in a result type constructed from the response data using `JSONSerialization`
     /// with the specified reading options.
@@ -22,7 +20,7 @@ class RequestJSONDecodableResponseSerializer {
     ///
     /// - returns: The result data type.
     public static func serializeResponseJSONDecodable<T: Decodable>(
-        keyPath: String? = nil,
+        decoder: JSONDecoder? = JSONDecoder(),
         response: HTTPURLResponse?,
         data: Data?,
         error: Error?)
@@ -51,11 +49,11 @@ extension DataRequest {
     ///
     /// - returns: A JSON object response serializer.
     public static func JSONDecodableResponseSerializer<T: Decodable>(
-        keyPath: String? = nil)
+        decoder: JSONDecoder? = JSONDecoder())
         -> DataResponseSerializer<T>
     {
         return DataResponseSerializer { _, response, data, error in
-            return RequestJSONDecodableResponseSerializer.serializeResponseJSONDecodable(keyPath: keyPath, response: response, data: data, error: error)
+            return RequestJSONDecodableResponseSerializer.serializeResponseJSONDecodable(decoder: decoder, response: response, data: data, error: error)
         }
     }
     
@@ -68,13 +66,13 @@ extension DataRequest {
     @discardableResult
     public func responseJSONDecodable<T: Decodable>(
         queue: DispatchQueue? = nil,
-        keyPath: String? = nil,
+        decoder: JSONDecoder? = JSONDecoder(),
         completionHandler: @escaping (DataResponse<T>) -> Void)
         -> Self
     {
         return response(
             queue: queue,
-            responseSerializer: DataRequest.JSONDecodableResponseSerializer(keyPath: keyPath),
+            responseSerializer: DataRequest.JSONDecodableResponseSerializer(decoder: decoder),
             completionHandler: completionHandler
         )
     }
@@ -88,7 +86,7 @@ extension DownloadRequest {
     ///
     /// - returns: A JSON object response serializer.
     public static func JSONDecodableResponseSerializer<T: Decodable>(
-        keyPath: String? = nil)
+        decoder: JSONDecoder? = JSONDecoder())
         -> DownloadResponseSerializer<T>
     {
         return DownloadResponseSerializer { _, response, fileURL, error in
@@ -100,7 +98,7 @@ extension DownloadRequest {
             
             do {
                 let data = try Data(contentsOf: fileURL)
-                return RequestJSONDecodableResponseSerializer.serializeResponseJSONDecodable(keyPath: keyPath, response: response, data: data, error: error)
+                return RequestJSONDecodableResponseSerializer.serializeResponseJSONDecodable(decoder: decoder, response: response, data: data, error: error)
             } catch {
                 return .failure(AFError.responseSerializationFailed(reason: .inputFileReadFailed(at: fileURL)))
             }
@@ -116,13 +114,13 @@ extension DownloadRequest {
     @discardableResult
     public func responseJSONDecodable<T: Decodable>(
         queue: DispatchQueue? = nil,
-        keyPath: String? = nil,
+        decoder: JSONDecoder? = JSONDecoder(),
         completionHandler: @escaping (DownloadResponse<T>) -> Void)
         -> Self
     {
         return response(
             queue: queue,
-            responseSerializer: DownloadRequest.JSONDecodableResponseSerializer(keyPath: keyPath),
+            responseSerializer: DownloadRequest.JSONDecodableResponseSerializer(decoder: decoder),
             completionHandler: completionHandler
         )
     }

@@ -33,7 +33,6 @@ class DownloadableSpec: BaseSpec {
                 
                 let request = Download(destination: { _, _ in (self.fileURL, []) }).request()
                 var progressValues: [Double] = []
-                var response: DefaultDownloadResponse?
                 
                 // When
                 waitUntil(timeout: self.timeout)  { done in
@@ -41,15 +40,15 @@ class DownloadableSpec: BaseSpec {
                         .downloadProgress { progress in
                             progressValues.append(progress.fractionCompleted)
                         }
-                        .response { resp in
-                            response = resp
+                        .response { response in
+                            defer { done() }
                             
                             //Then
-                            expect(response?.request).to(beNonNil())
-                            expect(response?.response).to(beNonNil())
-                            expect(response?.destinationURL).to(beNonNil())
-                            expect(response?.resumeData).to(beNil())
-                            expect(response?.error).to(beNil())
+                            expect(response.request).to(beNonNil())
+                            expect(response.response).to(beNonNil())
+                            expect(response.destinationURL).to(beNonNil())
+                            expect(response.resumeData).to(beNil())
+                            expect(response.error).to(beNil())
                             
                             var previousProgress: Double = progressValues.first ?? 0.0
                             
@@ -63,7 +62,6 @@ class DownloadableSpec: BaseSpec {
                             } else {
                                 fail("last item in progressValues should not be nil")
                             }
-                            done()
                     }
                 }
             }

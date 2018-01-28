@@ -24,20 +24,18 @@ class RequestableSpec: BaseSpec {
                 }
                 
                 let request = Request().request()
-                var response: DefaultDataResponse?
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     request
-                        .response { resp in
-                            response = resp
+                        .response { response in
+                            defer { done() }
                             
                             //Then
-                            expect(response?.request).to(beNonNil())
-                            expect(response?.response).to(beNonNil())
-                            expect(response?.data).to(beNonNil())
-                            expect(response?.error).to(beNil())
-                            done()
+                            expect(response.request).to(beNonNil())
+                            expect(response.response).to(beNonNil())
+                            expect(response.data).to(beNonNil())
+                            expect(response.error).to(beNil())
                     }
                 }
             }

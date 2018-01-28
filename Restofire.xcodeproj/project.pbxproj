@@ -101,14 +101,17 @@
 		35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
 		35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35607D441CC09C98004902A5 /* Configurable.swift */; };
-		357E335C201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
-		357E335D201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
-		357E335E201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
-		357E335F201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
-		357E336C201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
-		357E336D201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
-		357E336E201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
-		357E336F201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
+		357E335C201D12AE0093DCC5 /* RestofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* RestofireValidation.swift */; };
+		357E335D201D12AE0093DCC5 /* RestofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* RestofireValidation.swift */; };
+		357E335E201D12AE0093DCC5 /* RestofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* RestofireValidation.swift */; };
+		357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* RestofireValidation.swift */; };
+		357E336C201DA1340093DCC5 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* JSONDecodable.swift */; };
+		357E336D201DA1340093DCC5 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* JSONDecodable.swift */; };
+		357E336E201DA1340093DCC5 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* JSONDecodable.swift */; };
+		357E336F201DA1340093DCC5 /* JSONDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* JSONDecodable.swift */; };
+		357E3376201DA8270093DCC5 /* JSONDecodableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3371201DA81F0093DCC5 /* JSONDecodableSpec.swift */; };
+		357E3377201DA8280093DCC5 /* JSONDecodableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3371201DA81F0093DCC5 /* JSONDecodableSpec.swift */; };
+		357E3378201DA8290093DCC5 /* JSONDecodableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3371201DA81F0093DCC5 /* JSONDecodableSpec.swift */; };
 		3593CA6C1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6D1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6E1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
@@ -155,10 +158,10 @@
 		35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D36B1CCBEB90007ABC05 /* Retry.swift */; };
 		35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D36B1CCBEB90007ABC05 /* Retry.swift */; };
 		35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D36B1CCBEB90007ABC05 /* Retry.swift */; };
-		35F4A5F31CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */; };
-		35F4A5F41CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */; };
-		35F4A5F51CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */; };
-		35F4A5F61CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */; };
+		35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */; };
+		35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */; };
+		35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */; };
+		35F4A5F61CC61E52004840E1 /* RestofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,8 +317,9 @@
 		35538A0A1D8E8182001BDE66 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/tvOS/Quick.framework; sourceTree = "<group>"; };
 		35607D441CC09C98004902A5 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		357C0DA71D75745F0096239A /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Carthage/Checkouts/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
-		357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restofire+AlamofireValidation.swift"; sourceTree = "<group>"; };
-		357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alamofire+Decodable.swift"; sourceTree = "<group>"; };
+		357E335B201D12AE0093DCC5 /* RestofireValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestofireValidation.swift; sourceTree = "<group>"; };
+		357E336B201DA1340093DCC5 /* JSONDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodable.swift; sourceTree = "<group>"; };
+		357E3371201DA81F0093DCC5 /* JSONDecodableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecodableSpec.swift; sourceTree = "<group>"; };
 		3593CA6B1D8C65E400075A15 /* Queueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queueable.swift; sourceTree = "<group>"; };
 		3593CA781D8C6B5000075A15 /* SessionManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagable.swift; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -329,7 +333,7 @@
 		35E6D3611CCBD75A007ABC05 /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		35E6D3661CCBE061007ABC05 /* Retryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retryable.swift; sourceTree = "<group>"; };
 		35E6D36B1CCBEB90007ABC05 /* Retry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retry.swift; sourceTree = "<group>"; };
-		35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Restofire+AlamofireRequest.swift"; sourceTree = "<group>"; };
+		35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +521,7 @@
 			children = (
 				350428C2201C64C200765D15 /* BaseSpec.swift */,
 				350428C1201C646A00765D15 /* Requestable */,
+				357E3370201DA8100093DCC5 /* Alamofire */,
 				350428D2201C688C00765D15 /* Resources */,
 				35042931201CC83600765D15 /* Extensions */,
 				350428D3201C689C00765D15 /* Supporting Files */,
@@ -537,10 +542,10 @@
 			isa = PBXGroup;
 			children = (
 				35366E8D1FFBB39E00270EDE /* TypeAliases.swift */,
-				35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */,
-				357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */,
+				35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */,
+				357E335B201D12AE0093DCC5 /* RestofireValidation.swift */,
 				350428EE201C876800765D15 /* ArrayParameterEncoding.swift */,
-				357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */,
+				357E336B201DA1340093DCC5 /* JSONDecodable.swift */,
 			);
 			name = Alamofire;
 			sourceTree = "<group>";
@@ -565,6 +570,14 @@
 				357C0DBF1D75745F0096239A /* Alamofire.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		357E3370201DA8100093DCC5 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				357E3371201DA81F0093DCC5 /* JSONDecodableSpec.swift */,
+			);
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
 		35B19DD11BEE134E001D3952 = {
@@ -980,10 +993,10 @@
 				35042905201C9C5200765D15 /* StreamUploadable.swift in Sources */,
 				35E6D35E1CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */,
-				35F4A5F41CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */,
+				35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				3504290A201C9C5A00765D15 /* MultipartUploadable.swift in Sources */,
 				350428FB201C9C4200765D15 /* FileUploadable.swift in Sources */,
-				357E335E201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */,
+				357E335E201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				35E6D3591CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B031D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */,
@@ -992,7 +1005,7 @@
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				357E336E201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
+				357E336E201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				35E6D3631CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B2201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1011,10 +1024,10 @@
 				35042904201C9C5200765D15 /* StreamUploadable.swift in Sources */,
 				35E6D35F1CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */,
-				35F4A5F51CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */,
+				35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				35042909201C9C5A00765D15 /* MultipartUploadable.swift in Sources */,
 				350428FA201C9C4200765D15 /* FileUploadable.swift in Sources */,
-				357E335D201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */,
+				357E335D201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				35E6D35A1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B041D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */,
@@ -1023,7 +1036,7 @@
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				357E336D201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
+				357E336D201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				35E6D3641CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B1201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1042,10 +1055,10 @@
 				35042906201C9C5200765D15 /* StreamUploadable.swift in Sources */,
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
-				35F4A5F61CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */,
+				35F4A5F61CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				3504290B201C9C5A00765D15 /* MultipartUploadable.swift in Sources */,
 				350428FC201C9C4200765D15 /* FileUploadable.swift in Sources */,
-				357E335F201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */,
+				357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B051D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */,
@@ -1054,7 +1067,7 @@
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7C1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				357E336F201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
+				357E336F201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B3201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1065,6 +1078,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				350428C4201C64C200765D15 /* BaseSpec.swift in Sources */,
+				357E3377201DA8280093DCC5 /* JSONDecodableSpec.swift in Sources */,
 				35042926201CA27200765D15 /* DataUploadableSpec.swift in Sources */,
 				350428D0201C668C00765D15 /* RequestableSpec.swift in Sources */,
 				3504292A201CA29200765D15 /* MultipartUploadableSpec.swift in Sources */,
@@ -1080,6 +1094,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				350428C5201C64C200765D15 /* BaseSpec.swift in Sources */,
+				357E3378201DA8290093DCC5 /* JSONDecodableSpec.swift in Sources */,
 				35042927201CA27200765D15 /* DataUploadableSpec.swift in Sources */,
 				350428D1201C668C00765D15 /* RequestableSpec.swift in Sources */,
 				3504292B201CA29200765D15 /* MultipartUploadableSpec.swift in Sources */,
@@ -1103,10 +1118,10 @@
 				35042903201C9C5200765D15 /* StreamUploadable.swift in Sources */,
 				35E6D35D1CCBD731007ABC05 /* Validation.swift in Sources */,
 				35E6D36C1CCBEB90007ABC05 /* Retry.swift in Sources */,
-				35F4A5F31CC61E52004840E1 /* Restofire+AlamofireRequest.swift in Sources */,
+				35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				35042908201C9C5A00765D15 /* MultipartUploadable.swift in Sources */,
 				350428F9201C9C4200765D15 /* FileUploadable.swift in Sources */,
-				357E335C201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */,
+				357E335C201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				35E6D3581CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B021D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F261CC0A32D0070F5D3 /* Configurable.swift in Sources */,
@@ -1115,7 +1130,7 @@
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
-				357E336C201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
+				357E336C201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				35E6D3621CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B0201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1126,6 +1141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				350428C3201C64C200765D15 /* BaseSpec.swift in Sources */,
+				357E3376201DA8270093DCC5 /* JSONDecodableSpec.swift in Sources */,
 				35042925201CA27200765D15 /* DataUploadableSpec.swift in Sources */,
 				350428CF201C668C00765D15 /* RequestableSpec.swift in Sources */,
 				35042929201CA29200765D15 /* MultipartUploadableSpec.swift in Sources */,

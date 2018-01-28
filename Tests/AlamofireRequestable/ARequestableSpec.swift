@@ -27,15 +27,14 @@ class ARequestableSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    request
-                        .response { response in
-                            defer { done() }
-                            
-                            //Then
-                            expect(response.request).to(beNonNil())
-                            expect(response.response).to(beNonNil())
-                            expect(response.data).to(beNonNil())
-                            expect(response.error).to(beNil())
+                    request.response { response in
+                        defer { done() }
+                        
+                        //Then
+                        expect(response.request).to(beNonNil())
+                        expect(response.response).to(beNonNil())
+                        expect(response.data).to(beNonNil())
+                        expect(response.error).to(beNil())
                     }
                 }
             }

@@ -32,6 +32,7 @@ public typealias DownloadResponse = Alamofire.DownloadResponse
 
 // Features
 public typealias DataResponseSerializer = Alamofire.DataResponseSerializer
+public typealias DownloadResponseSerializer = Alamofire.DownloadResponseSerializer
 public typealias MultipartFormData = Alamofire.MultipartFormData
 public typealias MultipartFormDataEncodingResult = SessionManager.MultipartFormDataEncodingResult
 

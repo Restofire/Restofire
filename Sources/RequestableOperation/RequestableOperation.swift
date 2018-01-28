@@ -17,9 +17,9 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
     let requestable: R
     var request: DataRequest!
     var retryAttempts = 0
-    let completionHandler: ((DefaultDataResponse) -> Void)?
+    let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
-    init(requestable: R, completionHandler: ((DefaultDataResponse) -> Void)?) {
+    init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
         self.retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -35,30 +35,42 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
     @objc func executeRequest() {
         request = requestable.request()
         requestable.didStart(request: request)
-        request.response(queue: requestable.queue) { [weak self] (response: DefaultDataResponse) in
-            guard let _self = self else { return }
-            if response.error == nil {
-                _self.successful = true
-                _self.requestable.didComplete(request: _self.request, with: response)
-                if let completionHandler = _self.completionHandler { completionHandler(response) }
+        request.response(
+            queue: requestable.queue,
+            responseSerializer: requestable.dataResponseSerializer
+        ) { (response: DataResponse<Any>) in
+            
+            let tResult: Result<R.Response> = self.cast(result: response.result)
+            let tResponse = DataResponse<R.Response>(
+                request: response.request,
+                response: response.response,
+                data: response.data,
+                result: tResult,
+                timeline: response.timeline
+            )
+            
+            if tResponse.error == nil {
+                self.successful = true
+                self.requestable.didComplete(request: self.request, with: tResponse)
+                if let completionHandler = self.completionHandler { completionHandler(tResponse) }
             } else {
-                _self.handleErrorDataResponse(response)
+                self.handleErrorDataResponse(tResponse)
             }
             let debug = ProcessInfo.processInfo.environment["-me.rahulkatariya.Restofire.Debug"]
             if debug == "1" {
-                print(_self.request.debugDescription)
+                print(self.request.debugDescription)
             } else if debug == "2" {
-                print(_self.request.debugDescription)
+                print(self.request.debugDescription)
                 print(response)
             } else if debug == "3" {
-                print(_self.request.debugDescription)
-                print(_self.request)
+                print(self.request.debugDescription)
+                print(self.request)
                 print(response)
             }
         }
     }
     
-    func handleErrorDataResponse(_ response: DefaultDataResponse) {
+    func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError, retryAttempts > 0,
             requestable.retryErrorCodes.contains(error.code) {
             

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol _AUploadable: _Requestable, AConfigurable {
+public protocol _AUploadable: ARequestable {
     
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }

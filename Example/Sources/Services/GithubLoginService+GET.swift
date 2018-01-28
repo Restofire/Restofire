@@ -32,7 +32,7 @@ extension GithubLoginGETService {
     func didCompleteRequestWithDataResponse(_ response: DataResponse<Dictionary<String, AnyObject>>) {
         if response.result.isSuccess {
             let header = response.request!.allHTTPHeaderFields!["Authorization"]!
-            Restofire.defaultConfiguration.headers["Authorization"] = header
+            Restofire.Configuration.default.headers["Authorization"] = header
             UserDefaults.standard.set(header, forKey: "Authorization")
         }
     }

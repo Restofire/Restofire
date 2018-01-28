@@ -28,7 +28,7 @@ import Foundation
 ///
 /// ### Using the above Authenticable
 /// ```swift
-/// class HTTPBinStringGETService: RequestableBase, HTTPBinAuthenticable {
+/// class HTTPBinStringGETService: _Requestable, HTTPBinAuthenticable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = URLEncoding.default

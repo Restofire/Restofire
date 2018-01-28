@@ -15,7 +15,7 @@ import Foundation
 /// ```swift
 /// import Restofire
 ///
-/// struct PersonPOSTService: RequestableBase {
+/// struct PersonPOSTService: _Requestable {
 ///
 ///   let path: String
 ///   let method: HTTPMethod = .post
@@ -48,7 +48,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Requestable: RequestableBase {
+public protocol Requestable: _Requestable {
     
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }

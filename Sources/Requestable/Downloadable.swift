@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Downloadable: RequestableBase {
+public protocol Downloadable: _Requestable {
     
     var destination: DownloadFileDestination? { get }
     

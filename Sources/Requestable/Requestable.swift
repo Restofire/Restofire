@@ -8,66 +8,24 @@
 
 import Foundation
 
-/// Represents an HTTP Request that can be asynchronously executed. You must
-/// provide a `path`.
-///
-/// ### Creating a request.
-/// ```swift
-/// import Restofire
-///
-/// struct PersonPOSTService: _Requestable {
-///
-///   let path: String
-///   let method: HTTPMethod = .post
-///   let parameters: Any?
-///
-///   init(id: String, parameters: Any? = nil) {
-///     self.path = "person/\(id)"
-///     self.parameters = parameters
-///   }
-///
-/// }
-/// ```
-///
-/// ### Consuming the request.
-/// ```swift
-/// import Restofire
-///
-/// class ViewController: UIViewController  {
-///
-///   var request: PersonPOSTService!
-///   var person: Any!
-///
-///   func createPerson() {
-///     request = PersonPOSTService(id: "123456789", parameters: person).executeTask()
-///   }
-///
-///   deinit {
-///     request.cancel()
-///   }
-///
-/// }
-/// ```
-public protocol Requestable: _Requestable {
+public protocol Requestable: ARequestable, Configurable {
+
+    func didStart(request: DataRequest)
     
-    /// The Alamofire data request validation.
-    var validationBlock: DataRequest.Validation? { get }
-    
+    func didComplete(request: DataRequest, with: DefaultDataResponse)
 }
 
 public extension Requestable {
     
-    /// `configuration.dataValidation`
-    public var validationBlock: DataRequest.Validation? {
-        return configuration.dataValidation
-    }
+    /// `Does Nothing`
+    func didStart(request: DataRequest) {}
+    
+    /// `Does Nothing`
+    func didComplete(request: DataRequest, with: DefaultDataResponse) {}
     
 }
 
-public extension Requestable {
-
-    public func request() -> DataRequest {
-        return RestofireRequest.dataRequest(fromRequestable: self)
-    }
-    
-}
+public protocol FileUploadable: AFileUploadable, Requestable {}
+public protocol DataUploadable: ADataUploadable, Requestable {}
+public protocol StreamUploadable: AStreamUploadable, Requestable {}
+public protocol MultipartUploadable: AMultipartUploadable, Requestable {}

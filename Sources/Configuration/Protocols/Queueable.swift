@@ -41,15 +41,15 @@ import Foundation
 public protocol Queueable {
     
     /// The `queue`.
-    var queue: DispatchQueue { get }
+    var _queue: DispatchQueue { get }
     
 }
 
-public extension Queueable where Self: Configurable {
+public extension Queueable where Self: AConfigurable {
     
-    /// `configuration.queue`
-    public var queue: DispatchQueue {
-        return configuration.queue
+    /// `DispatchQueue.main`
+    public var _queue: DispatchQueue {
+        return DispatchQueue.main
     }
     
 }

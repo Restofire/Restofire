@@ -51,9 +51,9 @@ public protocol Retryable {
 
 public extension Retryable where Self: Configurable {
     
-    /// `configuration.retry`
+    /// `Retry.default`
     public var retry: Retry {
-        return configuration.retry
+        return Retry.default
     }
     
 }

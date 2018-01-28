@@ -1,5 +1,5 @@
 //
-//  RequestableSpec.swift
+//  ARequestableSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -12,14 +12,14 @@ import Nimble
 import Alamofire
 @testable import Restofire
 
-class RequestableSpec: BaseSpec {
+class ARequestableSpec: BaseSpec {
     
     override func spec() {
-        describe("Requestable") {
+        describe("ARequestable") {
             
             it("request should succeed") {
                 // Given
-                struct Request: Requestable {
+                struct Request: ARequestable {
                     var path: String? = "get"
                 }
                 

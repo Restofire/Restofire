@@ -1,5 +1,5 @@
 //
-//  StreamUploadableSpec.swift
+//  AStreamUploadableSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -14,11 +14,11 @@ import Nimble
 class StreamUploadableSpec: BaseSpec {
 
     override func spec() {
-        describe("StreamUpload") {
+        describe("AStreamUpload") {
             
             it("request should succeed") {
                 // Given
-                struct Upload: StreamUploadable {
+                struct Upload: AStreamUploadable {
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                 }
                 

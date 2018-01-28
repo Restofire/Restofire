@@ -16,12 +16,21 @@ import Foundation
 /// validation.acceptableContentTypes = ["application/json"]
 /// ```
 public struct Validation {
+    
+    /// The default validation.
+    public static var `default` = Validation()
 
     /// The acceptable status codes. `nil` by default.
     public var acceptableStatusCodes: [Int]?
     
     /// The acceptable content types. `nil` by default.
     public var acceptableContentTypes: [String]?
+    
+    /// The `Data Validation Block`.
+    public var dataValidation: DataRequest.Validation?
+    
+    /// The `Download Validation Block`.
+    public var downloadValidation: DownloadRequest.Validation?
     
     /// `Validation` Intializer
     ///

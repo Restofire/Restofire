@@ -48,11 +48,11 @@ public protocol Validatable {
     
 }
 
-extension Validatable where Self: Configurable {
+extension Validatable where Self: AConfigurable {
     
-    /// `configuration.validation`
+    /// `Validation.default`
     public var validation: Validation {
-        return configuration.validation
+        return Validation.default
     }
         
 }

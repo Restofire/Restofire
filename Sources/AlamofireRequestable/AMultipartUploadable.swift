@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol MultipartUploadable: Requestable {
+public protocol AMultipartUploadable: ARequestable {
     
     /// The multipart form data.
     var multipartFormData: (MultipartFormData) -> Void { get }
@@ -18,7 +18,7 @@ public protocol MultipartUploadable: Requestable {
 
 }
 
-extension MultipartUploadable {
+extension AMultipartUploadable {
     
     /// `.post`
     public var method: HTTPMethod {
@@ -32,7 +32,7 @@ extension MultipartUploadable {
     
 }
 
-public extension MultipartUploadable {
+public extension AMultipartUploadable {
     
     public func request(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
         RestofireRequest.multipartUploadRequest(fromRequestable: self, encodingCompletion: encodingCompletion)

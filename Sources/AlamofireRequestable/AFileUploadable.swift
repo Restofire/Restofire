@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol FileUploadable: Requestable {
+public protocol AFileUploadable: ARequestable {
     
     /// The url.
     var url: URL { get }
     
 }
 
-extension FileUploadable {
+extension AFileUploadable {
     
     /// `.post`
     public var method: HTTPMethod {
@@ -24,7 +24,7 @@ extension FileUploadable {
     
 }
 
-public extension FileUploadable {
+public extension AFileUploadable {
     
     public func request() -> UploadRequest {
         return RestofireRequest.fileUploadRequest(fromRequestable: self)

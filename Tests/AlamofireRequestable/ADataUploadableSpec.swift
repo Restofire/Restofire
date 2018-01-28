@@ -1,5 +1,5 @@
 //
-//  DataUploadableSpec.swift
+//  ADataUploadableSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -14,11 +14,11 @@ import Nimble
 class DataUploadableSpec: BaseSpec {
     
     override func spec() {
-        describe("DataUpload") {
+        describe("ADataUpload") {
             
             it("request should succeed") {
                 // Given
-                struct Upload: DataUploadable {
+                struct Upload: ADataUploadable {
                     var path: String? = "post"
                     var data: Data = {
                         var text = ""

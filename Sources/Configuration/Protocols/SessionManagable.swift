@@ -45,15 +45,15 @@ import Foundation
 public protocol SessionManagable {
     
     /// The `sessionManager`.
-    var sessionManager: SessionManager { get }
+    var _sessionManager: SessionManager { get }
     
 }
 
-public extension SessionManagable where Self: Configurable {
+public extension SessionManagable where Self: AConfigurable {
     
-    /// `configuration.sessionManager`
-    public var sessionManager: SessionManager {
-        return configuration.sessionManager
+    /// `RFSessionManager.default`
+    public var _sessionManager: SessionManager {
+        return RFSessionManager.default.sessionManager
     }
     
 }

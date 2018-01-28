@@ -28,7 +28,7 @@ import Foundation
 /// sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
 /// configuration.manager = Alamofire.SessionManager(configuration: sessionConfiguration)
 /// ```
-public struct Configuration: Authenticable, Retryable, SessionManagable, Queueable, Validatable {
+public struct Configuration {
     
     /// The default configuration.
     public static var `default` = Configuration()
@@ -53,28 +53,6 @@ public struct Configuration: Authenticable, Retryable, SessionManagable, Queueab
     
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String] = [:]
-    
-    /// The `Authentication`.
-    public var authentication = Authentication()
-    
-    /// The `Validation`.
-    public var validation = Validation()
-    
-    /// The `Data Validation Block`.
-    public var dataValidation: DataRequest.Validation?
-    
-    /// The `Download Validation Block`.
-    public var downloadValidation: DownloadRequest.Validation?
-    
-    /// The `Retry`.
-    public var retry = Retry()
-    
-    /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
-    public var sessionManager = SessionManager.default
-    
-    /// The queue on which reponse will be delivered. `DispatchQueue.main`
-    /// by default.
-    public var queue: DispatchQueue = DispatchQueue.main
     
     /// `Configuration` Intializer
     ///

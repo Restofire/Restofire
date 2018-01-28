@@ -18,10 +18,12 @@ import Foundation
 /// ```
 public struct Retry {
 
+    /// The default retry.
+    public static var `default` = Retry()
+    
     /// The retry error codes.
-    /// `NSURLErrorTimedOut,
-    /// NSURLErrorNetworkConnectionLost` by default.
-    public var retryErrorCodes: Set<URLError.Code> = [.timedOut, .networkConnectionLost]
+    /// `empty` by default.
+    public var retryErrorCodes: Set<URLError.Code> = []
     
     /// The retry interval. `10` by default.
     public var retryInterval: TimeInterval = 10

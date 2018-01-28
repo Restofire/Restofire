@@ -2,38 +2,25 @@
 //  Downloadable.swift
 //  Restofire
 //
-//  Created by Rahul Katariya on 27/01/18.
+//  Created by Rahul Katariya on 28/01/18.
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
 import Foundation
 
-public protocol Downloadable: _Requestable {
+public protocol Downloadable: ADownloadable, Configurable {
     
-    var destination: DownloadFileDestination? { get }
+    func didStart(request: DownloadRequest)
     
-    /// The Alamofire data request validation.
-    var validationBlock: DownloadRequest.Validation? { get }
+    func didComplete(request: DownloadRequest, with: DefaultDownloadResponse)
 }
 
 public extension Downloadable {
     
-    /// `nil`
-    public var destination: DownloadFileDestination? {
-        return nil
-    }
+    /// `Does Nothing`
+    func didStart(request: DownloadRequest) {}
     
-    /// `configuration.downloadValidation`
-    public var validationBlock: DownloadRequest.Validation? {
-        return configuration.downloadValidation
-    }
-    
-}
-
-public extension Downloadable {
-    
-    public func request() -> DownloadRequest {
-        return RestofireRequest.downloadRequest(fromRequestable: self)
-    }
+    /// `Does Nothing`
+    func didComplete(request: DownloadRequest, with: DefaultDownloadResponse) {}
     
 }

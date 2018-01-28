@@ -13,10 +13,6 @@ import Nimble
 
 class DownloadableSpec: BaseSpec {
     
-    private var fileURL: URL {
-        return testDirectoryURL.appendingPathComponent("\(UUID().uuidString).json")
-    }
-    
     override func spec() {
         describe("Download") {
             
@@ -31,7 +27,7 @@ class DownloadableSpec: BaseSpec {
                     }
                 }
                 
-                let request = Download(destination: { _, _ in (self.fileURL, []) }).request()
+                let request = Download(destination: { _, _ in (self.jsonFileURL, []) }).request()
                 var progressValues: [Double] = []
                 
                 // When

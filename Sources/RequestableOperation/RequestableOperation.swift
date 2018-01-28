@@ -17,9 +17,9 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
     let requestable: R
     var request: DataRequest!
     var retryAttempts = 0
-    let completionHandler: ((DataResponse<R.Response>) -> Void)?
+    let completionHandler: ((DataResponse<Data>) -> Void)?
     
-    init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    init(requestable: R, completionHandler: ((DataResponse<Data>) -> Void)?) {
         self.requestable = requestable
         self.retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -35,10 +35,9 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
     @objc func executeRequest() {
         request = requestable.request()
         requestable.didStart(request: request)
-        request.response(
-            queue: requestable.queue,
-            responseSerializer: requestable.responseSerializer
-        ) { (response: DataResponse<R.Response>) in
+        request.responseData(
+            queue: requestable.queue
+        ) { (response: DataResponse<Data>) in
             
             if response.error == nil {
                 self.successful = true
@@ -61,7 +60,7 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
         }
     }
     
-    func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
+    func handleErrorDataResponse(_ response: DataResponse<Data>) {
         if let error = response.error as? URLError, retryAttempts > 0,
             requestable.retryErrorCodes.contains(error.code) {
             

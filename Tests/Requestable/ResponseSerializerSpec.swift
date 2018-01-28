@@ -19,7 +19,6 @@ class ResponseSerializerSpec: BaseSpec {
             it("should work with the default json serializer") {
                 // Given
                 struct Service: Requestable {
-                    typealias Response = Any
                     var path: String? = "get"
                     var dataResponseSerializer: DataResponseSerializer<Any> = DataRequest.jsonResponseSerializer()
                 }
@@ -54,7 +53,6 @@ class ResponseSerializerSpec: BaseSpec {
                 }
 
                 struct Service: Requestable {
-                    typealias Response = HTTPBin
                     var path: String? = "get"
                 }
 

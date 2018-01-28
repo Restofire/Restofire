@@ -164,9 +164,6 @@
 		357E341A201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
 		357E341B201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
 		357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
-		357E342D201E05550093DCC5 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
-		357E342E201E05550093DCC5 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
-		357E342F201E05570093DCC5 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
 		3593CA6C1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6D1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6E1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
@@ -1222,7 +1219,6 @@
 				3504292A201CA29200765D15 /* AMultipartUploadableSpec.swift in Sources */,
 				35042934201CC84500765D15 /* NimbleExtensions.swift in Sources */,
 				350428CC201C668100765D15 /* ADownloadableSpec.swift in Sources */,
-				357E342E201E05550093DCC5 /* ResponseSerializerSpec.swift in Sources */,
 				35042922201CA26800765D15 /* AFileUploadableSpec.swift in Sources */,
 				3504292E201CA2A000765D15 /* AStreamUploadableSpec.swift in Sources */,
 			);
@@ -1239,7 +1235,6 @@
 				3504292B201CA29200765D15 /* AMultipartUploadableSpec.swift in Sources */,
 				35042935201CC84500765D15 /* NimbleExtensions.swift in Sources */,
 				350428CD201C668100765D15 /* ADownloadableSpec.swift in Sources */,
-				357E342F201E05570093DCC5 /* ResponseSerializerSpec.swift in Sources */,
 				35042923201CA26800765D15 /* AFileUploadableSpec.swift in Sources */,
 				3504292F201CA2A000765D15 /* AStreamUploadableSpec.swift in Sources */,
 			);
@@ -1300,7 +1295,6 @@
 				35042929201CA29200765D15 /* AMultipartUploadableSpec.swift in Sources */,
 				35042933201CC84500765D15 /* NimbleExtensions.swift in Sources */,
 				350428CB201C668100765D15 /* ADownloadableSpec.swift in Sources */,
-				357E342D201E05550093DCC5 /* ResponseSerializerSpec.swift in Sources */,
 				35042921201CA26800765D15 /* AFileUploadableSpec.swift in Sources */,
 				3504292D201CA2A000765D15 /* AStreamUploadableSpec.swift in Sources */,
 			);

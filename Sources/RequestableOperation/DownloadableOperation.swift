@@ -17,9 +17,9 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
     let downloadable: R
     var request: DownloadRequest!
     var retryAttempts = 0
-    let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
+    let completionHandler: ((DownloadResponse<Data>) -> Void)?
     
-    init(downloadable: R, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
+    init(downloadable: R, completionHandler: ((DownloadResponse<Data>) -> Void)?) {
         self.downloadable = downloadable
         self.retryAttempts = downloadable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -35,10 +35,9 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
     @objc func executeRequest() {
         request = downloadable.request()
         downloadable.didStart(request: request)
-        request.response(
-            queue: downloadable.queue,
-            responseSerializer: downloadable.responseSerializer
-        ) { (response: DownloadResponse<R.Response>) in
+        request.responseData(
+            queue: downloadable.queue
+        ) { (response: DownloadResponse<Data>) in
             
             if response.error == nil {
                 self.successful = true
@@ -61,7 +60,7 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
         }
     }
     
-    func handleErrorDataResponse(_ response: DownloadResponse<R.Response>) {
+    func handleErrorDataResponse(_ response: DownloadResponse<Data>) {
         if let error = response.error as? URLError, retryAttempts > 0,
             downloadable.retryErrorCodes.contains(error.code) {
             

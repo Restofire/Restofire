@@ -51,9 +51,9 @@ public protocol SessionManagable {
 
 public extension SessionManagable where Self: AConfigurable {
     
-    /// `RFSessionManager.default`
+    /// `Session.default`
     public var _sessionManager: SessionManager {
-        return RFSessionManager.default.sessionManager
+        return Session.default.sessionManager
     }
     
 }

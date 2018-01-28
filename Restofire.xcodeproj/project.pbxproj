@@ -150,10 +150,10 @@
 		357E3400201DDBFC0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
 		357E3401201DDBFC0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
 		357E3402201DDBFC0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
-		357E3404201DDE310093DCC5 /* RFSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* RFSessionManager.swift */; };
-		357E3405201DDE310093DCC5 /* RFSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* RFSessionManager.swift */; };
-		357E3406201DDE310093DCC5 /* RFSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* RFSessionManager.swift */; };
-		357E3407201DDE310093DCC5 /* RFSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* RFSessionManager.swift */; };
+		357E3404201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
+		357E3405201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
+		357E3406201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
+		357E3407201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
 		357E3409201DE5970093DCC5 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3408201DE5970093DCC5 /* BaseOperation.swift */; };
 		357E340A201DE5970093DCC5 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3408201DE5970093DCC5 /* BaseOperation.swift */; };
 		357E340B201DE5970093DCC5 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3408201DE5970093DCC5 /* BaseOperation.swift */; };
@@ -384,7 +384,7 @@
 		357E33F3201DD9730093DCC5 /* DownloadableOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableOperation.swift; sourceTree = "<group>"; };
 		357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AConfigurable.swift; sourceTree = "<group>"; };
 		357E33FE201DDBFC0093DCC5 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
-		357E3403201DDE310093DCC5 /* RFSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFSessionManager.swift; sourceTree = "<group>"; };
+		357E3403201DDE310093DCC5 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		357E3408201DE5970093DCC5 /* BaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		357E340D201DE7C40093DCC5 /* RequestableEventuallyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableEventuallyOperation.swift; sourceTree = "<group>"; };
 		357E3412201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableEventuallyOperation.swift; sourceTree = "<group>"; };
@@ -486,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				3596CBF71CA3B4D70089A03E /* Configuration.swift */,
-				357E3403201DDE310093DCC5 /* RFSessionManager.swift */,
+				357E3403201DDE310093DCC5 /* Session.swift */,
 				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
 				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
 				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
@@ -1116,7 +1116,7 @@
 				357E33F6201DD9730093DCC5 /* DownloadableOperation.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E340B201DE5970093DCC5 /* BaseOperation.swift in Sources */,
-				357E3406201DDE310093DCC5 /* RFSessionManager.swift in Sources */,
+				357E3406201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DC201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				357E3410201DE7C40093DCC5 /* RequestableEventuallyOperation.swift in Sources */,
@@ -1159,7 +1159,7 @@
 				357E33F5201DD9730093DCC5 /* DownloadableOperation.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E340A201DE5970093DCC5 /* BaseOperation.swift in Sources */,
-				357E3405201DDE310093DCC5 /* RFSessionManager.swift in Sources */,
+				357E3405201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DB201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				357E340F201DE7C40093DCC5 /* RequestableEventuallyOperation.swift in Sources */,
@@ -1202,7 +1202,7 @@
 				357E33F7201DD9730093DCC5 /* DownloadableOperation.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E340C201DE5970093DCC5 /* BaseOperation.swift in Sources */,
-				357E3407201DDE310093DCC5 /* RFSessionManager.swift in Sources */,
+				357E3407201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7C1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DD201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				357E3411201DE7C40093DCC5 /* RequestableEventuallyOperation.swift in Sources */,
@@ -1281,7 +1281,7 @@
 				357E33F4201DD9730093DCC5 /* DownloadableOperation.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E3409201DE5970093DCC5 /* BaseOperation.swift in Sources */,
-				357E3404201DDE310093DCC5 /* RFSessionManager.swift in Sources */,
+				357E3404201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DA201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				357E340E201DE7C40093DCC5 /* RequestableEventuallyOperation.swift in Sources */,

@@ -19,10 +19,10 @@
 		350428B1201C608E00765D15 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428AF201C608E00765D15 /* Downloadable.swift */; };
 		350428B2201C608E00765D15 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428AF201C608E00765D15 /* Downloadable.swift */; };
 		350428B3201C608E00765D15 /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428AF201C608E00765D15 /* Downloadable.swift */; };
-		350428BA201C617D00765D15 /* RequestableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* RequestableBase.swift */; };
-		350428BB201C617D00765D15 /* RequestableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* RequestableBase.swift */; };
-		350428BC201C617D00765D15 /* RequestableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* RequestableBase.swift */; };
-		350428BD201C617D00765D15 /* RequestableBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* RequestableBase.swift */; };
+		350428BA201C617D00765D15 /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* _Requestable.swift */; };
+		350428BB201C617D00765D15 /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* _Requestable.swift */; };
+		350428BC201C617D00765D15 /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* _Requestable.swift */; };
+		350428BD201C617D00765D15 /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428B9201C617D00765D15 /* _Requestable.swift */; };
 		350428C3201C64C200765D15 /* BaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428C2201C64C200765D15 /* BaseSpec.swift */; };
 		350428C4201C64C200765D15 /* BaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428C2201C64C200765D15 /* BaseSpec.swift */; };
 		350428C5201C64C200765D15 /* BaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428C2201C64C200765D15 /* BaseSpec.swift */; };
@@ -105,6 +105,10 @@
 		357E335D201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
 		357E335E201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
 		357E335F201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */; };
+		357E336C201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
+		357E336D201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
+		357E336E201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
+		357E336F201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */; };
 		3593CA6C1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6D1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3593CA6E1D8C65E400075A15 /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
@@ -282,7 +286,7 @@
 		3504288D201B8BD200765D15 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		3504288E201B8BD200765D15 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		350428AF201C608E00765D15 /* Downloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloadable.swift; sourceTree = "<group>"; };
-		350428B9201C617D00765D15 /* RequestableBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableBase.swift; sourceTree = "<group>"; };
+		350428B9201C617D00765D15 /* _Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _Requestable.swift; sourceTree = "<group>"; };
 		350428C2201C64C200765D15 /* BaseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSpec.swift; sourceTree = "<group>"; };
 		350428CA201C668100765D15 /* DownloadableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableSpec.swift; sourceTree = "<group>"; };
 		350428CE201C668C00765D15 /* RequestableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableSpec.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 		35607D441CC09C98004902A5 /* Configurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		357C0DA71D75745F0096239A /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Carthage/Checkouts/Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Restofire+AlamofireValidation.swift"; sourceTree = "<group>"; };
+		357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alamofire+Decodable.swift"; sourceTree = "<group>"; };
 		3593CA6B1D8C65E400075A15 /* Queueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queueable.swift; sourceTree = "<group>"; };
 		3593CA781D8C6B5000075A15 /* SessionManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagable.swift; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -420,7 +425,7 @@
 		350428AE201C5BED00765D15 /* Requestable */ = {
 			isa = PBXGroup;
 			children = (
-				350428B9201C617D00765D15 /* RequestableBase.swift */,
+				350428B9201C617D00765D15 /* _Requestable.swift */,
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				350428ED201C7F1700765D15 /* Uploadable */,
 				350428AF201C608E00765D15 /* Downloadable.swift */,
@@ -535,6 +540,7 @@
 				35F4A5F21CC61E52004840E1 /* Restofire+AlamofireRequest.swift */,
 				357E335B201D12AE0093DCC5 /* Restofire+AlamofireValidation.swift */,
 				350428EE201C876800765D15 /* ArrayParameterEncoding.swift */,
+				357E336B201DA1340093DCC5 /* Alamofire+Decodable.swift */,
 			);
 			name = Alamofire;
 			sourceTree = "<group>";
@@ -982,10 +988,11 @@
 				35249B031D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* Configurable.swift in Sources */,
 				35366E901FFBB39E00270EDE /* TypeAliases.swift in Sources */,
-				350428BC201C617D00765D15 /* RequestableBase.swift in Sources */,
+				350428BC201C617D00765D15 /* _Requestable.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				357E336E201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
 				35E6D3631CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B2201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1012,10 +1019,11 @@
 				35249B041D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* Configurable.swift in Sources */,
 				35366E8F1FFBB39E00270EDE /* TypeAliases.swift in Sources */,
-				350428BB201C617D00765D15 /* RequestableBase.swift in Sources */,
+				350428BB201C617D00765D15 /* _Requestable.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				357E336D201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
 				35E6D3641CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B1201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1042,10 +1050,11 @@
 				35249B051D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* Configurable.swift in Sources */,
 				35366E911FFBB39E00270EDE /* TypeAliases.swift in Sources */,
-				350428BD201C617D00765D15 /* RequestableBase.swift in Sources */,
+				350428BD201C617D00765D15 /* _Requestable.swift in Sources */,
 				3596CC001CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA7C1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				357E336F201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B3201C608E00765D15 /* Downloadable.swift in Sources */,
 			);
@@ -1102,10 +1111,11 @@
 				35249B021D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				35547F261CC0A32D0070F5D3 /* Configurable.swift in Sources */,
 				35366E8E1FFBB39E00270EDE /* TypeAliases.swift in Sources */,
-				350428BA201C617D00765D15 /* RequestableBase.swift in Sources */,
+				350428BA201C617D00765D15 /* _Requestable.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				357E336C201DA1340093DCC5 /* Alamofire+Decodable.swift in Sources */,
 				35E6D3621CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				350428B0201C608E00765D15 /* Downloadable.swift in Sources */,
 			);

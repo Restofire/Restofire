@@ -26,7 +26,7 @@ import Foundation
 ///
 /// ### Using the above Queueable
 /// ```swift
-/// class HTTPBinStringGETService: RequestableBase, HTTPBinQueueable {
+/// class HTTPBinStringGETService: _Requestable, HTTPBinQueueable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = URLEncoding.default

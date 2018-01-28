@@ -1,5 +1,5 @@
 //
-//  RequestableBase.swift
+//  _Requestable.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 24/03/16.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol RequestableBase: Configurable {
+public protocol _Requestable: Configurable {
     
     /// The path relative to base URL.
     var path: String? { get }
     
 }
 
-public extension RequestableBase {
+public extension _Requestable {
     
     /// `nil`
     public var path: String? {
@@ -25,7 +25,7 @@ public extension RequestableBase {
 }
 
 // MARK: - URL Request
-public extension RequestableBase {
+public extension _Requestable {
     
     public func asUrlRequest() -> URLRequest? {
         let url = [scheme + baseURL, version, path]

@@ -30,7 +30,7 @@ import Foundation
 ///
 /// ### Using the above Retryable
 /// ```swift
-/// class HTTPBinStringGETService: RequestableBase, HTTPBinRetryable {
+/// class HTTPBinStringGETService: _Requestable, HTTPBinRetryable {
 ///
 ///   let path: String = "get"
 ///   let encoding: ParameterEncoding = .URLEncodedInURL

@@ -19,6 +19,9 @@ class BaseSpec: QuickSpec {
     static var testDirectoryURL: URL { return URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).appendingPathComponent("org.restofire.tests") }
     var testDirectoryURL: URL { return BaseSpec.testDirectoryURL }
     
+    static var jsonFileURL: URL { return testDirectoryURL.appendingPathComponent("\(UUID().uuidString).json") }
+    var jsonFileURL: URL { return BaseSpec.jsonFileURL }
+    
     override func spec() {
         
         beforeSuite {

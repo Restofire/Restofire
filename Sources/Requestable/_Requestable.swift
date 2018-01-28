@@ -27,7 +27,7 @@ public extension _Requestable {
 // MARK: - URL Request
 public extension _Requestable {
     
-    public func asUrlRequest() -> URLRequest? {
+    public func asUrlRequest() -> URLRequest {
         let url = [scheme + baseURL, version, path]
             .flatMap { $0 }
             .joined(separator: "/")

@@ -10,7 +10,7 @@ import Foundation
 
 public protocol Requestable: ARequestable, Configurable {
 
-    var dataResponseSerializer: DataResponseSerializer<Any> { get }
+    var responseSerializer: DataResponseSerializer<Response> { get }
     
     func didStart(request: DataRequest)
     
@@ -20,16 +20,20 @@ public protocol Requestable: ARequestable, Configurable {
 
 public extension Requestable {
     
-    /// `responseSerializer.data`
-    public var dataResponseSerializer: DataResponseSerializer<Any> {
-        return responseSerializer.data
-    }
-    
     /// `Does Nothing`
     func didStart(request: DataRequest) {}
     
     /// `Does Nothing`
     func didComplete(request: DataRequest, with: DataResponse<Response>) {}
+    
+}
+
+public extension Requestable where Response: Decodable {
+    
+    /// `responseSerializer.data`
+    public var responseSerializer: DataResponseSerializer<Response> {
+        return DataRequest.JSONDecodableResponseSerializer()
+    }
     
 }
 

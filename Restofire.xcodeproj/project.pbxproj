@@ -11,6 +11,14 @@
 		350062761C7C40610078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350062771C7C40620078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		350062781C7C40620078B589 /* Restofire.h in Headers */ = {isa = PBXBuildFile; fileRef = 3500626F1C7C40510078B589 /* Restofire.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		35014E5B201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5A201E111B00A81F0E /* AnyDataResponseSerializable.swift */; };
+		35014E5C201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5A201E111B00A81F0E /* AnyDataResponseSerializable.swift */; };
+		35014E5D201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5A201E111B00A81F0E /* AnyDataResponseSerializable.swift */; };
+		35014E5E201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5A201E111B00A81F0E /* AnyDataResponseSerializable.swift */; };
+		35014E60201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5F201E19B200A81F0E /* AnyDownloadResponseSerializable.swift */; };
+		35014E61201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5F201E19B200A81F0E /* AnyDownloadResponseSerializable.swift */; };
+		35014E62201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5F201E19B200A81F0E /* AnyDownloadResponseSerializable.swift */; };
+		35014E63201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35014E5F201E19B200A81F0E /* AnyDownloadResponseSerializable.swift */; };
 		3504288F201B8BD200765D15 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3504288D201B8BD200765D15 /* Nimble.framework */; };
 		35042890201B8BD200765D15 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3504288E201B8BD200765D15 /* Quick.framework */; };
 		35042891201B8BDE00765D15 /* Nimble.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3504288D201B8BD200765D15 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -156,14 +164,6 @@
 		357E341A201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
 		357E341B201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
 		357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3418201DF5260093DCC5 /* _AUploadable.swift */; };
-		357E341E201DFF030093DCC5 /* ResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E341D201DFF030093DCC5 /* ResponseSerializable.swift */; };
-		357E341F201DFF030093DCC5 /* ResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E341D201DFF030093DCC5 /* ResponseSerializable.swift */; };
-		357E3420201DFF030093DCC5 /* ResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E341D201DFF030093DCC5 /* ResponseSerializable.swift */; };
-		357E3421201DFF030093DCC5 /* ResponseSerializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E341D201DFF030093DCC5 /* ResponseSerializable.swift */; };
-		357E3423201DFF520093DCC5 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3422201DFF520093DCC5 /* ResponseSerializer.swift */; };
-		357E3424201DFF520093DCC5 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3422201DFF520093DCC5 /* ResponseSerializer.swift */; };
-		357E3425201DFF520093DCC5 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3422201DFF520093DCC5 /* ResponseSerializer.swift */; };
-		357E3426201DFF520093DCC5 /* ResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3422201DFF520093DCC5 /* ResponseSerializer.swift */; };
 		357E342D201E05550093DCC5 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
 		357E342E201E05550093DCC5 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
 		357E342F201E05570093DCC5 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
@@ -340,6 +340,8 @@
 		3500622A1C7C343D0078B589 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3500626E1C7C40510078B589 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3500626F1C7C40510078B589 /* Restofire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Restofire.h; sourceTree = "<group>"; };
+		35014E5A201E111B00A81F0E /* AnyDataResponseSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataResponseSerializable.swift; sourceTree = "<group>"; };
+		35014E5F201E19B200A81F0E /* AnyDownloadResponseSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDownloadResponseSerializable.swift; sourceTree = "<group>"; };
 		3502C2EC1CC738F9009B06EA /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		3504288D201B8BD200765D15 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		3504288E201B8BD200765D15 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -386,8 +388,6 @@
 		357E340D201DE7C40093DCC5 /* RequestableEventuallyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestableEventuallyOperation.swift; sourceTree = "<group>"; };
 		357E3412201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableEventuallyOperation.swift; sourceTree = "<group>"; };
 		357E3418201DF5260093DCC5 /* _AUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _AUploadable.swift; sourceTree = "<group>"; };
-		357E341D201DFF030093DCC5 /* ResponseSerializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSerializable.swift; sourceTree = "<group>"; };
-		357E3422201DFF520093DCC5 /* ResponseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSerializer.swift; sourceTree = "<group>"; };
 		357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseSerializerSpec.swift; sourceTree = "<group>"; };
 		3593CA6B1D8C65E400075A15 /* Queueable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queueable.swift; sourceTree = "<group>"; };
 		3593CA781D8C6B5000075A15 /* SessionManagable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManagable.swift; sourceTree = "<group>"; };
@@ -491,7 +491,6 @@
 				35E6D3611CCBD75A007ABC05 /* Authentication.swift */,
 				35E6D36B1CCBEB90007ABC05 /* Retry.swift */,
 				35E6D35C1CCBD731007ABC05 /* Validation.swift */,
-				357E3422201DFF520093DCC5 /* ResponseSerializer.swift */,
 				350428BF201C619700765D15 /* Protocols */,
 			);
 			path = Configuration;
@@ -501,7 +500,6 @@
 			isa = PBXGroup;
 			children = (
 				357E33FE201DDBFC0093DCC5 /* Configurable.swift */,
-				357E341D201DFF030093DCC5 /* ResponseSerializable.swift */,
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				357E33EE201DD8DA0093DCC5 /* Downloadable.swift */,
 			);
@@ -601,6 +599,8 @@
 				357E335B201D12AE0093DCC5 /* RestofireValidation.swift */,
 				350428EE201C876800765D15 /* ArrayParameterEncoding.swift */,
 				357E336B201DA1340093DCC5 /* JSONDecodable.swift */,
+				35014E5A201E111B00A81F0E /* AnyDataResponseSerializable.swift */,
+				35014E5F201E19B200A81F0E /* AnyDownloadResponseSerializable.swift */,
 			);
 			name = Alamofire;
 			sourceTree = "<group>";
@@ -1099,7 +1099,9 @@
 				357E33D8201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335E201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E33E8201DD7C50093DCC5 /* AMultipartUploadable.swift in Sources */,
+				35014E5D201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */,
 				35E6D3591CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
+				35014E62201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */,
 				35249B031D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				357E3415201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */,
 				35547F271CC0A32E0070F5D3 /* _Configurable.swift in Sources */,
@@ -1116,10 +1118,8 @@
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				357E336E201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				357E33D4201DD7C50093DCC5 /* _Requestable.swift in Sources */,
-				357E3425201DFF520093DCC5 /* ResponseSerializer.swift in Sources */,
 				357E3401201DDBFC0093DCC5 /* Configurable.swift in Sources */,
 				35E6D3631CCBD75A007ABC05 /* Authentication.swift in Sources */,
-				357E3420201DFF030093DCC5 /* ResponseSerializable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,7 +1143,9 @@
 				357E33D7201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335D201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E33E7201DD7C50093DCC5 /* AMultipartUploadable.swift in Sources */,
+				35014E5C201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */,
 				35E6D35A1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
+				35014E61201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */,
 				35249B041D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				357E3414201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */,
 				35547F281CC0A32E0070F5D3 /* _Configurable.swift in Sources */,
@@ -1160,10 +1162,8 @@
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				357E336D201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				357E33D3201DD7C50093DCC5 /* _Requestable.swift in Sources */,
-				357E3424201DFF520093DCC5 /* ResponseSerializer.swift in Sources */,
 				357E3400201DDBFC0093DCC5 /* Configurable.swift in Sources */,
 				35E6D3641CCBD75A007ABC05 /* Authentication.swift in Sources */,
-				357E341F201DFF030093DCC5 /* ResponseSerializable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1187,7 +1187,9 @@
 				357E33D9201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E33E9201DD7C50093DCC5 /* AMultipartUploadable.swift in Sources */,
+				35014E5E201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
+				35014E63201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */,
 				35249B051D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				357E3416201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* _Configurable.swift in Sources */,
@@ -1204,10 +1206,8 @@
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				357E336F201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				357E33D5201DD7C50093DCC5 /* _Requestable.swift in Sources */,
-				357E3426201DFF520093DCC5 /* ResponseSerializer.swift in Sources */,
 				357E3402201DDBFC0093DCC5 /* Configurable.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
-				357E3421201DFF030093DCC5 /* ResponseSerializable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1265,7 +1265,9 @@
 				357E33D6201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335C201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
 				357E33E6201DD7C50093DCC5 /* AMultipartUploadable.swift in Sources */,
+				35014E5B201E111B00A81F0E /* AnyDataResponseSerializable.swift in Sources */,
 				35E6D3581CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
+				35014E60201E19B200A81F0E /* AnyDownloadResponseSerializable.swift in Sources */,
 				35249B021D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
 				357E3413201DE7D00093DCC5 /* DownloadableEventuallyOperation.swift in Sources */,
 				35547F261CC0A32D0070F5D3 /* _Configurable.swift in Sources */,
@@ -1282,10 +1284,8 @@
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				357E336C201DA1340093DCC5 /* JSONDecodable.swift in Sources */,
 				357E33D2201DD7C50093DCC5 /* _Requestable.swift in Sources */,
-				357E3423201DFF520093DCC5 /* ResponseSerializer.swift in Sources */,
 				357E33FF201DDBFC0093DCC5 /* Configurable.swift in Sources */,
 				35E6D3621CCBD75A007ABC05 /* Authentication.swift in Sources */,
-				357E341E201DFF030093DCC5 /* ResponseSerializable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

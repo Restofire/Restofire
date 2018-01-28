@@ -37,26 +37,15 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
         downloadable.didStart(request: request)
         request.response(
             queue: downloadable.queue,
-            responseSerializer: downloadable.downloadResponseSerializer
-        ) { (response: DownloadResponse<Any>) in
+            responseSerializer: downloadable.responseSerializer
+        ) { (response: DownloadResponse<R.Response>) in
             
-            let tResult: Result<R.Response> = self.cast(result: response.result)
-            let tResponse = DownloadResponse<R.Response>(
-                request: response.request,
-                response: response.response,
-                temporaryURL: response.temporaryURL,
-                destinationURL: response.destinationURL,
-                resumeData: response.resumeData,
-                result: tResult,
-                timeline: response.timeline
-            )
-            
-            if tResponse.error == nil {
+            if response.error == nil {
                 self.successful = true
-                self.downloadable.didComplete(request: self.request, with: tResponse)
-                if let completionHandler = self.completionHandler { completionHandler(tResponse) }
+                self.downloadable.didComplete(request: self.request, with: response)
+                if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
-                self.handleErrorDataResponse(tResponse)
+                self.handleErrorDataResponse(response)
             }
             let debug = ProcessInfo.processInfo.environment["-me.rahulkatariya.Restofire.Debug"]
             if debug == "1" {

@@ -10,7 +10,7 @@ import Foundation
 
 public protocol Downloadable: ADownloadable, Configurable {
     
-    var downloadResponseSerializer: DataResponseSerializer<Any> { get }
+    var responseSerializer: DownloadResponseSerializer<Response> { get }
     
     func didStart(request: DownloadRequest)
     
@@ -19,16 +19,20 @@ public protocol Downloadable: ADownloadable, Configurable {
 
 public extension Downloadable {
     
-    /// `responseSerializer.download`
-    public var downloadResponseSerializer: DownloadResponseSerializer<Any> {
-        return responseSerializer.download
-    }
-    
     /// `Does Nothing`
     func didStart(request: DownloadRequest) {}
     
     /// `Does Nothing`
     func didComplete(request: DownloadRequest, with: DownloadResponse<Response>) {}
+    
+}
+
+public extension Downloadable where Response: Decodable {
+    
+    /// `responseSerializer.data`
+    public var responseSerializer: DownloadResponseSerializer<Response> {
+        return DownloadRequest.JSONDecodableResponseSerializer()
+    }
     
 }
 

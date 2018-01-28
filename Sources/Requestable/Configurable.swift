@@ -41,7 +41,10 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Configurable: AConfigurable, Retryable {
+public protocol Configurable: AConfigurable, Retryable, Queueable {
+    
+    /// The queue on which reponse will be delivered.
+    var queue: DispatchQueue? { get }
     
     /// The retry error codes.
     var retryErrorCodes: Set<URLError.Code> { get }
@@ -56,6 +59,11 @@ public protocol Configurable: AConfigurable, Retryable {
 
 // MARK: - Default Implementation
 public extension Configurable {
+    
+    /// `Queueable.queue`
+    public var queue: DispatchQueue? {
+        return _queue
+    }
     
     /// `retry.retryErrorCodes`
     public var retryErrorCodes: Set<URLError.Code> {

@@ -41,13 +41,10 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, Queueable, Validatable {
+public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, Validatable {
     
     /// The Alamofire Session Manager.
     var sessionManager: SessionManager { get }
-    
-    /// The queue on which reponse will be delivered.
-    var queue: DispatchQueue? { get }
     
     /// The credential.
     var credential: URLCredential? { get }
@@ -66,11 +63,6 @@ public extension AConfigurable {
     /// `configuration.sessionManager`
     public var sessionManager: SessionManager {
         return _sessionManager
-    }
-    
-    /// `configuration.queue`
-    public var queue: DispatchQueue? {
-        return _queue
     }
     
     /// `authentication.credential`

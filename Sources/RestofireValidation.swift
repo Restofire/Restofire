@@ -10,7 +10,7 @@ import Foundation
 
 class RestofireRequestValidation {
     
-    static func validateDataRequest(request: DataRequest, requestable: Requestable) {
+    static func validateDataRequest(request: DataRequest, requestable: ARequestable) {
         validateDataRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateDataRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
         validateDataRequest(request, forValidation: requestable.validationBlock)
@@ -35,7 +35,7 @@ class RestofireRequestValidation {
 
 class RestofireDownloadValidation {
     
-    static func validateDownloadRequest(request: DownloadRequest, requestable: Downloadable) {
+    static func validateDownloadRequest(request: DownloadRequest, requestable: ADownloadable) {
         validateDownloadRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateDownloadRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
         validateDownloadRequest(request, forValidation: requestable.validationBlock)

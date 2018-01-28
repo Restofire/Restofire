@@ -41,7 +41,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Configurable: Authenticable, Retryable, SessionManagable, Queueable, Validatable {
+public protocol _Configurable {
     
     /// The `configuration`.
     var configuration: Configuration { get }
@@ -70,34 +70,10 @@ public protocol Configurable: Authenticable, Retryable, SessionManagable, Queuea
     /// The request parameters.
     var parameters: Any? { get }
     
-    /// The Alamofire Session Manager.
-    var sessionManager: SessionManager { get }
-    
-    /// The queue on which reponse will be delivered.
-    var queue: DispatchQueue? { get }
-    
-    /// The credential.
-    var credential: URLCredential? { get }
-    
-    /// The acceptable status codes.
-    var acceptableStatusCodes: [Int]? { get }
-    
-    /// The acceptable content types.
-    var acceptableContentTypes: [String]? { get }
-    
-    /// The retry error codes.
-    var retryErrorCodes: Set<URLError.Code> { get }
-    
-    /// The retry interval.
-    var retryInterval: TimeInterval { get }
-    
-    /// The max retry attempts.
-    var maxRetryAttempts: Int { get }
-    
 }
 
 // MARK: - Default Implementation
-public extension Configurable {
+public extension _Configurable {
     
     /// `Configuration.default`
     public var configuration: Configuration {
@@ -142,46 +118,6 @@ public extension Configurable {
     /// `nil`
     public var parameters: Any? {
         return nil
-    }
-    
-    /// `configuration.sessionManager`
-    public var sessionManager: SessionManager {
-        return configuration.sessionManager
-    }
-    
-    /// `configuration.queue`
-    public var queue: DispatchQueue? {
-        return configuration.queue
-    }
-    
-    /// `authentication.credential`
-    public var credential: URLCredential? {
-        return authentication.credential
-    }
-    
-    /// `validation.acceptableStatusCodes`
-    public var acceptableStatusCodes: [Int]? {
-        return validation.acceptableStatusCodes
-    }
-    
-    /// `validation.acceptableContentTypes`
-    public var acceptableContentTypes: [String]? {
-        return validation.acceptableContentTypes
-    }
-    
-    /// `retry.retryErrorCodes`
-    public var retryErrorCodes: Set<URLError.Code> {
-        return retry.retryErrorCodes
-    }
-    
-    /// `retry.retryInterval`
-    public var retryInterval: TimeInterval {
-        return retry.retryInterval
-    }
-    
-    /// `retry.maxRetryAttempts`
-    public var maxRetryAttempts: Int {
-        return retry.maxRetryAttempts
     }
     
 }

@@ -1,5 +1,5 @@
 //
-//  DownloadableSpec.swift
+//  ADownloadableSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -11,14 +11,14 @@ import Quick
 import Nimble
 @testable import Restofire
 
-class DownloadableSpec: BaseSpec {
+class ADownloadableSpec: BaseSpec {
     
     override func spec() {
         describe("Download") {
             
             it("request should succeed") {
                 // Given
-                struct Download: Downloadable {
+                struct Download: ADownloadable {
                     var path: String? = "bytes/\(4 * 1024 * 1024)"
                     var destination: DownloadFileDestination?
                     

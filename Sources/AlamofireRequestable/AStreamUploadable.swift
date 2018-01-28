@@ -1,5 +1,5 @@
 //
-//  DataUploadable.swift
+//  StreamUploadable.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol DataUploadable: Requestable {
+public protocol AStreamUploadable: ARequestable {
     
-    /// The data.
-    var data: Data { get }
+    /// The stream.
+    var stream: InputStream { get }
     
 }
 
-public extension DataUploadable {
+public extension AStreamUploadable {
     
     /// `.post`
     public var method: HTTPMethod {
@@ -24,10 +24,10 @@ public extension DataUploadable {
     
 }
 
-public extension DataUploadable {
+public extension AStreamUploadable {
     
     public func request() -> UploadRequest {
-        return RestofireRequest.dataUploadRequest(fromRequestable: self)
+        return RestofireRequest.streamUploadRequest(fromRequestable: self)
     }
     
 }

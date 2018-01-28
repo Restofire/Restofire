@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol _Requestable: Configurable {
+public protocol _Requestable: _Configurable {
     
     /// The path relative to base URL.
     var path: String? { get }

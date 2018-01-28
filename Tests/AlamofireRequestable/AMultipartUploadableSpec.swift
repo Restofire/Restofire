@@ -1,5 +1,5 @@
 //
-//  MultipartUploadableSpec.swift
+//  AMultipartUploadableSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -11,14 +11,14 @@ import Quick
 import Nimble
 @testable import Restofire
 
-class MultipartUploadableSpec: BaseSpec {
+class AMultipartUploadableSpec: BaseSpec {
   
     override func spec() {
-        describe("MultipartUpload") {
+        describe("AMultipartUpload") {
             
             it("request should succeed") {
                 // Given
-                struct Upload: MultipartUploadable {
+                struct Upload: AMultipartUploadable {
                     var path: String? = "post"
                     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
                         multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")

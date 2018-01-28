@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol JDDownloadable: Downloadable {
+public protocol JDDownloadable: ADownloadable {
     
     associatedtype Response: Decodable
     

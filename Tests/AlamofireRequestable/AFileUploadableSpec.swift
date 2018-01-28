@@ -1,5 +1,5 @@
 //
-//  FileUploadableSpec.swift
+//  AFileUploadableSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 27/01/18.
@@ -15,11 +15,11 @@ class FileUploadableSpec: BaseSpec {
     
 
     override func spec() {
-        describe("FileUpload") {
+        describe("AFileUpload") {
             
             it("request should succeed") {
                 // Given
-                struct Upload: FileUploadable {
+                struct Upload: AFileUploadable {
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                 }
                 

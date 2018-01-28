@@ -47,11 +47,11 @@ public protocol Authenticable {
     
 }
 
-extension Authenticable where Self: Configurable {
+extension Authenticable where Self: AConfigurable {
     
-    /// `configuration.authentication`
+    /// `Authentication.default`
     public var authentication: Authentication {
-        return configuration.authentication
+        return Authentication.default
     }
     
 }

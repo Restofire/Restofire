@@ -8,19 +8,10 @@
 
 import Foundation
 
-public protocol AFileUploadable: ARequestable {
+public protocol AFileUploadable: _AUploadable {
     
     /// The url.
     var url: URL { get }
-    
-}
-
-extension AFileUploadable {
-    
-    /// `.post`
-    public var method: HTTPMethod {
-        return .post
-    }
     
 }
 

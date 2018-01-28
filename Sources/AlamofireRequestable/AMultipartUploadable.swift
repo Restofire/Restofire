@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol AMultipartUploadable: ARequestable {
+public protocol AMultipartUploadable: _AUploadable {
     
     /// The multipart form data.
     var multipartFormData: (MultipartFormData) -> Void { get }
@@ -19,11 +19,6 @@ public protocol AMultipartUploadable: ARequestable {
 }
 
 extension AMultipartUploadable {
-    
-    /// `.post`
-    public var method: HTTPMethod {
-        return .post
-    }
     
     /// `SessionManager.multipartFormDataEncodingMemoryThreshold`
     public var threshold: UInt64 {

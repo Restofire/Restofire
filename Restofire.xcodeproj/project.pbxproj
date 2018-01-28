@@ -506,7 +506,6 @@
 				357E33FE201DDBFC0093DCC5 /* Configurable.swift */,
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				357E33EE201DD8DA0093DCC5 /* Downloadable.swift */,
-				357E33A0201DC7000093DCC5 /* RequestableOperation */,
 			);
 			path = Requestable;
 			sourceTree = "<group>";
@@ -591,6 +590,7 @@
 				357E33F8201DDA6C0093DCC5 /* BaseRequestable */,
 				357E33CA201DD7AC0093DCC5 /* AlamofireRequestable */,
 				350428AE201C5BED00765D15 /* Requestable */,
+				357E33A0201DC7000093DCC5 /* RequestableOperation */,
 				357E337E201DBA790093DCC5 /* JSONDecoderRequestable */,
 			);
 			name = Core;

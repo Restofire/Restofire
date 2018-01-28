@@ -34,7 +34,7 @@ public struct Configuration {
     public static var `default` = Configuration()
     
     /// The scheme. `http://` by default.
-    public var scheme: String = "http://"
+    public var scheme: String = "https://"
     
     /// The base URL. `nil` by default.
     public var baseURL: String!

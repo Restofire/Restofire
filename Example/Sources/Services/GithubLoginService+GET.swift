@@ -12,7 +12,7 @@ import Restofire
 
 struct GithubLoginGETService: Requestable {
     
-    typealias Response = Any
+    typealias Response = Data
     var path: String? = "user"
     var headers: [String : String]?
     
@@ -29,7 +29,7 @@ extension GithubLoginGETService {
         print(request)
     }
     
-    func didComplete(request: DataRequest, response: DataResponse<Any>) {
+    func didComplete(request: DataRequest, response: DataResponse<Data>) {
         print(request)
         print(response)
         if response.result.isSuccess {

@@ -12,7 +12,7 @@ public protocol Downloadable: ADownloadable, Configurable, DownloadResponseSeria
     
     func didStart(request: DownloadRequest)
     
-    func didComplete(request: DownloadRequest, withResponse: DownloadResponse<Response>)
+    func didComplete(request: DownloadRequest, response: DownloadResponse<Response>)
 }
 
 public extension Downloadable {
@@ -21,7 +21,7 @@ public extension Downloadable {
     func didStart(request: DownloadRequest) {}
     
     /// `Does Nothing`
-    func didComplete(request: DownloadRequest, withResponse: DownloadResponse<Response>) {}
+    func didComplete(request: DownloadRequest, response: DownloadResponse<Response>) {}
     
 }
 

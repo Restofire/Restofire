@@ -12,7 +12,7 @@ public protocol Requestable: ARequestable, Configurable, DataResponseSerializabl
 
     func didStart(request: DataRequest)
     
-    func didComplete(request: DataRequest, withResponse: DataResponse<Response>)
+    func didComplete(request: DataRequest, response: DataResponse<Response>)
     
 }
 
@@ -22,7 +22,7 @@ public extension Requestable {
     func didStart(request: DataRequest) {}
     
     /// `Does Nothing`
-    func didComplete(request: DataRequest, withResponse: DataResponse<Response>) {}
+    func didComplete(request: DataRequest, response: DataResponse<Response>) {}
     
 }
 

@@ -42,7 +42,7 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
             
             if response.error == nil {
                 self.successful = true
-                self.requestable.didComplete(request: self.request, withResponse: response)
+                self.requestable.didComplete(request: self.request, response: response)
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
                 self.handleErrorDataResponse(response)
@@ -70,7 +70,7 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
             
         } else {
             failed = true
-            requestable.didComplete(request: request, withResponse: response)
+            requestable.didComplete(request: request, response: response)
             completionHandler?(response)
         }
     }

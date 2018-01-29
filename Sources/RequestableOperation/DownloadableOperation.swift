@@ -42,7 +42,7 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
             
             if response.error == nil {
                 self.successful = true
-                self.downloadable.didComplete(request: self.request, withResponse: response)
+                self.downloadable.didComplete(request: self.request, response: response)
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
                 self.handleErrorDataResponse(response)
@@ -70,7 +70,7 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
             
         } else {
             failed = true
-            downloadable.didComplete(request: request, withResponse: response)
+            downloadable.didComplete(request: request, response: response)
             completionHandler?(response)
         }
     }

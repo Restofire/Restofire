@@ -5,26 +5,18 @@ import Alamofire
 import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-Alamofire.request("https://httpbin.org/get")
-    .response { response in
-        print(response.response)
+/// Alamofire
+Alamofire.request("https://httpbin.org/get").responseJSON { response in
+    print("Alamofire: -", response.value ?? "nil")
 }
 
-Configuration.default.scheme = "https://"
+/// Restofire
 Configuration.default.baseURL = "httpbin.org"
 
-struct GetService: Requestable {
-    var path: String = "get"
+struct GetService: ARequestable {
+    var path: String? = "get"
 }
 
-let getService = GetService()
-getService.request().response { response in
-    print(response.response)
+GetService().request().responseJSON { response in
+    print("Restofire: -", response.value ?? "nil")
 }
-
-struct PostService: Requestable {
-    var path: String = "post"
-}
-
-let postService = PostService()
-postService.request().response

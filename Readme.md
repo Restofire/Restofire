@@ -196,7 +196,7 @@ class ViewController: UIViewController {
     var requestOp: DataRequestOperation<PersonGETService>!
 
     func getPerson() {
-        requestOp = PersonGETService().executeTask() {
+        requestOp = PersonGETService().response() {
             if let value = $0.result.value {
                 self.person = value
             }
@@ -291,7 +291,7 @@ class ViewController: UIViewController {
     var requestOp: DataRequestOperation<HTTPBinPersonGETService>!
 
     func getPerson() {
-        requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).executeTask() {
+        requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).response() {
             if let value = $0.result.value {
                 self.person = value
             }
@@ -386,7 +386,7 @@ class MoviesReviewTableViewController: UITableViewController {
       super.viewDidLoad()
 
       MoviesReviewGETService(path: "all.json", parameters: ["api-key":"sample-key"])
-          .executeTaskEventually()
+          .responseEventually()
 
       results = realm.objects(MovieReview)
 

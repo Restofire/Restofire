@@ -39,7 +39,7 @@ import Foundation
 ///   var person: Any!
 ///
 ///   func createPerson() {
-///     request = PersonPOSTService(id: "123456789", parameters: person).executeTask()
+///     request = PersonPOSTService(id: "123456789", parameters: person).response()
 ///   }
 ///
 ///   deinit {

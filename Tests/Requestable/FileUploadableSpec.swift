@@ -1,8 +1,8 @@
 //
-//  AStreamUploadableSpec.swift
+//  FileUploadableSpec.swift
 //  Restofire
 //
-//  Created by Rahul Katariya on 27/01/18.
+//  Created by Rahul Katariya on 29/01/18.
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
@@ -12,18 +12,20 @@ import Nimble
 import Alamofire
 @testable import Restofire
 
-class AStreamUploadableSpec: BaseSpec {
-
+class FileUploadableSpec: BaseSpec {
+    
     override func spec() {
-        describe("AStreamUpload") {
+        describe("FileUpload") {
             
             it("request should succeed") {
                 // Given
-                struct Upload: AStreamUploadable {
-                    var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
+                struct Upload: FileUploadable {
+                    let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                 }
                 
-                let request = Upload().request()
+                let request = Upload()
+                var uploadProgressValues: [Double] = []
+                var downloadProgressValues: [Double] = []
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
@@ -44,4 +46,3 @@ class AStreamUploadableSpec: BaseSpec {
     }
     
 }
-

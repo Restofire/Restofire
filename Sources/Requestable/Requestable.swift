@@ -26,11 +26,6 @@ public extension Requestable {
     
 }
 
-public protocol FileUploadable: AFileUploadable {}
-public protocol DataUploadable: ADataUploadable {}
-public protocol StreamUploadable: AStreamUploadable {}
-public protocol MultipartUploadable: AMultipartUploadable {}
-
 public extension Requestable {
     
     /// Creates a `RequestableOperation` for the specified `Requestable` object and
@@ -41,22 +36,9 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestableOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
-        let rq = requestOperation(completionHandler)
-        rq.start()
-        return rq
-    }
-    
-    /// Creates a `RequestableOperation` for the specified `Requestable` object.
-    ///
-    /// - parameter completionHandler: A closure to be executed once the operation
-    ///                                is started and the request has finished.
-    ///                                `nil` by default.
-    ///
-    /// - returns: The created `RequestableOperation`.
-    @discardableResult
-    public func requestOperation(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
+    public func response(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
         let requestOperation = RequestableOperation(requestable: self, completionHandler: completionHandler)
+        requestOperation.start()
         return requestOperation
     }
     
@@ -70,22 +52,9 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
-        let req = requestEventuallyOperation(completionHandler)
-        Restofire.defaultRequestEventuallyQueue.addOperation(req)
-        return req
-    }
-    
-    /// Creates a `DataRequestEventuallyOperation` for the specified requestable object.
-    ///
-    /// - parameter completionHandler: A closure to be executed once the operation
-    ///                                is started and the request has finished.
-    ///                                `nil` by default.
-    ///
-    /// - returns: The created `DataRequestEventuallyOperation`.
-    @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
+    public func responseEventually(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestableEventuallyOperation(requestable: self, completionHandler: completionHandler)
+        Restofire.defaultRequestEventuallyQueue.addOperation(requestEventuallyOperation)
         return requestEventuallyOperation
     }
     

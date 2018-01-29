@@ -9,9 +9,10 @@
 import Foundation
 import Quick
 import Nimble
+import Alamofire
 @testable import Restofire
 
-class FileUploadableSpec: BaseSpec {
+class AFileUploadableSpec: BaseSpec {
     
     override func spec() {
         describe("AFileUpload") {

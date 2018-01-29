@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol Requestable: ARequestable, Configurable {
+public protocol Requestable: ARequestable, Configurable, DataResponseSerializable {
 
     func didStart(request: DataRequest)
     
-    func didComplete(request: DataRequest, with: DataResponse<Data>)
+    func didComplete(request: DataRequest, withResponse: DataResponse<Response>)
     
 }
 
@@ -22,7 +22,7 @@ public extension Requestable {
     func didStart(request: DataRequest) {}
     
     /// `Does Nothing`
-    func didComplete(request: DataRequest, with: DataResponse<Data>) {}
+    func didComplete(request: DataRequest, withResponse: DataResponse<Response>) {}
     
 }
 
@@ -41,7 +41,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestableOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((DataResponse<Data>) -> Void)? = nil) -> RequestableOperation<Self> {
+    public func executeTask(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
         let rq = requestOperation(completionHandler)
         rq.start()
         return rq
@@ -55,7 +55,7 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestableOperation`.
     @discardableResult
-    public func requestOperation(_ completionHandler: ((DataResponse<Data>) -> Void)? = nil) -> RequestableOperation<Self> {
+    public func requestOperation(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
         let requestOperation = RequestableOperation(requestable: self, completionHandler: completionHandler)
         return requestOperation
     }
@@ -70,7 +70,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((DataResponse<Data>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
+    public func executeTaskEventually(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
         let req = requestEventuallyOperation(completionHandler)
         Restofire.defaultRequestEventuallyQueue.addOperation(req)
         return req
@@ -84,7 +84,7 @@ public extension Requestable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Data>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
+    public func requestEventuallyOperation(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
         let requestEventuallyOperation = RequestableEventuallyOperation(requestable: self, completionHandler: completionHandler)
         return requestEventuallyOperation
     }

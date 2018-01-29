@@ -43,6 +43,8 @@ public extension _Requestable {
         } else if let parameters = parameters as? [Any],
             let encoding = encoding as? ArrayParameterEncoding {
             request = try! encoding.encode(request, with: parameters)
+        } else {
+            /// Throw Error
         }
         return request
     }

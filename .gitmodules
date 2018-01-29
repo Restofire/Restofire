@@ -7,3 +7,6 @@
 [submodule "Carthage/Checkouts/Quick"]
 	path = Carthage/Checkouts/Quick
 	url = https://github.com/Quick/Quick.git
+[submodule "Carthage/Checkouts/CoreDataStack"]
+	path = Carthage/Checkouts/CoreDataStack
+	url = https://github.com/BigNerdRanch/CoreDataStack.git

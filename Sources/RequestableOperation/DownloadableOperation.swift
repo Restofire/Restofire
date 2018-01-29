@@ -17,9 +17,9 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
     let downloadable: R
     var request: DownloadRequest!
     var retryAttempts = 0
-    let completionHandler: ((DownloadResponse<Data>) -> Void)?
+    let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
-    init(downloadable: R, completionHandler: ((DownloadResponse<Data>) -> Void)?) {
+    init(downloadable: R, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         self.downloadable = downloadable
         self.retryAttempts = downloadable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -35,13 +35,14 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
     @objc func executeRequest() {
         request = downloadable.request()
         downloadable.didStart(request: request)
-        request.responseData(
-            queue: downloadable.queue
-        ) { (response: DownloadResponse<Data>) in
+        request.response(
+            queue: downloadable.queue,
+            responseSerializer: downloadable.responseSerializer
+        ) { (response: DownloadResponse<R.Response>) in
             
             if response.error == nil {
                 self.successful = true
-                self.downloadable.didComplete(request: self.request, with: response)
+                self.downloadable.didComplete(request: self.request, withResponse: response)
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
                 self.handleErrorDataResponse(response)
@@ -60,7 +61,7 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
         }
     }
     
-    func handleErrorDataResponse(_ response: DownloadResponse<Data>) {
+    func handleErrorDataResponse(_ response: DownloadResponse<R.Response>) {
         if let error = response.error as? URLError, retryAttempts > 0,
             downloadable.retryErrorCodes.contains(error.code) {
             
@@ -69,7 +70,7 @@ open class DownloadableOperation<R: Downloadable>: BaseOperation {
             
         } else {
             failed = true
-            downloadable.didComplete(request: request, with: response)
+            downloadable.didComplete(request: request, withResponse: response)
             completionHandler?(response)
         }
     }

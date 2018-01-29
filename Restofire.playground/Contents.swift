@@ -13,12 +13,18 @@ Alamofire.request("https://httpbin.org/get")
 Configuration.default.scheme = "https://"
 Configuration.default.baseURL = "httpbin.org"
 
-struct RequestGETService: Requestable {
-    typealias Response = Any
+struct GetService: Requestable {
     var path: String = "get"
 }
 
-let service = RequestGETService()
-service.request().response { response in
+let getService = GetService()
+getService.request().response { response in
     print(response.response)
 }
+
+struct PostService: Requestable {
+    var path: String = "post"
+}
+
+let postService = PostService()
+postService.request().response

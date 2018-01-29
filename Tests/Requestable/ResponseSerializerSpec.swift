@@ -16,11 +16,37 @@ class ResponseSerializerSpec: BaseSpec {
     override func spec() {
         describe("ResponseSerializer") {
             
-            it("should work with the default json serializer") {
+            it("should work with the json serializer") {
                 // Given
                 struct Service: Requestable {
                     var path: String? = "get"
-                    var dataResponseSerializer: DataResponseSerializer<Any> = DataRequest.jsonResponseSerializer()
+                }
+                
+                let service = Service()
+                
+                // When
+                waitUntil(timeout: self.timeout) { done in
+                    service.executeTask({ response in
+                        defer { done() }
+                        
+                        // Then
+                        expect(response.request).to(beNonNil())
+                        expect(response.response).to(beNonNil())
+                        expect(response.data).to(beNonNil())
+                        expect(response.error).to(beNil())
+                    })
+                }
+            }
+            
+            
+            it("should work with the json serializer") {
+                // Given
+                struct Service: Requestable {
+                    
+                    typealias Response = Any
+                    var responseSerializer: DataResponseSerializer<Any> = DataRequest.jsonResponseSerializer()
+                    
+                    var path: String? = "get"
                 }
                 
                 let service = Service()
@@ -53,6 +79,9 @@ class ResponseSerializerSpec: BaseSpec {
                 }
 
                 struct Service: Requestable {
+                    typealias Response = HTTPBin
+                    var responseSerializer: DataResponseSerializer<HTTPBin> = DataRequest.JSONDecodableResponseSerializer()
+                    
                     var path: String? = "get"
                 }
 

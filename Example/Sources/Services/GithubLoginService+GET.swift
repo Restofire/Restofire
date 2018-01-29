@@ -12,7 +12,7 @@ import Restofire
 
 struct GithubLoginGETService: Requestable {
     
-    typealias Response = [String: AnyObject]
+    typealias Response = Any
     var path: String? = "user"
     var headers: [String : String]?
     
@@ -25,16 +25,19 @@ struct GithubLoginGETService: Requestable {
 
 extension GithubLoginGETService {
     
-    func didRetryRequest(attempt: Int) {
-        
+    func didStart(request: DataRequest) {
+        print(request)
     }
     
-    func didCompleteRequestWithDataResponse(_ response: DataResponse<Dictionary<String, AnyObject>>) {
+    func didComplete(request: DataRequest, response: DataResponse<Any>) {
+        print(request)
+        print(response)
         if response.result.isSuccess {
             let header = response.request!.allHTTPHeaderFields!["Authorization"]!
             Restofire.Configuration.default.headers["Authorization"] = header
             UserDefaults.standard.set(header, forKey: "Authorization")
         }
+        
     }
     
 }

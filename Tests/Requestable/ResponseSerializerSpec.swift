@@ -38,7 +38,6 @@ class ResponseSerializerSpec: BaseSpec {
                 }
             }
             
-            
             it("should work with the json serializer") {
                 // Given
                 struct Service: Requestable {

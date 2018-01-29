@@ -25,13 +25,7 @@ struct GithubLoginGETService: Requestable {
 
 extension GithubLoginGETService {
     
-    func didStart(request: DataRequest) {
-        print(request)
-    }
-    
     func didComplete(request: DataRequest, response: DataResponse<Data>) {
-        print(request)
-        print(response)
         if response.result.isSuccess {
             let header = response.request!.allHTTPHeaderFields!["Authorization"]!
             Restofire.Configuration.default.headers["Authorization"] = header

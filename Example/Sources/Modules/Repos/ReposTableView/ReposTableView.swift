@@ -12,7 +12,7 @@ import UIKit
 
 class ReposTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
-    var repos: [[String: Any]]?
+    var repos: [Repo]?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +28,7 @@ class ReposTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let repo = repos![indexPath.row]
-        cell.textLabel?.text = repo["name"] as? String
+        cell.textLabel?.text = repo.name
         return cell
     }
 

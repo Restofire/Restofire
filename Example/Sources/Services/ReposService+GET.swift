@@ -10,9 +10,13 @@
 
 import Restofire
 
+struct Repo: Decodable {
+    var name: String
+}
+
 struct ReposGETService: Requestable {
 
-    typealias Response = Any
+    typealias Response = [Repo]
     var path: String? = "user/repos"
 
 }

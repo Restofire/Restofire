@@ -58,7 +58,7 @@ extension ReposTableViewController {
             if let _ = $0.result.error {
                 _self.showTopView(_self.reposRetryView)
             } else {
-                _self.reposTableView.repos = $0.result.value as? [[String : Any]]
+                _self.reposTableView.repos = $0.result.value
                 _self.reposTableView.reloadData()
                 _self.hideTopView()
             }

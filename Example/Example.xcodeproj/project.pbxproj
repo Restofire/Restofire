@@ -20,7 +20,7 @@
 		35064F891D8D869D004ECE6F /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35064F861D8D869D004ECE6F /* TableViewController.swift */; };
 		35064F8A1D8D869D004ECE6F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35064F871D8D869D004ECE6F /* ViewController.swift */; };
 		35064F901D8D8C38004ECE6F /* GithubLoginService+GET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35064F8F1D8D8C38004ECE6F /* GithubLoginService+GET.swift */; };
-		35C7D48C201F176E00812349 /* GithubRestofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C7D48B201F176E00812349 /* GithubRestofire.swift */; };
+		35C7D48C201F176E00812349 /* RestofireResponseSerializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C7D48B201F176E00812349 /* RestofireResponseSerializers.swift */; };
 		35D9254D1D8D991B00C03E79 /* GithubLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D9254B1D8D991B00C03E79 /* GithubLoginView.swift */; };
 		35D9254E1D8D991B00C03E79 /* GithubLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35D9254C1D8D991B00C03E79 /* GithubLoginView.xib */; };
 		35D925591D8D992500C03E79 /* ReposLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35D925541D8D992400C03E79 /* ReposLoadingView.xib */; };
@@ -104,7 +104,7 @@
 		35064F871D8D869D004ECE6F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		35064F8F1D8D8C38004ECE6F /* GithubLoginService+GET.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GithubLoginService+GET.swift"; sourceTree = "<group>"; };
 		356DAA5E1CC3AEC80086A456 /* Restofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Restofire.xcodeproj; path = ../Restofire.xcodeproj; sourceTree = "<group>"; };
-		35C7D48B201F176E00812349 /* GithubRestofire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRestofire.swift; sourceTree = "<group>"; };
+		35C7D48B201F176E00812349 /* RestofireResponseSerializers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestofireResponseSerializers.swift; sourceTree = "<group>"; };
 		35CFCD701CC3ADB4008DCE16 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D9254B1D8D991B00C03E79 /* GithubLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubLoginView.swift; sourceTree = "<group>"; };
 		35D9254C1D8D991B00C03E79 /* GithubLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GithubLoginView.xib; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				35064F4A1D8D7854004ECE6F /* AppDelegate.swift */,
-				35C7D48B201F176E00812349 /* GithubRestofire.swift */,
+				35C7D48B201F176E00812349 /* RestofireResponseSerializers.swift */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -405,7 +405,7 @@
 				35D9254D1D8D991B00C03E79 /* GithubLoginView.swift in Sources */,
 				35064F7A1D8D8512004ECE6F /* GithubLoginViewController.swift in Sources */,
 				35064F901D8D8C38004ECE6F /* GithubLoginService+GET.swift in Sources */,
-				35C7D48C201F176E00812349 /* GithubRestofire.swift in Sources */,
+				35C7D48C201F176E00812349 /* RestofireResponseSerializers.swift in Sources */,
 				35064F521D8D7854004ECE6F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -35,22 +35,9 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadableOperation`.
     @discardableResult
-    public func executeTask(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableOperation<Self> {
-        let rq = requestOperation(completionHandler)
-        rq.start()
-        return rq
-    }
-    
-    /// Creates a `DownloadableOperation` for the specified `Downloadable` object.
-    ///
-    /// - parameter completionHandler: A closure to be executed once the operation
-    ///                                is started and the request has finished.
-    ///                                `nil` by default.
-    ///
-    /// - returns: The created `DownloadableOperation`.
-    @discardableResult
-    public func requestOperation(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableOperation<Self> {
+    public func response(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableOperation<Self> {
         let requestOperation = DownloadableOperation(downloadable: self, completionHandler: completionHandler)
+        requestOperation.start()
         return requestOperation
     }
     
@@ -64,22 +51,9 @@ public extension Downloadable {
     ///
     /// - returns: The created `DataRequestEventuallyOperation`.
     @discardableResult
-    public func executeTaskEventually(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
-        let req = requestEventuallyOperation(completionHandler)
-        Restofire.defaultRequestEventuallyQueue.addOperation(req)
-        return req
-    }
-    
-    /// Creates a `DataRequestEventuallyOperation` for the specified Downloadable object.
-    ///
-    /// - parameter completionHandler: A closure to be executed once the operation
-    ///                                is started and the request has finished.
-    ///                                `nil` by default.
-    ///
-    /// - returns: The created `DataRequestEventuallyOperation`.
-    @discardableResult
-    public func requestEventuallyOperation(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
+    public func responseEventually(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadableEventuallyOperation<Self> {
         let requestEventuallyOperation = DownloadableEventuallyOperation(downloadable: self, completionHandler: completionHandler)
+        Restofire.defaultRequestEventuallyQueue.addOperation(requestEventuallyOperation)
         return requestEventuallyOperation
     }
     

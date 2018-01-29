@@ -9,6 +9,7 @@
 import Foundation
 import Quick
 import Nimble
+import Alamofire
 @testable import Restofire
 
 class ResponseSerializerSpec: BaseSpec {
@@ -26,7 +27,7 @@ class ResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.executeTask({ response in
+                    service.response({ response in
                         defer { done() }
                         
                         // Then
@@ -52,7 +53,7 @@ class ResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.executeTask({ response in
+                    service.response({ response in
                         defer { done() }
                         
                         // Then
@@ -88,7 +89,7 @@ class ResponseSerializerSpec: BaseSpec {
 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.executeTask({ response in
+                    service.response({ response in
                         defer { done() }
 
                         // Then

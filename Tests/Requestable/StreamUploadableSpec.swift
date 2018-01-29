@@ -1,8 +1,8 @@
 //
-//  AStreamUploadableSpec.swift
+//  StreamUploadableSpec.swift
 //  Restofire
 //
-//  Created by Rahul Katariya on 27/01/18.
+//  Created by Rahul Katariya on 29/01/18.
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
@@ -12,18 +12,18 @@ import Nimble
 import Alamofire
 @testable import Restofire
 
-class AStreamUploadableSpec: BaseSpec {
-
+class StreamUploadableSpec: BaseSpec {
+    
     override func spec() {
-        describe("AStreamUpload") {
+        describe("StreamUpload") {
             
             it("request should succeed") {
                 // Given
-                struct Upload: AStreamUploadable {
+                struct Upload: StreamUploadable {
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                 }
                 
-                let request = Upload().request()
+                let request = Upload()
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in

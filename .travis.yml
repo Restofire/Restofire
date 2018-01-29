@@ -3,6 +3,7 @@ osx_image: xcode9.2
 branches:
   only:
   - develop
+  - /^restofire\S*$/
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 before_install:
   - gem install cocoapods --no-rdoc --no-ri --no-document --quiet

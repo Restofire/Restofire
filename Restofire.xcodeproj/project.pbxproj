@@ -185,12 +185,6 @@
 		35C7D488201F125700812349 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
 		35C7D489201F125700812349 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
 		35C7D48A201F125800812349 /* ResponseSerializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3428201E054F0093DCC5 /* ResponseSerializerSpec.swift */; };
-		35CA62E2201E4047008B4281 /* CoreDataStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA62E1201E4047008B4281 /* CoreDataStack.framework */; };
-		35CA62E6201E406A008B4281 /* CoreDataStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA62E5201E406A008B4281 /* CoreDataStack.framework */; };
-		35CA62E8201E4076008B4281 /* CoreDataStack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA62E7201E4076008B4281 /* CoreDataStack.framework */; };
-		35CA62EA201E40BA008B4281 /* CoreDataStack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA62E7201E4076008B4281 /* CoreDataStack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35CA62EB201E40C0008B4281 /* CoreDataStack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA62E5201E406A008B4281 /* CoreDataStack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35CA62EC201E40D6008B4281 /* CoreDataStack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35CA62E1201E4047008B4281 /* CoreDataStack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35E6D3531CCBD50E007ABC05 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D3521CCBD50E007ABC05 /* Validatable.swift */; };
 		35E6D3541CCBD50E007ABC05 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D3521CCBD50E007ABC05 /* Validatable.swift */; };
 		35E6D3551CCBD50E007ABC05 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D3521CCBD50E007ABC05 /* Validatable.swift */; };
@@ -301,7 +295,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				35CA62EC201E40D6008B4281 /* CoreDataStack.framework in Embed Frameworks */,
 				35042891201B8BDE00765D15 /* Nimble.framework in Embed Frameworks */,
 				35042892201B8BDE00765D15 /* Quick.framework in Embed Frameworks */,
 				35C05C641D75D0DC003D04F2 /* Alamofire.framework in Embed Frameworks */,
@@ -315,7 +308,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				35CA62EB201E40C0008B4281 /* CoreDataStack.framework in Embed Frameworks */,
 				35541C1D1D8E9866003F6658 /* Nimble.framework in Embed Frameworks */,
 				35541C1C1D8E985D003F6658 /* Quick.framework in Embed Frameworks */,
 				35541C1B1D8E9851003F6658 /* Alamofire.framework in Embed Frameworks */,
@@ -329,7 +321,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				35CA62EA201E40BA008B4281 /* CoreDataStack.framework in Embed Frameworks */,
 				35541C231D8E98A2003F6658 /* Alamofire.framework in Embed Frameworks */,
 				35541C221D8E9899003F6658 /* Quick.framework in Embed Frameworks */,
 				35541C201D8E9888003F6658 /* Nimble.framework in Embed Frameworks */,
@@ -441,7 +432,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35CA62E6201E406A008B4281 /* CoreDataStack.framework in Frameworks */,
 				35538A071D8E8173001BDE66 /* Nimble.framework in Frameworks */,
 				35538A081D8E8173001BDE66 /* Quick.framework in Frameworks */,
 				355389C01D8E7FED001BDE66 /* Restofire.framework in Frameworks */,
@@ -452,7 +442,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35CA62E8201E4076008B4281 /* CoreDataStack.framework in Frameworks */,
 				35538A0B1D8E8182001BDE66 /* Nimble.framework in Frameworks */,
 				35538A0C1D8E8182001BDE66 /* Quick.framework in Frameworks */,
 				355389D11D8E809E001BDE66 /* Restofire.framework in Frameworks */,
@@ -471,7 +460,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35CA62E2201E4047008B4281 /* CoreDataStack.framework in Frameworks */,
 				3504288F201B8BD200765D15 /* Nimble.framework in Frameworks */,
 				35042890201B8BD200765D15 /* Quick.framework in Frameworks */,
 				35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */,

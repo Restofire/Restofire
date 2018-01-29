@@ -21,7 +21,7 @@ open class RequestableEventuallyOperation<R: Requestable>: RequestableOperation<
     
     fileprivate let networkReachabilityManager = NetworkReachabilityManager()
     
-    override init(requestable: R, completionHandler: ((DataResponse<Data>) -> Void)?) {
+    override init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         super.init(requestable: requestable, completionHandler: completionHandler)
         self.isReady = false
         networkReachabilityManager?.listener = { status in
@@ -45,7 +45,7 @@ open class RequestableEventuallyOperation<R: Requestable>: RequestableOperation<
         networkReachabilityManager?.startListening()
     }
     
-    override func handleErrorDataResponse(_ response: DataResponse<Data>) {
+    override func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError, error.code == .notConnectedToInternet {
             self.pause = true
         } else {

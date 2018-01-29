@@ -17,9 +17,9 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
     let requestable: R
     var request: DataRequest!
     var retryAttempts = 0
-    let completionHandler: ((DataResponse<Data>) -> Void)?
+    let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
-    init(requestable: R, completionHandler: ((DataResponse<Data>) -> Void)?) {
+    init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
         self.retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
@@ -35,13 +35,14 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
     @objc func executeRequest() {
         request = requestable.request()
         requestable.didStart(request: request)
-        request.responseData(
-            queue: requestable.queue
-        ) { (response: DataResponse<Data>) in
+        request.response(
+            queue: requestable.queue,
+            responseSerializer: requestable.responseSerializer
+        ) { (response: DataResponse<R.Response>) in
             
             if response.error == nil {
                 self.successful = true
-                self.requestable.didComplete(request: self.request, with: response)
+                self.requestable.didComplete(request: self.request, withResponse: response)
                 if let completionHandler = self.completionHandler { completionHandler(response) }
             } else {
                 self.handleErrorDataResponse(response)
@@ -60,7 +61,7 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
         }
     }
     
-    func handleErrorDataResponse(_ response: DataResponse<Data>) {
+    func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError, retryAttempts > 0,
             requestable.retryErrorCodes.contains(error.code) {
             
@@ -69,7 +70,7 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
             
         } else {
             failed = true
-            requestable.didComplete(request: request, with: response)
+            requestable.didComplete(request: request, withResponse: response)
             completionHandler?(response)
         }
     }

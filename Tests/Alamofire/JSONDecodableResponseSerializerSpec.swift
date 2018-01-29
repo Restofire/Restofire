@@ -1,5 +1,5 @@
 //
-//  JSONDecodableSpec.swift
+//  JSONDecodableResponseSerializerSpec.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/01/18.
@@ -11,7 +11,7 @@ import Quick
 import Nimble
 @testable import Restofire
 
-class JSONDecodableSpec: BaseSpec {
+class JSONDecodableResponseSerializerSpec: BaseSpec {
 
     override func spec() {
         describe("JSONDecodable") {

@@ -22,16 +22,12 @@ class ADataUploadableSpec: BaseSpec {
                 struct Upload: ADataUploadable {
                     var path: String? = "post"
                     var data: Data = {
-                        var text = ""
-                        for _ in 1...3_000 {
-                            text += "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
-                        }
-                        
-                        return text.data(using: .utf8, allowLossyConversion: false)!
+                        return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
                     }()
                 }
                 
                 let request = Upload().request()
+                print(request.debugDescription)
                 var uploadProgressValues: [Double] = []
                 var downloadProgressValues: [Double] = []
                 
@@ -44,14 +40,26 @@ class ADataUploadableSpec: BaseSpec {
                         .downloadProgress { progress in
                             downloadProgressValues.append(progress.fractionCompleted)
                         }
-                        .response { response in
+                        .responseJSON { response in
                             defer { done() }
                             
-                            //Then
-                            expect(response.request).to(beNonNil())
-                            expect(response.response).to(beNonNil())
-                            expect(response.data).to(beNonNil())
+                            // Then
+                            if let statusCode = response.response?.statusCode,
+                                statusCode != 200 {
+                                fail("Response status code should be 200")
+                            }
+                            
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
+                            
+                            if let value = response.value as? [String: Any],
+                                let form = value["form"] as? [String: Any] {
+                                expect(form["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]).toNot(beNil())
+                            } else {
+                                fail("response value should not be nil")
+                            }
                             
                             var previousUploadProgress: Double = uploadProgressValues.first ?? 0.0
                             

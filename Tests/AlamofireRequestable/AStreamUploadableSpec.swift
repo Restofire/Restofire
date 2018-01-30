@@ -20,10 +20,12 @@ class AStreamUploadableSpec: BaseSpec {
             it("request should succeed") {
                 // Given
                 struct Upload: AStreamUploadable {
+                    var path: String? = "post"
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                 }
                 
                 let request = Upload().request()
+                print(request.debugDescription)
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
@@ -31,10 +33,12 @@ class AStreamUploadableSpec: BaseSpec {
                         .response { response in
                             defer { done() }
                             
-                            //Then
-                            expect(response.request).to(beNonNil())
-                            expect(response.response).to(beNonNil())
-                            expect(response.data).to(beNonNil())
+                            print(response)
+                            
+                            // Then
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
                     }
                 }

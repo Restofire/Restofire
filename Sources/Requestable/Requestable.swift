@@ -9,20 +9,25 @@
 import Foundation
 
 public protocol Requestable: ARequestable, Configurable, DataResponseSerializable {
-
-    func didStart(request: DataRequest)
     
-    func didComplete(request: DataRequest, response: DataResponse<Response>)
+    func request(_ request: DataRequest, didDownloadProgress progress: Progress)
+
+    func request(_ request: DataRequest, didCompleteWithValue value: Response)
+    
+    func request(_ request: DataRequest, didFailWithError error: Error)
     
 }
 
 public extension Requestable {
     
     /// `Does Nothing`
-    func didStart(request: DataRequest) {}
+    func request(_ request: DataRequest, didDownloadProgress progress: Progress) {}
+
+    /// `Does Nothing`
+    func request(_ request: DataRequest, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
-    func didComplete(request: DataRequest, response: DataResponse<Response>) {}
+    func request(_ request: DataRequest, didFailWithError error: Error) {}
     
 }
 
@@ -41,23 +46,5 @@ public extension Requestable {
         requestOperation.start()
         return requestOperation
     }
-    
-    #if !os(watchOS)
-    
-    /// Creates a `DataRequestEventuallyOperation` for the specified `Requestable`
-    /// object and asynchronously executes it when internet is reachable.
-    ///
-    /// - parameter completionHandler: A closure to be executed once the request
-    ///                                has finished. `nil` by default.
-    ///
-    /// - returns: The created `DataRequestEventuallyOperation`.
-    @discardableResult
-    public func responseEventually(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableEventuallyOperation<Self> {
-        let requestEventuallyOperation = RequestableEventuallyOperation(requestable: self, completionHandler: completionHandler)
-        Restofire.defaultRequestEventuallyQueue.addOperation(requestEventuallyOperation)
-        return requestEventuallyOperation
-    }
-    
-    #endif
     
 }

@@ -14,36 +14,36 @@ import Foundation
 /// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
 open class BaseOperation: Operation {
     
-    var successful = false {
+    var _successful = false {
         didSet {
-            if successful {
+            if _successful {
                 isExecuting = false
                 isFinished = true
             }
         }
     }
     
-    var failed = false {
+    var _failed = false {
         didSet {
-            if failed {
+            if _failed {
                 isExecuting = false
                 isFinished = true
             }
         }
     }
     
-    var pause = false {
+    var _pause = false {
         didSet {
-            if pause {
-                resume = false
+            if _pause {
+                _resume = false
             }
         }
     }
     
-    var resume = false {
+    var _resume = false {
         didSet {
-            if resume {
-                pause = false
+            if _resume {
+                _pause = false
             }
         }
     }
@@ -116,18 +116,4 @@ open class BaseOperation: Operation {
         isFinished = true
     }
     
-    func cast<M>(result: Result<Any>) -> Result<M> {
-        if let error = result.error {
-            return .failure(error)
-        } else if let value = result.value as? M {
-            return .success(value)
-        } else {
-            return .failure(RestofireError.customResponseSerializationFailed)
-        }
-    }
-    
-}
-
-enum RestofireError: Error {
-    case customResponseSerializationFailed
 }

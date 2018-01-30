@@ -29,6 +29,7 @@ class ADownloadableSpec: BaseSpec {
                 }
                 
                 let request = Download(destination: { _, _ in (self.jsonFileURL, []) }).request()
+                print(request.debugDescription)
                 var progressValues: [Double] = []
                 
                 // When
@@ -40,10 +41,15 @@ class ADownloadableSpec: BaseSpec {
                         .response { response in
                             defer { done() }
                             
-                            //Then
-                            expect(response.request).to(beNonNil())
-                            expect(response.response).to(beNonNil())
-                            expect(response.destinationURL).to(beNonNil())
+                            // Then
+                            if let statusCode = response.response?.statusCode,
+                                statusCode != 200 {
+                                fail("Response status code should be 200")
+                            }
+                            
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.destinationURL).toNot(beNil())
                             expect(response.resumeData).to(beNil())
                             expect(response.error).to(beNil())
                             

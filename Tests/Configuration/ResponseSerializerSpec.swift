@@ -17,9 +17,10 @@ class ResponseSerializerSpec: BaseSpec {
     override func spec() {
         describe("ResponseSerializer") {
             
-            it("should work with the json serializer") {
+            it("should work with the default data serializer") {
                 // Given
                 struct Service: Requestable {
+                    typealias Response = Data
                     var path: String? = "get"
                 }
                 
@@ -31,9 +32,9 @@ class ResponseSerializerSpec: BaseSpec {
                         defer { done() }
                         
                         // Then
-                        expect(response.request).to(beNonNil())
-                        expect(response.response).to(beNonNil())
-                        expect(response.data).to(beNonNil())
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
+                        expect(response.data).toNot(beNil())
                         expect(response.error).to(beNil())
                     })
                 }
@@ -57,10 +58,11 @@ class ResponseSerializerSpec: BaseSpec {
                         defer { done() }
                         
                         // Then
-                        expect(response.request).to(beNonNil())
-                        expect(response.response).to(beNonNil())
-                        expect(response.data).to(beNonNil())
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
+                        expect(response.data).toNot(beNil())
                         expect(response.error).to(beNil())
+                        
                         if let value = response.result.value as? [String: Any],
                             let url = value["url"] as? String {
                             expect(url).to(equal("https://httpbin.org/get"))
@@ -93,12 +95,13 @@ class ResponseSerializerSpec: BaseSpec {
                         defer { done() }
 
                         // Then
-                        expect(response.request).to(beNonNil())
-                        expect(response.response).to(beNonNil())
-                        expect(response.data).to(beNonNil())
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
+                        expect(response.data).toNot(beNil())
                         expect(response.error).to(beNil())
                         if let value = response.result.value {
-                            expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
+                            expect(value.url.absoluteString)
+                                .to(equal("https://httpbin.org/get"))
                         } else {
                             fail("response.result.value should not be nil")
                         }

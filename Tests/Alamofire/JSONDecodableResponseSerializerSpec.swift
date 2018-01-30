@@ -28,18 +28,19 @@ class JSONDecodableResponseSerializerSpec: BaseSpec {
                 }
                 
                 let request = Request().request()
+                print(request.debugDescription)
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     request.responseJSONDecodable(completionHandler: { (response: DataResponse<HTTPBin>) in
                         defer { done() }
                         
-                        //Then
-                        expect(response.request).to(beNonNil())
-                        expect(response.response).to(beNonNil())
+                        // Then
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
                         expect(response.result.value?.url.absoluteString)
                             .to(equal("https://httpbin.org/get"))
-                        expect(response.data).to(beNonNil())
+                        expect(response.data).toNot(beNil())
                         expect(response.error).to(beNil())
                     })
                 }

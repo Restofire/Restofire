@@ -20,6 +20,7 @@ class AFileUploadableSpec: BaseSpec {
             it("request should succeed") {
                 // Given
                 struct Upload: AFileUploadable {
+                    var path: String? = "post"
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                 }
                 
@@ -36,14 +37,26 @@ class AFileUploadableSpec: BaseSpec {
                         .downloadProgress { progress in
                             downloadProgressValues.append(progress.fractionCompleted)
                         }
-                        .response { response in
+                        .responseJSON { response in
                             defer { done() }
                             
-                            //Then
-                            expect(response.request).to(beNonNil())
-                            expect(response.response).to(beNonNil())
-                            expect(response.data).to(beNonNil())
+                            // Then
+                            if let statusCode = response.response?.statusCode,
+                                statusCode != 200 {
+                                fail("Response status code should be 200")
+                            }
+                            
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
+                            
+                            if let value = response.value as? [String: Any],
+                                let data = value["data"] as? String {
+                                expect(data).toNot(beEmpty())
+                            } else {
+                                fail("response value should not be nil")
+                            }
                             
                             var previousUploadProgress: Double = uploadProgressValues.first ?? 0.0
                             

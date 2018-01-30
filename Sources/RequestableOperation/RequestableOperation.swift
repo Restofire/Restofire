@@ -13,11 +13,12 @@ import Foundation
 ///
 /// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
 open class RequestableOperation<R: Requestable>: BaseOperation {
-    
+
     let requestable: R
-    var request: DataRequest!
-    var retryAttempts = 0
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
+    
+    lazy var request: DataRequest = { return self.requestable.request() }()
+    var retryAttempts = 0
     
     init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
@@ -26,59 +27,57 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
         super.init()
     }
     
-    /// Begins the execution of the operation.
+    /// Starts the request.
     open override func start() {
         super.start()
         executeRequest()
     }
     
+    /// Suspends the request.
+    public func suspend() {
+        request.suspend()
+    }
+    
+    /// Resumes the request.
+    public func resume() {
+        request.resume()
+    }
+    
+    /// Cancels the request.
+    open override func cancel() {
+        super.cancel()
+        request.cancel()
+    }
+    
     @objc func executeRequest() {
-        request = requestable.request()
-        requestable.didStart(request: request)
+        request.downloadProgress {
+            self.requestable.request(self.request, didDownloadProgress: $0)
+        }
         request.response(
             queue: requestable.queue,
             responseSerializer: requestable.responseSerializer
         ) { (response: DataResponse<R.Response>) in
-            
             if response.error == nil {
-                self.successful = true
-                self.requestable.didComplete(request: self.request, response: response)
+                self._successful = true
                 if let completionHandler = self.completionHandler { completionHandler(response) }
+                self.requestable.request(self.request, didCompleteWithValue: response.value!)
             } else {
                 self.handleErrorDataResponse(response)
             }
-            let debug = ProcessInfo.processInfo.environment["-me.rahulkatariya.Restofire.Debug"]
-            if debug == "1" {
-                print(self.request.debugDescription)
-            } else if debug == "2" {
-                print(self.request.debugDescription)
-                print(response)
-            } else if debug == "3" {
-                print(self.request.debugDescription)
-                print(self.request)
-                print(response)
-            }
         }
+        request.logIfNeeded()
     }
     
     func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError, retryAttempts > 0,
             requestable.retryErrorCodes.contains(error.code) {
-            
                 retryAttempts -= 1
                 perform(#selector(RequestableOperation<R>.executeRequest), with: nil, afterDelay: requestable.retryInterval)
-            
         } else {
-            failed = true
-            requestable.didComplete(request: request, response: response)
+            _failed = true
+            requestable.request(request, didFailWithError: response.error!)
             completionHandler?(response)
         }
-    }
-    
-    /// Advises the operation object that it should stop executing its request.
-    open override func cancel() {
-        super.cancel()
-        request.cancel()
     }
     
 }

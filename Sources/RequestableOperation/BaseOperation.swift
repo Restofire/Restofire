@@ -2,51 +2,13 @@
 //  BaseOperation.swift
 //  Restofire
 //
-//  Created by Rahul Katariya on 28/01/18.
+//  Created by Rahul Katariya on 30/01/18.
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
 import Foundation
 
-/// An NSOperation that executes the `Requestable` asynchronously on `start()`
-/// or when added to a NSOperationQueue
-///
-/// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
 open class BaseOperation: Operation {
-    
-    var _successful = false {
-        didSet {
-            if _successful {
-                isExecuting = false
-                isFinished = true
-            }
-        }
-    }
-    
-    var _failed = false {
-        didSet {
-            if _failed {
-                isExecuting = false
-                isFinished = true
-            }
-        }
-    }
-    
-    var _pause = false {
-        didSet {
-            if _pause {
-                _resume = false
-            }
-        }
-    }
-    
-    var _resume = false {
-        didSet {
-            if _resume {
-                _pause = false
-            }
-        }
-    }
     
     var _ready: Bool = false
     /// A Boolean value indicating whether the operation can be performed now. (read-only)
@@ -63,7 +25,7 @@ open class BaseOperation: Operation {
     
     var _executing: Bool = false
     /// A Boolean value indicating whether the operation is currently executing. (read-only)
-    open override fileprivate(set) var isExecuting: Bool {
+    open override internal(set) var isExecuting: Bool {
         get {
             return _executing
         }
@@ -76,7 +38,7 @@ open class BaseOperation: Operation {
     
     var _cancelled: Bool = false
     /// A Boolean value indicating whether the operation has been cancelled. (read-only)
-    open override fileprivate(set) var isCancelled: Bool {
+    open override internal(set) var isCancelled: Bool {
         get {
             return _cancelled
         }
@@ -89,7 +51,7 @@ open class BaseOperation: Operation {
     
     var _finished: Bool = false
     /// A Boolean value indicating whether the operation has finished executing its task. (read-only)
-    open override fileprivate(set) var isFinished: Bool {
+    open override internal(set) var isFinished: Bool {
         get {
             return _finished
         }
@@ -98,22 +60,6 @@ open class BaseOperation: Operation {
             _finished = newValue
             didChangeValue(forKey: "isFinished")
         }
-    }
-    
-    /// Begins the execution of the operation.
-    open override func start() {
-        if isCancelled {
-            isFinished = true
-            return
-        }
-        isExecuting = true
-    }
-    
-    /// Advises the operation object that it should stop executing its request.
-    open override func cancel() {
-        isExecuting = false
-        isCancelled = true
-        isFinished = true
     }
     
 }

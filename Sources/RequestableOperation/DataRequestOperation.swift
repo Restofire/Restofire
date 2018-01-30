@@ -1,5 +1,5 @@
 //
-//  RequestableOperation.swift
+//  DataRequestOperation.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/01/18.
@@ -12,12 +12,14 @@ import Foundation
 /// or when added to a NSOperationQueue
 ///
 /// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
-open class RequestableOperation<R: Requestable>: BaseOperation {
-
+open class DataRequestOperation<R: Requestable>: BaseOperation {
+    
     let requestable: R
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
-    
-    lazy var request: DataRequest = { return self.requestable.request() }()
+    lazy var reachability: NetworkReachability = {
+        return NetworkReachability(configurable: requestable)
+    }()
+    var request: DataRequest!
     var retryAttempts = 0
     
     init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
@@ -25,22 +27,13 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
         self.retryAttempts = requestable.maxRetryAttempts
         self.completionHandler = completionHandler
         super.init()
+        self.isReady = true
     }
     
     /// Starts the request.
-    open override func start() {
-        super.start()
+    open override func main() {
+        if isCancelled { return }
         executeRequest()
-    }
-    
-    /// Suspends the request.
-    public func suspend() {
-        request.suspend()
-    }
-    
-    /// Resumes the request.
-    public func resume() {
-        request.resume()
     }
     
     /// Cancels the request.
@@ -48,8 +41,13 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
         super.cancel()
         request.cancel()
     }
+ 
+    open override var isAsynchronous: Bool {
+        return true
+    }
     
     @objc func executeRequest() {
+        request = requestable.request()
         request.downloadProgress {
             self.requestable.request(self.request, didDownloadProgress: $0)
         }
@@ -58,25 +56,43 @@ open class RequestableOperation<R: Requestable>: BaseOperation {
             responseSerializer: requestable.responseSerializer
         ) { (response: DataResponse<R.Response>) in
             if response.error == nil {
-                self._successful = true
-                if let completionHandler = self.completionHandler { completionHandler(response) }
+                if let completionHandler = self.completionHandler {
+                    completionHandler(response)
+                }
                 self.requestable.request(self.request, didCompleteWithValue: response.value!)
+                self.isFinished = true
             } else {
                 self.handleErrorDataResponse(response)
             }
         }
-        request.logIfNeeded()
     }
     
     func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
-        if let error = response.error as? URLError, retryAttempts > 0,
-            requestable.retryErrorCodes.contains(error.code) {
+        if let error = response.error as? URLError {
+            if requestable.eventually && error.code == .notConnectedToInternet {
+                requestable.eventuallyOperationQueue.isSuspended = true
+                let eventuallyOperation = DataRequestOperation(
+                    requestable: requestable,
+                    completionHandler: completionHandler
+                )
+                reachability.addOperation(operation: eventuallyOperation)
+                isFinished = true
+            } else if retryAttempts > 0 && requestable.retryErrorCodes.contains(error.code) {
                 retryAttempts -= 1
-                perform(#selector(RequestableOperation<R>.executeRequest), with: nil, afterDelay: requestable.retryInterval)
+                perform(
+                    #selector(DataRequestOperation<R>.executeRequest),
+                    with: nil,
+                    afterDelay: requestable.retryInterval
+                )
+            } else {
+                requestable.request(request, didFailWithError: response.error!)
+                completionHandler?(response)
+                isFinished = true
+            }
         } else {
-            _failed = true
             requestable.request(request, didFailWithError: response.error!)
             completionHandler?(response)
+            isFinished = true
         }
     }
     

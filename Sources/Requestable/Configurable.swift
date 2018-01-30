@@ -10,40 +10,17 @@ import Foundation
 
 /// Represents a `Configurable` that is associated with `_Requestable`.
 /// `Restofire.defaultConfiguration()` by default.
-///
-/// ### Create custom Configurable
-/// ```swift
-/// protocol HTTPBinConfigurable: Configurable { }
-///
-/// extension HTTPBinConfigurable {
-///
-///   var configuration: Configuration {
-///     var config = Configuration()
-///     config.baseURL = "https://httpbin.org/"
-///     return config
-///   }
-///
-/// }
-/// ```
-///
-/// ### Using the above Configurable
-/// ```swift
-/// class HTTPBinStringGETService: _Requestable, HTTPBinConfigurable {
-///
-///   let path: String = "get"
-///   let encoding: ParameterEncoding = URLEncoding.default
-///   var parameters: Any?
-///
-///   init(parameters: Any?) {
-///     self.parameters = parameters
-///   }
-///
-/// }
-/// ```
-public protocol Configurable: AConfigurable, Retryable, Queueable {
-
-    /// The queue on which reponse will be delivered.
-    var queue: DispatchQueue? { get }
+#if !os(watchOS)
+public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
+    
+    /// The eventually.
+    var eventually: Bool { get }
+    
+    /// The eventually operation queue.
+    var eventuallyOperationQueue: OperationQueue { get }
+    
+    /// The network reachability manager.
+    var networkReachabilityManager: NetworkReachabilityManager { get }
     
     /// The retry error codes.
     var retryErrorCodes: Set<URLError.Code> { get }
@@ -54,14 +31,27 @@ public protocol Configurable: AConfigurable, Retryable, Queueable {
     /// The max retry attempts.
     var maxRetryAttempts: Int { get }
     
+    /// The queue on which reponse will be delivered.
+    var queue: DispatchQueue? { get }
+    
 }
 
 // MARK: - Default Implementation
 public extension Configurable {
     
-    /// `Queueable.queue`
-    public var queue: DispatchQueue? {
-        return _queue
+    /// `reachability.eventually`
+    public var eventually: Bool {
+        return reachability.eventually
+    }
+    
+    /// `reachability.eventuallyOperationQueue`
+    public var eventuallyOperationQueue: OperationQueue {
+        return reachability.eventuallyOperationQueue
+    }
+    
+    /// `reachability.networkReachabilityManager`
+    public var networkReachabilityManager: NetworkReachabilityManager {
+        return reachability.networkReachabilityManager
     }
     
     /// `retry.retryErrorCodes`
@@ -79,5 +69,53 @@ public extension Configurable {
         return retry.maxRetryAttempts
     }
     
+    /// `Queueable.queue`
+    public var queue: DispatchQueue? {
+        return _queue
+    }
+    
 }
 
+#else
+public protocol Configurable: AConfigurable, Retryable, Queueable {
+    
+    /// The retry error codes.
+    var retryErrorCodes: Set<URLError.Code> { get }
+    
+    /// The retry interval.
+    var retryInterval: TimeInterval { get }
+    
+    /// The max retry attempts.
+    var maxRetryAttempts: Int { get }
+    
+    /// The queue on which reponse will be delivered.
+    var queue: DispatchQueue? { get }
+    
+}
+
+// MARK: - Default Implementation
+public extension Configurable {
+    
+    /// `retry.retryErrorCodes`
+    public var retryErrorCodes: Set<URLError.Code> {
+        return retry.retryErrorCodes
+    }
+    
+    /// `retry.retryInterval`
+    public var retryInterval: TimeInterval {
+        return retry.retryInterval
+    }
+    
+    /// `retry.maxRetryAttempts`
+    public var maxRetryAttempts: Int {
+        return retry.maxRetryAttempts
+    }
+    
+    /// `Queueable.queue`
+    public var queue: DispatchQueue? {
+        return _queue
+    }
+    
+}
+
+#endif

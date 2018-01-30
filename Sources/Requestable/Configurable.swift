@@ -10,7 +10,7 @@ import Foundation
 
 /// Represents a `Configurable` that is associated with `_Requestable`.
 /// `Restofire.defaultConfiguration()` by default.
-#if !os(watchOS)
+
 public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
     
     /// The eventually.
@@ -75,47 +75,3 @@ public extension Configurable {
     }
     
 }
-
-#else
-public protocol Configurable: AConfigurable, Retryable, Queueable {
-    
-    /// The retry error codes.
-    var retryErrorCodes: Set<URLError.Code> { get }
-    
-    /// The retry interval.
-    var retryInterval: TimeInterval { get }
-    
-    /// The max retry attempts.
-    var maxRetryAttempts: Int { get }
-    
-    /// The queue on which reponse will be delivered.
-    var queue: DispatchQueue? { get }
-    
-}
-
-// MARK: - Default Implementation
-public extension Configurable {
-    
-    /// `retry.retryErrorCodes`
-    public var retryErrorCodes: Set<URLError.Code> {
-        return retry.retryErrorCodes
-    }
-    
-    /// `retry.retryInterval`
-    public var retryInterval: TimeInterval {
-        return retry.retryInterval
-    }
-    
-    /// `retry.maxRetryAttempts`
-    public var maxRetryAttempts: Int {
-        return retry.maxRetryAttempts
-    }
-    
-    /// `Queueable.queue`
-    public var queue: DispatchQueue? {
-        return _queue
-    }
-    
-}
-
-#endif

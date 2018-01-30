@@ -193,7 +193,7 @@ import Restofire
 class ViewController: UIViewController {
 
     var person: [String: Any]!
-    var requestOp: DataRequestOperation<PersonGETService>!
+    var requestOp: RequestOperation<PersonGETService>!
 
     func getPerson() {
         requestOp = PersonGETService().response() {
@@ -288,7 +288,7 @@ import Restofire
 class ViewController: UIViewController {
 
     var person: [String: Any]!
-    var requestOp: DataRequestOperation<HTTPBinPersonGETService>!
+    var requestOp: RequestOperation<HTTPBinPersonGETService>!
 
     func getPerson() {
         requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).response() {

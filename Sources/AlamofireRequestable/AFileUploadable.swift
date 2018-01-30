@@ -8,6 +8,17 @@
 
 import Foundation
 
+/// Represents a `FileUploadable` for Alamofire.
+///
+/// ### Create custom FileUploadable
+/// ```swift
+/// protocol HTTPBinUploadService: AFileUploadable {
+///
+///     var path: String? = "post"
+///     let url: URL = FileManager.url(forResource: "rainbow", withExtension: "jpg")
+///
+/// }
+/// ```
 public protocol AFileUploadable: _AUploadable {
     
     /// The url.
@@ -17,6 +28,11 @@ public protocol AFileUploadable: _AUploadable {
 
 public extension AFileUploadable {
     
+    /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    ///
+    /// - returns: The created `UploadRequest`.
     public func request() -> UploadRequest {
         return RestofireRequest.fileUploadRequest(fromRequestable: self)
     }

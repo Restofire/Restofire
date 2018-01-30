@@ -8,25 +8,14 @@
 
 import Foundation
 
-/// A Configuration of RESTful Services. You must provide a `baseURL`.
+/// A Configuration for RESTful Services. You must provide a `host`.
 ///
 /// ```swift
 /// var configuration = Configuration()
+/// configuration.scheme: String = "https://"
 /// configuration.baseURL = "www.mocky.io"
-/// configuration.version = "/v2/"
+/// configuration.version = "v2"
 /// configuration.headers = ["Content-Type": "application/json"]
-/// configuration.authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
-/// configuration.validation.acceptableStatusCodes = Array(200..<300)
-/// configuration.validation.acceptableContentTypes = ["application/json"]
-/// configuration.logging = true
-/// configuration.retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
-/// configuration.retry.retryInterval = 20
-/// configuration.retry.maxRetryAttempts = 10
-/// let sessionConfiguration = URLSessionConfiguration.default
-/// sessionConfiguration.timeoutIntervalForRequest = 7
-/// sessionConfiguration.timeoutIntervalForResource = 7
-/// sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-/// configuration.manager = Alamofire.SessionManager(configuration: sessionConfiguration)
 /// ```
 public struct Configuration {
     
@@ -36,8 +25,8 @@ public struct Configuration {
     /// The scheme. `http://` by default.
     public var scheme: String = "https://"
     
-    /// The base URL. `nil` by default.
-    public var baseURL: String!
+    /// The host. `nil` by default.
+    public var host: String!
     
     /// The version. `nil` by default.
     public var version: String?

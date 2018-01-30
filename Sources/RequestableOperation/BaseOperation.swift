@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// An NSOperation base class for all operations
 open class BaseOperation: Operation {
     
     var _ready: Bool = false

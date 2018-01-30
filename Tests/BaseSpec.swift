@@ -28,7 +28,7 @@ class BaseSpec: QuickSpec {
             self.createDirectory(at: BaseSpec.testDirectoryURL)
             
             Configuration.default.scheme = "https://"
-            Configuration.default.baseURL = "httpbin.org"
+            Configuration.default.host = "httpbin.org"
         }
         
     }

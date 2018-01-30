@@ -8,43 +8,13 @@
 
 import Foundation
 
-/// Represents an HTTP Request that can be asynchronously executed. You must
-/// provide a `path`.
+/// Represents a `Requestable` for Alamofire.
 ///
-/// ### Creating a request.
+/// ### Create custom Requestable
 /// ```swift
-/// import Restofire
+/// protocol HTTPBinGETService: ARequestable {
 ///
-/// struct PersonPOSTService: _Requestable {
-///
-///   let path: String
-///   let method: HTTPMethod = .post
-///   let parameters: Any?
-///
-///   init(id: String, parameters: Any? = nil) {
-///     self.path = "person/\(id)"
-///     self.parameters = parameters
-///   }
-///
-/// }
-/// ```
-///
-/// ### Consuming the request.
-/// ```swift
-/// import Restofire
-///
-/// class ViewController: UIViewController  {
-///
-///   var request: PersonPOSTService!
-///   var person: Any!
-///
-///   func createPerson() {
-///     request = PersonPOSTService(id: "123456789", parameters: person).response()
-///   }
-///
-///   deinit {
-///     request.cancel()
-///   }
+///     var path: String? = "get"
 ///
 /// }
 /// ```
@@ -57,14 +27,19 @@ public protocol ARequestable: _Requestable, AConfigurable {
 
 public extension ARequestable {
     
-    /// `configuration.dataValidation`
+    /// `Validation.default.dataValidation`
     public var validationBlock: DataRequest.Validation? {
         return validation.dataValidation
     }
 }
 
 public extension ARequestable {
-
+    
+    /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    ///
+    /// - returns: The created `DataRequest`.
     public func request() -> DataRequest {
         return RestofireRequest.dataRequest(fromRequestable: self)
     }

@@ -8,23 +8,17 @@
 
 import Foundation
 
-public protocol _AUploadable: ARequestable {
-    
-    /// The Alamofire data request validation.
-    var validationBlock: DataRequest.Validation? { get }
-    
-}
+/// Represents a `Uploadable` for Alamofire.
+///
+/// Use sub protocols - AFileUploadable, ADataUploadable, AStreamUploadable,
+/// AMultipartUplodable
+public protocol _AUploadable: ARequestable {}
 
 public extension _AUploadable {
     
     /// `.post`
     public var method: HTTPMethod {
         return .post
-    }
-    
-    /// `configuration.dataValidation`
-    public var validationBlock: DataRequest.Validation? {
-        return validation.dataValidation
     }
     
 }

@@ -8,6 +8,18 @@
 
 import Foundation
 
+/// A Session for RESTful Services.
+///
+/// ```swift
+/// var session = Session()
+/// configuration.sessionManager = {
+///     let sessionConfiguration = URLSessionConfiguration.default
+///     sessionConfiguration.timeoutIntervalForRequest = 7
+///     sessionConfiguration.timeoutIntervalForResource = 7
+///     sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+///     return Alamofire.SessionManager(configuration: sessionConfiguration)
+/// }
+/// ```
 public struct Session {
     
     /// The default session manager.

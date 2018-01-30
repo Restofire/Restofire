@@ -8,12 +8,38 @@
 
 import Foundation
 
+/// Represents a `Downloadable` for Restofire.
+///
+/// ```swift
+/// protocol HTTPBinDownloadService: Downloadable {
+///
+///     var path: String? = "bytes/\(4 * 1024 * 1024)"
+///     var destination: DownloadFileDestination?
+///
+///     init(destination: @escaping DownloadFileDestination) {
+///         self.destination = destination
+///     }
+///
+/// }
+/// ```
 public protocol Downloadable: ADownloadable, Configurable, DownloadResponseSerializable {
     
+    /// Called when the Request updates with download progress.
+    ///
+    /// - parameter request: The Alamofire.DownloadRequest
+    /// - parameter progress: The Progress
     func request(_ request: DownloadRequest, didDownloadProgress progress: Progress)
     
+    /// Called when the Request succeeds.
+    ///
+    /// - parameter request: The Alamofire.DownloadRequest
+    /// - parameter value: The Response
     func request(_ request: DownloadRequest, didCompleteWithValue value: Response)
     
+    /// Called when the Request fails
+    ///
+    /// - parameter request: The Alamofire.DownloadRequest
+    /// - parameter error: The Error
     func request(_ request: DownloadRequest, didFailWithError error: Error)
     
 }

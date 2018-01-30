@@ -1,6 +1,40 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/BaseRequestable/_Requestable.swift",
+      "line": 40,
+      "symbol": "_Requestable.asUrlRequest()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
+      "line": null,
+      "symbol": "DataRequest",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
+      "line": null,
+      "symbol": "DownloadRequest",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
+      "line": null,
+      "symbol": "JSONEncoding",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
+      "line": null,
+      "symbol": "Request",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/rahulkatariya/Developer/Restofire/Restofire"
 }

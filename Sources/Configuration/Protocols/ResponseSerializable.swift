@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Represents a `Alamofire.DataResponseSerializer` that is associated with `Requestable`.
 public protocol DataResponseSerializable {
     
     associatedtype Response
@@ -26,6 +27,7 @@ public extension DataResponseSerializable where Response == Data {
     
 }
 
+/// Represents a `Alamofire.DownloadResponseSerializer` that is associated with `Downloadable`.
 public protocol DownloadResponseSerializable {
     
     associatedtype Response

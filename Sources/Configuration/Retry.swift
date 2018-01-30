@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A Retry of RESTful Services.
+/// A Retry for RESTful Services.
 ///
 /// ```swift
 /// var retry = Retry()
@@ -21,8 +21,7 @@ public struct Retry {
     /// The default retry.
     public static var `default` = Retry()
     
-    /// The retry error codes.
-    /// `empty` by default.
+    /// The retry error codes. `empty` by default.
     public var retryErrorCodes: Set<URLError.Code> = []
     
     /// The retry interval. `10` by default.

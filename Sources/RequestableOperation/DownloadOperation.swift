@@ -8,11 +8,9 @@
 
 import Foundation
 
-/// An NSOperation that executes the `Downloadable` asynchronously on `start()`
+/// An NSOperation that executes the `Downloadable` asynchronously
 /// or when added to a NSOperationQueue
-///
-/// - Note: Auto Retry is available only in `DataDownloadEventuallyOperation`.
-open class DownloadOperation<R: Downloadable>: BaseOperation {
+public class DownloadOperation<R: Downloadable>: BaseOperation {
     
     let downloadable: R
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
@@ -20,8 +18,16 @@ open class DownloadOperation<R: Downloadable>: BaseOperation {
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: downloadable)
     }()
-    var download: DownloadRequest!
+    
     var retryAttempts = 0
+    
+    /// The underlying Alamofire.DownloadRequest.
+    public lazy var download: DownloadRequest = { return downloadable.request() }()
+    
+    /// A boolean value `true` indicating the operation executes its task asynchronously.
+    override public var isAsynchronous: Bool {
+        return true
+    }
     
     init(downloadable: R, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         self.downloadable = downloadable
@@ -32,23 +38,18 @@ open class DownloadOperation<R: Downloadable>: BaseOperation {
     }
     
     /// Starts the download.
-    open override func main() {
+    override public func main() {
         if isCancelled { return }
         executeDownload()
     }
     
     /// Cancels the download.
-    open override func cancel() {
+    override public func cancel() {
         super.cancel()
         download.cancel()
     }
     
-    open override var isAsynchronous: Bool {
-        return true
-    }
-    
     @objc func executeDownload() {
-        download = downloadable.request()
         download.downloadProgress {
             self.downloadable.request(self.download, didDownloadProgress: $0)
         }

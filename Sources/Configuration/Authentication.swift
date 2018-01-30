@@ -8,11 +8,15 @@
 
 import Foundation
 
-/// A Authentication of RESTful Services.
+/// An Authentication for RESTful Services.
 ///
 /// ```swift
 /// var authentication = Authentication()
-/// authentication.credential = URLCredential(user: "user", password: "password", persistence: .forSession)
+/// authentication.credential = URLCredential(
+///     user: "user",
+///     password: "password",
+///     persistence: .forSession
+/// )
 /// ```
 public struct Authentication {
     

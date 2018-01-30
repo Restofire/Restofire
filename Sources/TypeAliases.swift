@@ -39,7 +39,6 @@ public typealias MultipartFormData = Alamofire.MultipartFormData
 public typealias MultipartFormDataEncodingResult = SessionManager.MultipartFormDataEncodingResult
 public typealias Result = Alamofire.Result
 
-
 #if !os(watchOS)
 public typealias NetworkReachabilityManager = Alamofire.NetworkReachabilityManager
 #endif

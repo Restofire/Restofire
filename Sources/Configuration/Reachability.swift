@@ -6,10 +6,15 @@
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
-#if !os(watchOS)
-    
 import Foundation
 
+/// A Reachability for RESTful Services.
+///
+/// ```swift
+/// var reachability = Reachability()
+/// reachability.eventually = true
+/// reachability.networkReachabilityManager = NetworkReachabilityManager()!
+/// ```
 public struct Reachability {
     
     /// The default reachability.
@@ -26,10 +31,9 @@ public struct Reachability {
     /// The eventually operation queue.
     public var eventuallyOperationQueue: OperationQueue = {
         let oq = OperationQueue()
+        oq.maxConcurrentOperationCount = 1
         if #available(OSX 10.10, *) { oq.qualityOfService = .utility }
         return oq
     }()
     
 }
-
-#endif

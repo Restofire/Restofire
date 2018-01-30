@@ -8,35 +8,19 @@
 
 import Foundation
 
-/// Represents a `Configurable` that is associated with `_Requestable`.
-/// `Restofire.defaultConfiguration()` by default.
+/// Represents a `Configurable` for URLSession.
+/// `Configuration.default` by default.
 ///
 /// ### Create custom Configurable
 /// ```swift
-/// protocol HTTPBinConfigurable: Configurable { }
+/// protocol HTTPBinConfigurable: _Configurable { }
 ///
 /// extension HTTPBinConfigurable {
 ///
 ///   var configuration: Configuration {
 ///     var config = Configuration()
-///     config.baseURL = "https://httpbin.org/"
-///     config.logging = Restofire.defaultConfiguration.logging
+///     config.host = "httpbin.org"
 ///     return config
-///   }
-///
-/// }
-/// ```
-///
-/// ### Using the above Configurable
-/// ```swift
-/// class HTTPBinStringGETService: _Requestable, HTTPBinConfigurable {
-///
-///   let path: String = "get"
-///   let encoding: ParameterEncoding = URLEncoding.default
-///   var parameters: Any?
-///
-///   init(parameters: Any?) {
-///     self.parameters = parameters
 ///   }
 ///
 /// }
@@ -50,7 +34,7 @@ public protocol _Configurable {
     var scheme: String { get }
     
     /// The base URL.
-    var baseURL: String { get }
+    var host: String { get }
     
     /// The version.
     var version: String? { get }
@@ -80,17 +64,17 @@ public extension _Configurable {
         return Configuration.default
     }
     
-    /// `configuration.scheme`
+    /// `Configuration.default.scheme`
     public var scheme: String {
         return configuration.scheme
     }
     
-    /// `configuration.BaseURL`
-    public var baseURL: String {
-        return configuration.baseURL
+    /// `Configuration.default.host`
+    public var host: String {
+        return configuration.host
     }
     
-    /// `configuration.version`
+    /// `Configuration.default.version`
     public var version: String? {
         return configuration.version
     }
@@ -100,12 +84,12 @@ public extension _Configurable {
         return nil
     }
     
-    /// `configuration.method`
+    /// `Configuration.default.method`
     public var method: HTTPMethod {
         return configuration.method
     }
     
-    /// `configuration.encoding`
+    /// `Configuration.default.encoding`
     public var encoding: ParameterEncoding {
         return configuration.encoding
     }

@@ -14,7 +14,7 @@
     <a title="Queueable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (97% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,21 +31,30 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
+                <a href="../Classes/BaseOperation.html">BaseOperation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
+                <a href="../Classes/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestOperation.html">RequestOperation</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Global Variables.html">Global Variables</a>
+            <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
+                <a href="../Extensions/DataRequest.html">DataRequest</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
+                <a href="../Extensions/DownloadRequest.html">DownloadRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONEncoding.html">JSONEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
               </li>
             </ul>
           </li>
@@ -53,19 +62,52 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/AConfigurable.html">AConfigurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ADataUploadable.html">ADataUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ADownloadable.html">ADownloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AFileUploadable.html">AFileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AMultipartUploadable.html">AMultipartUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ARequestable.html">ARequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AStreamUploadable.html">AStreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ArrayParameterEncoding.html">ArrayParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Authenticable.html">Authenticable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Configurable.html">Configurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/Requestable.html">Requestable</a>
+                <a href="../Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/ResponseSerializable.html">ResponseSerializable</a>
+                <a href="../Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Retryable.html">Retryable</a>
@@ -75,6 +117,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_AUploadable.html">_AUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_Configurable.html">_Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_Requestable.html">_Requestable</a>
               </li>
             </ul>
           </li>
@@ -88,7 +139,13 @@
                 <a href="../Structs/Configuration.html">Configuration</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/Reachability.html">Reachability</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Session.html">Session</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Validation.html">Validation</a>
@@ -103,36 +160,11 @@
             <h1>Queueable</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Queueable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Queueable</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents a <code>Queueable</code> that is associated with <code><a href="../Protocols/Configurable.html">Configurable</a></code>.
-<code>configuration.queue</code> by default.</p>
-<h3 id='create-custom-queueable' class='heading'>Create custom Queueable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinQueueable</span><span class="p">:</span> <span class="kt">Queueable</span> <span class="p">{</span> <span class="p">}</span>
-
-<span class="kd">extension</span> <span class="kt">HTTPBinQueueable</span> <span class="p">{</span>
-
-  <span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
-<h3 id='using-the-above-queueable' class='heading'>Using the above Queueable</h3>
-<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinQueueable</span> <span class="p">{</span>
-
-  <span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"get"</span>
-  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
-  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
-
-  <span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
-    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
+            <p>Represents a <code>Queueable</code> that is associated with <code><a href="../Protocols/Requestable.html">Requestable</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -141,9 +173,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire9QueueableP5queueSo13DispatchQueueCv"></a>
-                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire9QueueableP5queueSo13DispatchQueueCv">queue</a>
+                    <a name="/s:9Restofire9QueueableP6_queueSo13DispatchQueueCv"></a>
+                    <a name="//apple_ref/swift/Property/_queue" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire9QueueableP6_queueSo13DispatchQueueCv">_queue</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -159,14 +191,14 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>configuration.queue</code></p>
+                        <p><code>DispatchQueue.main</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">_queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span></code></pre>
 
                         </div>
                       </div>
@@ -178,8 +210,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

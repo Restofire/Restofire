@@ -13,7 +13,7 @@
     <a title="Global Variables  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Restofire Docs</a> (100% documented)</p>
+        <p><a href="index.html">Restofire Docs</a> (73% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -30,10 +30,13 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
+                <a href="Classes/BaseOperation.html">BaseOperation</a>
               </li>
               <li class="nav-group-task">
-                <a href="Classes/DataRequestOperation.html">DataRequestOperation</a>
+                <a href="Classes/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/RequestOperation.html">RequestOperation</a>
               </li>
             </ul>
           </li>
@@ -41,10 +44,21 @@
             <a href="Global Variables.html">Global Variables</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
+                <a href="Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/DataRequest.html">DataRequest</a>
               </li>
               <li class="nav-group-task">
-                <a href="Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
+                <a href="Extensions/DownloadRequest.html">DownloadRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/JSONEncoding.html">JSONEncoding</a>
               </li>
             </ul>
           </li>
@@ -52,19 +66,52 @@
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Protocols/AConfigurable.html">AConfigurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ADataUploadable.html">ADataUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ADownloadable.html">ADownloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/AFileUploadable.html">AFileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/AMultipartUploadable.html">AMultipartUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ARequestable.html">ARequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/AStreamUploadable.html">AStreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ArrayParameterEncoding.html">ArrayParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Authenticable.html">Authenticable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Configurable.html">Configurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Queueable.html">Queueable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/Requestable.html">Requestable</a>
+                <a href="Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/ResponseSerializable.html">ResponseSerializable</a>
+                <a href="Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Retryable.html">Retryable</a>
@@ -74,6 +121,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/_AUploadable.html">_AUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/_Configurable.html">_Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/_Requestable.html">_Requestable</a>
               </li>
             </ul>
           </li>
@@ -87,7 +143,13 @@
                 <a href="Structs/Configuration.html">Configuration</a>
               </li>
               <li class="nav-group-task">
+                <a href="Structs/Reachability.html">Reachability</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Structs/Session.html">Session</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Validation.html">Validation</a>
@@ -109,33 +171,6 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire20defaultConfigurationAA0C0Vv"></a>
-                    <a name="//apple_ref/swift/Global/defaultConfiguration" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>The default configuration.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultConfiguration</span> <span class="o">=</span> <span class="kt"><a href="Structs/Configuration.html">Configuration</a></span><span class="p">()</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv"></a>
                     <a name="//apple_ref/swift/Global/defaultRequestEventuallyQueue" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
@@ -153,7 +188,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">defaultRequestEventuallyQueue</span><span class="p">:</span> <span class="kt">OperationQueue</span> <span class="o">=</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">defaultRequestEventuallyQueue</span><span class="p">:</span> <span class="kt">OperationQueue</span> <span class="o">=</span></code></pre>
 
                         </div>
                       </div>
@@ -165,8 +200,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

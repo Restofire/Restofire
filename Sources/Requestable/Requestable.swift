@@ -8,12 +8,34 @@
 
 import Foundation
 
+/// Represents a `Requestable` for Restofire.
+///
+/// ### Create custom Requestable
+/// ```swift
+/// protocol HTTPBinGETService: Requestable {
+///
+///     var path: String? = "get"
+///
+/// }
+/// ```
 public protocol Requestable: ARequestable, Configurable, DataResponseSerializable {
     
+    /// Called when the Request updates with download progress.
+    ///
+    /// - parameter request: The Alamofire.DataRequest
+    /// - parameter error: The Progress
     func request(_ request: DataRequest, didDownloadProgress progress: Progress)
-
+    
+    /// Called when the Request succeeds.
+    ///
+    /// - parameter request: The Alamofire.DataRequest
+    /// - parameter error: The Response
     func request(_ request: DataRequest, didCompleteWithValue value: Response)
     
+    /// Called when the Request fails.
+    ///
+    /// - parameter request: The Alamofire.DataRequest
+    /// - parameter error: The Error
     func request(_ request: DataRequest, didFailWithError error: Error)
     
 }

@@ -62,7 +62,7 @@ jobs:
       deploy:
         - provider: releases
           api_key:
-            secure: KrjeFZFxA8KFpVpZuPpHzjhJREYmOprCR072mGzEJtuf/J9Auiqqml9EEbx0jtabpajkfbDRdWVjkSG+czc13QhBT4uBRCnPiX3c2t1m1PnaZEkiPTyY17ZFIC0+cyxwpQ1KPludHEy5cJ1JS98C6vzprxhSO1p4IDOBMbZ/AmeD8i+iHIGagvdyZdI0ksPuofm9qlg7aQgAvmz+XivlIEtnp9WuDFH0X62Pg2W2M5fJ2IuMTQXAou5Me+/T2TdorGWnASN+7oemYxBHeF1SCkxxvgZ1zh6RDKWaOhBd7+Sim6Aa6KiDpwkIFHtDFw6GVbmpJOp71Ic6PjEOncbXlTvOc+urLcGwUdeGaGOTuyNjKfmrJcvUHUH3E0cvwFvGqXG1C0A8RUIYjRM+RkenxCcEOZPVhYBeZUdS6uHk1ncnQ6r6QTKP0pmbO0uGlhQ4hWUF03u0psAQfQRAYgNsiZPpP/V8Myc0nLrsHK46E+L/CVbuqg82KtcQT2CfYCV4nmG2a3ii/FXaOLJIe0CZqV0uadfXNTYazjdcXXf48OpimNv0hCoaI+od2lMu88Mb08Ff430dNx3k7T5NlWyPLezkT7OfO2dC4MaXkSdS869+G3JKg6mutBLKTAkVuEUMlDqcGSSKFream+D2AVsNKYPWW68XqzzSF6FXrNA8SqA=
+            secure: c0JMDdJasn6PlRHBg/IU8+W1zRc5SghpufkKghF3jgka2f2+LBUT9LiUNOREW6HBK1lEvlUP6jQ8EbQgcucXs+3xU0U7ze1icuLW9y/7oQOFYk2+0Nw10vYbSj8aRe3AQKP5FonRDit8m++HB6BaerYce332Zp5ED4MG2pqjpMYRhINFrN8lcMjLyMPl7VSeYfkuCMXKDSX2OqEs8cNZ3n38TomxKgLXPlncvk+NXAyx7QGZ20UFUxHRPnMc5rxVALkRMRKClt3TVK+hrv8AG93dZKy+bALzvMgm+MOjO3ua1hOzT6NNOHvBKlZWKSbxa5Imwxv6fzehQGaMBFFYRhkI88mnQuVJRzU5cIPFt/yg2/bRr362/TmeWeWgQF3b8GgfW+WTh66Ud99Ahl67cdOt6+BjOOJuFVsOKNY1ahslDy6+XdGgCNHgRuuKhqHGcW5syO2+Sh7Sb9ehUaDvxVe3aQR0B2Mpn4ZQE3sQpFYHMQlkJYvuSysqYkCMrSAbYMEXEWF14LLh7LbNO9IhO9dQFhfVClUzhv1FADzc3vjjR+gt4bNZzjlMadzEYXxdhT71WccjsDU0cq9Kqky5sygmEDjEjKd2+Ea8Yud3FCX+DG3QahOhTEXn70WDJHThDZpefSHxYxL5Jvx3cNgZ25wJOihzzREJJNZGTN0KVyc=
           file:
             - Restofire.framework.zip
             - Alamofire.framework.zip
@@ -75,9 +75,3 @@ jobs:
           script: pod trunk push
           on:
             tags: true
-
-notifications:
-  email: false
-  slack:
-    rooms:
-      secure: biPuXXsOtHEm31pNUlWDYcirs84KKPXv2OJrHFtESjJuxLiIX4Y0flyzhDgFNCtt76yTzKDn2ChA8QPmKX7AWR8VMcjE19YWxzxuFP8X1V6j2QaLZpebneRM/pGvCCXhSJHw1WHh+BQZ5A/G3C0vjxwnGUDg6gxWTFdHSZp2Mmi6P0pzWT4JYNLSZFeFbQ9thLQi6SZMAHiNbumadi+F8QXy4qxCJ2Wem6K9PZvEt3p+UVD3hOodvmvLk/0WHu6pXhoyDEt/B4EJAPiB1lln/x+aVlCv1bhvRVAPLF3hDRPy42ROpVGEn5f4e3Y1ggikw/tbtrpExA9F1dtaVKIJTyUdhq8T/G0k4rps+8bY1nhtXzLRgZXU0UYe9MTg7H20rpOl4Za8AcUCuUKmWxOPYHU4D3qSmFyOE0u7CbriMyRZUVuvbilaAvxPgNjQO7nr6aeYYb3W+tYhHlBRI6klA/MuyHimtlfhnBs7Mm6nA3fZoMSIC9cdVNTmfistBvbSvtPDnWdOuGri9ugqWth1HUo4kS/ItBpZ6GWnKEuJ36tCKy7XLrIqRk9tgPKMxAuMbq5uPNMYUonIHjX/JQYe6VBKLC2N13NDviV/B36HvqYWM5g0qbXk9SgatRaGcRtFHPb4y+RNnBICW7W81YHHSPtLEp36BhX2D2EuQMf/lr8=

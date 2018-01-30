@@ -60,7 +60,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 2.3.0'
+pod 'Restofire', '~> 2.4.0'
 ```
 
 Then, run the following command:
@@ -83,7 +83,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 2.3.0
+github "Restofire/Restofire" ~> 2.4.0
 ```
 ### Swift Package Manager
 

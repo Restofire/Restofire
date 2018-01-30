@@ -239,19 +239,6 @@ extension MockyValidatable {
 
 }
 
-protocol CustomRetryable: Retryable {}
-
-extension MockyRetryable {
-
-    public var retry: Retry {
-        var mockyRetry = Retry()
-        mockyRetry.maxRetryAttempts = 100
-        mockyRetry.retryInterval = 25
-        return mockyRetry
-    }
-
-}
-
 protocol MockyRequestable: Requestable, MockyConfigurable, MockyValidatable {}
 ```
 
@@ -261,7 +248,7 @@ protocol MockyRequestable: Requestable, MockyConfigurable, MockyValidatable {}
 
 import Restofire
 
-struct MockyGETService: MockyRequestable, CustomRetryable {
+struct MockyGETService: MockyRequestable {
 
     typealias Response = Any
     let path: String = "get"

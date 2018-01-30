@@ -20,7 +20,6 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Examples](#examples)
 - [License](#license)
 
 ## Features
@@ -29,13 +28,13 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [x] Default Configuration for Base URL / headers / parameters etc
 - [x] Multiple Configurations
 - [x] Single Request Configuration
-- [x] Custom Response Serializer
+- [x] Custom Response Serializers
+- [x] JSONDecodable
 - [x] Authentication
 - [x] Response Validations
 - [x] Request NSOperation
-- [x] RequestEventuallyOperation with Auto Retry
+- [x] Request eventually when internet is reachable
 - [x] [Complete Documentation](http://restofire.github.io/Restofire/)
-- [x] [Tutorial](http://blog.rahulkatariya.me/2016/05/11/getting-started-swifter-http-networking-with-restofire/)
 
 ## Requirements
 
@@ -95,7 +94,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 2, minorVersion: 3)
+        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 3)
     ]
 )
 ```
@@ -160,9 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        Restofire.Configuration.default.scheme = "http://"
-        Restofire.Configuration.default.baseURL = "www.mocky.io"
-        Restofire.Configuration.default.version = "v2"
+        Restofire.Configuration.default.host = "httpbin.org"
 
         return true
   }
@@ -170,66 +167,92 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### Creating a Service
+### Restofire with JSONDecodable Response Serializer
 
-```swift
-
+``` swift
 import Restofire
 
-struct PersonGETService: Requestable {
+extension Restofire.DataResponseSerializable where Response: Decodable {
 
-    typealias Response = [String: Any]
-    var path: String? = "56c2cc70120000c12673f1b5"
-
-}
-
-```
-
-### URL Level Configuration
-
-```swift
-
-protocol HTTPBinConfigurable: Configurable { }
-
-extension HTTPBinConfigurable {
-
-    var configuration: Configuration {
-        var config = Configuration()
-        config.baseURL = "https://httpbin.org/"
-        config.logging = Restofire.defaultConfiguration.logging
-        return config
+    public var responseSerializer: DataResponseSerializer<Response> {
+        return DataRequest.JSONDecodableResponseSerializer()
     }
 
 }
 
-protocol HTTPBinValidatable: Validatable { }
+extension Restofire.DownloadResponseSerializable where Response: Decodable {
 
-extension HTTPBinValidatable {
+    public var responseSerializer: DownloadResponseSerializer<Response> {
+        return DownloadRequest.JSONDecodableResponseSerializer()
+    }
 
-  var validation: Validation {
-    var validation = Validation()
-    validation.acceptableStatusCodes = Array(200..<300)
-    validation.acceptableContentTypes = ["application/json"]
-    return validation
-  }
+}
+```
+
+### Creating a Service
+
+```swift
+import Restofire
+
+struct HTTPBin: Decodable {
+    var url: URL
+}
+
+struct PersonGETService: Requestable {
+
+    typealias Response = HTTPBin
+    var path: String? = "get"
+
+    func request(_ request: DataRequest, didCompleteWithValue value: HTTPBin) {
+        print(value.url.absoluteString) // "https://httpbin.org/get"
+    }
+}
+```
+
+### Group Level Configuration
+
+```swift
+protocol MockyConfigurable: Configurable {}
+
+extension MockyConfigurable {
+
+    public var configuration: Restofire.Configuration {
+        var mockyConfiguration = Restofire.Configuration()
+        mockyConfiguration.scheme = "http://"
+        mockyConfiguration.host = "mocky.io"
+        mockyConfiguration.version = "v2"
+        return mockyConfiguration
+    }
 
 }
 
+protocol MockyValidatable: Validatable { }
 
-protocol HTTPBinRetryable: Retryable { }
+extension MockyValidatable {
 
-extension HTTPBinRetryable {
-
-  var retry: Retry {
-    var retry = Retry()
-    retry.retryErrorCodes = [.timedOut,.networkConnectionLost]
-    retry.retryInterval = 20
-    retry.maxRetryAttempts = 10
-    return retry
-  }
+    var validation: Validation {
+        var validation = Validation()
+        validation.acceptableStatusCodes = Array(200..<300)
+        validation.acceptableContentTypes = ["application/json"]
+        return validation
+    }
 
 }
 
+protocol CustomRetryable: Retryable {}
+
+extension MockyRetryable {
+
+    public var retry: Retry {
+        var mockyRetry = Retry()
+        mockyRetry.maxRetryAttempts = 100
+        mockyRetry.retryInterval = 25
+        return mockyRetry
+    }
+
+}
+
+protocol MockyRequestable: Requestable, MockyConfigurable, MockyValidatable {}
 ```
 
 ### Creating the Service
@@ -237,11 +260,10 @@ extension HTTPBinRetryable {
 ```swift
 
 import Restofire
-import Alamofire
 
-struct HTTPBinPersonGETService: Requestable, HTTPBinConfigurable, HTTPBinValidatable, HTTPBinRetryable {
+struct MockyGETService: MockyRequestable, CustomRetryable {
 
-    typealias Response = [String: Any]
+    typealias Response = Any
     let path: String = "get"
     var parameters: Any?
 
@@ -255,33 +277,18 @@ struct HTTPBinPersonGETService: Requestable, HTTPBinConfigurable, HTTPBinValidat
 ### Request Level Configuration
 
 ```swift
-
 import Restofire
-import Alamofire
 
 struct MoviesReviewGETService: Requestable {
 
     var scheme: String = "http://"
-    var baseUrl: String = "api.nytimes.com/svc/movies/v2"
+    var host: String = "api.nytimes.com/svc/movies"
+    var version: String = "v2"
     var path: String? = "reviews"
     var parameters: Any?
-    var encoding: ParameterEncoding = URLEncoding.default
-    var method: Alamofire.HTTPMethod = .get
-    var headers: [String: String]? = ["Content-Type": "application/json"]
-    var manager: Alamofire.SessionManager = {
-        let sessionConfiguration = URLSessionConfiguration.default
-        sessionConfiguration.timeoutIntervalForRequest = 7
-        sessionConfiguration.timeoutIntervalForResource = 7
-        sessionConfiguration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-        return Alamofire.SessionManager(configuration: sessionConfiguration)
-    }()
     var queue: DispatchQueue? = DispatchQueue.main
     var credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
-    var acceptableStatusCodes: [Int]? = Array(200..<300)
-    var acceptableContentTypes: [String]? = ["application/json"]
     var retryErrorCodes: Set<URLError.Code> = [.timedOut,.networkConnectionLost]
-    var retryInterval: TimeInterval = 20
-    var maxRetryAttempts: Int = 10
 
     init(path: String, parameters: Any) {
         self.path += path
@@ -316,6 +323,7 @@ class ViewController: UIViewController {
 
 }
 ```
+
 ## License
 
 Restofire is released under the MIT license. See [LICENSE](https://github.com/Restofire/Restofire/blob/master/LICENSE) for details.

@@ -37,7 +37,9 @@ public typealias DownloadResponseSerializerProtocol = Alamofire.DownloadResponse
 public typealias DownloadResponseSerializer = Alamofire.DownloadResponseSerializer
 public typealias MultipartFormData = Alamofire.MultipartFormData
 public typealias MultipartFormDataEncodingResult = SessionManager.MultipartFormDataEncodingResult
+public typealias Result = Alamofire.Result
 
-// Internal
-internal typealias NetworkReachabilityManager = Alamofire.NetworkReachabilityManager
-internal typealias Result = Alamofire.Result
+
+#if !os(watchOS)
+public typealias NetworkReachabilityManager = Alamofire.NetworkReachabilityManager
+#endif

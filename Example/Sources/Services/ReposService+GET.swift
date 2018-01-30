@@ -18,5 +18,6 @@ struct ReposGETService: Requestable {
 
     typealias Response = [Repo]
     var path: String? = "user/repos"
+    var eventually: Bool = true
 
 }

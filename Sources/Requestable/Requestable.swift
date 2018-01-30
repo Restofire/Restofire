@@ -33,16 +33,16 @@ public extension Requestable {
 
 public extension Requestable {
     
-    /// Creates a `RequestableOperation` for the specified `Requestable` object and
+    /// Creates a `DataRequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created `RequestableOperation`.
+    /// - returns: The created `DataRequestOperation`.
     @discardableResult
-    public func response(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestableOperation<Self> {
-        let requestOperation = RequestableOperation(requestable: self, completionHandler: completionHandler)
+    public func response(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> DataRequestOperation<Self> {
+        let requestOperation = DataRequestOperation(requestable: self, completionHandler: completionHandler)
         requestOperation.start()
         return requestOperation
     }

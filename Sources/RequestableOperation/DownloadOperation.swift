@@ -16,6 +16,7 @@ open class DownloadOperation<R: Downloadable>: BaseOperation {
     
     let downloadable: R
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
+    
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: downloadable)
     }()

@@ -1,5 +1,5 @@
 //
-//  DataRequestOperation.swift
+//  RequestOperation.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/01/18.
@@ -12,7 +12,7 @@ import Foundation
 /// or when added to a NSOperationQueue
 ///
 /// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
-open class DataRequestOperation<R: Requestable>: BaseOperation {
+open class RequestOperation<R: Requestable>: BaseOperation {
     
     let requestable: R
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
@@ -71,7 +71,7 @@ open class DataRequestOperation<R: Requestable>: BaseOperation {
         if let error = response.error as? URLError {
             if requestable.eventually && error.code == .notConnectedToInternet {
                 requestable.eventuallyOperationQueue.isSuspended = true
-                let eventuallyOperation = DataRequestOperation(
+                let eventuallyOperation = RequestOperation(
                     requestable: requestable,
                     completionHandler: completionHandler
                 )
@@ -80,7 +80,7 @@ open class DataRequestOperation<R: Requestable>: BaseOperation {
             } else if retryAttempts > 0 && requestable.retryErrorCodes.contains(error.code) {
                 retryAttempts -= 1
                 perform(
-                    #selector(DataRequestOperation<R>.executeRequest),
+                    #selector(RequestOperation<R>.executeRequest),
                     with: nil,
                     afterDelay: requestable.retryInterval
                 )

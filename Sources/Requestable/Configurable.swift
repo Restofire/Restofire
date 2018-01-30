@@ -8,9 +8,23 @@
 
 import Foundation
 
-/// Represents a `Configurable` that is associated with `_Requestable`.
-/// `Restofire.defaultConfiguration()` by default.
-
+/// Represents a `Configurable` for Restofire.
+/// `Configuration.default` by default.
+///
+/// ### Create custom Configurable
+/// ```swift
+/// protocol HTTPBinConfigurable: Configurable { }
+///
+/// extension HTTPBinConfigurable {
+///
+///   var configuration: Configuration {
+///     var config = Configuration()
+///     config.host = "httpbin.org"
+///     return config
+///   }
+///
+/// }
+/// ```
 public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
     
     /// The eventually.

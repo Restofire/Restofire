@@ -8,19 +8,26 @@
 
 import Foundation
 
-/// An NSOperation that executes the `Requestable` asynchronously on `start()`
+/// An NSOperation that executes the `Requestable` asynchronously
 /// or when added to a NSOperationQueue
-///
-/// - Note: Auto Retry is available only in `DataRequestEventuallyOperation`.
-open class RequestOperation<R: Requestable>: BaseOperation {
+public class RequestOperation<R: Requestable>: BaseOperation {
     
     let requestable: R
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
+    
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: requestable)
     }()
-    var request: DataRequest!
+    
     var retryAttempts = 0
+    
+    /// The underlying Alamofire.DataRequest.
+    public lazy var request: DataRequest = { return requestable.request() }()
+    
+    /// A boolean value `true` indicating the operation executes its task asynchronously.
+    override public var isAsynchronous: Bool {
+        return true
+    }
     
     init(requestable: R, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
@@ -31,23 +38,18 @@ open class RequestOperation<R: Requestable>: BaseOperation {
     }
     
     /// Starts the request.
-    open override func main() {
+    override public func main() {
         if isCancelled { return }
         executeRequest()
     }
     
     /// Cancels the request.
-    open override func cancel() {
+    override public func cancel() {
         super.cancel()
         request.cancel()
     }
- 
-    open override var isAsynchronous: Bool {
-        return true
-    }
     
     @objc func executeRequest() {
-        request = requestable.request()
         request.downloadProgress {
             self.requestable.request(self.request, didDownloadProgress: $0)
         }

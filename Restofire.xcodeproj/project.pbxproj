@@ -145,7 +145,6 @@
 		358E8EC52020A27B003048B3 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC42020A27B003048B3 /* NetworkReachability.swift */; };
 		358E8EC62020A27B003048B3 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC42020A27B003048B3 /* NetworkReachability.swift */; };
 		358E8EC72020A27B003048B3 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC42020A27B003048B3 /* NetworkReachability.swift */; };
-		358E8EC82020A27B003048B3 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC42020A27B003048B3 /* NetworkReachability.swift */; };
 		358E8ECA2020A484003048B3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC92020A484003048B3 /* Reachability.swift */; };
 		358E8ECB2020A484003048B3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC92020A484003048B3 /* Reachability.swift */; };
 		358E8ECC2020A484003048B3 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC92020A484003048B3 /* Reachability.swift */; };
@@ -1226,7 +1225,6 @@
 				350428F2201C876800765D15 /* ArrayParameterEncoding.swift in Sources */,
 				35E6D3561CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
-				358E8EC82020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				357E33FD201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				358E8ED72020B776003048B3 /* Reachable.swift in Sources */,
 				357E33ED201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,

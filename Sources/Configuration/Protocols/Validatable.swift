@@ -8,39 +8,7 @@
 
 import Foundation
 
-/// Represents a `Validation` that is associated with `Configurable`.
-/// `configuration.validation` by default.
-///
-/// ### Create custom Validatable
-/// ```swift
-/// protocol HTTPBinValidatable: Validatable { }
-///
-/// extension HTTPBinValidatable {
-///
-///   var validation: Validation {
-///     var validation = Validation()
-///     validation.acceptableStatusCodes = [200..<300]
-///     validation.acceptableContentTypes = ["application/json"]
-///     return validation
-///   }
-///
-/// }
-/// ```
-///
-/// ### Using the above Validatable
-/// ```swift
-/// class HTTPBinStringGETService: _Requestable, HTTPBinValidatable {
-///
-///   let path: String = "get"
-///   let encoding: ParameterEncoding = .URLEncodedInURL
-///   var parameters: Any?
-///
-///   init(parameters: Any?) {
-///     self.parameters = parameters
-///   }
-///
-/// }
-/// ```
+/// Represents a `Validation` that is associated with `Requestable`.
 public protocol Validatable {
     
     /// The `validation`.

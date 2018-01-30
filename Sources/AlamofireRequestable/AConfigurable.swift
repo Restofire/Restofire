@@ -8,35 +8,19 @@
 
 import Foundation
 
-/// Represents a `Configurable` that is associated with `_Requestable`.
-/// `Restofire.defaultConfiguration()` by default.
+/// Represents a `Configurable` for Alamofire Services.
+/// `Configuration.default` by default.
 ///
 /// ### Create custom Configurable
 /// ```swift
-/// protocol HTTPBinConfigurable: Configurable { }
+/// protocol HTTPBinConfigurable: AConfigurable { }
 ///
 /// extension HTTPBinConfigurable {
 ///
 ///   var configuration: Configuration {
 ///     var config = Configuration()
-///     config.baseURL = "https://httpbin.org/"
-///     config.logging = Restofire.defaultConfiguration.logging
+///     config.host = "httpbin.org"
 ///     return config
-///   }
-///
-/// }
-/// ```
-///
-/// ### Using the above Configurable
-/// ```swift
-/// class HTTPBinStringGETService: _Requestable, HTTPBinConfigurable {
-///
-///   let path: String = "get"
-///   let encoding: ParameterEncoding = URLEncoding.default
-///   var parameters: Any?
-///
-///   init(parameters: Any?) {
-///     self.parameters = parameters
 ///   }
 ///
 /// }
@@ -60,22 +44,22 @@ public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, V
 // MARK: - Default Implementation
 public extension AConfigurable {
     
-    /// `configuration.sessionManager`
+    /// `Session.default.sessionManager`
     public var sessionManager: SessionManager {
         return _sessionManager
     }
     
-    /// `authentication.credential`
+    /// `Authentication.default.credential`
     public var credential: URLCredential? {
         return authentication.credential
     }
     
-    /// `validation.acceptableStatusCodes`
+    /// `Validation.default.acceptableStatusCodes`
     public var acceptableStatusCodes: [Int]? {
         return validation.acceptableStatusCodes
     }
     
-    /// `validation.acceptableContentTypes`
+    /// `Validation.default.acceptableContentTypes`
     public var acceptableContentTypes: [String]? {
         return validation.acceptableContentTypes
     }

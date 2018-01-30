@@ -178,36 +178,11 @@ import Restofire
 
 struct PersonGETService: Requestable {
 
-    typealias Model = [String: Any]
+    typealias Response = [String: Any]
     var path: String? = "56c2cc70120000c12673f1b5"
 
 }
 
-```
-
-### Consuming the Service
-
-```swift
-import Restofire
-
-class ViewController: UIViewController {
-
-    var person: [String: Any]!
-    var requestOp: RequestOperation<PersonGETService>!
-
-    func getPerson() {
-        requestOp = PersonGETService().response() {
-            if let value = $0.result.value {
-                self.person = value
-            }
-        }
-    }
-
-    deinit {
-        requestOp.cancel()
-    }
-
-}
 ```
 
 ### URL Level Configuration
@@ -266,40 +241,12 @@ import Alamofire
 
 struct HTTPBinPersonGETService: Requestable, HTTPBinConfigurable, HTTPBinValidatable, HTTPBinRetryable {
 
-    typealias Model = [String: Any]
+    typealias Response = [String: Any]
     let path: String = "get"
-    let encoding: ParameterEncoding = URLEncoding.default
     var parameters: Any?
 
     init(parameters: Any?) {
         self.parameters = parameters
-    }
-
-}
-
-
-```
-
-### Consuming the Service
-
-```swift
-import Restofire
-
-class ViewController: UIViewController {
-
-    var person: [String: Any]!
-    var requestOp: RequestOperation<HTTPBinPersonGETService>!
-
-    func getPerson() {
-        requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"]).response() {
-            if let value = $0.result.value {
-                self.person = value
-            }
-        }
-    }
-
-    deinit {
-        requestOp.cancel()
     }
 
 }
@@ -329,7 +276,6 @@ struct MoviesReviewGETService: Requestable {
         return Alamofire.SessionManager(configuration: sessionConfiguration)
     }()
     var queue: DispatchQueue? = DispatchQueue.main
-    var logging: Bool = Restofire.defaultConfiguration.logging
     var credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
     var acceptableStatusCodes: [Int]? = Array(200..<300)
     var acceptableContentTypes: [String]? = ["application/json"]
@@ -343,129 +289,33 @@ struct MoviesReviewGETService: Requestable {
     }
 
 }
+```
 
-// MARK: - Caching
-import RealmSwift
-import SwiftyJSON
+### Consuming the Service
 
-extension MoviesReviewGETService {
+```swift
+import Restofire
 
-    func didCompleteRequestWithDataResponse(dataResponse: DataResponse<Model>) {
-        guard let model = response.result.value else { return }
-        let realm = try! Realm()
-        let jsonMovieReview = JSON(model)
-        if let results = jsonMovieReview["results"].array {
-            for result in results {
-                let movieReview = MovieReview()
-                movieReview.displayTitle = result["display_title"].stringValue
-                movieReview.summary = result["summary_short"].stringValue
-                try! realm.write {
-                    realm.add(movieReview, update: true)
-                }
+class ViewController: UIViewController {
+
+    var person: [String: Any]!
+    var requestOp: RequestOperation<HTTPBinPersonGETService>!
+
+    func getPerson() {
+        requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"])
+            .response() {
+            if let value = $0.result.value {
+                self.person = value
             }
         }
     }
 
-}
-
-```
-
-### RequestEventually Service
-
-```swift
-
-import Restofire
-
-class MoviesReviewTableViewController: UITableViewController {
-
-  let realm = try! Realm()
-  var results: Results<MovieReview>!
-  var notificationToken: NotificationToken? = nil
-
-  override func viewDidLoad() {
-      super.viewDidLoad()
-
-      MoviesReviewGETService(path: "all.json", parameters: ["api-key":"sample-key"])
-          .responseEventually()
-
-      results = realm.objects(MovieReview)
-
-      notificationToken = results.addNotificationBlock { [weak self] (changes: RealmCollectionChange) in
-          guard let _self = self else { return }
-          switch changes {
-          case .Initial, .Update(_, deletions: _, insertions: _, modifications: _):
-              _self.results = _self.realm.objects(MovieReview)
-              _self.tableView.reloadData()
-          default:
-              break
-          }
-      }
-
-  }
-
-  deinit {
-      notificationToken = nil
-  }
-
-}
-
-```
-
-## Examples
-
-* [String Response Service](https://github.com/Restofire/Restofire/wiki/String-Response-Service-Example)
-
-    ```json
-    "Restofire is Awesome"
-    ```
-* [Int Response Service](https://github.com/Restofire/Restofire/wiki/Int-Response-Service-Example)
-
-    ```json
-    123456789
-    ```
-* [Float Response Service](https://github.com/Restofire/Restofire/wiki/Float-Response-Service-Example)
-
-    ```json
-    12345.6789
-    ```
-* [Bool Response Service](https://github.com/Restofire/Restofire/wiki/Bool-Response-Service-Example)
-
-    ```json
-    true
-    ```
-* [Void Response Service](https://github.com/Restofire/Restofire/wiki/Void-Response-Service-Example)
-
-    ```json
-    {}
-    ```
-* [Array Response Service](https://github.com/Restofire/Restofire/wiki/Array-Response-Service-Example)
-
-    ```json
-    ["Restofire","is","Awesome"]
-    ```
-* [JSON Response Service](https://github.com/Restofire/Restofire/wiki/JSON-Response-Service-Example)
-
-    ```json
-    {
-      "id" : 12345,
-      "name" : "Rahul Katariya"
+    deinit {
+        requestOp.cancel()
     }
-    ```
-* [JSON Array Response Service](https://github.com/Restofire/Restofire/wiki/JSON-Array-Response-Service-Example)
 
-    ```json
-    [
-      {
-        "id" : 12345,
-        "name" : "Rahul Katariya"
-      },
-      {
-        "id" : 12346,
-        "name" : "Aar Kay"
-      }
-    ]
-    ```
-
+}
+```
 ## License
 
 Restofire is released under the MIT license. See [LICENSE](https://github.com/Restofire/Restofire/blob/master/LICENSE) for details.

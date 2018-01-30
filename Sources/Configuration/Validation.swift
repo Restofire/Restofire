@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// A Validation of RESTful Services.
+/// A Validation for RESTful Services.
 ///
 /// ```swift
 /// var validation = Validation()

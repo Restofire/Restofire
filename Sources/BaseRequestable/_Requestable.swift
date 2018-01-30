@@ -8,6 +8,16 @@
 
 import Foundation
 
+/// Represents a `Requestable` for URLSession.
+///
+/// ### Create custom Requestable
+/// ```swift
+/// protocol HTTPBinGETService: _Requestable {
+///
+///     var path: String? = "get"
+///
+/// }
+/// ```
 public protocol _Requestable: _Configurable {
     
     /// The path relative to base URL.
@@ -28,7 +38,7 @@ public extension _Requestable {
 public extension _Requestable {
     
     public func asUrlRequest() -> URLRequest {
-        let url = [scheme + baseURL, version, path]
+        let url = [scheme + host, version, path]
             .flatMap { $0 }
             .joined(separator: "/")
         
@@ -43,8 +53,6 @@ public extension _Requestable {
         } else if let parameters = parameters as? [Any],
             let encoding = encoding as? ArrayParameterEncoding {
             request = try! encoding.encode(request, with: parameters)
-        } else {
-            /// Throw Error
         }
         return request
     }

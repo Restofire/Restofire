@@ -6,7 +6,6 @@
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
-#if !os(watchOS)
 import Foundation
 
 struct NetworkReachability {
@@ -30,4 +29,3 @@ struct NetworkReachability {
         configurable.eventuallyOperationQueue.addOperation(operation)
     }
 }
-#endif

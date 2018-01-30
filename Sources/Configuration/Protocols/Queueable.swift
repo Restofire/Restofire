@@ -8,36 +8,7 @@
 
 import Foundation
 
-/// Represents a `Queueable` that is associated with `Configurable`.
-/// `configuration.queue` by default.
-///
-/// ### Create custom Queueable
-/// ```swift
-/// protocol HTTPBinQueueable: Queueable { }
-///
-/// extension HTTPBinQueueable {
-///
-///   var queue: DispatchQueue {
-///       return DispatchQueue.main
-///   }
-///
-/// }
-/// ```
-///
-/// ### Using the above Queueable
-/// ```swift
-/// class HTTPBinStringGETService: _Requestable, HTTPBinQueueable {
-///
-///   let path: String = "get"
-///   let encoding: ParameterEncoding = URLEncoding.default
-///   var parameters: Any?
-///
-///   init(parameters: Any?) {
-///     self.parameters = parameters
-///   }
-///
-/// }
-/// ```
+/// Represents a `Queueable` that is associated with `Requestable`.
 public protocol Queueable {
     
     /// The `queue`.

@@ -27,6 +27,9 @@
       assignedFileDataType = "public.ruby-script">
    </FileRef>
    <FileRef
+      location = "group:Gemfile.lock">
+   </FileRef>
+   <FileRef
       location = "group:LICENSE">
    </FileRef>
    <FileRef

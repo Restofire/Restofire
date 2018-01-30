@@ -9,11 +9,13 @@
 import Foundation
 import Alamofire
 
-class RequestJSONDecodableResponseSerializer {
-    /// Returns a JSON object contained in a result type constructed from the response data using `JSONSerialization`
-    /// with the specified reading options.
+/// An extension of Alamofire.Request
+extension Request {
+    
+    /// Returns a JSON Decodable object contained in a result type constructed from the
+    /// response data using `JSONDecoder`.
     ///
-    /// - parameter options:  The JSON serialization reading options. Defaults to `.allowFragments`.
+    /// - parameter decoder:  The JSONDecoder opject. Defaults to `JSONDecoder()`.
     /// - parameter response: The response from the server.
     /// - parameter data:     The data returned from the server.
     /// - parameter error:    The error already encountered if it exists.
@@ -41,25 +43,27 @@ class RequestJSONDecodableResponseSerializer {
     }
 }
 
+/// An extension of Alamofire.DataRequest
 extension DataRequest {
-    /// Creates a response serializer that returns a JSON object result type constructed from the response data using
-    /// `JSONSerialization` with the specified reading options.
+    
+    /// Creates a response serializer that returns a JSON Decodable object result type
+    /// constructed from the response data using `JSONDecoder` with the specified reading options.
     ///
-    /// - parameter options: The JSON serialization reading options. Defaults to `.allowFragments`.
+    /// - parameter decoder: The JSONDecoder opject. Defaults to `JSONDecoder()`.
     ///
-    /// - returns: A JSON object response serializer.
+    /// - returns: A JSON Decodable object response serializer.
     public static func JSONDecodableResponseSerializer<T: Decodable>(
         decoder: JSONDecoder? = JSONDecoder())
         -> DataResponseSerializer<T>
     {
         return DataResponseSerializer { _, response, data, error in
-            return RequestJSONDecodableResponseSerializer.serializeResponseJSONDecodable(decoder: decoder, response: response, data: data, error: error)
+            return Request.serializeResponseJSONDecodable(decoder: decoder, response: response, data: data, error: error)
         }
     }
     
     /// Adds a handler to be called once the request has finished.
     ///
-    /// - parameter options:           The JSON serialization reading options. Defaults to `.allowFragments`.
+    /// - parameter decoder: The JSONDecoder opject. Defaults to `JSONDecoder()`.
     /// - parameter completionHandler: A closure to be executed once the request has finished.
     ///
     /// - returns: The request.
@@ -78,13 +82,15 @@ extension DataRequest {
     }
 }
 
+/// An extension of Alamofire.DownloadRequest
 extension DownloadRequest {
-    /// Creates a response serializer that returns a JSON object result type constructed from the response data using
-    /// `JSONSerialization` with the specified reading options.
+    
+    /// Creates a response serializer that returns a JSON Decodable object result type
+    /// constructed from the response data using `JSONDecoder` with the specified reading options.
     ///
-    /// - parameter options: The JSON serialization reading options. Defaults to `.allowFragments`.
+    /// - parameter decoder: The JSONDecoder opject. Defaults to `JSONDecoder()`.
     ///
-    /// - returns: A JSON object response serializer.
+    /// - returns: A JSON Decodable object response serializer.
     public static func JSONDecodableResponseSerializer<T: Decodable>(
         decoder: JSONDecoder? = JSONDecoder())
         -> DownloadResponseSerializer<T>
@@ -98,7 +104,7 @@ extension DownloadRequest {
             
             do {
                 let data = try Data(contentsOf: fileURL)
-                return RequestJSONDecodableResponseSerializer.serializeResponseJSONDecodable(decoder: decoder, response: response, data: data, error: error)
+                return Request.serializeResponseJSONDecodable(decoder: decoder, response: response, data: data, error: error)
             } catch {
                 return .failure(AFError.responseSerializationFailed(reason: .inputFileReadFailed(at: fileURL)))
             }
@@ -107,7 +113,7 @@ extension DownloadRequest {
     
     /// Adds a handler to be called once the request has finished.
     ///
-    /// - parameter options:           The JSON serialization reading options. Defaults to `.allowFragments`.
+    /// - parameter decoder: The JSONDecoder opject. Defaults to `JSONDecoder()`.
     /// - parameter completionHandler: A closure to be executed once the request has finished.
     ///
     /// - returns: The request.

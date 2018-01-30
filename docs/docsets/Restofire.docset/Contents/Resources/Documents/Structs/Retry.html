@@ -14,7 +14,7 @@
     <a title="Retry Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (97% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,21 +31,30 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
+                <a href="../Classes/BaseOperation.html">BaseOperation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
+                <a href="../Classes/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestOperation.html">RequestOperation</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Global Variables.html">Global Variables</a>
+            <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
+                <a href="../Extensions/DataRequest.html">DataRequest</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
+                <a href="../Extensions/DownloadRequest.html">DownloadRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONEncoding.html">JSONEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
               </li>
             </ul>
           </li>
@@ -53,19 +62,52 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/AConfigurable.html">AConfigurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ADataUploadable.html">ADataUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ADownloadable.html">ADownloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AFileUploadable.html">AFileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AMultipartUploadable.html">AMultipartUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ARequestable.html">ARequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AStreamUploadable.html">AStreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ArrayParameterEncoding.html">ArrayParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Authenticable.html">Authenticable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Configurable.html">Configurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/Requestable.html">Requestable</a>
+                <a href="../Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/ResponseSerializable.html">ResponseSerializable</a>
+                <a href="../Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Retryable.html">Retryable</a>
@@ -75,6 +117,15 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_AUploadable.html">_AUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_Configurable.html">_Configurable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_Requestable.html">_Requestable</a>
               </li>
             </ul>
           </li>
@@ -88,7 +139,13 @@
                 <a href="../Structs/Configuration.html">Configuration</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/Reachability.html">Reachability</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Session.html">Session</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Validation.html">Validation</a>
@@ -103,12 +160,12 @@
             <h1>Retry</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Retry</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">Retry</span></code></pre>
 
                 </div>
               </div>
-            <p>A Retry of RESTful Services.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="kt">Retry</span><span class="p">()</span>
+            <p>A Retry for RESTful Services.</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="nf">Retry</span><span class="p">()</span>
 <span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
 <span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
@@ -118,6 +175,33 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire5RetryV7defaultACvZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire5RetryV7defaultACvZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default retry.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`</span> <span class="o">=</span> <span class="nf">Retry</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -131,19 +215,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The retry error codes.
-<code>NSURLErrorTimedOut,
-NSURLErrorCannotFindHost,
-NSURLErrorCannotConnectToHost,
-NSURLErrorDNSLookupFailed,
-NSURLErrorNetworkConnectionLost</code> by default.</p>
+                        <p>The retry error codes. <code>empty</code> by default.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">retryErrorCodes</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">URLError</span><span class="o">.</span><span class="kt">Code</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">retryErrorCodes</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">URLError</span><span class="o">.</span><span class="kt">Code</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
 
                         </div>
                       </div>
@@ -170,7 +249,7 @@ NSURLErrorNetworkConnectionLost</code> by default.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">retryInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mi">10</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">retryInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mi">10</span></code></pre>
 
                         </div>
                       </div>
@@ -197,7 +276,7 @@ NSURLErrorNetworkConnectionLost</code> by default.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">5</span></code></pre>
 
                         </div>
                       </div>
@@ -224,7 +303,7 @@ NSURLErrorNetworkConnectionLost</code> by default.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -240,8 +319,8 @@ NSURLErrorNetworkConnectionLost</code> by default.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -6,10 +6,9 @@
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
-#if !os(watchOS)
-    
 import Foundation
 
+/// Represents a `Reachability` that is associated with `Requestable`.
 public protocol Reachable {
     
     /// The `reachable`.
@@ -25,5 +24,3 @@ extension Reachable where Self: Configurable {
     }
     
 }
-
-#endif

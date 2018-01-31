@@ -15,6 +15,8 @@ import Alamofire
 class RequestableSpec: BaseSpec {
     
     static var progressValues: [Double] = []
+    static var successDelegateCalled = false
+    static var errorDelegateCalled = false
     
     override func spec() {
         describe("Requestable") {
@@ -37,10 +39,12 @@ class RequestableSpec: BaseSpec {
                         }
 
                         func request(_ request: DataRequest, didCompleteWithValue value: HTTPBin) {
+                            RequestableSpec.successDelegateCalled = true
                             expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
                         }
                         
                         func request(_ request: DataRequest, didFailWithError error: Error) {
+                            RequestableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
                     }
@@ -48,9 +52,8 @@ class RequestableSpec: BaseSpec {
                     let request = Request()
                     
                     // When
-                    request
+                    let operation = request
                         .response { response in
-                            defer { done() }
                             
                             // Then
                             if let statusCode = response.response?.statusCode,
@@ -76,6 +79,12 @@ class RequestableSpec: BaseSpec {
                                 fail("last item in progressValues should not be nil")
                             }
                     }
+                    
+                    operation.completionBlock = {
+                        expect(RequestableSpec.successDelegateCalled).to(beTrue())
+                        expect(RequestableSpec.errorDelegateCalled).to(beFalse())
+                        done()
+                    }
                 }
             }
             
@@ -83,4 +92,3 @@ class RequestableSpec: BaseSpec {
     }
     
 }
-

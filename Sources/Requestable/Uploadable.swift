@@ -134,10 +134,18 @@ public protocol MultipartUploadable: AMultipartUploadable, Uploadable {}
 
 public extension MultipartUploadable {
     
-    /// Encodes `multipartFormData` using `encodingMemoryThreshold` and calls `encodingCompletion` with new
-    /// `UploadRequest` using the `uploadable`.
-    public func response(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
-        RestofireRequest.rf_multipartUploadRequest(fromRequestable: self, encodingCompletion: encodingCompletion)
+    /// Creates a `UploadOperation` for the specified `Uploadable` object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the download
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `UploadOperation`.
+    @discardableResult
+    public func response(request: UploadRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
+        let uploadOperation = UploadOperation(uploadable: self, request: request, completionHandler: completionHandler)
+        uploadOperation.start()
+        return uploadOperation
     }
     
 }

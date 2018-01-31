@@ -39,6 +39,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/RequestOperation.html">RequestOperation</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UploadOperation.html">UploadOperation</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -95,10 +98,19 @@
                 <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/DataUploadable.html">DataUploadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUploadable.html">FileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
@@ -114,6 +126,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StreamUploadable.html">StreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Uploadable.html">Uploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Validatable.html">Validatable</a>
@@ -164,7 +182,7 @@
 
                 </div>
               </div>
-            <p>Represents a <code>MultipartUploadable</code> for Alamofire.</p>
+            <p>Represents a <code><a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-multipartuploadable' class='heading'>Create custom MultipartUploadable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">AMultipartUploadable</span> <span class="p">{</span>
 
@@ -250,9 +268,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire20AMultipartUploadablePAAE7request9Alamofire11DataRequestCyF"></a>
-                    <a name="//apple_ref/swift/Method/request()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire20AMultipartUploadablePAAE7request9Alamofire11DataRequestCyF">request()</a>
+                    <a name="/s:9Restofire20AMultipartUploadablePAAE7request9Alamofire11DataRequestCv"></a>
+                    <a name="//apple_ref/swift/Property/request" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire20AMultipartUploadablePAAE7request9Alamofire11DataRequestCv">request</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -270,7 +288,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">DataRequest</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DataRequest</span></code></pre>
 
                         </div>
                       </div>
@@ -280,9 +298,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire20AMultipartUploadablePAAE7requestyy9Alamofire14SessionManagerC31MultipartFormDataEncodingResultOcSg18encodingCompletion_tF"></a>
-                    <a name="//apple_ref/swift/Method/request(encodingCompletion:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire20AMultipartUploadablePAAE7requestyy9Alamofire14SessionManagerC31MultipartFormDataEncodingResultOcSg18encodingCompletion_tF">request(encodingCompletion:)</a>
+                    <a name="/s:9Restofire20AMultipartUploadablePAAE8responseyy9Alamofire14SessionManagerC31MultipartFormDataEncodingResultOcSg18encodingCompletion_tF"></a>
+                    <a name="//apple_ref/swift/Method/response(encodingCompletion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire20AMultipartUploadablePAAE8responseyy9Alamofire14SessionManagerC31MultipartFormDataEncodingResultOcSg18encodingCompletion_tF">response(encodingCompletion:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -301,7 +319,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="nv">encodingCompletion</span><span class="p">:</span> <span class="p">((</span><span class="kt">MultipartFormDataEncodingResult</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">response</span><span class="p">(</span><span class="nv">encodingCompletion</span><span class="p">:</span> <span class="p">((</span><span class="kt">MultipartFormDataEncodingResult</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

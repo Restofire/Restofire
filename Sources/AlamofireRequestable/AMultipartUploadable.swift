@@ -50,7 +50,7 @@ public extension AMultipartUploadable {
     
     /// Encodes `multipartFormData` using `encodingMemoryThreshold` and calls `encodingCompletion` with new
     /// `UploadRequest` using the `uploadable`.
-    public func request(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
+    public func response(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
         RestofireRequest.multipartUploadRequest(fromRequestable: self, encodingCompletion: encodingCompletion)
     }
     

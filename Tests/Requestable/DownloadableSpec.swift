@@ -15,6 +15,8 @@ import Alamofire
 class DownloadableSpec: BaseSpec {
     
     static var progressValues: [Double] = []
+    static var successDelegateCalled = false
+    static var errorDelegateCalled = false
     
     override func spec() {
         describe("Downloadable") {
@@ -39,10 +41,12 @@ class DownloadableSpec: BaseSpec {
                         }
                         
                         func request(_ request: DownloadRequest, didCompleteWithValue value: HTTPBin) {
+                            DownloadableSpec.successDelegateCalled = true
                             expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
                         }
                         
                         func request(_ request: DownloadRequest, didFailWithError error: Error) {
+                            DownloadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
                     }
@@ -50,9 +54,8 @@ class DownloadableSpec: BaseSpec {
                     let request = Request()
                     
                     // When
-                    request
+                    let operation = request
                         .response { response in
-                            defer { done() }
                             
                             // Then
                             if let statusCode = response.response?.statusCode,
@@ -78,6 +81,12 @@ class DownloadableSpec: BaseSpec {
                             } else {
                                 fail("last item in progressValues should not be nil")
                             }
+                    }
+                    
+                    operation.completionBlock = {
+                        expect(DownloadableSpec.successDelegateCalled).to(beTrue())
+                        expect(DownloadableSpec.errorDelegateCalled).to(beFalse())
+                        done()
                     }
                 }
             }

@@ -62,26 +62,7 @@ class RestofireRequest {
                 }
         }
     }
-    
-    static func rf_multipartUploadRequest<R: MultipartUploadable>(fromRequestable requestable: R, encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
-        let localEncodingCompletion = encodingCompletion
-        requestable.sessionManager.upload(
-            multipartFormData: requestable.multipartFormData,
-            usingThreshold: requestable.threshold,
-            with: requestable.asUrlRequest()) { encodingCompletion in
-                switch encodingCompletion {
-                case .success(let request, let streamingFromDisk, let streamFileURL):
-                    authenticateRequest(request, usingCredential: requestable.credential)
-                    RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-                    let uploadOperation = UploadOperation(uploadable: requestable, request: request, completionHandler: nil)
-                    let result = MultipartFormDataEncodingResult.success(request: uploadOperation.request, streamingFromDisk: streamingFromDisk, streamFileURL: streamFileURL)
-                    localEncodingCompletion?(result)
-                case .failure(_):
-                    localEncodingCompletion?(encodingCompletion)
-                }
-        }
-    }
-    
+
     fileprivate static func authenticateRequest(_ request: Request, usingCredential credential: URLCredential?) {
         guard let credential = credential else { return }
         request.authenticate(usingCredential: credential)

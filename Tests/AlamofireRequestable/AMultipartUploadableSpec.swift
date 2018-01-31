@@ -24,12 +24,13 @@ class AMultipartUploadableSpec: BaseSpec {
                     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
                         multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")
                         multipartFormData.append("日本語".data(using: .utf8, allowLossyConversion: false)!, withName: "japanese")
+                        multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "jpg"), withName: "image")
                     }
                 }
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    Upload().request(encodingCompletion: { result in
+                    Upload().response(encodingCompletion: { result in
                         switch result {
                         case .success(let upload, _, _):
                             

@@ -167,49 +167,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### Restofire with JSONDecodable Response Serializer
-
-``` swift
-import Restofire
-
-extension Restofire.DataResponseSerializable where Response: Decodable {
-
-    public var responseSerializer: DataResponseSerializer<Response> {
-        return DataRequest.JSONDecodableResponseSerializer()
-    }
-
-}
-
-extension Restofire.DownloadResponseSerializable where Response: Decodable {
-
-    public var responseSerializer: DownloadResponseSerializer<Response> {
-        return DownloadRequest.JSONDecodableResponseSerializer()
-    }
-
-}
-```
-
-### Creating a Service
-
-```swift
-import Restofire
-
-struct HTTPBin: Decodable {
-    var url: URL
-}
-
-struct HTTPBinGETService: Requestable {
-
-    typealias Response = HTTPBin
-    var path: String? = "get"
-
-    func request(_ request: DataRequest, didCompleteWithValue value: HTTPBin) {
-        // Use this place to store your output to a cache.
-        print(value.url.absoluteString) // "https://httpbin.org/get"
-    }
-}
-```
-
 ### Group Level Configuration
 
 ```swift
@@ -227,39 +184,7 @@ extension MockyConfigurable {
 
 }
 
-protocol MockyValidatable: Validatable { }
-
-extension MockyValidatable {
-
-    var validation: Validation {
-        var validation = Validation()
-        validation.acceptableStatusCodes = Array(200..<300)
-        validation.acceptableContentTypes = ["application/json"]
-        return validation
-    }
-
-}
-
-protocol MockyRequestable: Requestable, MockyConfigurable, MockyValidatable {}
-```
-
-### Creating the Service
-
-```swift
-
-import Restofire
-
-struct MockyGETService: MockyRequestable {
-
-    typealias Response = Any
-    let path: String = "get"
-    var parameters: Any?
-
-    init(parameters: Any?) {
-        self.parameters = parameters
-    }
-
-}
+protocol MockyRequestable: Requestable, MockyConfigurable {}
 ```
 
 ### Request Level Configuration
@@ -269,14 +194,10 @@ import Restofire
 
 struct MoviesReviewGETService: Requestable {
 
+    typealias Response = [MovieReview]
     var scheme: String = "http://"
     var host: String = "api.nytimes.com/svc/movies"
     var version: String = "v2"
-    var path: String? = "reviews"
-    var parameters: Any?
-    var queue: DispatchQueue? = DispatchQueue.main
-    var credential: URLCredential? = URLCredential(user: "user", password: "password", persistence: .forSession)
-    var retryErrorCodes: Set<URLError.Code> = [.timedOut,.networkConnectionLost]
 
     init(path: String, parameters: Any) {
         self.path += path
@@ -293,12 +214,11 @@ import Restofire
 
 class ViewController: UIViewController {
 
-    var person: [String: Any]!
-    var requestOp: RequestOperation<HTTPBinPersonGETService>!
+    var movieReviews: [MovieReview]!
+    var requestOp: RequestOperation<MoviesReviewGETService>!
 
     func getPerson() {
-        requestOp = MockyGETService(parameters: ["name": "Rahul Katariya"])
-            .response() {
+        requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).response() {
             if let value = $0.result.value {
                 self.person = value
             }

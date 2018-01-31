@@ -39,8 +39,8 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 ## Requirements
 
 - iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 8+
-- Swift 3.1+
+- Xcode 9
+- Swift 4
 
 ## Installation
 

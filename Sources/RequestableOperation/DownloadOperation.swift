@@ -19,9 +19,11 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
     public let request: DownloadRequest
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
+    #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: downloadable)
     }()
+    #endif
     
     /// A boolean value `true` indicating the operation executes its task asynchronously.
     override public var isAsynchronous: Bool {
@@ -72,14 +74,20 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
     func handleErrorDownloadResponse(_ response: DownloadResponse<R.Response>) {
         if let error = response.error as? URLError {
             if downloadable.waitsForConnectivity && error.code == .notConnectedToInternet {
-                downloadable.eventuallyOperationQueue.isSuspended = true
-                let eventuallyOperation = DownloadOperation(
-                    downloadable: downloadable,
-                    request: request,
-                    completionHandler: completionHandler
-                )
-                reachability.addOperation(operation: eventuallyOperation)
-                isFinished = true
+                #if !os(watchOS)
+                    downloadable.eventuallyOperationQueue.isSuspended = true
+                    let eventuallyOperation = DownloadOperation(
+                        downloadable: downloadable,
+                        request: request,
+                        completionHandler: completionHandler
+                    )
+                    reachability.addOperation(operation: eventuallyOperation)
+                    isFinished = true
+                #else
+                    downloadable.request(request, didFailWithError: response.error!)
+                    completionHandler?(response)
+                    isFinished = true
+                #endif
             } else if retryAttempts > 0 && downloadable.retryErrorCodes.contains(error.code) {
                 retryAttempts -= 1
                 perform(

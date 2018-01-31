@@ -8,6 +8,8 @@
 
 import Foundation
 
+#if !os(watchOS)
+    
 struct NetworkReachability {
     
     let configurable: Configurable
@@ -29,3 +31,5 @@ struct NetworkReachability {
         configurable.eventuallyOperationQueue.addOperation(operation)
     }
 }
+    
+#endif

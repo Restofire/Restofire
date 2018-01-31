@@ -69,36 +69,38 @@ class DataUploadableSpec: BaseSpec {
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
                             
-                            var previousUploadProgress: Double = DataUploadableSpec.uploadProgressValues.first ?? 0.0
-                            
-                            for uploadProgress in DataUploadableSpec.uploadProgressValues {
-                                expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
-                                previousUploadProgress = uploadProgress
-                            }
-                            
-                            if let lastUploadProgressValue = DataUploadableSpec.uploadProgressValues.last {
-                                expect(lastUploadProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in progressValues should not be nil")
-                            }
-                            
-                            var previousDownloadProgress: Double = DataUploadableSpec.downloadProgressValues.first ?? 0.0
-                            
-                            for downloadProgress in DataUploadableSpec.downloadProgressValues {
-                                expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
-                                previousDownloadProgress = downloadProgress
-                            }
-                            
-                            if let lastDownloadProgressValue = DataUploadableSpec.downloadProgressValues.last {
-                                expect(lastDownloadProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in progressValues should not be nil")
-                            }
                     }
                     
                     operation.completionBlock = {
                         expect(DataUploadableSpec.successDelegateCalled).to(beTrue())
                         expect(DataUploadableSpec.errorDelegateCalled).to(beFalse())
+                        
+                        var previousUploadProgress: Double = DataUploadableSpec.uploadProgressValues.first ?? 0.0
+                        
+                        for uploadProgress in DataUploadableSpec.uploadProgressValues {
+                            expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
+                            previousUploadProgress = uploadProgress
+                        }
+                        
+                        if let lastUploadProgressValue = DataUploadableSpec.uploadProgressValues.last {
+                            expect(lastUploadProgressValue).to(equal(1.0))
+                        } else {
+                            fail("last item in progressValues should not be nil")
+                        }
+                        
+                        var previousDownloadProgress: Double = DataUploadableSpec.downloadProgressValues.first ?? 0.0
+                        
+                        for downloadProgress in DataUploadableSpec.downloadProgressValues {
+                            expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
+                            previousDownloadProgress = downloadProgress
+                        }
+                        
+                        if let lastDownloadProgressValue = DataUploadableSpec.downloadProgressValues.last {
+                            expect(lastDownloadProgressValue).to(equal(1.0))
+                        } else {
+                            fail("last item in progressValues should not be nil")
+                        }
+                        
                         done()
                     }
                 }

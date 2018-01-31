@@ -68,24 +68,25 @@ class DownloadableSpec: BaseSpec {
                             expect(response.destinationURL).toNot(beNil())
                             expect(response.resumeData).to(beNil())
                             expect(response.error).to(beNil())
-                            
-                            var previousProgress: Double = DownloadableSpec.progressValues.first ?? 0.0
-                            
-                            for progress in DownloadableSpec.progressValues {
-                                expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
-                                previousProgress = progress
-                            }
-                            
-                            if let lastProgressValue = DownloadableSpec.progressValues.last {
-                                expect(lastProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in progressValues should not be nil")
-                            }
                     }
                     
                     operation.completionBlock = {
                         expect(DownloadableSpec.successDelegateCalled).to(beTrue())
                         expect(DownloadableSpec.errorDelegateCalled).to(beFalse())
+                        
+                        var previousProgress: Double = DownloadableSpec.progressValues.first ?? 0.0
+                        
+                        for progress in DownloadableSpec.progressValues {
+                            expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
+                            previousProgress = progress
+                        }
+                        
+                        if let lastProgressValue = DownloadableSpec.progressValues.last {
+                            expect(lastProgressValue).to(equal(1.0))
+                        } else {
+                            fail("last item in progressValues should not be nil")
+                        }
+                        
                         done()
                     }
                 }

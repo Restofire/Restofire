@@ -21,7 +21,7 @@ public struct Reachability {
     public static var `default` = Reachability()
     
     /// The eventually.
-    public var eventually = false
+    public var waitsForConnectivity = false
     
     /// The network reachability manager.
     public var networkReachabilityManager: NetworkReachabilityManager = {

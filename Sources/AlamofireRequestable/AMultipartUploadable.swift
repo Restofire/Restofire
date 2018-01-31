@@ -45,7 +45,7 @@ public extension AMultipartUploadable {
     
     /// Use request(encodingCompletion:) method for MultipartUpload instead
     public func request() -> DataRequest {
-        fatalError("Use request(encodingCompletion:) method for MultipartUpload instead")
+        fatalError("Use request(encodingCompletion:((MultipartFormDataEncodingResult) -> Void)) method for MultipartUpload instead")
     }
     
     /// Encodes `multipartFormData` using `encodingMemoryThreshold` and calls `encodingCompletion` with new

@@ -38,6 +38,9 @@
               <li class="nav-group-task">
                 <a href="Classes/RequestOperation.html">RequestOperation</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/UploadOperation.html">UploadOperation</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -94,10 +97,19 @@
                 <a href="Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/DataUploadable.html">DataUploadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FileUploadable.html">FileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MultipartUploadable.html">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Queueable.html">Queueable</a>
@@ -113,6 +125,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/StreamUploadable.html">StreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Uploadable.html">Uploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Validatable.html">Validatable</a>
@@ -425,7 +443,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code>StreamUploadable</code> for Alamofire.</p>
+                        <p>Represents a <code><a href="Protocols/StreamUploadable.html">StreamUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-streamuploadable' class='heading'>Create custom StreamUploadable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">AStreamUploadable</span> <span class="p">{</span>
 
@@ -504,10 +522,10 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code>Uploadable</code> for Alamofire.</p>
+                        <p>Represents an abstract <code><a href="Protocols/Uploadable.html">Uploadable</a></code> for Alamofire.</p>
 
-<p>Use sub protocols - AFileUploadable, ADataUploadable, AStreamUploadable,
-AMultipartUplodable</p>
+<p>Instead implement AFileUploadable, ADataUploadable, AStreamUploadable,
+AMultipartUplodable protocols.</p>
 
                         <a href="Protocols/_AUploadable.html" class="slightly-smaller">See more</a>
                       </div>
@@ -539,7 +557,7 @@ AMultipartUplodable</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code>DataUploadable</code> for Alamofire.</p>
+                        <p>Represents a <code><a href="Protocols/DataUploadable.html">DataUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-datauploadable' class='heading'>Create custom DataUploadable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">ADataUploadable</span> <span class="p">{</span>
 
@@ -572,6 +590,191 @@ AMultipartUplodable</p>
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:9Restofire10UploadableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Uploadable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire10UploadableP">Uploadable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an abstract <code>Uploadable</code> for Restofire.</p>
+
+<p>Instead implement FileUploadable, DataUploadable, StreamUploadable,
+MultipartUplodable protocols.</p>
+
+                        <a href="Protocols/Uploadable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Uploadable</span><span class="p">:</span> <span class="n"><a href="Protocols/_AUploadable.html">_AUploadable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Configurable.html">Configurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/DataResponseSerializable.html">DataResponseSerializable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire14FileUploadableP"></a>
+                    <a name="//apple_ref/swift/Protocol/FileUploadable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire14FileUploadableP">FileUploadable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>FileUploadable</code> for Restofire.</p>
+<h3 id='create-custom-fileuploadable' class='heading'>Create custom FileUploadable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">FileUploadable</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"post"</span>
+    <span class="k">let</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span> <span class="o">=</span> <span class="kt">FileManager</span><span class="o">.</span><span class="nf">url</span><span class="p">(</span><span class="nv">forResource</span><span class="p">:</span> <span class="s">"rainbow"</span><span class="p">,</span> <span class="nv">withExtension</span><span class="p">:</span> <span class="s">"jpg"</span><span class="p">)</span>
+
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Protocols/FileUploadable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">FileUploadable</span><span class="p">:</span> <span class="kt"><a href="Protocols/AFileUploadable.html">AFileUploadable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Uploadable.html">Uploadable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire14DataUploadableP"></a>
+                    <a name="//apple_ref/swift/Protocol/DataUploadable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire14DataUploadableP">DataUploadable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>DataUploadable</code> for Restofire.</p>
+<h3 id='create-custom-datauploadable' class='heading'>Create custom DataUploadable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">DataUploadable</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"post"</span>
+    <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</span>
+           <span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">using</span><span class="p">:</span> <span class="o">.</span><span class="n">utf8</span><span class="p">,</span> <span class="nv">allowLossyConversion</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span><span class="o">!</span>
+    <span class="p">}()</span>
+
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Protocols/DataUploadable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataUploadable</span><span class="p">:</span> <span class="kt"><a href="Protocols/ADataUploadable.html">ADataUploadable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Uploadable.html">Uploadable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire16StreamUploadableP"></a>
+                    <a name="//apple_ref/swift/Protocol/StreamUploadable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire16StreamUploadableP">StreamUploadable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>StreamUploadable</code> for Restofire.</p>
+<h3 id='create-custom-streamuploadable' class='heading'>Create custom StreamUploadable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">StreamUploadable</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"post"</span>
+    <span class="k">var</span> <span class="nv">stream</span><span class="p">:</span> <span class="kt">InputStream</span> <span class="o">=</span> <span class="nf">InputStream</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="kt">FileManager</span><span class="o">.</span><span class="n">imageURL</span><span class="p">)</span><span class="o">!</span>
+
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Protocols/StreamUploadable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">StreamUploadable</span><span class="p">:</span> <span class="kt"><a href="Protocols/AStreamUploadable.html">AStreamUploadable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Uploadable.html">Uploadable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire19MultipartUploadableP"></a>
+                    <a name="//apple_ref/swift/Protocol/MultipartUploadable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire19MultipartUploadableP">MultipartUploadable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>MultipartUploadable</code> for Restofire.</p>
+<h3 id='create-custom-multipartuploadable' class='heading'>Create custom MultipartUploadable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">MultipartUploadable</span> <span class="p">{</span>
+
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"post"</span>
+    <span class="k">var</span> <span class="nv">multipartFormData</span><span class="p">:</span> <span class="p">(</span><span class="kt">MultipartFormData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">multipartFormData</span> <span class="k">in</span>
+        <span class="n">multipartFormData</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"français"</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">using</span><span class="p">:</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span><span class="o">!</span><span class="p">,</span> <span class="nv">withName</span><span class="p">:</span> <span class="s">"french"</span><span class="p">)</span>
+        <span class="n">multipartFormData</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="s">"日本語"</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">using</span><span class="p">:</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span><span class="o">!</span><span class="p">,</span> <span class="nv">withName</span><span class="p">:</span> <span class="s">"japanese"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Protocols/MultipartUploadable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">MultipartUploadable</span><span class="p">:</span> <span class="kt"><a href="Protocols/AMultipartUploadable.html">AMultipartUploadable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Uploadable.html">Uploadable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:9Restofire20AMultipartUploadableP"></a>
                     <a name="//apple_ref/swift/Protocol/AMultipartUploadable" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire20AMultipartUploadableP">AMultipartUploadable</a>
@@ -582,7 +785,7 @@ AMultipartUplodable</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code>MultipartUploadable</code> for Alamofire.</p>
+                        <p>Represents a <code><a href="Protocols/MultipartUploadable.html">MultipartUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-multipartuploadable' class='heading'>Create custom MultipartUploadable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">AMultipartUploadable</span> <span class="p">{</span>
 
@@ -763,7 +966,7 @@ AMultipartUplodable</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code>FileUploadable</code> for Alamofire.</p>
+                        <p>Represents a <code><a href="Protocols/FileUploadable.html">FileUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-fileuploadable' class='heading'>Create custom FileUploadable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">AFileUploadable</span> <span class="p">{</span>
 

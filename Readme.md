@@ -94,7 +94,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", majorVersion: 3)
+        .Package(url: "https://github.com/Restofire/Restofire.git", .upToNextMajor(from: "3.0.0"))
     ]
 )
 ```
@@ -198,12 +198,13 @@ struct HTTPBin: Decodable {
     var url: URL
 }
 
-struct PersonGETService: Requestable {
+struct HTTPBinGETService: Requestable {
 
     typealias Response = HTTPBin
     var path: String? = "get"
 
     func request(_ request: DataRequest, didCompleteWithValue value: HTTPBin) {
+        // Use this place to store your output to a cache.
         print(value.url.absoluteString) // "https://httpbin.org/get"
     }
 }
@@ -296,7 +297,7 @@ class ViewController: UIViewController {
     var requestOp: RequestOperation<HTTPBinPersonGETService>!
 
     func getPerson() {
-        requestOp = HTTPBinPersonGETService(parameters: ["name": "Rahul Katariya"])
+        requestOp = MockyGETService(parameters: ["name": "Rahul Katariya"])
             .response() {
             if let value = $0.result.value {
                 self.person = value

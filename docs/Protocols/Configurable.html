@@ -39,6 +39,9 @@
               <li class="nav-group-task">
                 <a href="../Classes/RequestOperation.html">RequestOperation</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UploadOperation.html">UploadOperation</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -95,10 +98,19 @@
                 <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/DataUploadable.html">DataUploadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUploadable.html">FileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
@@ -114,6 +126,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/StreamUploadable.html">StreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Uploadable.html">Uploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Validatable.html">Validatable</a>
@@ -187,9 +205,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12ConfigurableP10eventuallySbv"></a>
-                    <a name="//apple_ref/swift/Property/eventually" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12ConfigurableP10eventuallySbv">eventually</a>
+                    <a name="/s:9Restofire12ConfigurableP20waitsForConnectivitySbv"></a>
+                    <a name="//apple_ref/swift/Property/waitsForConnectivity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire12ConfigurableP20waitsForConnectivitySbv">waitsForConnectivity</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -200,19 +218,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The eventually.</p>
+                        <p>The waitsForConnectivity.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>reachability.eventually</code></p>
+                        <p><code>Reachability.default.waitsForConnectivity</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">eventually</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">waitsForConnectivity</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>
@@ -240,7 +258,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>reachability.eventuallyOperationQueue</code></p>
+                        <p><code>Reachability.default.eventuallyOperationQueue</code></p>
 
                       </div>
                       <div class="declaration">
@@ -275,7 +293,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>reachability.networkReachabilityManager</code></p>
+                        <p><code>Reachability.default.networkReachabilityManager</code></p>
 
                       </div>
                       <div class="declaration">
@@ -310,7 +328,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>retry.retryErrorCodes</code></p>
+                        <p><code>Retry.default.retryErrorCodes</code></p>
 
                       </div>
                       <div class="declaration">
@@ -345,7 +363,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>retry.retryInterval</code></p>
+                        <p><code>Retry.default.retryInterval</code></p>
 
                       </div>
                       <div class="declaration">
@@ -380,7 +398,7 @@
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>retry.maxRetryAttempts</code></p>
+                        <p><code>Retry.default.maxRetryAttempts</code></p>
 
                       </div>
                       <div class="declaration">

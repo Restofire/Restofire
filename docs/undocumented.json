@@ -3,8 +3,8 @@
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/BaseRequestable/_Requestable.swift",
       "line": 40,
-      "symbol": "_Requestable.asUrlRequest()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "symbol": "_Requestable.urlRequest",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {

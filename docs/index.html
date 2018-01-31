@@ -38,6 +38,9 @@
               <li class="nav-group-task">
                 <a href="Classes/RequestOperation.html">RequestOperation</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Classes/UploadOperation.html">UploadOperation</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -94,10 +97,19 @@
                 <a href="Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/DataUploadable.html">DataUploadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FileUploadable.html">FileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/MultipartUploadable.html">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Queueable.html">Queueable</a>
@@ -113,6 +125,12 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/SessionManagable.html">SessionManagable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/StreamUploadable.html">StreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Uploadable.html">Uploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Validatable.html">Validatable</a>
@@ -179,7 +197,6 @@
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a></li>
-<li><a href="#examples">Examples</a></li>
 <li><a href="#license">License</a></li>
 </ul>
 <h2 id='features' class='heading'>Features</h2>
@@ -189,13 +206,13 @@
 <li>[x] Default Configuration for Base URL / headers / parameters etc</li>
 <li>[x] Multiple Configurations</li>
 <li>[x] Single Request Configuration</li>
-<li>[x] Custom Response Serializer</li>
+<li>[x] Custom Response Serializers</li>
+<li>[x] JSONDecodable</li>
 <li>[x] Authentication</li>
 <li>[x] Response Validations</li>
 <li>[x] Request NSOperation</li>
-<li>[x] RequestEventuallyOperation with Auto Retry</li>
+<li>[x] Request eventually when internet is reachable</li>
 <li>[x] <a href="http://restofire.github.io/Restofire/">Complete Documentation</a></li>
-<li>[x] <a href="http://blog.rahulkatariya.me/2016/05/11/getting-started-swifter-http-networking-with-restofire/">Tutorial</a></li>
 </ul>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
@@ -242,7 +259,7 @@
 <span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="nf">Package</span><span class="p">(</span>
     <span class="nv">name</span><span class="p">:</span> <span class="s">"HelloRestofire"</span><span class="p">,</span>
     <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-        <span class="o">.</span><span class="nf">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Restofire/Restofire.git"</span><span class="p">,</span> <span class="nv">majorVersion</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nv">minorVersion</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Restofire/Restofire.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"3.0.0"</span><span class="p">))</span>
     <span class="p">]</span>
 <span class="p">)</span>
 </code></pre>
@@ -307,101 +324,87 @@
     <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="nf">Bool</span> <span class="p">{</span>
         <span class="c1">// Override point for customization after application launch.</span>
 
-        <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s">"http://"</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s">"www.mocky.io"</span>
-        <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">"v2"</span>
+        <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"httpbin.org"</span>
 
         <span class="k">return</span> <span class="kc">true</span>
   <span class="p">}</span>
 
 <span class="p">}</span>
 </code></pre>
-<h3 id='creating-a-service' class='heading'>Creating a Service</h3>
-<pre class="highlight swift"><code>
-<span class="kd">import</span> <span class="kt">Restofire</span>
-
-<span class="kd">struct</span> <span class="kt">PersonGETService</span><span class="p">:</span> <span class="nf">Requestable</span> <span class="p">{</span>
-
-    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span>
-    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"56c2cc70120000c12673f1b5"</span>
-
-<span class="p">}</span>
-
-</code></pre>
-<h3 id='consuming-the-service' class='heading'>Consuming the Service</h3>
+<h3 id='restofire-with-jsondecodable-response-serializer' class='heading'>Restofire with JSONDecodable Response Serializer</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
-<span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="nf">UIViewController</span> <span class="p">{</span>
+<span class="kd">extension</span> <span class="kt">Restofire</span><span class="o">.</span><span class="kt">DataResponseSerializable</span> <span class="k">where</span> <span class="kt">Response</span><span class="p">:</span> <span class="nf">Decodable</span> <span class="p">{</span>
 
-    <span class="k">var</span> <span class="nv">person</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span>
-    <span class="k">var</span> <span class="nv">requestOp</span><span class="p">:</span> <span class="kt">RequestOperation</span><span class="o">&lt;</span><span class="kt">PersonGETService</span><span class="o">&gt;!</span>
-
-    <span class="kd">func</span> <span class="nf">getPerson</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">requestOp</span> <span class="o">=</span> <span class="nf">PersonGETService</span><span class="p">()</span><span class="o">.</span><span class="nf">response</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nv">$0</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="nf">value</span> <span class="p">{</span>
-                <span class="k">self</span><span class="o">.</span><span class="n">person</span> <span class="o">=</span> <span class="n">value</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">DataRequest</span><span class="o">.</span><span class="nf">JSONDecodableResponseSerializer</span><span class="p">()</span>
     <span class="p">}</span>
 
-    <span class="nf">deinit</span> <span class="p">{</span>
-        <span class="n">requestOp</span><span class="o">.</span><span class="nf">cancel</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">Restofire</span><span class="o">.</span><span class="kt">DownloadResponseSerializable</span> <span class="k">where</span> <span class="kt">Response</span><span class="p">:</span> <span class="nf">Decodable</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">DownloadResponseSerializer</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">DownloadRequest</span><span class="o">.</span><span class="nf">JSONDecodableResponseSerializer</span><span class="p">()</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 </code></pre>
-<h3 id='url-level-configuration' class='heading'>URL Level Configuration</h3>
-<pre class="highlight swift"><code>
-<span class="kd">protocol</span> <span class="kt">HTTPBinConfigurable</span><span class="p">:</span> <span class="nf">Configurable</span> <span class="p">{</span> <span class="p">}</span>
+<h3 id='creating-a-service' class='heading'>Creating a Service</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
-<span class="kd">extension</span> <span class="nf">HTTPBinConfigurable</span> <span class="p">{</span>
+<span class="kd">struct</span> <span class="kt">HTTPBin</span><span class="p">:</span> <span class="nf">Decodable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span>
+<span class="p">}</span>
 
-    <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="nf">Configuration</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nv">config</span> <span class="o">=</span> <span class="nf">Configuration</span><span class="p">()</span>
-        <span class="n">config</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s">"https://httpbin.org/"</span>
-        <span class="n">config</span><span class="o">.</span><span class="n">logging</span> <span class="o">=</span> <span class="kt">Restofire</span><span class="o">.</span><span class="n">defaultConfiguration</span><span class="o">.</span><span class="n">logging</span>
-        <span class="k">return</span> <span class="n">config</span>
+<span class="kd">struct</span> <span class="kt">HTTPBinGETService</span><span class="p">:</span> <span class="nf">Requestable</span> <span class="p">{</span>
+
+    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="kt">HTTPBin</span>
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"get"</span>
+
+    <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DataRequest</span><span class="p">,</span> <span class="n">didCompleteWithValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">HTTPBin</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Use this place to store your output to a cache.</span>
+        <span class="nf">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">absoluteString</span><span class="p">)</span> <span class="c1">// "https://httpbin.org/get"</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='group-level-configuration' class='heading'>Group Level Configuration</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">MockyConfigurable</span><span class="p">:</span> <span class="nf">Configurable</span> <span class="p">{}</span>
+
+<span class="kd">extension</span> <span class="nf">MockyConfigurable</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Restofire</span><span class="o">.</span><span class="nf">Configuration</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">mockyConfiguration</span> <span class="o">=</span> <span class="kt">Restofire</span><span class="o">.</span><span class="nf">Configuration</span><span class="p">()</span>
+        <span class="n">mockyConfiguration</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s">"http://"</span>
+        <span class="n">mockyConfiguration</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"mocky.io"</span>
+        <span class="n">mockyConfiguration</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">"v2"</span>
+        <span class="k">return</span> <span class="n">mockyConfiguration</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 
-<span class="kd">protocol</span> <span class="kt">HTTPBinValidatable</span><span class="p">:</span> <span class="nf">Validatable</span> <span class="p">{</span> <span class="p">}</span>
+<span class="kd">protocol</span> <span class="kt">MockyValidatable</span><span class="p">:</span> <span class="nf">Validatable</span> <span class="p">{</span> <span class="p">}</span>
 
-<span class="kd">extension</span> <span class="nf">HTTPBinValidatable</span> <span class="p">{</span>
+<span class="kd">extension</span> <span class="nf">MockyValidatable</span> <span class="p">{</span>
 
-  <span class="k">var</span> <span class="nv">validation</span><span class="p">:</span> <span class="nf">Validation</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="nf">Validation</span><span class="p">()</span>
-    <span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="nf">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
-    <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">validation</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-
-
-<span class="kd">protocol</span> <span class="kt">HTTPBinRetryable</span><span class="p">:</span> <span class="nf">Retryable</span> <span class="p">{</span> <span class="p">}</span>
-
-<span class="kd">extension</span> <span class="nf">HTTPBinRetryable</span> <span class="p">{</span>
-
-  <span class="k">var</span> <span class="nv">retry</span><span class="p">:</span> <span class="nf">Retry</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="nf">Retry</span><span class="p">()</span>
-    <span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
-    <span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="k">return</span> <span class="n">retry</span>
-  <span class="p">}</span>
+    <span class="k">var</span> <span class="nv">validation</span><span class="p">:</span> <span class="nf">Validation</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="nf">Validation</span><span class="p">()</span>
+        <span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="nf">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
+        <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">validation</span>
+    <span class="p">}</span>
 
 <span class="p">}</span>
 
+<span class="kd">protocol</span> <span class="kt">MockyRequestable</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">MockyConfigurable</span><span class="p">,</span> <span class="nf">MockyValidatable</span> <span class="p">{}</span>
 </code></pre>
 <h3 id='creating-the-service' class='heading'>Creating the Service</h3>
 <pre class="highlight swift"><code>
 <span class="kd">import</span> <span class="kt">Restofire</span>
-<span class="kd">import</span> <span class="kt">Alamofire</span>
 
-<span class="kd">struct</span> <span class="kt">HTTPBinPersonGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinConfigurable</span><span class="p">,</span> <span class="kt">HTTPBinValidatable</span><span class="p">,</span> <span class="nf">HTTPBinRetryable</span> <span class="p">{</span>
+<span class="kd">struct</span> <span class="kt">MockyGETService</span><span class="p">:</span> <span class="nf">MockyRequestable</span> <span class="p">{</span>
 
-    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span>
+    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="kt">Any</span>
     <span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"get"</span>
     <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
 
@@ -410,8 +413,27 @@
     <span class="p">}</span>
 
 <span class="p">}</span>
+</code></pre>
+<h3 id='request-level-configuration' class='heading'>Request Level Configuration</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
+<span class="kd">struct</span> <span class="kt">MoviesReviewGETService</span><span class="p">:</span> <span class="nf">Requestable</span> <span class="p">{</span>
 
+    <span class="k">var</span> <span class="nv">scheme</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"http://"</span>
+    <span class="k">var</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"api.nytimes.com/svc/movies"</span>
+    <span class="k">var</span> <span class="nv">version</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"v2"</span>
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"reviews"</span>
+    <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
+    <span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
+    <span class="k">var</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">URLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="nf">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nv">retryErrorCodes</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">URLError</span><span class="o">.</span><span class="kt">Code</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="n">path</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
 </code></pre>
 <h3 id='consuming-the-service' class='heading'>Consuming the Service</h3>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
@@ -422,7 +444,8 @@
     <span class="k">var</span> <span class="nv">requestOp</span><span class="p">:</span> <span class="kt">RequestOperation</span><span class="o">&lt;</span><span class="kt">HTTPBinPersonGETService</span><span class="o">&gt;!</span>
 
     <span class="kd">func</span> <span class="nf">getPerson</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">requestOp</span> <span class="o">=</span> <span class="nf">HTTPBinPersonGETService</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Rahul Katariya"</span><span class="p">])</span><span class="o">.</span><span class="nf">response</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">requestOp</span> <span class="o">=</span> <span class="nf">MockyGETService</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Rahul Katariya"</span><span class="p">])</span>
+            <span class="o">.</span><span class="nf">response</span><span class="p">()</span> <span class="p">{</span>
             <span class="k">if</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nv">$0</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="nf">value</span> <span class="p">{</span>
                 <span class="k">self</span><span class="o">.</span><span class="n">person</span> <span class="o">=</span> <span class="n">value</span>
             <span class="p">}</span>
@@ -431,42 +454,6 @@
 
     <span class="nf">deinit</span> <span class="p">{</span>
         <span class="n">requestOp</span><span class="o">.</span><span class="nf">cancel</span><span class="p">()</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
-<h3 id='request-level-configuration' class='heading'>Request Level Configuration</h3>
-<pre class="highlight swift"><code>
-<span class="kd">import</span> <span class="kt">Restofire</span>
-<span class="kd">import</span> <span class="kt">Alamofire</span>
-
-<span class="kd">struct</span> <span class="kt">MoviesReviewGETService</span><span class="p">:</span> <span class="nf">Requestable</span> <span class="p">{</span>
-
-    <span class="k">var</span> <span class="nv">scheme</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"http://"</span>
-    <span class="k">var</span> <span class="nv">baseUrl</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"api.nytimes.com/svc/movies/v2"</span>
-    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"reviews"</span>
-    <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
-    <span class="k">var</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="kt">URLEncoding</span><span class="o">.</span><span class="k">default</span>
-    <span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">HTTPMethod</span> <span class="o">=</span> <span class="o">.</span><span class="k">get</span>
-    <span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">]</span>
-    <span class="k">var</span> <span class="nv">manager</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="k">let</span> <span class="nv">sessionConfiguration</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
-        <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">7</span>
-        <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForResource</span> <span class="o">=</span> <span class="mi">7</span>
-        <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">httpAdditionalHeaders</span> <span class="o">=</span> <span class="kt">SessionManager</span><span class="o">.</span><span class="n">defaultHTTPHeaders</span>
-        <span class="k">return</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="nf">SessionManager</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">sessionConfiguration</span><span class="p">)</span>
-    <span class="p">}()</span>
-    <span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
-    <span class="k">var</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">URLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="nf">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
-    <span class="k">var</span> <span class="nv">acceptableStatusCodes</span><span class="p">:</span> <span class="p">[</span><span class="kt">Int</span><span class="p">]?</span> <span class="o">=</span> <span class="nf">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
-    <span class="k">var</span> <span class="nv">acceptableContentTypes</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">]?</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
-    <span class="k">var</span> <span class="nv">retryErrorCodes</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">URLError</span><span class="o">.</span><span class="kt">Code</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
-    <span class="k">var</span> <span class="nv">retryInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mi">20</span>
-    <span class="k">var</span> <span class="nv">maxRetryAttempts</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">10</span>
-
-    <span class="nf">init</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="n">path</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
     <span class="p">}</span>
 
 <span class="p">}</span>

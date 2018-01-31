@@ -33,8 +33,10 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
     /// The eventually operation queue.
     var eventuallyOperationQueue: OperationQueue { get }
     
+    #if !os(watchOS)
     /// The network reachability manager.
     var networkReachabilityManager: NetworkReachabilityManager { get }
+    #endif
     
     /// The retry error codes.
     var retryErrorCodes: Set<URLError.Code> { get }
@@ -53,6 +55,7 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
 // MARK: - Default Implementation
 public extension Configurable {
     
+    #if !os(watchOS)
     /// `Reachability.default.waitsForConnectivity`
     public var waitsForConnectivity: Bool {
         return reachability.waitsForConnectivity
@@ -67,6 +70,7 @@ public extension Configurable {
     public var networkReachabilityManager: NetworkReachabilityManager {
         return reachability.networkReachabilityManager
     }
+    #endif
     
     /// `Retry.default.retryErrorCodes`
     public var retryErrorCodes: Set<URLError.Code> {

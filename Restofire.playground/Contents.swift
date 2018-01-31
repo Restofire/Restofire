@@ -17,6 +17,6 @@ struct GetService: ARequestable {
     var path: String? = "get"
 }
 
-GetService().request().responseJSON { response in
+GetService().request.responseJSON { response in
     print("Restofire: -", response.value ?? "nil")
 }

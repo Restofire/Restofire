@@ -188,6 +188,16 @@
 		3594EB6C2021AF35006FFA6A /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
 		3594EB6D2021AF35006FFA6A /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
 		3594EB6E2021AF35006FFA6A /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		3594EB772021E4FB006FFA6A /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
+		3594EB782021E4FB006FFA6A /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBFC1CA3B5030089A03E /* Requestable.swift */; };
+		3594EB792021E4FB006FFA6A /* Downloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EE72020D906003048B3 /* Downloadable.swift */; };
+		3594EB7A2021E4FB006FFA6A /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EC42020A27B003048B3 /* NetworkReachability.swift */; };
+		3594EB7B2021E4FB006FFA6A /* RequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33A1201DC7180093DCC5 /* RequestOperation.swift */; };
+		3594EB7C2021E4FB006FFA6A /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EF02020D949003048B3 /* DownloadOperation.swift */; };
+		3594EB7D2021E4FB006FFA6A /* UploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724BE2021A17000FD36E6 /* UploadOperation.swift */; };
+		3594EB7E2021E500006FFA6A /* RestofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */; };
+		3594EB7F2021E53B006FFA6A /* Retryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D3661CCBE061007ABC05 /* Retryable.swift */; };
+		3594EB802021E53B006FFA6A /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
 		3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
@@ -1265,6 +1275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3596CBFB1CA3B4D70089A03E /* Configuration.swift in Sources */,
+				3594EB7F2021E53B006FFA6A /* Retryable.swift in Sources */,
 				358E8EAF20206FF4003048B3 /* Restofire+Logging.swift in Sources */,
 				350428F2201C876800765D15 /* ArrayParameterEncoding.swift in Sources */,
 				35E6D3561CCBD50E007ABC05 /* Validatable.swift in Sources */,
@@ -1273,8 +1284,10 @@
 				357E33FD201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				358E8ED72020B776003048B3 /* Reachable.swift in Sources */,
 				357E33ED201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
+				3594EB782021E4FB006FFA6A /* Requestable.swift in Sources */,
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				357E33E5201DD7C50093DCC5 /* ARequestable.swift in Sources */,
+				3594EB772021E4FB006FFA6A /* Configurable.swift in Sources */,
 				358E8ECD2020A484003048B3 /* Reachability.swift in Sources */,
 				357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D9201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
@@ -1283,8 +1296,12 @@
 				35C7D484201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B051D8E5A84005A2BAB /* DictionaryExtension.swift in Sources */,
+				3594EB7E2021E500006FFA6A /* RestofireRequest.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* _Configurable.swift in Sources */,
+				3594EB7D2021E4FB006FFA6A /* UploadOperation.swift in Sources */,
 				357E33E1201DD7C50093DCC5 /* AFileUploadable.swift in Sources */,
+				3594EB792021E4FB006FFA6A /* Downloadable.swift in Sources */,
+				3594EB802021E53B006FFA6A /* Queueable.swift in Sources */,
 				358E8ED22020AF66003048B3 /* BaseOperation.swift in Sources */,
 				35366E911FFBB39E00270EDE /* TypeAliases.swift in Sources */,
 				357E3407201DDE310093DCC5 /* Session.swift in Sources */,
@@ -1292,8 +1309,11 @@
 				357E33DD201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				357E336F201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift in Sources */,
+				3594EB7A2021E4FB006FFA6A /* NetworkReachability.swift in Sources */,
 				357E33D5201DD7C50093DCC5 /* _Requestable.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
+				3594EB7B2021E4FB006FFA6A /* RequestOperation.swift in Sources */,
+				3594EB7C2021E4FB006FFA6A /* DownloadOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1855,7 +1875,6 @@
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Debug;
 		};
@@ -1881,7 +1900,6 @@
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 			};
 			name = Release;
 		};
@@ -1902,7 +1920,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.restofire.RestofireTests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				TVOS_DEPLOYMENT_TARGET = 11.2;
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};
@@ -1925,7 +1942,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.restofire.RestofireTests-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				TVOS_DEPLOYMENT_TARGET = 11.2;
 				WATCHOS_DEPLOYMENT_TARGET = 4.2;
 			};

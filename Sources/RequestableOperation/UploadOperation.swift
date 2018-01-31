@@ -19,9 +19,11 @@ public class UploadOperation<R: Uploadable>: BaseOperation {
     public let request: UploadRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
+    #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: uploadable)
     }()
+    #endif
     
     /// A boolean value `true` indicating the operation executes its task asynchronously.
     override public var isAsynchronous: Bool {
@@ -75,14 +77,20 @@ public class UploadOperation<R: Uploadable>: BaseOperation {
     func handleErrorDownloadResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError {
             if uploadable.waitsForConnectivity && error.code == .notConnectedToInternet {
-                uploadable.eventuallyOperationQueue.isSuspended = true
-                let eventuallyOperation = UploadOperation(
-                    uploadable: uploadable,
-                    request: request,
-                    completionHandler: completionHandler
-                )
-                reachability.addOperation(operation: eventuallyOperation)
-                isFinished = true
+                #if !os(watchOS)
+                    uploadable.eventuallyOperationQueue.isSuspended = true
+                    let eventuallyOperation = UploadOperation(
+                        uploadable: uploadable,
+                        request: request,
+                        completionHandler: completionHandler
+                    )
+                    reachability.addOperation(operation: eventuallyOperation)
+                    isFinished = true
+                #else
+                    uploadable.request(request, didFailWithError: response.error!)
+                    completionHandler?(response)
+                    isFinished = true
+                #endif
             } else if retryAttempts > 0 && uploadable.retryErrorCodes.contains(error.code) {
                 retryAttempts -= 1
                 perform(

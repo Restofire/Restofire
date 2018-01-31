@@ -19,9 +19,11 @@ public class RequestOperation<R: Requestable>: BaseOperation {
     public let request: DataRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
+    #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: requestable)
     }()
+    #endif
     
     /// A boolean value `true` indicating the operation executes its task asynchronously.
     override public var isAsynchronous: Bool {
@@ -72,14 +74,20 @@ public class RequestOperation<R: Requestable>: BaseOperation {
     func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError {
             if requestable.waitsForConnectivity && error.code == .notConnectedToInternet {
-                requestable.eventuallyOperationQueue.isSuspended = true
-                let eventuallyOperation = RequestOperation(
-                    requestable: requestable,
-                    request: request,
-                    completionHandler: completionHandler
-                )
-                reachability.addOperation(operation: eventuallyOperation)
-                isFinished = true
+                #if !os(watchOS)
+                    requestable.eventuallyOperationQueue.isSuspended = true
+                    let eventuallyOperation = RequestOperation(
+                        requestable: requestable,
+                        request: request,
+                        completionHandler: completionHandler
+                    )
+                    reachability.addOperation(operation: eventuallyOperation)
+                    isFinished = true
+                #else
+                    requestable.request(request, didFailWithError: response.error!)
+                    completionHandler?(response)
+                    isFinished = true
+                #endif
             } else if retryAttempts > 0 && requestable.retryErrorCodes.contains(error.code) {
                 retryAttempts -= 1
                 perform(

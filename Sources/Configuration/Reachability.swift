@@ -20,6 +20,7 @@ public struct Reachability {
     /// The default reachability.
     public static var `default` = Reachability()
     
+    #if !os(watchOS)
     /// The eventually.
     public var waitsForConnectivity = false
     
@@ -35,5 +36,6 @@ public struct Reachability {
         if #available(OSX 10.10, *) { oq.qualityOfService = .utility }
         return oq
     }()
+    #endif
     
 }

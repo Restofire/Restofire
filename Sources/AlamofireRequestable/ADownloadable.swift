@@ -54,7 +54,7 @@ public extension ADownloadable {
     ///
     /// - returns: The created `DownloadRequest`.
     public func request() -> DownloadRequest {
-        return RestofireRequest.downloadRequest(fromRequestable: self)
+        return RestofireRequest.downloadRequest(fromRequestable: self, withUrlRequest: urlRequest)
     }
     
 }

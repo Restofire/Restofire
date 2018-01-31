@@ -23,11 +23,11 @@ class JSONDecodableResponseSerializerSpec: BaseSpec {
                     let url: URL
                 }
                 
-                struct Request: ARequestable {
+                struct Service: ARequestable {
                     var path: String? = "get"
                 }
                 
-                let request = Request().request()
+                let request = Service().request
                 print(request.debugDescription)
                 
                 // When

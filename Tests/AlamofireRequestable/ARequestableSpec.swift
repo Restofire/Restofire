@@ -19,11 +19,11 @@ class ARequestableSpec: BaseSpec {
             
             it("request should succeed") {
                 // Given
-                struct Request: ARequestable {
+                struct Service: ARequestable {
                     var path: String? = "get"
                 }
                 
-                let request = Request().request()
+                let request = Service().request
                 print(request.debugDescription)
                 var progressValues: [Double] = []
                 

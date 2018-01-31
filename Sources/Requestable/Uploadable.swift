@@ -8,20 +8,10 @@
 
 import Foundation
 
-/// Represents a `Uploadable` for Restofire.
+/// Represents an abstract `Uploadable` for Restofire.
 ///
-/// ```swift
-/// protocol HTTPBinDownloadService: Uploadable {
-///
-///     var path: String? = "bytes/\(4 * 1024 * 1024)"
-///     var destination: DownloadFileDestination?
-///
-///     init(destination: @escaping DownloadFileDestination) {
-///         self.destination = destination
-///     }
-///
-/// }
-/// ```
+/// Instead implement FileUploadable, DataUploadable, StreamUploadable,
+/// MultipartUplodable protocols.
 public protocol Uploadable: _AUploadable, Configurable, DataResponseSerializable {
     
     /// Called when the Request updates with download progress.
@@ -67,6 +57,16 @@ public extension Uploadable {
 }
 
 /// Represents a `FileUploadable` for Restofire.
+///
+/// ### Create custom FileUploadable
+/// ```swift
+/// protocol HTTPBinUploadService: FileUploadable {
+///
+///     var path: String? = "post"
+///     let url: URL = FileManager.url(forResource: "rainbow", withExtension: "jpg")
+///
+/// }
+/// ```
 public protocol FileUploadable: AFileUploadable, Uploadable {}
 
 public extension FileUploadable {
@@ -88,6 +88,19 @@ public extension FileUploadable {
 }
 
 /// Represents a `DataUploadable` for Restofire.
+///
+/// ### Create custom DataUploadable
+/// ```swift
+/// protocol HTTPBinUploadService: DataUploadable {
+///
+///     var path: String? = "post"
+///     var data: Data = {
+///         return "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+///            .data(using: .utf8, allowLossyConversion: false)!
+///     }()
+///
+/// }
+/// ```
 public protocol DataUploadable: ADataUploadable, Uploadable {}
 
 public extension DataUploadable {
@@ -109,6 +122,16 @@ public extension DataUploadable {
 }
 
 /// Represents a `StreamUploadable` for Restofire.
+///
+/// ### Create custom StreamUploadable
+/// ```swift
+/// protocol HTTPBinUploadService: StreamUploadable {
+///
+///     var path: String? = "post"
+///     var stream: InputStream = InputStream(url: FileManager.imageURL)!
+///
+/// }
+/// ```
 public protocol StreamUploadable: AStreamUploadable, Uploadable {}
 
 public extension StreamUploadable {
@@ -130,6 +153,19 @@ public extension StreamUploadable {
 }
 
 /// Represents a `MultipartUploadable` for Restofire.
+///
+/// ### Create custom MultipartUploadable
+/// ```swift
+/// protocol HTTPBinUploadService: MultipartUploadable {
+///
+///     var path: String? = "post"
+///     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
+///         multipartFormData.append("français".data(using: .utf8)!, withName: "french")
+///         multipartFormData.append("日本語".data(using: .utf8)!, withName: "japanese")
+///     }
+///
+/// }
+/// ```
 public protocol MultipartUploadable: AMultipartUploadable, Uploadable {}
 
 public extension MultipartUploadable {
@@ -137,6 +173,7 @@ public extension MultipartUploadable {
     /// Creates a `UploadOperation` for the specified `Uploadable` object and
     /// asynchronously executes it.
     ///
+    /// - parameter request: An `Alamofire.UploadRequest`.
     /// - parameter completionHandler: A closure to be executed once the download
     ///                                has finished. `nil` by default.
     ///

@@ -8,10 +8,10 @@
 
 import Foundation
 
-/// Represents a `Uploadable` for Alamofire.
+/// Represents an abstract `Uploadable` for Alamofire.
 ///
-/// Use sub protocols - AFileUploadable, ADataUploadable, AStreamUploadable,
-/// AMultipartUplodable
+/// Instead implement AFileUploadable, ADataUploadable, AStreamUploadable,
+/// AMultipartUplodable protocols.
 public protocol _AUploadable: ARequestable {}
 
 public extension _AUploadable {

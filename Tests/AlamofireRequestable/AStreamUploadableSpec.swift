@@ -24,7 +24,7 @@ class AStreamUploadableSpec: BaseSpec {
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                 }
                 
-                let request = Upload().request()
+                let request = Upload().request
                 print(request.debugDescription)
                 
                 // When

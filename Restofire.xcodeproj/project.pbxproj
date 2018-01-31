@@ -198,6 +198,22 @@
 		3594EB7E2021E500006FFA6A /* RestofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */; };
 		3594EB7F2021E53B006FFA6A /* Retryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E6D3661CCBE061007ABC05 /* Retryable.swift */; };
 		3594EB802021E53B006FFA6A /* Queueable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3593CA6B1D8C65E400075A15 /* Queueable.swift */; };
+		3594EB842021F0F4006FFA6A /* FileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB832021F0F4006FFA6A /* FileUploadable.swift */; };
+		3594EB852021F0F4006FFA6A /* FileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB832021F0F4006FFA6A /* FileUploadable.swift */; };
+		3594EB862021F0F4006FFA6A /* FileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB832021F0F4006FFA6A /* FileUploadable.swift */; };
+		3594EB872021F0F4006FFA6A /* FileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB832021F0F4006FFA6A /* FileUploadable.swift */; };
+		3594EB8D2021F0FF006FFA6A /* DataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB8C2021F0FF006FFA6A /* DataUploadable.swift */; };
+		3594EB8E2021F0FF006FFA6A /* DataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB8C2021F0FF006FFA6A /* DataUploadable.swift */; };
+		3594EB8F2021F0FF006FFA6A /* DataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB8C2021F0FF006FFA6A /* DataUploadable.swift */; };
+		3594EB902021F0FF006FFA6A /* DataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB8C2021F0FF006FFA6A /* DataUploadable.swift */; };
+		3594EB922021F10A006FFA6A /* StreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB912021F10A006FFA6A /* StreamUploadable.swift */; };
+		3594EB932021F10A006FFA6A /* StreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB912021F10A006FFA6A /* StreamUploadable.swift */; };
+		3594EB942021F10A006FFA6A /* StreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB912021F10A006FFA6A /* StreamUploadable.swift */; };
+		3594EB952021F10A006FFA6A /* StreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB912021F10A006FFA6A /* StreamUploadable.swift */; };
+		3594EB972021F113006FFA6A /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
+		3594EB982021F113006FFA6A /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
+		3594EB992021F113006FFA6A /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
+		3594EB9A2021F113006FFA6A /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
 		3596CBF81CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBF91CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
 		3596CBFA1CA3B4D70089A03E /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3596CBF71CA3B4D70089A03E /* Configuration.swift */; };
@@ -466,6 +482,10 @@
 		3594EB632021AF0D006FFA6A /* DataUploadableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUploadableSpec.swift; sourceTree = "<group>"; };
 		3594EB672021AF15006FFA6A /* StreamUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamUploadable.swift; sourceTree = "<group>"; };
 		3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartUploadableSpec.swift; sourceTree = "<group>"; };
+		3594EB832021F0F4006FFA6A /* FileUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploadable.swift; sourceTree = "<group>"; };
+		3594EB8C2021F0FF006FFA6A /* DataUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUploadable.swift; sourceTree = "<group>"; };
+		3594EB912021F10A006FFA6A /* StreamUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamUploadable.swift; sourceTree = "<group>"; };
+		3594EB962021F113006FFA6A /* MultipartUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartUploadable.swift; sourceTree = "<group>"; };
 		3596CBF71CA3B4D70089A03E /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		359724BE2021A17000FD36E6 /* UploadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadOperation.swift; sourceTree = "<group>"; };
@@ -587,6 +607,10 @@
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				358E8EE72020D906003048B3 /* Downloadable.swift */,
 				359724C72021A1D700FD36E6 /* Uploadable.swift */,
+				3594EB832021F0F4006FFA6A /* FileUploadable.swift */,
+				3594EB8C2021F0FF006FFA6A /* DataUploadable.swift */,
+				3594EB912021F10A006FFA6A /* StreamUploadable.swift */,
+				3594EB962021F113006FFA6A /* MultipartUploadable.swift */,
 			);
 			path = Requestable;
 			sourceTree = "<group>";
@@ -1185,11 +1209,13 @@
 				358E8EAE20206FF4003048B3 /* Restofire+Logging.swift in Sources */,
 				350428F1201C876800765D15 /* ArrayParameterEncoding.swift in Sources */,
 				358E8EEA2020D906003048B3 /* Downloadable.swift in Sources */,
+				3594EB942021F10A006FFA6A /* StreamUploadable.swift in Sources */,
 				3593CA6D1D8C65E400075A15 /* Queueable.swift in Sources */,
 				35E6D3541CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35E1CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8EC72020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				357E33FC201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
+				3594EB8F2021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				358E8ED62020B776003048B3 /* Reachable.swift in Sources */,
 				357E33EC201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
 				35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */,
@@ -1211,11 +1237,13 @@
 				357E33E0201DD7C50093DCC5 /* AFileUploadable.swift in Sources */,
 				358E8ED12020AF66003048B3 /* BaseOperation.swift in Sources */,
 				35366E901FFBB39E00270EDE /* TypeAliases.swift in Sources */,
+				3594EB862021F0F4006FFA6A /* FileUploadable.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E3406201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DC201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				35C385161CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3594EB992021F113006FFA6A /* MultipartUploadable.swift in Sources */,
 				357E336E201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift in Sources */,
 				357E33D4201DD7C50093DCC5 /* _Requestable.swift in Sources */,
 				357E3401201DDBFC0093DCC5 /* Configurable.swift in Sources */,
@@ -1232,11 +1260,13 @@
 				358E8EAD20206FF4003048B3 /* Restofire+Logging.swift in Sources */,
 				350428F0201C876800765D15 /* ArrayParameterEncoding.swift in Sources */,
 				358E8EE92020D906003048B3 /* Downloadable.swift in Sources */,
+				3594EB932021F10A006FFA6A /* StreamUploadable.swift in Sources */,
 				3593CA6E1D8C65E400075A15 /* Queueable.swift in Sources */,
 				35E6D3551CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35F1CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8EC62020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				357E33FB201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
+				3594EB8E2021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				358E8ED52020B776003048B3 /* Reachable.swift in Sources */,
 				357E33EB201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
 				35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */,
@@ -1258,11 +1288,13 @@
 				357E33DF201DD7C50093DCC5 /* AFileUploadable.swift in Sources */,
 				358E8ED02020AF66003048B3 /* BaseOperation.swift in Sources */,
 				35366E8F1FFBB39E00270EDE /* TypeAliases.swift in Sources */,
+				3594EB852021F0F4006FFA6A /* FileUploadable.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E3405201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DB201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				35C385171CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3594EB982021F113006FFA6A /* MultipartUploadable.swift in Sources */,
 				357E336D201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift in Sources */,
 				357E33D3201DD7C50093DCC5 /* _Requestable.swift in Sources */,
 				357E3400201DDBFC0093DCC5 /* Configurable.swift in Sources */,
@@ -1279,11 +1311,13 @@
 				358E8EAF20206FF4003048B3 /* Restofire+Logging.swift in Sources */,
 				350428F2201C876800765D15 /* ArrayParameterEncoding.swift in Sources */,
 				35E6D3561CCBD50E007ABC05 /* Validatable.swift in Sources */,
+				3594EB952021F10A006FFA6A /* StreamUploadable.swift in Sources */,
 				359724CB2021A1D700FD36E6 /* Uploadable.swift in Sources */,
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
 				357E33FD201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				358E8ED72020B776003048B3 /* Reachable.swift in Sources */,
 				357E33ED201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
+				3594EB902021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				3594EB782021E4FB006FFA6A /* Requestable.swift in Sources */,
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				357E33E5201DD7C50093DCC5 /* ARequestable.swift in Sources */,
@@ -1305,11 +1339,13 @@
 				358E8ED22020AF66003048B3 /* BaseOperation.swift in Sources */,
 				35366E911FFBB39E00270EDE /* TypeAliases.swift in Sources */,
 				357E3407201DDE310093DCC5 /* Session.swift in Sources */,
+				3594EB872021F0F4006FFA6A /* FileUploadable.swift in Sources */,
 				3593CA7C1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DD201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				35C385181CAE43ED003CE0BE /* Restofire.swift in Sources */,
 				357E336F201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift in Sources */,
 				3594EB7A2021E4FB006FFA6A /* NetworkReachability.swift in Sources */,
+				3594EB9A2021F113006FFA6A /* MultipartUploadable.swift in Sources */,
 				357E33D5201DD7C50093DCC5 /* _Requestable.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				3594EB7B2021E4FB006FFA6A /* RequestOperation.swift in Sources */,
@@ -1374,11 +1410,13 @@
 				358E8EAC20206FF4003048B3 /* Restofire+Logging.swift in Sources */,
 				350428EF201C876800765D15 /* ArrayParameterEncoding.swift in Sources */,
 				358E8EE82020D906003048B3 /* Downloadable.swift in Sources */,
+				3594EB922021F10A006FFA6A /* StreamUploadable.swift in Sources */,
 				3593CA6C1D8C65E400075A15 /* Queueable.swift in Sources */,
 				35E6D3531CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35D1CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8EC52020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				357E33FA201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
+				3594EB8D2021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				358E8ED42020B776003048B3 /* Reachable.swift in Sources */,
 				357E33EA201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
 				35E6D36C1CCBEB90007ABC05 /* Retry.swift in Sources */,
@@ -1400,11 +1438,13 @@
 				357E33DE201DD7C50093DCC5 /* AFileUploadable.swift in Sources */,
 				358E8ECF2020AF66003048B3 /* BaseOperation.swift in Sources */,
 				35366E8E1FFBB39E00270EDE /* TypeAliases.swift in Sources */,
+				3594EB842021F0F4006FFA6A /* FileUploadable.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
 				357E3404201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				357E33DA201DD7C50093DCC5 /* ADownloadable.swift in Sources */,
 				35C385151CAE43ED003CE0BE /* Restofire.swift in Sources */,
+				3594EB972021F113006FFA6A /* MultipartUploadable.swift in Sources */,
 				357E336C201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift in Sources */,
 				357E33D2201DD7C50093DCC5 /* _Requestable.swift in Sources */,
 				357E33FF201DDBFC0093DCC5 /* Configurable.swift in Sources */,

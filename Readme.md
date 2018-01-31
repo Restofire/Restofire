@@ -149,7 +149,11 @@ $ git submodule update --init --recursive
 
 ## Usage
 
-### Global Configuration
+### Configurations
+
+#### Global Configuration
+
+Global configuration will is applied to all Requests you make. There are a lot of properties you can set like host, version, maxRetryAttempts, timeout, callbackQueue etc.
 
 ```swift
 import Restofire
@@ -167,7 +171,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### Group Level Configuration
+#### Group Level Configuration
+
+Restofire allows you create group level configurations by using protocols and every requestable conforming to it will first use the value from Group configuration, if not found will use the value from Global configuration.
 
 ```swift
 protocol MockyConfigurable: Configurable {}
@@ -187,17 +193,23 @@ extension MockyConfigurable {
 protocol MockyRequestable: Requestable, MockyConfigurable {}
 ```
 
-### Request Level Configuration
+#### Request Level Configuration
+
+Restofire also allows you to override properties at the request level.
+
+`Init` method can be used to dynamically assign values to the requestable.
 
 ```swift
 import Restofire
 
-struct MoviesReviewGETService: Requestable {
+struct MoviesReviewGETService: MockyRequestable {
 
     typealias Response = [MovieReview]
     var scheme: String = "http://"
     var host: String = "api.nytimes.com/svc/movies"
     var version: String = "v2"
+    var path: String?
+    var parameters: Any?
 
     init(path: String, parameters: Any) {
         self.path += path
@@ -217,7 +229,7 @@ class ViewController: UIViewController {
     var movieReviews: [MovieReview]!
     var requestOp: RequestOperation<MoviesReviewGETService>!
 
-    func getPerson() {
+    func getReviews() {
         requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).response() {
             if let value = $0.result.value {
                 self.person = value
@@ -228,6 +240,70 @@ class ViewController: UIViewController {
     deinit {
         requestOp.cancel()
     }
+
+}
+```
+
+### Isolating Network Calls from View Controllers
+
+`Requestable` gives you delegate methods to enable making requests from anywhere which you can use to store data in your cache.
+
+```swift
+import Restofire
+
+extension MoviesReviewGETService {
+
+    func request(_ request: DataRequest, didCompleteWithValue value: [MovieReview]) {
+      // Here you can store the results into your cache and then listen for changes inside your view controller.
+    }
+
+}
+```
+
+### Custom Response Serializers
+
+#### Decodable
+
+By adding the following snippet in your project, All `Requestable` associatedType Response as `Decodable` will be decoded with JSONDecoder.
+
+```swift
+import Restofire
+
+extension Restofire.DataResponseSerializable where Response: Decodable {
+
+    public var responseSerializer: DataResponseSerializer<Response> {
+        return DataRequest.JSONDecodableResponseSerializer()
+    }
+
+}
+```
+
+#### JSON
+
+By adding the following snippet in your project, All `Requestable` associatedType Response as `Any` will be decoded with NSJSONSerialization.
+
+```swift
+import Restofire
+
+extension Restofire.DataResponseSerializable where Response == Any {
+
+    public var responseSerializer: DataResponseSerializer<Response> {
+        return DataRequest.jsonResponseSerializer()
+    }
+
+}
+```
+
+### Retry Request when Internet is Reachable
+
+`Requestable` gives you a property waitsForConnectivity which you can set to true. This will make the first request. If the request fails, it will wait for internet to retry the request.
+
+```swift
+struct PushTokenPutService: Requestable {
+
+    typealias Response = Data
+    ...
+    var waitsForConnectivity: Bool = true
 
 }
 ```

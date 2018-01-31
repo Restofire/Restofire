@@ -24,7 +24,7 @@ class AFileUploadableSpec: BaseSpec {
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                 }
                 
-                let request = Upload().request()
+                let request = Upload().request
                 var uploadProgressValues: [Double] = []
                 var downloadProgressValues: [Double] = []
                 

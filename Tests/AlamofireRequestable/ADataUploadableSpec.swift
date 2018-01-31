@@ -26,7 +26,7 @@ class ADataUploadableSpec: BaseSpec {
                     }()
                 }
                 
-                let request = Upload().request()
+                let request = Upload().request
                 print(request.debugDescription)
                 var uploadProgressValues: [Double] = []
                 var downloadProgressValues: [Double] = []

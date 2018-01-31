@@ -44,7 +44,7 @@ extension AMultipartUploadable {
 public extension AMultipartUploadable {
     
     /// Use request(encodingCompletion:) method for MultipartUpload instead
-    public var request: DataRequest {
+    public var request: UploadRequest {
         fatalError("Use request(encodingCompletion:((MultipartFormDataEncodingResult) -> Void)) method for MultipartUpload instead")
     }
     

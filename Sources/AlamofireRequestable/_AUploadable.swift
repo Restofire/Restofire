@@ -12,7 +12,12 @@ import Foundation
 ///
 /// Instead implement AFileUploadable, ADataUploadable, AStreamUploadable,
 /// AMultipartUplodable protocols.
-public protocol _AUploadable: ARequestable {}
+public protocol _AUploadable: ARequestable {
+    
+    /// The uplaod request for subclasses to provide the implementation.
+    var request: UploadRequest { get }
+    
+}
 
 public extension _AUploadable {
     

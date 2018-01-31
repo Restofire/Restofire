@@ -44,14 +44,14 @@ extension AMultipartUploadable {
 public extension AMultipartUploadable {
     
     /// Use request(encodingCompletion:) method for MultipartUpload instead
-    public func request() -> DataRequest {
+    public var request: DataRequest {
         fatalError("Use request(encodingCompletion:((MultipartFormDataEncodingResult) -> Void)) method for MultipartUpload instead")
     }
     
     /// Encodes `multipartFormData` using `encodingMemoryThreshold` and calls `encodingCompletion` with new
     /// `UploadRequest` using the `uploadable`.
     public func response(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
-        RestofireRequest.multipartUploadRequest(fromRequestable: self, encodingCompletion: encodingCompletion)
+        RestofireRequest.multipartUploadRequest(fromRequestable: self, withUrlRequest: urlRequest, encodingCompletion: encodingCompletion)
     }
     
 }

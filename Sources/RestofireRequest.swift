@@ -10,47 +10,47 @@ import Alamofire
 
 class RestofireRequest {
     
-    static func dataRequest<R: ARequestable>(fromRequestable requestable: R) -> Alamofire.DataRequest {
-        let request = requestable.sessionManager.request(requestable.asUrlRequest())
+    static func dataRequest<R: ARequestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.DataRequest {
+        let request = requestable.sessionManager.request(urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         return request
     }
     
-    static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R) -> Alamofire.DownloadRequest {
-        let request = requestable.sessionManager.download(requestable.asUrlRequest(), to: requestable.destination)
+    static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.DownloadRequest {
+        let request = requestable.sessionManager.download(urlRequest, to: requestable.destination)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
         return request
     }
     
-    static func fileUploadRequest<R: AFileUploadable>(fromRequestable requestable: R) -> Alamofire.UploadRequest {
-        let request = requestable.sessionManager.upload(requestable.url, with: requestable.asUrlRequest())
+    static func fileUploadRequest<R: AFileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.UploadRequest {
+        let request = requestable.sessionManager.upload(requestable.url, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         return request
     }
     
-    static func dataUploadRequest<R: ADataUploadable>(fromRequestable requestable: R) -> Alamofire.UploadRequest {
-        let request = requestable.sessionManager.upload(requestable.data, with: requestable.asUrlRequest())
+    static func dataUploadRequest<R: ADataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.UploadRequest {
+        let request = requestable.sessionManager.upload(requestable.data, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         return request
     }
     
-    static func streamUploadRequest<R: AStreamUploadable>(fromRequestable requestable: R) -> Alamofire.UploadRequest {
-        let request = requestable.sessionManager.upload(requestable.stream, with: requestable.asUrlRequest())
+    static func streamUploadRequest<R: AStreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.UploadRequest {
+        let request = requestable.sessionManager.upload(requestable.stream, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         return request
     }
     
-    static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
+    static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest, encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
         let localEncodingCompletion = encodingCompletion
         requestable.sessionManager.upload(
             multipartFormData: requestable.multipartFormData,
             usingThreshold: requestable.threshold,
-            with: requestable.asUrlRequest()) { encodingCompletion in
+            with: urlRequest) { encodingCompletion in
                 switch encodingCompletion {
                 case .success(let request, let streamingFromDisk, let streamFileURL):
                     authenticateRequest(request, usingCredential: requestable.credential)

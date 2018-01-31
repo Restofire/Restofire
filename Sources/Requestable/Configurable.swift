@@ -27,8 +27,8 @@ import Foundation
 /// ```
 public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
     
-    /// The eventually.
-    var eventually: Bool { get }
+    /// The waitsForConnectivity.
+    var waitsForConnectivity: Bool { get }
     
     /// The eventually operation queue.
     var eventuallyOperationQueue: OperationQueue { get }
@@ -53,32 +53,32 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
 // MARK: - Default Implementation
 public extension Configurable {
     
-    /// `reachability.eventually`
-    public var eventually: Bool {
-        return reachability.eventually
+    /// `Reachability.default.waitsForConnectivity`
+    public var waitsForConnectivity: Bool {
+        return reachability.waitsForConnectivity
     }
     
-    /// `reachability.eventuallyOperationQueue`
+    /// `Reachability.default.eventuallyOperationQueue`
     public var eventuallyOperationQueue: OperationQueue {
         return reachability.eventuallyOperationQueue
     }
     
-    /// `reachability.networkReachabilityManager`
+    /// `Reachability.default.networkReachabilityManager`
     public var networkReachabilityManager: NetworkReachabilityManager {
         return reachability.networkReachabilityManager
     }
     
-    /// `retry.retryErrorCodes`
+    /// `Retry.default.retryErrorCodes`
     public var retryErrorCodes: Set<URLError.Code> {
         return retry.retryErrorCodes
     }
     
-    /// `retry.retryInterval`
+    /// `Retry.default.retryInterval`
     public var retryInterval: TimeInterval {
         return retry.retryInterval
     }
     
-    /// `retry.maxRetryAttempts`
+    /// `Retry.default.maxRetryAttempts`
     public var maxRetryAttempts: Int {
         return retry.maxRetryAttempts
     }

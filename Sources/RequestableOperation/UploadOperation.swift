@@ -1,5 +1,5 @@
 //
-//  RequestOperation.swift
+//  UploadOperation.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/01/18.
@@ -8,19 +8,19 @@
 
 import Foundation
 
-/// An NSOperation that executes the `Requestable` asynchronously
+/// An NSOperation that executes the `Uploadable` asynchronously
 /// or when added to a NSOperationQueue
-public class RequestOperation<R: Requestable>: BaseOperation {
+public class UploadOperation<R: Uploadable>: BaseOperation {
     
-    let requestable: R
+    let uploadable: R
     var retryAttempts = 0
     
-    /// The underlying Alamofire.DataRequest.
-    public let request: DataRequest
+    /// The underlying Alamofire.UploadRequest.
+    public let request: UploadRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     lazy var reachability: NetworkReachability = {
-        return NetworkReachability(configurable: requestable)
+        return NetworkReachability(configurable: uploadable)
     }()
     
     /// A boolean value `true` indicating the operation executes its task asynchronously.
@@ -28,72 +28,75 @@ public class RequestOperation<R: Requestable>: BaseOperation {
         return true
     }
     
-    init(requestable: R, request: DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
-        self.requestable = requestable
-        self.retryAttempts = requestable.maxRetryAttempts
+    init(uploadable: R, request: UploadRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+        self.uploadable = uploadable
+        self.retryAttempts = uploadable.maxRetryAttempts
         self.request = request
         self.completionHandler = completionHandler
         super.init()
         self.isReady = true
     }
     
-    /// Starts the request.
+    /// Starts the download.
     override public func main() {
         if isCancelled { return }
-        executeRequest()
+        executeUpload()
     }
     
-    /// Cancels the request.
+    /// Cancels the download.
     override public func cancel() {
         super.cancel()
         request.cancel()
     }
     
-    @objc func executeRequest() {
+    @objc func executeUpload() {
         request.downloadProgress {
-            self.requestable.request(self.request, didDownloadProgress: $0)
+            self.uploadable.request(self.request, didDownloadProgress: $0)
+        }
+        request.uploadProgress {
+            self.uploadable.request(self.request, didUploadProgress: $0)
         }
         request.response(
-            queue: requestable.queue,
-            responseSerializer: requestable.responseSerializer
+            queue: uploadable.queue,
+            responseSerializer: uploadable.responseSerializer
         ) { (response: DataResponse<R.Response>) in
             if response.error == nil {
                 if let completionHandler = self.completionHandler {
                     completionHandler(response)
                 }
-                self.requestable.request(self.request, didCompleteWithValue: response.value!)
+                self.uploadable.request(self.request, didCompleteWithValue: response.value!)
                 self.isFinished = true
             } else {
-                self.handleErrorDataResponse(response)
+                self.handleErrorDownloadResponse(response)
             }
         }
     }
     
-    func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
+    func handleErrorDownloadResponse(_ response: DataResponse<R.Response>) {
         if let error = response.error as? URLError {
-            if requestable.waitsForConnectivity && error.code == .notConnectedToInternet {
-                requestable.eventuallyOperationQueue.isSuspended = true
-                let eventuallyOperation = RequestOperation(
-                    requestable: requestable,
+            if uploadable.waitsForConnectivity && error.code == .notConnectedToInternet {
+                uploadable.eventuallyOperationQueue.isSuspended = true
+                let eventuallyOperation = UploadOperation(
+                    uploadable: uploadable,
                     request: request,
                     completionHandler: completionHandler
                 )
                 reachability.addOperation(operation: eventuallyOperation)
                 isFinished = true
-            } else if retryAttempts > 0 && requestable.retryErrorCodes.contains(error.code) {
+            } else if retryAttempts > 0 && uploadable.retryErrorCodes.contains(error.code) {
                 retryAttempts -= 1
                 perform(
-                    #selector(RequestOperation<R>.executeRequest),
+                    #selector(UploadOperation<R>.executeUpload),
                     with: nil,
-                    afterDelay: requestable.retryInterval
+                    afterDelay: uploadable.retryInterval
                 )
             } else {
-                requestable.request(request, didFailWithError: response.error!)
+                uploadable.request(request, didFailWithError: response.error!)
                 completionHandler?(response)
                 isFinished = true
             }
         } else {
-            requestable.request(request, didFailWithError: response.error!)
+            uploadable.request(request, didFailWithError: response.error!)
             completionHandler?(response)
             isFinished = true
         }

@@ -68,7 +68,7 @@ public extension Downloadable {
     /// - returns: The created `DownloadOperation`.
     @discardableResult
     public func response(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        let downloadOperation = DownloadOperation(downloadable: self, completionHandler: completionHandler)
+        let downloadOperation = DownloadOperation(downloadable: self, request: request(), completionHandler: completionHandler)
         downloadOperation.start()
         return downloadOperation
     }

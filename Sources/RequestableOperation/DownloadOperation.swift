@@ -13,25 +13,25 @@ import Foundation
 public class DownloadOperation<R: Downloadable>: BaseOperation {
     
     let downloadable: R
+    var retryAttempts = 0
+    
+    /// The underlying Alamofire.DownloadRequest.
+    public let request: DownloadRequest
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: downloadable)
     }()
     
-    var retryAttempts = 0
-    
-    /// The underlying Alamofire.DownloadRequest.
-    public lazy var download: DownloadRequest = { return downloadable.request() }()
-    
     /// A boolean value `true` indicating the operation executes its task asynchronously.
     override public var isAsynchronous: Bool {
         return true
     }
     
-    init(downloadable: R, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
+    init(downloadable: R, request: DownloadRequest, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         self.downloadable = downloadable
         self.retryAttempts = downloadable.maxRetryAttempts
+        self.request = request
         self.completionHandler = completionHandler
         super.init()
         self.isReady = true
@@ -46,14 +46,14 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
     /// Cancels the download.
     override public func cancel() {
         super.cancel()
-        download.cancel()
+        request.cancel()
     }
     
     @objc func executeDownload() {
-        download.downloadProgress {
-            self.downloadable.request(self.download, didDownloadProgress: $0)
+        request.downloadProgress {
+            self.downloadable.request(self.request, didDownloadProgress: $0)
         }
-        download.response(
+        request.response(
             queue: downloadable.queue,
             responseSerializer: downloadable.responseSerializer
         ) { (response: DownloadResponse<R.Response>) in
@@ -61,7 +61,7 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
                 if let completionHandler = self.completionHandler {
                     completionHandler(response)
                 }
-                self.downloadable.request(self.download, didCompleteWithValue: response.value!)
+                self.downloadable.request(self.request, didCompleteWithValue: response.value!)
                 self.isFinished = true
             } else {
                 self.handleErrorDownloadResponse(response)
@@ -71,10 +71,11 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
     
     func handleErrorDownloadResponse(_ response: DownloadResponse<R.Response>) {
         if let error = response.error as? URLError {
-            if downloadable.eventually && error.code == .notConnectedToInternet {
+            if downloadable.waitsForConnectivity && error.code == .notConnectedToInternet {
                 downloadable.eventuallyOperationQueue.isSuspended = true
                 let eventuallyOperation = DownloadOperation(
                     downloadable: downloadable,
+                    request: request,
                     completionHandler: completionHandler
                 )
                 reachability.addOperation(operation: eventuallyOperation)
@@ -87,12 +88,12 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
                     afterDelay: downloadable.retryInterval
                 )
             } else {
-                downloadable.request(download, didFailWithError: response.error!)
+                downloadable.request(request, didFailWithError: response.error!)
                 completionHandler?(response)
                 isFinished = true
             }
         } else {
-            downloadable.request(download, didFailWithError: response.error!)
+            downloadable.request(request, didFailWithError: response.error!)
             completionHandler?(response)
             isFinished = true
         }

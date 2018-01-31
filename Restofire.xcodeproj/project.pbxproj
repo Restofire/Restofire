@@ -579,9 +579,9 @@
 			children = (
 				35C385141CAE43ED003CE0BE /* Restofire.swift */,
 				3525FB111CCCC9A3009CEC35 /* Core */,
-				35366E841FFBB38900270EDE /* Alamofire */,
-				353E0D521D8D26AC000EA095 /* Extensions */,
-				35E6D3721CCBED9F007ABC05 /* Supporting Files */,
+				3540F1DD2022102500268CB4 /* Alamofire */,
+				3540F1E22022103F00268CB4 /* Extensions */,
+				3540F1E32022105500268CB4 /* Supporting Files */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -694,7 +694,7 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		35366E841FFBB38900270EDE /* Alamofire */ = {
+		3540F1DD2022102500268CB4 /* Alamofire */ = {
 			isa = PBXGroup;
 			children = (
 				35366E8D1FFBB39E00270EDE /* TypeAliases.swift */,
@@ -703,16 +703,26 @@
 				350428EE201C876800765D15 /* ArrayParameterEncoding.swift */,
 				357E336B201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift */,
 			);
-			name = Alamofire;
+			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		353E0D521D8D26AC000EA095 /* Extensions */ = {
+		3540F1E22022103F00268CB4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				35249B011D8E5A84005A2BAB /* DictionaryExtension.swift */,
 				358E8EAB20206FF4003048B3 /* Restofire+Logging.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3540F1E32022105500268CB4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3500626F1C7C40510078B589 /* Restofire.h */,
+				3500626E1C7C40510078B589 /* Info.plist */,
+				3502C2EC1CC738F9009B06EA /* Info-tvOS.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		357C0DA81D75745F0096239A /* Products */ = {
@@ -832,16 +842,6 @@
 				356FC35F20210544009CB77D /* ConfigurationSpec.swift */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		35E6D3721CCBED9F007ABC05 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3500626F1C7C40510078B589 /* Restofire.h */,
-				3500626E1C7C40510078B589 /* Info.plist */,
-				3502C2EC1CC738F9009B06EA /* Info-tvOS.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1531,7 +1531,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
@@ -1558,7 +1558,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INFOPLIST_FILE = "Sources/Supporting Files/Info-tvOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
@@ -1586,7 +1586,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1613,7 +1613,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1640,7 +1640,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
@@ -1667,7 +1667,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
@@ -1907,7 +1907,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1932,7 +1932,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

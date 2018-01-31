@@ -307,6 +307,13 @@ struct PushTokenPutService: Requestable {
 
 }
 ```
+# Contributing
+
+Issues and pull requests are welcome!
+
+# Author
+
+Rahul Katariya [@rahulkatariya91](https://twitter.com/rahulkatariya91)
 
 ## License
 

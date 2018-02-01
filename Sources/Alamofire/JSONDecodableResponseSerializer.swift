@@ -22,7 +22,7 @@ extension Request {
     ///
     /// - returns: The result data type.
     public static func serializeResponseJSONDecodable<T: Decodable>(
-        decoder: JSONDecoder? = JSONDecoder(),
+        decoder: JSONDecoder = JSONDecoder(),
         response: HTTPURLResponse?,
         data: Data?,
         error: Error?)
@@ -35,7 +35,7 @@ extension Request {
         }
         
         do {
-            let object = try JSONDecoder().decode(T.self, from: validData)
+            let object = try decoder.decode(T.self, from: validData)
             return .success(object)
         } catch {
             return .failure(AFError.responseSerializationFailed(reason: .jsonSerializationFailed(error: error)))
@@ -53,7 +53,7 @@ extension DataRequest {
     ///
     /// - returns: A JSON Decodable object response serializer.
     public static func JSONDecodableResponseSerializer<T: Decodable>(
-        decoder: JSONDecoder? = JSONDecoder())
+        decoder: JSONDecoder = JSONDecoder())
         -> DataResponseSerializer<T>
     {
         return DataResponseSerializer { _, response, data, error in
@@ -70,7 +70,7 @@ extension DataRequest {
     @discardableResult
     public func responseJSONDecodable<T: Decodable>(
         queue: DispatchQueue? = nil,
-        decoder: JSONDecoder? = JSONDecoder(),
+        decoder: JSONDecoder = JSONDecoder(),
         completionHandler: @escaping (DataResponse<T>) -> Void)
         -> Self
     {
@@ -92,7 +92,7 @@ extension DownloadRequest {
     ///
     /// - returns: A JSON Decodable object response serializer.
     public static func JSONDecodableResponseSerializer<T: Decodable>(
-        decoder: JSONDecoder? = JSONDecoder())
+        decoder: JSONDecoder = JSONDecoder())
         -> DownloadResponseSerializer<T>
     {
         return DownloadResponseSerializer { _, response, fileURL, error in
@@ -120,7 +120,7 @@ extension DownloadRequest {
     @discardableResult
     public func responseJSONDecodable<T: Decodable>(
         queue: DispatchQueue? = nil,
-        decoder: JSONDecoder? = JSONDecoder(),
+        decoder: JSONDecoder = JSONDecoder(),
         completionHandler: @escaping (DownloadResponse<T>) -> Void)
         -> Self
     {

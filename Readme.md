@@ -33,9 +33,9 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [x] Custom Response Serializers like JSONDecodable
 - [x] Authentication
 - [x] Response Validations
-- [x] AutoRetry based on URLError codes
-- [x] NSOperations
+- [x] Auto retry based on URLError codes
 - [x] Request eventually when internet is reachable
+- [x] NSOperations
 - [x] [Complete Documentation](http://restofire.github.io/Restofire/)
 
 ## Requirements
@@ -46,7 +46,9 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 
 ## Installation
 
-### CocoaPods
+### Dependency Managers
+<details>
+  <summary><strong>CocoaPods</strong></summary>
 
 [CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
@@ -70,7 +72,10 @@ Then, run the following command:
 $ pod install
 ```
 
-### Carthage
+</details>
+
+<details>
+  <summary><strong>Carthage</strong></summary>
 
 [Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
 
@@ -86,7 +91,11 @@ To integrate Restofire into your Xcode project using Carthage, specify it in you
 ```ogdl
 github "Restofire/Restofire" ~> 3.0.0
 ```
-### Swift Package Manager
+
+</details>
+
+<details>
+  <summary><strong>Swift Package Manager</strong></summary>
 
 To use Restofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
@@ -100,12 +109,14 @@ let package = Package(
     ]
 )
 ```
+</details>
 
 ### Manually
 
 If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.
 
-#### Git Submodules
+<details>
+  <summary><strong>Git Submodules</strong></summary><p>
 
 - Open up Terminal, `cd` into your top-level project directory, and run the following command "if" your project is not initialized as a git repository:
 
@@ -138,7 +149,10 @@ $ git submodule update --init --recursive
 
 > The `Restofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
 
-#### Embeded Binaries
+</p></details>
+
+<details>
+  <summary><strong>Embeded Binaries</strong></summary><p>
 
 - Download the latest release from https://github.com/Restofire/Restofire/releases
 - Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
@@ -147,7 +161,7 @@ $ git submodule update --init --recursive
 - Add the downloaded `Restofire.framework` & `Alamofire.framework`.
 - And that's it!
 
----
+</p></details>
 
 ## Architecture
 

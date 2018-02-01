@@ -13,14 +13,14 @@ public protocol DataResponseSerializable {
     
     associatedtype Response
     
-    /// `Retry.default`
+    /// `The responseSerializer`
     var responseSerializer: DataResponseSerializer<Response> { get }
     
 }
 
 public extension DataResponseSerializable where Response == Data {
     
-    /// `Retry.default`
+    /// `Alamofire.DataRequest.dataResponseSerializer()`
     public var responseSerializer: DataResponseSerializer<Response> {
         return DataRequest.dataResponseSerializer()
     }
@@ -32,14 +32,14 @@ public protocol DownloadResponseSerializable {
     
     associatedtype Response
     
-    /// `Retry.default`
+    /// `responseSerializer`
     var responseSerializer: DownloadResponseSerializer<Response> { get }
     
 }
 
 public extension DownloadResponseSerializable where Response == Data {
     
-    /// `Retry.default`
+    /// `Alamofire.DownloadRequest.dataResponseSerializer()`
     public var responseSerializer: DownloadResponseSerializer<Response> {
         return DownloadRequest.dataResponseSerializer()
     }

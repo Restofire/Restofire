@@ -1,7 +1,5 @@
 ![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](Assets/restofire.png)
-
-## Restofire
-
+---
 [![Platforms](https://img.shields.io/cocoapods/p/Restofire.svg)](https://cocoapods.org/pods/Restofire)
 [![License](https://img.shields.io/cocoapods/l/Restofire.svg)](https://raw.githubusercontent.com/Restofire/Restofire/master/LICENSE)
 
@@ -20,21 +18,20 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Architecture](#architecture)
-- [Configurations](#configurations)
 - [Usage](#usage)
 - [License](#license)
 
 ## Features
 
-- [x] No Learning Curve
-- [x] Default Configuration for Base URL / headers / parameters etc
-- [x] Multiple Configurations
-- [x] Single Request Configuration
-- [x] Custom Response Serializers like JSONDecodable
+- [x] Global Configuration for host / headers / parameters etc
+- [x] Group Configurations
+- [x] Per Request Configuration
 - [x] Authentication
 - [x] Response Validations
+- [x] Custom Response Serializers like JSONDecodable
+- [x] Isolate Network Requests from ViewControllers
 - [x] Auto retry based on URLError codes
-- [x] Request eventually when internet is reachable
+- [x] Request eventually when network is reachable
 - [x] NSOperations
 - [x] [Complete Documentation](http://restofire.github.io/Restofire/)
 
@@ -191,7 +188,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 }
 ```
 
-- **Group Configuration** – The group configuration inherits all the values from the global configuration. It can be used to group requests that have same behaviour but different from the global configuration. For instance, If you have more than one host or If your global configuration has default url session and some requests require you to use empharal URL session.
+- **Group Configuration** – The group configuration inherits all the values from the global configuration. It can be used to group requests that have same behaviour but are different from the global configuration. For instance, If you have more than one host or if your global configuration has default url session and some requests require you to use ephemeral URL session.
 
 ```swift
 import Restofire
@@ -201,7 +198,7 @@ protocol NYConfigurable: Configurable {}
 extension NYConfigurable {
 
     public var configuration: Configuration {
-        var configuration = Restofire.Configuration.default
+        var configuration = Configuration.default
         configuration.scheme = "http://"
         configuration.host = "api.nytimes.com/svc/movies"
         configuration.version = "v2"
@@ -234,9 +231,7 @@ struct MoviesReviewGETService: NYRequestable {
 
 ### Making a Request
 
-#### Using the Completion Handler
-
-`Requestable` gives you completion handler to enable making requests and receive response.
+`Requestable` gives completion handler to enable making requests and receive response.
 
 ```swift
 import Restofire
@@ -261,9 +256,9 @@ class ViewController: UITableViewController {
 }
 ```
 
-#### Using the delegate methods
+### Isolating Network Requests from UIViewControllers
 
-`Requestable` gives you delegate methods to enable making requests from anywhere which you can use to store data in your cache.
+`Requestable` gives delegate methods to enable making requests from anywhere which you can use to store data in your cache.
 
 ```swift
 import Restofire
@@ -285,7 +280,7 @@ struct MoviesReviewGETService: NYRequestable {
 
 ### Custom Response Serializers
 
-#### Decodable
+- **Decodable**
 
 By adding the following snippet in your project, All `Requestable` associatedType Response as `Decodable` will be decoded with JSONDecoder.
 
@@ -301,7 +296,7 @@ extension Restofire.DataResponseSerializable where Response: Decodable {
 }
 ```
 
-#### JSON
+- **JSON**
 
 By adding the following snippet in your project, All `Requestable` associatedType Response as `Any` will be decoded with NSJSONSerialization.
 
@@ -317,9 +312,9 @@ extension Restofire.DataResponseSerializable where Response == Any {
 }
 ```
 
-### Retry Request when Internet is Reachable
+### Wait for Internet Connectivity
 
-`Requestable` gives you a property waitsForConnectivity which you can set to true. This will make the first request. If the request fails, it will wait for internet to retry the request.
+`Requestable` gives you a property waitsForConnectivity which can be set to true. This will make the first request regardless of the internet connectivity. If the request fails due to .notConnectedToInternet, it will retry the request when internet connection is established.
 
 ```swift
 struct PushTokenPutService: Requestable {

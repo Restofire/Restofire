@@ -1,4 +1,4 @@
-![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](https://raw.githubusercontent.com/Restofire/Restofire/master/Assets/restofire.png)
+![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](Assets/restofire.png)
 
 ## Restofire
 
@@ -19,6 +19,8 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
+- [Architecture](#architecture)
+- [Configurations](#configurations)
 - [Usage](#usage)
 - [License](#license)
 
@@ -28,11 +30,11 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 - [x] Default Configuration for Base URL / headers / parameters etc
 - [x] Multiple Configurations
 - [x] Single Request Configuration
-- [x] Custom Response Serializers
-- [x] JSONDecodable
+- [x] Custom Response Serializers like JSONDecodable
 - [x] Authentication
 - [x] Response Validations
-- [x] Request NSOperation
+- [x] AutoRetry based on URLError codes
+- [x] NSOperations
 - [x] Request eventually when internet is reachable
 - [x] [Complete Documentation](http://restofire.github.io/Restofire/)
 
@@ -147,67 +149,64 @@ $ git submodule update --init --recursive
 
 ---
 
+## Architecture
+
+### Two Layered Architecture
+
+![Architecture](Assets/architecture.jpeg)
+
+- **Alamofire Layer** — consists of protocols for Request, Download and Upload to construct the respective Alamofire.Request instance. All Alamofire Protocols have a prefix `A`.
+
+- **Restofire Layer** — consists of protocols for Request, Download and Upload to construct the respective RequestOperation instance from the Alamofire.Request and support features like AutoRetry, WaitForConnectivity, Automatic ResponseSerialization from associatedType etc.
+
 ## Usage
 
 ### Configurations
 
-#### Global Configuration
+#### Three levels of configuration
 
-Global configuration will is applied to all Requests you make. There are a lot of properties you can set like host, version, maxRetryAttempts, timeout, callbackQueue etc.
+- **Global Configuration** – The global configuration will be applied to all the requests. These include values like scheme, host, version, headers, sessionManager, callbackQueue, maxRetryCount, waitsForConnectivity etc.
+
+```swift
+func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+    Restofire.Configuration.default.host = "httpbin.org"
+    Restofire.Retry.default.retryErrorCodes = [.requestTimedOut,.networkConnectionLost]
+
+    return true
+}
+```
+
+- **Group Configuration** – The group configuration inherits all the values from the global configuration. It can be used to group requests that have same behaviour but different from the global configuration. For instance, If you have more than one host or If your global configuration has default url session and some requests require you to use empharal URL session.
 
 ```swift
 import Restofire
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+protocol NYConfigurable: Configurable {}
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+extension NYConfigurable {
 
-        Restofire.Configuration.default.host = "httpbin.org"
-
-        return true
-  }
-
-}
-```
-
-#### Group Level Configuration
-
-Restofire allows you create group level configurations by using protocols and every requestable conforming to it will first use the value from Group configuration, if not found will use the value from Global configuration.
-
-```swift
-protocol MockyConfigurable: Configurable {}
-
-extension MockyConfigurable {
-
-    public var configuration: Restofire.Configuration {
-        var mockyConfiguration = Restofire.Configuration()
-        mockyConfiguration.scheme = "http://"
-        mockyConfiguration.host = "mocky.io"
-        mockyConfiguration.version = "v2"
-        return mockyConfiguration
+    public var configuration: Configuration {
+        var configuration = Restofire.Configuration.default
+        configuration.scheme = "http://"
+        configuration.host = "api.nytimes.com/svc/movies"
+        configuration.version = "v2"
+        return configuration
     }
 
 }
 
-protocol MockyRequestable: Requestable, MockyConfigurable {}
+protocol NYRequestable: Requestable, NYConfigurable {}
 ```
 
-#### Request Level Configuration
-
-Restofire also allows you to override properties at the request level.
-
-`Init` method can be used to dynamically assign values to the requestable.
+- **Per Request Configuration** – The request configuration inherits all the values from the group configuration or directly from the global configuration.
 
 ```swift
 import Restofire
 
-struct MoviesReviewGETService: MockyRequestable {
+struct MoviesReviewGETService: NYRequestable {
 
     typealias Response = [MovieReview]
-    var scheme: String = "http://"
-    var host: String = "api.nytimes.com/svc/movies"
-    var version: String = "v2"
     var path: String?
     var parameters: Any?
 
@@ -219,12 +218,16 @@ struct MoviesReviewGETService: MockyRequestable {
 }
 ```
 
-### Consuming the Service
+### Making a Request
+
+#### Using the Completion Handler
+
+`Requestable` gives you completion handler to enable making requests and receive response.
 
 ```swift
 import Restofire
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
     var movieReviews: [MovieReview]!
     var requestOp: RequestOperation<MoviesReviewGETService>!
@@ -232,7 +235,7 @@ class ViewController: UIViewController {
     func getReviews() {
         requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).response() {
             if let value = $0.result.value {
-                self.person = value
+                self.movieReviews = value
             }
         }
     }
@@ -244,14 +247,20 @@ class ViewController: UIViewController {
 }
 ```
 
-### Isolating Network Calls from View Controllers
+#### Using the delegate methods
 
 `Requestable` gives you delegate methods to enable making requests from anywhere which you can use to store data in your cache.
 
 ```swift
 import Restofire
 
-extension MoviesReviewGETService {
+struct MoviesReviewGETService: NYRequestable {
+
+    ...
+
+    static func loadMoviews() {
+      MoviesReviewGETService(parameters: ["name": "Rahul Katariya"])
+    }
 
     func request(_ request: DataRequest, didCompleteWithValue value: [MovieReview]) {
       // Here you can store the results into your cache and then listen for changes inside your view controller.

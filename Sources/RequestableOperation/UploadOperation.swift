@@ -72,6 +72,7 @@ public class UploadOperation<R: Uploadable>: BaseOperation {
                 self.handleErrorDownloadResponse(response)
             }
         }
+        request.logIfNeeded()
     }
     
     func handleErrorDownloadResponse(_ response: DataResponse<R.Response>) {

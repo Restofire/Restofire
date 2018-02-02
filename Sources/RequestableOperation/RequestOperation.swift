@@ -69,6 +69,7 @@ public class RequestOperation<R: Requestable>: BaseOperation {
                 self.handleErrorDataResponse(response)
             }
         }
+        request.logIfNeeded()
     }
     
     func handleErrorDataResponse(_ response: DataResponse<R.Response>) {

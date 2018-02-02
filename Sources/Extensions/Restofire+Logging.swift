@@ -18,12 +18,6 @@ extension Request {
             delegate.queue.addOperation {
                 if logLevel == "1" {
                     print(self.debugDescription)
-                } else if logLevel == "2" {
-                    print(self.debugDescription)
-                    print(self.response?.description ?? "Response not found")
-                } else if logLevel == "3" {
-                    print(self.debugDescription)
-                    print(self.response?.description ?? "Unknown Response")
                 }
             }
         }

@@ -69,6 +69,7 @@ public class DownloadOperation<R: Downloadable>: BaseOperation {
                 self.handleErrorDownloadResponse(response)
             }
         }
+        request.logIfNeeded()
     }
     
     func handleErrorDownloadResponse(_ response: DownloadResponse<R.Response>) {

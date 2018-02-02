@@ -14,7 +14,7 @@ import Alamofire
 
 class BaseSpec: QuickSpec {
     
-    let timeout: TimeInterval = 30
+    let timeout: TimeInterval = 120
     let pollInterval: TimeInterval = 1
 
     static var testDirectoryURL: URL { return URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).appendingPathComponent("org.restofire.tests") }

@@ -72,13 +72,12 @@
             ReferencedContainer = "container:Restofire.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "-me.rahulkatariya.Restofire.Debug"
-            value = "3"
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-org.restofire.Restofire.Debug 3"
             isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

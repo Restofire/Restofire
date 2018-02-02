@@ -12,17 +12,19 @@ extension Request {
     
     @discardableResult
     func logIfNeeded() -> Request {
-        let debug = ProcessInfo.processInfo.environment["-me.rahulkatariya.Restofire.Debug"]
-        delegate.queue.addOperation {
-            if debug == "1" {
-                print(self.debugDescription)
-            } else if debug == "2" {
-                print(self.debugDescription)
-                print(self.response?.description ?? "Unknown Response")
-            } else if debug == "3" {
-                print(self.debugDescription)
-                print(self.request?.description ?? "Unknown Request")
-                print(self.response?.description ?? "Unknown Response")
+        if let argumentIndex = ProcessInfo.processInfo.arguments
+            .index(of: "-org.restofire.Restofire.Debug") {
+            let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
+            delegate.queue.addOperation {
+                if logLevel == "1" {
+                    print(self.debugDescription)
+                } else if logLevel == "2" {
+                    print(self.debugDescription)
+                    print(self.response?.description ?? "Response not found")
+                } else if logLevel == "3" {
+                    print(self.debugDescription)
+                    print(self.response?.description ?? "Unknown Response")
+                }
             }
         }
         return self

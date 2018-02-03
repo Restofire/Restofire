@@ -1,2 +1,1 @@
-carthage update Alamofire --use-submodules
-carthage update Nimble Quick --no-use-binaries
+ carthage bootstrap --no-use-binaries --cache-builds --platform "${PLATFORM:=all}"

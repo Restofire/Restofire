@@ -168,9 +168,27 @@ $ git submodule update --init --recursive
 
 - **Alamofire Layer** — consists of protocols for Request, Download and Upload to construct the respective Alamofire.Request instance. All Alamofire Protocols have a prefix `A`.
 
-- **Restofire Layer** — consists of protocols for Request, Download and Upload to construct the respective RequestOperation instance from the Alamofire.Request and support features like AutoRetry, WaitForConnectivity, Automatic ResponseSerialization from associatedType etc.
+```swift
 
-## Usage
+/// Alamofire
+Alamofire.request("https://httpbin.org/get").responseJSON { response in
+    print("Alamofire: -", response.value ?? "nil")
+}
+
+/// Using Restofire as an API Client on top of Alamofire
+Configuration.default.host = "httpbin.org"
+
+struct GetService: ARequestable {
+    var path: String? = "get"
+}
+
+GetService().request.responseJSON { response in
+    print("Restofire: -", response.value ?? "nil")
+}
+
+```
+
+- **Restofire Layer** — consists of protocols for Request, Download and Upload to construct the respective RequestOperation instance from the Alamofire.Request and support features like AutoRetry, WaitForConnectivity, Automatic ResponseSerialization from associatedType etc.
 
 ### Configurations
 
@@ -228,6 +246,8 @@ struct MoviesReviewGETService: NYRequestable {
 
 }
 ```
+
+## Usage
 
 ### Making a Request
 

@@ -12,14 +12,14 @@ import Foundation
 public protocol SessionManagable {
     
     /// The `sessionManager`.
-    var _sessionManager: SessionManager { get }
+    var sessionManager: SessionManager { get }
     
 }
 
 public extension SessionManagable where Self: AConfigurable {
     
     /// `Session.default`
-    public var _sessionManager: SessionManager {
+    public var sessionManager: SessionManager {
         return Session.default.sessionManager
     }
     

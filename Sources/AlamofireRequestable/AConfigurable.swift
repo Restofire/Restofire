@@ -27,9 +27,6 @@ import Foundation
 /// ```
 public protocol AConfigurable: _Configurable, Authenticable, RequestDelegate, SessionManagable, Validatable {
     
-    /// The Alamofire Session Manager.
-    var sessionManager: SessionManager { get }
-    
     /// The credential.
     var credential: URLCredential? { get }
     
@@ -43,12 +40,7 @@ public protocol AConfigurable: _Configurable, Authenticable, RequestDelegate, Se
 
 // MARK: - Default Implementation
 public extension AConfigurable {
-    
-    /// `Session.default.sessionManager`
-    public var sessionManager: SessionManager {
-        return _sessionManager
-    }
-    
+
     /// `Authentication.default.credential`
     public var credential: URLCredential? {
         return authentication.credential

@@ -97,7 +97,7 @@
                 <a href="Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/DataUploadable.html">DataUploadable</a>
+                <a href="Protocols.html#/s:9Restofire14DataUploadableP">DataUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
@@ -106,7 +106,7 @@
                 <a href="Protocols/Downloadable.html">Downloadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/FileUploadable.html">FileUploadable</a>
+                <a href="Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/MultipartUploadable.html">MultipartUploadable</a>
@@ -118,6 +118,9 @@
                 <a href="Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/RequestDelegate.html">RequestDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
@@ -127,7 +130,7 @@
                 <a href="Protocols/SessionManagable.html">SessionManagable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/StreamUploadable.html">StreamUploadable</a>
+                <a href="Protocols.html#/s:9Restofire16StreamUploadableP">StreamUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Uploadable.html">Uploadable</a>
@@ -143,6 +146,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/_Requestable.html">_Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
               </li>
             </ul>
           </li>
@@ -195,7 +201,7 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A Configuration for RESTful Services. You must provide a <code>host</code>.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="nf">Configuration</span><span class="p">()</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span>
 <span class="n">configuration</span><span class="o">.</span><span class="nv">scheme</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"https://"</span>
 <span class="n">configuration</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s">"www.mocky.io"</span>
 <span class="n">configuration</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">"v2"</span>
@@ -233,8 +239,8 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A Validation for RESTful Services.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="nf">Validation</span><span class="p">()</span>
-<span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="nf">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="kt">Validation</span><span class="p">()</span>
+<span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
 <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
 </code></pre>
 
@@ -269,7 +275,7 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A Retry for RESTful Services.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="nf">Retry</span><span class="p">()</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">retry</span> <span class="o">=</span> <span class="kt">Retry</span><span class="p">()</span>
 <span class="n">retry</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
 <span class="n">retry</span><span class="o">.</span><span class="n">retryInterval</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">retry</span><span class="o">.</span><span class="n">maxRetryAttempts</span> <span class="o">=</span> <span class="mi">10</span>
@@ -306,9 +312,9 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A Reachability for RESTful Services.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">reachability</span> <span class="o">=</span> <span class="nf">Reachability</span><span class="p">()</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">reachability</span> <span class="o">=</span> <span class="kt">Reachability</span><span class="p">()</span>
 <span class="n">reachability</span><span class="o">.</span><span class="n">eventually</span> <span class="o">=</span> <span class="kc">true</span>
-<span class="n">reachability</span><span class="o">.</span><span class="n">networkReachabilityManager</span> <span class="o">=</span> <span class="nf">NetworkReachabilityManager</span><span class="p">()</span><span class="o">!</span>
+<span class="n">reachability</span><span class="o">.</span><span class="n">networkReachabilityManager</span> <span class="o">=</span> <span class="kt">NetworkReachabilityManager</span><span class="p">()</span><span class="o">!</span>
 </code></pre>
 
                         <a href="Structs/Reachability.html" class="slightly-smaller">See more</a>
@@ -342,13 +348,13 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>A Session for RESTful Services.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">session</span> <span class="o">=</span> <span class="nf">Session</span><span class="p">()</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">Session</span><span class="p">()</span>
 <span class="n">configuration</span><span class="o">.</span><span class="n">sessionManager</span> <span class="o">=</span> <span class="p">{</span>
     <span class="k">let</span> <span class="nv">sessionConfiguration</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
     <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">7</span>
     <span class="n">sessionConfiguration</span><span class="o">.</span><span class="n">timeoutIntervalForResource</span> <span class="o">=</span> <span class="mi">7</span>
     <span class="n">sessionConfiguration</span><span class="o">.</span><span class="kt">HTTPAdditionalHeaders</span> <span class="o">=</span> <span class="kt">Manager</span><span class="o">.</span><span class="n">defaultHTTPHeaders</span>
-    <span class="k">return</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="nf">SessionManager</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">sessionConfiguration</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">SessionManager</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">sessionConfiguration</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
 
@@ -383,8 +389,8 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>An Authentication for RESTful Services.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">authentication</span> <span class="o">=</span> <span class="nf">Authentication</span><span class="p">()</span>
-<span class="n">authentication</span><span class="o">.</span><span class="n">credential</span> <span class="o">=</span> <span class="nf">URLCredential</span><span class="p">(</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">authentication</span> <span class="o">=</span> <span class="kt">Authentication</span><span class="p">()</span>
+<span class="n">authentication</span><span class="o">.</span><span class="n">credential</span> <span class="o">=</span> <span class="kt">URLCredential</span><span class="p">(</span>
     <span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span>
     <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span>
     <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span>
@@ -409,7 +415,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -98,7 +98,7 @@
                 <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/DataUploadable.html">DataUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire14DataUploadableP">DataUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
@@ -107,7 +107,7 @@
                 <a href="../Protocols/Downloadable.html">Downloadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/FileUploadable.html">FileUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
@@ -119,6 +119,9 @@
                 <a href="../Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/RequestDelegate.html">RequestDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
@@ -128,7 +131,7 @@
                 <a href="../Protocols/SessionManagable.html">SessionManagable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/StreamUploadable.html">StreamUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire16StreamUploadableP">StreamUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Uploadable.html">Uploadable</a>
@@ -144,6 +147,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/_Requestable.html">_Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
               </li>
             </ul>
           </li>
@@ -182,9 +188,9 @@
 
                 </div>
               </div>
-            <p>Represents a <code><a href="../Protocols/DataUploadable.html">DataUploadable</a></code> for Alamofire.</p>
+            <p>Represents a <code><a href="../Protocols.html#/s:9Restofire14DataUploadableP">DataUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-datauploadable' class='heading'>Create custom DataUploadable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">ADataUploadable</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="kt">ADataUploadable</span> <span class="p">{</span>
 
     <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"post"</span>
     <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">Data</span> <span class="o">=</span> <span class="p">{</span>
@@ -233,9 +239,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire15ADataUploadablePAAE7request9Alamofire13UploadRequestCyF"></a>
-                    <a name="//apple_ref/swift/Method/request()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire15ADataUploadablePAAE7request9Alamofire13UploadRequestCyF">request()</a>
+                    <a name="/s:9Restofire15ADataUploadablePAAE7request9Alamofire13UploadRequestCv"></a>
+                    <a name="//apple_ref/swift/Property/request" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire15ADataUploadablePAAE7request9Alamofire13UploadRequestCv">request</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -255,7 +261,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">request</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">UploadRequest</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">UploadRequest</span></code></pre>
 
                         </div>
                       </div>
@@ -271,7 +277,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>_Requestable Protocol Reference</title>
+    <title>RequestDelegate Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/_Requestable" class="dashAnchor"></a>
-    <a title="_Requestable Protocol Reference"></a>
+    <a name="//apple_ref/swift/Protocol/RequestDelegate" class="dashAnchor"></a>
+    <a title="RequestDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Restofire Docs</a> (97% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Restofire Reference</a>
         <img id="carat" src="../img/carat.png" />
-        _Requestable Protocol Reference
+        RequestDelegate Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -181,21 +181,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>_Requestable</h1>
+            <h1>RequestDelegate</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nv">_Requestable</span><span class="p">:</span> <span class="n"><a href="../Protocols/_Configurable.html">_Configurable</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RequestDelegate</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents a <code><a href="../Protocols/Requestable.html">Requestable</a></code> for URLSession.</p>
-<h3 id='create-custom-requestable' class='heading'>Create custom Requestable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinGETService</span><span class="p">:</span> <span class="n">_Requestable</span> <span class="p">{</span>
-
-    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"get"</span>
-
-<span class="p">}</span>
-</code></pre>
+            <p>Represents a <code>RequestDelegate</code> that is associated with <code><a href="../Protocols/Requestable.html">Requestable</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -204,9 +197,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12_RequestableP4pathSSSgv"></a>
-                    <a name="//apple_ref/swift/Property/path" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12_RequestableP4pathSSSgv">path</a>
+                    <a name="/s:9Restofire15RequestDelegateP7prepare10Foundation10URLRequestVAG_AA13AConfigurable_p11requestabletF"></a>
+                    <a name="//apple_ref/swift/Method/prepare(_:requestable:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire15RequestDelegateP7prepare10Foundation10URLRequestVAG_AA13AConfigurable_p11requestabletF">prepare(_:requestable:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Called to modify a request before sending.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AConfigurable.html">AConfigurable</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">URLRequest</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire15RequestDelegateP7didSendy9Alamofire0B0C_AA13AConfigurable_p11requestabletF"></a>
+                    <a name="//apple_ref/swift/Method/didSend(_:requestable:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire15RequestDelegateP7didSendy9Alamofire0B0C_AA13AConfigurable_p11requestabletF">didSend(_:requestable:)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -217,38 +237,34 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The path relative to base URL.</p>
+                        <p>Called when the request is sent over the network.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>nil</code></p>
+                        <p><code>No-op</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didSend</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">,</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AConfigurable.html">AConfigurable</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12_RequestablePAAE10urlRequest10Foundation10URLRequestVv"></a>
-                    <a name="//apple_ref/swift/Property/urlRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12_RequestablePAAE10urlRequest10Foundation10URLRequestVv">urlRequest</a>
+                    <a name="/s:9Restofire15RequestDelegateP11didCompletey9Alamofire0B0C_AA13AConfigurable_p11requestabletF"></a>
+                    <a name="//apple_ref/swift/Method/didComplete(_:requestable:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire15RequestDelegateP11didCompletey9Alamofire0B0C_AA13AConfigurable_p11requestabletF">didComplete(_:requestable:)</a>
                     </code>
                       <span class="declaration-note">
-                        Extension method
+                        Default implementation
                       </span>
                   </div>
                   <div class="height-container">
@@ -256,14 +272,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Called when the request is completed.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>No-op</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">urlRequest</span><span class="p">:</span> <span class="kt">URLRequest</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didComplete</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">,</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AConfigurable.html">AConfigurable</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

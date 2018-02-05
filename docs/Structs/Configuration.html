@@ -98,7 +98,7 @@
                 <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/DataUploadable.html">DataUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire14DataUploadableP">DataUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
@@ -107,7 +107,7 @@
                 <a href="../Protocols/Downloadable.html">Downloadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/FileUploadable.html">FileUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
@@ -119,6 +119,9 @@
                 <a href="../Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/RequestDelegate.html">RequestDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
@@ -128,7 +131,7 @@
                 <a href="../Protocols/SessionManagable.html">SessionManagable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/StreamUploadable.html">StreamUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire16StreamUploadableP">StreamUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Uploadable.html">Uploadable</a>
@@ -144,6 +147,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/_Requestable.html">_Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
               </li>
             </ul>
           </li>
@@ -183,7 +189,7 @@
                 </div>
               </div>
             <p>A Configuration for RESTful Services. You must provide a <code>host</code>.</p>
-<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="nf">Configuration</span><span class="p">()</span>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span>
 <span class="n">configuration</span><span class="o">.</span><span class="nv">scheme</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"https://"</span>
 <span class="n">configuration</span><span class="o">.</span><span class="n">baseURL</span> <span class="o">=</span> <span class="s">"www.mocky.io"</span>
 <span class="n">configuration</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">"v2"</span>
@@ -214,7 +220,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`</span> <span class="o">=</span> <span class="nf">Configuration</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span></code></pre>
 
                         </div>
                       </div>
@@ -413,6 +419,33 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:9Restofire13ConfigurationV16requestDelegatesSayAA15RequestDelegate_pGv"></a>
+                    <a name="//apple_ref/swift/Property/requestDelegates" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire13ConfigurationV16requestDelegatesSayAA15RequestDelegate_pGv">requestDelegates</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The request delegates. <code>empty</code> by default.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">requestDelegates</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RequestDelegate.html">RequestDelegate</a></span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:9Restofire13ConfigurationVACycfc"></a>
                     <a name="//apple_ref/swift/Method/init()" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire13ConfigurationVACycfc">init()</a>
@@ -446,7 +479,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

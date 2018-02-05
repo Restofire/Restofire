@@ -97,7 +97,7 @@
                 <a href="Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/DataUploadable.html">DataUploadable</a>
+                <a href="Protocols.html#/s:9Restofire14DataUploadableP">DataUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
@@ -106,7 +106,7 @@
                 <a href="Protocols/Downloadable.html">Downloadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/FileUploadable.html">FileUploadable</a>
+                <a href="Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/MultipartUploadable.html">MultipartUploadable</a>
@@ -118,6 +118,9 @@
                 <a href="Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/RequestDelegate.html">RequestDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
@@ -127,7 +130,7 @@
                 <a href="Protocols/SessionManagable.html">SessionManagable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/StreamUploadable.html">StreamUploadable</a>
+                <a href="Protocols.html#/s:9Restofire16StreamUploadableP">StreamUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Uploadable.html">Uploadable</a>
@@ -143,6 +146,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/_Requestable.html">_Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
               </li>
             </ul>
           </li>
@@ -175,8 +181,7 @@
         <section>
           <section class="section">
             
-            <p><img src="https://raw.githubusercontent.com/Restofire/Restofire/master/Assets/restofire.png" alt="Restofire: A Protocol Oriented Networking Abstraction Layer in Swift"></p>
-<h2 id='restofire' class='heading'>Restofire</h2>
+            <h2 id='img-src-assets-restofire-png-alt-restofire-a-protocol-oriented-networking-abstraction-layer-in-swift' class='heading'><img src="Assets/restofire.png" alt="Restofire: A Protocol Oriented Networking Abstraction Layer in Swift"></h2>
 
 <p><a href="https://cocoapods.org/pods/Restofire"><img src="https://img.shields.io/cocoapods/p/Restofire.svg" alt="Platforms"></a>
 <a href="https://raw.githubusercontent.com/Restofire/Restofire/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/Restofire.svg" alt="License"></a></p>
@@ -196,237 +201,226 @@
 <li><a href="#features">Features</a></li>
 <li><a href="#requirements">Requirements</a></li>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#architecture">Architecture</a></li>
 <li><a href="#usage">Usage</a></li>
 <li><a href="#license">License</a></li>
 </ul>
 <h2 id='features' class='heading'>Features</h2>
 
 <ul>
-<li>[x] No Learning Curve</li>
-<li>[x] Default Configuration for Base URL / headers / parameters etc</li>
-<li>[x] Multiple Configurations</li>
-<li>[x] Single Request Configuration</li>
-<li>[x] Custom Response Serializers</li>
-<li>[x] JSONDecodable</li>
+<li>[x] Global Configuration for host / headers / parameters etc</li>
+<li>[x] Group Configurations</li>
+<li>[x] Per Request Configuration</li>
 <li>[x] Authentication</li>
 <li>[x] Response Validations</li>
-<li>[x] Request NSOperation</li>
-<li>[x] Request eventually when internet is reachable</li>
+<li>[x] Custom Response Serializers like JSONDecodable</li>
+<li>[x] Isolate Network Requests from ViewControllers</li>
+<li>[x] Auto retry based on URLError codes</li>
+<li>[x] Request eventually when network is reachable</li>
+<li>[x] NSOperations</li>
 <li>[x] <a href="http://restofire.github.io/Restofire/">Complete Documentation</a></li>
 </ul>
 <h2 id='requirements' class='heading'>Requirements</h2>
 
 <ul>
 <li>iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+</li>
-<li>Xcode 8+</li>
-<li>Swift 3.1+</li>
+<li>Xcode 9</li>
+<li>Swift 4</li>
 </ul>
 <h2 id='installation' class='heading'>Installation</h2>
-<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+<h3 id='dependency-managers' class='heading'>Dependency Managers</h3>
 
-<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Cocoa projects. You can install it with the following command:</p>
-<pre class="highlight shell"><code><span class="nv">$ </span>gem <span class="nb">install </span>cocoapods
-</code></pre>
+<details>
+  <summary><strong>CocoaPods</strong></summary>
 
-<p>To integrate Restofire into your Xcode project using CocoaPods, specify it in your <code>Podfile</code>:</p>
-<pre class="highlight ruby"><code><span class="n">source</span> <span class="s1">'https://github.com/CocoaPods/Specs.git'</span>
-<span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
-<span class="n">use_frameworks!</span>
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
 
-<span class="n">pod</span> <span class="s1">'Restofire'</span><span class="p">,</span> <span class="s1">'~&gt; 3.0.0'</span>
-</code></pre>
+&ldquo;`bash
+$ gem install cocoapods
+&rdquo;`
 
-<p>Then, run the following command:</p>
-<pre class="highlight shell"><code><span class="nv">$ </span>pod <span class="nb">install</span>
-</code></pre>
-<h3 id='carthage' class='heading'>Carthage</h3>
+To integrate Restofire into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
-<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.</p>
+&ldquo;`ruby
+source &lsquo;https://github.com/CocoaPods/Specs.git&rsquo;
+platform :ios, &lsquo;8.0&rsquo;
+use_frameworks!
 
-<p>You can install Carthage with <a href="http://brew.sh/">Homebrew</a> using the following command:</p>
-<pre class="highlight shell"><code><span class="nv">$ </span>brew update
-<span class="nv">$ </span>brew <span class="nb">install </span>carthage
-</code></pre>
+pod &lsquo;Restofire&rsquo;, &lsquo;~> 3.0.0&rsquo;
+&rdquo;`
 
-<p>To integrate Restofire into your Xcode project using Carthage, specify it in your <code>Cartfile</code>:</p>
-<pre class="highlight plaintext"><code>github "Restofire/Restofire" ~&gt; 3.0.0
-</code></pre>
-<h3 id='swift-package-manager' class='heading'>Swift Package Manager</h3>
+Then, run the following command:
 
-<p>To use Restofire as a <a href="https://swift.org/package-manager/">Swift Package Manager</a> package just add the following in your Package.swift file.</p>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">PackageDescription</span>
+&ldquo;`bash
+$ pod install
+&rdquo;`
 
-<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="nf">Package</span><span class="p">(</span>
-    <span class="nv">name</span><span class="p">:</span> <span class="s">"HelloRestofire"</span><span class="p">,</span>
-    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
-        <span class="o">.</span><span class="nf">Package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Restofire/Restofire.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"3.0.0"</span><span class="p">))</span>
-    <span class="p">]</span>
-<span class="p">)</span>
-</code></pre>
+</details>
+
+<details>
+  <summary><strong>Carthage</strong></summary>
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that automates the process of adding frameworks to your Cocoa application.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+&ldquo;`bash
+$ brew update
+$ brew install carthage
+&rdquo;`
+
+To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+&ldquo;`ogdl
+github &quot;Restofire/Restofire&rdquo; ~> 3.0.0
+&ldquo;`
+
+</details>
+
+<details>
+  <summary><strong>Swift Package Manager</strong></summary>
+
+To use Restofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
+
+&rdquo;` swift
+import PackageDescription
+
+let package = Package(
+    name: &ldquo;HelloRestofire&rdquo;,
+    dependencies: [
+        .Package(url: &ldquo;https://github.com/Restofire/Restofire.git&rdquo;, .upToNextMajor(from: &ldquo;3.0.0&rdquo;))
+    ]
+)
+&ldquo;`
+</details>
 <h3 id='manually' class='heading'>Manually</h3>
 
 <p>If you prefer not to use either of the aforementioned dependency managers, you can integrate Restofire into your project manually.</p>
-<h4 id='git-submodules' class='heading'>Git Submodules</h4>
+
+<details>
+  <summary><strong>Git Submodules</strong></summary><p>
+
+- Open up Terminal, `cd` into your top-level project directory, and run the following command &quot;if&rdquo; your project is not initialized as a git repository:
+
+&ldquo;`bash
+$ git init
+&rdquo;`
+
+- Add Restofire as a git [submodule](http://git-scm.com/docs/git-submodule) by running the following command:
+
+&ldquo;`bash
+$ git submodule add https://github.com/Restofire/Restofire.git
+$ git submodule update &ndash;init &ndash;recursive
+&rdquo;`
+
+- Open the new `Restofire` folder, and drag the `Restofire.xcodeproj` into the Project Navigator of your application&rsquo;s Xcode project.
+
+    > It should appear nested underneath your application&rsquo;s blue project icon. Whether it is above or below all the other Xcode groups does not matter.
+
+- Select the `Restofire.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
+- Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the &ldquo;Targets&rdquo; heading in the sidebar.
+- In the tab bar at the top of that window, open the &ldquo;General&rdquo; panel.
+- Click on the `+` button under the &ldquo;Embedded Binaries&rdquo; section.
+- You will see two different `Restofire.xcodeproj` folders each with two different versions of the `Restofire.framework` nested inside a `Products` folder.
+
+    > It does not matter which `Products` folder you choose from.
+
+- Select the `Restofire.framework` & `Alamofire.framework`.
+
+- And that&rsquo;s it!
+
+> The `Restofire.framework` is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.
+
+</p></details>
+
+<details>
+  <summary><strong>Embeded Binaries</strong></summary><p>
+
+- Download the latest release from https://github.com/Restofire/Restofire/releases
+- Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the &ldquo;Targets&rdquo; heading in the sidebar.
+- In the tab bar at the top of that window, open the &ldquo;General&rdquo; panel.
+- Click on the `+` button under the &ldquo;Embedded Binaries&rdquo; section.
+- Add the downloaded `Restofire.framework` & `Alamofire.framework`.
+- And that&rsquo;s it!
+
+</p></details>
+<h2 id='architecture' class='heading'>Architecture</h2>
+<h3 id='two-layered-architecture' class='heading'>Two Layered Architecture</h3>
+
+<p><img src="Assets/architecture.jpeg" alt="Architecture"></p>
 
 <ul>
-<li>Open up Terminal, <code>cd</code> into your top-level project directory, and run the following command <q>if</q> your project is not initialized as a git repository:</li>
+<li><strong>Alamofire Layer</strong> — consists of protocols for Request, Download and Upload to construct the respective Alamofire.Request instance. All Alamofire Protocols have a prefix <code>A</code>.</li>
 </ul>
-<pre class="highlight shell"><code><span class="nv">$ </span>git init
-</code></pre>
-
-<ul>
-<li>Add Restofire as a git <a href="http://git-scm.com/docs/git-submodule">submodule</a> by running the following command:</li>
-</ul>
-<pre class="highlight shell"><code><span class="nv">$ </span>git submodule add https://github.com/Restofire/Restofire.git
-<span class="nv">$ </span>git submodule update <span class="nt">--init</span> <span class="nt">--recursive</span>
-</code></pre>
-
-<ul>
-<li><p>Open the new <code>Restofire</code> folder, and drag the <code>Restofire.xcodeproj</code> into the Project Navigator of your application&rsquo;s Xcode project.</p>
-
-<blockquote>
-<p>It should appear nested underneath your application&rsquo;s blue project icon. Whether it is above or below all the other Xcode groups does not matter.</p>
-</blockquote></li>
-<li><p>Select the <code>Restofire.xcodeproj</code> in the Project Navigator and verify the deployment target matches that of your application target.</p></li>
-<li><p>Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the <q>Targets</q> heading in the sidebar.</p></li>
-<li><p>In the tab bar at the top of that window, open the <q>General</q> panel.</p></li>
-<li><p>Click on the <code>+</code> button under the <q>Embedded Binaries</q> section.</p></li>
-<li><p>You will see two different <code>Restofire.xcodeproj</code> folders each with two different versions of the <code>Restofire.framework</code> nested inside a <code>Products</code> folder.</p>
-
-<blockquote>
-<p>It does not matter which <code>Products</code> folder you choose from.</p>
-</blockquote></li>
-<li><p>Select the <code>Restofire.framework</code> &amp; <code>Alamofire.framework</code>.</p></li>
-<li><p>And that&rsquo;s it!</p></li>
-</ul>
-
-<blockquote>
-<p>The <code>Restofire.framework</code> is automagically added as a target dependency, linked framework and embedded framework in a copy files build phase which is all you need to build on the simulator and a device.</p>
-</blockquote>
-<h4 id='embeded-binaries' class='heading'>Embeded Binaries</h4>
-
-<ul>
-<li>Download the latest release from <a href="https://github.com/Restofire/Restofire/releases">https://github.com/Restofire/Restofire/releases</a></li>
-<li>Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the <q>Targets</q> heading in the sidebar.</li>
-<li>In the tab bar at the top of that window, open the <q>General</q> panel.</li>
-<li>Click on the <code>+</code> button under the <q>Embedded Binaries</q> section.</li>
-<li>Add the downloaded <code>Restofire.framework</code> &amp; <code>Alamofire.framework</code>.</li>
-<li>And that&rsquo;s it!</li>
-</ul>
-
-<hr>
-<h2 id='usage' class='heading'>Usage</h2>
-<h3 id='global-configuration' class='heading'>Global Configuration</h3>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
-
-<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIResponder</span><span class="p">,</span> <span class="nf">UIApplicationDelegate</span> <span class="p">{</span>
-
-    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="nf">Bool</span> <span class="p">{</span>
-        <span class="c1">// Override point for customization after application launch.</span>
-
-        <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"httpbin.org"</span>
-
-        <span class="k">return</span> <span class="kc">true</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
-<h3 id='restofire-with-jsondecodable-response-serializer' class='heading'>Restofire with JSONDecodable Response Serializer</h3>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
-
-<span class="kd">extension</span> <span class="kt">Restofire</span><span class="o">.</span><span class="kt">DataResponseSerializable</span> <span class="k">where</span> <span class="kt">Response</span><span class="p">:</span> <span class="nf">Decodable</span> <span class="p">{</span>
-
-    <span class="kd">public</span> <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kt">DataRequest</span><span class="o">.</span><span class="nf">JSONDecodableResponseSerializer</span><span class="p">()</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-
-<span class="kd">extension</span> <span class="kt">Restofire</span><span class="o">.</span><span class="kt">DownloadResponseSerializable</span> <span class="k">where</span> <span class="kt">Response</span><span class="p">:</span> <span class="nf">Decodable</span> <span class="p">{</span>
-
-    <span class="kd">public</span> <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">DownloadResponseSerializer</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kt">DownloadRequest</span><span class="o">.</span><span class="nf">JSONDecodableResponseSerializer</span><span class="p">()</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
-<h3 id='creating-a-service' class='heading'>Creating a Service</h3>
-<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
-
-<span class="kd">struct</span> <span class="kt">HTTPBin</span><span class="p">:</span> <span class="nf">Decodable</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span>
-<span class="p">}</span>
-
-<span class="kd">struct</span> <span class="kt">HTTPBinGETService</span><span class="p">:</span> <span class="nf">Requestable</span> <span class="p">{</span>
-
-    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="kt">HTTPBin</span>
-    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"get"</span>
-
-    <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DataRequest</span><span class="p">,</span> <span class="n">didCompleteWithValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">HTTPBin</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// Use this place to store your output to a cache.</span>
-        <span class="nf">print</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">absoluteString</span><span class="p">)</span> <span class="c1">// "https://httpbin.org/get"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<h3 id='group-level-configuration' class='heading'>Group Level Configuration</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">MockyConfigurable</span><span class="p">:</span> <span class="nf">Configurable</span> <span class="p">{}</span>
-
-<span class="kd">extension</span> <span class="nf">MockyConfigurable</span> <span class="p">{</span>
-
-    <span class="kd">public</span> <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Restofire</span><span class="o">.</span><span class="nf">Configuration</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nv">mockyConfiguration</span> <span class="o">=</span> <span class="kt">Restofire</span><span class="o">.</span><span class="nf">Configuration</span><span class="p">()</span>
-        <span class="n">mockyConfiguration</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s">"http://"</span>
-        <span class="n">mockyConfiguration</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"mocky.io"</span>
-        <span class="n">mockyConfiguration</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">"v2"</span>
-        <span class="k">return</span> <span class="n">mockyConfiguration</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-
-<span class="kd">protocol</span> <span class="kt">MockyValidatable</span><span class="p">:</span> <span class="nf">Validatable</span> <span class="p">{</span> <span class="p">}</span>
-
-<span class="kd">extension</span> <span class="nf">MockyValidatable</span> <span class="p">{</span>
-
-    <span class="k">var</span> <span class="nv">validation</span><span class="p">:</span> <span class="nf">Validation</span> <span class="p">{</span>
-        <span class="k">var</span> <span class="nv">validation</span> <span class="o">=</span> <span class="nf">Validation</span><span class="p">()</span>
-        <span class="n">validation</span><span class="o">.</span><span class="n">acceptableStatusCodes</span> <span class="o">=</span> <span class="nf">Array</span><span class="p">(</span><span class="mi">200</span><span class="o">..&lt;</span><span class="mi">300</span><span class="p">)</span>
-        <span class="n">validation</span><span class="o">.</span><span class="n">acceptableContentTypes</span> <span class="o">=</span> <span class="p">[</span><span class="s">"application/json"</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">validation</span>
-    <span class="p">}</span>
-
-<span class="p">}</span>
-
-<span class="kd">protocol</span> <span class="kt">MockyRequestable</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">MockyConfigurable</span><span class="p">,</span> <span class="nf">MockyValidatable</span> <span class="p">{}</span>
-</code></pre>
-<h3 id='creating-the-service' class='heading'>Creating the Service</h3>
 <pre class="highlight swift"><code>
-<span class="kd">import</span> <span class="kt">Restofire</span>
+<span class="c1">/// Alamofire</span>
+<span class="kt">Alamofire</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="s">"https://httpbin.org/get"</span><span class="p">)</span><span class="o">.</span><span class="n">responseJSON</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Alamofire: -"</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">value</span> <span class="p">??</span> <span class="s">"nil"</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span class="kd">struct</span> <span class="kt">MockyGETService</span><span class="p">:</span> <span class="nf">MockyRequestable</span> <span class="p">{</span>
+<span class="c1">/// Using Restofire as an API Client on top of Alamofire</span>
+<span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"httpbin.org"</span>
 
-    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="kt">Any</span>
-    <span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"get"</span>
-    <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
+<span class="kd">struct</span> <span class="kt">GetService</span><span class="p">:</span> <span class="kt">ARequestable</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"get"</span>
+<span class="p">}</span>
 
-    <span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
-        <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
+<span class="kt">GetService</span><span class="p">()</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">responseJSON</span> <span class="p">{</span> <span class="n">response</span> <span class="k">in</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Restofire: -"</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">value</span> <span class="p">??</span> <span class="s">"nil"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+
+<ul>
+<li><strong>Restofire Layer</strong> — consists of protocols for Request, Download and Upload to construct the respective RequestOperation instance from the Alamofire.Request and support features like AutoRetry, WaitForConnectivity, Automatic ResponseSerialization from associatedType etc.</li>
+</ul>
+<h3 id='configurations' class='heading'>Configurations</h3>
+<h4 id='three-levels-of-configuration' class='heading'>Three levels of configuration</h4>
+
+<ul>
+<li><strong>Global Configuration</strong> – The global configuration will be applied to all the requests. These include values like scheme, host, version, headers, sessionManager, callbackQueue, maxRetryCount, waitsForConnectivity etc.</li>
+</ul>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSObject</span><span class="p">:</span> <span class="kt">AnyObject</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+
+    <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"httpbin.org"</span>
+    <span class="kt">Restofire</span><span class="o">.</span><span class="kt">Retry</span><span class="o">.</span><span class="k">default</span><span class="o">.</span><span class="n">retryErrorCodes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">requestTimedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre>
+
+<ul>
+<li><strong>Group Configuration</strong> – The group configuration inherits all the values from the global configuration. It can be used to group requests that have same behaviour but are different from the global configuration. For instance, If you have more than one host or if your global configuration has default url session and some requests require you to use ephemeral URL session.</li>
+</ul>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+
+<span class="kd">protocol</span> <span class="kt">NYConfigurable</span><span class="p">:</span> <span class="kt">Configurable</span> <span class="p">{}</span>
+
+<span class="kd">extension</span> <span class="kt">NYConfigurable</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Configuration</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="o">.</span><span class="k">default</span>
+        <span class="n">configuration</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s">"http://"</span>
+        <span class="n">configuration</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"api.nytimes.com/svc/movies"</span>
+        <span class="n">configuration</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s">"v2"</span>
+        <span class="k">return</span> <span class="n">configuration</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
+
+<span class="kd">protocol</span> <span class="kt">NYRequestable</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">NYConfigurable</span> <span class="p">{}</span>
 </code></pre>
-<h3 id='request-level-configuration' class='heading'>Request Level Configuration</h3>
+
+<ul>
+<li><strong>Per Request Configuration</strong> – The request configuration inherits all the values from the group configuration or directly from the global configuration.</li>
+</ul>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
-<span class="kd">struct</span> <span class="kt">MoviesReviewGETService</span><span class="p">:</span> <span class="nf">Requestable</span> <span class="p">{</span>
+<span class="kd">struct</span> <span class="kt">MoviesReviewGETService</span><span class="p">:</span> <span class="kt">NYRequestable</span> <span class="p">{</span>
 
-    <span class="k">var</span> <span class="nv">scheme</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"http://"</span>
-    <span class="k">var</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"api.nytimes.com/svc/movies"</span>
-    <span class="k">var</span> <span class="nv">version</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"v2"</span>
-    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"reviews"</span>
+    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="p">[</span><span class="kt">MovieReview</span><span class="p">]</span>
+    <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span>
     <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
-    <span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?</span> <span class="o">=</span> <span class="kt">DispatchQueue</span><span class="o">.</span><span class="n">main</span>
-    <span class="k">var</span> <span class="nv">credential</span><span class="p">:</span> <span class="kt">URLCredential</span><span class="p">?</span> <span class="o">=</span> <span class="nf">URLCredential</span><span class="p">(</span><span class="nv">user</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"password"</span><span class="p">,</span> <span class="nv">persistence</span><span class="p">:</span> <span class="o">.</span><span class="n">forSession</span><span class="p">)</span>
-    <span class="k">var</span> <span class="nv">retryErrorCodes</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">URLError</span><span class="o">.</span><span class="kt">Code</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">timedOut</span><span class="p">,</span><span class="o">.</span><span class="n">networkConnectionLost</span><span class="p">]</span>
 
     <span class="nf">init</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">self</span><span class="o">.</span><span class="n">path</span> <span class="o">+=</span> <span class="n">path</span>
@@ -435,29 +429,100 @@
 
 <span class="p">}</span>
 </code></pre>
-<h3 id='consuming-the-service' class='heading'>Consuming the Service</h3>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='making-a-request' class='heading'>Making a Request</h3>
+
+<p><code><a href="Protocols/Requestable.html">Requestable</a></code> gives completion handler to enable making requests and receive response.</p>
 <pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
 
-<span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="nf">UIViewController</span> <span class="p">{</span>
+<span class="kd">class</span> <span class="kt">ViewController</span><span class="p">:</span> <span class="kt">UITableViewController</span> <span class="p">{</span>
 
-    <span class="k">var</span> <span class="nv">person</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span><span class="o">!</span>
-    <span class="k">var</span> <span class="nv">requestOp</span><span class="p">:</span> <span class="kt">RequestOperation</span><span class="o">&lt;</span><span class="kt">HTTPBinPersonGETService</span><span class="o">&gt;!</span>
+    <span class="k">var</span> <span class="nv">movieReviews</span><span class="p">:</span> <span class="p">[</span><span class="kt">MovieReview</span><span class="p">]</span><span class="o">!</span>
+    <span class="k">var</span> <span class="nv">requestOp</span><span class="p">:</span> <span class="kt">RequestOperation</span><span class="o">&lt;</span><span class="kt">MoviesReviewGETService</span><span class="o">&gt;!</span>
 
-    <span class="kd">func</span> <span class="nf">getPerson</span><span class="p">()</span> <span class="p">{</span>
-        <span class="n">requestOp</span> <span class="o">=</span> <span class="nf">MockyGETService</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Rahul Katariya"</span><span class="p">])</span>
-            <span class="o">.</span><span class="nf">response</span><span class="p">()</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nv">$0</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="nf">value</span> <span class="p">{</span>
-                <span class="k">self</span><span class="o">.</span><span class="n">person</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="kd">func</span> <span class="nf">getReviews</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">requestOp</span> <span class="o">=</span> <span class="kt">MoviesReviewGETService</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Rahul Katariya"</span><span class="p">])</span><span class="o">.</span><span class="nf">response</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="nv">$0</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">value</span> <span class="p">{</span>
+                <span class="k">self</span><span class="o">.</span><span class="n">movieReviews</span> <span class="o">=</span> <span class="n">value</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
-    <span class="nf">deinit</span> <span class="p">{</span>
+    <span class="kd">deinit</span> <span class="p">{</span>
         <span class="n">requestOp</span><span class="o">.</span><span class="nf">cancel</span><span class="p">()</span>
     <span class="p">}</span>
 
 <span class="p">}</span>
 </code></pre>
+<h3 id='isolating-network-requests-from-uiviewcontrollers' class='heading'>Isolating Network Requests from UIViewControllers</h3>
+
+<p><code><a href="Protocols/Requestable.html">Requestable</a></code> gives delegate methods to enable making requests from anywhere which you can use to store data in your cache.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+
+<span class="kd">struct</span> <span class="kt">MoviesReviewGETService</span><span class="p">:</span> <span class="kt">NYRequestable</span> <span class="p">{</span>
+
+    <span class="o">...</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">loadMoviews</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kt">MoviesReviewGETService</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">"name"</span><span class="p">:</span> <span class="s">"Rahul Katariya"</span><span class="p">])</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DataRequest</span><span class="p">,</span> <span class="n">didCompleteWithValue</span> <span class="nv">value</span><span class="p">:</span> <span class="p">[</span><span class="kt">MovieReview</span><span class="p">])</span> <span class="p">{</span>
+      <span class="c1">// Here you can store the results into your cache and then listen for changes inside your view controller.</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+<h3 id='custom-response-serializers' class='heading'>Custom Response Serializers</h3>
+
+<ul>
+<li><strong>Decodable</strong></li>
+</ul>
+
+<p>By adding the following snippet in your project, All <code><a href="Protocols/Requestable.html">Requestable</a></code> associatedType Response as <code>Decodable</code> will be decoded with JSONDecoder.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+
+<span class="kd">extension</span> <span class="kt">Restofire</span><span class="o">.</span><span class="kt">DataResponseSerializable</span> <span class="k">where</span> <span class="kt">Response</span><span class="p">:</span> <span class="kt">Decodable</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">DataRequest</span><span class="o">.</span><span class="kt">JSONDecodableResponseSerializer</span><span class="p">()</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<ul>
+<li><strong>JSON</strong></li>
+</ul>
+
+<p>By adding the following snippet in your project, All <code><a href="Protocols/Requestable.html">Requestable</a></code> associatedType Response as <code>Any</code> will be decoded with NSJSONSerialization.</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Restofire</span>
+
+<span class="kd">extension</span> <span class="kt">Restofire</span><span class="o">.</span><span class="kt">DataResponseSerializable</span> <span class="k">where</span> <span class="kt">Response</span> <span class="o">==</span> <span class="kt">Any</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="kt">DataRequest</span><span class="o">.</span><span class="nf">jsonResponseSerializer</span><span class="p">()</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+<h3 id='wait-for-internet-connectivity' class='heading'>Wait for Internet Connectivity</h3>
+
+<p><code><a href="Protocols/Requestable.html">Requestable</a></code> gives you a property waitsForConnectivity which can be set to true. This will make the first request regardless of the internet connectivity. If the request fails due to .notConnectedToInternet, it will retry the request when internet connection is established.</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">PushTokenPutService</span><span class="p">:</span> <span class="kt">Requestable</span> <span class="p">{</span>
+
+    <span class="kd">typealias</span> <span class="kt">Response</span> <span class="o">=</span> <span class="kt">Data</span>
+    <span class="o">...</span>
+    <span class="k">var</span> <span class="nv">waitsForConnectivity</span><span class="p">:</span> <span class="kt">Bool</span> <span class="o">=</span> <span class="kc">true</span>
+
+<span class="p">}</span>
+</code></pre>
+<h1 id='contributing' class='heading'>Contributing</h1>
+
+<p>Issues and pull requests are welcome!</p>
+<h1 id='author' class='heading'>Author</h1>
+
+<p>Rahul Katariya <a href="https://twitter.com/rahulkatariya91">@rahulkatariya91</a></p>
 <h2 id='license' class='heading'>License</h2>
 
 <p>Restofire is released under the MIT license. See <a href="https://github.com/Restofire/Restofire/blob/master/LICENSE">LICENSE</a> for details.</p>
@@ -465,7 +530,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

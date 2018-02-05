@@ -98,7 +98,7 @@
                 <a href="../Protocols/DataResponseSerializable.html">DataResponseSerializable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/DataUploadable.html">DataUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire14DataUploadableP">DataUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/DownloadResponseSerializable.html">DownloadResponseSerializable</a>
@@ -107,7 +107,7 @@
                 <a href="../Protocols/Downloadable.html">Downloadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/FileUploadable.html">FileUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
@@ -119,6 +119,9 @@
                 <a href="../Protocols/Reachable.html">Reachable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/RequestDelegate.html">RequestDelegate</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Requestable.html">Requestable</a>
               </li>
               <li class="nav-group-task">
@@ -128,7 +131,7 @@
                 <a href="../Protocols/SessionManagable.html">SessionManagable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/StreamUploadable.html">StreamUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire16StreamUploadableP">StreamUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Uploadable.html">Uploadable</a>
@@ -144,6 +147,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/_Requestable.html">_Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
               </li>
             </ul>
           </li>
@@ -184,7 +190,7 @@
               </div>
             <p>Represents a <code>MultipartUploadable</code> for Restofire.</p>
 <h3 id='create-custom-multipartuploadable' class='heading'>Create custom MultipartUploadable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="nf">MultipartUploadable</span> <span class="p">{</span>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="kt">MultipartUploadable</span> <span class="p">{</span>
 
     <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="o">=</span> <span class="s">"post"</span>
     <span class="k">var</span> <span class="nv">multipartFormData</span><span class="p">:</span> <span class="p">(</span><span class="kt">MultipartFormData</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span> <span class="o">=</span> <span class="p">{</span> <span class="n">multipartFormData</span> <span class="k">in</span>
@@ -199,6 +205,37 @@
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire19MultipartUploadablePAAE8responseAA15UploadOperationCyxGy9Alamofire12DataResponseVy0I0QzGcSgF"></a>
+                    <a name="//apple_ref/swift/Method/response(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire19MultipartUploadablePAAE8responseAA15UploadOperationCyxGy9Alamofire12DataResponseVy0I0QzGcSgF">response(_:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Use response(request: UploadRequest, completionHandler:
+((DataResponse<Response>) -&gt; Void)? = nil) method for MultipartUpload instead</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">response</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">DataResponse</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadOperation.html">UploadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -271,7 +308,7 @@ asynchronously executes it.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-01-31)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

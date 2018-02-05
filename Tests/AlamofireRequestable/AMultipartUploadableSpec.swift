@@ -31,7 +31,16 @@ class AMultipartUploadableSpec: BaseSpec {
                         multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
                     }
                     
+                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                        var request = request
+                        let header = Request.authorizationHeader(user: "user", password: "password")!
+                        request.setValue(header.value, forHTTPHeaderField: header.key)
+                        return request
+                    }
+                    
                     func didSend(_ request: Request, requestable: AConfigurable) {
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
+                            .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AMultipartUploadableSpec.startDelegateCalled = true
                     }
                     

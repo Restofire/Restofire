@@ -25,7 +25,7 @@ public protocol RequestDelegate {
 extension RequestDelegate {
     
     /// `No-op`
-    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+    public func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
         return request
     }
     

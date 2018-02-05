@@ -43,7 +43,7 @@ public struct Configuration {
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String] = [:]
     
-    /// The request parameter encoding. `.JSON` by default.
+    /// The request delegates. `empty` by default.
     public var requestDelegates: [RequestDelegate] = []
     
     /// `Configuration` Intializer

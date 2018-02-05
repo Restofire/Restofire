@@ -14,6 +14,9 @@ import Alamofire
 
 class AFileUploadableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
+    static var completeDelegateCalled = false
+    
     override func spec() {
         describe("AFileUpload") {
             
@@ -22,9 +25,22 @@ class AFileUploadableSpec: BaseSpec {
                 struct Upload: AFileUploadable {
                     var path: String? = "post"
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
+                    
+                    func didStart(_ request: Request) {
+                        AFileUploadableSpec.startDelegateCalled = true
+                    }
+                    
+                    func didComplete(_ request: Request) {
+                        AFileUploadableSpec.completeDelegateCalled = true
+                    }
+                    
                 }
                 
                 let request = Upload().request
+                print(request.debugDescription)
+                
+                expect(AFileUploadableSpec.startDelegateCalled).to(beTrue())
+                
                 var uploadProgressValues: [Double] = []
                 var downloadProgressValues: [Double] = []
                 
@@ -41,6 +57,8 @@ class AFileUploadableSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
+                            expect(AFileUploadableSpec.completeDelegateCalled).to(beTrue())
+                            
                             if let statusCode = response.response?.statusCode,
                                 statusCode != 200 {
                                 fail("Response status code should be 200")
@@ -68,7 +86,7 @@ class AFileUploadableSpec: BaseSpec {
                             if let lastUploadProgressValue = uploadProgressValues.last {
                                 expect(lastUploadProgressValue).to(equal(1.0))
                             } else {
-                                fail("last item in progressValues should not be nil")
+                                fail("last item in uploadProgressValues should not be nil")
                             }
                             
                             var previousDownloadProgress: Double = downloadProgressValues.first ?? 0.0
@@ -81,7 +99,7 @@ class AFileUploadableSpec: BaseSpec {
                             if let lastDownloadProgressValue = downloadProgressValues.last {
                                 expect(lastDownloadProgressValue).to(equal(1.0))
                             } else {
-                                fail("last item in progressValues should not be nil")
+                                fail("last item in downloadProgressValues should not be nil")
                             }
                     }
                 }

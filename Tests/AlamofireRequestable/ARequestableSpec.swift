@@ -14,6 +14,9 @@ import Alamofire
 
 class ARequestableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
+    static var completeDelegateCalled = false
+    
     override func spec() {
         describe("ARequestable") {
             
@@ -21,10 +24,22 @@ class ARequestableSpec: BaseSpec {
                 // Given
                 struct Service: ARequestable {
                     var path: String? = "get"
+                    
+                    func didStart(_ request: Request) {
+                        ARequestableSpec.startDelegateCalled = true
+                    }
+                    
+                    func didComplete(_ request: Request) {
+                        ARequestableSpec.completeDelegateCalled = true
+                    }
+                    
                 }
                 
                 let request = Service().request
                 print(request.debugDescription)
+                
+                expect(ARequestableSpec.startDelegateCalled).to(beTrue())
+                
                 var progressValues: [Double] = []
                 
                 // When
@@ -35,6 +50,8 @@ class ARequestableSpec: BaseSpec {
                         }
                         .responseJSON { response in
                             defer { done() }
+                            
+                            expect(ARequestableSpec.completeDelegateCalled).to(beTrue())
                             
                             // Then
                             if let statusCode = response.response?.statusCode,

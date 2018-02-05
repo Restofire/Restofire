@@ -109,7 +109,7 @@ class MultipartUploadableSpec: BaseSpec {
                                 if let lastUploadProgressValue = MultipartUploadableSpec.uploadProgressValues.last {
                                     expect(lastUploadProgressValue).to(equal(1.0))
                                 } else {
-                                    fail("last item in progressValues should not be nil")
+                                    fail("last item in uploadProgressValues should not be nil")
                                 }
                                 
                                 var previousDownloadProgress: Double = MultipartUploadableSpec.downloadProgressValues.first ?? 0.0
@@ -122,7 +122,7 @@ class MultipartUploadableSpec: BaseSpec {
                                 if let lastDownloadProgressValue = MultipartUploadableSpec.downloadProgressValues.last {
                                     expect(lastDownloadProgressValue).to(equal(1.0))
                                 } else {
-                                    fail("last item in progressValues should not be nil")
+                                    fail("last item in downloadProgressValues should not be nil")
                                 }
                                 
                                 done()

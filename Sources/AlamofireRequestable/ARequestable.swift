@@ -31,6 +31,7 @@ public extension ARequestable {
     public var validationBlock: DataRequest.Validation? {
         return validation.dataValidation
     }
+    
 }
 
 public extension ARequestable {

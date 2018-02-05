@@ -85,7 +85,7 @@ class DataUploadableSpec: BaseSpec {
                         if let lastUploadProgressValue = DataUploadableSpec.uploadProgressValues.last {
                             expect(lastUploadProgressValue).to(equal(1.0))
                         } else {
-                            fail("last item in progressValues should not be nil")
+                            fail("last item in uploadProgressValues should not be nil")
                         }
                         
                         var previousDownloadProgress: Double = DataUploadableSpec.downloadProgressValues.first ?? 0.0
@@ -98,7 +98,7 @@ class DataUploadableSpec: BaseSpec {
                         if let lastDownloadProgressValue = DataUploadableSpec.downloadProgressValues.last {
                             expect(lastDownloadProgressValue).to(equal(1.0))
                         } else {
-                            fail("last item in progressValues should not be nil")
+                            fail("last item in downloadProgressValues should not be nil")
                         }
                         
                         done()

@@ -14,6 +14,9 @@ import Alamofire
 
 class ADownloadableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
+    static var completeDelegateCalled = false
+    
     override func spec() {
         describe("Download") {
             
@@ -26,10 +29,22 @@ class ADownloadableSpec: BaseSpec {
                     init(destination: @escaping DownloadFileDestination) {
                         self.destination = destination
                     }
+                    
+                    func didStart(_ request: Request) {
+                        ADownloadableSpec.startDelegateCalled = true
+                    }
+                    
+                    func didComplete(_ request: Request) {
+                        ADownloadableSpec.completeDelegateCalled = true
+                    }
+                    
                 }
                 
                 let request = Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).request()
                 print(request.debugDescription)
+                
+                expect(ADownloadableSpec.startDelegateCalled).to(beTrue())
+                
                 var progressValues: [Double] = []
                 
                 // When
@@ -42,6 +57,8 @@ class ADownloadableSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
+                            expect(ADownloadableSpec.completeDelegateCalled).to(beTrue())
+                            
                             if let statusCode = response.response?.statusCode,
                                 statusCode != 200 {
                                 fail("Response status code should be 200")

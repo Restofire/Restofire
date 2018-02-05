@@ -14,6 +14,9 @@ import Alamofire
 
 class AMultipartUploadableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
+    static var completeDelegateCalled = false
+    
     override func spec() {
         describe("AMultipartUpload") {
             
@@ -27,6 +30,15 @@ class AMultipartUploadableSpec: BaseSpec {
                         multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "jpg"), withName: "image")
                         multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
                     }
+                    
+                    func didStart(_ request: Request) {
+                        AMultipartUploadableSpec.startDelegateCalled = true
+                    }
+                    
+                    func didComplete(_ request: Request) {
+                        AMultipartUploadableSpec.completeDelegateCalled = true
+                    }
+                    
                 }
                 
                 // When
@@ -36,6 +48,9 @@ class AMultipartUploadableSpec: BaseSpec {
                         case .success(let upload, _, _):
                             
                             print(upload.debugDescription)
+                            
+                            expect(AMultipartUploadableSpec.startDelegateCalled).to(beTrue())
+                            
                             var uploadProgressValues: [Double] = []
                             var downloadProgressValues: [Double] = []
                             
@@ -50,6 +65,8 @@ class AMultipartUploadableSpec: BaseSpec {
                                     defer { done() }
                                     
                                     // Then
+                                    expect(AMultipartUploadableSpec.completeDelegateCalled).to(beTrue())
+                                    
                                     if let statusCode = response.response?.statusCode,
                                         statusCode != 200 {
                                         fail("Response status code should be 200")
@@ -80,7 +97,7 @@ class AMultipartUploadableSpec: BaseSpec {
                                     if let lastUploadProgressValue = uploadProgressValues.last {
                                         expect(lastUploadProgressValue).to(equal(1.0))
                                     } else {
-                                        fail("last item in progressValues should not be nil")
+                                        fail("last item in uploadProgressValues should not be nil")
                                     }
                                     
                                     var previousDownloadProgress: Double = downloadProgressValues.first ?? 0.0
@@ -93,7 +110,7 @@ class AMultipartUploadableSpec: BaseSpec {
                                     if let lastDownloadProgressValue = downloadProgressValues.last {
                                         expect(lastDownloadProgressValue).to(equal(1.0))
                                     } else {
-                                        fail("last item in progressValues should not be nil")
+                                        fail("last item in downloadProgressValues should not be nil")
                                     }
                             }
                         case .failure(let error):

@@ -25,7 +25,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, Validatable {
+public protocol AConfigurable: _Configurable, Authenticable, RequestDelegate, SessionManagable, Validatable {
     
     /// The Alamofire Session Manager.
     var sessionManager: SessionManager { get }
@@ -63,6 +63,6 @@ public extension AConfigurable {
     public var acceptableContentTypes: [String]? {
         return validation.acceptableContentTypes
     }
-    
+
 }
 

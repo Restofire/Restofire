@@ -31,11 +31,11 @@ class AMultipartUploadableSpec: BaseSpec {
                         multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
                     }
                     
-                    func didStart(_ request: Request) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         AMultipartUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request) {
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
                         AMultipartUploadableSpec.completeDelegateCalled = true
                     }
                     

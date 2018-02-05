@@ -26,11 +26,11 @@ class AStreamUploadableSpec: BaseSpec {
                     var path: String? = "post"
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                     
-                    func didStart(_ request: Request) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         AStreamUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request) {
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
                         AStreamUploadableSpec.completeDelegateCalled = true
                     }
                     

@@ -26,11 +26,11 @@ class AFileUploadableSpec: BaseSpec {
                     var path: String? = "post"
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                     
-                    func didStart(_ request: Request) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         AFileUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request) {
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
                         AFileUploadableSpec.completeDelegateCalled = true
                     }
                     

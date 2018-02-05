@@ -30,11 +30,11 @@ class ADownloadableSpec: BaseSpec {
                         self.destination = destination
                     }
                     
-                    func didStart(_ request: Request) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         ADownloadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request) {
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
                         ADownloadableSpec.completeDelegateCalled = true
                     }
                     

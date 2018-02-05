@@ -28,11 +28,11 @@ class ADataUploadableSpec: BaseSpec {
                         return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
                     }()
                     
-                    func didStart(_ request: Request) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         ADataUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request) {
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
                         ADataUploadableSpec.completeDelegateCalled = true
                     }
                     

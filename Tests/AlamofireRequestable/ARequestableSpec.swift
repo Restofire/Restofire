@@ -25,11 +25,11 @@ class ARequestableSpec: BaseSpec {
                 struct Service: ARequestable {
                     var path: String? = "get"
                     
-                    func didStart(_ request: Request) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         ARequestableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request) {
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
                         ARequestableSpec.completeDelegateCalled = true
                     }
                     

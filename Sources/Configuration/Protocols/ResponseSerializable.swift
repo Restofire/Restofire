@@ -8,12 +8,37 @@
 
 import Foundation
 
-/// Represents a `Alamofire.DataResponseSerializer` that is associated with `Requestable`.
-public protocol DataResponseSerializable {
+public protocol _ResponseSerializable {
     
+    /// The response type.
     associatedtype Response
     
-    /// `The responseSerializer`
+    /// The keypath.
+    var keypath: String? { get }
+    
+    /// context.
+    var context: [String: Any]? { get }
+    
+}
+
+extension _ResponseSerializable {
+    
+    /// `nil`
+    public var keypath: String? {
+        return nil
+    }
+    
+    /// `nil`
+    public var context: [String: Any]? {
+        return nil
+    }
+    
+}
+
+/// Represents a `Alamofire.DataResponseSerializer` that is associated with `Requestable`.
+public protocol DataResponseSerializable: _ResponseSerializable {
+    
+    /// The data response serializer.
     var responseSerializer: DataResponseSerializer<Response> { get }
     
 }
@@ -28,11 +53,9 @@ public extension DataResponseSerializable where Response == Data {
 }
 
 /// Represents a `Alamofire.DownloadResponseSerializer` that is associated with `Downloadable`.
-public protocol DownloadResponseSerializable {
+public protocol DownloadResponseSerializable: _ResponseSerializable {
     
-    associatedtype Response
-    
-    /// `responseSerializer`
+    /// The download response serializer.
     var responseSerializer: DownloadResponseSerializer<Response> { get }
     
 }

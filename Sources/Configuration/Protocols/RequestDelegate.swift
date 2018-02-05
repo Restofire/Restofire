@@ -11,28 +11,28 @@ import Foundation
 /// Represents a `RequestDelegate` that is associated with `Requestable`.
 public protocol RequestDelegate {
     
-    /// The request delegates
-    var delegates: [RequestDelegate]? { get }
+    /// Called to modify a request before sending.
+    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest
     
-    /// A delegate method called when the request is created.
-    func didStart(_ request: Request)
+    /// Called when the request is sent over the network.
+    func didSend(_ request: Request, requestable: AConfigurable)
     
-    /// A delegate method called when the request is completed.
-    func didComplete(_ request: Request)
+    /// Called when the request is completed.
+    func didComplete(_ request: Request, requestable: AConfigurable)
     
 }
 
 extension RequestDelegate {
     
-    /// `nil`
-    public var delegates: [RequestDelegate]? {
-        return nil
+    /// `No-op`
+    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+        return request
     }
     
-    /// `Noop`
-    public func didStart(_ request: Request) {}
+    /// `No-op`
+    public func didSend(_ request: Request, requestable: AConfigurable) {}
     
-    /// `Noop`
-    public func didComplete(_ request: Request) {}
+    /// `No-op`
+    public func didComplete(_ request: Request, requestable: AConfigurable) {}
     
 }

@@ -36,25 +36,33 @@ public protocol AConfigurable: _Configurable, Authenticable, RequestDelegate, Se
     /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
     
+    /// The request delegates.
+    var delegates: [RequestDelegate] { get }
+    
 }
 
 // MARK: - Default Implementation
 public extension AConfigurable {
 
-    /// `Authentication.default.credential`
+    /// `nil`
     public var credential: URLCredential? {
         return authentication.credential
     }
     
-    /// `Validation.default.acceptableStatusCodes`
+    /// `nil`
     public var acceptableStatusCodes: [Int]? {
         return validation.acceptableStatusCodes
     }
     
-    /// `Validation.default.acceptableContentTypes`
+    /// `nil`
     public var acceptableContentTypes: [String]? {
         return validation.acceptableContentTypes
     }
 
+    /// `empty`
+    public var delegates: [RequestDelegate] {
+        return configuration.requestDelegates
+    }
+    
 }
 

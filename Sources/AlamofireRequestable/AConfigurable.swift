@@ -25,10 +25,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, Validatable {
-    
-    /// The Alamofire Session Manager.
-    var sessionManager: SessionManager { get }
+public protocol AConfigurable: _Configurable, Authenticable, RequestDelegate, SessionManagable, Validatable {
     
     /// The credential.
     var credential: URLCredential? { get }
@@ -39,29 +36,32 @@ public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, V
     /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
     
+    /// The request delegates.
+    var delegates: [RequestDelegate] { get }
+    
 }
 
 // MARK: - Default Implementation
 public extension AConfigurable {
-    
-    /// `Session.default.sessionManager`
-    public var sessionManager: SessionManager {
-        return _sessionManager
-    }
-    
-    /// `Authentication.default.credential`
+
+    /// `nil`
     public var credential: URLCredential? {
         return authentication.credential
     }
     
-    /// `Validation.default.acceptableStatusCodes`
+    /// `nil`
     public var acceptableStatusCodes: [Int]? {
         return validation.acceptableStatusCodes
     }
     
-    /// `Validation.default.acceptableContentTypes`
+    /// `nil`
     public var acceptableContentTypes: [String]? {
         return validation.acceptableContentTypes
+    }
+
+    /// `empty`
+    public var delegates: [RequestDelegate] {
+        return configuration.requestDelegates
     }
     
 }

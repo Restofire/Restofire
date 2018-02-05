@@ -14,6 +14,9 @@ import Alamofire
 
 class ARequestableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
+    static var completeDelegateCalled = false
+    
     override func spec() {
         describe("ARequestable") {
             
@@ -21,10 +24,31 @@ class ARequestableSpec: BaseSpec {
                 // Given
                 struct Service: ARequestable {
                     var path: String? = "get"
+                    
+                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                        var request = request
+                        let header = Request.authorizationHeader(user: "user", password: "password")!
+                        request.setValue(header.value, forHTTPHeaderField: header.key)
+                        return request
+                    }
+                    
+                    func didSend(_ request: Request, requestable: AConfigurable) {
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
+                            .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        ARequestableSpec.startDelegateCalled = true
+                    }
+                    
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
+                        ARequestableSpec.completeDelegateCalled = true
+                    }
+                    
                 }
                 
                 let request = Service().request
                 print(request.debugDescription)
+                
+                expect(ARequestableSpec.startDelegateCalled).to(beTrue())
+                
                 var progressValues: [Double] = []
                 
                 // When
@@ -35,6 +59,8 @@ class ARequestableSpec: BaseSpec {
                         }
                         .responseJSON { response in
                             defer { done() }
+                            
+                            expect(ARequestableSpec.completeDelegateCalled).to(beTrue())
                             
                             // Then
                             if let statusCode = response.response?.statusCode,

@@ -14,6 +14,9 @@ import Alamofire
 
 class ADownloadableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
+    static var completeDelegateCalled = false
+    
     override func spec() {
         describe("Download") {
             
@@ -26,10 +29,31 @@ class ADownloadableSpec: BaseSpec {
                     init(destination: @escaping DownloadFileDestination) {
                         self.destination = destination
                     }
+                    
+                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                        var request = request
+                        let header = Request.authorizationHeader(user: "user", password: "password")!
+                        request.setValue(header.value, forHTTPHeaderField: header.key)
+                        return request
+                    }
+                    
+                    func didSend(_ request: Request, requestable: AConfigurable) {
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
+                            .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        ADownloadableSpec.startDelegateCalled = true
+                    }
+                    
+                    func didComplete(_ request: Request, requestable: AConfigurable) {
+                        ADownloadableSpec.completeDelegateCalled = true
+                    }
+                    
                 }
                 
                 let request = Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).request()
                 print(request.debugDescription)
+                
+                expect(ADownloadableSpec.startDelegateCalled).to(beTrue())
+                
                 var progressValues: [Double] = []
                 
                 // When
@@ -42,6 +66,8 @@ class ADownloadableSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
+                            expect(ADownloadableSpec.completeDelegateCalled).to(beTrue())
+                            
                             if let statusCode = response.response?.statusCode,
                                 statusCode != 200 {
                                 fail("Response status code should be 200")

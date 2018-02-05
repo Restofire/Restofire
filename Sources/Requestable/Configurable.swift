@@ -47,9 +47,6 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
     /// The max retry attempts.
     var maxRetryAttempts: Int { get }
     
-    /// The queue on which reponse will be delivered.
-    var queue: DispatchQueue? { get }
-    
 }
 
 // MARK: - Default Implementation
@@ -86,10 +83,5 @@ public extension Configurable {
     public var maxRetryAttempts: Int {
         return retry.maxRetryAttempts
     }
-    
-    /// `Queueable.queue`
-    public var queue: DispatchQueue? {
-        return _queue
-    }
-    
+
 }

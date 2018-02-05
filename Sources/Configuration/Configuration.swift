@@ -43,6 +43,9 @@ public struct Configuration {
     /// The HTTP headers. `nil` by default.
     public var headers: [String : String] = [:]
     
+    /// The request delegates. `empty` by default.
+    public var requestDelegates: [RequestDelegate] = []
+    
     /// `Configuration` Intializer
     ///
     /// - returns: new `Configuration` object

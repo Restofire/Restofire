@@ -12,14 +12,14 @@ import Foundation
 public protocol Queueable {
     
     /// The `queue`.
-    var _queue: DispatchQueue { get }
+    var queue: DispatchQueue { get }
     
 }
 
 public extension Queueable where Self: Configurable {
     
     /// `DispatchQueue.main`
-    public var _queue: DispatchQueue {
+    public var queue: DispatchQueue {
         return DispatchQueue.main
     }
     

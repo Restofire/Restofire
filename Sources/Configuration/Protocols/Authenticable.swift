@@ -16,7 +16,7 @@ public protocol Authenticable {
     
 }
 
-extension Authenticable where Self: AConfigurable {
+extension Authenticable where Self: Configurable {
     
     /// `Authentication.default`
     public var authentication: Authentication {

@@ -25,20 +25,20 @@ class ARequestableSpec: BaseSpec {
                 struct Service: ARequestable {
                     var path: String? = "get"
                     
-                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: Configurable) -> URLRequest {
                         var request = request
                         let header = Request.authorizationHeader(user: "user", password: "password")!
                         request.setValue(header.value, forHTTPHeaderField: header.key)
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: AConfigurable) {
+                    func didSend(_ request: Request, requestable: Configurable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ARequestableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request, requestable: AConfigurable) {
+                    func didComplete(_ request: Request, requestable: Configurable) {
                         ARequestableSpec.completeDelegateCalled = true
                     }
                     

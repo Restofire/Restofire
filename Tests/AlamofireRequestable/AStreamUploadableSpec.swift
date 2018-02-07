@@ -26,20 +26,20 @@ class AStreamUploadableSpec: BaseSpec {
                     var path: String? = "post"
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                     
-                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: Configurable) -> URLRequest {
                         var request = request
                         let header = Request.authorizationHeader(user: "user", password: "password")!
                         request.setValue(header.value, forHTTPHeaderField: header.key)
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: AConfigurable) {
+                    func didSend(_ request: Request, requestable: Configurable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AStreamUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request, requestable: AConfigurable) {
+                    func didComplete(_ request: Request, requestable: Configurable) {
                         AStreamUploadableSpec.completeDelegateCalled = true
                     }
                     

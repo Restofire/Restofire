@@ -22,7 +22,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Downloadable: ADownloadable, Configurable, DownloadResponseSerializable {
+public protocol Downloadable: ADownloadable, DownloadResponseSerializable {
     
     /// Called when the Request updates with download progress.
     ///

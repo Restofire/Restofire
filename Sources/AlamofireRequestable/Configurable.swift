@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Represents a `Configurable` for Restofire.
+/// Represents a `Configurable` for Alamofire Services.
 /// `Configuration.default` by default.
 ///
 /// ### Create custom Configurable
@@ -25,7 +25,19 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Configurable: Configurable, Reachable, Retryable, Queueable {
+public protocol Configurable: _Configurable, Authenticable, Reachable, Retryable, SessionManagable, RequestDelegate, Queueable, Validatable {
+
+    /// The credential.
+    var credential: URLCredential? { get }
+    
+    /// The acceptable status codes.
+    var acceptableStatusCodes: [Int]? { get }
+    
+    /// The acceptable content types.
+    var acceptableContentTypes: [String]? { get }
+    
+    /// The request delegates.
+    var delegates: [RequestDelegate] { get }
     
     #if !os(watchOS)
     /// The waitsForConnectivity.
@@ -51,6 +63,26 @@ public protocol Configurable: Configurable, Reachable, Retryable, Queueable {
 
 // MARK: - Default Implementation
 public extension Configurable {
+
+    /// `nil`
+    public var credential: URLCredential? {
+        return authentication.credential
+    }
+    
+    /// `nil`
+    public var acceptableStatusCodes: [Int]? {
+        return validation.acceptableStatusCodes
+    }
+    
+    /// `nil`
+    public var acceptableContentTypes: [String]? {
+        return validation.acceptableContentTypes
+    }
+
+    /// `empty`
+    public var delegates: [RequestDelegate] {
+        return configuration.requestDelegates
+    }
     
     #if !os(watchOS)
     /// `Reachability.default.waitsForConnectivity`
@@ -83,5 +115,6 @@ public extension Configurable {
     public var maxRetryAttempts: Int {
         return retry.maxRetryAttempts
     }
-
+    
 }
+

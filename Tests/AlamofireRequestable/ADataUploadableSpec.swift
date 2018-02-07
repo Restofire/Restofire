@@ -28,20 +28,20 @@ class ADataUploadableSpec: BaseSpec {
                         return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
                     }()
                     
-                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: Configurable) -> URLRequest {
                         var request = request
                         let header = Request.authorizationHeader(user: "user", password: "password")!
                         request.setValue(header.value, forHTTPHeaderField: header.key)
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: AConfigurable) {
+                    func didSend(_ request: Request, requestable: Configurable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ADataUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request, requestable: AConfigurable) {
+                    func didComplete(_ request: Request, requestable: Configurable) {
                         ADataUploadableSpec.completeDelegateCalled = true
                     }
                     

@@ -18,7 +18,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol ARequestable: _Requestable, AConfigurable {
+public protocol ARequestable: _Requestable, Configurable {
     
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }
@@ -42,7 +42,14 @@ public extension ARequestable {
     ///
     /// - returns: The created `DataRequest`.
     public var request: DataRequest {
-        return RestofireRequest.dataRequest(fromRequestable: self, withUrlRequest: urlRequest)
+        return RestofireRequest.dataRequest(fromRequestable: self, withUrlRequest: urlRequest)()
+    }
+    
+    @discardableResult
+    public func responseJSON(_ completionHandler: ((DataResponse<Any>) -> Void)? = nil) -> AOperation {
+        let requestOperation = AOperation(requestable: self, request: request)
+        requestOperation.start()
+        return requestOperation
     }
     
 }

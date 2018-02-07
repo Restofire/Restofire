@@ -10,102 +10,31 @@ import Foundation
 
 /// An NSOperation that executes the `Requestable` asynchronously
 /// or when added to a NSOperationQueue
-public class RequestOperation<R: Requestable>: BaseOperation {
+public class RequestOperation<R: Requestable>: AOperation<R> {
     
     let requestable: R
-    var retryAttempts = 0
-    
-    /// The underlying Alamofire.DataRequest.
-    public let request: DataRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
-    
-    #if !os(watchOS)
-    lazy var reachability: NetworkReachability = {
-        return NetworkReachability(configurable: requestable)
-    }()
-    #endif
-    
-    /// A boolean value `true` indicating the operation executes its task asynchronously.
-    override public var isAsynchronous: Bool {
-        return true
-    }
     
     init(requestable: R, request: DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
-        self.retryAttempts = requestable.maxRetryAttempts
-        self.request = request
         self.completionHandler = completionHandler
-        super.init()
-        self.isReady = true
+        super.init(configurable: requestable, request: request)
     }
     
-    /// Starts the request.
-    override public func main() {
-        if isCancelled { return }
-        executeRequest()
-    }
-    
-    /// Cancels the request.
-    override public func cancel() {
-        super.cancel()
-        request.cancel()
-    }
-    
-    @objc func executeRequest() {
-        request.downloadProgress {
-            self.requestable.request(self.request, didDownloadProgress: $0)
-        }
+    override func handleDataResponse(_ response: DefaultDataResponse) {
+        let request = self.request as! DataRequest
         request.response(
             queue: requestable.queue,
             responseSerializer: requestable.responseSerializer
-        ) { (response: DataResponse<R.Response>) in
-            if response.error == nil {
-                if let completionHandler = self.completionHandler {
-                    completionHandler(response)
-                }
-                self.requestable.request(self.request, didCompleteWithValue: response.value!)
-                self.isFinished = true
+        ) { ( response: (DataResponse<R.Response>)) in
+            self.completionHandler?(response)
+            if let error = response.error {
+                self.requestable.request(request, didFailWithError: error)
             } else {
-                self.handleErrorDataResponse(response)
+                self.requestable.request(request, didCompleteWithValue: response.value!)
             }
         }
-        request.logIfNeeded()
-    }
-    
-    func handleErrorDataResponse(_ response: DataResponse<R.Response>) {
-        if let error = response.error as? URLError {
-            if requestable.waitsForConnectivity && error.code == .notConnectedToInternet {
-                #if !os(watchOS)
-                    requestable.eventuallyOperationQueue.isSuspended = true
-                    let eventuallyOperation = RequestOperation(
-                        requestable: requestable,
-                        request: request,
-                        completionHandler: completionHandler
-                    )
-                    reachability.addOperation(operation: eventuallyOperation)
-                    isFinished = true
-                #else
-                    requestable.request(request, didFailWithError: response.error!)
-                    completionHandler?(response)
-                    isFinished = true
-                #endif
-            } else if retryAttempts > 0 && requestable.retryErrorCodes.contains(error.code) {
-                retryAttempts -= 1
-                perform(
-                    #selector(RequestOperation<R>.executeRequest),
-                    with: nil,
-                    afterDelay: requestable.retryInterval
-                )
-            } else {
-                requestable.request(request, didFailWithError: response.error!)
-                completionHandler?(response)
-                isFinished = true
-            }
-        } else {
-            requestable.request(request, didFailWithError: response.error!)
-            completionHandler?(response)
-            isFinished = true
-        }
+        super.handleDataResponse(response)
     }
     
 }

@@ -23,7 +23,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol ADownloadable: _Requestable, AConfigurable {
+public protocol ADownloadable: _Requestable, Configurable {
     
     /// The download file destination
     var destination: DownloadFileDestination? { get }
@@ -54,7 +54,7 @@ public extension ADownloadable {
     ///
     /// - returns: The created `DownloadRequest`.
     public func request() -> DownloadRequest {
-        return RestofireRequest.downloadRequest(fromRequestable: self, withUrlRequest: urlRequest)
+        return RestofireRequest.downloadRequest(fromRequestable: self, withUrlRequest: urlRequest)()
     }
     
 }

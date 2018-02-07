@@ -57,8 +57,8 @@ extension GithubLoginViewController {
             return
         }
         
-        GithubLoginGETService(user: email, password: password).response {
-            if let _ = $0.result.value {
+        GithubLoginGETService(user: email, password: password).request.response {
+            if let _ = $0.data {
                 self.performReposSegue()
             }
         }

@@ -18,7 +18,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Requestable: ARequestable, Configurable, DataResponseSerializable {
+public protocol Requestable: ARequestable, DataResponseSerializable {
     
     /// Called when the Request updates with download progress.
     ///

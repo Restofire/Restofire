@@ -16,7 +16,7 @@ public protocol SessionManagable {
     
 }
 
-public extension SessionManagable where Self: AConfigurable {
+public extension SessionManagable where Self: Configurable {
     
     /// `Session.default`
     public var sessionManager: SessionManager {

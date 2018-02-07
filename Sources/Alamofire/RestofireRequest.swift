@@ -10,54 +10,64 @@ import Alamofire
 
 class RestofireRequest {
     
-    static func dataRequest<R: ARequestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.DataRequest {
-        let urlRequest = prepare(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.request(urlRequest)
-        didSend(request, requestable: requestable)
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-        request.response { _ in didComplete(request, requestable: requestable) }
-        return request
+    static func dataRequest<R: ARequestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> (() -> Alamofire.DataRequest) {
+        return {
+            let urlRequest = prepare(urlRequest, requestable: requestable)
+            let request = requestable.sessionManager.request(urlRequest)
+            didSend(request, requestable: requestable)
+            authenticateRequest(request, usingCredential: requestable.credential)
+            RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
+            didComplete(request, requestable: requestable)
+            return request
+        }
     }
     
-    static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.DownloadRequest {
-        let urlRequest = prepare(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.download(urlRequest, to: requestable.destination)
-        didSend(request, requestable: requestable)
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
-        request.response { _ in didComplete(request, requestable: requestable) }
-        return request
+    static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> (() -> Alamofire.DownloadRequest) {
+        return {
+            let urlRequest = prepare(urlRequest, requestable: requestable)
+            let request = requestable.sessionManager.download(urlRequest, to: requestable.destination)
+            didSend(request, requestable: requestable)
+            authenticateRequest(request, usingCredential: requestable.credential)
+            RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
+            didComplete(request, requestable: requestable)
+            return request
+        }
     }
     
-    static func fileUploadRequest<R: AFileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.UploadRequest {
-        let urlRequest = prepare(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(requestable.url, with: urlRequest)
-        didSend(request, requestable: requestable)
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-        request.response { _ in didComplete(request, requestable: requestable) }
-        return request
+    static func fileUploadRequest<R: AFileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> (() -> Alamofire.UploadRequest) {
+        return {
+            let urlRequest = prepare(urlRequest, requestable: requestable)
+            let request = requestable.sessionManager.upload(requestable.url, with: urlRequest)
+            didSend(request, requestable: requestable)
+            authenticateRequest(request, usingCredential: requestable.credential)
+            RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
+            didComplete(request, requestable: requestable)
+            return request
+        }
     }
     
-    static func dataUploadRequest<R: ADataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.UploadRequest {
-        let urlRequest = prepare(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(requestable.data, with: urlRequest)
-        didSend(request, requestable: requestable)
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-        request.response { _ in didComplete(request, requestable: requestable) }
-        return request
+    static func dataUploadRequest<R: ADataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> (() -> Alamofire.UploadRequest) {
+        return {
+            let urlRequest = prepare(urlRequest, requestable: requestable)
+            let request = requestable.sessionManager.upload(requestable.data, with: urlRequest)
+            didSend(request, requestable: requestable)
+            authenticateRequest(request, usingCredential: requestable.credential)
+            RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
+            didComplete(request, requestable: requestable)
+            return request
+        }
     }
     
-    static func streamUploadRequest<R: AStreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> Alamofire.UploadRequest {
-        let urlRequest = prepare(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(requestable.stream, with: urlRequest)
-        didSend(request, requestable: requestable)
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-        request.response { _ in didComplete(request, requestable: requestable) }
-        return request
+    static func streamUploadRequest<R: AStreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> (() -> Alamofire.UploadRequest) {
+        return {
+            let urlRequest = prepare(urlRequest, requestable: requestable)
+            let request = requestable.sessionManager.upload(requestable.stream, with: urlRequest)
+            didSend(request, requestable: requestable)
+            authenticateRequest(request, usingCredential: requestable.credential)
+            RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
+            didComplete(request, requestable: requestable)
+            return request
+        }
     }
     
     static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest, encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
@@ -75,7 +85,7 @@ class RestofireRequest {
                         request: request,
                         requestable: requestable
                     )
-                    request.response { _ in didComplete(request, requestable: requestable) }
+                    didComplete(request, requestable: requestable)
                     let result = MultipartFormDataEncodingResult.success(request: request, streamingFromDisk: streamingFromDisk, streamFileURL: streamFileURL)
                     localEncodingCompletion?(result)
                 case .failure(_):
@@ -89,7 +99,7 @@ class RestofireRequest {
         request.authenticate(usingCredential: credential)
     }
     
-    fileprivate static func prepare<R: AConfigurable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    fileprivate static func prepare<R: Configurable>(_ request: URLRequest, requestable: R) -> URLRequest {
         var request = request
         request = requestable.prepare(request, requestable: requestable)
         requestable.delegates.forEach {
@@ -98,17 +108,35 @@ class RestofireRequest {
         return request
     }
     
-    fileprivate static func didSend<R: AConfigurable>(_ request: Request, requestable: R) {
+    fileprivate static func didSend<R: Configurable>(_ request: Request, requestable: R) {
         requestable.didSend(request, requestable: requestable)
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)
         }
     }
     
-    fileprivate static func didComplete<R: AConfigurable>(_ request: Request, requestable: R) {
-        requestable.didComplete(request, requestable: requestable)
-        requestable.delegates.forEach {
-            $0.didComplete(request, requestable: requestable)
+    fileprivate static func didComplete<R: Configurable>(_ request: Request, requestable: R) {
+        if let request = request as? DataRequest {
+            didComplete(request, requestable: requestable)
+        } else if let request = request as? DownloadRequest {
+            didComplete(request, requestable: requestable)
+        } else {
+            // No-op
         }
     }
+    
+    fileprivate static func didComplete<R: Configurable>(_ request: DataRequest, requestable: R) {
+        request.response { _ in
+            requestable.didComplete(request, requestable: requestable)
+            requestable.delegates.forEach { $0.didComplete(request, requestable: requestable) }
+        }
+    }
+    
+    fileprivate static func didComplete<R: Configurable>(_ request: DownloadRequest, requestable: R) {
+        request.response { _ in
+            requestable.didComplete(request, requestable: requestable)
+            requestable.delegates.forEach { $0.didComplete(request, requestable: requestable) }
+        }
+    }
+    
 }

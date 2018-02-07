@@ -37,7 +37,7 @@ public extension ADataUploadable {
     ///
     /// - returns: The created `UploadRequest`.
     public var request: UploadRequest {
-        return RestofireRequest.dataUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)
+        return RestofireRequest.dataUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)()
     }
     
 }

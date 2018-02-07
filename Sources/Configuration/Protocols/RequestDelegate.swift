@@ -12,27 +12,27 @@ import Foundation
 public protocol RequestDelegate {
     
     /// Called to modify a request before sending.
-    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest
+    func prepare(_ request: URLRequest, requestable: Configurable) -> URLRequest
     
     /// Called when the request is sent over the network.
-    func didSend(_ request: Request, requestable: AConfigurable)
+    func didSend(_ request: Request, requestable: Configurable)
     
     /// Called when the request is completed.
-    func didComplete(_ request: Request, requestable: AConfigurable)
+    func didComplete(_ request: Request, requestable: Configurable)
     
 }
 
 extension RequestDelegate {
     
     /// `No-op`
-    public func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+    public func prepare(_ request: URLRequest, requestable: Configurable) -> URLRequest {
         return request
     }
     
     /// `No-op`
-    public func didSend(_ request: Request, requestable: AConfigurable) {}
+    public func didSend(_ request: Request, requestable: Configurable) {}
     
     /// `No-op`
-    public func didComplete(_ request: Request, requestable: AConfigurable) {}
+    public func didComplete(_ request: Request, requestable: Configurable) {}
     
 }

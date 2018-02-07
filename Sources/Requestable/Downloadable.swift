@@ -23,37 +23,28 @@ import Foundation
 /// }
 /// ```
 public protocol Downloadable: ADownloadable, DownloadResponseSerializable {
-    
-    /// Called when the Request updates with download progress.
-    ///
-    /// - parameter request: The Alamofire.DownloadRequest
-    /// - parameter progress: The Progress
-    func request(_ request: DownloadRequest, didDownloadProgress progress: Progress)
-    
+
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.DownloadRequest
     /// - parameter value: The Response
-    func request(_ request: DownloadRequest, didCompleteWithValue value: Response)
+    func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response)
     
     /// Called when the Request fails
     ///
     /// - parameter request: The Alamofire.DownloadRequest
     /// - parameter error: The Error
-    func request(_ request: DownloadRequest, didFailWithError error: Error)
+    func request(_ request: DownloadOperation<Self>, didFailWithError error: Error)
     
 }
 
 public extension Downloadable {
     
     /// `Does Nothing`
-    func request(_ request: DownloadRequest, didDownloadProgress progress: Progress) {}
+    func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
-    func request(_ request: DownloadRequest, didCompleteWithValue value: Response) {}
-    
-    /// `Does Nothing`
-    func request(_ request: DownloadRequest, didFailWithError error: Error) {}
+    func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
     
 }
 

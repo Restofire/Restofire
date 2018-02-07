@@ -19,37 +19,28 @@ import Foundation
 /// }
 /// ```
 public protocol Requestable: ARequestable, DataResponseSerializable {
-    
-    /// Called when the Request updates with download progress.
-    ///
-    /// - parameter request: The Alamofire.DataRequest
-    /// - parameter error: The Progress
-    func request(_ request: DataRequest, didDownloadProgress progress: Progress)
-    
+
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.DataRequest
     /// - parameter error: The Response
-    func request(_ request: DataRequest, didCompleteWithValue value: Response)
+    func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response)
     
     /// Called when the Request fails.
     ///
     /// - parameter request: The Alamofire.DataRequest
     /// - parameter error: The Error
-    func request(_ request: DataRequest, didFailWithError error: Error)
+    func request(_ request: RequestOperation<Self>, didFailWithError error: Error)
     
 }
 
 public extension Requestable {
     
     /// `Does Nothing`
-    func request(_ request: DataRequest, didDownloadProgress progress: Progress) {}
-
-    /// `Does Nothing`
-    func request(_ request: DataRequest, didCompleteWithValue value: Response) {}
+    func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
-    func request(_ request: DataRequest, didFailWithError error: Error) {}
+    func request(_ request: RequestOperation<Self>, didFailWithError error: Error) {}
     
 }
 

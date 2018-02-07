@@ -14,8 +14,6 @@ import Alamofire
 
 class DataUploadableSpec: BaseSpec {
     
-    static var downloadProgressValues: [Double] = []
-    static var uploadProgressValues: [Double] = []
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -33,20 +31,12 @@ class DataUploadableSpec: BaseSpec {
                             return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
                         }()
                         
-                        func request(_ request: UploadRequest, didDownloadProgress progress: Progress) {
-                            DataUploadableSpec.downloadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didUploadProgress progress: Progress) {
-                            DataUploadableSpec.uploadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didCompleteWithValue value: Data) {
+                        func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: Data) {
                             DataUploadableSpec.successDelegateCalled = true
                             expect(value).toNot(beNil())
                         }
                         
-                        func request(_ request: UploadRequest, didFailWithError error: Error) {
+                        func request(_ request: UploadOperation<Upload>, didFailWithError error: Error) {
                             DataUploadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
@@ -74,33 +64,6 @@ class DataUploadableSpec: BaseSpec {
                     operation.completionBlock = {
                         expect(DataUploadableSpec.successDelegateCalled).to(beTrue())
                         expect(DataUploadableSpec.errorDelegateCalled).to(beFalse())
-                        
-                        var previousUploadProgress: Double = DataUploadableSpec.uploadProgressValues.first ?? 0.0
-                        
-                        for uploadProgress in DataUploadableSpec.uploadProgressValues {
-                            expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
-                            previousUploadProgress = uploadProgress
-                        }
-                        
-                        if let lastUploadProgressValue = DataUploadableSpec.uploadProgressValues.last {
-                            expect(lastUploadProgressValue).to(equal(1.0))
-                        } else {
-                            fail("last item in uploadProgressValues should not be nil")
-                        }
-                        
-                        var previousDownloadProgress: Double = DataUploadableSpec.downloadProgressValues.first ?? 0.0
-                        
-                        for downloadProgress in DataUploadableSpec.downloadProgressValues {
-                            expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
-                            previousDownloadProgress = downloadProgress
-                        }
-                        
-                        if let lastDownloadProgressValue = DataUploadableSpec.downloadProgressValues.last {
-                            expect(lastDownloadProgressValue).to(equal(1.0))
-                        } else {
-                            fail("last item in downloadProgressValues should not be nil")
-                        }
-                        
                         done()
                     }
                 }

@@ -12,7 +12,7 @@ import Foundation
 open class AOperation<R: Configurable>: Operation {
     
     var configurable: R
-    var request: Request
+    public private(set) var request: Request
     var requestClosure: () -> Request
     let requestType: RequestType
     
@@ -76,10 +76,6 @@ open class AOperation<R: Configurable>: Operation {
     
     // MARK:- Data Response
     func handleDataResponse(_ response: DefaultDataResponse) {
-        self.configurable.didComplete(
-            self.request,
-            requestable: self.configurable
-        )
         isFinished = true
     }
     
@@ -91,10 +87,6 @@ open class AOperation<R: Configurable>: Operation {
     
     // MARK: - Download Response
     func handleDownloadResponse(_ response: DefaultDownloadResponse) {
-        self.configurable.didComplete(
-            self.request,
-            requestable: self.configurable
-        )
         isFinished = true
     }
     

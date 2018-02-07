@@ -10,7 +10,7 @@
 
 import Restofire
 
-struct GithubLoginGETService: ARequestable {
+struct GithubLoginGETService: Requestable {
     
     typealias Response = Data
     var path: String? = "user"

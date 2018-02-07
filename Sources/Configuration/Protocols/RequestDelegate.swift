@@ -17,9 +17,6 @@ public protocol RequestDelegate {
     /// Called when the request is sent over the network.
     func didSend(_ request: Request, requestable: Configurable)
     
-    /// Called when the request is completed.
-    func didComplete(_ request: Request, requestable: Configurable)
-    
 }
 
 extension RequestDelegate {
@@ -31,8 +28,5 @@ extension RequestDelegate {
     
     /// `No-op`
     public func didSend(_ request: Request, requestable: Configurable) {}
-    
-    /// `No-op`
-    public func didComplete(_ request: Request, requestable: Configurable) {}
     
 }

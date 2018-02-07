@@ -29,9 +29,9 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         ) { ( response: (DownloadResponse<R.Response>)) in
             self.completionHandler?(response)
             if let error = response.error {
-                self.downloadable.request(request, didFailWithError: error)
+                self.downloadable.request(self, didFailWithError: error)
             } else {
-                self.downloadable.request(request, didCompleteWithValue: response.value!)
+                self.downloadable.request(self, didCompleteWithValue: response.value!)
             }
         }
         super.handleDownloadResponse(response)

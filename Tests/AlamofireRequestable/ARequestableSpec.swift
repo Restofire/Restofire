@@ -15,7 +15,6 @@ import Alamofire
 class ARequestableSpec: BaseSpec {
     
     static var startDelegateCalled = false
-    static var completeDelegateCalled = false
     
     override func spec() {
         describe("ARequestable") {
@@ -38,10 +37,6 @@ class ARequestableSpec: BaseSpec {
                         ARequestableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request, requestable: Configurable) {
-                        ARequestableSpec.completeDelegateCalled = true
-                    }
-                    
                 }
                 
                 let request = Service().request
@@ -59,8 +54,6 @@ class ARequestableSpec: BaseSpec {
                         }
                         .responseJSON { response in
                             defer { done() }
-                            
-                            expect(ARequestableSpec.completeDelegateCalled).to(beTrue())
                             
                             // Then
                             if let statusCode = response.response?.statusCode,

@@ -14,8 +14,6 @@ import Alamofire
 
 class MultipartUploadableSpec: BaseSpec {
     
-    static var downloadProgressValues: [Double] = []
-    static var uploadProgressValues: [Double] = []
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -45,21 +43,13 @@ class MultipartUploadableSpec: BaseSpec {
                         }
                         var responseSerializer: DataResponseSerializer<HTTPBin> = DataRequest.JSONDecodableResponseSerializer()
                         
-                        func request(_ request: UploadRequest, didDownloadProgress progress: Progress) {
-                            MultipartUploadableSpec.downloadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didUploadProgress progress: Progress) {
-                            MultipartUploadableSpec.uploadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didCompleteWithValue value: HTTPBin) {
+                        func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: HTTPBin) {
                             MultipartUploadableSpec.successDelegateCalled = true
                             expect(value.form.french).to(equal("français"))
                             expect(value.form.japanese).to(equal("日本語"))
                         }
                         
-                        func request(_ request: UploadRequest, didFailWithError error: Error) {
+                        func request(_ request: UploadOperation<Upload>, didFailWithError error: Error) {
                             MultipartUploadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
@@ -98,33 +88,6 @@ class MultipartUploadableSpec: BaseSpec {
                             operation.completionBlock = {
                                 expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
                                 expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
-                                
-                                var previousUploadProgress: Double = MultipartUploadableSpec.uploadProgressValues.first ?? 0.0
-                                
-                                for uploadProgress in MultipartUploadableSpec.uploadProgressValues {
-                                    expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
-                                    previousUploadProgress = uploadProgress
-                                }
-                                
-                                if let lastUploadProgressValue = MultipartUploadableSpec.uploadProgressValues.last {
-                                    expect(lastUploadProgressValue).to(equal(1.0))
-                                } else {
-                                    fail("last item in uploadProgressValues should not be nil")
-                                }
-                                
-                                var previousDownloadProgress: Double = MultipartUploadableSpec.downloadProgressValues.first ?? 0.0
-                                
-                                for downloadProgress in MultipartUploadableSpec.downloadProgressValues {
-                                    expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
-                                    previousDownloadProgress = downloadProgress
-                                }
-                                
-                                if let lastDownloadProgressValue = MultipartUploadableSpec.downloadProgressValues.last {
-                                    expect(lastDownloadProgressValue).to(equal(1.0))
-                                } else {
-                                    fail("last item in downloadProgressValues should not be nil")
-                                }
-                                
                                 done()
                             }
 

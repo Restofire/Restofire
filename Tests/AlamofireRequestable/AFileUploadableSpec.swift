@@ -15,7 +15,6 @@ import Alamofire
 class AFileUploadableSpec: BaseSpec {
     
     static var startDelegateCalled = false
-    static var completeDelegateCalled = false
     
     override func spec() {
         describe("AFileUpload") {
@@ -37,10 +36,6 @@ class AFileUploadableSpec: BaseSpec {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AFileUploadableSpec.startDelegateCalled = true
-                    }
-                    
-                    func didComplete(_ request: Request, requestable: Configurable) {
-                        AFileUploadableSpec.completeDelegateCalled = true
                     }
                     
                 }
@@ -66,8 +61,6 @@ class AFileUploadableSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
-                            expect(AFileUploadableSpec.completeDelegateCalled).to(beTrue())
-                            
                             if let statusCode = response.response?.statusCode,
                                 statusCode != 200 {
                                 fail("Response status code should be 200")

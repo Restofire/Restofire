@@ -29,9 +29,9 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         ) { ( response: (DataResponse<R.Response>)) in
             self.completionHandler?(response)
             if let error = response.error {
-                self.requestable.request(request, didFailWithError: error)
+                self.requestable.request(self, didFailWithError: error)
             } else {
-                self.requestable.request(request, didCompleteWithValue: response.value!)
+                self.requestable.request(self, didCompleteWithValue: response.value!)
             }
         }
         super.handleDataResponse(response)

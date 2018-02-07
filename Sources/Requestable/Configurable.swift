@@ -25,7 +25,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Configurable: Configurable, Reachable, Retryable, Queueable {
+public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
     
     #if !os(watchOS)
     /// The waitsForConnectivity.

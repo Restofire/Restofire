@@ -14,7 +14,6 @@ import Alamofire
 
 class RequestableSpec: BaseSpec {
     
-    static var progressValues: [Double] = []
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -33,10 +32,6 @@ class RequestableSpec: BaseSpec {
                         
                         var path: String? = "get"
                         var responseSerializer: DataResponseSerializer<HTTPBin> = DataRequest.JSONDecodableResponseSerializer()
-                        
-                        func request(_ request: DataRequest, didDownloadProgress progress: Progress) {
-                            RequestableSpec.progressValues.append(progress.fractionCompleted)
-                        }
 
                         func request(_ request: DataRequest, didCompleteWithValue value: HTTPBin) {
                             RequestableSpec.successDelegateCalled = true
@@ -66,18 +61,6 @@ class RequestableSpec: BaseSpec {
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
                             
-                            var previousProgress: Double = RequestableSpec.progressValues.first ?? 0.0
-                            
-                            for progress in RequestableSpec.progressValues {
-                                expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
-                                previousProgress = progress
-                            }
-                            
-                            if let lastProgressValue = RequestableSpec.progressValues.last {
-                                expect(lastProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in progressValues should not be nil")
-                            }
                     }
                     
                     operation.completionBlock = {

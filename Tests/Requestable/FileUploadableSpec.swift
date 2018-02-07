@@ -14,8 +14,6 @@ import Alamofire
 
 class FileUploadableSpec: BaseSpec {
     
-    static var downloadProgressValues: [Double] = []
-    static var uploadProgressValues: [Double] = []
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -31,20 +29,12 @@ class FileUploadableSpec: BaseSpec {
                         var path: String? = "post"
                         let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                         
-                        func request(_ request: UploadRequest, didDownloadProgress progress: Progress) {
-                            FileUploadableSpec.downloadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didUploadProgress progress: Progress) {
-                            FileUploadableSpec.uploadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didCompleteWithValue value: Data) {
+                        func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: Data) {
                             FileUploadableSpec.successDelegateCalled = true
                             expect(value).toNot(beNil())
                         }
                         
-                        func request(_ request: UploadRequest, didFailWithError error: Error) {
+                        func request(_ request: UploadOperation<Upload>, didFailWithError error: Error) {
                             FileUploadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
@@ -71,33 +61,6 @@ class FileUploadableSpec: BaseSpec {
                     operation.completionBlock = {
                         expect(FileUploadableSpec.successDelegateCalled).to(beTrue())
                         expect(FileUploadableSpec.errorDelegateCalled).to(beFalse())
-                        
-                        var previousUploadProgress: Double = FileUploadableSpec.uploadProgressValues.first ?? 0.0
-                        
-                        for uploadProgress in FileUploadableSpec.uploadProgressValues {
-                            expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
-                            previousUploadProgress = uploadProgress
-                        }
-                        
-                        if let lastUploadProgressValue = FileUploadableSpec.uploadProgressValues.last {
-                            expect(lastUploadProgressValue).to(equal(1.0))
-                        } else {
-                            fail("last item in uploadProgressValues should not be nil")
-                        }
-                        
-                        var previousDownloadProgress: Double = FileUploadableSpec.downloadProgressValues.first ?? 0.0
-                        
-                        for downloadProgress in FileUploadableSpec.downloadProgressValues {
-                            expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
-                            previousDownloadProgress = downloadProgress
-                        }
-                        
-                        if let lastDownloadProgressValue = FileUploadableSpec.downloadProgressValues.last {
-                            expect(lastDownloadProgressValue).to(equal(1.0))
-                        } else {
-                            fail("last item in downloadProgressValues should not be nil")
-                        }
-                        
                         done()
                     }
                 }

@@ -45,11 +45,4 @@ public extension ARequestable {
         return RestofireRequest.dataRequest(fromRequestable: self, withUrlRequest: urlRequest)()
     }
     
-    @discardableResult
-    public func responseJSON(_ completionHandler: ((DataResponse<Any>) -> Void)? = nil) -> AOperation {
-        let requestOperation = AOperation(requestable: self, request: request)
-        requestOperation.start()
-        return requestOperation
-    }
-    
 }

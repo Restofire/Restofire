@@ -14,12 +14,10 @@ struct Repo: Decodable {
     var name: String
 }
 
-struct ReposGETService: ARequestable {
+struct ReposGETService: Requestable {
 
+    typealias Response = [Repo]
     var path: String? = "user/repos"
-    var eventually: Bool = true
+    var waitsForConnectivity: Bool = true
 
-    var operation: AOperation<ReposGETService> {
-        return AOperation(configurable: self, request: self.request)
-    }
 }

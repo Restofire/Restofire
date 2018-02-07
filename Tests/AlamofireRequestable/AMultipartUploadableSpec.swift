@@ -15,7 +15,6 @@ import Alamofire
 class AMultipartUploadableSpec: BaseSpec {
     
     static var startDelegateCalled = false
-    static var completeDelegateCalled = false
     
     override func spec() {
         describe("AMultipartUpload") {
@@ -43,11 +42,6 @@ class AMultipartUploadableSpec: BaseSpec {
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AMultipartUploadableSpec.startDelegateCalled = true
                     }
-                    
-                    func didComplete(_ request: Request, requestable: Configurable) {
-                        AMultipartUploadableSpec.completeDelegateCalled = true
-                    }
-                    
                 }
                 
                 // When
@@ -74,8 +68,6 @@ class AMultipartUploadableSpec: BaseSpec {
                                     defer { done() }
                                     
                                     // Then
-                                    expect(AMultipartUploadableSpec.completeDelegateCalled).to(beTrue())
-                                    
                                     if let statusCode = response.response?.statusCode,
                                         statusCode != 200 {
                                         fail("Response status code should be 200")

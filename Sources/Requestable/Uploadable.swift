@@ -14,45 +14,27 @@ import Foundation
 /// MultipartUplodable protocols.
 public protocol Uploadable: _AUploadable, DataResponseSerializable {
     
-    /// Called when the Request updates with download progress.
-    ///
-    /// - parameter request: The Alamofire.UploadRequest
-    /// - parameter progress: The Progress
-    func request(_ request: UploadRequest, didDownloadProgress progress: Progress)
-    
-    /// Called when the Request updates with upload progress.
-    ///
-    /// - parameter request: The Alamofire.UploadRequest
-    /// - parameter progress: The Progress
-    func request(_ request: UploadRequest, didUploadProgress progress: Progress)
-    
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.UploadRequest
     /// - parameter value: The Response
-    func request(_ request: UploadRequest, didCompleteWithValue value: Response)
+    func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response)
     
     /// Called when the Request fails
     ///
     /// - parameter request: The Alamofire.UploadRequest
     /// - parameter error: The Error
-    func request(_ request: UploadRequest, didFailWithError error: Error)
+    func request(_ request: UploadOperation<Self>, didFailWithError error: Error)
     
 }
 
 public extension Uploadable {
     
     /// `Does Nothing`
-    func request(_ request: UploadRequest, didDownloadProgress progress: Progress) {}
+    func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
-    func request(_ request: UploadRequest, didUploadProgress progress: Progress) {}
-    
-    /// `Does Nothing`
-    func request(_ request: UploadRequest, didCompleteWithValue value: Response) {}
-    
-    /// `Does Nothing`
-    func request(_ request: UploadRequest, didFailWithError error: Error) {}
+    func request(_ request: UploadOperation<Self>, didFailWithError error: Error) {}
     
     /// Creates a `UploadOperation` for the specified `Uploadable` object and
     /// asynchronously executes it.

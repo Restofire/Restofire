@@ -70,6 +70,10 @@
 		35460363202A337900D57627 /* UploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724BE2021A17000FD36E6 /* UploadOperation.swift */; };
 		35460364202A337A00D57627 /* DownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358E8EF02020D949003048B3 /* DownloadOperation.swift */; };
 		35460365202A337A00D57627 /* UploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724BE2021A17000FD36E6 /* UploadOperation.swift */; };
+		3546038E202B882A00D57627 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
+		35460393202B882A00D57627 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
+		35460394202B882B00D57627 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
+		35460395202B882C00D57627 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33FE201DDBFC0093DCC5 /* Configurable.swift */; };
 		355389C01D8E7FED001BDE66 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3500620E1C7C33EB0078B589 /* Restofire.framework */; };
 		355389D11D8E809E001BDE66 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 350061F21C7C33910078B589 /* Restofire.framework */; };
 		35538A071D8E8173001BDE66 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35538A051D8E8173001BDE66 /* Nimble.framework */; };
@@ -129,10 +133,10 @@
 		357E33EB201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33D1201DD7C50093DCC5 /* AStreamUploadable.swift */; };
 		357E33EC201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33D1201DD7C50093DCC5 /* AStreamUploadable.swift */; };
 		357E33ED201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33D1201DD7C50093DCC5 /* AStreamUploadable.swift */; };
-		357E33FA201DDB3B0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* Configurable.swift */; };
-		357E33FB201DDB3B0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* Configurable.swift */; };
-		357E33FC201DDB3B0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* Configurable.swift */; };
-		357E33FD201DDB3B0093DCC5 /* Configurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* Configurable.swift */; };
+		357E33FA201DDB3B0093DCC5 /* AConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */; };
+		357E33FB201DDB3B0093DCC5 /* AConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */; };
+		357E33FC201DDB3B0093DCC5 /* AConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */; };
+		357E33FD201DDB3B0093DCC5 /* AConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */; };
 		357E3404201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
 		357E3405201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
 		357E3406201DDE310093DCC5 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357E3403201DDE310093DCC5 /* Session.swift */; };
@@ -464,7 +468,7 @@
 		357E33CF201DD7C50093DCC5 /* ARequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARequestable.swift; sourceTree = "<group>"; };
 		357E33D0201DD7C50093DCC5 /* AMultipartUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMultipartUploadable.swift; sourceTree = "<group>"; };
 		357E33D1201DD7C50093DCC5 /* AStreamUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AStreamUploadable.swift; sourceTree = "<group>"; };
-		357E33F9201DDB3B0093DCC5 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
+		357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AConfigurable.swift; sourceTree = "<group>"; };
 		357E33FE201DDBFC0093DCC5 /* Configurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurable.swift; sourceTree = "<group>"; };
 		357E3403201DDE310093DCC5 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		357E3418201DF5260093DCC5 /* _AUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _AUploadable.swift; sourceTree = "<group>"; };
@@ -765,7 +769,7 @@
 		357E33CA201DD7AC0093DCC5 /* AlamofireRequestable */ = {
 			isa = PBXGroup;
 			children = (
-				357E33F9201DDB3B0093DCC5 /* Configurable.swift */,
+				357E33F9201DDB3B0093DCC5 /* AConfigurable.swift */,
 				357E33CF201DD7C50093DCC5 /* ARequestable.swift */,
 				357E33CD201DD7C50093DCC5 /* ADownloadable.swift */,
 				357E3418201DF5260093DCC5 /* _AUploadable.swift */,
@@ -1217,10 +1221,11 @@
 				35E6D3541CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35E1CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8EC72020A27B003048B3 /* NetworkReachability.swift in Sources */,
-				357E33FC201DDB3B0093DCC5 /* Configurable.swift in Sources */,
+				357E33FC201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				3594EB8F2021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				358E8ED62020B776003048B3 /* Reachable.swift in Sources */,
 				357E33EC201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
+				35460394202B882B00D57627 /* Configurable.swift in Sources */,
 				35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				357E33E4201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */,
@@ -1268,10 +1273,11 @@
 				35E6D3551CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35F1CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8EC62020A27B003048B3 /* NetworkReachability.swift in Sources */,
-				357E33FB201DDB3B0093DCC5 /* Configurable.swift in Sources */,
+				357E33FB201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				3594EB8E2021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				358E8ED52020B776003048B3 /* Reachable.swift in Sources */,
 				357E33EB201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
+				35460393202B882A00D57627 /* Configurable.swift in Sources */,
 				35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				357E33E3201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */,
@@ -1317,12 +1323,13 @@
 				3594EB952021F10A006FFA6A /* StreamUploadable.swift in Sources */,
 				359724CB2021A1D700FD36E6 /* Uploadable.swift in Sources */,
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
-				357E33FD201DDB3B0093DCC5 /* Configurable.swift in Sources */,
+				357E33FD201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				358E8ED72020B776003048B3 /* Reachable.swift in Sources */,
 				357E33ED201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
 				3594EB902021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				3594EB782021E4FB006FFA6A /* Requestable.swift in Sources */,
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
+				35460395202B882C00D57627 /* Configurable.swift in Sources */,
 				357E33E5201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				358E8ECD2020A484003048B3 /* Reachability.swift in Sources */,
 				357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */,
@@ -1418,10 +1425,11 @@
 				35E6D3531CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35D1CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8EC52020A27B003048B3 /* NetworkReachability.swift in Sources */,
-				357E33FA201DDB3B0093DCC5 /* Configurable.swift in Sources */,
+				357E33FA201DDB3B0093DCC5 /* AConfigurable.swift in Sources */,
 				3594EB8D2021F0FF006FFA6A /* DataUploadable.swift in Sources */,
 				358E8ED42020B776003048B3 /* Reachable.swift in Sources */,
 				357E33EA201DD7C50093DCC5 /* AStreamUploadable.swift in Sources */,
+				3546038E202B882A00D57627 /* Configurable.swift in Sources */,
 				35E6D36C1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				357E33E2201DD7C50093DCC5 /* ARequestable.swift in Sources */,
 				35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */,

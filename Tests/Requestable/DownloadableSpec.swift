@@ -14,7 +14,6 @@ import Alamofire
 
 class DownloadableSpec: BaseSpec {
     
-    static var progressValues: [Double] = []
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -35,10 +34,6 @@ class DownloadableSpec: BaseSpec {
                         var destination: DownloadFileDestination? = { _, _ in (BaseSpec.jsonFileURL, []) }
                         
                         var responseSerializer: DownloadResponseSerializer<HTTPBin> = DownloadRequest.JSONDecodableResponseSerializer()
-                        
-                        func request(_ request: DownloadRequest, didDownloadProgress progress: Progress) {
-                            DownloadableSpec.progressValues.append(progress.fractionCompleted)
-                        }
                         
                         func request(_ request: DownloadRequest, didCompleteWithValue value: HTTPBin) {
                             DownloadableSpec.successDelegateCalled = true
@@ -73,20 +68,6 @@ class DownloadableSpec: BaseSpec {
                     operation.completionBlock = {
                         expect(DownloadableSpec.successDelegateCalled).to(beTrue())
                         expect(DownloadableSpec.errorDelegateCalled).to(beFalse())
-                        
-                        var previousProgress: Double = DownloadableSpec.progressValues.first ?? 0.0
-                        
-                        for progress in DownloadableSpec.progressValues {
-                            expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
-                            previousProgress = progress
-                        }
-                        
-                        if let lastProgressValue = DownloadableSpec.progressValues.last {
-                            expect(lastProgressValue).to(equal(1.0))
-                        } else {
-                            fail("last item in progressValues should not be nil")
-                        }
-                        
                         done()
                     }
                 }

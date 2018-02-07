@@ -31,20 +31,12 @@ class StreamUploadableSpec: BaseSpec {
                         var path: String? = "post"
                         let stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                         
-                        func request(_ request: UploadRequest, didDownloadProgress progress: Progress) {
-                            StreamUploadableSpec.downloadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didUploadProgress progress: Progress) {
-                            StreamUploadableSpec.uploadProgressValues.append(progress.fractionCompleted)
-                        }
-                        
-                        func request(_ request: UploadRequest, didCompleteWithValue value: Data) {
+                        func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: Data) {
                             StreamUploadableSpec.successDelegateCalled = true
                             expect(value).toNot(beNil())
                         }
                         
-                        func request(_ request: UploadRequest, didFailWithError error: Error) {
+                        func request(_ request: UploadOperation<Upload>, didFailWithError error: Error) {
                             StreamUploadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }

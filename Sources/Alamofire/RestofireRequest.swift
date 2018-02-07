@@ -17,7 +17,6 @@ class RestofireRequest {
             didSend(request, requestable: requestable)
             authenticateRequest(request, usingCredential: requestable.credential)
             RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-            didComplete(request, requestable: requestable)
             return request
         }
     }
@@ -29,7 +28,6 @@ class RestofireRequest {
             didSend(request, requestable: requestable)
             authenticateRequest(request, usingCredential: requestable.credential)
             RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
-            didComplete(request, requestable: requestable)
             return request
         }
     }
@@ -41,7 +39,6 @@ class RestofireRequest {
             didSend(request, requestable: requestable)
             authenticateRequest(request, usingCredential: requestable.credential)
             RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-            didComplete(request, requestable: requestable)
             return request
         }
     }
@@ -53,7 +50,6 @@ class RestofireRequest {
             didSend(request, requestable: requestable)
             authenticateRequest(request, usingCredential: requestable.credential)
             RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-            didComplete(request, requestable: requestable)
             return request
         }
     }
@@ -65,7 +61,6 @@ class RestofireRequest {
             didSend(request, requestable: requestable)
             authenticateRequest(request, usingCredential: requestable.credential)
             RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-            didComplete(request, requestable: requestable)
             return request
         }
     }
@@ -85,7 +80,6 @@ class RestofireRequest {
                         request: request,
                         requestable: requestable
                     )
-                    didComplete(request, requestable: requestable)
                     let result = MultipartFormDataEncodingResult.success(request: request, streamingFromDisk: streamingFromDisk, streamFileURL: streamFileURL)
                     localEncodingCompletion?(result)
                 case .failure(_):
@@ -112,30 +106,6 @@ class RestofireRequest {
         requestable.didSend(request, requestable: requestable)
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)
-        }
-    }
-    
-    fileprivate static func didComplete<R: Configurable>(_ request: Request, requestable: R) {
-        if let request = request as? DataRequest {
-            didComplete(request, requestable: requestable)
-        } else if let request = request as? DownloadRequest {
-            didComplete(request, requestable: requestable)
-        } else {
-            // No-op
-        }
-    }
-    
-    fileprivate static func didComplete<R: Configurable>(_ request: DataRequest, requestable: R) {
-        request.response { _ in
-            requestable.didComplete(request, requestable: requestable)
-            requestable.delegates.forEach { $0.didComplete(request, requestable: requestable) }
-        }
-    }
-    
-    fileprivate static func didComplete<R: Configurable>(_ request: DownloadRequest, requestable: R) {
-        request.response { _ in
-            requestable.didComplete(request, requestable: requestable)
-            requestable.delegates.forEach { $0.didComplete(request, requestable: requestable) }
         }
     }
     

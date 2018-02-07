@@ -29,9 +29,9 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         ) { ( response: (DataResponse<R.Response>)) in
             self.completionHandler?(response)
             if let error = response.error {
-                self.uploadable.request(request, didFailWithError: error)
+                self.uploadable.request(self, didFailWithError: error)
             } else {
-                self.uploadable.request(request, didCompleteWithValue: response.value!)
+                self.uploadable.request(self, didCompleteWithValue: response.value!)
             }
         }
         super.handleDataResponse(response)

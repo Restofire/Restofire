@@ -15,7 +15,6 @@ import Alamofire
 class AStreamUploadableSpec: BaseSpec {
     
     static var startDelegateCalled = false
-    static var completeDelegateCalled = false
 
     override func spec() {
         describe("AStreamUpload") {
@@ -39,10 +38,6 @@ class AStreamUploadableSpec: BaseSpec {
                         AStreamUploadableSpec.startDelegateCalled = true
                     }
                     
-                    func didComplete(_ request: Request, requestable: Configurable) {
-                        AStreamUploadableSpec.completeDelegateCalled = true
-                    }
-                    
                 }
                 
                 let request = Upload().request
@@ -57,8 +52,6 @@ class AStreamUploadableSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
-                            expect(AStreamUploadableSpec.completeDelegateCalled).to(beTrue())
-                            
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

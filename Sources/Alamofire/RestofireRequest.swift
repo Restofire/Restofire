@@ -83,7 +83,7 @@ class RestofireRequest {
         request.authenticate(usingCredential: credential)
     }
     
-    fileprivate static func prepare<R: Configurable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    fileprivate static func prepare<R: AConfigurable>(_ request: URLRequest, requestable: R) -> URLRequest {
         var request = request
         request = requestable.prepare(request, requestable: requestable)
         requestable.delegates.forEach {
@@ -92,7 +92,7 @@ class RestofireRequest {
         return request
     }
     
-    fileprivate static func didSend<R: Configurable>(_ request: Request, requestable: R) {
+    fileprivate static func didSend<R: AConfigurable>(_ request: Request, requestable: R) {
         requestable.didSend(request, requestable: requestable)
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)

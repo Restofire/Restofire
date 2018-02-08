@@ -53,7 +53,8 @@ extension ReposTableViewController {
     
     @objc func loadData(_ sender: AnyObject? = nil) {
         showTopView(reposLoadingView)
-        ReposGETService().response { [weak self] (response: DataResponse<[Repo]>)in
+        let op = ReposGETService()
+        op.response { [weak self] (response: DataResponse<[Repo]>)in
             guard let _self = self else { return }
             if let _ = response.result.error {
                 _self.showTopView(_self.reposRetryView)

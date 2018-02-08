@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         Restofire.Configuration.default.host = "api.github.com"
-        Restofire.Retry.default.retryErrorCodes = [.notConnectedToInternet]
         
         return true
     }

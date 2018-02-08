@@ -16,7 +16,7 @@ public protocol Validatable {
     
 }
 
-extension Validatable where Self: Configurable {
+extension Validatable where Self: AConfigurable {
     
     /// `Validation.default`
     public var validation: Validation {

@@ -18,7 +18,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Requestable: ARequestable, DataResponseSerializable {
+public protocol Requestable: ARequestable, Configurable, DataResponseSerializable {
 
     /// Called when the Request succeeds.
     ///

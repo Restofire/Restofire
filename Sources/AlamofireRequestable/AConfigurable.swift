@@ -1,5 +1,5 @@
 //
-//  Configurable.swift
+//  AConfigurable.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 28/01/18.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-/// Represents a `Configurable` for Alamofire Services.
+/// Represents a `AConfigurable` for Alamofire Services.
 /// `Configuration.default` by default.
 ///
-/// ### Create custom Configurable
+/// ### Create custom AConfigurable
 /// ```swift
-/// protocol HTTPBinConfigurable: Configurable { }
+/// protocol HTTPBinConfigurable: AConfigurable { }
 ///
 /// extension HTTPBinConfigurable {
 ///

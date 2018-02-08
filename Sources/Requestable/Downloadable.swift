@@ -22,7 +22,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Downloadable: ADownloadable, DownloadResponseSerializable {
+public protocol Downloadable: ADownloadable, Configurable, DownloadResponseSerializable {
 
     /// Called when the Request succeeds.
     ///

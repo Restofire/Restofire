@@ -12,7 +12,7 @@ import Foundation
 ///
 /// Instead implement FileUploadable, DataUploadable, StreamUploadable,
 /// MultipartUplodable protocols.
-public protocol Uploadable: _AUploadable, DataResponseSerializable {
+public protocol Uploadable: _AUploadable, Configurable, DataResponseSerializable {
     
     /// Called when the Request succeeds.
     ///

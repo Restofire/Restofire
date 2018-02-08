@@ -23,7 +23,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol ADownloadable: _Requestable, Configurable {
+public protocol ADownloadable: _Requestable, AConfigurable {
     
     /// The download file destination
     var destination: DownloadFileDestination? { get }

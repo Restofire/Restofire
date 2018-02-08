@@ -18,7 +18,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol ARequestable: _Requestable, Configurable {
+public protocol ARequestable: _Requestable, AConfigurable {
     
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }

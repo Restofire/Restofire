@@ -46,7 +46,7 @@ class AMultipartUploadableSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    Upload().response(encodingCompletion: { result in
+                    Upload().request(encodingCompletion: { result in
                         switch result {
                         case .success(let upload, _, _):
                             

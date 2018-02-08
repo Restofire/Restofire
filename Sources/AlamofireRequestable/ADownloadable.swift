@@ -53,7 +53,7 @@ public extension ADownloadable {
     /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
     ///
     /// - returns: The created `DownloadRequest`.
-    public func request() -> DownloadRequest {
+    public var request: DownloadRequest {
         return RestofireRequest.downloadRequest(fromRequestable: self, withUrlRequest: urlRequest)()
     }
     

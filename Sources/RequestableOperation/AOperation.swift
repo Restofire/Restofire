@@ -8,15 +8,15 @@
 
 import Foundation
 
-/// An NSOperation base class for all operations
+/// An NSOperation base class for all request operations
 open class AOperation<R: Configurable>: Operation {
     
     var configurable: R
     public private(set) var request: Request
     var requestClosure: () -> Request
     let requestType: RequestType
+    public private(set) var retryAttempts = 0
     
-    var retryAttempts = 0
     #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
         return NetworkReachability(configurable: configurable)
@@ -76,23 +76,27 @@ open class AOperation<R: Configurable>: Operation {
     
     // MARK:- Data Response
     func handleDataResponse(_ response: DefaultDataResponse) {
-        isFinished = true
+        fatalError("Implement Me")
     }
     
     func handleDataRequestError(_ response: DefaultDataResponse) {
         if !handleRequestError(response.error!) {
             handleDataResponse(response)
+        } else {
+            isFinished = true
         }
     }
     
     // MARK: - Download Response
     func handleDownloadResponse(_ response: DefaultDownloadResponse) {
-        isFinished = true
+        fatalError("Implement Me")
     }
     
     func handleDownloadRequestError(_ response: DefaultDownloadResponse) {
         if !handleRequestError(response.error!) {
             handleDownloadResponse(response)
+        } else {
+            isFinished = true
         }
     }
     
@@ -125,7 +129,6 @@ open class AOperation<R: Configurable>: Operation {
         } else {
             handledError = false
         }
-        isFinished = handledError
         return handledError
     }
     

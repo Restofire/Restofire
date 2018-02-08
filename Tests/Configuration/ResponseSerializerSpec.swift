@@ -28,7 +28,7 @@ class ResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.response({ response in
+                    service.response { response in
                         defer { done() }
                         
                         // Then
@@ -36,7 +36,7 @@ class ResponseSerializerSpec: BaseSpec {
                         expect(response.response).toNot(beNil())
                         expect(response.data).toNot(beNil())
                         expect(response.error).to(beNil())
-                    })
+                    }
                 }
             }
             
@@ -54,7 +54,7 @@ class ResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.response({ response in
+                    service.response { response in
                         defer { done() }
                         
                         // Then
@@ -69,7 +69,7 @@ class ResponseSerializerSpec: BaseSpec {
                         } else {
                             fail("response.result.value should not be nil")
                         }
-                    })
+                    }
                 }
             }
             
@@ -91,7 +91,7 @@ class ResponseSerializerSpec: BaseSpec {
 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.response({ response in
+                    service.response { response in
                         defer { done() }
 
                         // Then
@@ -106,7 +106,7 @@ class ResponseSerializerSpec: BaseSpec {
                             fail("response.result.value should not be nil")
                         }
                         
-                    })
+                    }
                 }
             }
             

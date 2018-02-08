@@ -35,12 +35,13 @@ class DownloadableSpec: BaseSpec {
                         
                         var responseSerializer: DownloadResponseSerializer<HTTPBin> = DownloadRequest.JSONDecodableResponseSerializer()
                         
-                        func request(_ request: DownloadRequest, didCompleteWithValue value: HTTPBin) {
+                        func request(_ request: DownloadOperation<Request>, didCompleteWithValue value: HTTPBin) {
+                            print("Completed")
                             DownloadableSpec.successDelegateCalled = true
                             expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
                         }
                         
-                        func request(_ request: DownloadRequest, didFailWithError error: Error) {
+                        func request(_ request: DownloadOperation<Request>, didFailWithError error: Error) {
                             DownloadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }

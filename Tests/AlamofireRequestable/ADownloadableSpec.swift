@@ -44,7 +44,7 @@ class ADownloadableSpec: BaseSpec {
                     
                 }
                 
-                let request = Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).request()
+                let request = Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).request
                 print(request.debugDescription)
                 
                 expect(ADownloadableSpec.startDelegateCalled).to(beTrue())

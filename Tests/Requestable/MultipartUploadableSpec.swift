@@ -57,7 +57,7 @@ class MultipartUploadableSpec: BaseSpec {
                     
                     // When
                     let uploadable = Upload()
-                    uploadable.response(encodingCompletion: { result in
+                    uploadable.request(encodingCompletion: { result in
                         switch result {
                         case .success(let upload, _, _):
                             

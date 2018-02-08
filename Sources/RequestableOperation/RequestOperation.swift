@@ -30,11 +30,12 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
             self.completionHandler?(response)
             if let error = response.error {
                 self.requestable.request(self, didFailWithError: error)
+                self.isFinished = true
             } else {
                 self.requestable.request(self, didCompleteWithValue: response.value!)
+                self.isFinished = true
             }
         }
-        super.handleDataResponse(response)
     }
     
 }

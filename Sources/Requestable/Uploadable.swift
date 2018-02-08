@@ -39,13 +39,15 @@ public extension Uploadable {
     /// Creates a `UploadOperation` for the specified `Uploadable` object and
     /// asynchronously executes it.
     ///
+    /// - parameter request: An upload request instance
     /// - parameter completionHandler: A closure to be executed once the download
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `UploadOperation`.
     @discardableResult
-    public func response(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
-        let uploadOperation = UploadOperation(uploadable: self, request: request, completionHandler: completionHandler)
+    public func response(request: UploadRequest? = nil, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
+        let req = request ?? self.request
+        let uploadOperation = UploadOperation(uploadable: self, request: req, completionHandler: completionHandler)
         uploadOperation.start()
         return uploadOperation
     }

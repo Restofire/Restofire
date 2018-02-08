@@ -53,13 +53,15 @@ public extension Downloadable {
     /// Creates a `DownloadOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
+    /// - parameter request: A download request instance
     /// - parameter completionHandler: A closure to be executed once the download
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `DownloadOperation`.
     @discardableResult
-    public func response(_ completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        let downloadOperation = DownloadOperation(downloadable: self, request: request(), completionHandler: completionHandler)
+    public func response(request: DownloadRequest? = nil, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
+        let req = request ?? self.request
+        let downloadOperation = DownloadOperation(downloadable: self, request: req, completionHandler: completionHandler)
         downloadOperation.start()
         return downloadOperation
     }

@@ -30,11 +30,12 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
             self.completionHandler?(response)
             if let error = response.error {
                 self.downloadable.request(self, didFailWithError: error)
+                self.isFinished = true
             } else {
                 self.downloadable.request(self, didCompleteWithValue: response.value!)
+                self.isFinished = true
             }
         }
-        super.handleDownloadResponse(response)
     }
 }
 

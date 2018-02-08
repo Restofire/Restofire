@@ -30,11 +30,12 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
             self.completionHandler?(response)
             if let error = response.error {
                 self.uploadable.request(self, didFailWithError: error)
+                self.isFinished = true
             } else {
                 self.uploadable.request(self, didCompleteWithValue: response.value!)
+                self.isFinished = true
             }
         }
-        super.handleDataResponse(response)
     }
     
 }

@@ -49,13 +49,15 @@ public extension Requestable {
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
+    /// - parameter request: A data request instance
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func response(_ completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
-        let requestOperation = RequestOperation(requestable: self, request: request, completionHandler: completionHandler)
+    public func response(request: DataRequest? = nil, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
+        let req = request ?? self.request
+        let requestOperation = RequestOperation(requestable: self, request: req, completionHandler: completionHandler)
         requestOperation.start()
         return requestOperation
     }

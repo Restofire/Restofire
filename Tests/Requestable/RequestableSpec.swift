@@ -33,15 +33,16 @@ class RequestableSpec: BaseSpec {
                         var path: String? = "get"
                         var responseSerializer: DataResponseSerializer<HTTPBin> = DataRequest.JSONDecodableResponseSerializer()
 
-                        func request(_ request: DataRequest, didCompleteWithValue value: HTTPBin) {
+                        func request(_ request: RequestOperation<Request>, didCompleteWithValue value: HTTPBin) {
                             RequestableSpec.successDelegateCalled = true
                             expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
                         }
                         
-                        func request(_ request: DataRequest, didFailWithError error: Error) {
+                        func request(_ request: RequestOperation<Request>, didFailWithError error: Error) {
                             RequestableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
+                        
                     }
                     
                     let request = Request()

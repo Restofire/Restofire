@@ -16,19 +16,18 @@ struct NetworkReachability {
     
     init(configurable: Configurable) {
         self.configurable = configurable
+    }
+    
+    func setupListener() {
         configurable.networkReachabilityManager.listener = { status in
             switch status {
             case .reachable(_):
-                configurable.eventuallyOperationQueue.isSuspended = false
+                self.configurable.eventuallyOperationQueue.isSuspended = false
             default:
-                configurable.eventuallyOperationQueue.isSuspended = true
+                self.configurable.eventuallyOperationQueue.isSuspended = true
             }
         }
         configurable.networkReachabilityManager.startListening()
-    }
-    
-    func addOperation(operation: Operation) {
-        configurable.eventuallyOperationQueue.addOperation(operation)
     }
 }
     

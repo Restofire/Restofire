@@ -13,10 +13,12 @@ import Foundation
 public class RequestOperation<R: Requestable>: AOperation<R> {
     
     let requestable: R
+    let dataRequest: () -> DataRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     init(requestable: R, request: @escaping () -> DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
+        self.dataRequest = request
         self.completionHandler = completionHandler
         super.init(configurable: requestable, request: request)
     }
@@ -36,6 +38,14 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
                 self.isFinished = true
             }
         }
+    }
+    
+    open override func copy() -> AOperation<R> {
+        return RequestOperation(
+            requestable: requestable,
+            request: dataRequest,
+            completionHandler: completionHandler
+        )
     }
     
 }

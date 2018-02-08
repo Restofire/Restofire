@@ -13,10 +13,12 @@ import Foundation
 public class DownloadOperation<R: Downloadable>: AOperation<R> {
     
     let downloadable: R
+    let downloadRequest: () -> DownloadRequest
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
     init(downloadable: R, request: @escaping (() -> DownloadRequest), completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         self.downloadable = downloadable
+        self.downloadRequest = request
         self.completionHandler = completionHandler
         super.init(configurable: downloadable, request: request)
     }
@@ -37,5 +39,13 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
             }
         }
     }
+    
+    open override func copy() -> AOperation<R> {
+        return DownloadOperation(
+            downloadable: downloadable,
+            request: downloadRequest,
+            completionHandler: completionHandler
+        )
+    }
+    
 }
-

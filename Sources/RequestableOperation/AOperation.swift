@@ -12,12 +12,28 @@ import Foundation
 open class AOperation<R: Configurable>: Operation {
     
     var configurable: R
-    public private(set) var request: Request!
     var requestClosure: () -> Request
+    public private(set) var request: Request!
+    public private(set) var retryAttempts = 0
+    
+    enum RequestType {
+        case data
+        case download
+        case upload
+        
+        init(request: Request) {
+            if let _ = request as? UploadRequest {
+                self = .upload
+            } else if let _ = request as? DownloadRequest {
+                self = .download
+            } else {
+                self = .data
+            }
+        }
+    }
     lazy var requestType: RequestType = {
         RequestType(request: request)
     }()
-    public private(set) var retryAttempts = 0
     
     #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
@@ -76,7 +92,7 @@ open class AOperation<R: Configurable>: Operation {
     
     // MARK:- Data Response
     func handleDataResponse(_ response: DefaultDataResponse) {
-        fatalError("Implement Me")
+        fatalError("override me")
     }
     
     func handleDataRequestError(_ response: DefaultDataResponse) {
@@ -89,7 +105,7 @@ open class AOperation<R: Configurable>: Operation {
     
     // MARK: - Download Response
     func handleDownloadResponse(_ response: DefaultDownloadResponse) {
-        fatalError("Implement Me")
+        fatalError("override me")
     }
     
     func handleDownloadRequestError(_ response: DefaultDownloadResponse) {
@@ -98,6 +114,10 @@ open class AOperation<R: Configurable>: Operation {
         } else {
             isFinished = true
         }
+    }
+    
+    open func copy() -> AOperation {
+        fatalError("override me")
     }
     
     // MARK: - Request Error
@@ -113,13 +133,11 @@ open class AOperation<R: Configurable>: Operation {
         #endif
         if isConnectivityError {
             configurable.eventuallyOperationQueue.isSuspended = true
-            let eventuallyOperation = AOperation(
-                configurable: configurable,
-                request: self.requestClosure
-            )
-            reachability.addOperation(operation: eventuallyOperation)
+            let eventuallyOperation: AOperation = self.copy()
+            reachability.setupListener()
+            configurable.eventuallyOperationQueue.addOperation(eventuallyOperation)
         } else if let error = error as? URLError, retryAttempts > 0 &&
-                configurable.retryErrorCodes.contains(error.code) {
+            configurable.retryErrorCodes.contains(error.code) {
             retryAttempts -= 1
             perform(
                 #selector(AOperation<R>.executeRequest),
@@ -190,20 +208,4 @@ open class AOperation<R: Configurable>: Operation {
         return true
     }
     
-}
-
-enum RequestType {
-    case data
-    case download
-    case upload
-    
-    init(request: Request) {
-        if let _ = request as? UploadRequest {
-            self = .upload
-        } else if let _ = request as? DownloadRequest {
-            self = .download
-        } else {
-            self = .data
-        }
-    }
 }

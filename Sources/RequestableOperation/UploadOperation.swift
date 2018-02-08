@@ -13,10 +13,12 @@ import Foundation
 public class UploadOperation<R: Uploadable>: AOperation<R> {
     
     let uploadable: R
+    let uploadRequest: () -> UploadRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     init(uploadable: R, request: @escaping () -> UploadRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.uploadable = uploadable
+        self.uploadRequest = request
         self.completionHandler = completionHandler
         super.init(configurable: uploadable, request: request)
     }
@@ -36,6 +38,14 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
                 self.isFinished = true
             }
         }
+    }
+    
+    open override func copy() -> AOperation<R> {
+        return UploadOperation(
+            uploadable: uploadable,
+            request: uploadRequest,
+            completionHandler: completionHandler
+        )
     }
     
 }

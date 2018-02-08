@@ -232,6 +232,10 @@
 		359724C92021A1D700FD36E6 /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724C72021A1D700FD36E6 /* Uploadable.swift */; };
 		359724CA2021A1D700FD36E6 /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724C72021A1D700FD36E6 /* Uploadable.swift */; };
 		359724CB2021A1D700FD36E6 /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724C72021A1D700FD36E6 /* Uploadable.swift */; };
+		35AE23BD202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AE23BC202CEA57007FE581 /* MultipartUploadRequest.swift */; };
+		35AE23BE202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AE23BC202CEA57007FE581 /* MultipartUploadRequest.swift */; };
+		35AE23BF202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AE23BC202CEA57007FE581 /* MultipartUploadRequest.swift */; };
+		35AE23C0202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AE23BC202CEA57007FE581 /* MultipartUploadRequest.swift */; };
 		35B19DE61BEE134E001D3952 /* Restofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B19DDB1BEE134E001D3952 /* Restofire.framework */; };
 		35BB0E0C202106B8003FD968 /* ArrayParameterEncodingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BB0E06202106B4003FD968 /* ArrayParameterEncodingSpec.swift */; };
 		35BB0E0D202106B9003FD968 /* ArrayParameterEncodingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BB0E06202106B4003FD968 /* ArrayParameterEncodingSpec.swift */; };
@@ -495,6 +499,7 @@
 		3596CBFC1CA3B5030089A03E /* Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
 		359724BE2021A17000FD36E6 /* UploadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadOperation.swift; sourceTree = "<group>"; };
 		359724C72021A1D700FD36E6 /* Uploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploadable.swift; sourceTree = "<group>"; };
+		35AE23BC202CEA57007FE581 /* MultipartUploadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartUploadRequest.swift; sourceTree = "<group>"; };
 		35B19DDB1BEE134E001D3952 /* Restofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Restofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B19DE51BEE134E001D3952 /* RestofireTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RestofireTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35BB0E06202106B4003FD968 /* ArrayParameterEncodingSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayParameterEncodingSpec.swift; sourceTree = "<group>"; };
@@ -705,6 +710,7 @@
 			children = (
 				35366E8D1FFBB39E00270EDE /* TypeAliases.swift */,
 				35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */,
+				35AE23BC202CEA57007FE581 /* MultipartUploadRequest.swift */,
 				357E335B201D12AE0093DCC5 /* RestofireValidation.swift */,
 				350428EE201C876800765D15 /* ArrayParameterEncoding.swift */,
 				357E336B201DA1340093DCC5 /* JSONDecodableResponseSerializer.swift */,
@@ -1231,6 +1237,7 @@
 				35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				358E8ECC2020A484003048B3 /* Reachability.swift in Sources */,
 				357E33A4201DC7180093DCC5 /* RequestOperation.swift in Sources */,
+				35AE23BF202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */,
 				357E341B201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D8201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				359724CA2021A1D700FD36E6 /* Uploadable.swift in Sources */,
@@ -1283,6 +1290,7 @@
 				35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				358E8ECB2020A484003048B3 /* Reachability.swift in Sources */,
 				357E33A3201DC7180093DCC5 /* RequestOperation.swift in Sources */,
+				35AE23BE202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */,
 				357E341A201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D7201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				359724C92021A1D700FD36E6 /* Uploadable.swift in Sources */,
@@ -1335,6 +1343,7 @@
 				357E341C201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D9201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
+				35AE23C0202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */,
 				357E33E9201DD7C50093DCC5 /* AMultipartUploadable.swift in Sources */,
 				35C7D484201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
@@ -1435,6 +1444,7 @@
 				35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */,
 				358E8ECA2020A484003048B3 /* Reachability.swift in Sources */,
 				357E33A2201DC7180093DCC5 /* RequestOperation.swift in Sources */,
+				35AE23BD202CEA57007FE581 /* MultipartUploadRequest.swift in Sources */,
 				357E3419201DF5260093DCC5 /* _AUploadable.swift in Sources */,
 				357E33D6201DD7C50093DCC5 /* ADataUploadable.swift in Sources */,
 				359724C82021A1D700FD36E6 /* Uploadable.swift in Sources */,

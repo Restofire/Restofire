@@ -27,15 +27,15 @@ public protocol AMultipartUploadable: _AUploadable {
     /// The multipart form data.
     var multipartFormData: (MultipartFormData) -> Void { get }
     
-    /// The threashold.
-    var threshold: UInt64 { get }
+    /// The encoding memory threashold.
+    var encodingMemoryThreshold: UInt64 { get }
 
 }
 
 extension AMultipartUploadable {
     
     /// `SessionManager.multipartFormDataEncodingMemoryThreshold`
-    public var threshold: UInt64 {
+    public var encodingMemoryThreshold: UInt64 {
         return SessionManager.multipartFormDataEncodingMemoryThreshold
     }
     
@@ -45,12 +45,12 @@ public extension AMultipartUploadable {
     
     /// Use request(encodingCompletion:) method for MultipartUpload instead
     public var request: UploadRequest {
-        fatalError("Use request(encodingCompletion:((MultipartFormDataEncodingResult) -> Void)) method for MultipartUpload instead")
+        fatalError("Use request(encodingCompletion:((RFMultipartFormDataEncodingResult) -> Void)) method for MultipartUpload instead")
     }
     
     /// Encodes `multipartFormData` using `encodingMemoryThreshold` and calls `encodingCompletion` with new
     /// `UploadRequest` using the `uploadable`.
-    public func request(encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
+    public func request(encodingCompletion: ((RFMultipartFormDataEncodingResult) -> Void)? = nil) {
         RestofireRequest.multipartUploadRequest(fromRequestable: self, withUrlRequest: urlRequest, encodingCompletion: encodingCompletion)
     }
     

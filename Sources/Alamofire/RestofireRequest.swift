@@ -55,35 +55,18 @@ class RestofireRequest {
         return request
     }
     
-    static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest, encodingCompletion: ((MultipartFormDataEncodingResult) -> Void)? = nil) {
+    static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest, encodingCompletion: ((RFMultipartFormDataEncodingResult) -> Void)? = nil) {
         let urlRequest = prepare(urlRequest, requestable: requestable)
-        let localEncodingCompletion = encodingCompletion
-        requestable.sessionManager.upload(
-            multipartFormData: requestable.multipartFormData,
-            usingThreshold: requestable.threshold,
-            with: urlRequest) { encodingCompletion in
-                switch encodingCompletion {
-                case .success(let request, let streamingFromDisk, let streamFileURL):
-                    didSend(request, requestable: requestable)
-                    authenticateRequest(request, usingCredential: requestable.credential)
-                    RestofireRequestValidation.validateDataRequest(
-                        request: request,
-                        requestable: requestable
-                    )
-                    let result = MultipartFormDataEncodingResult.success(request: request, streamingFromDisk: streamingFromDisk, streamFileURL: streamFileURL)
-                    localEncodingCompletion?(result)
-                case .failure(_):
-                    localEncodingCompletion?(encodingCompletion)
-                }
-        }
+        let multipartUploadRequest = MultipartUploadRequest()
+        multipartUploadRequest.request(fromRequestable: requestable, withUrlRequest: urlRequest, encodingCompletion: encodingCompletion)
     }
     
-    fileprivate static func authenticateRequest(_ request: Request, usingCredential credential: URLCredential?) {
+    internal static func authenticateRequest(_ request: Request, usingCredential credential: URLCredential?) {
         guard let credential = credential else { return }
         request.authenticate(usingCredential: credential)
     }
     
-    fileprivate static func prepare<R: AConfigurable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    internal static func prepare<R: AConfigurable>(_ request: URLRequest, requestable: R) -> URLRequest {
         var request = request
         request = requestable.prepare(request, requestable: requestable)
         requestable.delegates.forEach {
@@ -92,7 +75,7 @@ class RestofireRequest {
         return request
     }
     
-    fileprivate static func didSend<R: AConfigurable>(_ request: Request, requestable: R) {
+    internal static func didSend<R: AConfigurable>(_ request: Request, requestable: R) {
         requestable.didSend(request, requestable: requestable)
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Queueable Protocol Reference</title>
+    <title>RFMultipartFormDataEncodingResult Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Protocol/Queueable" class="dashAnchor"></a>
-    <a title="Queueable Protocol Reference"></a>
+    <a name="//apple_ref/swift/Enum/RFMultipartFormDataEncodingResult" class="dashAnchor"></a>
+    <a title="RFMultipartFormDataEncodingResult Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Restofire Docs</a> (95% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Restofire Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Queueable Protocol Reference
+        RFMultipartFormDataEncodingResult Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -48,7 +48,24 @@
             <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Enums.html#/s:9Restofire33RFMultipartFormDataEncodingResultO">RFMultipartFormDataEncodingResult</a>
+                <a href="../Enums/RFMultipartFormDataEncodingResult.html">RFMultipartFormDataEncodingResult</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/DataRequest.html">DataRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/DownloadRequest.html">DownloadRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/JSONEncoding.html">JSONEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Request.html">Request</a>
               </li>
             </ul>
           </li>
@@ -139,6 +156,9 @@
               <li class="nav-group-task">
                 <a href="../Protocols/_Requestable.html">_Requestable</a>
               </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
+              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -169,14 +189,22 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Queueable</h1>
+            <h1>RFMultipartFormDataEncodingResult</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Queueable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">RFMultipartFormDataEncodingResult</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents a <code>Queueable</code> that is associated with <code><a href="../Protocols/Requestable.html">Requestable</a></code>.</p>
+            <p>Defines whether the <code>MultipartFormData</code> encoding was successful and contains result of the encoding as
+associated values.</p>
+
+<ul>
+<li>Success: Represents a successful <code>MultipartFormData</code> encoding and contains the new <code>UploadRequest</code> along with
+       streaming information.</li>
+<li>Failure: Used to represent a failure in the <code>MultipartFormData</code> encoding and also contains the encoding
+       error.</li>
+</ul>
 
           </section>
           <section class="section task-group-section">
@@ -185,32 +213,55 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire9QueueableP5queueSo13DispatchQueueCv"></a>
-                    <a name="//apple_ref/swift/Property/queue" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire9QueueableP5queueSo13DispatchQueueCv">queue</a>
+                    <a name="/s:9Restofire33RFMultipartFormDataEncodingResultO7successAC9Alamofire13UploadRequestCyc7request_Sb17streamingFromDisk10Foundation3URLVSg010streamFileP0tcACmF"></a>
+                    <a name="//apple_ref/swift/Element/success" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire33RFMultipartFormDataEncodingResultO7successAC9Alamofire13UploadRequestCyc7request_Sb17streamingFromDisk10Foundation3URLVSg010streamFileP0tcACmF">success</a>
                     </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The <code>queue</code>.</p>
-
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p><code>DispatchQueue.main</code></p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">success</span><span class="p">(</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire33RFMultipartFormDataEncodingResultO7failureACs5Error_pcACmF"></a>
+                    <a name="//apple_ref/swift/Element/failure" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire33RFMultipartFormDataEncodingResultO7failureACs5Error_pcACmF">failure</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>

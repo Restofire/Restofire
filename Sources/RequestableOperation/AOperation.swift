@@ -13,8 +13,10 @@ open class AOperation<R: Configurable>: Operation {
     
     var configurable: R
     var requestClosure: () -> Request
+    
+    /// The underlying respect respective to requestable.
     public private(set) var request: Request!
-    public private(set) var retryAttempts = 0
+    var retryAttempts = 0
     
     enum RequestType {
         case data
@@ -61,10 +63,6 @@ open class AOperation<R: Configurable>: Operation {
         request.cancel()
     }
     
-    @objc func retry() {
-        executeRequest()
-    }
-    
     @objc func executeRequest() {
         request = requestClosure()
         switch requestType {
@@ -88,6 +86,10 @@ open class AOperation<R: Configurable>: Operation {
             }
         }
         request.logIfNeeded()
+    }
+    
+    open func copy() -> AOperation {
+        fatalError("override me")
     }
     
     // MARK:- Data Response
@@ -114,10 +116,6 @@ open class AOperation<R: Configurable>: Operation {
         } else {
             isFinished = true
         }
-    }
-    
-    open func copy() -> AOperation {
-        fatalError("override me")
     }
     
     // MARK: - Request Error

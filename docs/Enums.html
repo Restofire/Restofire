@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Classes  Reference</title>
+    <title>Enumerations  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,7 +10,7 @@
     
   </head>
   <body>
-    <a title="Classes  Reference"></a>
+    <a title="Enumerations  Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="index.html">Restofire Docs</a> (95% documented)</p>
@@ -20,7 +20,7 @@
       <p id="breadcrumbs">
         <a href="index.html">Restofire Reference</a>
         <img id="carat" src="img/carat.png" />
-        Classes  Reference
+        Enumerations  Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -168,8 +168,8 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Classes</h1>
-            <p>The following classes are available globally.</p>
+            <h1>Enumerations</h1>
+            <p>The following enumerations are available globally.</p>
 
           </section>
           <section class="section task-group-section">
@@ -178,9 +178,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire17DownloadOperationC"></a>
-                    <a name="//apple_ref/swift/Class/DownloadOperation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire17DownloadOperationC">DownloadOperation</a>
+                    <a name="/s:9Restofire33RFMultipartFormDataEncodingResultO"></a>
+                    <a name="//apple_ref/swift/Enum/RFMultipartFormDataEncodingResult" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire33RFMultipartFormDataEncodingResultO">RFMultipartFormDataEncodingResult</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -188,111 +188,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>An NSOperation that executes the <code><a href="Protocols/Downloadable.html">Downloadable</a></code> asynchronously.</p>
+                        <p>Defines whether the <code>MultipartFormData</code> encoding was successful and contains result of the encoding as
+associated values.</p>
 
-                        <a href="Classes/DownloadOperation.html" class="slightly-smaller">See more</a>
+<ul>
+<li>Success: Represents a successful <code>MultipartFormData</code> encoding and contains the new <code>UploadRequest</code> along with
+       streaming information.</li>
+<li>Failure: Used to represent a failure in the <code>MultipartFormData</code> encoding and also contains the encoding
+       error.</li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">DownloadOperation</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols/Downloadable.html">Downloadable</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Classes/AOperation.html">AOperation</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire16RequestOperationC"></a>
-                    <a name="//apple_ref/swift/Class/RequestOperation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire16RequestOperationC">RequestOperation</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An NSOperation that executes the <code><a href="Protocols/Requestable.html">Requestable</a></code> asynchronously.</p>
-
-                        <a href="Classes/RequestOperation.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">RequestOperation</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Classes/AOperation.html">AOperation</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire15UploadOperationC"></a>
-                    <a name="//apple_ref/swift/Class/UploadOperation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire15UploadOperationC">UploadOperation</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An NSOperation that executes the <code><a href="Protocols/Uploadable.html">Uploadable</a></code> asynchronously.</p>
-
-                        <a href="Classes/UploadOperation.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UploadOperation</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols/Uploadable.html">Uploadable</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt"><a href="Classes/AOperation.html">AOperation</a></span><span class="o">&lt;</span><span class="kt">R</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire10AOperationC"></a>
-                    <a name="//apple_ref/swift/Class/AOperation" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire10AOperationC">AOperation</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>An NSOperation base class for all request operations</p>
-
-                        <a href="Classes/AOperation.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">AOperation</span><span class="o">&lt;</span><span class="kt">R</span><span class="p">:</span> <span class="kt"><a href="Protocols/Configurable.html">Configurable</a></span><span class="o">&gt;</span><span class="p">:</span> <span class="kt">Operation</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">RFMultipartFormDataEncodingResult</span></code></pre>
 
                         </div>
                       </div>

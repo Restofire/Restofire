@@ -49,6 +49,7 @@ class AMultipartUploadableSpec: BaseSpec {
                     Upload().request(encodingCompletion: { result in
                         switch result {
                         case .success(let upload, _, _):
+                            let upload = upload()
                             
                             print(upload.debugDescription)
                             

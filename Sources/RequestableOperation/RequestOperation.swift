@@ -8,15 +8,21 @@
 
 import Foundation
 
-/// An NSOperation that executes the `Requestable` asynchronously
-/// or when added to a NSOperationQueue
+/// An NSOperation that executes the `Requestable` asynchronously.
 public class RequestOperation<R: Requestable>: AOperation<R> {
     
     let requestable: R
     let dataRequest: () -> DataRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
-    init(requestable: R, request: @escaping () -> DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    /// Intializes an request operation.
+    ///
+    /// - Parameters:
+    ///   - requestable: The `Requestable`.
+    ///   - request: The request closure.
+    ///   - completionHandler: The async completion handler called
+    ///     when the request is completed
+    public init(requestable: R, request: @escaping () -> DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
         self.dataRequest = request
         self.completionHandler = completionHandler
@@ -40,6 +46,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         }
     }
     
+    /// Creates a copy of self
     open override func copy() -> AOperation<R> {
         return RequestOperation(
             requestable: requestable,

@@ -8,15 +8,21 @@
 
 import Foundation
 
-/// An NSOperation that executes the `Downloadable` asynchronously
-/// or when added to a NSOperationQueue
+/// An NSOperation that executes the `Downloadable` asynchronously.
 public class DownloadOperation<R: Downloadable>: AOperation<R> {
     
     let downloadable: R
     let downloadRequest: () -> DownloadRequest
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
-    init(downloadable: R, request: @escaping (() -> DownloadRequest), completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
+    /// Intializes an download operation.
+    ///
+    /// - Parameters:
+    ///   - downloadable: The `Downloadable`.
+    ///   - request: The request closure.
+    ///   - completionHandler: The async completion handler called
+    ///     when the request is completed
+    public init(downloadable: R, request: @escaping (() -> DownloadRequest), completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         self.downloadable = downloadable
         self.downloadRequest = request
         self.completionHandler = completionHandler
@@ -40,6 +46,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         }
     }
     
+    /// Creates a copy of self
     open override func copy() -> AOperation<R> {
         return DownloadOperation(
             downloadable: downloadable,

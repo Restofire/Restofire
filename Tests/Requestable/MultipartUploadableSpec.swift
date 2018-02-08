@@ -61,9 +61,7 @@ class MultipartUploadableSpec: BaseSpec {
                         switch result {
                         case .success(let upload, _, _):
                             
-                            print(upload.debugDescription)
-                            
-                            let operation = uploadable.execute(request: upload) { (response: DataResponse<HTTPBin>) in
+                            let operation = uploadable.execute(request: upload()) { (response: DataResponse<HTTPBin>) in
 
                                 // Then
                                 if let statusCode = response.response?.statusCode,

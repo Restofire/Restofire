@@ -14,7 +14,7 @@
     <a title="DownloadOperation Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (93% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (95% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -45,19 +45,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Extensions.html">Extensions</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/DataRequest.html">DataRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/DownloadRequest.html">DownloadRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/JSONEncoding.html">JSONEncoding</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Request.html">Request</a>
+                <a href="../Enums.html#/s:9Restofire33RFMultipartFormDataEncodingResultO">RFMultipartFormDataEncodingResult</a>
               </li>
             </ul>
           </li>
@@ -148,9 +139,6 @@
               <li class="nav-group-task">
                 <a href="../Protocols/_Requestable.html">_Requestable</a>
               </li>
-              <li class="nav-group-task">
-                <a href="../Protocols/_ResponseSerializable.html">_ResponseSerializable</a>
-              </li>
             </ul>
           </li>
           <li class="nav-group-name">
@@ -188,13 +176,83 @@
 
                 </div>
               </div>
-            <p>An NSOperation that executes the <code><a href="../Protocols/Downloadable.html">Downloadable</a></code> asynchronously
-or when added to a NSOperationQueue</p>
+            <p>An NSOperation that executes the <code><a href="../Protocols/Downloadable.html">Downloadable</a></code> asynchronously.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
               <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire17DownloadOperationCACyxGx12downloadable_9Alamofire0B7RequestCyc7requestyAF0B8ResponseVy0H0QzGcSg17completionHandlertcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(downloadable:request:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire17DownloadOperationCACyxGx12downloadable_9Alamofire0B7RequestCyc7requestyAF0B8ResponseVy0H0QzGcSg17completionHandlertcfc">init(downloadable:request:completionHandler:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Intializes an download operation.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">downloadable</span><span class="p">:</span> <span class="kt">R</span><span class="p">,</span> <span class="nv">request</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">DownloadRequest</span><span class="p">),</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">DownloadResponse</span><span class="o">&lt;</span><span class="kt">R</span><span class="o">.</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>downloadable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Protocols/Downloadable.html">Downloadable</a></code>.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The request closure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The async completion handler called
+when the request is completed</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -208,7 +266,7 @@ or when added to a NSOperationQueue</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Creates a copy of self</p>
 
                       </div>
                       <div class="declaration">

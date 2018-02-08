@@ -8,15 +8,21 @@
 
 import Foundation
 
-/// An NSOperation that executes the `Uploadable` asynchronously
-/// or when added to a NSOperationQueue
+/// An NSOperation that executes the `Uploadable` asynchronously.
 public class UploadOperation<R: Uploadable>: AOperation<R> {
     
     let uploadable: R
     let uploadRequest: () -> UploadRequest
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
-    init(uploadable: R, request: @escaping () -> UploadRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    /// Intializes an upload operation.
+    ///
+    /// - Parameters:
+    ///   - uploadable: The `Uploadable`.
+    ///   - request: The request closure.
+    ///   - completionHandler: The async completion handler called
+    ///     when the request is completed
+    public init(uploadable: R, request: @escaping () -> UploadRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.uploadable = uploadable
         self.uploadRequest = request
         self.completionHandler = completionHandler
@@ -40,6 +46,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         }
     }
     
+    /// Creates a copy of self
     open override func copy() -> AOperation<R> {
         return UploadOperation(
             uploadable: uploadable,

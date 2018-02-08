@@ -1,6 +1,20 @@
 {
   "warnings": [
     {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
+      "line": 19,
+      "symbol": "RFMultipartFormDataEncodingResult.success",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
+      "line": 24,
+      "symbol": "RFMultipartFormDataEncodingResult.failure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
       "line": null,
       "symbol": "DataRequest",
@@ -51,50 +65,15 @@
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
-      "line": 16,
-      "symbol": "AOperation.request",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
-      "line": 17,
-      "symbol": "AOperation.retryAttempts",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
-      "line": 44,
+      "line": 46,
       "symbol": "AOperation.init(configurable:request:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
-      "line": 119,
+      "line": 91,
       "symbol": "AOperation.copy()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/DownloadOperation.swift",
-      "line": 43,
-      "symbol": "DownloadOperation.copy()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/RequestOperation.swift",
-      "line": 43,
-      "symbol": "RequestOperation.copy()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/UploadOperation.swift",
-      "line": 43,
-      "symbol": "UploadOperation.copy()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }

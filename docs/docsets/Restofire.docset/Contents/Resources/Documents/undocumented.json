@@ -1,6 +1,20 @@
 {
   "warnings": [
     {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
+      "line": 19,
+      "symbol": "RFMultipartFormDataEncodingResult.success",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
+      "line": 24,
+      "symbol": "RFMultipartFormDataEncodingResult.failure",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
       "line": null,
       "symbol": "DataRequest",
@@ -47,6 +61,20 @@
       "line": 11,
       "symbol": "_ResponseSerializable",
       "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
+      "line": 46,
+      "symbol": "AOperation.init(configurable:request:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
+      "line": 91,
+      "symbol": "AOperation.copy()",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],

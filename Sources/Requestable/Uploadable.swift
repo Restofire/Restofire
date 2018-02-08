@@ -45,12 +45,12 @@ public extension Uploadable {
     ///
     /// - returns: The created `UploadOperation`.
     @discardableResult
-    public func response(completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
-        return response(request: self.request, completionHandler: completionHandler)
+    public func execute(completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
+        return execute(request: self.request, completionHandler: completionHandler)
     }
     
     @discardableResult
-    public func response(request: @autoclosure @escaping () -> UploadRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
+    public func execute(request: @autoclosure @escaping () -> UploadRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
         let uploadOperation = UploadOperation(uploadable: self, request: request, completionHandler: completionHandler)
         uploadOperation.start()
         return uploadOperation

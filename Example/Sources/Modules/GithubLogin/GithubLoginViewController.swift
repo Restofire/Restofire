@@ -57,7 +57,7 @@ extension GithubLoginViewController {
             return
         }
         
-        GithubLoginGETService(user: email, password: password).response()
+        GithubLoginGETService(user: email, password: password).execute()
     }
     
 }

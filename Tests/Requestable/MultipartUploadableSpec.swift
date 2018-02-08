@@ -63,7 +63,7 @@ class MultipartUploadableSpec: BaseSpec {
                             
                             print(upload.debugDescription)
                             
-                            let operation = uploadable.response(request: upload, completionHandler: { (response: DataResponse<HTTPBin>) in
+                            let operation = uploadable.execute(request: upload) { (response: DataResponse<HTTPBin>) in
 
                                 // Then
                                 if let statusCode = response.response?.statusCode,
@@ -83,7 +83,7 @@ class MultipartUploadableSpec: BaseSpec {
                                     fail("response value should not be nil")
                                 }
                             
-                            })
+                            }
                             
                             operation.completionBlock = {
                                 expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())

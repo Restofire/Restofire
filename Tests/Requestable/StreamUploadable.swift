@@ -45,14 +45,13 @@ class StreamUploadableSpec: BaseSpec {
                     let request = Upload()
                     
                     // When
-                    let operation = request
-                        .response { response in
-                            
-                            // Then
-                            expect(response.request).toNot(beNil())
-                            expect(response.response).toNot(beNil())
-                            expect(response.data).toNot(beNil())
-                            expect(response.error).to(beNil())
+                    let operation = request.execute { response in
+                        
+                        // Then
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
+                        expect(response.data).toNot(beNil())
+                        expect(response.error).to(beNil())
                     }
                     
                     operation.completionBlock = {

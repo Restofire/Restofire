@@ -59,12 +59,12 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadOperation`.
     @discardableResult
-    public func response(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        return response(request: self.request, completionHandler: completionHandler)
+    public func execute(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
+        return execute(request: self.request, completionHandler: completionHandler)
     }
     
     @discardableResult
-    public func response(request: @autoclosure @escaping () -> DownloadRequest, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
+    public func execute(request: @autoclosure @escaping () -> DownloadRequest, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
         let downloadOperation = DownloadOperation(downloadable: self, request: request, completionHandler: completionHandler)
         downloadOperation.start()
         return downloadOperation

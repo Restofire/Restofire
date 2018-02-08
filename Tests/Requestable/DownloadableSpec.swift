@@ -50,20 +50,19 @@ class DownloadableSpec: BaseSpec {
                     let request = Request()
                     
                     // When
-                    let operation = request
-                        .response { response in
-                            
-                            // Then
-                            if let statusCode = response.response?.statusCode,
-                                statusCode != 200 {
-                                fail("Response status code should be 200")
-                            }
-                            
-                            expect(response.request).toNot(beNil())
-                            expect(response.response).toNot(beNil())
-                            expect(response.destinationURL).toNot(beNil())
-                            expect(response.resumeData).to(beNil())
-                            expect(response.error).to(beNil())
+                    let operation = request.execute { response in
+                        
+                        // Then
+                        if let statusCode = response.response?.statusCode,
+                            statusCode != 200 {
+                            fail("Response status code should be 200")
+                        }
+                        
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
+                        expect(response.destinationURL).toNot(beNil())
+                        expect(response.resumeData).to(beNil())
+                        expect(response.error).to(beNil())
                     }
                     
                     operation.completionBlock = {

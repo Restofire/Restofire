@@ -1,6 +1,34 @@
 {
   "warnings": [
     {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": null,
+      "symbol": "DataRequest",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": null,
+      "symbol": "DownloadRequest",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": null,
+      "symbol": "JSONEncoding",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": null,
+      "symbol": "Request",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/BaseRequestable/_Requestable.swift",
       "line": 40,
       "symbol": "_Requestable.urlRequest",
@@ -8,31 +36,17 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Configuration/Protocols/ResponseSerializable.swift",
       "line": null,
-      "symbol": "DataRequest",
+      "symbol": "_ResponseSerializable",
       "symbol_kind": "source.lang.swift.decl.extension",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
-      "line": null,
-      "symbol": "DownloadRequest",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
-      "line": null,
-      "symbol": "JSONEncoding",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/TypeAliases.swift",
-      "line": null,
-      "symbol": "Request",
-      "symbol_kind": "source.lang.swift.decl.extension",
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Configuration/Protocols/ResponseSerializable.swift",
+      "line": 11,
+      "symbol": "_ResponseSerializable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
       "warning": "undocumented"
     }
   ],

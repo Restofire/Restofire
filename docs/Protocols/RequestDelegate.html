@@ -14,7 +14,7 @@
     <a title="RequestDelegate Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (97% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (93% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,7 +31,7 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/BaseOperation.html">BaseOperation</a>
+                <a href="../Classes/AOperation.html">AOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DownloadOperation.html">DownloadOperation</a>
@@ -110,7 +110,7 @@
                 <a href="../Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire19MultipartUploadableP">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
@@ -201,6 +201,9 @@
                     <a name="//apple_ref/swift/Method/prepare(_:requestable:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire15RequestDelegateP7prepare10Foundation10URLRequestVAG_AA13AConfigurable_p11requestabletF">prepare(_:requestable:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -208,6 +211,11 @@
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Called to modify a request before sending.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>No-op</code></p>
 
                       </div>
                       <div class="declaration">
@@ -256,47 +264,12 @@
                     </section>
                   </div>
                 </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire15RequestDelegateP11didCompletey9Alamofire0B0C_AA13AConfigurable_p11requestabletF"></a>
-                    <a name="//apple_ref/swift/Method/didComplete(_:requestable:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire15RequestDelegateP11didCompletey9Alamofire0B0C_AA13AConfigurable_p11requestabletF">didComplete(_:requestable:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Called when the request is completed.</p>
-
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p><code>No-op</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">didComplete</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">Request</span><span class="p">,</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt"><a href="../Protocols/AConfigurable.html">AConfigurable</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

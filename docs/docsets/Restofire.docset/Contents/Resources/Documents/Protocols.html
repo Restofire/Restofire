@@ -13,7 +13,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Restofire Docs</a> (97% documented)</p>
+        <p><a href="index.html">Restofire Docs</a> (93% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -30,7 +30,7 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/BaseOperation.html">BaseOperation</a>
+                <a href="Classes/AOperation.html">AOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/DownloadOperation.html">DownloadOperation</a>
@@ -109,7 +109,7 @@
                 <a href="Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="Protocols/MultipartUploadable.html">MultipartUploadable</a>
+                <a href="Protocols.html#/s:9Restofire19MultipartUploadableP">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Queueable.html">Queueable</a>
@@ -410,9 +410,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code><a href="Protocols/Configurable.html">Configurable</a></code> for Alamofire Services.
+                        <p>Represents a <code>AConfigurable</code> for Alamofire Services.
 <code><a href="Structs/Configuration.html#/s:9Restofire13ConfigurationV7defaultACvZ">Configuration.default</a></code> by default.</p>
-<h3 id='create-custom-configurable' class='heading'>Create custom Configurable</h3>
+<h3 id='create-custom-aconfigurable' class='heading'>Create custom AConfigurable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinConfigurable</span><span class="p">:</span> <span class="kt">AConfigurable</span> <span class="p">{</span> <span class="p">}</span>
 
 <span class="kd">extension</span> <span class="kt">HTTPBinConfigurable</span> <span class="p">{</span>
@@ -432,7 +432,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AConfigurable</span><span class="p">:</span> <span class="n"><a href="Protocols/_Configurable.html">_Configurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Authenticable.html">Authenticable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/RequestDelegate.html">RequestDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/SessionManagable.html">SessionManagable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Validatable.html">Validatable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AConfigurable</span><span class="p">:</span> <span class="n"><a href="Protocols/_Configurable.html">_Configurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Authenticable.html">Authenticable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/SessionManagable.html">SessionManagable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/RequestDelegate.html">RequestDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Validatable.html">Validatable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -547,6 +547,52 @@
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AStreamUploadable</span><span class="p">:</span> <span class="n"><a href="Protocols/_AUploadable.html">_AUploadable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire12ConfigurableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Configurable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire12ConfigurableP">Configurable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents a <code>Configurable</code> for Restofire.
+<code><a href="Structs/Configuration.html#/s:9Restofire13ConfigurationV7defaultACvZ">Configuration.default</a></code> by default.</p>
+<h3 id='create-custom-configurable' class='heading'>Create custom Configurable</h3>
+<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinConfigurable</span><span class="p">:</span> <span class="kt">Configurable</span> <span class="p">{</span> <span class="p">}</span>
+
+<span class="kd">extension</span> <span class="kt">HTTPBinConfigurable</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Configuration</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"httpbin.org"</span>
+    <span class="k">return</span> <span class="n">config</span>
+  <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre>
+
+                        <a href="Protocols/Configurable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Configurable</span><span class="p">:</span> <span class="kt"><a href="Protocols/AConfigurable.html">AConfigurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Reachable.html">Reachable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Retryable.html">Retryable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Queueable.html">Queueable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -722,7 +768,7 @@ MultipartUplodable protocols.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Represents a <code><a href="Protocols/MultipartUploadable.html">MultipartUploadable</a></code> for Alamofire.</p>
+                        <p>Represents a <code><a href="Protocols.html#/s:9Restofire19MultipartUploadableP">MultipartUploadable</a></code> for Alamofire.</p>
 <h3 id='create-custom-multipartuploadable' class='heading'>Create custom MultipartUploadable</h3>
 <pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinUploadService</span><span class="p">:</span> <span class="kt">AMultipartUploadable</span> <span class="p">{</span>
 
@@ -1138,7 +1184,6 @@ MultipartUplodable protocols.</p>
 <span class="p">}</span>
 </code></pre>
 
-                        <a href="Protocols/MultipartUploadable.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -1197,52 +1242,6 @@ MultipartUplodable protocols.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12ConfigurableP"></a>
-                    <a name="//apple_ref/swift/Protocol/Configurable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12ConfigurableP">Configurable</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Represents a <code>Configurable</code> for Restofire.
-<code><a href="Structs/Configuration.html#/s:9Restofire13ConfigurationV7defaultACvZ">Configuration.default</a></code> by default.</p>
-<h3 id='create-custom-configurable' class='heading'>Create custom Configurable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinConfigurable</span><span class="p">:</span> <span class="kt">Configurable</span> <span class="p">{</span> <span class="p">}</span>
-
-<span class="kd">extension</span> <span class="kt">HTTPBinConfigurable</span> <span class="p">{</span>
-
-  <span class="k">var</span> <span class="nv">configuration</span><span class="p">:</span> <span class="kt">Configuration</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">Configuration</span><span class="p">()</span>
-    <span class="n">config</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s">"httpbin.org"</span>
-    <span class="k">return</span> <span class="n">config</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
-
-                        <a href="Protocols/Configurable.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Configurable</span><span class="p">:</span> <span class="kt"><a href="Protocols/AConfigurable.html">AConfigurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Reachable.html">Reachable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Retryable.html">Retryable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Queueable.html">Queueable</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:9Restofire15RequestDelegateP"></a>
                     <a name="//apple_ref/swift/Protocol/RequestDelegate" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire15RequestDelegateP">RequestDelegate</a>
@@ -1273,7 +1272,7 @@ MultipartUplodable protocols.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

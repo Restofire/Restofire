@@ -14,7 +14,7 @@
     <a title="Downloadable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (97% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (93% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,7 +31,7 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes/BaseOperation.html">BaseOperation</a>
+                <a href="../Classes/AOperation.html">AOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Classes/DownloadOperation.html">DownloadOperation</a>
@@ -110,7 +110,7 @@
                 <a href="../Protocols.html#/s:9Restofire14FileUploadableP">FileUploadable</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
+                <a href="../Protocols.html#/s:9Restofire19MultipartUploadableP">MultipartUploadable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
@@ -208,75 +208,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12DownloadableP7requesty9Alamofire15DownloadRequestC_So8ProgressC03dideG0tF"></a>
-                    <a name="//apple_ref/swift/Method/request(_:didDownloadProgress:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12DownloadableP7requesty9Alamofire15DownloadRequestC_So8ProgressC03dideG0tF">request(_:didDownloadProgress:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Default implementation
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Called when the Request updates with download progress.</p>
-
-                      </div>
-                      <h4>Default Implementation</h4>
-                      <div class="default_impl abstract">
-                        <p><code>Does Nothing</code></p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DownloadRequest</span><span class="p">,</span> <span class="n">didDownloadProgress</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">Progress</span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>request</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Alamofire.DownloadRequest</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>progress</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The Progress</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire12DownloadableP7requesty9Alamofire15DownloadRequestC_8ResponseQz20didCompleteWithValuetF"></a>
+                    <a name="/s:9Restofire12DownloadableP7requestyAA17DownloadOperationCyxG_8ResponseQz20didCompleteWithValuetF"></a>
                     <a name="//apple_ref/swift/Method/request(_:didCompleteWithValue:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12DownloadableP7requesty9Alamofire15DownloadRequestC_8ResponseQz20didCompleteWithValuetF">request(_:didCompleteWithValue:)</a>
+                    <a class="token" href="#/s:9Restofire12DownloadableP7requestyAA17DownloadOperationCyxG_8ResponseQz20didCompleteWithValuetF">request(_:didCompleteWithValue:)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -299,7 +233,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DownloadRequest</span><span class="p">,</span> <span class="n">didCompleteWithValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Response</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Classes/DownloadOperation.html">DownloadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">didCompleteWithValue</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Response</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -340,9 +274,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12DownloadableP7requesty9Alamofire15DownloadRequestC_s5Error_p011didFailWithG0tF"></a>
+                    <a name="/s:9Restofire12DownloadableP7requestyAA17DownloadOperationCyxG_s5Error_p011didFailWithF0tF"></a>
                     <a name="//apple_ref/swift/Method/request(_:didFailWithError:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12DownloadableP7requesty9Alamofire15DownloadRequestC_s5Error_p011didFailWithG0tF">request(_:didFailWithError:)</a>
+                    <a class="token" href="#/s:9Restofire12DownloadableP7requestyAA17DownloadOperationCyxG_s5Error_p011didFailWithF0tF">request(_:didFailWithError:)</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -365,7 +299,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">DownloadRequest</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">request</span><span class="p">(</span><span class="n">_</span> <span class="nv">request</span><span class="p">:</span> <span class="kt"><a href="../Classes/DownloadOperation.html">DownloadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -410,9 +344,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire12DownloadablePAAE8responseAA17DownloadOperationCyxGy9Alamofire0D8ResponseVy0G0QzGcSgF"></a>
-                    <a name="//apple_ref/swift/Method/response(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12DownloadablePAAE8responseAA17DownloadOperationCyxGy9Alamofire0D8ResponseVy0G0QzGcSgF">response(_:)</a>
+                    <a name="/s:9Restofire12DownloadablePAAE7executeAA17DownloadOperationCyxGy9Alamofire0D8ResponseVy0G0QzGcSg17completionHandler_tF"></a>
+                    <a name="//apple_ref/swift/Method/execute(completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire12DownloadablePAAE7executeAA17DownloadOperationCyxGy9Alamofire0D8ResponseVy0G0QzGcSg17completionHandler_tF">execute(completionHandler:)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -431,7 +365,7 @@ asynchronously executes it.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">response</span><span class="p">(</span><span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">DownloadResponse</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadOperation.html">DownloadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">execute</span><span class="p">(</span><span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">DownloadResponse</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadOperation.html">DownloadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -462,12 +396,79 @@ asynchronously executes it.</p>
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire12DownloadablePAAE7executeAA17DownloadOperationCyxG9Alamofire0D7RequestCyXK7request_yAH0D8ResponseVy0I0QzGcSg17completionHandlertF"></a>
+                    <a name="//apple_ref/swift/Method/execute(request:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire12DownloadablePAAE7executeAA17DownloadOperationCyxG9Alamofire0D7RequestCyXK7request_yAH0D8ResponseVy0I0QzGcSg17completionHandlertF">execute(request:completionHandler:)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Extension method
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code><a href="../Classes/DownloadOperation.html">DownloadOperation</a></code> for the specified <code><a href="../Protocols/Requestable.html">Requestable</a></code> object and
+asynchronously executes it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">execute</span><span class="p">(</span><span class="nv">request</span><span class="p">:</span> <span class="kd">@autoclosure</span> <span class="kd">@escaping</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">DownloadRequest</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">DownloadResponse</span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/DownloadOperation.html">DownloadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A download request instance</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>completionHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A closure to be executed once the download
+                           has finished. <code>nil</code> by default.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The created <code><a href="../Classes/DownloadOperation.html">DownloadOperation</a></code>.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-05)</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-02-09)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

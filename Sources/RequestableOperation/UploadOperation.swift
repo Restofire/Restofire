@@ -15,7 +15,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
     let uploadable: R
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
-    init(uploadable: R, request: UploadRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    init(uploadable: R, request: @escaping () -> UploadRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.uploadable = uploadable
         self.completionHandler = completionHandler
         super.init(configurable: uploadable, request: request)

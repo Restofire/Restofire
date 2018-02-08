@@ -15,7 +15,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
     let requestable: R
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
-    init(requestable: R, request: DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    init(requestable: R, request: @escaping () -> DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
         self.requestable = requestable
         self.completionHandler = completionHandler
         super.init(configurable: requestable, request: request)

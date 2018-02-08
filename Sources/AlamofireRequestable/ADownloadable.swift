@@ -54,7 +54,7 @@ public extension ADownloadable {
     ///
     /// - returns: The created `DownloadRequest`.
     public var request: DownloadRequest {
-        return RestofireRequest.downloadRequest(fromRequestable: self, withUrlRequest: urlRequest)()
+        return RestofireRequest.downloadRequest(fromRequestable: self, withUrlRequest: urlRequest)
     }
     
 }

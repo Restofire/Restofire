@@ -42,7 +42,7 @@ public extension ARequestable {
     ///
     /// - returns: The created `DataRequest`.
     public var request: DataRequest {
-        return RestofireRequest.dataRequest(fromRequestable: self, withUrlRequest: urlRequest)()
+        return RestofireRequest.dataRequest(fromRequestable: self, withUrlRequest: urlRequest)
     }
     
 }

@@ -34,7 +34,7 @@ public extension AFileUploadable {
     ///
     /// - returns: The created `UploadRequest`.
     public var request: UploadRequest {
-        return RestofireRequest.fileUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)()
+        return RestofireRequest.fileUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)
     }
     
 }

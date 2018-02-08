@@ -34,7 +34,7 @@ public extension AStreamUploadable {
     ///
     /// - returns: The created `UploadRequest`.
     public var request: UploadRequest {
-        return RestofireRequest.streamUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)()
+        return RestofireRequest.streamUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)
     }
     
 }

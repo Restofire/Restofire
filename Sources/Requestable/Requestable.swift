@@ -55,8 +55,8 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func response(request: DataRequest? = nil, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
-        let req = request ?? self.request
+    public func response(request: (() -> DataRequest)? = nil, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
+        let req = request ?? { return self.request }
         let requestOperation = RequestOperation(requestable: self, request: req, completionHandler: completionHandler)
         requestOperation.start()
         return requestOperation

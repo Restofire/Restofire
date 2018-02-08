@@ -15,7 +15,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
     let downloadable: R
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
-    init(downloadable: R, request: DownloadRequest, completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
+    init(downloadable: R, request: @escaping (() -> DownloadRequest), completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
         self.downloadable = downloadable
         self.completionHandler = completionHandler
         super.init(configurable: downloadable, request: request)

@@ -12,9 +12,11 @@ import Foundation
 open class AOperation<R: Configurable>: Operation {
     
     var configurable: R
-    public private(set) var request: Request
+    public private(set) var request: Request!
     var requestClosure: () -> Request
-    let requestType: RequestType
+    lazy var requestType: RequestType = {
+        RequestType(request: request)
+    }()
     public private(set) var retryAttempts = 0
     
     #if !os(watchOS)
@@ -23,11 +25,9 @@ open class AOperation<R: Configurable>: Operation {
     }()
     #endif
     
-    public init(configurable: R, request: @escaping @autoclosure () -> Request) {
+    public init(configurable: R, request: @escaping (() -> Request)) {
         self.configurable = configurable
-        self.request = request()
         self.requestClosure = request
-        self.requestType = RequestType(request: request())
         self.retryAttempts = configurable.maxRetryAttempts
         super.init()
         self.isReady = true
@@ -46,11 +46,11 @@ open class AOperation<R: Configurable>: Operation {
     }
     
     @objc func retry() {
-        self.request = self.requestClosure()
         executeRequest()
     }
     
     @objc func executeRequest() {
+        request = requestClosure()
         switch requestType {
         case .data, .upload:
             let request = self.request as! DataRequest
@@ -115,14 +115,14 @@ open class AOperation<R: Configurable>: Operation {
             configurable.eventuallyOperationQueue.isSuspended = true
             let eventuallyOperation = AOperation(
                 configurable: configurable,
-                request: self.requestClosure()
+                request: self.requestClosure
             )
             reachability.addOperation(operation: eventuallyOperation)
         } else if let error = error as? URLError, retryAttempts > 0 &&
                 configurable.retryErrorCodes.contains(error.code) {
             retryAttempts -= 1
             perform(
-                #selector(AOperation<R>.retry),
+                #selector(AOperation<R>.executeRequest),
                 with: nil,
                 afterDelay: configurable.retryInterval
             )

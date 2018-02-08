@@ -25,14 +25,14 @@ class AFileUploadableSpec: BaseSpec {
                     var path: String? = "post"
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                     
-                    func prepare(_ request: URLRequest, requestable: Configurable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
                         var request = request
                         let header = Request.authorizationHeader(user: "user", password: "password")!
                         request.setValue(header.value, forHTTPHeaderField: header.key)
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: Configurable) {
+                    func didSend(_ request: Request, requestable: AConfigurable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AFileUploadableSpec.startDelegateCalled = true

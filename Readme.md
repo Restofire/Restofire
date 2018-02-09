@@ -60,7 +60,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'Restofire', '~> 3.1.0'
+pod 'Restofire', '~> 4.0.0'
 ```
 
 Then, run the following command:
@@ -86,7 +86,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 3.1.0
+github "Restofire/Restofire" ~> 4.0.0
 ```
 
 </details>
@@ -102,7 +102,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", .upToNextMajor(from: "3.1.0"))
+        .Package(url: "https://github.com/Restofire/Restofire.git", .upToNextMajor(from: "4.0.0"))
     ]
 )
 ```
@@ -262,7 +262,7 @@ class ViewController: UITableViewController {
     var requestOp: RequestOperation<MoviesReviewGETService>!
 
     func getReviews() {
-        requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).response() {
+        requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).execute() {
             if let value = $0.result.value {
                 self.movieReviews = value
             }
@@ -291,7 +291,7 @@ struct MoviesReviewGETService: NYRequestable {
       MoviesReviewGETService(parameters: ["name": "Rahul Katariya"])
     }
 
-    func request(_ request: DataRequest, didCompleteWithValue value: [MovieReview]) {
+    func request(_ request: RequestOperation<MoviesReviewGETService>, didCompleteWithValue value: [MovieReview]) {
       // Here you can store the results into your cache and then listen for changes inside your view controller.
     }
 

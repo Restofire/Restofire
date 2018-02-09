@@ -127,13 +127,14 @@ open class AOperation<R: Configurable>: Operation {
                 error.code == .notConnectedToInternet
             {
                 isConnectivityError = true
+                configurable.eventuallyOperationQueue.isSuspended = true
+                let eventuallyOperation: AOperation = self.copy()
+                reachability.setupListener()
+                configurable.eventuallyOperationQueue.addOperation(eventuallyOperation)
             }
         #endif
         if isConnectivityError {
-            configurable.eventuallyOperationQueue.isSuspended = true
-            let eventuallyOperation: AOperation = self.copy()
-            reachability.setupListener()
-            configurable.eventuallyOperationQueue.addOperation(eventuallyOperation)
+           // No-op
         } else if let error = error as? URLError, retryAttempts > 0 &&
             configurable.retryErrorCodes.contains(error.code) {
             retryAttempts -= 1

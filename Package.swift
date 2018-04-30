@@ -1,3 +1,5 @@
+// swift-tools-version:4.0
+
 //
 //  Restofire.swift
 //  Restofire
@@ -23,8 +25,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-
-// swift-tools-version:4.0
 
 import PackageDescription
 

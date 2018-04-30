@@ -30,8 +30,13 @@ import PackageDescription
 
 let package = Package(
     name: "Restofire",
+    products: [
+        .library(name: "Restofire", targets: ["Restofire"])
+    ],
     dependencies: [
         .Package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "4.5.0"))
     ],
-    exclude: ["Tests"]
+    targets: [
+        .target(name: "Restofire", dependencies: ["Alamofire"])
+    ]
 )

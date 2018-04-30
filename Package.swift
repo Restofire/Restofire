@@ -34,7 +34,7 @@ let package = Package(
         .library(name: "Restofire", targets: ["Restofire"])
     ],
     dependencies: [
-        .Package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "4.5.0"))
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "4.5.0"))
     ],
     targets: [
         .target(name: "Restofire", dependencies: ["Alamofire"])

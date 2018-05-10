@@ -1,5 +1,4 @@
 // swift-tools-version:4.0
-
 //
 //  Restofire.swift
 //  Restofire
@@ -44,7 +43,7 @@ let package = Package(
             name: "Restofire",
             dependencies: ["Alamofire"],
             path: "Sources",
-            exclude: ["Supporting Files", "Restofire.swift"]
+            exclude: ["Supporting Files"]
         )
     ]
 )

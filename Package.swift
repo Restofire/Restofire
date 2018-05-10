@@ -1,3 +1,5 @@
+// swift-tools-version:4.0
+
 //
 //  Restofire.swift
 //  Restofire
@@ -24,14 +26,25 @@
 //  THE SOFTWARE.
 //
 
-// swift-tools-version:4.0
-
 import PackageDescription
 
 let package = Package(
     name: "Restofire",
-    dependencies: [
-        .Package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "4.5.0"))
+    products: [
+        .library(name: "Restofire", targets: ["Restofire"])
     ],
-    exclude: ["Tests"]
+    dependencies: [
+        .package(
+            url: "https://github.com/Alamofire/Alamofire.git",
+            .upToNextMajor(from: "4.5.0")
+        )
+    ],
+    targets: [
+        .target(
+            name: "Restofire",
+            dependencies: ["Alamofire"],
+            path: "Sources",
+            exclude: ["Supporting Files", "Restofire.swift"]
+        )
+    ]
 )

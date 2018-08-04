@@ -51,7 +51,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
             data: res.data,
             metrics: res.metrics,
             serializationDuration: res.serializationDuration,
-            result: result
+            result: result.value!
         )
         
         requestable.queue.async {

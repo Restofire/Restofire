@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Requestable` for Restofire.
 ///
@@ -18,7 +19,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Requestable: ARequestable, Configurable, DataResponseSerializable {
+public protocol Requestable: ARequestable, Configurable, ResponseSerializable {
 
     /// Called when the Request succeeds.
     ///
@@ -41,10 +42,6 @@ public extension Requestable {
     
     /// `Does Nothing`
     func request(_ request: RequestOperation<Self>, didFailWithError error: Error) {}
-    
-}
-
-public extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.

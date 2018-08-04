@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// A Session for RESTful Services.
 ///

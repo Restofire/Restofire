@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `FileUploadable` for Restofire.
 ///
@@ -19,4 +20,4 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol FileUploadable: AFileUploadable, Uploadable {}
+public protocol FileUploadable: AFileUploadable, Uploadable  {}

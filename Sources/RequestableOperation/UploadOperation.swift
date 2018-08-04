@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// An NSOperation that executes the `Uploadable` asynchronously.
 public class UploadOperation<R: Uploadable>: AOperation<R> {
@@ -29,21 +30,42 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         super.init(configurable: uploadable, request: request)
     }
     
-    override func handleDataResponse(_ response: DefaultDataResponse) {
+    override func handleDataResponse(_ response: DataResponse<Data?>) {
         let request = self.request as! UploadRequest
-        request.response(
-            queue: uploadable.queue,
-            responseSerializer: uploadable.responseSerializer
-        ) { ( response: (DataResponse<R.Response>)) in
-            self.completionHandler?(response)
-            if let error = response.error {
-                self.uploadable.request(self, didFailWithError: error)
-                self.isFinished = true
-            } else {
-                self.uploadable.request(self, didCompleteWithValue: response.value!)
-                self.isFinished = true
-            }
+        
+        var res = response
+        uploadable.delegates.forEach {
+            res = $0.process(request, requestable: uploadable, response: res)
         }
+        res = uploadable.process(request, requestable: uploadable, response: res)
+        
+        let result = Result { try uploadable.responseSerializer
+            .serialize(request: res.request,
+                       response: res.response,
+                       data: res.data,
+                       error: res.error)
+        }
+        
+        let dataResponse = DataResponse<R.Response>(
+            request: res.request,
+            response: res.response,
+            data: res.data,
+            metrics: res.metrics,
+            serializationDuration: res.serializationDuration,
+            result: result
+        )
+        
+        uploadable.queue.async {
+            self.completionHandler?(dataResponse)
+        }
+        
+        if let error = res.error {
+            self.uploadable.request(self, didFailWithError: error)
+        } else {
+            self.uploadable.request(self, didCompleteWithValue: dataResponse.value!)
+        }
+        self.isFinished = true
+        
     }
     
     /// Creates a copy of self

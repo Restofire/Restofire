@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Downloadable` for Alamofire.
 ///
@@ -23,19 +24,20 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol ADownloadable: _Requestable, AConfigurable {
+public protocol ADownloadable: ARequestable {
     
     /// The download file destination
-    var destination: DownloadFileDestination? { get }
+    var destination: DownloadRequest.Destination? { get }
     
     /// The Alamofire data request validation.
     var validationBlock: DownloadRequest.Validation? { get }
+    
 }
 
 public extension ADownloadable {
     
     /// `nil`
-    public var destination: DownloadFileDestination? {
+    public var destination: DownloadRequest.Destination? {
         return nil
     }
     
@@ -43,7 +45,7 @@ public extension ADownloadable {
     public var validationBlock: DownloadRequest.Validation? {
         return validation.downloadValidation
     }
-    
+
 }
 
 public extension ADownloadable {

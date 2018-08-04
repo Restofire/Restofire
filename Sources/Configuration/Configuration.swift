@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// A Configuration for RESTful Services. You must provide a `host`.
 ///
@@ -23,7 +24,7 @@ public struct Configuration {
     public static var `default` = Configuration()
     
     /// The scheme. `http://` by default.
-    public var scheme: String = "https://"
+    public var scheme: String = "http://"
     
     /// The host. `nil` by default.
     public var host: String!

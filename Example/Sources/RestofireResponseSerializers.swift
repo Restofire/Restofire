@@ -7,20 +7,18 @@
 //
 
 import Restofire
+import Alamofire
 
 // MARK:- Decodable Response Serializer
-extension Restofire.DataResponseSerializable where Response: Decodable {
+extension Restofire.ResponseSerializable where Response: Decodable {
     
-    public var responseSerializer: DataResponseSerializer<Response> {
-        return DataRequest.JSONDecodableResponseSerializer()
-    }
-    
-}
-
-extension Restofire.DownloadResponseSerializable where Response: Decodable {
-    
-    public var responseSerializer: DownloadResponseSerializer<Response> {
-        return DownloadRequest.JSONDecodableResponseSerializer()
+    public var responseSerializer: AnyResponseSerializer<Response> {
+        return AnyResponseSerializer<Response>.init(
+            dataSerializer: { (request, response, data, error) -> Response in
+                return try! JSONDecodableResponseSerializer<Response>()
+                    .serialize(request: request, response: response, data: data, error: error)
+            }
+        )
     }
     
 }

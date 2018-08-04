@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// An NSOperation base class for all request operations
 open class AOperation<R: Configurable>: Operation {
@@ -93,11 +94,11 @@ open class AOperation<R: Configurable>: Operation {
     }
     
     // MARK:- Data Response
-    func handleDataResponse(_ response: DefaultDataResponse) {
+    func handleDataResponse(_ response: DataResponse<Data?>) {
         fatalError("override me")
     }
     
-    func handleDataRequestError(_ response: DefaultDataResponse) {
+    func handleDataRequestError(_ response: DataResponse<Data?>) {
         if !handleRequestError(response.error!) {
             handleDataResponse(response)
         } else {
@@ -106,11 +107,11 @@ open class AOperation<R: Configurable>: Operation {
     }
     
     // MARK: - Download Response
-    func handleDownloadResponse(_ response: DefaultDownloadResponse) {
+    func handleDownloadResponse(_ response: DownloadResponse<URL?>) {
         fatalError("override me")
     }
     
-    func handleDownloadRequestError(_ response: DefaultDownloadResponse) {
+    func handleDownloadRequestError(_ response: DownloadResponse<URL?>) {
         if !handleRequestError(response.error!) {
             handleDownloadResponse(response)
         } else {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `DataUploadable` for Alamofire.
 ///

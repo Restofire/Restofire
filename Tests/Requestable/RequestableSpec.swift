@@ -31,7 +31,13 @@ class RequestableSpec: BaseSpec {
                         typealias Response = HTTPBin
                         
                         var path: String? = "get"
-                        var responseSerializer: DataResponseSerializer<HTTPBin> = DataRequest.JSONDecodableResponseSerializer()
+                        var responseSerializer: AnyResponseSerializer<HTTPBin> = AnyResponseSerializer<HTTPBin>.init(dataSerializer: { (request, response, data, error) -> HTTPBin in
+                            return try! JSONDecodableResponseSerializer()
+                                .serialize(request: request,
+                                           response: response,
+                                           data: data,
+                                           error: error)
+                        })
                         
                         func request(_ request: RequestOperation<Request>, didCompleteWithValue value: HTTPBin) {
                             RequestableSpec.successDelegateCalled = true

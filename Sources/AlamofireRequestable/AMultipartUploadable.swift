@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `MultipartUploadable` for Alamofire.
 ///
@@ -36,22 +37,20 @@ extension AMultipartUploadable {
     
     /// `SessionManager.multipartFormDataEncodingMemoryThreshold`
     public var encodingMemoryThreshold: UInt64 {
-        return SessionManager.multipartFormDataEncodingMemoryThreshold
+        return MultipartUpload.encodingMemoryThreshold
     }
     
 }
 
 public extension AMultipartUploadable {
     
-    /// Use request(encodingCompletion:) method for MultipartUpload instead
+    /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    ///
+    /// - returns: The created `UploadRequest`.
     public var request: UploadRequest {
-        fatalError("Use request(encodingCompletion:((RFMultipartFormDataEncodingResult) -> Void)) method for MultipartUpload instead")
-    }
-    
-    /// Encodes `multipartFormData` using `encodingMemoryThreshold` and calls `encodingCompletion` with new
-    /// `UploadRequest` using the `uploadable`.
-    public func request(encodingCompletion: ((RFMultipartFormDataEncodingResult) -> Void)? = nil) {
-        RestofireRequest.multipartUploadRequest(fromRequestable: self, withUrlRequest: urlRequest, encodingCompletion: encodingCompletion)
+        return RestofireRequest.multipartUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)
     }
     
 }

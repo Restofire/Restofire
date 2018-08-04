@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Requestable` for Alamofire.
 ///
@@ -18,10 +19,13 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol ARequestable: _Requestable, AConfigurable {
+public protocol ARequestable: _Requestable, AConfigurable, RequestDelegate {
     
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }
+    
+    /// The request delegates.
+    var delegates: [RequestDelegate] { get }
 
 }
 
@@ -30,6 +34,11 @@ public extension ARequestable {
     /// `Validation.default.dataValidation`
     public var validationBlock: DataRequest.Validation? {
         return validation.dataValidation
+    }
+    
+    /// `empty`
+    public var delegates: [RequestDelegate] {
+        return configuration.requestDelegates
     }
     
 }

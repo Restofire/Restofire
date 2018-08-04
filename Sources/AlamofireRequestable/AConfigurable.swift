@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `AConfigurable` for Alamofire Services.
 /// `Configuration.default` by default.
@@ -25,7 +26,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, RequestDelegate, Validatable {
+public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, Validatable {
 
     /// The credential.
     var credential: URLCredential? { get }
@@ -35,9 +36,6 @@ public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, R
     
     /// The acceptable content types.
     var acceptableContentTypes: [String]? { get }
-    
-    /// The request delegates.
-    var delegates: [RequestDelegate] { get }
     
 }
 
@@ -57,11 +55,6 @@ public extension AConfigurable {
     /// `nil`
     public var acceptableContentTypes: [String]? {
         return validation.acceptableContentTypes
-    }
-
-    /// `empty`
-    public var delegates: [RequestDelegate] {
-        return configuration.requestDelegates
     }
     
 }

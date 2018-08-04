@@ -69,20 +69,20 @@ open class AOperation<R: Configurable>: Operation {
         switch requestType {
         case .data, .upload:
             let request = self.request as! DataRequest
-            request.response {
-                if $0.error != nil {
-                    self.handleDataRequestError($0)
+            request.response { result in
+                if result.error != nil {
+                    self.handleDataRequestError(result)
                 } else {
-                    self.handleDataResponse($0)
+                    self.handleDataResponse(result)
                 }
             }
         case .download:
             let request = self.request as! DownloadRequest
-            request.response {
-                if $0.error != nil {
-                    self.handleDownloadRequestError($0)
+            request.response { result in
+                if result.error != nil {
+                    self.handleDownloadRequestError(result)
                 } else {
-                    self.handleDownloadResponse($0)
+                    self.handleDownloadResponse(result)
                 }
             }
         }

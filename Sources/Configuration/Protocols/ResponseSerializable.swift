@@ -40,18 +40,18 @@ extension _ResponseSerializable {
 public protocol ResponseSerializable: _ResponseSerializable {
     
     /// The data response serializer.
-    var responseSerializer: AnyResponseSerializer<Response> { get }
+    var responseSerializer: AnyResponseSerializer<Result<Response>> { get }
     
 }
 
 public extension ResponseSerializable where Response == Data {
     
     /// `Alamofire.DataRequest.dataResponseSerializer()`
-    public var responseSerializer: AnyResponseSerializer<Response> {
-        return AnyResponseSerializer<Data>.init(dataSerializer: { (request, response, data, error) -> Data in
-            return try! DataResponseSerializer().serialize(
+    public var responseSerializer: AnyResponseSerializer<Result<Response>> {
+        return AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+            return Result { try DataResponseSerializer().serialize(
                 request: request, response: response, data: data, error: error
-            )
+            )}
         })
     }
     

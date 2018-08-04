@@ -53,7 +53,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
             resumeData: res.resumeData,
             metrics: res.metrics,
             serializationDuration: res.serializationDuration,
-            result: result
+            result: result.value!
         )
         
         downloadable.queue.async {

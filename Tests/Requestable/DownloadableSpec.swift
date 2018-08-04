@@ -31,9 +31,14 @@ class DownloadableSpec: BaseSpec {
                         typealias Response = HTTPBin
                         
                         var path: String? = "get"
-                        var destination: DownloadFileDestination? = { _, _ in (BaseSpec.jsonFileURL, []) }
-                        
-                        var responseSerializer: DownloadResponseSerializer<HTTPBin> = DownloadRequest.JSONDecodableResponseSerializer()
+                        var destination: DownloadRequest.Destination? = { _, _ in (BaseSpec.jsonFileURL, []) }
+                        var responseSerializer: AnyResponseSerializer<HTTPBin> = AnyResponseSerializer<HTTPBin>.init(dataSerializer: { (request, response, data, error) -> HTTPBin in
+                            return try! JSONDecodableResponseSerializer()
+                                .serialize(request: request,
+                                           response: response,
+                                           data: data,
+                                           error: error)
+                        })
                         
                         func request(_ request: DownloadOperation<Request>, didCompleteWithValue value: HTTPBin) {
                             print("Completed")
@@ -60,7 +65,7 @@ class DownloadableSpec: BaseSpec {
                         
                         expect(response.request).toNot(beNil())
                         expect(response.response).toNot(beNil())
-                        expect(response.destinationURL).toNot(beNil())
+                        expect(response.fileURL).toNot(beNil())
                         expect(response.resumeData).to(beNil())
                         expect(response.error).to(beNil())
                     }

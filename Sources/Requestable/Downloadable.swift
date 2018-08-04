@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Downloadable` for Restofire.
 ///
@@ -22,7 +23,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Downloadable: ADownloadable, Configurable, DownloadResponseSerializable {
+public protocol Downloadable: ADownloadable, Configurable, ResponseSerializable {
 
     /// Called when the Request succeeds.
     ///
@@ -45,10 +46,6 @@ public extension Downloadable {
     
     /// `Does Nothing`
     func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
-    
-}
-
-public extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object and
     /// asynchronously executes it.

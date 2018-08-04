@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Configurable` for Restofire.
 /// `Configuration.default` by default.

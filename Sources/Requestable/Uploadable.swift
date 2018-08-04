@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents an abstract `Uploadable` for Restofire.
 ///
 /// Instead implement FileUploadable, DataUploadable, StreamUploadable,
 /// MultipartUplodable protocols.
-public protocol Uploadable: _AUploadable, Configurable, DataResponseSerializable {
-    
+public protocol Uploadable: _AUploadable, Configurable, ResponseSerializable {
+
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.UploadRequest
@@ -29,7 +30,7 @@ public protocol Uploadable: _AUploadable, Configurable, DataResponseSerializable
 }
 
 public extension Uploadable {
-    
+
     /// `Does Nothing`
     func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response) {}
     

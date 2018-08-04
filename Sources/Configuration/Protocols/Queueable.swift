@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Queueable` that is associated with `Requestable`.
 public protocol Queueable {

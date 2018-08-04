@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// An NSOperation that executes the `Requestable` asynchronously.
 public class RequestOperation<R: Requestable>: AOperation<R> {
@@ -29,21 +30,41 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         super.init(configurable: requestable, request: request)
     }
     
-    override func handleDataResponse(_ response: DefaultDataResponse) {
+    override func handleDataResponse(_ response: DataResponse<Data?>) {
         let request = self.request as! DataRequest
-        request.response(
-            queue: requestable.queue,
-            responseSerializer: requestable.responseSerializer
-        ) { ( response: (DataResponse<R.Response>)) in
-            self.completionHandler?(response)
-            if let error = response.error {
-                self.requestable.request(self, didFailWithError: error)
-                self.isFinished = true
-            } else {
-                self.requestable.request(self, didCompleteWithValue: response.value!)
-                self.isFinished = true
-            }
+        
+        var res = response
+        requestable.delegates.forEach {
+            res = $0.process(request, requestable: requestable, response: res)
         }
+        res = requestable.process(request, requestable: requestable, response: res)
+        
+        let result = Result { try requestable.responseSerializer
+            .serialize(request: res.request,
+                       response: res.response,
+                       data: res.data,
+                       error: res.error) }
+        
+        let dataResponse = DataResponse<R.Response>(
+            request: res.request,
+            response: res.response,
+            data: res.data,
+            metrics: res.metrics,
+            serializationDuration: res.serializationDuration,
+            result: result
+        )
+        
+        requestable.queue.async {
+            self.completionHandler?(dataResponse)
+        }
+        
+        if let error = res.error {
+            self.requestable.request(self, didFailWithError: error)
+        } else {
+            self.requestable.request(self, didCompleteWithValue: dataResponse.value!)
+        }
+        
+        self.isFinished = true
     }
     
     /// Creates a copy of self

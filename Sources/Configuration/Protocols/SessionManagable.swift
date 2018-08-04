@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents a `Alamofire.SessionManager` that is associated with `Requestable`.
 public protocol SessionManagable {

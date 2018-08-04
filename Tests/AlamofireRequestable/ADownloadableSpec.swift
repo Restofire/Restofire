@@ -23,21 +23,25 @@ class ADownloadableSpec: BaseSpec {
                 // Given
                 struct Download: ADownloadable {
                     var path: String? = "bytes/\(4 * 1024 * 1024)"
-                    var destination: DownloadFileDestination?
+                    var destination: DownloadRequest.Destination?
                     
-                    init(destination: @escaping DownloadFileDestination) {
+                    init(destination: @escaping DownloadRequest.Destination) {
                         self.destination = destination
                     }
                     
-                    func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: ARequestable) -> URLRequest {
                         var request = request
-                        let header = Request.authorizationHeader(user: "user", password: "password")!
-                        request.setValue(header.value, forHTTPHeaderField: header.key)
+                        let header = HTTPHeaders.authorization(username: "user", password: "password")
+                        header.forEach {
+                            request.setValue($0.value, forHTTPHeaderField: $0.key)
+                        }
+                        expect(request.value(forHTTPHeaderField: "Authorization"))
+                            .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: AConfigurable) {
-                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
+                    func didSend(_ request: Request, requestable: ARequestable) {
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ADownloadableSpec.startDelegateCalled = true
                     }
@@ -68,7 +72,7 @@ class ADownloadableSpec: BaseSpec {
                             
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
-                            expect(response.destinationURL).toNot(beNil())
+                            expect(response.fileURL).toNot(beNil())
                             expect(response.resumeData).to(beNil())
                             expect(response.error).to(beNil())
                             

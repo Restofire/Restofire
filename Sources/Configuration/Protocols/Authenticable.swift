@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// Represents an `Authenticable` that is associated with `Requestable`.
 public protocol Authenticable {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 public protocol _ResponseSerializable {
     
@@ -36,35 +37,22 @@ extension _ResponseSerializable {
 }
 
 /// Represents a `Alamofire.DataResponseSerializer` that is associated with `Requestable`.
-public protocol DataResponseSerializable: _ResponseSerializable {
+public protocol ResponseSerializable: _ResponseSerializable {
     
     /// The data response serializer.
-    var responseSerializer: DataResponseSerializer<Response> { get }
+    var responseSerializer: AnyResponseSerializer<Response> { get }
     
 }
 
-public extension DataResponseSerializable where Response == Data {
+public extension ResponseSerializable where Response == Data {
     
     /// `Alamofire.DataRequest.dataResponseSerializer()`
-    public var responseSerializer: DataResponseSerializer<Response> {
-        return DataRequest.dataResponseSerializer()
-    }
-    
-}
-
-/// Represents a `Alamofire.DownloadResponseSerializer` that is associated with `Downloadable`.
-public protocol DownloadResponseSerializable: _ResponseSerializable {
-    
-    /// The download response serializer.
-    var responseSerializer: DownloadResponseSerializer<Response> { get }
-    
-}
-
-public extension DownloadResponseSerializable where Response == Data {
-    
-    /// `Alamofire.DownloadRequest.dataResponseSerializer()`
-    public var responseSerializer: DownloadResponseSerializer<Response> {
-        return DownloadRequest.dataResponseSerializer()
+    public var responseSerializer: AnyResponseSerializer<Response> {
+        return AnyResponseSerializer<Data>.init(dataSerializer: { (request, response, data, error) -> Data in
+            return try! DataResponseSerializer().serialize(
+                request: request, response: response, data: data, error: error
+            )
+        })
     }
     
 }

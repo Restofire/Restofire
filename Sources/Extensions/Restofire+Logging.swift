@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import Alamofire
 
 extension Request {
     
     @discardableResult
     func logIfNeeded() -> Request {
-        if let argumentIndex = ProcessInfo.processInfo.arguments
-            .index(of: "-org.restofire.Restofire.Debug") {
-            let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
-            delegate.queue.addOperation {
+        underlyingQueue.async {
+            if let argumentIndex = ProcessInfo.processInfo.arguments
+                .index(of: "-org.restofire.Restofire.Debug") {
+                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
                 if logLevel == "1" {
                     print(self.debugDescription)
                 }

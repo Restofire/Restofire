@@ -9,6 +9,7 @@
 //
 
 import Restofire
+import Alamofire
 
 struct GithubLoginGETService: Requestable {
     
@@ -17,8 +18,7 @@ struct GithubLoginGETService: Requestable {
     var headers: [String : String]?
     
     init(user: String, password: String) {
-        let auth = Request.authorizationHeader(user: user, password: password)!
-        self.headers = [auth.key: auth.value]
+        self.headers = HTTPHeaders.authorization(username: user, password: password)
     }
     
 }

@@ -75,6 +75,7 @@ open class AOperation<R: Configurable>: Operation {
                 } else {
                     self.handleDataResponse(result)
                 }
+                request.logDataRequestIfNeeded(result: result)
             }
         case .download:
             let request = self.request as! DownloadRequest
@@ -84,9 +85,10 @@ open class AOperation<R: Configurable>: Operation {
                 } else {
                     self.handleDownloadResponse(result)
                 }
+                request.logDownloadRequestIfNeeded(result: result)
             }
         }
-        request.logIfNeeded()
+        request.logRequestIfNeeded()
     }
     
     open func copy() -> AOperation {

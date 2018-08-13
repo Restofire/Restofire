@@ -35,7 +35,7 @@ extension RequestDelegate {
 
     /// `No-op`
     public func didSend(_ request: Request, requestable: ARequestable) {}
-    
+
     /// `No-op`
     public func process(_ request: Request, requestable: ARequestable, response: DataResponse<Data?>) -> DataResponse<Data?> {
         return response

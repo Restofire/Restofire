@@ -29,9 +29,6 @@ public protocol ADownloadable: ARequestable {
     /// The download file destination
     var destination: DownloadRequest.Destination? { get }
     
-    /// The Alamofire data request validation.
-    var validationBlock: DownloadRequest.Validation? { get }
-    
 }
 
 public extension ADownloadable {
@@ -39,11 +36,6 @@ public extension ADownloadable {
     /// `nil`
     public var destination: DownloadRequest.Destination? {
         return nil
-    }
-    
-    /// `Validation.default.downloadValidation`
-    public var validationBlock: DownloadRequest.Validation? {
-        return validation.downloadValidation
     }
 
 }

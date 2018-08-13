@@ -14,6 +14,7 @@ import Alamofire
 
 class AFileUploadableSpec: BaseSpec {
     
+    static var prepareDelegateCalled = false
     static var startDelegateCalled = false
     
     override func spec() {
@@ -33,11 +34,12 @@ class AFileUploadableSpec: BaseSpec {
                         }
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        AFileUploadableSpec.prepareDelegateCalled = true
                         return request
                     }
                     
                     func didSend(_ request: Request, requestable: ARequestable) {
-                        expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AFileUploadableSpec.startDelegateCalled = true
                     }
@@ -47,6 +49,8 @@ class AFileUploadableSpec: BaseSpec {
                 let request = Upload().request
                 print(request.debugDescription)
                 
+                
+                expect(AFileUploadableSpec.prepareDelegateCalled).to(beTrue())
                 expect(AFileUploadableSpec.startDelegateCalled).to(beTrue())
                 
                 var uploadProgressValues: [Double] = []
@@ -115,4 +119,3 @@ class AFileUploadableSpec: BaseSpec {
     }
     
 }
-

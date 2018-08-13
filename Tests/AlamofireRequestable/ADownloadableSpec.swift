@@ -14,6 +14,7 @@ import Alamofire
 
 class ADownloadableSpec: BaseSpec {
     
+    static var prepareDelegateCalled = false
     static var startDelegateCalled = false
     
     override func spec() {
@@ -37,11 +38,12 @@ class ADownloadableSpec: BaseSpec {
                         }
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        ADownloadableSpec.prepareDelegateCalled = true
                         return request
                     }
                     
                     func didSend(_ request: Request, requestable: ARequestable) {
-                        expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ADownloadableSpec.startDelegateCalled = true
                     }
@@ -51,6 +53,8 @@ class ADownloadableSpec: BaseSpec {
                 let request = Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).request
                 print(request.debugDescription)
                 
+                
+                expect(ADownloadableSpec.prepareDelegateCalled).to(beTrue())
                 expect(ADownloadableSpec.startDelegateCalled).to(beTrue())
                 
                 var progressValues: [Double] = []

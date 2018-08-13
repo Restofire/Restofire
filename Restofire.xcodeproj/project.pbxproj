@@ -246,14 +246,16 @@
 		D971025E21158BFE00580974 /* AFileUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042920201CA26800765D15 /* AFileUploadableSpec.swift */; };
 		D971025F21158BFE00580974 /* ADataUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042924201CA27200765D15 /* ADataUploadableSpec.swift */; };
 		D971026021158BFE00580974 /* AStreamUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504292C201CA2A000765D15 /* AStreamUploadableSpec.swift */; };
-		D9C33076211B33DF00150894 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C33075211B33DF00150894 /* BaseRequestable.swift */; };
-		D9C33077211B33DF00150894 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C33075211B33DF00150894 /* BaseRequestable.swift */; };
-		D9C33078211B33DF00150894 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C33075211B33DF00150894 /* BaseRequestable.swift */; };
-		D9C33079211B33DF00150894 /* BaseRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C33075211B33DF00150894 /* BaseRequestable.swift */; };
 		D9C90473211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
 		D9C90474211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
 		D9C90475211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
 		D9C90476211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
+		D9F36AD121215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
+		D9F36AD221215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
+		D9F36AD321215AE1009AEFE5 /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
+		D9F36AD421215C20009AEFE5 /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		D9F36AD521215C21009AEFE5 /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		D9F36AD621215C22009AEFE5 /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
 		D9FD5BA5211579C60087A1BA /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B99211579C60087A1BA /* _AUploadable.swift */; };
 		D9FD5BA6211579C60087A1BA /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B99211579C60087A1BA /* _AUploadable.swift */; };
 		D9FD5BA7211579C60087A1BA /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B99211579C60087A1BA /* _AUploadable.swift */; };
@@ -512,7 +514,6 @@
 		D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStreamUploadable.swift; sourceTree = "<group>"; };
 		D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataUploadable.swift; sourceTree = "<group>"; };
 		D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMultipartUploadable.swift; sourceTree = "<group>"; };
-		D9C33075211B33DF00150894 /* BaseRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestable.swift; sourceTree = "<group>"; };
 		D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRequestable.swift; sourceTree = "<group>"; };
 		D9FD5B99211579C60087A1BA /* _AUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _AUploadable.swift; sourceTree = "<group>"; };
 		D9FD5B9A211579C60087A1BA /* ARequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARequestable.swift; sourceTree = "<group>"; };
@@ -621,7 +622,6 @@
 		350428AE201C5BED00765D15 /* Requestable */ = {
 			isa = PBXGroup;
 			children = (
-				D9C33075211B33DF00150894 /* BaseRequestable.swift */,
 				357E33FE201DDBFC0093DCC5 /* Configurable.swift */,
 				3596CBFC1CA3B5030089A03E /* Requestable.swift */,
 				358E8EE72020D906003048B3 /* Downloadable.swift */,
@@ -1245,7 +1245,6 @@
 				D93BFF3321150F39009FE9DC /* UploadOperation.swift in Sources */,
 				35E6D3541CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35E1CCBD731007ABC05 /* Validation.swift in Sources */,
-				D9C33078211B33DF00150894 /* BaseRequestable.swift in Sources */,
 				D9FD5BA7211579C60087A1BA /* _AUploadable.swift in Sources */,
 				D9472EDA211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				358E8EC72020A27B003048B3 /* NetworkReachability.swift in Sources */,
@@ -1301,7 +1300,6 @@
 				D93BFF3221150F38009FE9DC /* UploadOperation.swift in Sources */,
 				35E6D3551CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35F1CCBD731007ABC05 /* Validation.swift in Sources */,
-				D9C33077211B33DF00150894 /* BaseRequestable.swift in Sources */,
 				D9FD5BA6211579C60087A1BA /* _AUploadable.swift in Sources */,
 				D9472ED9211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				358E8EC62020A27B003048B3 /* NetworkReachability.swift in Sources */,
@@ -1357,7 +1355,6 @@
 				D93BFF3421150F3A009FE9DC /* UploadOperation.swift in Sources */,
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8ED72020B776003048B3 /* Reachable.swift in Sources */,
-				D9C33079211B33DF00150894 /* BaseRequestable.swift in Sources */,
 				D9FD5BA8211579C60087A1BA /* _AUploadable.swift in Sources */,
 				D9472EDB211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				3594EB782021E4FB006FFA6A /* Requestable.swift in Sources */,
@@ -1404,6 +1401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F36AD221215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */,
 				350428C4201C64C200765D15 /* BaseSpec.swift in Sources */,
 				35DA5ADE201F48C9008CA3A4 /* RequestableSpec.swift in Sources */,
 				D971025A21158BFD00580974 /* AStreamUploadableSpec.swift in Sources */,
@@ -1411,6 +1409,7 @@
 				356FC36920210555009CB77D /* ConfigurationSpec.swift in Sources */,
 				357E3377201DA8280093DCC5 /* JSONDecodableResponseSerializerSpec.swift in Sources */,
 				3594EB5D2021AF0B006FFA6A /* FileUploadableSpec.swift in Sources */,
+				D9F36AD521215C21009AEFE5 /* MultipartUploadableSpec.swift in Sources */,
 				D971025621158BFD00580974 /* ARequestableSpec.swift in Sources */,
 				D971025921158BFD00580974 /* ADataUploadableSpec.swift in Sources */,
 				3594EB692021AF15006FFA6A /* StreamUploadable.swift in Sources */,
@@ -1426,6 +1425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F36AD321215AE1009AEFE5 /* AMultipartUploadableSpec.swift in Sources */,
 				350428C5201C64C200765D15 /* BaseSpec.swift in Sources */,
 				35DA5ADF201F48C9008CA3A4 /* RequestableSpec.swift in Sources */,
 				D971026021158BFE00580974 /* AStreamUploadableSpec.swift in Sources */,
@@ -1433,6 +1433,7 @@
 				356FC36B20210557009CB77D /* ConfigurationSpec.swift in Sources */,
 				357E3378201DA8290093DCC5 /* JSONDecodableResponseSerializerSpec.swift in Sources */,
 				3594EB5E2021AF0B006FFA6A /* FileUploadableSpec.swift in Sources */,
+				D9F36AD621215C22009AEFE5 /* MultipartUploadableSpec.swift in Sources */,
 				D971025C21158BFE00580974 /* ARequestableSpec.swift in Sources */,
 				D971025F21158BFE00580974 /* ADataUploadableSpec.swift in Sources */,
 				3594EB6A2021AF15006FFA6A /* StreamUploadable.swift in Sources */,
@@ -1457,7 +1458,6 @@
 				D93BFF3121150F38009FE9DC /* UploadOperation.swift in Sources */,
 				35E6D3531CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35D1CCBD731007ABC05 /* Validation.swift in Sources */,
-				D9C33076211B33DF00150894 /* BaseRequestable.swift in Sources */,
 				D9FD5BA5211579C60087A1BA /* _AUploadable.swift in Sources */,
 				D9472ED8211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				358E8EC52020A27B003048B3 /* NetworkReachability.swift in Sources */,
@@ -1504,6 +1504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F36AD121215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */,
 				350428C3201C64C200765D15 /* BaseSpec.swift in Sources */,
 				35DA5ADD201F48C9008CA3A4 /* RequestableSpec.swift in Sources */,
 				D971025421158BFD00580974 /* AStreamUploadableSpec.swift in Sources */,
@@ -1511,6 +1512,7 @@
 				356FC36820210554009CB77D /* ConfigurationSpec.swift in Sources */,
 				357E3376201DA8270093DCC5 /* JSONDecodableResponseSerializerSpec.swift in Sources */,
 				3594EB5C2021AF0B006FFA6A /* FileUploadableSpec.swift in Sources */,
+				D9F36AD421215C20009AEFE5 /* MultipartUploadableSpec.swift in Sources */,
 				D971025021158BFD00580974 /* ARequestableSpec.swift in Sources */,
 				D971025321158BFD00580974 /* ADataUploadableSpec.swift in Sources */,
 				3594EB682021AF15006FFA6A /* StreamUploadable.swift in Sources */,

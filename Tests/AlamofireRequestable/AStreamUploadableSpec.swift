@@ -14,6 +14,7 @@ import Alamofire
 
 class AStreamUploadableSpec: BaseSpec {
     
+    static var prepareDelegateCalled = false
     static var startDelegateCalled = false
 
     override func spec() {
@@ -33,11 +34,12 @@ class AStreamUploadableSpec: BaseSpec {
                         }
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        AStreamUploadableSpec.prepareDelegateCalled = true
                         return request
                     }
                     
                     func didSend(_ request: Request, requestable: ARequestable) {
-                        expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AStreamUploadableSpec.startDelegateCalled = true
                     }
@@ -47,6 +49,8 @@ class AStreamUploadableSpec: BaseSpec {
                 let request = Upload().request
                 print(request.debugDescription)
                 
+                
+                expect(AStreamUploadableSpec.prepareDelegateCalled).to(beTrue())
                 expect(AStreamUploadableSpec.startDelegateCalled).to(beTrue())
                 
                 // When
@@ -68,4 +72,3 @@ class AStreamUploadableSpec: BaseSpec {
     }
     
 }
-

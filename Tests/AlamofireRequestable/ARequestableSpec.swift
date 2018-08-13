@@ -14,6 +14,7 @@ import Alamofire
 
 class ARequestableSpec: BaseSpec {
     
+    static var prepareDelegateCalled = false
     static var startDelegateCalled = false
     
     override func spec() {
@@ -32,6 +33,7 @@ class ARequestableSpec: BaseSpec {
                         }
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        ARequestableSpec.prepareDelegateCalled = true
                         return request
                     }
                     
@@ -46,6 +48,8 @@ class ARequestableSpec: BaseSpec {
                 let request = Service().request
                 print(request.debugDescription)
                 
+                
+                expect(ARequestableSpec.prepareDelegateCalled).to(beTrue())
                 expect(ARequestableSpec.startDelegateCalled).to(beTrue())
                 
                 var progressValues: [Double] = []

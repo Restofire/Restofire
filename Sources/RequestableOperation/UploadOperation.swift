@@ -56,7 +56,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
                 serializationDuration: res.serializationDuration,
                 result: value
             )
-            uploadable.queue.sync {
+            uploadable.queue.async {
                 self.completionHandler?(dataResponse)
                 switch value {
                 case .success(let innerValue):
@@ -75,7 +75,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
                 serializationDuration: res.serializationDuration,
                 result: Result<R.Response>.failure(error)
             )
-            uploadable.queue.sync {
+            uploadable.queue.async {
                 self.completionHandler?(dataResponse)
                 self.uploadable.request(self, didFailWithError: error)
                 self.isFinished = true

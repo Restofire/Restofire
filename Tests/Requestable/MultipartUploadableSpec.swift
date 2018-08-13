@@ -33,7 +33,17 @@ class MultipartUploadableSpec: BaseSpec {
                     }
                     
                     struct Upload: MultipartUploadable {
+                        
                         typealias Response = HTTPBin
+                        
+                        var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                            return Result { try JSONDecodableResponseSerializer()
+                                .serialize(request: request,
+                                           response: response,
+                                           data: data,
+                                           error: error) }
+                        })
+                        
                         var path: String? = "post"
                         var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
                             multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")
@@ -41,7 +51,6 @@ class MultipartUploadableSpec: BaseSpec {
                             multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "jpg"), withName: "image")
                             multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
                         }
-                        var responseSerializer: DataResponseSerializer<HTTPBin> = DataRequest.JSONDecodableResponseSerializer()
                         
                         func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: HTTPBin) {
                             MultipartUploadableSpec.successDelegateCalled = true
@@ -55,46 +64,35 @@ class MultipartUploadableSpec: BaseSpec {
                         }
                     }
                     
-                    // When
                     let uploadable = Upload()
-                    uploadable.request(encodingCompletion: { result in
-                        switch result {
-                        case .success(let upload, _, _):
-                            
-                            let operation = uploadable.execute(request: upload()) { (response: DataResponse<HTTPBin>) in
-
-                                // Then
-                                if let statusCode = response.response?.statusCode,
-                                    statusCode != 200 {
-                                    fail("Response status code should be 200")
-                                }
-
-                                expect(response.request).toNot(beNil())
-                                expect(response.response).toNot(beNil())
-                                expect(response.data).toNot(beNil())
-                                expect(response.error).to(beNil())
-                            
-                                if let value = response.value {
-                                    expect(value.form.french).to(equal("français"))
-                                    expect(value.form.japanese).to(equal("日本語"))
-                                } else {
-                                    fail("response value should not be nil")
-                                }
-                            
-                            }
-                            
-                            operation.completionBlock = {
-                                expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
-                                expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
-                                done()
-                            }
-
-                        case .failure(let error):
-                            fail("Encoding Completion Failed with \(error.localizedDescription)")
-                            done()
+                    
+                    // When
+                    let operation = uploadable.execute() { response in
+                        
+                        // Then
+                        if let statusCode = response.response?.statusCode,
+                            statusCode != 200 {
+                            fail("Response status code should be 200")
                         }
                         
-                    })
+                        expect(response.request).toNot(beNil())
+                        expect(response.response).toNot(beNil())
+                        expect(response.data).toNot(beNil())
+                        expect(response.error).to(beNil())
+                        
+                        if let value = response.value {
+                            expect(value.form.french).to(equal("français"))
+                            expect(value.form.japanese).to(equal("日本語"))
+                        } else {
+                            fail("response value should not be nil")
+                        }
+                    }
+                    
+                    operation.completionBlock = {
+                        expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
+                        expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
+                        done()
+                    }
                 }
             }
             

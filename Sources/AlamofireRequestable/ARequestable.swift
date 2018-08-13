@@ -24,6 +24,9 @@ public protocol ARequestable: _Requestable, AConfigurable, RequestDelegate {
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }
     
+    /// The Alamofire download request validation.
+    var downloadValidationBlock: DownloadRequest.Validation? { get }
+    
     /// The request delegates.
     var delegates: [RequestDelegate] { get }
 
@@ -36,7 +39,12 @@ public extension ARequestable {
         return validation.dataValidation
     }
     
-    /// `empty`
+    /// `Validation.default.downloadValidation`
+    public var downloadValidationBlock: DownloadRequest.Validation? {
+        return validation.downloadValidation
+    }
+    
+    /// `Configuration.default.requestDelegates`
     public var delegates: [RequestDelegate] {
         return configuration.requestDelegates
     }

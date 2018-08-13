@@ -19,7 +19,7 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Requestable: BaseRequestable {
+public protocol Requestable: ARequestable, Configurable, ResponseSerializable {
 
     /// Called when the Request succeeds.
     ///

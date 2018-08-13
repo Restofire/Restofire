@@ -13,7 +13,7 @@ import Alamofire
 ///
 /// Instead implement FileUploadable, DataUploadable, StreamUploadable,
 /// MultipartUplodable protocols.
-public protocol Uploadable: _AUploadable, BaseRequestable {
+public protocol Uploadable: _AUploadable, Configurable, ResponseSerializable {
 
     /// Called when the Request succeeds.
     ///

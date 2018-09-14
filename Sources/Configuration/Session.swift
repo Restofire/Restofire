@@ -21,13 +21,13 @@ import Alamofire
 ///     return Alamofire.SessionManager(configuration: sessionConfiguration)
 /// }
 /// ```
-public struct Session {
+public struct AlamofireSession {
     
     /// The default session manager.
-    public static var `default` = Session()
+    public static var `default` = AlamofireSession()
 
-    /// The Alamofire Session Manager. `Alamofire.SessionManager.default` by default.
-    public var sessionManager = SessionManager.default
+    /// The Alamofire Session Manager. `Alamofire.Session.default` by default.
+    public var session = Session.default
     
     /// `Session` Intializer
     ///

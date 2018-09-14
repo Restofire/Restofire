@@ -14,8 +14,12 @@ class RestofireRequest {
     
     static func dataRequest<R: ARequestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DataRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.request(urlRequest)
-        didSendRequest(request, requestable: requestable)
+        let request = requestable.session.request(urlRequest)
+        requestable.session.requestQueue.async {
+            requestable.session.rootQueue.async {
+                didSendRequest(request, requestable: requestable)
+            }
+        }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         return request
@@ -23,8 +27,12 @@ class RestofireRequest {
 
     static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DownloadRequest {
         let urlRequest = prepareDownloadRequest(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.download(urlRequest, to: requestable.destination)
-        didSendDownloadRequest(request, requestable: requestable)
+        let request = requestable.session.download(urlRequest, to: requestable.destination)
+        requestable.session.requestQueue.async {
+            requestable.session.rootQueue.async {
+                didSendDownloadRequest(request, requestable: requestable)
+            }
+        }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
         return request
@@ -32,8 +40,12 @@ class RestofireRequest {
 
     static func fileUploadRequest<R: AFileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(requestable.url, with: urlRequest)
-        didSendRequest(request, requestable: requestable)
+        let request = requestable.session.upload(requestable.url, with: urlRequest)
+        requestable.session.requestQueue.async {
+            requestable.session.rootQueue.async {
+                didSendRequest(request, requestable: requestable)
+            }
+        }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
@@ -41,8 +53,12 @@ class RestofireRequest {
 
     static func dataUploadRequest<R: ADataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(requestable.data, with: urlRequest)
-        didSendRequest(request, requestable: requestable)
+        let request = requestable.session.upload(requestable.data, with: urlRequest)
+        requestable.session.requestQueue.async {
+            requestable.session.rootQueue.async {
+                didSendRequest(request, requestable: requestable)
+            }
+        }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
@@ -50,8 +66,12 @@ class RestofireRequest {
 
     static func streamUploadRequest<R: AStreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(requestable.stream, with: urlRequest)
-        didSendRequest(request, requestable: requestable)
+        let request = requestable.session.upload(requestable.stream, with: urlRequest)
+        requestable.session.requestQueue.async {
+            requestable.session.rootQueue.async {
+                didSendRequest(request, requestable: requestable)
+            }
+        }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
@@ -59,12 +79,16 @@ class RestofireRequest {
 
     static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.sessionManager.upload(
+        let request = requestable.session.upload(
             multipartFormData: requestable.multipartFormData,
             usingThreshold: requestable.encodingMemoryThreshold,
             with: urlRequest
         )
-        didSendRequest(request, requestable: requestable)
+        requestable.session.requestQueue.async {
+            requestable.session.rootQueue.async {
+                didSendRequest(request, requestable: requestable)
+            }
+        }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request

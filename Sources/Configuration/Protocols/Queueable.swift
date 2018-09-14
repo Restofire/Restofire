@@ -15,6 +15,15 @@ public protocol Queueable {
     /// The `queue`.
     var queue: DispatchQueue { get }
     
+    /// The request operation queue
+    var requestQueue: OperationQueue { get }
+    
+    /// The download operation queue
+    var downloadQueue: OperationQueue { get }
+    
+    /// The upload operation queue
+    var uploadQueue: OperationQueue { get }
+    
 }
 
 public extension Queueable where Self: Configurable {
@@ -22,6 +31,21 @@ public extension Queueable where Self: Configurable {
     /// `DispatchQueue.main`
     public var queue: DispatchQueue {
         return DispatchQueue.main
+    }
+    
+    /// `configuration.requestQueue`
+    public var requestQueue: OperationQueue {
+        return configuration.requestQueue
+    }
+    
+    /// `configuration.downloadQueue`
+    public var downloadQueue: OperationQueue {
+        return configuration.downloadQueue
+    }
+    
+    /// `configuration.uploadQueue`
+    public var uploadQueue: OperationQueue {
+        return configuration.uploadQueue
     }
     
 }

@@ -45,41 +45,26 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
                        data: res.data,
                        error: res.error) }
         
-        switch result {
-        case .success(let value):
-            let dataResponse = DataResponse<R.Response>(
-                request: res.request,
-                response: res.response,
-                data: res.data,
-                metrics: res.metrics,
-                serializationDuration: res.serializationDuration,
-                result: value
-            )
-            requestable.queue.async {
-                self.completionHandler?(dataResponse)
-                switch value {
-                case .success(let innerValue):
-                    self.requestable.request(self, didCompleteWithValue: innerValue)
-                case .failure(let error):
-                    self.requestable.request(self, didFailWithError: error)
-                }
-                self.isFinished = true
-            }
-        case .failure(let error):
-            let dataResponse = DataResponse<R.Response>(
-                request: res.request,
-                response: res.response,
-                data: res.data,
-                metrics: res.metrics,
-                serializationDuration: res.serializationDuration,
-                result: Result<R.Response>.failure(error)
-            )
-            requestable.queue.async {
-                self.completionHandler?(dataResponse)
-                self.requestable.request(self, didFailWithError: error)
-                self.isFinished = true
-            }
+        let dataResponse = DataResponse<R.Response>(
+            request: res.request,
+            response: res.response,
+            data: res.data,
+            metrics: res.metrics,
+            serializationDuration: res.serializationDuration,
+            result: result.value!
+        )
+        
+        requestable.queue.async {
+            self.completionHandler?(dataResponse)
         }
+        
+        if let error = res.error {
+            self.requestable.request(self, didFailWithError: error)
+        } else {
+            self.requestable.request(self, didCompleteWithValue: dataResponse.value!)
+        }
+        
+        self.isFinished = true
     }
     
     /// Creates a copy of self

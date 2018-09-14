@@ -47,6 +47,30 @@ public extension Downloadable {
     /// `Does Nothing`
     func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
     
+    /// Creates a `DownloadOperation` for the specified `Requestable` object.
+    ///
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `RequestOperation`.
+    @discardableResult
+    public func operation(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
+        return operation(request: self.request, completionHandler: completionHandler)
+    }
+    
+    /// Creates a `DownloadOperation` for the specified `Requestable` object.
+    ///
+    /// - parameter request: A data request instance
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `RequestOperation`.
+    public func operation(request: @autoclosure @escaping () -> DownloadRequest, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
+        let downloadOperation = DownloadOperation(downloadable: self, request: request, completionHandler: completionHandler)
+        downloadOperation.queuePriority = priority
+        return downloadOperation
+    }
+    
     /// Creates a `DownloadOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
@@ -69,8 +93,8 @@ public extension Downloadable {
     /// - returns: The created `DownloadOperation`.
     @discardableResult
     public func execute(request: @autoclosure @escaping () -> DownloadRequest, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        let downloadOperation = DownloadOperation(downloadable: self, request: request, completionHandler: completionHandler)
-        downloadOperation.start()
+        let downloadOperation = operation(request: request, completionHandler: completionHandler)
+        downloadQueue.addOperation(downloadOperation)
         return downloadOperation
     }
     

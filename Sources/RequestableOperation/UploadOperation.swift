@@ -46,41 +46,26 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
                        error: res.error)
         }
         
-        switch result {
-        case .success(let value):
-            let dataResponse = DataResponse<R.Response>(
-                request: res.request,
-                response: res.response,
-                data: res.data,
-                metrics: res.metrics,
-                serializationDuration: res.serializationDuration,
-                result: value
-            )
-            uploadable.queue.async {
-                self.completionHandler?(dataResponse)
-                switch value {
-                case .success(let innerValue):
-                    self.uploadable.request(self, didCompleteWithValue: innerValue)
-                case .failure(let error):
-                    self.uploadable.request(self, didFailWithError: error)
-                }
-                self.isFinished = true
-            }
-        case .failure(let error):
-            let dataResponse = DataResponse<R.Response>(
-                request: res.request,
-                response: res.response,
-                data: res.data,
-                metrics: res.metrics,
-                serializationDuration: res.serializationDuration,
-                result: Result<R.Response>.failure(error)
-            )
-            uploadable.queue.async {
-                self.completionHandler?(dataResponse)
-                self.uploadable.request(self, didFailWithError: error)
-                self.isFinished = true
-            }
+        let dataResponse = DataResponse<R.Response>(
+            request: res.request,
+            response: res.response,
+            data: res.data,
+            metrics: res.metrics,
+            serializationDuration: res.serializationDuration,
+            result: result.value!
+        )
+        
+        uploadable.queue.async {
+            self.completionHandler?(dataResponse)
         }
+        
+        if let error = res.error {
+            self.uploadable.request(self, didFailWithError: error)
+        } else {
+            self.uploadable.request(self, didCompleteWithValue: dataResponse.value!)
+        }
+        self.isFinished = true
+        
     }
     
     /// Creates a copy of self

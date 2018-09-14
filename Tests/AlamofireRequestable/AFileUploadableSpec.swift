@@ -14,7 +14,6 @@ import Alamofire
 
 class AFileUploadableSpec: BaseSpec {
     
-    static var prepareDelegateCalled = false
     static var startDelegateCalled = false
     
     override func spec() {
@@ -34,12 +33,11 @@ class AFileUploadableSpec: BaseSpec {
                         }
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                        AFileUploadableSpec.prepareDelegateCalled = true
                         return request
                     }
                     
                     func didSend(_ request: Request, requestable: ARequestable) {
-                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AFileUploadableSpec.startDelegateCalled = true
                     }
@@ -49,15 +47,12 @@ class AFileUploadableSpec: BaseSpec {
                 let request = Upload().request
                 print(request.debugDescription)
                 
-                
-                expect(AFileUploadableSpec.prepareDelegateCalled).to(beTrue())
-                expect(AFileUploadableSpec.startDelegateCalled).to(beTrue())
-                
                 var uploadProgressValues: [Double] = []
                 var downloadProgressValues: [Double] = []
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
+                    
                     request
                         .uploadProgress { progress in
                             uploadProgressValues.append(progress.fractionCompleted)
@@ -66,7 +61,10 @@ class AFileUploadableSpec: BaseSpec {
                             downloadProgressValues.append(progress.fractionCompleted)
                         }
                         .responseJSON { response in
-                            defer { done() }
+                            defer {
+                                expect(AFileUploadableSpec.startDelegateCalled).to(beTrue())
+                                done()
+                            }
                             
                             // Then
                             if let statusCode = response.response?.statusCode,
@@ -119,3 +117,4 @@ class AFileUploadableSpec: BaseSpec {
     }
     
 }
+

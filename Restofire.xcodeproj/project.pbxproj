@@ -211,26 +211,6 @@
 		D93BFF4A21150FFD009FE9DC /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
 		D93BFF4B21150FFD009FE9DC /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
 		D93BFF4C21150FFE009FE9DC /* MultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB962021F113006FFA6A /* MultipartUploadable.swift */; };
-		D9472EC4211A216800FFECA9 /* AnyDownloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC3211A216800FFECA9 /* AnyDownloadable.swift */; };
-		D9472EC5211A216800FFECA9 /* AnyDownloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC3211A216800FFECA9 /* AnyDownloadable.swift */; };
-		D9472EC6211A216800FFECA9 /* AnyDownloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC3211A216800FFECA9 /* AnyDownloadable.swift */; };
-		D9472EC7211A216800FFECA9 /* AnyDownloadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC3211A216800FFECA9 /* AnyDownloadable.swift */; };
-		D9472EC9211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC8211A217B00FFECA9 /* AnyFileUploadable.swift */; };
-		D9472ECA211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC8211A217B00FFECA9 /* AnyFileUploadable.swift */; };
-		D9472ECB211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC8211A217B00FFECA9 /* AnyFileUploadable.swift */; };
-		D9472ECC211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472EC8211A217B00FFECA9 /* AnyFileUploadable.swift */; };
-		D9472ECE211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */; };
-		D9472ECF211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */; };
-		D9472ED0211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */; };
-		D9472ED1211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */; };
-		D9472ED3211A219400FFECA9 /* AnyDataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */; };
-		D9472ED4211A219400FFECA9 /* AnyDataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */; };
-		D9472ED5211A219400FFECA9 /* AnyDataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */; };
-		D9472ED6211A219400FFECA9 /* AnyDataUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */; };
-		D9472ED8211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */; };
-		D9472ED9211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */; };
-		D9472EDA211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */; };
-		D9472EDB211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */; };
 		D971025021158BFD00580974 /* ARequestableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428CE201C668C00765D15 /* ARequestableSpec.swift */; };
 		D971025121158BFD00580974 /* ADownloadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428CA201C668100765D15 /* ADownloadableSpec.swift */; };
 		D971025221158BFD00580974 /* AFileUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042920201CA26800765D15 /* AFileUploadableSpec.swift */; };
@@ -246,16 +226,16 @@
 		D971025E21158BFE00580974 /* AFileUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042920201CA26800765D15 /* AFileUploadableSpec.swift */; };
 		D971025F21158BFE00580974 /* ADataUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042924201CA27200765D15 /* ADataUploadableSpec.swift */; };
 		D971026021158BFE00580974 /* AStreamUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3504292C201CA2A000765D15 /* AStreamUploadableSpec.swift */; };
-		D9C90473211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
-		D9C90474211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
-		D9C90475211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
-		D9C90476211A13FE00AC34B5 /* AnyRequestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */; };
-		D9F36AD121215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
-		D9F36AD221215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
-		D9F36AD321215AE1009AEFE5 /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
-		D9F36AD421215C20009AEFE5 /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
-		D9F36AD521215C21009AEFE5 /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
-		D9F36AD621215C22009AEFE5 /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		D9A44006214C4AEA0020AF0C /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
+		D9A44007214C4AEB0020AF0C /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
+		D9A44008214C4AEB0020AF0C /* AMultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35042928201CA29200765D15 /* AMultipartUploadableSpec.swift */; };
+		D9A4400A214C4BFA0020AF0C /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		D9A4400B214C4BFB0020AF0C /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		D9A4400C214C4BFB0020AF0C /* MultipartUploadableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3594EB6B2021AF35006FFA6A /* MultipartUploadableSpec.swift */; };
+		D9A72DDD212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */; };
+		D9A72DDE212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */; };
+		D9A72DDF212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */; };
+		D9A72DE0212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */; };
 		D9FD5BA5211579C60087A1BA /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B99211579C60087A1BA /* _AUploadable.swift */; };
 		D9FD5BA6211579C60087A1BA /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B99211579C60087A1BA /* _AUploadable.swift */; };
 		D9FD5BA7211579C60087A1BA /* _AUploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B99211579C60087A1BA /* _AUploadable.swift */; };
@@ -509,12 +489,7 @@
 		35E6D3661CCBE061007ABC05 /* Retryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retryable.swift; sourceTree = "<group>"; };
 		35E6D36B1CCBEB90007ABC05 /* Retry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retry.swift; sourceTree = "<group>"; };
 		35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireRequest.swift; sourceTree = "<group>"; };
-		D9472EC3211A216800FFECA9 /* AnyDownloadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDownloadable.swift; sourceTree = "<group>"; };
-		D9472EC8211A217B00FFECA9 /* AnyFileUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyFileUploadable.swift; sourceTree = "<group>"; };
-		D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyStreamUploadable.swift; sourceTree = "<group>"; };
-		D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDataUploadable.swift; sourceTree = "<group>"; };
-		D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyMultipartUploadable.swift; sourceTree = "<group>"; };
-		D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRequestable.swift; sourceTree = "<group>"; };
+		D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuePriortizable.swift; sourceTree = "<group>"; };
 		D9FD5B99211579C60087A1BA /* _AUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _AUploadable.swift; sourceTree = "<group>"; };
 		D9FD5B9A211579C60087A1BA /* ARequestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARequestable.swift; sourceTree = "<group>"; };
 		D9FD5B9B211579C60087A1BA /* AFileUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFileUploadable.swift; sourceTree = "<group>"; };
@@ -645,6 +620,7 @@
 				35E6D3521CCBD50E007ABC05 /* Validatable.swift */,
 				358E8ED32020B776003048B3 /* Reachable.swift */,
 				351537362028441300165E83 /* RequestDelegate.swift */,
+				D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -705,7 +681,6 @@
 		3525FB111CCCC9A3009CEC35 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				D9C9047B211A212700AC34B5 /* AnyRequestable */,
 				350428A5201C5BCE00765D15 /* Configuration */,
 				357E33F8201DDA6C0093DCC5 /* BaseRequestable */,
 				D9FD5B98211579C60087A1BA /* AlamofireRequestable */,
@@ -846,19 +821,6 @@
 				356FC35F20210544009CB77D /* ConfigurationSpec.swift */,
 			);
 			path = Configuration;
-			sourceTree = "<group>";
-		};
-		D9C9047B211A212700AC34B5 /* AnyRequestable */ = {
-			isa = PBXGroup;
-			children = (
-				D9C90472211A13FE00AC34B5 /* AnyRequestable.swift */,
-				D9472EC3211A216800FFECA9 /* AnyDownloadable.swift */,
-				D9472EC8211A217B00FFECA9 /* AnyFileUploadable.swift */,
-				D9472ECD211A217F00FFECA9 /* AnyStreamUploadable.swift */,
-				D9472ED2211A219400FFECA9 /* AnyDataUploadable.swift */,
-				D9472ED7211A21A000FFECA9 /* AnyMultipartUploadable.swift */,
-			);
-			path = AnyRequestable;
 			sourceTree = "<group>";
 		};
 		D9FD5B98211579C60087A1BA /* AlamofireRequestable */ = {
@@ -1054,7 +1016,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = AarKay;
 				TargetAttributes = {
 					350061F11C7C33910078B589 = {
@@ -1246,21 +1208,18 @@
 				35E6D3541CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35E1CCBD731007ABC05 /* Validation.swift in Sources */,
 				D9FD5BA7211579C60087A1BA /* _AUploadable.swift in Sources */,
-				D9472EDA211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				358E8EC72020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				358E8ED62020B776003048B3 /* Reachable.swift in Sources */,
 				D93BFF3F21150F97009FE9DC /* FileUploadable.swift in Sources */,
 				35460394202B882B00D57627 /* Configurable.swift in Sources */,
-				D9472ECB211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */,
 				35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */,
-				D9472EC6211A216800FFECA9 /* AnyDownloadable.swift in Sources */,
 				358E8ECC2020A484003048B3 /* Reachability.swift in Sources */,
-				D9C90475211A13FE00AC34B5 /* AnyRequestable.swift in Sources */,
 				D93BFF4021150F97009FE9DC /* DataUploadable.swift in Sources */,
 				D9FD5BB7211579C60087A1BA /* AMultipartUploadable.swift in Sources */,
 				357E33A4201DC7180093DCC5 /* RequestOperation.swift in Sources */,
 				357E335E201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
+				D9A72DDF212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */,
 				D9FD5BBB211579C60087A1BA /* AConfigurable.swift in Sources */,
 				35C7D483201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
 				35E6D3591CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
@@ -1274,9 +1233,7 @@
 				D93BFF2921150DBF009FE9DC /* Downloadable.swift in Sources */,
 				D9FD5BB3211579C60087A1BA /* ADownloadable.swift in Sources */,
 				3596CBFE1CA3B5030089A03E /* Requestable.swift in Sources */,
-				D9472ED0211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */,
 				D9FD5BC3211579C60087A1BA /* ADataUploadable.swift in Sources */,
-				D9472ED5211A219400FFECA9 /* AnyDataUploadable.swift in Sources */,
 				357E3406201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				D9FD5BAB211579C60087A1BA /* ARequestable.swift in Sources */,
@@ -1301,21 +1258,18 @@
 				35E6D3551CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35F1CCBD731007ABC05 /* Validation.swift in Sources */,
 				D9FD5BA6211579C60087A1BA /* _AUploadable.swift in Sources */,
-				D9472ED9211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				358E8EC62020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				358E8ED52020B776003048B3 /* Reachable.swift in Sources */,
 				D93BFF3C21150F96009FE9DC /* FileUploadable.swift in Sources */,
 				35460393202B882A00D57627 /* Configurable.swift in Sources */,
-				D9472ECA211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */,
 				35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */,
-				D9472EC5211A216800FFECA9 /* AnyDownloadable.swift in Sources */,
 				358E8ECB2020A484003048B3 /* Reachability.swift in Sources */,
-				D9C90474211A13FE00AC34B5 /* AnyRequestable.swift in Sources */,
 				D93BFF3D21150F96009FE9DC /* DataUploadable.swift in Sources */,
 				D9FD5BB6211579C60087A1BA /* AMultipartUploadable.swift in Sources */,
 				357E33A3201DC7180093DCC5 /* RequestOperation.swift in Sources */,
 				357E335D201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
+				D9A72DDE212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */,
 				D9FD5BBA211579C60087A1BA /* AConfigurable.swift in Sources */,
 				35C7D482201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
 				35E6D35A1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
@@ -1329,9 +1283,7 @@
 				D93BFF2621150DBE009FE9DC /* Downloadable.swift in Sources */,
 				D9FD5BB2211579C60087A1BA /* ADownloadable.swift in Sources */,
 				3596CBFF1CA3B5030089A03E /* Requestable.swift in Sources */,
-				D9472ECF211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */,
 				D9FD5BC2211579C60087A1BA /* ADataUploadable.swift in Sources */,
-				D9472ED4211A219400FFECA9 /* AnyDataUploadable.swift in Sources */,
 				357E3405201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				D9FD5BAA211579C60087A1BA /* ARequestable.swift in Sources */,
@@ -1356,21 +1308,18 @@
 				35E6D3601CCBD731007ABC05 /* Validation.swift in Sources */,
 				358E8ED72020B776003048B3 /* Reachable.swift in Sources */,
 				D9FD5BA8211579C60087A1BA /* _AUploadable.swift in Sources */,
-				D9472EDB211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				3594EB782021E4FB006FFA6A /* Requestable.swift in Sources */,
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				D93BFF4221150F98009FE9DC /* FileUploadable.swift in Sources */,
 				35460395202B882C00D57627 /* Configurable.swift in Sources */,
-				D9472ECC211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */,
 				358E8ECD2020A484003048B3 /* Reachability.swift in Sources */,
 				357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
-				D9472EC7211A216800FFECA9 /* AnyDownloadable.swift in Sources */,
 				35C7D484201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
-				D9C90476211A13FE00AC34B5 /* AnyRequestable.swift in Sources */,
 				D93BFF4321150F98009FE9DC /* DataUploadable.swift in Sources */,
 				D9FD5BB8211579C60087A1BA /* AMultipartUploadable.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
 				35249B051D8E5A84005A2BAB /* CollectionExtensions.swift in Sources */,
+				D9A72DE0212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */,
 				D9FD5BBC211579C60087A1BA /* AConfigurable.swift in Sources */,
 				3594EB7E2021E500006FFA6A /* RestofireRequest.swift in Sources */,
 				35547F291CC0A32F0070F5D3 /* _Configurable.swift in Sources */,
@@ -1384,9 +1333,7 @@
 				D93BFF2C21150DC0009FE9DC /* Downloadable.swift in Sources */,
 				D9FD5BB4211579C60087A1BA /* ADownloadable.swift in Sources */,
 				3593CA7C1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
-				D9472ED1211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */,
 				D9FD5BC4211579C60087A1BA /* ADataUploadable.swift in Sources */,
-				D9472ED6211A219400FFECA9 /* AnyDataUploadable.swift in Sources */,
 				3594EB7A2021E4FB006FFA6A /* NetworkReachability.swift in Sources */,
 				357E33D5201DD7C50093DCC5 /* _Requestable.swift in Sources */,
 				D9FD5BAC211579C60087A1BA /* ARequestable.swift in Sources */,
@@ -1401,7 +1348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9F36AD221215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */,
+				D9A44007214C4AEB0020AF0C /* AMultipartUploadableSpec.swift in Sources */,
 				350428C4201C64C200765D15 /* BaseSpec.swift in Sources */,
 				35DA5ADE201F48C9008CA3A4 /* RequestableSpec.swift in Sources */,
 				D971025A21158BFD00580974 /* AStreamUploadableSpec.swift in Sources */,
@@ -1409,7 +1356,7 @@
 				356FC36920210555009CB77D /* ConfigurationSpec.swift in Sources */,
 				357E3377201DA8280093DCC5 /* JSONDecodableResponseSerializerSpec.swift in Sources */,
 				3594EB5D2021AF0B006FFA6A /* FileUploadableSpec.swift in Sources */,
-				D9F36AD521215C21009AEFE5 /* MultipartUploadableSpec.swift in Sources */,
+				D9A4400B214C4BFB0020AF0C /* MultipartUploadableSpec.swift in Sources */,
 				D971025621158BFD00580974 /* ARequestableSpec.swift in Sources */,
 				D971025921158BFD00580974 /* ADataUploadableSpec.swift in Sources */,
 				3594EB692021AF15006FFA6A /* StreamUploadable.swift in Sources */,
@@ -1425,7 +1372,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9F36AD321215AE1009AEFE5 /* AMultipartUploadableSpec.swift in Sources */,
+				D9A44006214C4AEA0020AF0C /* AMultipartUploadableSpec.swift in Sources */,
 				350428C5201C64C200765D15 /* BaseSpec.swift in Sources */,
 				35DA5ADF201F48C9008CA3A4 /* RequestableSpec.swift in Sources */,
 				D971026021158BFE00580974 /* AStreamUploadableSpec.swift in Sources */,
@@ -1433,7 +1380,7 @@
 				356FC36B20210557009CB77D /* ConfigurationSpec.swift in Sources */,
 				357E3378201DA8290093DCC5 /* JSONDecodableResponseSerializerSpec.swift in Sources */,
 				3594EB5E2021AF0B006FFA6A /* FileUploadableSpec.swift in Sources */,
-				D9F36AD621215C22009AEFE5 /* MultipartUploadableSpec.swift in Sources */,
+				D9A4400C214C4BFB0020AF0C /* MultipartUploadableSpec.swift in Sources */,
 				D971025C21158BFE00580974 /* ARequestableSpec.swift in Sources */,
 				D971025F21158BFE00580974 /* ADataUploadableSpec.swift in Sources */,
 				3594EB6A2021AF15006FFA6A /* StreamUploadable.swift in Sources */,
@@ -1459,21 +1406,18 @@
 				35E6D3531CCBD50E007ABC05 /* Validatable.swift in Sources */,
 				35E6D35D1CCBD731007ABC05 /* Validation.swift in Sources */,
 				D9FD5BA5211579C60087A1BA /* _AUploadable.swift in Sources */,
-				D9472ED8211A21A000FFECA9 /* AnyMultipartUploadable.swift in Sources */,
 				358E8EC52020A27B003048B3 /* NetworkReachability.swift in Sources */,
 				358E8ED42020B776003048B3 /* Reachable.swift in Sources */,
 				D93BFF3921150F96009FE9DC /* FileUploadable.swift in Sources */,
 				3546038E202B882A00D57627 /* Configurable.swift in Sources */,
-				D9472EC9211A217B00FFECA9 /* AnyFileUploadable.swift in Sources */,
 				35E6D36C1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */,
-				D9472EC4211A216800FFECA9 /* AnyDownloadable.swift in Sources */,
 				358E8ECA2020A484003048B3 /* Reachability.swift in Sources */,
-				D9C90473211A13FE00AC34B5 /* AnyRequestable.swift in Sources */,
 				D93BFF3A21150F96009FE9DC /* DataUploadable.swift in Sources */,
 				D9FD5BB5211579C60087A1BA /* AMultipartUploadable.swift in Sources */,
 				357E33A2201DC7180093DCC5 /* RequestOperation.swift in Sources */,
 				357E335C201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
+				D9A72DDD212C6B2E00BDE067 /* QueuePriortizable.swift in Sources */,
 				D9FD5BB9211579C60087A1BA /* AConfigurable.swift in Sources */,
 				35C7D481201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
 				35E6D3581CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
@@ -1487,9 +1431,7 @@
 				D93BFF2321150DBE009FE9DC /* Downloadable.swift in Sources */,
 				D9FD5BB1211579C60087A1BA /* ADownloadable.swift in Sources */,
 				3596CBFD1CA3B5030089A03E /* Requestable.swift in Sources */,
-				D9472ECE211A217F00FFECA9 /* AnyStreamUploadable.swift in Sources */,
 				D9FD5BC1211579C60087A1BA /* ADataUploadable.swift in Sources */,
-				D9472ED3211A219400FFECA9 /* AnyDataUploadable.swift in Sources */,
 				357E3404201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				D9FD5BA9211579C60087A1BA /* ARequestable.swift in Sources */,
@@ -1504,7 +1446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9F36AD121215AE0009AEFE5 /* AMultipartUploadableSpec.swift in Sources */,
+				D9A44008214C4AEB0020AF0C /* AMultipartUploadableSpec.swift in Sources */,
 				350428C3201C64C200765D15 /* BaseSpec.swift in Sources */,
 				35DA5ADD201F48C9008CA3A4 /* RequestableSpec.swift in Sources */,
 				D971025421158BFD00580974 /* AStreamUploadableSpec.swift in Sources */,
@@ -1512,7 +1454,7 @@
 				356FC36820210554009CB77D /* ConfigurationSpec.swift in Sources */,
 				357E3376201DA8270093DCC5 /* JSONDecodableResponseSerializerSpec.swift in Sources */,
 				3594EB5C2021AF0B006FFA6A /* FileUploadableSpec.swift in Sources */,
-				D9F36AD421215C20009AEFE5 /* MultipartUploadableSpec.swift in Sources */,
+				D9A4400A214C4BFA0020AF0C /* MultipartUploadableSpec.swift in Sources */,
 				D971025021158BFD00580974 /* ARequestableSpec.swift in Sources */,
 				D971025321158BFD00580974 /* ADataUploadableSpec.swift in Sources */,
 				3594EB682021AF15006FFA6A /* StreamUploadable.swift in Sources */,
@@ -1588,7 +1530,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -1615,7 +1557,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -1637,7 +1579,7 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1664,7 +1606,7 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1697,6 +1639,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -1724,6 +1667,7 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -1841,12 +1785,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1874,8 +1820,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1900,12 +1846,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1927,8 +1875,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

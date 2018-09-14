@@ -39,7 +39,7 @@ class RestofireDownloadValidation {
     static func validateDownloadRequest<R: ADownloadable>(request: DownloadRequest, requestable: R) {
         validateDownloadRequest(request, forAcceptableContentTypes: requestable.acceptableContentTypes)
         validateDownloadRequest(request, forAcceptableStatusCodes: requestable.acceptableStatusCodes)
-        validateDownloadRequest(request, forValidation: requestable.downloadValidationBlock)
+        validateDownloadRequest(request, forValidation: requestable.validationBlock)
     }
     
     static func validateDownloadRequest(_ request: DownloadRequest, forAcceptableContentTypes contentTypes:[String]?) {

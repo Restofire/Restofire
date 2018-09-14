@@ -47,6 +47,15 @@ public struct Configuration {
     /// The request delegates. `empty` by default.
     public var requestDelegates: [RequestDelegate] = []
     
+    /// The request operation queue.
+    public var requestQueue: OperationQueue = OperationQueue()
+    
+    /// The request operation queue.
+    public var downloadQueue: OperationQueue = OperationQueue()
+    
+    /// The request operation queue.
+    public var uploadQueue: OperationQueue = OperationQueue()
+    
     /// `Configuration` Intializer
     ///
     /// - returns: new `Configuration` object

@@ -33,15 +33,12 @@ class MultipartUploadableSpec: BaseSpec {
                     }
                     
                     struct Upload: MultipartUploadable {
-                        
                         typealias Response = HTTPBin
-                        
                         var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                            return Result { try JSONDecodableResponseSerializer()
-                                .serialize(request: request,
-                                           response: response,
-                                           data: data,
-                                           error: error) }
+                            return Result { try JSONDecodableResponseSerializer().serialize(request: request,
+                                                                                            response: response,
+                                                                                            data: data,
+                                                                                            error: error)}
                         })
                         
                         var path: String? = "post"
@@ -64,10 +61,10 @@ class MultipartUploadableSpec: BaseSpec {
                         }
                     }
                     
-                    let uploadable = Upload()
+                    let request = Upload()
                     
                     // When
-                    let operation = uploadable.execute() { response in
+                    let operation = request.execute() { (response: DataResponse<HTTPBin>) in
                         
                         // Then
                         if let statusCode = response.response?.statusCode,
@@ -86,6 +83,7 @@ class MultipartUploadableSpec: BaseSpec {
                         } else {
                             fail("response value should not be nil")
                         }
+                        
                     }
                     
                     operation.completionBlock = {

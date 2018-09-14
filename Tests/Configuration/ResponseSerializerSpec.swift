@@ -45,13 +45,11 @@ class ResponseSerializerSpec: BaseSpec {
                 struct Service: Requestable {
                     
                     typealias Response = Any
-                    
                     var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                        return Result { try JSONResponseSerializer()
-                            .serialize(request: request,
-                                       response: response,
-                                       data: data,
-                                       error: error) }
+                        return Result { try JSONResponseSerializer().serialize(request: request,
+                                                                               response: response,
+                                                                               data: data,
+                                                                               error: error)}
                     })
                 
                     var path: String? = "get"
@@ -88,15 +86,12 @@ class ResponseSerializerSpec: BaseSpec {
                 }
 
                 struct Service: Requestable {
-                    
                     typealias Response = HTTPBin
-                    
                     var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                        return Result { try JSONDecodableResponseSerializer()
-                            .serialize(request: request,
-                                       response: response,
-                                       data: data,
-                                       error: error) }
+                        return Result { try JSONDecodableResponseSerializer().serialize(request: request,
+                                                                                        response: response,
+                                                                                        data: data,
+                                                                                        error: error)}
                     })
                     
                     var path: String? = "get"

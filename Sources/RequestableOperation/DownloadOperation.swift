@@ -46,43 +46,28 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
                                error: res.error)
         }
         
-        switch result {
-        case .success(let value):
-            let downloadResponse = DownloadResponse<R.Response>(
-                request: res.request,
-                response: res.response,
-                fileURL: res.fileURL,
-                resumeData: res.resumeData,
-                metrics: res.metrics,
-                serializationDuration: res.serializationDuration,
-                result: value
-            )
-            downloadable.queue.async {
-                self.completionHandler?(downloadResponse)
-                switch value {
-                case .success(let innerValue):
-                    self.downloadable.request(self, didCompleteWithValue: innerValue)
-                case .failure(let error):
-                    self.downloadable.request(self, didFailWithError: error)
-                }
-                self.isFinished = true
-            }
-        case .failure(let error):
-            let downloadResponse = DownloadResponse<R.Response>(
-                request: res.request,
-                response: res.response,
-                fileURL: res.fileURL,
-                resumeData: res.resumeData,
-                metrics: res.metrics,
-                serializationDuration: res.serializationDuration,
-                result: Result<R.Response>.failure(error)
-            )
-            downloadable.queue.async {
-                self.completionHandler?(downloadResponse)
-                self.downloadable.request(self, didFailWithError: error)
-                self.isFinished = true
-            }
+        let downloadResponse = DownloadResponse<R.Response>(
+            request: res.request,
+            response: res.response,
+            fileURL: res.fileURL,
+            resumeData: res.resumeData,
+            metrics: res.metrics,
+            serializationDuration: res.serializationDuration,
+            result: result.value!
+        )
+        
+        downloadable.queue.async {
+            self.completionHandler?(downloadResponse)
         }
+        
+        if let error = res.error {
+            self.downloadable.request(self, didFailWithError: error)
+        } else {
+            self.downloadable.request(self, didCompleteWithValue: downloadResponse.value!)
+        }
+        
+        self.isFinished = true
+        
     }
     
     /// Creates a copy of self

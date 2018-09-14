@@ -26,7 +26,7 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
+public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable, QueuePriortizable {
     
     #if !os(watchOS)
     /// The waitsForConnectivity.

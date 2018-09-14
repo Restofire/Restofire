@@ -14,7 +14,6 @@ import Alamofire
 
 class AMultipartUploadableSpec: BaseSpec {
     
-    static var prepareDelegateCalled = false
     static var startDelegateCalled = false
     
     override func spec() {
@@ -39,12 +38,11 @@ class AMultipartUploadableSpec: BaseSpec {
                         }
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                        AMultipartUploadableSpec.prepareDelegateCalled = true
                         return request
                     }
                     
                     func didSend(_ request: Request, requestable: ARequestable) {
-                        expect(request.request?.value(forHTTPHeaderField: "Authorization"))
+                        expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AMultipartUploadableSpec.startDelegateCalled = true
                     }
@@ -53,10 +51,6 @@ class AMultipartUploadableSpec: BaseSpec {
                 
                 let request = Upload().request
                 print(request.debugDescription)
-                
-                
-                expect(AMultipartUploadableSpec.prepareDelegateCalled).to(beTrue())
-                expect(AMultipartUploadableSpec.startDelegateCalled).to(beTrue())
                 
                 var uploadProgressValues: [Double] = []
                 var downloadProgressValues: [Double] = []
@@ -71,7 +65,10 @@ class AMultipartUploadableSpec: BaseSpec {
                             downloadProgressValues.append(progress.fractionCompleted)
                         }
                         .responseJSON { response in
-                            defer { done() }
+                            defer {
+                                expect(AMultipartUploadableSpec.startDelegateCalled).to(beTrue())
+                                done()
+                            }
                             
                             // Then
                             if let statusCode = response.response?.statusCode,
@@ -85,8 +82,11 @@ class AMultipartUploadableSpec: BaseSpec {
                             expect(response.error).to(beNil())
                             
                             if let value = response.value as? [String: Any],
-                                let data = value["data"] as? String {
-                                expect(data).toNot(beEmpty())
+                                let form = value["form"] as? [String: Any],
+                                let french = form["french"] as? String,
+                                let japanese = form["japanese"] as? String {
+                                expect(french).to(equal("français"))
+                                expect(japanese).to(equal("日本語"))
                             } else {
                                 fail("response value should not be nil")
                             }
@@ -124,3 +124,4 @@ class AMultipartUploadableSpec: BaseSpec {
     }
     
 }
+

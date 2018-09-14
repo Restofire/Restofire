@@ -69,26 +69,24 @@ open class AOperation<R: Configurable>: Operation {
         switch requestType {
         case .data, .upload:
             let request = self.request as! DataRequest
-            request.response { result in
-                if result.error != nil {
-                    self.handleDataRequestError(result)
+            request.response {
+                if $0.error != nil {
+                    self.handleDataRequestError($0)
                 } else {
-                    self.handleDataResponse(result)
+                    self.handleDataResponse($0)
                 }
-                request.logDataRequestIfNeeded(result: result)
             }
         case .download:
             let request = self.request as! DownloadRequest
-            request.response { result in
-                if result.error != nil {
-                    self.handleDownloadRequestError(result)
+            request.response {
+                if $0.error != nil {
+                    self.handleDownloadRequestError($0)
                 } else {
-                    self.handleDownloadResponse(result)
+                    self.handleDownloadResponse($0)
                 }
-                request.logDownloadRequestIfNeeded(result: result)
             }
         }
-        request.logRequestIfNeeded()
+        request.logIfNeeded()
     }
     
     open func copy() -> AOperation {

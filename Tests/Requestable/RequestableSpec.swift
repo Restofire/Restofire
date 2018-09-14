@@ -28,18 +28,15 @@ class RequestableSpec: BaseSpec {
                 
                 waitUntil(timeout: self.timeout) { done in
                     struct Request: Requestable {
-                        
                         typealias Response = HTTPBin
-                
-                        var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                            return Result { try JSONDecodableResponseSerializer()
-                                .serialize(request: request,
-                                           response: response,
-                                           data: data,
-                                           error: error) }
-                        })
                         
                         var path: String? = "get"
+                        var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                            return Result { try JSONDecodableResponseSerializer().serialize(request: request,
+                                                                                            response: response,
+                                                                                            data: data,
+                                                                                            error: error)}
+                        })
                         
                         func request(_ request: RequestOperation<Request>, didCompleteWithValue value: HTTPBin) {
                             RequestableSpec.successDelegateCalled = true

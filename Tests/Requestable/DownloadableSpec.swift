@@ -33,7 +33,7 @@ class DownloadableSpec: BaseSpec {
                         var path: String? = "get"
                         var destination: DownloadRequest.Destination? = { _, _ in (BaseSpec.jsonFileURL, []) }
                         var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                            return Result { try JSONDecodableResponseSerializer().serialize(request: request,
+                            return Result { try DecodableResponseSerializer().serialize(request: request,
                                                                                    response: response,
                                                                                    data: data,
                                                                                    error: error)}

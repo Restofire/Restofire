@@ -42,7 +42,7 @@ public struct Configuration {
     public var encoding: ParameterEncoding = JSONEncoding.default
     
     /// The HTTP headers. `nil` by default.
-    public var headers: [String : String] = [:]
+    public var headers: HTTPHeaders = [:]
     
     /// The request delegates. `empty` by default.
     public var requestDelegates: [RequestDelegate] = []

@@ -32,7 +32,7 @@ class JSONDecodableResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    request.responseJSONDecodable(completionHandler: { (response: DataResponse<HTTPBin>) in
+                    request.responseDecodable(completionHandler: { (response: DataResponse<HTTPBin>) in
                         defer { done() }
                         
                         // Then

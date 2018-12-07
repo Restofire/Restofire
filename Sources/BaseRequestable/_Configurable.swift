@@ -50,7 +50,7 @@ public protocol _Configurable {
     var encoding: ParameterEncoding { get }
     
     /// The HTTP headers.
-    var headers: [String : String]? { get }
+    var headers: HTTPHeaders? { get }
     
     /// The request parameters.
     var parameters: Any? { get }
@@ -96,7 +96,7 @@ public extension _Configurable {
     }
     
     /// `nil`
-    public var headers: [String: String]? {
+    public var headers: HTTPHeaders? {
         return nil
     }
     

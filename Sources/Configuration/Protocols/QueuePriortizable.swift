@@ -16,47 +16,47 @@ public protocol QueuePriortizable {
 
 extension QueuePriortizable {
     
-    var priority: Operation.QueuePriority {
+    public var priority: Operation.QueuePriority {
         return .normal
     }
     
 }
 
-protocol VeryHighQueuePriortizable: QueuePriortizable {}
+public protocol VeryHighQueuePriortizable: QueuePriortizable {}
 
 extension VeryHighQueuePriortizable {
     
-    var priority: Operation.QueuePriority {
+    public var priority: Operation.QueuePriority {
         return .veryHigh
     }
     
 }
 
-protocol HighQueuePriortizable: QueuePriortizable {}
+public protocol HighQueuePriortizable: QueuePriortizable {}
 
 extension HighQueuePriortizable {
     
-    var priority: Operation.QueuePriority {
+    public var priority: Operation.QueuePriority {
         return .high
     }
     
 }
 
-protocol LowQueuePriortizable: QueuePriortizable {}
+public protocol LowQueuePriortizable: QueuePriortizable {}
 
 extension LowQueuePriortizable {
     
-    var priority: Operation.QueuePriority {
+    public var priority: Operation.QueuePriority {
         return .low
     }
     
 }
 
-protocol VeryLowQueuePriortizable: QueuePriortizable {}
+public protocol VeryLowQueuePriortizable: QueuePriortizable {}
 
 extension VeryLowQueuePriortizable {
     
-    var priority: Operation.QueuePriority {
+    public var priority: Operation.QueuePriority {
         return .veryLow
     }
     

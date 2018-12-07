@@ -12,22 +12,21 @@ import Alamofire
 /// A Session for RESTful Services.
 ///
 /// ```swift
-/// var session = Session()
-/// configuration.sessionManager = {
+/// Session.default.session = {
 ///     let sessionConfiguration = URLSessionConfiguration.default
 ///     sessionConfiguration.timeoutIntervalForRequest = 7
 ///     sessionConfiguration.timeoutIntervalForResource = 7
 ///     sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-///     return Alamofire.SessionManager(configuration: sessionConfiguration)
+///     return Alamofire.Session(configuration: sessionConfiguration)
 /// }
 /// ```
-public struct AlamofireSession {
+public struct Session {
     
     /// The default session manager.
-    public static var `default` = AlamofireSession()
+    public static var `default` = Session()
 
-    /// The Alamofire Session Manager. `Alamofire.Session.default` by default.
-    public var session = Session.default
+    /// The Alamofire Session. `Alamofire.Session.default` by default.
+    public var session = Alamofire.Session.default
     
     /// `Session` Intializer
     ///

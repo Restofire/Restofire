@@ -51,7 +51,10 @@ public extension _Requestable {
             .compactMap { $0 }
             .joined(separator: "/")
         
-        let allHeaders = headers + configuration.headers
+        var allHeaders = headers ?? HTTPHeaders()
+        configuration.headers.forEach { (header: HTTPHeader) in
+            allHeaders.add(header)
+        }
         var request = try! URLRequest(url: url, method: method, headers: allHeaders)
         
         let allQueryParameters = queryParameters + configuration.queryParameters

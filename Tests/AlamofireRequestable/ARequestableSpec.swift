@@ -26,10 +26,8 @@ class ARequestableSpec: BaseSpec {
                     
                     func prepare(_ request: URLRequest, requestable: ARequestable) -> URLRequest {
                         var request = request
-                        let header = HTTPHeaders.authorization(username: "user", password: "password")
-                        header.forEach {
-                            request.setValue($0.value, forHTTPHeaderField: $0.key)
-                        }
+                        let header = HTTPHeader.authorization(username: "user", password: "password")
+                        request.setValue(header.value, forHTTPHeaderField: header.name)
                         expect(request.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         return request

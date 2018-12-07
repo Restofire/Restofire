@@ -13,15 +13,15 @@ import Alamofire
 public protocol SessionManagable {
     
     /// The `session`.
-    var session: Session { get }
+    var session: Alamofire.Session { get }
     
 }
 
 public extension SessionManagable where Self: AConfigurable {
     
-    /// `AlamofireSession.default`
-    public var session: Session {
-        return AlamofireSession.default.session
+    /// `Session.default`
+    public var session: Alamofire.Session {
+        return Session.default.session
     }
     
 }

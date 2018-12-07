@@ -23,8 +23,8 @@ public struct Configuration {
     /// The default configuration.
     public static var `default` = Configuration()
     
-    /// The scheme. `http://` by default.
-    public var scheme: String = "http://"
+    /// The scheme. `https://` by default.
+    public var scheme: String = "https://"
     
     /// The host. `nil` by default.
     public var host: String!

@@ -34,10 +34,10 @@ public extension AStreamUploadable {
     /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
     ///
     /// - returns: The created `UploadRequest`.
-    public func request() throws -> UploadRequest {
+    public func asRequest() throws -> UploadRequest {
         return RestofireRequest.streamUploadRequest(
             fromRequestable: self,
-            withUrlRequest: try urlRequest()
+            withUrlRequest: try asUrlRequest()
         )
     }
     

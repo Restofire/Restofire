@@ -43,7 +43,7 @@ class AFileUploadableSpec: BaseSpec {
                 }
                 
                 do {
-                    let request = try Upload().request()
+                    let request = try Upload().asRequest()
                     print(request.debugDescription)
                     
                     var uploadProgressValues: [Double] = []

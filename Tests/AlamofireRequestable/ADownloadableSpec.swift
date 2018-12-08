@@ -47,7 +47,7 @@ class ADownloadableSpec: BaseSpec {
                 }
                 
                 do {
-                    let request = try Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).request()
+                    let request = try Download(destination: { _, _ in (BaseSpec.jsonFileURL, []) }).asRequest()
                     print(request.debugDescription)
                     
                     var progressValues: [Double] = []

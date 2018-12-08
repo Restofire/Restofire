@@ -55,7 +55,7 @@ public extension Downloadable {
     /// - returns: The created `RequestOperation`.
     @discardableResult
     public func operation(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) throws -> DownloadOperation<Self> {
-        let request = try self.request()
+        let request = try self.asRequest()
         return operation(request: request, completionHandler: completionHandler)
     }
     
@@ -81,7 +81,7 @@ public extension Downloadable {
     /// - returns: The created `DownloadOperation`.
     @discardableResult
     public func execute(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) throws -> DownloadOperation<Self> {
-        let request = try self.request()
+        let request = try self.asRequest()
         return execute(request: request, completionHandler: completionHandler)
     }
     

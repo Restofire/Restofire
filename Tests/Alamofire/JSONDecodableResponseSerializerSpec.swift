@@ -28,7 +28,7 @@ class JSONDecodableResponseSerializerSpec: BaseSpec {
                 }
                 
                 do {
-                    let request = try Service().request()
+                    let request = try Service().asRequest()
                     print(request.debugDescription)
                     
                     // When

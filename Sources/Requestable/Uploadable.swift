@@ -45,7 +45,7 @@ public extension Uploadable {
     /// - returns: The created `RequestOperation`.
     @discardableResult
     public func operation(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> UploadOperation<Self> {
-        let request = try self.request()
+        let request = try self.asRequest()
         return operation(request: request, completionHandler: completionHandler)
     }
     
@@ -71,7 +71,7 @@ public extension Uploadable {
     /// - returns: The created `UploadOperation`.
     @discardableResult
     public func execute(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> UploadOperation<Self> {
-        let request = try self.request()
+        let request = try self.asRequest()
         return execute(request: request, completionHandler: completionHandler)
     }
     

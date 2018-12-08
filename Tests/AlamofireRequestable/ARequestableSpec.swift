@@ -42,7 +42,7 @@ class ARequestableSpec: BaseSpec {
                 }
                 
                 do {
-                    let request = try Service().request()
+                    let request = try Service().asRequest()
                     print(request.debugDescription)
                     
                     var progressValues: [Double] = []

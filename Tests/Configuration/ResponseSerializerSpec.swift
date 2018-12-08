@@ -28,14 +28,18 @@ class ResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.execute { response in
-                        defer { done() }
-                        
-                        // Then
-                        expect(response.request).toNot(beNil())
-                        expect(response.response).toNot(beNil())
-                        expect(response.data).toNot(beNil())
-                        expect(response.error).to(beNil())
+                    do {
+                        try service.execute { response in
+                            defer { done() }
+                            
+                            // Then
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
+                            expect(response.error).to(beNil())
+                        }
+                    } catch {
+                        fail(error.localizedDescription)
                     }
                 }
             }
@@ -59,21 +63,25 @@ class ResponseSerializerSpec: BaseSpec {
                 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.execute { response in
-                        defer { done() }
-                        
-                        // Then
-                        expect(response.request).toNot(beNil())
-                        expect(response.response).toNot(beNil())
-                        expect(response.data).toNot(beNil())
-                        expect(response.error).to(beNil())
-                        
-                        if let value = response.result.value as? [String: Any],
-                            let url = value["url"] as? String {
-                            expect(url).to(equal("https://httpbin.org/get"))
-                        } else {
-                            fail("response.result.value should not be nil")
+                    do {
+                        try service.execute { response in
+                            defer { done() }
+                            
+                            // Then
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
+                            expect(response.error).to(beNil())
+                            
+                            if let value = response.result.value as? [String: Any],
+                                let url = value["url"] as? String {
+                                expect(url).to(equal("https://httpbin.org/get"))
+                            } else {
+                                fail("response.result.value should not be nil")
+                            }
                         }
+                    } catch {
+                        fail(error.localizedDescription)
                     }
                 }
             }
@@ -101,21 +109,25 @@ class ResponseSerializerSpec: BaseSpec {
 
                 // When
                 waitUntil(timeout: self.timeout) { done in
-                    service.execute { response in
-                        defer { done() }
-
-                        // Then
-                        expect(response.request).toNot(beNil())
-                        expect(response.response).toNot(beNil())
-                        expect(response.data).toNot(beNil())
-                        expect(response.error).to(beNil())
-                        if let value = response.result.value {
-                            expect(value.url.absoluteString)
-                                .to(equal("https://httpbin.org/get"))
-                        } else {
-                            fail("response.result.value should not be nil")
+                    do {
+                        try service.execute { response in
+                            defer { done() }
+                            
+                            // Then
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
+                            expect(response.error).to(beNil())
+                            if let value = response.result.value {
+                                expect(value.url.absoluteString)
+                                    .to(equal("https://httpbin.org/get"))
+                            } else {
+                                fail("response.result.value should not be nil")
+                            }
+                            
                         }
-                        
+                    } catch {
+                        fail(error.localizedDescription)
                     }
                 }
             }

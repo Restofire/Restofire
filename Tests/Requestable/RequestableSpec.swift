@@ -53,25 +53,29 @@ class RequestableSpec: BaseSpec {
                     let request = Request()
                     
                     // When
-                    let operation = request.execute { response in
-                        
-                        // Then
-                        if let statusCode = response.response?.statusCode,
-                            statusCode != 200 {
-                            fail("Response status code should be 200")
+                    do {
+                        let operation = try request.execute { response in
+                            
+                            // Then
+                            if let statusCode = response.response?.statusCode,
+                                statusCode != 200 {
+                                fail("Response status code should be 200")
+                            }
+                            
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
+                            expect(response.error).to(beNil())
+                            
                         }
                         
-                        expect(response.request).toNot(beNil())
-                        expect(response.response).toNot(beNil())
-                        expect(response.data).toNot(beNil())
-                        expect(response.error).to(beNil())
-                        
-                    }
-                    
-                    operation.completionBlock = {
-                        expect(RequestableSpec.successDelegateCalled).to(beTrue())
-                        expect(RequestableSpec.errorDelegateCalled).to(beFalse())
-                        done()
+                        operation.completionBlock = {
+                            expect(RequestableSpec.successDelegateCalled).to(beTrue())
+                            expect(RequestableSpec.errorDelegateCalled).to(beFalse())
+                            done()
+                        }
+                    } catch {
+                        fail(error.localizedDescription)
                     }
                 }
             }

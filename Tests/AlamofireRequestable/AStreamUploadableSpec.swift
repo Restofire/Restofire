@@ -42,25 +42,29 @@ class AStreamUploadableSpec: BaseSpec {
                     
                 }
                 
-                let request = Upload().request
-                print(request.debugDescription)
-                
-                // When
-                waitUntil(timeout: self.timeout) { done in
+                do {
+                    let request = try Upload().request()
+                    print(request.debugDescription)
                     
-                    request
-                        .response { response in
-                            defer {
-                                expect(AStreamUploadableSpec.startDelegateCalled).to(beTrue())
-                                done()
-                            }
-                            
-                            // Then
-                            expect(response.request).toNot(beNil())
-                            expect(response.response).toNot(beNil())
-                            expect(response.data).toNot(beNil())
-                            expect(response.error).to(beNil())
+                    // When
+                    waitUntil(timeout: self.timeout) { done in
+                        
+                        request
+                            .response { response in
+                                defer {
+                                    expect(AStreamUploadableSpec.startDelegateCalled).to(beTrue())
+                                    done()
+                                }
+                                
+                                // Then
+                                expect(response.request).toNot(beNil())
+                                expect(response.response).toNot(beNil())
+                                expect(response.data).toNot(beNil())
+                                expect(response.error).to(beNil())
+                        }
                     }
+                } catch {
+                    fail(error.localizedDescription)
                 }
             }
             

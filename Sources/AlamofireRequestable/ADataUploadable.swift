@@ -37,8 +37,11 @@ public extension ADataUploadable {
     /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
     ///
     /// - returns: The created `UploadRequest`.
-    public var request: UploadRequest {
-        return RestofireRequest.dataUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)
+    public func request() throws -> UploadRequest {
+        return RestofireRequest.dataUploadRequest(
+            fromRequestable: self,
+            withUrlRequest: try urlRequest()
+        )
     }
     
 }

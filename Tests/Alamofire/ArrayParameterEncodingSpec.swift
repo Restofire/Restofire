@@ -23,7 +23,7 @@ class ArrayParameterEncodingSpec: BaseSpec {
                     var parameters: Any? = ["foo","baz"]
                 }
                 
-                let urlRequest = Service().urlRequest
+                let urlRequest = try! Service().urlRequest()
                 let body = urlRequest.httpBody!
                 let params = String(data: body, encoding: .utf8)!
                 expect(params).to(equal("[\"foo\",\"baz\"]"))

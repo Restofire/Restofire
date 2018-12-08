@@ -49,8 +49,11 @@ public extension AMultipartUploadable {
     /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
     ///
     /// - returns: The created `UploadRequest`.
-    public var request: UploadRequest {
-        return RestofireRequest.multipartUploadRequest(fromRequestable: self, withUrlRequest: urlRequest)
+    public func request() throws -> UploadRequest {
+        return RestofireRequest.multipartUploadRequest(
+            fromRequestable: self,
+            withUrlRequest: try urlRequest()
+        )
     }
     
 }

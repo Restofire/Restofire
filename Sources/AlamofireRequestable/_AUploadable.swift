@@ -16,7 +16,7 @@ import Alamofire
 public protocol _AUploadable: ARequestable {
     
     /// The uplaod request for subclasses to provide the implementation.
-    var request: UploadRequest { get }
+    func request() throws -> UploadRequest
     
 }
 

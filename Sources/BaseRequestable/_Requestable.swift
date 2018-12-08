@@ -20,22 +20,14 @@ import Alamofire
 /// }
 /// ```
 public protocol _Requestable: _Configurable {
-    
-    /// The unique id given to requestable
-    var uuid: String? { get }
-    
+
     /// The path relative to base URL.
     var path: String? { get }
     
 }
 
 public extension _Requestable {
-    
-    /// `nil`
-    public var uuid: String? {
-        return nil
-    }
-    
+
     /// `nil`
     public var path: String? {
         return nil

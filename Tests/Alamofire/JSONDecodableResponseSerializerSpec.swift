@@ -27,22 +27,26 @@ class JSONDecodableResponseSerializerSpec: BaseSpec {
                     var path: String? = "get"
                 }
                 
-                let request = Service().request
-                print(request.debugDescription)
-                
-                // When
-                waitUntil(timeout: self.timeout) { done in
-                    request.responseDecodable(completionHandler: { (response: DataResponse<HTTPBin>) in
-                        defer { done() }
-                        
-                        // Then
-                        expect(response.request).toNot(beNil())
-                        expect(response.response).toNot(beNil())
-                        expect(response.result.value?.url.absoluteString)
-                            .to(equal("https://httpbin.org/get"))
-                        expect(response.data).toNot(beNil())
-                        expect(response.error).to(beNil())
-                    })
+                do {
+                    let request = try Service().request()
+                    print(request.debugDescription)
+                    
+                    // When
+                    waitUntil(timeout: self.timeout) { done in
+                        request.responseDecodable(completionHandler: { (response: DataResponse<HTTPBin>) in
+                            defer { done() }
+                            
+                            // Then
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.result.value?.url.absoluteString)
+                                .to(equal("https://httpbin.org/get"))
+                            expect(response.data).toNot(beNil())
+                            expect(response.error).to(beNil())
+                        })
+                    }
+                } catch {
+                    fail(error.localizedDescription)
                 }
             }
             

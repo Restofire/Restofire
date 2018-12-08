@@ -46,7 +46,7 @@ public extension _Requestable {
 // MARK: - URL Request
 public extension _Requestable {
     
-    public var urlRequest: URLRequest {
+    public func urlRequest() throws -> URLRequest {
         let url = [scheme + host, version, path]
             .compactMap { $0 }
             .joined(separator: "/")
@@ -55,16 +55,16 @@ public extension _Requestable {
         configuration.headers.forEach { (header: HTTPHeader) in
             allHeaders.add(header)
         }
-        var request = try! URLRequest(url: url, method: method, headers: allHeaders)
+        var request = try URLRequest(url: url, method: method, headers: allHeaders)
         
         let allQueryParameters = queryParameters + configuration.queryParameters
-        request = try! URLEncoding.queryString.encode(request, with: allQueryParameters)
+        request = try URLEncoding.queryString.encode(request, with: allQueryParameters)
         
         if let parameters = parameters as? [String: Any] {
-            request = try! encoding.encode(request, with: parameters)
+            request = try encoding.encode(request, with: parameters)
         } else if let parameters = parameters as? [Any],
             let encoding = encoding as? ArrayParameterEncoding {
-            request = try! encoding.encode(request, with: parameters)
+            request = try encoding.encode(request, with: parameters)
         }
         return request
     }

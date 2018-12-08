@@ -54,7 +54,8 @@ class ConfigurationSpec: BaseSpec {
                 }
                 
                 let service = Service()
-                expect(service.urlRequest.url?.absoluteString)
+                let urlRequest = try? service.urlRequest()
+                expect(urlRequest?.url?.absoluteString)
                     .to(equal("https://httpbin.org/get"))
                 expect(service.maxRetryAttempts).to(equal(5))
                 expect(service.retryInterval).to(equal(10))
@@ -68,7 +69,8 @@ class ConfigurationSpec: BaseSpec {
                 }
                 
                 let service = Service()
-                expect(service.urlRequest.url?.absoluteString)
+                let urlRequest = try? service.urlRequest()
+                expect(urlRequest?.url?.absoluteString)
                     .to(equal("http://mocky.io/v2/get"))
                 expect(service.maxRetryAttempts).to(equal(5))
                 expect(service.retryInterval).to(equal(10))
@@ -83,7 +85,8 @@ class ConfigurationSpec: BaseSpec {
                 }
                 
                 let service = Service()
-                expect(service.urlRequest.url?.absoluteString)
+                let urlRequest = try? service.urlRequest()
+                expect(urlRequest?.url?.absoluteString)
                     .to(equal("https://mocky.io/v2/get"))
                 expect(service.maxRetryAttempts).to(equal(100))
                 expect(service.retryInterval).to(equal(25))

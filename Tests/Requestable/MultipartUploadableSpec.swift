@@ -64,32 +64,36 @@ class MultipartUploadableSpec: BaseSpec {
                     let request = Upload()
                     
                     // When
-                    let operation = request.execute() { (response: DataResponse<HTTPBin>) in
-                        
-                        // Then
-                        if let statusCode = response.response?.statusCode,
-                            statusCode != 200 {
-                            fail("Response status code should be 200")
+                    do {
+                        let operation = try request.execute() { (response: DataResponse<HTTPBin>) in
+                            
+                            // Then
+                            if let statusCode = response.response?.statusCode,
+                                statusCode != 200 {
+                                fail("Response status code should be 200")
+                            }
+                            
+                            expect(response.request).toNot(beNil())
+                            expect(response.response).toNot(beNil())
+                            expect(response.data).toNot(beNil())
+                            expect(response.error).to(beNil())
+                            
+                            if let value = response.value {
+                                expect(value.form.french).to(equal("français"))
+                                expect(value.form.japanese).to(equal("日本語"))
+                            } else {
+                                fail("response value should not be nil")
+                            }
+                            
                         }
                         
-                        expect(response.request).toNot(beNil())
-                        expect(response.response).toNot(beNil())
-                        expect(response.data).toNot(beNil())
-                        expect(response.error).to(beNil())
-                        
-                        if let value = response.value {
-                            expect(value.form.french).to(equal("français"))
-                            expect(value.form.japanese).to(equal("日本語"))
-                        } else {
-                            fail("response value should not be nil")
+                        operation.completionBlock = {
+                            expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
+                            expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
+                            done()
                         }
-                        
-                    }
-                    
-                    operation.completionBlock = {
-                        expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
-                        expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
-                        done()
+                    } catch {
+                        fail(error.localizedDescription)
                     }
                 }
             }

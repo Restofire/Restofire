@@ -54,8 +54,9 @@ public extension Downloadable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func operation(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        return operation(request: self.request, completionHandler: completionHandler)
+    public func operation(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) throws -> DownloadOperation<Self> {
+        let request = try self.request()
+        return operation(request: request, completionHandler: completionHandler)
     }
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object.
@@ -79,8 +80,9 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadOperation`.
     @discardableResult
-    public func execute(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        return execute(request: self.request, completionHandler: completionHandler)
+    public func execute(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) throws -> DownloadOperation<Self> {
+        let request = try self.request()
+        return execute(request: request, completionHandler: completionHandler)
     }
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object and

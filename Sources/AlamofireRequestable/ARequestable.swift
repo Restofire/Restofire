@@ -50,8 +50,11 @@ public extension ARequestable {
     /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
     ///
     /// - returns: The created `DataRequest`.
-    public var request: DataRequest {
-        return RestofireRequest.dataRequest(fromRequestable: self, withUrlRequest: urlRequest)
+    public func request() throws -> DataRequest {
+        return RestofireRequest.dataRequest(
+            fromRequestable: self,
+            withUrlRequest: try urlRequest()
+        )
     }
     
 }

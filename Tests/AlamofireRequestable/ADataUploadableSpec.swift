@@ -44,72 +44,76 @@ class ADataUploadableSpec: BaseSpec {
                     
                 }
                 
-                let request = Upload().request
-                print(request.debugDescription)
-                
-                var uploadProgressValues: [Double] = []
-                var downloadProgressValues: [Double] = []
-                
-                // When
-                waitUntil(timeout: self.timeout) { done in
+                do {
+                    let request = try Upload().request()
+                    print(request.debugDescription)
                     
-                    request
-                        .uploadProgress { progress in
-                            uploadProgressValues.append(progress.fractionCompleted)
+                    var uploadProgressValues: [Double] = []
+                    var downloadProgressValues: [Double] = []
+                    
+                    // When
+                    waitUntil(timeout: self.timeout) { done in
+                        
+                        request
+                            .uploadProgress { progress in
+                                uploadProgressValues.append(progress.fractionCompleted)
+                            }
+                            .downloadProgress { progress in
+                                downloadProgressValues.append(progress.fractionCompleted)
+                            }
+                            .responseJSON { response in
+                                defer {
+                                    expect(ADataUploadableSpec.startDelegateCalled).to(beTrue())
+                                    done()
+                                }
+                                
+                                // Then
+                                if let statusCode = response.response?.statusCode,
+                                    statusCode != 200 {
+                                    fail("Response status code should be 200")
+                                }
+                                
+                                expect(response.request).toNot(beNil())
+                                expect(response.response).toNot(beNil())
+                                expect(response.data).toNot(beNil())
+                                expect(response.error).to(beNil())
+                                
+                                if let value = response.value as? [String: Any],
+                                    let form = value["form"] as? [String: Any] {
+                                    expect(form["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]).toNot(beNil())
+                                } else {
+                                    fail("response value should not be nil")
+                                }
+                                
+                                var previousUploadProgress: Double = uploadProgressValues.first ?? 0.0
+                                
+                                for uploadProgress in uploadProgressValues {
+                                    expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
+                                    previousUploadProgress = uploadProgress
+                                }
+                                
+                                if let lastUploadProgressValue = uploadProgressValues.last {
+                                    expect(lastUploadProgressValue).to(equal(1.0))
+                                } else {
+                                    fail("last item in uploadProgressValues should not be nil")
+                                }
+                                
+                                var previousDownloadProgress: Double = downloadProgressValues.first ?? 0.0
+                                
+                                for downloadProgress in downloadProgressValues {
+                                    expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
+                                    previousDownloadProgress = downloadProgress
+                                }
+                                
+                                if let lastDownloadProgressValue = downloadProgressValues.last {
+                                    expect(lastDownloadProgressValue).to(equal(1.0))
+                                } else {
+                                    fail("last item in downloadProgressValues should not be nil")
+                                }
                         }
-                        .downloadProgress { progress in
-                            downloadProgressValues.append(progress.fractionCompleted)
-                        }
-                        .responseJSON { response in
-                            defer {
-                                expect(ADataUploadableSpec.startDelegateCalled).to(beTrue())
-                                done()
-                            }
-                            
-                            // Then
-                            if let statusCode = response.response?.statusCode,
-                                statusCode != 200 {
-                                fail("Response status code should be 200")
-                            }
-                            
-                            expect(response.request).toNot(beNil())
-                            expect(response.response).toNot(beNil())
-                            expect(response.data).toNot(beNil())
-                            expect(response.error).to(beNil())
-                            
-                            if let value = response.value as? [String: Any],
-                                let form = value["form"] as? [String: Any] {
-                                expect(form["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]).toNot(beNil())
-                            } else {
-                                fail("response value should not be nil")
-                            }
-                            
-                            var previousUploadProgress: Double = uploadProgressValues.first ?? 0.0
-                            
-                            for uploadProgress in uploadProgressValues {
-                                expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
-                                previousUploadProgress = uploadProgress
-                            }
-                            
-                            if let lastUploadProgressValue = uploadProgressValues.last {
-                                expect(lastUploadProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in uploadProgressValues should not be nil")
-                            }
-                            
-                            var previousDownloadProgress: Double = downloadProgressValues.first ?? 0.0
-                            
-                            for downloadProgress in downloadProgressValues {
-                                expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
-                                previousDownloadProgress = downloadProgress
-                            }
-                            
-                            if let lastDownloadProgressValue = downloadProgressValues.last {
-                                expect(lastDownloadProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in downloadProgressValues should not be nil")
-                            }
                     }
+                } catch {
+                    fail(error.localizedDescription)
                 }
             }
             

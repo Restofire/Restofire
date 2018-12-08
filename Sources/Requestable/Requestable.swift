@@ -50,8 +50,9 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func operation(completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
-        return operation(request: self.request, completionHandler: completionHandler)
+    public func operation(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> RequestOperation<Self> {
+        let request = try self.request()
+        return operation(request: request, completionHandler: completionHandler)
     }
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
@@ -75,8 +76,9 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func execute(completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
-        return execute(request: self.request, completionHandler: completionHandler)
+    public func execute(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> RequestOperation<Self> {
+        let request = try self.request()
+        return execute(request: request, completionHandler: completionHandler)
     }
     
     /// Creates a `RequestOperation` for the specified `Requestable` object and

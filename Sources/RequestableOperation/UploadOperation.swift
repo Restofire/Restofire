@@ -55,7 +55,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
             result: result.value!
         )
         
-        uploadable.queue.async {
+        uploadable.callbackQueue.async {
             self.completionHandler?(dataResponse)
         }
         

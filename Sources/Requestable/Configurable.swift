@@ -36,7 +36,7 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable, Qu
     var eventuallyOperationQueue: OperationQueue { get }
     
     /// The network reachability manager.
-    var networkReachabilityManager: NetworkReachabilityManager { get }
+    var networkReachabilityManager: NetworkReachabilityManager? { get }
     #endif
     
     /// The retry error codes.
@@ -65,7 +65,7 @@ public extension Configurable {
     }
     
     /// `Reachability.default.networkReachabilityManager`
-    public var networkReachabilityManager: NetworkReachabilityManager {
+    public var networkReachabilityManager: NetworkReachabilityManager? {
         return reachability.networkReachabilityManager
     }
     #endif

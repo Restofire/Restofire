@@ -26,8 +26,8 @@ public struct Reachability {
     public var waitsForConnectivity = false
     
     /// The network reachability manager.
-    public var networkReachabilityManager: NetworkReachabilityManager = {
-        return NetworkReachabilityManager()!
+    public var networkReachabilityManager: NetworkReachabilityManager? = {
+        return NetworkReachabilityManager()
     }()
     
     /// The eventually operation queue.

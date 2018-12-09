@@ -69,20 +69,20 @@ open class AOperation<R: Configurable>: Operation {
         switch requestType {
         case .data, .upload:
             let request = self.request as! DataRequest
-            request.response {
+            request.response { [unowned self] in
                 if $0.error != nil {
                     self.handleDataRequestError($0)
                 } else {
-                    self.handleDataResponse($0)
+                    self.handleDataResponseIfNeeded($0)
                 }
             }
         case .download:
             let request = self.request as! DownloadRequest
-            request.response {
+            request.response { [unowned self] in
                 if $0.error != nil {
                     self.handleDownloadRequestError($0)
                 } else {
-                    self.handleDownloadResponse($0)
+                    self.handleDownloadResponseIfNeeded($0)
                 }
             }
         }
@@ -93,27 +93,53 @@ open class AOperation<R: Configurable>: Operation {
         fatalError("override me")
     }
     
+    func retry(afterDelay: TimeInterval = 0.0) {
+        perform(
+            #selector(AOperation<R>.executeRequest),
+            with: nil,
+            afterDelay: afterDelay
+        )
+    }
+    
     // MARK:- Data Response
+    func handleDataResponseIfNeeded(_ response: DataResponse<Data?>) {
+        let retryNeeded = false
+        if retryNeeded {
+            retry()
+        } else {
+            handleDataResponse(response)
+        }
+    }
+    
     func handleDataResponse(_ response: DataResponse<Data?>) {
         fatalError("override me")
     }
     
     func handleDataRequestError(_ response: DataResponse<Data?>) {
         if !handleRequestError(response.error!) {
-            handleDataResponse(response)
+            handleDataResponseIfNeeded(response)
         } else {
             isFinished = true
         }
     }
     
     // MARK: - Download Response
+    func handleDownloadResponseIfNeeded(_ response: DownloadResponse<URL?>) {
+        let retryNeeded = false
+        if retryNeeded {
+            retry()
+        } else {
+            handleDownloadResponse(response)
+        }
+    }
+    
     func handleDownloadResponse(_ response: DownloadResponse<URL?>) {
         fatalError("override me")
     }
     
     func handleDownloadRequestError(_ response: DownloadResponse<URL?>) {
         if !handleRequestError(response.error!) {
-            handleDownloadResponse(response)
+            handleDownloadResponseIfNeeded(response)
         } else {
             isFinished = true
         }
@@ -125,8 +151,7 @@ open class AOperation<R: Configurable>: Operation {
         var isConnectivityError = false
         #if !os(watchOS)
             if let error = error as? URLError, configurable.waitsForConnectivity &&
-                error.code == .notConnectedToInternet
-            {
+                error.code == .notConnectedToInternet {
                 isConnectivityError = true
                 configurable.eventuallyOperationQueue.isSuspended = true
                 let eventuallyOperation: AOperation = self.copy()
@@ -139,11 +164,7 @@ open class AOperation<R: Configurable>: Operation {
         } else if let error = error as? URLError, retryAttempts > 0 &&
             configurable.retryErrorCodes.contains(error.code) {
             retryAttempts -= 1
-            perform(
-                #selector(AOperation<R>.executeRequest),
-                with: nil,
-                afterDelay: configurable.retryInterval
-            )
+            retry(afterDelay: configurable.retryInterval)
         } else {
             handledError = false
         }

@@ -15,12 +15,16 @@ import Alamofire
 /// ```swift
 /// protocol HTTPBinGETService: Requestable {
 ///
+///     typealias Response = Data
 ///     var path: String? = "get"
 ///
 /// }
 /// ```
-public protocol Requestable: ARequestable, Configurable, ResponseSerializable {
+public protocol Requestable: _Requestable, ResponseSerializable {
 
+    /// The Alamofire data request validation.
+    var validationBlock: DataRequest.Validation? { get }
+    
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.DataRequest
@@ -37,11 +41,36 @@ public protocol Requestable: ARequestable, Configurable, ResponseSerializable {
 
 public extension Requestable {
     
+    /// `Validation.default.dataValidation`
+    public var validationBlock: DataRequest.Validation? {
+        return validation.dataValidation
+    }
+    
     /// `Does Nothing`
     func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
     func request(_ request: RequestOperation<Self>, didFailWithError error: Error) {}
+    
+}
+
+public extension Requestable {
+    
+    /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    ///
+    /// - returns: The created `DataRequest`.
+    func asRequest() throws -> DataRequest {
+        return RestofireRequest.dataRequest(
+            fromRequestable: self,
+            withUrlRequest: try asUrlRequest()
+        )
+    }
+    
+}
+
+public extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///

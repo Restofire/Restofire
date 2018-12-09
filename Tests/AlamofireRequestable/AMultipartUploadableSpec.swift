@@ -21,7 +21,9 @@ class AMultipartUploadableSpec: BaseSpec {
             
             it("request should succeed") {
                 // Given
-                struct Upload: AMultipartUploadable {
+                struct Upload: MultipartUploadable {
+                    typealias Response = Data
+                    
                     var path: String? = "post"
                     var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
                         multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")
@@ -30,7 +32,7 @@ class AMultipartUploadableSpec: BaseSpec {
                         multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
                     }
                     
-                    func prepare(_ request: URLRequest, requestable: ARequestable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest {
                         var request = request
                         let header = HTTPHeader.authorization(username: "user", password: "password")
                         request.setValue(header.value, forHTTPHeaderField: header.name)
@@ -39,7 +41,7 @@ class AMultipartUploadableSpec: BaseSpec {
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: ARequestable) {
+                    func didSend(_ request: Request, requestable: _Requestable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AMultipartUploadableSpec.startDelegateCalled = true

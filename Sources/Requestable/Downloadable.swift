@@ -14,6 +14,8 @@ import Alamofire
 /// ```swift
 /// protocol HTTPBinDownloadService: Downloadable {
 ///
+///     typealias Response = Data
+///
 ///     var path: String? = "bytes/\(4 * 1024 * 1024)"
 ///     var destination: DownloadFileDestination?
 ///
@@ -23,8 +25,17 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Downloadable: ADownloadable, Configurable, ResponseSerializable {
-
+public protocol Downloadable: _Requestable, ResponseSerializable {
+    
+    /// The resume data.
+    var resumeData: Data? { get }
+    
+    /// The download file destination.
+    var destination: DownloadRequest.Destination? { get }
+    
+    /// The Alamofire data request validation.
+    var validationBlock: DownloadRequest.Validation? { get }
+    
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.DownloadRequest
@@ -41,11 +52,46 @@ public protocol Downloadable: ADownloadable, Configurable, ResponseSerializable 
 
 public extension Downloadable {
     
+    /// `nil`
+    public var resumeData: Data? {
+        return nil
+    }
+    
+    /// `nil`
+    public var destination: DownloadRequest.Destination? {
+        return nil
+    }
+    
+    /// `Validation.default.downloadValidation`
+    public var validationBlock: DownloadRequest.Validation? {
+        return validation.downloadValidation
+    }
+    
     /// `Does Nothing`
     func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
     func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
+    
+}
+
+public extension Downloadable {
+    
+    /// Creates a `DownloadRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    ///
+    /// - returns: The created `DownloadRequest`.
+    func asRequest() throws -> DownloadRequest {
+        return RestofireRequest.downloadRequest(
+            fromRequestable: self,
+            withUrlRequest: try asUrlRequest()
+        )
+    }
+    
+}
+
+public extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object.
     ///

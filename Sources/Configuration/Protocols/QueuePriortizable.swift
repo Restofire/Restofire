@@ -16,7 +16,7 @@ public protocol QueuePriortizable {
     
 }
 
-extension QueuePriortizable where Self: AConfigurable {
+extension QueuePriortizable where Self: Configurable {
     
     /// `configuration.operationQueuePriority`
     public var priority: Operation.QueuePriority {

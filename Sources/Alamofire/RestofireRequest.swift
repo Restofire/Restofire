@@ -11,7 +11,7 @@ import Alamofire
 
 class RestofireRequest {
     
-    static func dataRequest<R: ARequestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DataRequest {
+    static func dataRequest<R: Requestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DataRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.request(urlRequest)
         requestable.session.requestQueue.async {
@@ -24,7 +24,7 @@ class RestofireRequest {
         return request
     }
 
-    static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DownloadRequest {
+    static func downloadRequest<R: Downloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DownloadRequest {
         let urlRequest = prepareDownloadRequest(urlRequest, requestable: requestable)
         var request: DownloadRequest!
         if let resumeData = requestable.resumeData {
@@ -42,7 +42,7 @@ class RestofireRequest {
         return request
     }
 
-    static func fileUploadRequest<R: AFileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
+    static func fileUploadRequest<R: FileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.upload(requestable.url, with: urlRequest)
         requestable.session.requestQueue.async {
@@ -55,7 +55,7 @@ class RestofireRequest {
         return request
     }
 
-    static func dataUploadRequest<R: ADataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
+    static func dataUploadRequest<R: DataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.upload(requestable.data, with: urlRequest)
         requestable.session.requestQueue.async {
@@ -68,7 +68,7 @@ class RestofireRequest {
         return request
     }
 
-    static func streamUploadRequest<R: AStreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
+    static func streamUploadRequest<R: StreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.upload(requestable.stream, with: urlRequest)
         requestable.session.requestQueue.async {
@@ -81,7 +81,7 @@ class RestofireRequest {
         return request
     }
 
-    static func multipartUploadRequest<R: AMultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
+    static func multipartUploadRequest<R: MultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.upload(
             multipartFormData: requestable.multipartFormData,
@@ -103,7 +103,7 @@ class RestofireRequest {
         request.authenticate(with: credential)
     }
 
-    internal static func prepareRequest<R: ARequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    internal static func prepareRequest<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
         var request = request
         requestable.delegates.forEach {
             request = $0.prepare(request, requestable: requestable)
@@ -112,14 +112,14 @@ class RestofireRequest {
         return request
     }
 
-    internal static func didSendRequest<R: ARequestable>(_ request: Request, requestable: R) {
+    internal static func didSendRequest<R: _Requestable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)
         }
         requestable.didSend(request, requestable: requestable)
     }
 
-    internal static func prepareDownloadRequest<R: ADownloadable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    internal static func prepareDownloadRequest<R: Downloadable>(_ request: URLRequest, requestable: R) -> URLRequest {
         var request = request
         requestable.delegates.forEach {
             request = $0.prepare(request, requestable: requestable)
@@ -128,7 +128,7 @@ class RestofireRequest {
         return request
     }
 
-    internal static func didSendDownloadRequest<R: ADownloadable>(_ request: Request, requestable: R) {
+    internal static func didSendDownloadRequest<R: Downloadable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)
         }

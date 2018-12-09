@@ -21,11 +21,13 @@ class AStreamUploadableSpec: BaseSpec {
             
             it("request should succeed") {
                 // Given
-                struct Upload: AStreamUploadable {
+                struct Upload: StreamUploadable {
+                    typealias Response = Data
+                    
                     var path: String? = "post"
                     var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                     
-                    func prepare(_ request: URLRequest, requestable: ARequestable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest {
                         var request = request
                         let header = HTTPHeader.authorization(username: "user", password: "password")
                         request.setValue(header.value, forHTTPHeaderField: header.name)
@@ -34,7 +36,7 @@ class AStreamUploadableSpec: BaseSpec {
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: ARequestable) {
+                    func didSend(_ request: Request, requestable: _Requestable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AStreamUploadableSpec.startDelegateCalled = true

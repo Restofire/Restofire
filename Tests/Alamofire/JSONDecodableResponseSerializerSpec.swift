@@ -23,7 +23,8 @@ class JSONDecodableResponseSerializerSpec: BaseSpec {
                     let url: URL
                 }
                 
-                struct Service: ARequestable {
+                struct Service: Requestable {
+                    typealias Response = Data
                     var path: String? = "get"
                 }
                 

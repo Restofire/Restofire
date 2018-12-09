@@ -1,5 +1,5 @@
 //
-//  _Requestable.swift
+//  Requestable.swift
 //  Restofire
 //
 //  Created by Rahul Katariya on 24/03/16.
@@ -9,17 +9,11 @@
 import Foundation
 import Alamofire
 
-/// Represents a `Requestable` for URLSession.
+/// Represents an abstract `_Requestable`.
 ///
-/// ### Create custom Requestable
-/// ```swift
-/// protocol HTTPBinGETService: _Requestable {
-///
-///     var path: String? = "get"
-///
-/// }
-/// ```
-public protocol _Requestable: _Configurable {
+/// Instead implement Requestable, Downloadable, FileUploadable, DataUploadable, StreamUploadable,
+/// MultipartUplodable protocols.
+public protocol _Requestable: Configurable, RequestDelegate {
 
     /// The path relative to base URL.
     var path: String? { get }
@@ -27,7 +21,7 @@ public protocol _Requestable: _Configurable {
 }
 
 public extension _Requestable {
-
+    
     /// `nil`
     public var path: String? {
         return nil
@@ -35,10 +29,12 @@ public extension _Requestable {
     
 }
 
-// MARK: - URL Request
 public extension _Requestable {
     
-    public func asUrlRequest() throws -> URLRequest {
+    /// Creates a `URLRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// - returns: The created `URLRequest`.
+    func asUrlRequest() throws -> URLRequest {
         let url = [scheme + host, version, path]
             .compactMap { $0 }
             .joined(separator: "/")

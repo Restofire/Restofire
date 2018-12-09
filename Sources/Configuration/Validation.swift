@@ -33,6 +33,9 @@ public struct Validation {
     /// The `Download Validation Block`.
     public var downloadValidation: DownloadRequest.Validation?
     
+    /// The `Upload Validation Block`.
+    public var uploadValidation: DataRequest.Validation?
+    
     /// `Validation` Intializer
     ///
     /// - returns: new `Validation` object

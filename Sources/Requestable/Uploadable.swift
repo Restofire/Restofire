@@ -9,12 +9,18 @@
 import Foundation
 import Alamofire
 
-/// Represents an abstract `Uploadable` for Restofire.
+/// Represents an abstract `Uploadable`.
 ///
 /// Instead implement FileUploadable, DataUploadable, StreamUploadable,
-/// MultipartUplodable protocols.
-public protocol Uploadable: _AUploadable, Configurable, ResponseSerializable {
-
+/// AMultipartUplodable protocols.
+public protocol Uploadable: _Requestable, ResponseSerializable {
+    
+    /// The Alamofire upload request validation.
+    var validationBlock: DataRequest.Validation? { get }
+ 
+    /// The uplaod request for subclasses to provide the implementation.
+    func asRequest() throws -> UploadRequest
+    
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.UploadRequest
@@ -30,12 +36,26 @@ public protocol Uploadable: _AUploadable, Configurable, ResponseSerializable {
 }
 
 public extension Uploadable {
+    
+    /// `.post`
+    public var method: HTTPMethod {
+        return .post
+    }
+    
+    /// `Validation.default.uploadValidation`
+    public var validationBlock: DataRequest.Validation? {
+        return validation.uploadValidation
+    }
 
     /// `Does Nothing`
     func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response) {}
     
     /// `Does Nothing`
     func request(_ request: UploadOperation<Self>, didFailWithError error: Error) {}
+    
+}
+
+public extension Uploadable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///

@@ -21,11 +21,13 @@ class AFileUploadableSpec: BaseSpec {
             
             it("request should succeed") {
                 // Given
-                struct Upload: AFileUploadable {
+                struct Upload: FileUploadable {
+                    typealias Response = Data
+                    
                     var path: String? = "post"
                     let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
                     
-                    func prepare(_ request: URLRequest, requestable: ARequestable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest {
                         var request = request
                         let header = HTTPHeader.authorization(username: "user", password: "password")
                         request.setValue(header.value, forHTTPHeaderField: header.name)
@@ -34,7 +36,7 @@ class AFileUploadableSpec: BaseSpec {
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: ARequestable) {
+                    func didSend(_ request: Request, requestable: _Requestable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         AFileUploadableSpec.startDelegateCalled = true

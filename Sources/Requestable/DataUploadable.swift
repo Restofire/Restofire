@@ -2,18 +2,20 @@
 //  DataUploadable.swift
 //  Restofire
 //
-//  Created by Rahul Katariya on 31/01/18.
+//  Created by Rahul Katariya on 27/01/18.
 //  Copyright © 2018 AarKay. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-/// Represents a `DataUploadable` for Restofire.
+/// Represents a `DataUploadable` for Alamofire.
 ///
 /// ### Create custom DataUploadable
 /// ```swift
 /// protocol HTTPBinUploadService: DataUploadable {
+///
+///     typealias Response = Data
 ///
 ///     var path: String? = "post"
 ///     var data: Data = {
@@ -23,4 +25,25 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol DataUploadable: ADataUploadable, Uploadable  {}
+public protocol DataUploadable: Uploadable {
+    
+    /// The data.
+    var data: Data { get }
+    
+}
+
+public extension DataUploadable {
+    
+    /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
+    ///
+    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
+    ///
+    /// - returns: The created `UploadRequest`.
+    func asRequest() throws -> UploadRequest {
+        return RestofireRequest.dataUploadRequest(
+            fromRequestable: self,
+            withUrlRequest: try asUrlRequest()
+        )
+    }
+    
+}

@@ -17,14 +17,15 @@ class ARequestableSpec: BaseSpec {
     static var startDelegateCalled = false
     
     override func spec() {
-        describe("ARequestable") {
+        describe("_Requestable") {
             
             it("request should succeed") {
                 // Given
-                struct Service: ARequestable {
+                struct Service: Requestable {
+                    typealias Response = Data
                     var path: String? = "get"
                     
-                    func prepare(_ request: URLRequest, requestable: ARequestable) -> URLRequest {
+                    func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest {
                         var request = request
                         let header = HTTPHeader.authorization(username: "user", password: "password")
                         request.setValue(header.value, forHTTPHeaderField: header.name)
@@ -33,7 +34,7 @@ class ARequestableSpec: BaseSpec {
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: ARequestable) {
+                    func didSend(_ request: Request, requestable: _Requestable) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization"))
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ARequestableSpec.startDelegateCalled = true

@@ -30,7 +30,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         super.init(configurable: downloadable, request: request)
     }
     
-    override func handleDownloadResponse(_ response: DownloadResponse<URL?>) {
+    override func handleDownloadResponse(_ response: DownloadResponse<R.Response>) {
         let request = self.request as! DownloadRequest
         var res = response
         
@@ -38,14 +38,12 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
             res = $0.process(request, requestable: downloadable, response: res)
         }
         res = downloadable.process(request, requestable: downloadable, response: res)
-        
-        let downloadResponse = responseResult(response: response)
-        
+
         downloadable.callbackQueue.async {
-            self.completionHandler?(downloadResponse)
+            self.completionHandler?(res)
         }
         
-        switch downloadResponse.result {
+        switch res.result {
         case .success(let value):
             self.downloadable.request(self, didCompleteWithValue: value)
         case .failure(let error):
@@ -55,7 +53,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         self.isFinished = true
     }
     
-    func responseResult(response: DownloadResponse<URL?>) -> DownloadResponse<R.Response> {
+    override func downloadResponseResult(response: DownloadResponse<URL?>) -> DownloadResponse<R.Response> {
         let result = Result { try downloadable.responseSerializer
             .serializeDownload(request: response.request,
                                response: response.response,

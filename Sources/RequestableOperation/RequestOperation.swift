@@ -30,7 +30,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         super.init(configurable: requestable, request: request)
     }
     
-    override func handleDataResponse(_ response: DataResponse<Data?>) {
+    override func handleDataResponse(_ response: DataResponse<R.Response>) {
         let request = self.request as! DataRequest
         
         var res = response
@@ -39,13 +39,11 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         }
         res = requestable.process(request, requestable: requestable, response: res)
         
-        let dataResponse = responseResult(response: response)
-
         requestable.callbackQueue.async {
-            self.completionHandler?(dataResponse)
+            self.completionHandler?(res)
         }
         
-        switch dataResponse.result {
+        switch res.result {
         case .success(let value):
             self.requestable.request(self, didCompleteWithValue: value)
         case .failure(let error):
@@ -55,7 +53,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         self.isFinished = true
     }
     
-    func responseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
+    override func dataResponseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
         let result = Result { try requestable.responseSerializer
             .serialize(request: response.request,
                        response: response.response,

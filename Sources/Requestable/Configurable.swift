@@ -26,7 +26,10 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable, QueuePriortizable {
+public protocol Configurable: AConfigurable, Pollable, Reachable, Retryable, Queueable, QueuePriortizable {
+    
+    /// The pollingInterval.
+    var pollingInterval: TimeInterval { get }
     
     #if !os(watchOS)
     /// The waitsForConnectivity.
@@ -52,6 +55,11 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable, Qu
 
 // MARK: - Default Implementation
 public extension Configurable {
+    
+    /// `Poll.default.pollingInterval`
+    public var pollingInterval: TimeInterval {
+        return poll.pollingInterval
+    }
     
     #if !os(watchOS)
     /// `Reachability.default.waitsForConnectivity`

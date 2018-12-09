@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 /// An NSOperation base class for all request operations
-open class AOperation<R: Configurable>: Operation {
+open class AOperation<R: Configurable & ResponseSerializable>: Operation {
     
     var configurable: R
     var requestClosure: () -> Request
@@ -103,15 +103,17 @@ open class AOperation<R: Configurable>: Operation {
     
     // MARK:- Data Response
     func handleDataResponseIfNeeded(_ response: DataResponse<Data?>) {
-        let retryNeeded = false
-        if retryNeeded {
-            retry()
+        let response = dataResponseResult(response: response)
+        if response.error != nil {
+            handleDataResponse(response)
+        } else if configurable.shouldPoll(request, requestable: configurable, response: response) {
+            retry(afterDelay: configurable.pollingInterval)
         } else {
             handleDataResponse(response)
         }
     }
     
-    func handleDataResponse(_ response: DataResponse<Data?>) {
+    func handleDataResponse(_ response: DataResponse<R.Response>) {
         fatalError("override me")
     }
     
@@ -123,17 +125,23 @@ open class AOperation<R: Configurable>: Operation {
         }
     }
     
+    func dataResponseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
+        fatalError("override me")
+    }
+    
     // MARK: - Download Response
     func handleDownloadResponseIfNeeded(_ response: DownloadResponse<URL?>) {
-        let retryNeeded = false
-        if retryNeeded {
-            retry()
+        let response = downloadResponseResult(response: response)
+        if response.error != nil {
+            handleDownloadResponse(response)
+        } else if configurable.shouldPoll(request, requestable: configurable, response: response) {
+            retry(afterDelay: configurable.pollingInterval)
         } else {
             handleDownloadResponse(response)
         }
     }
     
-    func handleDownloadResponse(_ response: DownloadResponse<URL?>) {
+    func handleDownloadResponse(_ response: DownloadResponse<R.Response>) {
         fatalError("override me")
     }
     
@@ -143,6 +151,10 @@ open class AOperation<R: Configurable>: Operation {
         } else {
             isFinished = true
         }
+    }
+    
+    func downloadResponseResult(response: DownloadResponse<URL?>) -> DownloadResponse<R.Response> {
+        fatalError("override me")
     }
     
     // MARK: - Request Error

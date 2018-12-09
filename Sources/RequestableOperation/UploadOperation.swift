@@ -30,7 +30,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         super.init(configurable: uploadable, request: request)
     }
     
-    override func handleDataResponse(_ response: DataResponse<Data?>) {
+    override func handleDataResponse(_ response: DataResponse<R.Response>) {
         let request = self.request as! UploadRequest
         
         var res = response
@@ -38,14 +38,12 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
             res = $0.process(request, requestable: uploadable, response: res)
         }
         res = uploadable.process(request, requestable: uploadable, response: res)
-        
-        let dataResponse = responseResult(response: response)
-        
+
         uploadable.callbackQueue.async {
-            self.completionHandler?(dataResponse)
+            self.completionHandler?(res)
         }
         
-        switch dataResponse.result {
+        switch res.result {
         case .success(let value):
             self.uploadable.request(self, didCompleteWithValue: value)
         case .failure(let error):
@@ -55,7 +53,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         self.isFinished = true
     }
     
-    func responseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
+    override func dataResponseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
         let result = Result { try uploadable.responseSerializer
             .serialize(request: response.request,
                        response: response.response,

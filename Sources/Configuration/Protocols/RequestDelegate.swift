@@ -18,11 +18,11 @@ public protocol RequestDelegate {
     /// Called when the request is sent over the network.
     func didSend(_ request: Request, requestable: ARequestable)
     
-    /// Called before the request is transformed to `Requestable`.Response.
-    func process(_ request: Request, requestable: ARequestable, response: DataResponse<Data?>) -> DataResponse<Data?>
+    /// Called before the request calls its completion handler.
+    func process<R: ARequestable & ResponseSerializable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response>
     
-    /// Called before the request is transformed to `Downloadable`.Response.
-    func process(_ request: Request, requestable: ADownloadable, response: DownloadResponse<URL?>) -> DownloadResponse<URL?>
+    /// Called before the request calls its completion handler.
+    func process<R: ADownloadable & ResponseSerializable>(_ request: Request, requestable: R, response: DownloadResponse<R.Response>) -> DownloadResponse<R.Response>
     
 }
 
@@ -37,12 +37,12 @@ extension RequestDelegate {
     public func didSend(_ request: Request, requestable: ARequestable) {}
     
     /// `No-op`
-    public func process(_ request: Request, requestable: ARequestable, response: DataResponse<Data?>) -> DataResponse<Data?> {
+    public func process<R: ARequestable & ResponseSerializable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response> {
         return response
     }
-
+    
     /// `No-op`
-    public func process(_ request: Request, requestable: ADownloadable, response: DownloadResponse<URL?>) -> DownloadResponse<URL?> {
+    public func process<R: ADownloadable & ResponseSerializable>(_ request: Request, requestable: R, response: DownloadResponse<R.Response>) -> DownloadResponse<R.Response> {
         return response
     }
 }

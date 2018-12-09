@@ -79,8 +79,6 @@ public extension Downloadable {
     
     /// Creates a `DownloadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
-    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
-    ///
     /// - returns: The created `DownloadRequest`.
     func asRequest() throws -> DownloadRequest {
         return RestofireRequest.downloadRequest(

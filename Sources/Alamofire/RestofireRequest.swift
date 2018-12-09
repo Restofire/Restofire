@@ -13,14 +13,16 @@ class RestofireRequest {
     
     static func dataRequest<R: Requestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DataRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.session.request(urlRequest)
+        var request = requestable.session.request(urlRequest)
+        authenticateRequest(request, usingCredential: requestable.credential)
+        RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
+                willSendDataRequest(&request, requestable: requestable)
+                request.resume()
                 didSendRequest(request, requestable: requestable)
             }
         }
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
         return request
     }
 
@@ -32,69 +34,79 @@ class RestofireRequest {
         } else {
             request = requestable.session.download(urlRequest, to: requestable.destination)
         }
+        authenticateRequest(request, usingCredential: requestable.credential)
+        RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
+                willSendDownloadRequest(&request, requestable: requestable)
+                request.resume()
                 didSendDownloadRequest(request, requestable: requestable)
             }
         }
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
         return request
     }
 
     static func fileUploadRequest<R: FileUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.session.upload(requestable.url, with: urlRequest)
+        var request = requestable.session.upload(requestable.url, with: urlRequest)
+        authenticateRequest(request, usingCredential: requestable.credential)
+        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
+                willSendUploadRequest(&request, requestable: requestable)
+                request.resume()
                 didSendRequest(request, requestable: requestable)
             }
         }
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
     }
 
     static func dataUploadRequest<R: DataUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.session.upload(requestable.data, with: urlRequest)
+        var request = requestable.session.upload(requestable.data, with: urlRequest)
+        authenticateRequest(request, usingCredential: requestable.credential)
+        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
+                willSendUploadRequest(&request, requestable: requestable)
+                request.resume()
                 didSendRequest(request, requestable: requestable)
             }
         }
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
     }
 
     static func streamUploadRequest<R: StreamUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.session.upload(requestable.stream, with: urlRequest)
+        var request = requestable.session.upload(requestable.stream, with: urlRequest)
+        authenticateRequest(request, usingCredential: requestable.credential)
+        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
+                willSendUploadRequest(&request, requestable: requestable)
+                request.resume()
                 didSendRequest(request, requestable: requestable)
             }
         }
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
     }
 
     static func multipartUploadRequest<R: MultipartUploadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> UploadRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
-        let request = requestable.session.upload(
+        var request = requestable.session.upload(
             multipartFormData: requestable.multipartFormData,
             usingThreshold: requestable.encodingMemoryThreshold,
             with: urlRequest
         )
+        authenticateRequest(request, usingCredential: requestable.credential)
+        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
+                willSendUploadRequest(&request, requestable: requestable)
+                request.resume()
                 didSendRequest(request, requestable: requestable)
             }
         }
-        authenticateRequest(request, usingCredential: requestable.credential)
-        RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
         return request
     }
 
@@ -104,6 +116,8 @@ class RestofireRequest {
     }
 
     internal static func prepareRequest<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+        precondition(requestable.session.startRequestsImmediately == false,
+                     "The session should always have startRequestsImmediately to false")
         var request = request
         requestable.delegates.forEach {
             request = $0.prepare(request, requestable: requestable)
@@ -111,7 +125,28 @@ class RestofireRequest {
         request = requestable.prepare(request, requestable: requestable)
         return request
     }
-
+    
+    internal static func willSendDataRequest<R: _Requestable>(_ request: inout DataRequest, requestable: R) {
+        requestable.delegates.forEach {
+            $0.willSend(dataRequest: &request, requestable: requestable)
+        }
+        requestable.willSend(dataRequest: &request, requestable: requestable)
+    }
+    
+    internal static func willSendDownloadRequest<R: _Requestable>(_ request: inout DownloadRequest, requestable: R) {
+        requestable.delegates.forEach {
+            $0.willSend(downloadRequest: &request, requestable: requestable)
+        }
+        requestable.willSend(downloadRequest: &request, requestable: requestable)
+    }
+    
+    internal static func willSendUploadRequest<R: _Requestable>(_ request: inout UploadRequest, requestable: R) {
+        requestable.delegates.forEach {
+            $0.willSend(uploadRequest: &request, requestable: requestable)
+        }
+        requestable.willSend(uploadRequest: &request, requestable: requestable)
+    }
+    
     internal static func didSendRequest<R: _Requestable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)

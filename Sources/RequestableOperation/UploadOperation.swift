@@ -39,42 +39,60 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         }
         res = uploadable.process(request, requestable: uploadable, response: res)
         
-        let result = Result { try uploadable.responseSerializer
-            .serialize(request: res.request,
-                       response: res.response,
-                       data: res.data,
-                       error: res.error)
-        }
-        
-        let dataResponse = DataResponse<R.Response>(
-            request: res.request,
-            response: res.response,
-            data: res.data,
-            metrics: res.metrics,
-            serializationDuration: res.serializationDuration,
-            result: result.value!
-        )
+        let dataResponse = responseResult(response: response)
         
         uploadable.callbackQueue.async {
             self.completionHandler?(dataResponse)
         }
         
-        if let error = res.error {
+        switch dataResponse.result {
+        case .success(let value):
+            self.uploadable.request(self, didCompleteWithValue: value)
+        case .failure(let error):
             self.uploadable.request(self, didFailWithError: error)
-        } else {
-            self.uploadable.request(self, didCompleteWithValue: dataResponse.value!)
         }
-        self.isFinished = true
         
+        self.isFinished = true
+    }
+    
+    func responseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
+        let result = Result { try uploadable.responseSerializer
+            .serialize(request: response.request,
+                       response: response.response,
+                       data: response.data,
+                       error: response.error)
+        }
+        
+        var responseResult: Result<R.Response>!
+        
+        switch result {
+        case .success(let value):
+            responseResult = value
+        case .failure(let error):
+            assertionFailure(error.localizedDescription)
+            responseResult = Result.failure(error)
+        }
+        
+        let dataResponse = DataResponse<R.Response>(
+            request: response.request,
+            response: response.response,
+            data: response.data,
+            metrics: response.metrics,
+            serializationDuration: response.serializationDuration,
+            result: responseResult
+        )
+        return dataResponse
     }
     
     /// Creates a copy of self
     open override func copy() -> AOperation<R> {
-        return UploadOperation(
+        let operation = UploadOperation(
             uploadable: uploadable,
             request: uploadRequest,
             completionHandler: completionHandler
         )
+        operation.queuePriority = uploadable.priority
+        return operation
     }
     
 }

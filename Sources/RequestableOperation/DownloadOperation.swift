@@ -39,44 +39,61 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         }
         res = downloadable.process(request, requestable: downloadable, response: res)
         
-        let result = Result { try downloadable.responseSerializer
-            .serializeDownload(request: res.request,
-                               response: res.response,
-                               fileURL: res.fileURL,
-                               error: res.error)
-        }
-        
-        let downloadResponse = DownloadResponse<R.Response>(
-            request: res.request,
-            response: res.response,
-            fileURL: res.fileURL,
-            resumeData: res.resumeData,
-            metrics: res.metrics,
-            serializationDuration: res.serializationDuration,
-            result: result.value!
-        )
+        let downloadResponse = responseResult(response: response)
         
         downloadable.callbackQueue.async {
             self.completionHandler?(downloadResponse)
         }
         
-        if let error = res.error {
+        switch downloadResponse.result {
+        case .success(let value):
+            self.downloadable.request(self, didCompleteWithValue: value)
+        case .failure(let error):
             self.downloadable.request(self, didFailWithError: error)
-        } else {
-            self.downloadable.request(self, didCompleteWithValue: downloadResponse.value!)
         }
         
         self.isFinished = true
+    }
+    
+    func responseResult(response: DownloadResponse<URL?>) -> DownloadResponse<R.Response> {
+        let result = Result { try downloadable.responseSerializer
+            .serializeDownload(request: response.request,
+                               response: response.response,
+                               fileURL: response.fileURL,
+                               error: response.error)
+        }
         
+        var responseResult: Result<R.Response>!
+        
+        switch result {
+        case .success(let value):
+            responseResult = value
+        case .failure(let error):
+            assertionFailure(error.localizedDescription)
+            responseResult = Result.failure(error)
+        }
+        
+        let downloadResponse = DownloadResponse<R.Response>(
+            request: response.request,
+            response: response.response,
+            fileURL: response.fileURL,
+            resumeData: response.resumeData,
+            metrics: response.metrics,
+            serializationDuration: response.serializationDuration,
+            result: responseResult
+        )
+        return downloadResponse
     }
     
     /// Creates a copy of self
     open override func copy() -> AOperation<R> {
-        return DownloadOperation(
+        let operation = DownloadOperation(
             downloadable: downloadable,
             request: downloadRequest,
             completionHandler: completionHandler
         )
+        operation.queuePriority = downloadable.priority
+        return operation
     }
     
 }

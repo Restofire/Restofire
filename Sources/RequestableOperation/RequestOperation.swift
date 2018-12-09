@@ -39,32 +39,48 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         }
         res = requestable.process(request, requestable: requestable, response: res)
         
-        let result = Result { try requestable.responseSerializer
-            .serialize(request: res.request,
-                       response: res.response,
-                       data: res.data,
-                       error: res.error) }
-        
-        let dataResponse = DataResponse<R.Response>(
-            request: res.request,
-            response: res.response,
-            data: res.data,
-            metrics: res.metrics,
-            serializationDuration: res.serializationDuration,
-            result: result.value!
-        )
-        
+        let dataResponse = responseResult(response: response)
+
         requestable.callbackQueue.async {
             self.completionHandler?(dataResponse)
         }
         
-        if let error = res.error {
+        switch dataResponse.result {
+        case .success(let value):
+            self.requestable.request(self, didCompleteWithValue: value)
+        case .failure(let error):
             self.requestable.request(self, didFailWithError: error)
-        } else {
-            self.requestable.request(self, didCompleteWithValue: dataResponse.value!)
         }
         
         self.isFinished = true
+    }
+    
+    func responseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
+        let result = Result { try requestable.responseSerializer
+            .serialize(request: response.request,
+                       response: response.response,
+                       data: response.data,
+                       error: response.error) }
+        
+        var responseResult: Result<R.Response>!
+        
+        switch result {
+        case .success(let value):
+            responseResult = value
+        case .failure(let error):
+            assertionFailure(error.localizedDescription)
+            responseResult = Result.failure(error)
+        }
+        
+        let dataResponse = DataResponse<R.Response>(
+            request: response.request,
+            response: response.response,
+            data: response.data,
+            metrics: response.metrics,
+            serializationDuration: response.serializationDuration,
+            result: responseResult
+        )
+        return dataResponse
     }
     
     /// Creates a copy of self

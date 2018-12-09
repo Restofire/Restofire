@@ -1,5 +1,5 @@
-![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](Assets/restofire.png)
----
+## ![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](Assets/restofire.png)
+
 [![Platforms](https://img.shields.io/cocoapods/p/Restofire.svg)](https://cocoapods.org/pods/Restofire)
 [![License](https://img.shields.io/cocoapods/l/Restofire.svg)](https://raw.githubusercontent.com/Restofire/Restofire/master/LICENSE)
 
@@ -44,6 +44,7 @@ Restofire is a protocol oriented network abstraction layer in swift that is buil
 ## Installation
 
 ### Dependency Managers
+
 <details>
   <summary><strong>CocoaPods</strong></summary>
 
@@ -96,7 +97,7 @@ github "Restofire/Restofire" ~> 4.0.0
 
 To use Restofire as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following in your Package.swift file.
 
-``` swift
+```swift
 import PackageDescription
 
 let package = Package(
@@ -106,6 +107,7 @@ let package = Package(
     ]
 )
 ```
+
 </details>
 
 ### Manually
@@ -130,7 +132,7 @@ $ git submodule update --init --recursive
 
 - Open the new `Restofire` folder, and drag the `Restofire.xcodeproj` into the Project Navigator of your application's Xcode project.
 
-    > It should appear nested underneath your application's blue project icon. Whether it is above or below all the other Xcode groups does not matter.
+  > It should appear nested underneath your application's blue project icon. Whether it is above or below all the other Xcode groups does not matter.
 
 - Select the `Restofire.xcodeproj` in the Project Navigator and verify the deployment target matches that of your application target.
 - Next, select your application project in the Project Navigator (blue project icon) to navigate to the target configuration window and select the application target under the "Targets" heading in the sidebar.
@@ -138,7 +140,7 @@ $ git submodule update --init --recursive
 - Click on the `+` button under the "Embedded Binaries" section.
 - You will see two different `Restofire.xcodeproj` folders each with two different versions of the `Restofire.framework` nested inside a `Products` folder.
 
-    > It does not matter which `Products` folder you choose from.
+  > It does not matter which `Products` folder you choose from.
 
 - Select the `Restofire.framework` & `Alamofire.framework`.
 
@@ -159,36 +161,6 @@ $ git submodule update --init --recursive
 - And that's it!
 
 </p></details>
-
-## Architecture
-
-### Two Layered Architecture
-
-![Architecture](Assets/architecture.jpeg)
-
-- **Alamofire Layer** — consists of protocols for Request, Download and Upload to construct the respective Alamofire.Request instance. All Alamofire Protocols have a prefix `A`.
-
-```swift
-
-/// Alamofire
-Alamofire.request("https://httpbin.org/get").responseJSON { response in
-    print("Alamofire: -", response.value ?? "nil")
-}
-
-/// Using Restofire as an API Client on top of Alamofire
-Configuration.default.host = "httpbin.org"
-
-struct GetService: ARequestable {
-    var path: String? = "get"
-}
-
-GetService().request.responseJSON { response in
-    print("Restofire: -", response.value ?? "nil")
-}
-
-```
-
-- **Restofire Layer** — consists of protocols for Request, Download and Upload to construct the respective RequestOperation instance from the Alamofire.Request and support features like AutoRetry, WaitForConnectivity, Automatic ResponseSerialization from associatedType etc.
 
 ### Configurations
 
@@ -345,6 +317,7 @@ struct PushTokenPutService: Requestable {
 
 }
 ```
+
 # Contributing
 
 Issues and pull requests are welcome!

@@ -11,7 +11,7 @@ import Alamofire
 
 #if !os(watchOS)
     
-struct NetworkReachability {
+class NetworkReachability {
     
     let configurable: Configurable
     
@@ -20,7 +20,11 @@ struct NetworkReachability {
     }
     
     func setupListener() {
-        configurable.networkReachabilityManager.listener = { status in
+        guard let networkReachabilityManager = configurable.networkReachabilityManager else {
+            assertionFailure("NetworkReachabilityManager should not be nil")
+            return
+        }
+        networkReachabilityManager.listener = { [unowned self] status in
             switch status {
             case .reachable(_):
                 self.configurable.eventuallyOperationQueue.isSuspended = false
@@ -28,7 +32,7 @@ struct NetworkReachability {
                 self.configurable.eventuallyOperationQueue.isSuspended = true
             }
         }
-        configurable.networkReachabilityManager.startListening()
+        networkReachabilityManager.startListening()
     }
 }
     

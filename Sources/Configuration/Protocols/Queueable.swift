@@ -35,17 +35,17 @@ public extension Queueable where Self: Configurable {
     
     /// `configuration.requestQueue`
     public var requestQueue: OperationQueue {
-        return configuration.requestQueue
+        return configuration.operationQueue
     }
     
     /// `configuration.downloadQueue`
     public var downloadQueue: OperationQueue {
-        return configuration.downloadQueue
+        return configuration.operationQueue
     }
     
     /// `configuration.uploadQueue`
     public var uploadQueue: OperationQueue {
-        return configuration.uploadQueue
+        return configuration.operationQueue
     }
     
 }

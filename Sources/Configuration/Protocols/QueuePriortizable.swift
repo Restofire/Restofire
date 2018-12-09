@@ -14,10 +14,10 @@ public protocol QueuePriortizable {
     
 }
 
-extension QueuePriortizable {
+extension QueuePriortizable where Self: AConfigurable {
     
     public var priority: Operation.QueuePriority {
-        return .normal
+        return configuration.operationQueuePriority
     }
     
 }
@@ -38,6 +38,16 @@ extension HighQueuePriortizable {
     
     public var priority: Operation.QueuePriority {
         return .high
+    }
+    
+}
+
+public protocol NormalQueuePriortizable: QueuePriortizable {}
+
+extension NormalQueuePriortizable {
+    
+    public var priority: Operation.QueuePriority {
+        return .normal
     }
     
 }

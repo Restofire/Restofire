@@ -48,13 +48,10 @@ public struct Configuration {
     public var requestDelegates: [RequestDelegate] = []
     
     /// The request operation queue.
-    public var requestQueue: OperationQueue = OperationQueue()
+    public var operationQueue: OperationQueue = OperationQueue()
     
-    /// The request operation queue.
-    public var downloadQueue: OperationQueue = OperationQueue()
-    
-    /// The request operation queue.
-    public var uploadQueue: OperationQueue = OperationQueue()
+    /// The request operation queue priority. `normal` by default.
+    public var operationQueuePriority: Operation.QueuePriority = .normal
     
     /// `Configuration` Intializer
     ///

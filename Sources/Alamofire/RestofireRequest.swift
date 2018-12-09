@@ -26,7 +26,12 @@ class RestofireRequest {
 
     static func downloadRequest<R: ADownloadable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DownloadRequest {
         let urlRequest = prepareDownloadRequest(urlRequest, requestable: requestable)
-        let request = requestable.session.download(urlRequest, to: requestable.destination)
+        var request: DownloadRequest!
+        if let resumeData = requestable.resumeData {
+            request = requestable.session.download(resumingWith: resumeData, to: requestable.destination)
+        } else {
+            request = requestable.session.download(urlRequest, to: requestable.destination)
+        }
         requestable.session.requestQueue.async {
             requestable.session.rootQueue.async {
                 didSendDownloadRequest(request, requestable: requestable)

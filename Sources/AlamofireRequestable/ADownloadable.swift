@@ -26,7 +26,10 @@ import Alamofire
 /// ```
 public protocol ADownloadable: ARequestable {
     
-    /// The download file destination
+    /// The resume data.
+    var resumeData: Data? { get }
+    
+    /// The download file destination.
     var destination: DownloadRequest.Destination? { get }
     
     /// The Alamofire data request validation.
@@ -35,6 +38,11 @@ public protocol ADownloadable: ARequestable {
 }
 
 public extension ADownloadable {
+    
+    /// `nil`
+    public var resumeData: Data? {
+        return nil
+    }
     
     /// `nil`
     public var destination: DownloadRequest.Destination? {

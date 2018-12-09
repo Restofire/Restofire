@@ -58,8 +58,6 @@ public extension Requestable {
     
     /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
-    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
-    ///
     /// - returns: The created `DataRequest`.
     func asRequest() throws -> DataRequest {
         return RestofireRequest.dataRequest(

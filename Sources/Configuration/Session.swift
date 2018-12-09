@@ -25,8 +25,8 @@ public struct Session {
     /// The default session manager.
     public static var `default` = Session()
 
-    /// The Alamofire Session. `Alamofire.Session.default` by default.
-    public var session = Alamofire.Session.default
+    /// The Alamofire Session. `Alamofire.Session(startRequestsImmediately: false)` by default.
+    public var session = Alamofire.Session(startRequestsImmediately: false)
     
     /// `Session` Intializer
     ///

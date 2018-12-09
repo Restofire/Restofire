@@ -36,8 +36,6 @@ public extension DataUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
-    /// If `startRequestsImmediately` is `true`, the request will have `resume()` called before being returned.
-    ///
     /// - returns: The created `UploadRequest`.
     func asRequest() throws -> UploadRequest {
         return RestofireRequest.dataUploadRequest(

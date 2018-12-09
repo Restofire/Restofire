@@ -69,11 +69,13 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
     
     /// Creates a copy of self
     open override func copy() -> AOperation<R> {
-        return RequestOperation(
+        let operation = RequestOperation(
             requestable: requestable,
             request: dataRequest,
             completionHandler: completionHandler
         )
+        operation.queuePriority = requestable.priority
+        return operation
     }
     
 }

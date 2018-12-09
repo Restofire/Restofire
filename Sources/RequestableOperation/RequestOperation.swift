@@ -54,7 +54,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
             result: result.value!
         )
         
-        requestable.queue.async {
+        requestable.callbackQueue.async {
             self.completionHandler?(dataResponse)
         }
         

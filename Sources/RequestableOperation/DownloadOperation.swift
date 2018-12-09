@@ -56,7 +56,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
             result: result.value!
         )
         
-        downloadable.queue.async {
+        downloadable.callbackQueue.async {
             self.completionHandler?(downloadResponse)
         }
         

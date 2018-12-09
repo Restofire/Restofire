@@ -13,7 +13,7 @@ import Alamofire
 public protocol Queueable {
     
     /// The `queue`.
-    var queue: DispatchQueue { get }
+    var callbackQueue: DispatchQueue { get }
     
     /// The request operation queue
     var requestQueue: OperationQueue { get }
@@ -29,7 +29,7 @@ public protocol Queueable {
 public extension Queueable where Self: Configurable {
     
     /// `DispatchQueue.main`
-    public var queue: DispatchQueue {
+    public var callbackQueue: DispatchQueue {
         return DispatchQueue.main
     }
     

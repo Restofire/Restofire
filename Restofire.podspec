@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
  s.name = 'Restofire'
  s.version = '5.0.0'
  s.license = { :type => "MIT", :file => "LICENSE" }
- s.summary = 'Restofire is a protocol oriented networking abstraction layer in swift'
+ s.summary = 'Restofire is a protocol oriented networking client for Alamofire.'
  s.description = 'Restofire is a protocol oriented networking client for Alamofire.'
  s.homepage = 'https://github.com/Restofire/Restofire'
  s.social_media_url = 'https://twitter.com/rahulkatariya91'
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
  s.default_subspec = "Core"
  s.subspec "Core" do |ss|
      ss.source_files  = "Sources/**/*.swift"
-     ss.dependency "Alamofire", "~> 5.0"
+     ss.dependency "Alamofire", "~> 5.0.0.beta.1"
      ss.framework  = "Foundation"
  end
 

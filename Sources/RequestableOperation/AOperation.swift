@@ -10,10 +10,12 @@ import Foundation
 import Alamofire
 
 /// An NSOperation base class for all request operations
-open class AOperation<R: Configurable & ResponseSerializable>: Operation {
+open class AOperation<R: _Requestable>: Operation {
     
-    var configurable: R
-    var requestClosure: () -> Request
+    let _requestable: R
+    let requestClosure: () -> Request
+    let downloadProgressHandler: ((Progress) -> Void)?
+    let uploadProgressHandler: ((Progress) -> Void)?
     
     /// The underlying respect respective to requestable.
     public private(set) var request: Request!
@@ -40,14 +42,21 @@ open class AOperation<R: Configurable & ResponseSerializable>: Operation {
     
     #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
-        return NetworkReachability(configurable: configurable)
+        return NetworkReachability(configurable: _requestable)
     }()
     #endif
     
-    public init(configurable: R, request: @escaping (() -> Request)) {
-        self.configurable = configurable
+    public init(
+        requestable: R,
+        request: @escaping (() -> Request),
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil
+    ) {
+        self._requestable = requestable
         self.requestClosure = request
-        self.retryAttempts = configurable.maxRetryAttempts
+        self.retryAttempts = requestable.maxRetryAttempts
+        self.downloadProgressHandler = downloadProgressHandler
+        self.uploadProgressHandler = uploadProgressHandler
         super.init()
         self.isReady = true
     }
@@ -69,22 +78,40 @@ open class AOperation<R: Configurable & ResponseSerializable>: Operation {
         switch requestType {
         case .data, .upload:
             let request = self.request as! DataRequest
-            request.response { [unowned self] in
-                if $0.error != nil {
-                    self.handleDataRequestError($0)
-                } else {
-                    self.handleDataResponseIfNeeded($0)
+            request
+                .downloadProgress(queue: _requestable.downloadProgressQueue) { [unowned self] progress in
+                    self._requestable.didProgressDownload(request, requestable: self._requestable, progress: progress)
+                    self.downloadProgressHandler?(progress)
                 }
-            }
+                .uploadProgress(queue: _requestable.uploadProgressQueue) { [unowned self] progress in
+                    self._requestable.didProgressUpload(request, requestable: self._requestable, progress: progress)
+                    self.uploadProgressHandler?(progress)
+                }
+                .response { [unowned self] in
+                    if $0.error != nil {
+                        self.handleDataRequestError($0)
+                    } else {
+                        self.handleDataResponseIfNeeded($0)
+                    }
+                }
         case .download:
             let request = self.request as! DownloadRequest
-            request.response { [unowned self] in
-                if $0.error != nil {
-                    self.handleDownloadRequestError($0)
-                } else {
-                    self.handleDownloadResponseIfNeeded($0)
+            request
+                .downloadProgress(queue: _requestable.downloadProgressQueue) { [unowned self] progress in
+                    self._requestable.didProgressDownload(request, requestable: self._requestable, progress: progress)
+                    self.downloadProgressHandler?(progress)
                 }
-            }
+                .uploadProgress(queue: _requestable.uploadProgressQueue) { [unowned self] progress in
+                    self._requestable.didProgressUpload(request, requestable: self._requestable, progress: progress)
+                    self.uploadProgressHandler?(progress)
+                }
+                .response { [unowned self] in
+                    if $0.error != nil {
+                        self.handleDownloadRequestError($0)
+                    } else {
+                        self.handleDownloadResponseIfNeeded($0)
+                    }
+                }
         }
         request.logIfNeeded()
     }
@@ -106,8 +133,8 @@ open class AOperation<R: Configurable & ResponseSerializable>: Operation {
         let response = dataResponseResult(response: response)
         if response.error != nil {
             handleDataResponse(response)
-        } else if configurable.shouldPoll(request, requestable: configurable, response: response) {
-            retry(afterDelay: configurable.pollingInterval)
+        } else if _requestable.shouldPoll(request, requestable: _requestable, response: response) {
+            retry(afterDelay: _requestable.pollingInterval)
         } else {
             handleDataResponse(response)
         }
@@ -134,8 +161,8 @@ open class AOperation<R: Configurable & ResponseSerializable>: Operation {
         let response = downloadResponseResult(response: response)
         if response.error != nil {
             handleDownloadResponse(response)
-        } else if configurable.shouldPoll(request, requestable: configurable, response: response) {
-            retry(afterDelay: configurable.pollingInterval)
+        } else if _requestable.shouldPoll(request, requestable: _requestable, response: response) {
+            retry(afterDelay: _requestable.pollingInterval)
         } else {
             handleDownloadResponse(response)
         }
@@ -162,21 +189,21 @@ open class AOperation<R: Configurable & ResponseSerializable>: Operation {
         var handledError = true
         var isConnectivityError = false
         #if !os(watchOS)
-            if let error = error as? URLError, configurable.waitsForConnectivity &&
+            if let error = error as? URLError, _requestable.waitsForConnectivity &&
                 error.code == .notConnectedToInternet {
                 isConnectivityError = true
-                configurable.eventuallyOperationQueue.isSuspended = true
+                _requestable.eventuallyOperationQueue.isSuspended = true
                 let eventuallyOperation: AOperation = self.copy()
                 reachability.setupListener()
-                configurable.eventuallyOperationQueue.addOperation(eventuallyOperation)
+                _requestable.eventuallyOperationQueue.addOperation(eventuallyOperation)
             }
         #endif
         if isConnectivityError {
            // No-op
         } else if let error = error as? URLError, retryAttempts > 0 &&
-            configurable.retryErrorCodes.contains(error.code) {
+            _requestable.retryErrorCodes.contains(error.code) {
             retryAttempts -= 1
-            retry(afterDelay: configurable.retryInterval)
+            retry(afterDelay: _requestable.retryInterval)
         } else {
             handledError = false
         }

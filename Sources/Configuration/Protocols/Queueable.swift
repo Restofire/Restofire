@@ -12,8 +12,14 @@ import Alamofire
 /// Represents a `Queueable` that is associated with `Requestable`.
 public protocol Queueable {
     
-    /// The `queue`.
+    /// The `callbackQueue`.
     var callbackQueue: DispatchQueue { get }
+    
+    /// The `downloadProgressQueue`.
+    var downloadProgressQueue: DispatchQueue { get }
+    
+    /// The `uploadProgressQueue`.
+    var uploadProgressQueue: DispatchQueue { get }
     
     /// The request operation queue
     var requestQueue: OperationQueue { get }
@@ -30,6 +36,16 @@ public extension Queueable where Self: Configurable {
     
     /// `DispatchQueue.main`
     public var callbackQueue: DispatchQueue {
+        return DispatchQueue.main
+    }
+    
+    /// `DispatchQueue.main`
+    public var downloadProgressQueue: DispatchQueue {
+        return DispatchQueue.main
+    }
+    
+    /// `DispatchQueue.main`
+    public var uploadProgressQueue: DispatchQueue {
         return DispatchQueue.main
     }
     

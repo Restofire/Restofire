@@ -98,9 +98,18 @@ public extension Downloadable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func operation(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) throws -> DownloadOperation<Self> {
+    public func operation(
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) throws -> DownloadOperation<Self> {
         let request = try self.asRequest()
-        return operation(request: request, completionHandler: completionHandler)
+        return operation(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
     }
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object.
@@ -110,8 +119,17 @@ public extension Downloadable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func operation(request: @autoclosure @escaping () -> DownloadRequest, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        let downloadOperation = DownloadOperation(downloadable: self, request: request, completionHandler: completionHandler)
+    public func operation(
+        request: @autoclosure @escaping () -> DownloadRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) -> DownloadOperation<Self> {
+        let downloadOperation = DownloadOperation(
+            downloadable: self,
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler, completionHandler: completionHandler
+        )
         downloadOperation.queuePriority = priority
         return downloadOperation
     }
@@ -124,9 +142,18 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadOperation`.
     @discardableResult
-    public func execute(completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) throws -> DownloadOperation<Self> {
+    public func execute(
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) throws -> DownloadOperation<Self> {
         let request = try self.asRequest()
-        return execute(request: request, completionHandler: completionHandler)
+        return execute(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
     }
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object and
@@ -138,8 +165,18 @@ public extension Downloadable {
     ///
     /// - returns: The created `DownloadOperation`.
     @discardableResult
-    public func execute(request: @autoclosure @escaping () -> DownloadRequest, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil) -> DownloadOperation<Self> {
-        let downloadOperation = operation(request: request, completionHandler: completionHandler)
+    public func execute(
+        request: @autoclosure @escaping () -> DownloadRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) -> DownloadOperation<Self> {
+        let downloadOperation = operation(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
         downloadQueue.addOperation(downloadOperation)
         return downloadOperation
     }

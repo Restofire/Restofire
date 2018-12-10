@@ -27,6 +27,12 @@ public protocol RequestDelegate {
     /// Called when the request is sent over the network.
     func didSend<R: _Requestable>(_ request: Request, requestable: R)
     
+    /// Called when the request is sent over the network.
+    func didProgressDownload<R: _Requestable>(_ request: Request, requestable: R, progress: Progress)
+    
+    /// Called when the request is sent over the network.
+    func didProgressUpload<R: _Requestable>(_ request: Request, requestable: R, progress: Progress)
+    
     /// Called before the request calls its completion handler.
     func process<R: Requestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response>
     
@@ -56,6 +62,12 @@ extension RequestDelegate {
     
     /// `No-op`
     public func didSend<R: _Requestable>(_ request: Request, requestable: R) {}
+    
+    /// `No-op`
+    func didProgressDownload<R: _Requestable>(_ request: Request, requestable: R, progress: Progress) {}
+    
+    /// `No-op`
+    func didProgressUpload<R: _Requestable>(_ request: Request, requestable: R, progress: Progress) {}
     
     /// `No-op`
     public func process<R: Requestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response> {

@@ -23,11 +23,22 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
     ///   - request: The request closure.
     ///   - completionHandler: The async completion handler called
     ///     when the request is completed
-    public init(downloadable: R, request: @escaping (() -> DownloadRequest), completionHandler: ((DownloadResponse<R.Response>) -> Void)?) {
+    public init(
+        downloadable: R,
+        request: @escaping (() -> DownloadRequest),
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DownloadResponse<R.Response>) -> Void)?
+    ) {
         self.downloadable = downloadable
         self.downloadRequest = request
         self.completionHandler = completionHandler
-        super.init(configurable: downloadable, request: request)
+        super.init(
+            requestable: downloadable,
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler
+        )
     }
     
     override func handleDownloadResponse(_ response: DownloadResponse<R.Response>) {

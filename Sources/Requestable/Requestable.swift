@@ -77,9 +77,18 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func operation(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> RequestOperation<Self> {
+    public func operation(
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> RequestOperation<Self> {
         let request = try self.asRequest()
-        return operation(request: request, completionHandler: completionHandler)
+        return operation(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
     }
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
@@ -89,8 +98,19 @@ public extension Requestable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func operation(request: @autoclosure @escaping () -> DataRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
-        let requestOperation = RequestOperation(requestable: self, request: request, completionHandler: completionHandler)
+    public func operation(
+        request: @autoclosure @escaping () -> DataRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) -> RequestOperation<Self> {
+        let requestOperation = RequestOperation(
+            requestable: self,
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
         requestOperation.queuePriority = priority
         return requestOperation
     }
@@ -103,9 +123,18 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func execute(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> RequestOperation<Self> {
+    public func execute(
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> RequestOperation<Self> {
         let request = try self.asRequest()
-        return execute(request: request, completionHandler: completionHandler)
+        return execute(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
     }
     
     /// Creates a `RequestOperation` for the specified `Requestable` object and
@@ -117,8 +146,18 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func execute(request: @autoclosure @escaping () -> DataRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> RequestOperation<Self> {
-        let requestOperation = operation(request: request, completionHandler: completionHandler)
+    public func execute(
+        request: @autoclosure @escaping () -> DataRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) -> RequestOperation<Self> {
+        let requestOperation = operation(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
         requestQueue.addOperation(requestOperation)
         return requestOperation
     }

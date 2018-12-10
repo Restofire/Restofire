@@ -85,7 +85,11 @@ class DataUploadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute { response in
+                        let operation = try service.execute(downloadProgressHandler: { progress in
+                                downloadProgressValues.append(progress.fractionCompleted)
+                        }, uploadProgressHandler: { progress in
+                                uploadProgressValues.append(progress.fractionCompleted)
+                        }) { response in
                             
                             defer { callbacks = callbacks + 1 }
                             

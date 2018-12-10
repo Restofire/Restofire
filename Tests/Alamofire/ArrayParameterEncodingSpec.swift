@@ -18,7 +18,7 @@ class ArrayParameterEncodingSpec: BaseSpec {
         
         describe("ArrayParameterEncoding") {
             it("should encode request with array of Any") {
-                struct Service: _Requestable {
+                struct Service: Requestable {
                     typealias Response = Data
                     var path: String? = "get"
                     var parameters: Any? = ["foo","baz"]

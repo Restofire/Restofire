@@ -14,6 +14,7 @@ import Alamofire
 
 class MultipartUploadableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -32,13 +33,16 @@ class MultipartUploadableSpec: BaseSpec {
                         let japanese: String
                     }
                     
-                    struct Upload: MultipartUploadable {
+                    struct Service: MultipartUploadable {
                         typealias Response = HTTPBin
-                        var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                            return Result { try DecodableResponseSerializer().serialize(request: request,
-                                                                                            response: response,
-                                                                                            data: data,
-                                                                                            error: error)}
+                        var responseSerializer = AnyResponseSerializer<Result<Response>>
+                            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                                return Result { try DecodableResponseSerializer()
+                                    .serialize(request: request,
+                                               response: response,
+                                               data: data,
+                                               error: error)
+                                }
                         })
                         
                         var path: String? = "post"
@@ -49,23 +53,53 @@ class MultipartUploadableSpec: BaseSpec {
                             multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
                         }
                         
-                        func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: HTTPBin) {
+                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+                            var request = request
+                            let header = HTTPHeader.authorization(username: "user", password: "password")
+                            request.setValue(header.value, forHTTPHeaderField: header.name)
+                            expect(request.value(forHTTPHeaderField: "Authorization"))
+                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                            return request
+                        }
+                        
+                        func didSend<R: _Requestable>(_ request: Request, requestable: R) {
+                            expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
+                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                            MultipartUploadableSpec.startDelegateCalled = true
+                        }
+                        
+                        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: HTTPBin) {
                             MultipartUploadableSpec.successDelegateCalled = true
                             expect(value.form.french).to(equal("français"))
                             expect(value.form.japanese).to(equal("日本語"))
                         }
                         
-                        func request(_ request: UploadOperation<Upload>, didFailWithError error: Error) {
+                        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
                             MultipartUploadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
                     }
                     
-                    let request = Upload()
+                    let service = Service()
+                    var uploadProgressValues: [Double] = []
+                    var downloadProgressValues: [Double] = []
+                    
+                    var callbacks: Int = 0 {
+                        didSet {
+                            if callbacks == 2 {
+                                expect(MultipartUploadableSpec.startDelegateCalled).to(beTrue())
+                                expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
+                                expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
+                                done()
+                            }
+                        }
+                    }
                     
                     // When
                     do {
-                        let operation = try request.execute() { (response: DataResponse<HTTPBin>) in
+                        let operation = try service.execute() { (response: DataResponse<HTTPBin>) in
+                            
+                            defer { callbacks = callbacks + 1 }
                             
                             // Then
                             if let statusCode = response.response?.statusCode,
@@ -85,13 +119,41 @@ class MultipartUploadableSpec: BaseSpec {
                                 fail("response value should not be nil")
                             }
                             
+                            if let form = response.value?.form {
+                                expect(form.french).to(equal("français"))
+                                expect(form.japanese).to(equal("日本語"))
+                            } else {
+                                fail("response value should not be nil")
+                            }
+                            
+                            var previousUploadProgress: Double = uploadProgressValues.first ?? 0.0
+                            
+                            for uploadProgress in uploadProgressValues {
+                                expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
+                                previousUploadProgress = uploadProgress
+                            }
+                            
+                            if let lastUploadProgressValue = uploadProgressValues.last {
+                                expect(lastUploadProgressValue).to(equal(1.0))
+                            } else {
+                                fail("last item in uploadProgressValues should not be nil")
+                            }
+                            
+                            var previousDownloadProgress: Double = downloadProgressValues.first ?? 0.0
+                            
+                            for downloadProgress in downloadProgressValues {
+                                expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
+                                previousDownloadProgress = downloadProgress
+                            }
+                            
+                            if let lastDownloadProgressValue = downloadProgressValues.last {
+                                expect(lastDownloadProgressValue).to(equal(1.0))
+                            } else {
+                                fail("last item in downloadProgressValues should not be nil")
+                            }
                         }
                         
-                        operation.completionBlock = {
-                            expect(MultipartUploadableSpec.successDelegateCalled).to(beTrue())
-                            expect(MultipartUploadableSpec.errorDelegateCalled).to(beFalse())
-                            done()
-                        }
+                        operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }

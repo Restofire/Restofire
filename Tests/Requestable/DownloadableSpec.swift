@@ -70,7 +70,7 @@ class DownloadableSpec: BaseSpec {
                     }
                     
                     let service = Service()
-                    var progressValues: [Double] = []
+                    var downloadProgressValues: [Double] = []
                     
                     var callbacks: Int = 0 {
                         didSet {
@@ -83,10 +83,11 @@ class DownloadableSpec: BaseSpec {
                         }
                     }
                     
-                    
                     // When
                     do {
-                        let operation = try service.execute { response in
+                        let operation = try service.execute(downloadProgressHandler: { progress in
+                            downloadProgressValues.append(progress.fractionCompleted)
+                        }) { response in
                             
                             defer { callbacks = callbacks + 1 }
                             
@@ -102,17 +103,17 @@ class DownloadableSpec: BaseSpec {
                             expect(response.resumeData).to(beNil())
                             expect(response.error).to(beNil())
                             
-                            var previousProgress: Double = progressValues.first ?? 0.0
+                            var previousDownloadProgress: Double = downloadProgressValues.first ?? 0.0
                             
-                            for progress in progressValues {
-                                expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
-                                previousProgress = progress
+                            for downloadProgress in downloadProgressValues {
+                                expect(downloadProgress).to(beGreaterThanOrEqualTo(previousDownloadProgress))
+                                previousDownloadProgress = downloadProgress
                             }
                             
-                            if let lastProgressValue = progressValues.last {
-                                expect(lastProgressValue).to(equal(1.0))
+                            if let lastDownloadProgressValue = downloadProgressValues.last {
+                                expect(lastDownloadProgressValue).to(equal(1.0))
                             } else {
-                                fail("last item in progressValues should not be nil")
+                                fail("last item in downloadProgressValues should not be nil")
                             }
                         }
                         

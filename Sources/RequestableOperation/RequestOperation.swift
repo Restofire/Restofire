@@ -23,11 +23,22 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
     ///   - request: The request closure.
     ///   - completionHandler: The async completion handler called
     ///     when the request is completed
-    public init(requestable: R, request: @escaping () -> DataRequest, completionHandler: ((DataResponse<R.Response>) -> Void)?) {
+    public init(
+        requestable: R,
+        request: @escaping () -> DataRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<R.Response>) -> Void)?
+    ) {
         self.requestable = requestable
         self.dataRequest = request
         self.completionHandler = completionHandler
-        super.init(configurable: requestable, request: request)
+        super.init(
+            requestable: requestable,
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler
+        )
     }
     
     override func handleDataResponse(_ response: DataResponse<R.Response>) {

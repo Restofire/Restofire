@@ -64,9 +64,18 @@ public extension Uploadable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func operation(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> UploadOperation<Self> {
+    public func operation(
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> UploadOperation<Self> {
         let request = try self.asRequest()
-        return operation(request: request, completionHandler: completionHandler)
+        return operation(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
     }
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
@@ -76,8 +85,19 @@ public extension Uploadable {
     ///                                has finished. `nil` by default.
     ///
     /// - returns: The created `RequestOperation`.
-    public func operation(request: @autoclosure @escaping () -> UploadRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
-        let uploadOperation = UploadOperation(uploadable: self, request: request, completionHandler: completionHandler)
+    public func operation(
+        request: @autoclosure @escaping () -> UploadRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) -> UploadOperation<Self> {
+        let uploadOperation = UploadOperation(
+            uploadable: self,
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
         uploadOperation.queuePriority = priority
         return uploadOperation
     }
@@ -90,9 +110,18 @@ public extension Uploadable {
     ///
     /// - returns: The created `UploadOperation`.
     @discardableResult
-    public func execute(completionHandler: ((DataResponse<Response>) -> Void)? = nil) throws -> UploadOperation<Self> {
+    public func execute(
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> UploadOperation<Self> {
         let request = try self.asRequest()
-        return execute(request: request, completionHandler: completionHandler)
+        return execute(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
     }
     
     /// Creates a `UploadOperation` for the specified `Uploadable` object and
@@ -104,8 +133,18 @@ public extension Uploadable {
     ///
     /// - returns: The created `UploadOperation`.
     @discardableResult
-    public func execute(request: @autoclosure @escaping () -> UploadRequest, completionHandler: ((DataResponse<Response>) -> Void)? = nil) -> UploadOperation<Self> {
-        let uploadOperation = operation(request: request, completionHandler: completionHandler)
+    public func execute(
+        request: @autoclosure @escaping () -> UploadRequest,
+        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) -> UploadOperation<Self> {
+        let uploadOperation = operation(
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            uploadProgressHandler: uploadProgressHandler,
+            completionHandler: completionHandler
+        )
         uploadQueue.addOperation(uploadOperation)
         return uploadOperation
     }

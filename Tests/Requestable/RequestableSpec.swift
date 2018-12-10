@@ -14,6 +14,7 @@ import Alamofire
 
 class RequestableSpec: BaseSpec {
     
+    static var startDelegateCalled = false
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -27,34 +28,66 @@ class RequestableSpec: BaseSpec {
                 }
                 
                 waitUntil(timeout: self.timeout) { done in
-                    struct Request: Requestable {
+                    struct Service: Requestable {
                         typealias Response = HTTPBin
                         
                         var path: String? = "get"
-                        var responseSerializer: AnyResponseSerializer<Result<Response>> = AnyResponseSerializer<Result<Response>>.init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                            return Result { try DecodableResponseSerializer().serialize(request: request,
-                                                                                            response: response,
-                                                                                            data: data,
-                                                                                            error: error)}
+                        var responseSerializer = AnyResponseSerializer<Result<Response>>
+                            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                                return Result { try DecodableResponseSerializer()
+                                    .serialize(request: request,
+                                               response: response,
+                                               data: data,
+                                               error: error)
+                                }
                         })
                         
-                        func request(_ request: RequestOperation<Request>, didCompleteWithValue value: HTTPBin) {
+                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+                            var request = request
+                            let header = HTTPHeader.authorization(username: "user", password: "password")
+                            request.setValue(header.value, forHTTPHeaderField: header.name)
+                            expect(request.value(forHTTPHeaderField: "Authorization"))
+                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                            return request
+                        }
+                        
+                        func didSend<R: _Requestable>(_ request: Request, requestable: R) {
+                            expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
+                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                            RequestableSpec.startDelegateCalled = true
+                        }
+                        
+                        func request(_ request: RequestOperation<Service>, didCompleteWithValue value: HTTPBin) {
                             RequestableSpec.successDelegateCalled = true
                             expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
                         }
                         
-                        func request(_ request: RequestOperation<Request>, didFailWithError error: Error) {
+                        func request(_ request: RequestOperation<Service>, didFailWithError error: Error) {
                             RequestableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
                         
                     }
                     
-                    let request = Request()
+                    let service = Service()
+                    var progressValues: [Double] = []
+                    
+                    var callbacks: Int = 0 {
+                        didSet {
+                            if callbacks == 2 {
+                                expect(RequestableSpec.startDelegateCalled).to(beTrue())
+                                expect(RequestableSpec.successDelegateCalled).to(beTrue())
+                                expect(RequestableSpec.errorDelegateCalled).to(beFalse())
+                                done()
+                            }
+                        }
+                    }
                     
                     // When
                     do {
-                        let operation = try request.execute { response in
+                        let operation = try service.execute { response in
+                            
+                            defer { callbacks = callbacks + 1 }
                             
                             // Then
                             if let statusCode = response.response?.statusCode,
@@ -67,13 +100,28 @@ class RequestableSpec: BaseSpec {
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
                             
+                            if let value = response.value?.url.absoluteString {
+                                expect(value).to(equal("https://httpbin.org/get"))
+                            } else {
+                                fail("response value should not be nil")
+                            }
+                            
+                            var previousProgress: Double = progressValues.first ?? 0.0
+                            
+                            for progress in progressValues {
+                                expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
+                                previousProgress = progress
+                            }
+                            
+                            if let lastProgressValue = progressValues.last {
+                                expect(lastProgressValue).to(equal(1.0))
+                            } else {
+                                fail("last item in progressValues should not be nil")
+                            }
+                            
                         }
                         
-                        operation.completionBlock = {
-                            expect(RequestableSpec.successDelegateCalled).to(beTrue())
-                            expect(RequestableSpec.errorDelegateCalled).to(beFalse())
-                            done()
-                        }
+                        operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }

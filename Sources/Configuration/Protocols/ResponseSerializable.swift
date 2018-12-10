@@ -23,20 +23,29 @@ public protocol ResponseSerializable {
     
 }
 
-public extension ResponseSerializable where Response == Data {
-    
-    /// `Alamofire.DataRequest.dataResponseSerializer()`
-    public var responseSerializer: AnyResponseSerializer<Result<Response>> {
-        return AnyResponseSerializer<Result<Data>>.init(dataSerializer: { (request, response, data, error) -> Result<Data> in
-            return Result { try DataResponseSerializer().serialize(
-                request: request, response: response, data: data, error: error
-            )}
-        })
-    }
+
+public extension ResponseSerializable {
     
     /// `nil`
     public var context: [String: Any]? {
         return nil
+    }
+    
+}
+
+public extension ResponseSerializable where Response == Data {
+    
+    /// `Alamofire.DataRequest.dataResponseSerializer()`
+    public var responseSerializer: AnyResponseSerializer<Result<Response>> {
+        return AnyResponseSerializer<Result<Data>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Data> in
+                return Result { try DataResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+        })
     }
     
 }

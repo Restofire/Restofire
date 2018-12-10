@@ -14,8 +14,7 @@ import Alamofire
 
 class StreamUploadableSpec: BaseSpec {
     
-    static var downloadProgressValues: [Double] = []
-    static var uploadProgressValues: [Double] = []
+    static var startDelegateCalled = false
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
@@ -25,28 +24,56 @@ class StreamUploadableSpec: BaseSpec {
             it("request should succeed") {
                 
                 waitUntil(timeout: self.timeout) { done in
-                    struct Upload: StreamUploadable {
+                    struct Service: StreamUploadable {
                         
                         typealias Response = Data
                         var path: String? = "post"
                         let stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
                         
-                        func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: Data) {
+                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+                            var request = request
+                            let header = HTTPHeader.authorization(username: "user", password: "password")
+                            request.setValue(header.value, forHTTPHeaderField: header.name)
+                            expect(request.value(forHTTPHeaderField: "Authorization"))
+                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                            return request
+                        }
+                        
+                        func didSend<R: _Requestable>(_ request: Request, requestable: R) {
+                            expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
+                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                            StreamUploadableSpec.startDelegateCalled = true
+                        }
+                        
+                        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: Data) {
                             StreamUploadableSpec.successDelegateCalled = true
                             expect(value).toNot(beNil())
                         }
                         
-                        func request(_ request: UploadOperation<Upload>, didFailWithError error: Error) {
+                        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
                             StreamUploadableSpec.errorDelegateCalled = true
                             fail(error.localizedDescription)
                         }
                     }
                     
-                    let request = Upload()
+                    let service = Service()
+                    
+                    var callbacks: Int = 0 {
+                        didSet {
+                            if callbacks == 2 {
+                                expect(StreamUploadableSpec.startDelegateCalled).to(beTrue())
+                                expect(StreamUploadableSpec.successDelegateCalled).to(beTrue())
+                                expect(StreamUploadableSpec.errorDelegateCalled).to(beFalse())
+                                done()
+                            }
+                        }
+                    }
                     
                     // When
                     do {
-                        let operation = try request.execute { response in
+                        let operation = try service.execute { response in
+                            
+                            defer { callbacks = callbacks + 1 }
                             
                             // Then
                             expect(response.request).toNot(beNil())
@@ -55,11 +82,7 @@ class StreamUploadableSpec: BaseSpec {
                             expect(response.error).to(beNil())
                         }
                         
-                        operation.completionBlock = {
-                            expect(StreamUploadableSpec.successDelegateCalled).to(beTrue())
-                            expect(StreamUploadableSpec.errorDelegateCalled).to(beFalse())
-                            done()
-                        }
+                        operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }

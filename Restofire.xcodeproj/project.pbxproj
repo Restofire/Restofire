@@ -216,6 +216,10 @@
 		D9B11A9021BD40A20084BED7 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11A8E21BD40A20084BED7 /* Poll.swift */; };
 		D9B11A9121BD40A20084BED7 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11A8E21BD40A20084BED7 /* Poll.swift */; };
 		D9B11A9221BD40A20084BED7 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11A8E21BD40A20084BED7 /* Poll.swift */; };
+		D9B11B0321BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11B0221BE466F0084BED7 /* AnyResponseSerializer.swift */; };
+		D9B11B0421BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11B0221BE466F0084BED7 /* AnyResponseSerializer.swift */; };
+		D9B11B0521BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11B0221BE466F0084BED7 /* AnyResponseSerializer.swift */; };
+		D9B11B0621BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B11B0221BE466F0084BED7 /* AnyResponseSerializer.swift */; };
 		D9FD5BA9211579C60087A1BA /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B9A211579C60087A1BA /* _Requestable.swift */; };
 		D9FD5BAA211579C60087A1BA /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B9A211579C60087A1BA /* _Requestable.swift */; };
 		D9FD5BAB211579C60087A1BA /* _Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD5B9A211579C60087A1BA /* _Requestable.swift */; };
@@ -457,6 +461,7 @@
 		D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuePriortizable.swift; sourceTree = "<group>"; };
 		D9B11A8521BD407A0084BED7 /* Pollable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pollable.swift; sourceTree = "<group>"; };
 		D9B11A8E21BD40A20084BED7 /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
+		D9B11B0221BE466F0084BED7 /* AnyResponseSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyResponseSerializer.swift; sourceTree = "<group>"; };
 		D9FD5B9A211579C60087A1BA /* _Requestable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Requestable.swift; sourceTree = "<group>"; };
 		D9FD5B9B211579C60087A1BA /* FileUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUploadable.swift; sourceTree = "<group>"; };
 		D9FD5B9D211579C60087A1BA /* MultipartUploadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartUploadable.swift; sourceTree = "<group>"; };
@@ -661,6 +666,7 @@
 				35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */,
 				357E335B201D12AE0093DCC5 /* RestofireValidation.swift */,
 				350428EE201C876800765D15 /* ArrayParameterEncoding.swift */,
+				D9B11B0221BE466F0084BED7 /* AnyResponseSerializer.swift */,
 			);
 			path = Alamofire;
 			sourceTree = "<group>";
@@ -1162,6 +1168,7 @@
 				358E8ED62020B776003048B3 /* Reachable.swift in Sources */,
 				35E6D36D1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F41CC61E52004840E1 /* RestofireRequest.swift in Sources */,
+				D9B11B0521BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */,
 				358E8ECC2020A484003048B3 /* Reachability.swift in Sources */,
 				D9FD5BB7211579C60087A1BA /* MultipartUploadable.swift in Sources */,
 				357E33A4201DC7180093DCC5 /* RequestOperation.swift in Sources */,
@@ -1205,6 +1212,7 @@
 				358E8ED52020B776003048B3 /* Reachable.swift in Sources */,
 				35E6D36E1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F51CC61E52004840E1 /* RestofireRequest.swift in Sources */,
+				D9B11B0421BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */,
 				358E8ECB2020A484003048B3 /* Reachability.swift in Sources */,
 				D9FD5BB6211579C60087A1BA /* MultipartUploadable.swift in Sources */,
 				357E33A3201DC7180093DCC5 /* RequestOperation.swift in Sources */,
@@ -1248,6 +1256,7 @@
 				35E6D36F1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				358E8ECD2020A484003048B3 /* Reachability.swift in Sources */,
 				357E335F201D12AE0093DCC5 /* RestofireValidation.swift in Sources */,
+				D9B11B0621BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */,
 				35C7D484201F0E9A00812349 /* ResponseSerializable.swift in Sources */,
 				D9FD5BB8211579C60087A1BA /* MultipartUploadable.swift in Sources */,
 				35E6D35B1CCBD5EF007ABC05 /* Authenticable.swift in Sources */,
@@ -1339,6 +1348,7 @@
 				358E8ED42020B776003048B3 /* Reachable.swift in Sources */,
 				35E6D36C1CCBEB90007ABC05 /* Retry.swift in Sources */,
 				35F4A5F31CC61E52004840E1 /* RestofireRequest.swift in Sources */,
+				D9B11B0321BE466F0084BED7 /* AnyResponseSerializer.swift in Sources */,
 				358E8ECA2020A484003048B3 /* Reachability.swift in Sources */,
 				D9FD5BB5211579C60087A1BA /* MultipartUploadable.swift in Sources */,
 				357E33A2201DC7180093DCC5 /* RequestOperation.swift in Sources */,

@@ -15,10 +15,10 @@ struct GithubLoginGETService: Requestable {
     
     typealias Response = Data
     var path: String? = "user"
-    var headers: [String : String]?
+    var headers: HTTPHeaders?
     
     init(user: String, password: String) {
-        self.headers = HTTPHeaders.authorization(username: user, password: password)
+        self.headers = [HTTPHeader.authorization(username: user, password: password)]
     }
     
 }

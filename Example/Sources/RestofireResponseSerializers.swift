@@ -15,8 +15,12 @@ extension Restofire.ResponseSerializable where Response: Decodable {
     public var responseSerializer: AnyResponseSerializer<Result<Response>> {
         return AnyResponseSerializer<Result<Response>>.init(
             dataSerializer: { (request, response, data, error) -> Result<Response> in
-                return Result { try JSONDecodableResponseSerializer<Response>()
-                    .serialize(request: request, response: response, data: data, error: error) }
+                return Result { try DecodableResponseSerializer<Response>()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
             }
         )
     }

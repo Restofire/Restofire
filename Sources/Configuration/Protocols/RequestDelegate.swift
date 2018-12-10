@@ -46,13 +46,13 @@ extension RequestDelegate {
     }
 
     /// `No-op`
-    func willSend<R: Requestable>(_ request: inout DataRequest, requestable: R) {}
+    public func willSend<R: Requestable>(_ request: inout DataRequest, requestable: R) {}
     
     /// `No-op`
-    func willSend<R: Downloadable>(_ request: inout DownloadRequest, requestable: R) {}
+    public func willSend<R: Downloadable>(_ request: inout DownloadRequest, requestable: R) {}
     
     /// `No-op`
-    func willSend<R: Uploadable>(_ request: inout UploadRequest, requestable: R) {}
+    public func willSend<R: Uploadable>(_ request: inout UploadRequest, requestable: R) {}
     
     /// `No-op`
     public func didSend<R: _Requestable>(_ request: Request, requestable: R) {}

@@ -47,9 +47,6 @@ public struct Configuration {
     /// The request delegates. `empty` by default.
     public var requestDelegates: [RequestDelegate] = []
     
-    /// The request operation queue.
-    public var operationQueue: OperationQueue = OperationQueue()
-    
     /// The request operation queue priority. `normal` by default.
     public var operationQueuePriority: Operation.QueuePriority = .normal
     

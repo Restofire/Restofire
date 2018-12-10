@@ -93,6 +93,8 @@ public extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object.
     ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
@@ -100,14 +102,12 @@ public extension Downloadable {
     @discardableResult
     public func operation(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
         let request = try self.asRequest()
         return operation(
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
     }
@@ -115,6 +115,8 @@ public extension Downloadable {
     /// Creates a `DownloadOperation` for the specified `Requestable` object.
     ///
     /// - parameter request: A data request instance
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
@@ -122,13 +124,13 @@ public extension Downloadable {
     public func operation(
         request: @autoclosure @escaping () -> DownloadRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil, completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) -> DownloadOperation<Self> {
         let downloadOperation = DownloadOperation(
             downloadable: self,
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler, completionHandler: completionHandler
+            completionHandler: completionHandler
         )
         downloadOperation.queuePriority = priority
         return downloadOperation
@@ -137,6 +139,8 @@ public extension Downloadable {
     /// Creates a `DownloadOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the download
     ///                                has finished. `nil` by default.
     ///
@@ -144,14 +148,12 @@ public extension Downloadable {
     @discardableResult
     public func execute(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
         let request = try self.asRequest()
         return execute(
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
     }
@@ -160,6 +162,8 @@ public extension Downloadable {
     /// asynchronously executes it.
     ///
     /// - parameter request: A download request instance
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the download
     ///                                has finished. `nil` by default.
     ///
@@ -168,13 +172,11 @@ public extension Downloadable {
     public func execute(
         request: @autoclosure @escaping () -> DownloadRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) -> DownloadOperation<Self> {
         let downloadOperation = operation(
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
         downloadQueue.addOperation(downloadOperation)

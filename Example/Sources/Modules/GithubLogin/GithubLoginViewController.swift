@@ -59,7 +59,9 @@ extension GithubLoginViewController {
         
         let op = GithubLoginGETService(user: email, password: password)
         do {
-            try op.execute()
+            try op.execute(completionHandler: { [weak self] response in
+                self?.performReposSegue()
+            })
         } catch {
             fatalError(error.localizedDescription)
         }

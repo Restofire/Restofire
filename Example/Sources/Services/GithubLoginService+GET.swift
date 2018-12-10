@@ -13,7 +13,7 @@ import Alamofire
 
 struct GithubLoginGETService: Requestable {
     
-    typealias Response = Data
+    typealias Response = Any
     var path: String? = "user"
     var headers: HTTPHeaders?
     

@@ -76,16 +76,11 @@ open class AOperation<R: _Requestable>: Operation {
     @objc func executeRequest() {
         request = requestClosure()
         switch requestType {
-        case .data, .upload:
+        case .data:
             let request = self.request as! DataRequest
             request
                 .downloadProgress(queue: _requestable.downloadProgressQueue) { [unowned self] progress in
-                    self._requestable.didProgressDownload(request, requestable: self._requestable, progress: progress)
                     self.downloadProgressHandler?(progress)
-                }
-                .uploadProgress(queue: _requestable.uploadProgressQueue) { [unowned self] progress in
-                    self._requestable.didProgressUpload(request, requestable: self._requestable, progress: progress)
-                    self.uploadProgressHandler?(progress)
                 }
                 .response { [unowned self] in
                     if $0.error != nil {
@@ -98,12 +93,7 @@ open class AOperation<R: _Requestable>: Operation {
             let request = self.request as! DownloadRequest
             request
                 .downloadProgress(queue: _requestable.downloadProgressQueue) { [unowned self] progress in
-                    self._requestable.didProgressDownload(request, requestable: self._requestable, progress: progress)
                     self.downloadProgressHandler?(progress)
-                }
-                .uploadProgress(queue: _requestable.uploadProgressQueue) { [unowned self] progress in
-                    self._requestable.didProgressUpload(request, requestable: self._requestable, progress: progress)
-                    self.uploadProgressHandler?(progress)
                 }
                 .response { [unowned self] in
                     if $0.error != nil {
@@ -112,6 +102,19 @@ open class AOperation<R: _Requestable>: Operation {
                         self.handleDownloadResponseIfNeeded($0)
                     }
                 }
+        case .upload:
+            let request = self.request as! DataRequest
+            request
+                .uploadProgress(queue: _requestable.uploadProgressQueue) { [unowned self] progress in
+                    self.uploadProgressHandler?(progress)
+                }
+                .response { [unowned self] in
+                    if $0.error != nil {
+                        self.handleDataRequestError($0)
+                    } else {
+                        self.handleDataResponseIfNeeded($0)
+                    }
+            }
         }
         request.logIfNeeded()
     }

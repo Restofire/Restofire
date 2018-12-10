@@ -13,19 +13,19 @@ import Alamofire
 public protocol RequestDelegate {
     
     /// Called to modify a request before sending.
-    func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest
+    func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest
     
     /// Called before the request is sent over the network.
-    func willSend(dataRequest: inout DataRequest, requestable: _Requestable)
+    func willSend<R: Requestable>(_ request: inout DataRequest, requestable: R)
     
     /// Called before the request is sent over the network.
-    func willSend(downloadRequest: inout DownloadRequest, requestable: _Requestable)
+    func willSend<R: Downloadable>(_ request: inout DownloadRequest, requestable: R)
     
     /// Called before the request is sent over the network.
-    func willSend(uploadRequest: inout UploadRequest, requestable: _Requestable)
+    func willSend<R: Uploadable>(_ request: inout UploadRequest, requestable: R)
     
     /// Called when the request is sent over the network.
-    func didSend(_ request: Request, requestable: _Requestable)
+    func didSend<R: _Requestable>(_ request: Request, requestable: R)
     
     /// Called before the request calls its completion handler.
     func process<R: Requestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response>
@@ -41,21 +41,21 @@ public protocol RequestDelegate {
 extension RequestDelegate {
 
     /// `No-op`
-    public func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest {
+    public func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
         return request
     }
 
     /// `No-op`
-    func willSend(dataRequest: inout DataRequest, requestable: _Requestable) {}
+    func willSend<R: Requestable>(_ request: inout DataRequest, requestable: R) {}
     
     /// `No-op`
-    func willSend(downloadRequest: inout DownloadRequest, requestable: _Requestable) {}
+    func willSend<R: Downloadable>(_ request: inout DownloadRequest, requestable: R) {}
     
     /// `No-op`
-    func willSend(uploadRequest: inout UploadRequest, requestable: _Requestable) {}
+    func willSend<R: Uploadable>(_ request: inout UploadRequest, requestable: R) {}
     
     /// `No-op`
-    public func didSend(_ request: Request, requestable: _Requestable) {}
+    public func didSend<R: _Requestable>(_ request: Request, requestable: R) {}
     
     /// `No-op`
     public func process<R: Requestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response> {

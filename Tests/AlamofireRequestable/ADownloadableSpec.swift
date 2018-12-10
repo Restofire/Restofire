@@ -32,7 +32,7 @@ class ADownloadableSpec: BaseSpec {
                         self.destination = destination
                     }
                     
-                    func prepare(_ request: URLRequest, requestable: _Requestable) -> URLRequest {
+                    func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
                         var request = request
                         let header = HTTPHeader.authorization(username: "user", password: "password")
                         request.setValue(header.value, forHTTPHeaderField: header.name)
@@ -41,7 +41,7 @@ class ADownloadableSpec: BaseSpec {
                         return request
                     }
                     
-                    func didSend(_ request: Request, requestable: _Requestable) {
+                    func didSend<R: _Requestable>(_ request: Request, requestable: R) {
                         expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ADownloadableSpec.startDelegateCalled = true

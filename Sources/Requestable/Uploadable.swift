@@ -13,7 +13,7 @@ import Alamofire
 ///
 /// Instead implement FileUploadable, DataUploadable, StreamUploadable,
 /// AMultipartUplodable protocols.
-public protocol Uploadable: _Requestable, ResponseSerializable {
+public protocol Uploadable: _Requestable {
     
     /// The Alamofire upload request validation.
     var validationBlock: DataRequest.Validation? { get }

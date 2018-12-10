@@ -25,7 +25,7 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Downloadable: _Requestable, ResponseSerializable {
+public protocol Downloadable: _Requestable {
     
     /// The resume data.
     var resumeData: Data? { get }

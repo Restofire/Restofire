@@ -13,7 +13,7 @@ import Alamofire
 ///
 /// Instead implement Requestable, Downloadable, FileUploadable, DataUploadable, StreamUploadable,
 /// MultipartUplodable protocols.
-public protocol _Requestable: Configurable, RequestDelegate {
+public protocol _Requestable: Configurable, RequestDelegate, ResponseSerializable {
 
     /// The path relative to base URL.
     var path: String? { get }

@@ -126,25 +126,25 @@ class RestofireRequest {
         return request
     }
     
-    internal static func willSendDataRequest<R: _Requestable>(_ request: inout DataRequest, requestable: R) {
+    internal static func willSendDataRequest<R: Requestable>(_ request: inout DataRequest, requestable: R) {
         requestable.delegates.forEach {
-            $0.willSend(dataRequest: &request, requestable: requestable)
+            $0.willSend(&request, requestable: requestable)
         }
-        requestable.willSend(dataRequest: &request, requestable: requestable)
+        requestable.willSend(&request, requestable: requestable)
     }
     
-    internal static func willSendDownloadRequest<R: _Requestable>(_ request: inout DownloadRequest, requestable: R) {
+    internal static func willSendDownloadRequest<R: Downloadable>(_ request: inout DownloadRequest, requestable: R) {
         requestable.delegates.forEach {
-            $0.willSend(downloadRequest: &request, requestable: requestable)
+            $0.willSend(&request, requestable: requestable)
         }
-        requestable.willSend(downloadRequest: &request, requestable: requestable)
+        requestable.willSend(&request, requestable: requestable)
     }
     
-    internal static func willSendUploadRequest<R: _Requestable>(_ request: inout UploadRequest, requestable: R) {
+    internal static func willSendUploadRequest<R: Uploadable>(_ request: inout UploadRequest, requestable: R) {
         requestable.delegates.forEach {
-            $0.willSend(uploadRequest: &request, requestable: requestable)
+            $0.willSend(&request, requestable: requestable)
         }
-        requestable.willSend(uploadRequest: &request, requestable: requestable)
+        requestable.willSend(&request, requestable: requestable)
     }
     
     internal static func didSendRequest<R: _Requestable>(_ request: Request, requestable: R) {

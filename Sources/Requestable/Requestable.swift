@@ -20,7 +20,7 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Requestable: _Requestable, ResponseSerializable {
+public protocol Requestable: _Requestable {
 
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }

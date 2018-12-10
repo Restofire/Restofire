@@ -26,7 +26,6 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
     public init(
         uploadable: R,
         request: @escaping () -> UploadRequest,
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
         uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DataResponse<R.Response>) -> Void)?
     ) {
@@ -36,7 +35,6 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         super.init(
             requestable: uploadable,
             request: request,
-            downloadProgressHandler: downloadProgressHandler,
             uploadProgressHandler: uploadProgressHandler
         )
     }

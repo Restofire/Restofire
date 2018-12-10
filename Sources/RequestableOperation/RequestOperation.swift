@@ -27,7 +27,6 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         requestable: R,
         request: @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DataResponse<R.Response>) -> Void)?
     ) {
         self.requestable = requestable
@@ -36,8 +35,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         super.init(
             requestable: requestable,
             request: request,
-            downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler
+            downloadProgressHandler: downloadProgressHandler
         )
     }
     

@@ -72,6 +72,8 @@ public extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
@@ -79,14 +81,12 @@ public extension Requestable {
     @discardableResult
     public func operation(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
         let request = try self.asRequest()
         return operation(
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
     }
@@ -94,6 +94,8 @@ public extension Requestable {
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
     /// - parameter request: A data request instance
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
@@ -101,14 +103,12 @@ public extension Requestable {
     public func operation(
         request: @autoclosure @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) -> RequestOperation<Self> {
         let requestOperation = RequestOperation(
             requestable: self,
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
         requestOperation.queuePriority = priority
@@ -118,6 +118,8 @@ public extension Requestable {
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
@@ -125,14 +127,12 @@ public extension Requestable {
     @discardableResult
     public func execute(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
         let request = try self.asRequest()
         return execute(
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
     }
@@ -141,6 +141,8 @@ public extension Requestable {
     /// asynchronously executes it.
     ///
     /// - parameter request: A data request instance
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
@@ -149,13 +151,11 @@ public extension Requestable {
     public func execute(
         request: @autoclosure @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) -> RequestOperation<Self> {
         let requestOperation = operation(
             request: request,
             downloadProgressHandler: downloadProgressHandler,
-            uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
         requestQueue.addOperation(requestOperation)

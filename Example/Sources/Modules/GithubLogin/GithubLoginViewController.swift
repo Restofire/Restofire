@@ -57,7 +57,12 @@ extension GithubLoginViewController {
             return
         }
         
-        GithubLoginGETService(user: email, password: password).execute()
+        let op = GithubLoginGETService(user: email, password: password)
+        do {
+            try op.execute()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
 }

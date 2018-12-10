@@ -11,7 +11,7 @@ import UIKit
 class TableViewController: UITableViewController {
     
     var topView: UIView!
-    var _seperatorStyle: UITableViewCellSeparatorStyle!
+    var _seperatorStyle: UITableViewCell.SeparatorStyle!
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

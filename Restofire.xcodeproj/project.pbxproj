@@ -936,7 +936,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0940;
-				ORGANIZATIONNAME = AarKay;
+				ORGANIZATIONNAME = Restofire;
 				TargetAttributes = {
 					350061F11C7C33910078B589 = {
 						CreatedOnToolsVersion = 7.2;

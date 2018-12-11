@@ -3,7 +3,7 @@
 //  Restofire
 //
 //  Created by Rahul Katariya on 24/03/16.
-//  Copyright © 2016 AarKay. All rights reserved.
+//  Copyright © 2016 Restofire. All rights reserved.
 //
 
 import Foundation

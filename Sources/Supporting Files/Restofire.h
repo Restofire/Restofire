@@ -3,7 +3,7 @@
 //  Restofire
 //
 //  Created by Rahul Katariya on 07/11/15.
-//  Copyright © 2015 AarKay. All rights reserved.
+//  Copyright © 2015 Restofire. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

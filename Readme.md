@@ -36,9 +36,8 @@ Restofire is a protocol oriented networking client for [Alamofire](https://githu
 
 ## Requirements
 
-- iOS 8.0+ / Mac OS X 10.10+ / tvOS 9.0+ / watchOS 2.0+
-- Xcode 9
-- Swift 4
+- iOS 10.0+ / Mac OS X 10.12+ / tvOS 10.0+ / watchOS 3.0+
+- Xcode 10
 
 ## Installation
 
@@ -57,10 +56,10 @@ To integrate Restofire into your Xcode project using CocoaPods, specify it in yo
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 
-pod 'Restofire', '~> 4.0.0'
+pod 'Restofire', '~> 5.0.0.alpha.1'
 ```
 
 Then, run the following command:
@@ -86,7 +85,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 4.0.0
+github "Restofire/Restofire" ~> 5.0.0
 ```
 
 </details>
@@ -102,7 +101,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", .upToNextMajor(from: "4.0.0"))
+        .Package(url: "https://github.com/Restofire/Restofire.git", .upToNextMajor(from: "5.0.0"))
     ]
 )
 ```
@@ -278,10 +277,18 @@ By adding the following snippet in your project, All `Requestable` associatedTyp
 ```swift
 import Restofire
 
-extension Restofire.DataResponseSerializable where Response: Decodable {
+extension Restofire.ResponseSerializable where Response: Decodable {
 
-    public var responseSerializer: DataResponseSerializer<Response> {
-        return DataRequest.JSONDecodableResponseSerializer()
+    public var responseSerializer: AnyResponseSerializer<Result<Response>> {
+        return AnyResponseSerializer<Result<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                return Result { try DecodableResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+            })
     }
 
 }
@@ -294,10 +301,18 @@ By adding the following snippet in your project, All `Requestable` associatedTyp
 ```swift
 import Restofire
 
-extension Restofire.DataResponseSerializable where Response == Any {
+extension Restofire.ResponseSerializable where Response == Any {
 
-    public var responseSerializer: DataResponseSerializer<Response> {
-        return DataRequest.jsonResponseSerializer()
+    public var responseSerializer: AnyResponseSerializer<Result<Response>> {
+        return AnyResponseSerializer<Result<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                return Result { try JSONResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+            })
     }
 
 }

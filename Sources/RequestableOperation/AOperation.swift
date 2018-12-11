@@ -31,8 +31,10 @@ open class AOperation<R: _Requestable>: Operation {
                 self = .upload
             } else if let _ = request as? DownloadRequest {
                 self = .download
-            } else {
+            } else if let _ = request as? DataRequest {
                 self = .data
+            } else {
+                fatalError("Unsupported request type.")
             }
         }
     }
@@ -46,7 +48,7 @@ open class AOperation<R: _Requestable>: Operation {
     }()
     #endif
     
-    public init(
+    init(
         requestable: R,
         request: @escaping (() -> Request),
         downloadProgressHandler: ((Progress) -> Void)? = nil,

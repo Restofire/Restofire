@@ -14,7 +14,7 @@
     <a title="ResponseSerializable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (100% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (98% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,21 +31,27 @@
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Classes.html#/s:9Restofire30DataRequestEventuallyOperationC">DataRequestEventuallyOperation</a>
+                <a href="../Classes/AOperation.html">AOperation</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Classes/DataRequestOperation.html">DataRequestOperation</a>
+                <a href="../Classes/AnyResponseSerializer.html">AnyResponseSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DownloadOperation.html">DownloadOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestOperation.html">RequestOperation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UploadOperation.html">UploadOperation</a>
               </li>
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Global Variables.html">Global Variables</a>
+            <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:9Restofire20defaultConfigurationAA0C0Vv">defaultConfiguration</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Global Variables.html#/s:9Restofire29defaultRequestEventuallyQueueSo09OperationE0Cv">defaultRequestEventuallyQueue</a>
+                <a href="../Extensions/JSONEncoding.html">JSONEncoding</a>
               </li>
             </ul>
           </li>
@@ -53,13 +59,49 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols/ArrayParameterEncoding.html">ArrayParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Authenticable.html">Authenticable</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Configurable.html">Configurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/DataUploadable.html">DataUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Downloadable.html">Downloadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/FileUploadable.html">FileUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HighQueuePriortizable.html">HighQueuePriortizable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/LowQueuePriortizable.html">LowQueuePriortizable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/MultipartUploadable.html">MultipartUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/NormalQueuePriortizable.html">NormalQueuePriortizable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Pollable.html">Pollable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/QueuePriortizable.html">QueuePriortizable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Queueable.html">Queueable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Reachable.html">Reachable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RequestDelegate.html">RequestDelegate</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Protocols/Requestable.html">Requestable</a>
@@ -74,7 +116,22 @@
                 <a href="../Protocols/SessionManagable.html">SessionManagable</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Protocols/StreamUploadable.html">StreamUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Uploadable.html">Uploadable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Validatable.html">Validatable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VeryHighQueuePriortizable.html">VeryHighQueuePriortizable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/VeryLowQueuePriortizable.html">VeryLowQueuePriortizable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/_Requestable.html">_Requestable</a>
               </li>
             </ul>
           </li>
@@ -88,7 +145,19 @@
                 <a href="../Structs/Configuration.html">Configuration</a>
               </li>
               <li class="nav-group-task">
+                <a href="../Structs/Poll.html">Poll</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Queues.html">Queues</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Reachability.html">Reachability</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Structs/Retry.html">Retry</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Session.html">Session</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Structs/Validation.html">Validation</a>
@@ -103,36 +172,11 @@
             <h1>ResponseSerializable</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResponseSerializable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ResponseSerializable</span></code></pre>
 
                 </div>
               </div>
-            <p>Represents a <code>ResponseSerializable</code> that is associated with <code><a href="../Protocols/Configurable.html">Configurable</a></code>.
-<code>configuration.responseSerializer</code> by default.</p>
-<h3 id='create-custom-responseserializable' class='heading'>Create custom ResponseSerializable</h3>
-<pre class="highlight swift"><code><span class="kd">protocol</span> <span class="kt">HTTPBinResponseSerializable</span><span class="p">:</span> <span class="kt">ResponseSerializable</span> <span class="p">{</span> <span class="p">}</span>
-
-<span class="kd">extension</span> <span class="kt">HTTPBinResponseSerializable</span> <span class="p">{</span>
-
-  <span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Model</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">Request</span><span class="o">.</span><span class="nf">customResponseSerializer</span><span class="p">()</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
-<h3 id='using-the-above-responseserializable' class='heading'>Using the above ResponseSerializable</h3>
-<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">HTTPBinStringGETService</span><span class="p">:</span> <span class="kt">Requestable</span><span class="p">,</span> <span class="kt">HTTPBinResponseSerializable</span> <span class="p">{</span>
-
-  <span class="k">let</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"get"</span>
-  <span class="k">let</span> <span class="nv">encoding</span><span class="p">:</span> <span class="kt">ParameterEncoding</span> <span class="o">=</span> <span class="o">.</span><span class="kt">URLEncodedInURL</span>
-  <span class="k">var</span> <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span>
-
-  <span class="nf">init</span><span class="p">(</span><span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
-    <span class="k">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters</span>
-  <span class="p">}</span>
-
-<span class="p">}</span>
-</code></pre>
+            <p>Represents a <code>Alamofire.DataResponseSerializer</code> that is associated with <code><a href="../Protocols/Requestable.html">Requestable</a></code>.</p>
 
           </section>
           <section class="section task-group-section">
@@ -141,9 +185,36 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire20ResponseSerializableP04dataB10Serializer9Alamofire04DatabE0VyypGv"></a>
-                    <a name="//apple_ref/swift/Property/dataResponseSerializer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire20ResponseSerializableP04dataB10Serializer9Alamofire04DatabE0VyypGv">dataResponseSerializer</a>
+                    <a name="/s:9Restofire20ResponseSerializableP0B0Qa"></a>
+                    <a name="//apple_ref/swift/Alias/Response" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire20ResponseSerializableP0B0Qa">Response</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The response type.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">associatedtype</span> <span class="kt">Response</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/"></a>
+                    <a name="//apple_ref/swift/Property/responseSerializer" class="dashAnchor"></a>
+                    <a class="token" href="#/">responseSerializer</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -154,19 +225,54 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The <code>responseSerializer</code>.</p>
+                        <p>The data response serializer.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
                       <div class="default_impl abstract">
-                        <p><code>configuration.responseSerializer</code></p>
+                        <p><code>Alamofire.DataRequest.dataResponseSerializer()</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">dataResponseSerializer</span><span class="p">:</span> <span class="kt">Alamofire</span><span class="o">.</span><span class="kt">DataResponseSerializer</span><span class="o">&lt;</span><span class="kt">Any</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">responseSerializer</span><span class="p">:</span> <span class="kt"><a href="../Classes/AnyResponseSerializer.html">AnyResponseSerializer</a></span><span class="o">&lt;</span><span class="kt">Result</span><span class="o">&lt;</span><span class="kt"><a href="../Protocols/ResponseSerializable.html#/s:9Restofire20ResponseSerializableP0B0Qa">Response</a></span><span class="o">&gt;&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire20ResponseSerializableP7contextSDySSypGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/context" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire20ResponseSerializableP7contextSDySSypGSgvp">context</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>context.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>nil</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">context</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -178,8 +284,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2017-10-03)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.8.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-12-11)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

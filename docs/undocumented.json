@@ -1,78 +1,29 @@
 {
   "warnings": [
     {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
-      "line": 19,
-      "symbol": "RFMultipartFormDataEncodingResult.success",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
-      "line": 24,
-      "symbol": "RFMultipartFormDataEncodingResult.failure",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": null,
-      "symbol": "DataRequest",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": null,
-      "symbol": "DownloadRequest",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": null,
-      "symbol": "JSONEncoding",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": null,
-      "symbol": "Request",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/BaseRequestable/_Requestable.swift",
-      "line": 40,
-      "symbol": "_Requestable.urlRequest",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Configuration/Protocols/ResponseSerializable.swift",
-      "line": null,
-      "symbol": "_ResponseSerializable",
-      "symbol_kind": "source.lang.swift.decl.extension",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Configuration/Protocols/ResponseSerializable.swift",
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/AnyResponseSerializer.swift",
       "line": 11,
-      "symbol": "_ResponseSerializable",
-      "symbol_kind": "source.lang.swift.decl.protocol",
+      "symbol": "AnyResponseSerializer",
+      "symbol_kind": "source.lang.swift.decl.class",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
-      "line": 46,
-      "symbol": "AOperation.init(configurable:request:)",
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/AnyResponseSerializer.swift",
+      "line": 41,
+      "symbol": "AnyResponseSerializer.serialize(request:response:data:error:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/AnyResponseSerializer.swift",
+      "line": 45,
+      "symbol": "AnyResponseSerializer.serializeDownload(request:response:fileURL:error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/RequestableOperation/AOperation.swift",
-      "line": 91,
+      "line": 124,
       "symbol": "AOperation.copy()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

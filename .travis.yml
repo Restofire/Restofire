@@ -13,6 +13,7 @@ cache:
 
 before_install:
   - bundle install --path vendor/bundle
+  - bundle exec pod repo update
   - gem install xcpretty
   - brew update
   - brew outdated carthage || brew upgrade carthage

@@ -89,7 +89,7 @@ jobs:
       script: skip
       deploy:
         - provider: script
-          script: bundle exec pod trunk push
+          script: bundle exec pod trunk push --allow-warnings
           skip_cleanup: true
           on:
             tags: true

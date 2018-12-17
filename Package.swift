@@ -34,7 +34,7 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.0.0")
+            url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-beta.1"
         )
     ],
     targets: [

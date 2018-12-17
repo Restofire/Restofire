@@ -23,6 +23,15 @@
       location = "group:Cartfile.resolved">
    </FileRef>
    <FileRef
+      location = "group:Restofire.podspec">
+   </FileRef>
+   <FileRef
+      location = "group:Package@swift-3.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Package@swift-4.swift">
+   </FileRef>
+   <FileRef
       location = "group:Gemfile"
       assignedFileDataType = "public.ruby-script">
    </FileRef>
@@ -30,15 +39,18 @@
       location = "group:Gemfile.lock">
    </FileRef>
    <FileRef
+      location = "group:Dangerfile">
+   </FileRef>
+   <FileRef
+      location = "group:CODE_OF_CONDUCT.md">
+   </FileRef>
+   <FileRef
+      location = "group:CONTRIBUTING.md">
+   </FileRef>
+   <FileRef
       location = "group:LICENSE">
    </FileRef>
    <FileRef
-      location = "group:Package.swift">
-   </FileRef>
-   <FileRef
       location = "group:Readme.md">
-   </FileRef>
-   <FileRef
-      location = "group:Restofire.podspec">
    </FileRef>
 </Workspace>

@@ -85,7 +85,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 5.0.0
+github "Restofire/Restofire" ~> 5.0.0-alpha.1
 ```
 
 </details>

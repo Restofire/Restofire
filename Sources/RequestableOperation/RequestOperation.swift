@@ -14,7 +14,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
     
     let requestable: R
     let dataRequest: () -> DataRequest
-    let completionHandler: ((DataResponse<R.Response>) -> Void)?
+    let completionHandler: ((R.Response?, DataResponse<R.Response>) -> Void)?
     
     /// Intializes an request operation.
     ///
@@ -27,7 +27,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         requestable: R,
         request: @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((DataResponse<R.Response>) -> Void)?
+        completionHandler: ((R.Response?, DataResponse<R.Response>) -> Void)?
     ) {
         self.requestable = requestable
         self.dataRequest = request
@@ -49,7 +49,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         res = requestable.process(request, requestable: requestable, response: res)
         
         requestable.callbackQueue.async {
-            self.completionHandler?(res)
+            self.completionHandler?(res.value, res)
         }
         
         switch res.result {

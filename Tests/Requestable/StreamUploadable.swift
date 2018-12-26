@@ -71,7 +71,7 @@ class StreamUploadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute { response in
+                        let operation = try service.execute { value, response in
                             
                             defer { callbacks = callbacks + 1 }
                             

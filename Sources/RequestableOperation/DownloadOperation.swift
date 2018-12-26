@@ -14,7 +14,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
     
     let downloadable: R
     let downloadRequest: () -> DownloadRequest
-    let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
+    let completionHandler: ((R.Response?, DownloadResponse<R.Response>) -> Void)?
     
     /// Intializes an download operation.
     ///
@@ -27,7 +27,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         downloadable: R,
         request: @escaping (() -> DownloadRequest),
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((DownloadResponse<R.Response>) -> Void)?
+        completionHandler: ((R.Response?, DownloadResponse<R.Response>) -> Void)?
     ) {
         self.downloadable = downloadable
         self.downloadRequest = request
@@ -49,7 +49,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         res = downloadable.process(request, requestable: downloadable, response: res)
 
         downloadable.callbackQueue.async {
-            self.completionHandler?(res)
+            self.completionHandler?(res.value, res)
         }
         
         switch res.result {

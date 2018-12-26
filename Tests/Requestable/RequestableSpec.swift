@@ -87,7 +87,7 @@ class RequestableSpec: BaseSpec {
                     do {
                         let operation = try service.execute(downloadProgressHandler: { progress in
                             downloadProgressValues.append(progress.fractionCompleted)
-                        }) { response in
+                        }) { value, response in
                             
                             defer { callbacks = callbacks + 1 }
                             

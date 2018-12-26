@@ -29,7 +29,7 @@ class ResponseSerializerSpec: BaseSpec {
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     do {
-                        try service.execute { response in
+                        try service.execute { value, response in
                             defer { done() }
                             
                             // Then
@@ -68,7 +68,7 @@ class ResponseSerializerSpec: BaseSpec {
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     do {
-                        try service.execute { response in
+                        try service.execute { value, response in
                             defer { done() }
                             
                             // Then
@@ -117,7 +117,7 @@ class ResponseSerializerSpec: BaseSpec {
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     do {
-                        try service.execute { response in
+                        try service.execute { value, response in
                             defer { done() }
                             
                             // Then

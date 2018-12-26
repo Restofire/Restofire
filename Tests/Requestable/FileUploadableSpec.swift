@@ -84,7 +84,7 @@ class FileUploadableSpec: BaseSpec {
                     do {
                         let operation = try service.execute(uploadProgressHandler: { progress in
                             uploadProgressValues.append(progress.fractionCompleted)
-                        }) { response in
+                        }) { value, response in
                             
                             defer { callbacks = callbacks + 1 }
                             

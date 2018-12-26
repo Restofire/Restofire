@@ -233,7 +233,7 @@ class ViewController: UITableViewController {
 
     func getReviews() {
         requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).execute() {
-            if let value = $0.result.value {
+            if let value = $0 {
                 self.movieReviews = value
             }
         }

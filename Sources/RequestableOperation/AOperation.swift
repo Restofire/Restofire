@@ -90,6 +90,7 @@ open class AOperation<R: _Requestable>: Operation {
                     } else {
                         self.handleDataResponseIfNeeded($0)
                     }
+                    request.logDataRequestIfNeeded(result: $0)
                 }
         case .download:
             let request = self.request as! DownloadRequest
@@ -103,6 +104,7 @@ open class AOperation<R: _Requestable>: Operation {
                     } else {
                         self.handleDownloadResponseIfNeeded($0)
                     }
+                    request.logDownloadRequestIfNeeded(result: $0)
                 }
         case .upload:
             let request = self.request as! DataRequest
@@ -116,9 +118,10 @@ open class AOperation<R: _Requestable>: Operation {
                     } else {
                         self.handleDataResponseIfNeeded($0)
                     }
+                    request.logDataRequestIfNeeded(result: $0)
             }
         }
-        request.logIfNeeded()
+        request.logRequestIfNeeded()
     }
     
     open func copy() -> AOperation {

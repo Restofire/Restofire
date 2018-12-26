@@ -108,6 +108,7 @@ class MultipartUploadableSpec: BaseSpec {
                                 fail("Response status code should be 200")
                             }
                             
+                            expect(value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

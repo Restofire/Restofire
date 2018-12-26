@@ -33,6 +33,7 @@ class ResponseSerializerSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
+                            expect(value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())
@@ -72,6 +73,7 @@ class ResponseSerializerSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
+                            expect(value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())
@@ -121,6 +123,7 @@ class ResponseSerializerSpec: BaseSpec {
                             defer { done() }
                             
                             // Then
+                            expect(value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

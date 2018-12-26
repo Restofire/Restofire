@@ -76,6 +76,7 @@ class StreamUploadableSpec: BaseSpec {
                             defer { callbacks = callbacks + 1 }
                             
                             // Then
+                            expect(value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

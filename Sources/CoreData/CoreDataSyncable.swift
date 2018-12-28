@@ -27,18 +27,18 @@ extension CoreDataSyncable {
             if let result = result {
                 self.context.perform {
                     if let error = self.map(model: result) {
-                        completion(error)
+                        DispatchQueue.main.async { completion(error) }
                     } else {
                         do {
                             try self.context.save()
                         } catch {
-                            completion(error)
+                            DispatchQueue.main.async { completion(error) }
                         }
-                        completion(nil)
+                        DispatchQueue.main.async { completion(nil) }
                     }
                 }
             } else {
-                completion(response.error!)
+                DispatchQueue.main.async { completion(response.error!) }
             }
         }
     }

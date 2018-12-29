@@ -22,24 +22,28 @@ protocol CoreDataSyncable {
 
 extension CoreDataSyncable {
     
-    func sync(completion: @escaping (Error?) -> ()) throws {
-        try request().execute { result, response in
-            if let result = result {
-                self.context.perform {
-                    if let error = self.map(model: result) {
-                        DispatchQueue.main.async { completion(error) }
-                    } else {
-                        do {
-                            try self.context.save()
-                        } catch {
+    func sync(completion: @escaping (Error?) -> ()) {
+        do {
+            try request().execute { result, response in
+                if let result = result {
+                    self.context.perform {
+                        if let error = self.map(model: result) {
                             DispatchQueue.main.async { completion(error) }
+                        } else {
+                            do {
+                                try self.context.save()
+                            } catch {
+                                DispatchQueue.main.async { completion(error) }
+                            }
+                            DispatchQueue.main.async { completion(nil) }
                         }
-                        DispatchQueue.main.async { completion(nil) }
                     }
+                } else {
+                    DispatchQueue.main.async { completion(response.error!) }
                 }
-            } else {
-                DispatchQueue.main.async { completion(response.error!) }
             }
+        } catch {
+            DispatchQueue.main.async { completion(error) }
         }
     }
     

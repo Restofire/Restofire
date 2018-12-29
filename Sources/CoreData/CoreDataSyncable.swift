@@ -16,7 +16,7 @@ protocol CoreDataSyncable {
     var context: NSManagedObjectContext { get }
     
     func request() -> Request
-    func map(model: Response) -> Error?
+    func insert(model: Response) -> Error?
     
 }
 
@@ -27,7 +27,7 @@ extension CoreDataSyncable {
             try request().execute { result, response in
                 if let result = result {
                     self.context.perform {
-                        if let error = self.map(model: result) {
+                        if let error = self.insert(model: result) {
                             DispatchQueue.main.async { completion(error) }
                         } else {
                             do {

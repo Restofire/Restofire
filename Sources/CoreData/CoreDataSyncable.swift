@@ -3,47 +3,47 @@
 //  Restofire
 //
 //  Created by RahulKatariya on 27/12/18.
-//  Copyright © 2018 Restofire. All rights reserved.
+//  Copyright © 2018 RahulKatariya. All rights reserved.
 //
 
 import CoreData
 
-protocol CoreDataSyncable {
-    
-    associatedtype Response
-    associatedtype Request: Requestable where Request.Response == Response
-    
+public protocol CoreDataSyncable: Syncable {
     var context: NSManagedObjectContext { get }
-    
-    func request() -> Request
-    func insert(model: Response) -> Error?
-    
 }
 
 extension CoreDataSyncable {
     
-    func sync(completion: @escaping (Error?) -> ()) {
-        do {
-            try request().execute { result, response in
-                if let result = result {
-                    self.context.perform {
-                        if let error = self.insert(model: result) {
-                            DispatchQueue.main.async { completion(error) }
-                        } else {
+    public func sync(completion: ((Error?) -> ())? = nil) {
+        self.context.perform {
+            do {
+                try self.shouldSync() { flag in
+                    guard flag else {
+                        DispatchQueue.main.async { completion?(nil) }
+                        return
+                    }
+                    try self.request().execute { result, response in
+                        guard let result = result else {
+                            DispatchQueue.main.async { completion?(response.error!) }
+                            return
+                        }
+                        self.context.perform {
                             do {
-                                try self.context.save()
+                                try self.insert(model: result) {
+                                    try self.context.performAndWait {
+                                        try self.context.save()
+                                    }
+                                    DispatchQueue.main.async { completion?(nil) }
+                                }
                             } catch {
-                                DispatchQueue.main.async { completion(error) }
+                                DispatchQueue.main.async { completion?(error) }
                             }
-                            DispatchQueue.main.async { completion(nil) }
                         }
                     }
-                } else {
-                    DispatchQueue.main.async { completion(response.error!) }
                 }
+            } catch {
+                DispatchQueue.main.async { completion?(error) }
             }
-        } catch {
-            DispatchQueue.main.async { completion(error) }
         }
     }
     

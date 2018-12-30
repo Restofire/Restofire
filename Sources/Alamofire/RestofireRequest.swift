@@ -16,13 +16,9 @@ class RestofireRequest {
         var request = requestable.session.request(urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendDataRequest(&request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        willSendDataRequest(&request, requestable: requestable)
+        request.resume()
+        didSendRequest(request, requestable: requestable)
         return request
     }
 
@@ -36,13 +32,9 @@ class RestofireRequest {
         }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendDownloadRequest(&request, requestable: requestable)
-                request.resume()
-                didSendDownloadRequest(request, requestable: requestable)
-            }
-        }
+        willSendDownloadRequest(&request, requestable: requestable)
+        request.resume()
+        didSendDownloadRequest(request, requestable: requestable)
         return request
     }
 
@@ -51,13 +43,9 @@ class RestofireRequest {
         var request = requestable.session.upload(requestable.url, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendUploadRequest(&request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        willSendUploadRequest(&request, requestable: requestable)
+        request.resume()
+        didSendRequest(request, requestable: requestable)
         return request
     }
 
@@ -66,13 +54,9 @@ class RestofireRequest {
         var request = requestable.session.upload(requestable.data, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendUploadRequest(&request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        willSendUploadRequest(&request, requestable: requestable)
+        request.resume()
+        didSendRequest(request, requestable: requestable)
         return request
     }
 
@@ -81,13 +65,9 @@ class RestofireRequest {
         var request = requestable.session.upload(requestable.stream, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendUploadRequest(&request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        willSendUploadRequest(&request, requestable: requestable)
+        request.resume()
+        didSendRequest(request, requestable: requestable)
         return request
     }
 
@@ -100,13 +80,9 @@ class RestofireRequest {
         )
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendUploadRequest(&request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        willSendUploadRequest(&request, requestable: requestable)
+        request.resume()
+        didSendRequest(request, requestable: requestable)
         return request
     }
 

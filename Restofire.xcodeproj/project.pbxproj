@@ -180,6 +180,10 @@
 		D93BFF3621150F43009FE9DC /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724C72021A1D700FD36E6 /* Uploadable.swift */; };
 		D93BFF3721150F43009FE9DC /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724C72021A1D700FD36E6 /* Uploadable.swift */; };
 		D93BFF3821150F44009FE9DC /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359724C72021A1D700FD36E6 /* Uploadable.swift */; };
+		D951356D21D95AA50084F702 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951356C21D95AA50084F702 /* Syncable.swift */; };
+		D951356E21D95AA50084F702 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951356C21D95AA50084F702 /* Syncable.swift */; };
+		D951356F21D95AA50084F702 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951356C21D95AA50084F702 /* Syncable.swift */; };
+		D951357021D95AA50084F702 /* Syncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951356C21D95AA50084F702 /* Syncable.swift */; };
 		D97E6D1221BEB5C400A302F1 /* Queues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E6D1121BEB5C400A302F1 /* Queues.swift */; };
 		D97E6D1321BEB5C400A302F1 /* Queues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E6D1121BEB5C400A302F1 /* Queues.swift */; };
 		D97E6D1421BEB5C400A302F1 /* Queues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97E6D1121BEB5C400A302F1 /* Queues.swift */; };
@@ -438,6 +442,7 @@
 		35E6D3661CCBE061007ABC05 /* Retryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retryable.swift; sourceTree = "<group>"; };
 		35E6D36B1CCBEB90007ABC05 /* Retry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retry.swift; sourceTree = "<group>"; };
 		35F4A5F21CC61E52004840E1 /* RestofireRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestofireRequest.swift; sourceTree = "<group>"; };
+		D951356C21D95AA50084F702 /* Syncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syncable.swift; sourceTree = "<group>"; };
 		D97E6D1121BEB5C400A302F1 /* Queues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queues.swift; sourceTree = "<group>"; };
 		D989DD0221D5322600BD7771 /* CoreDataSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSyncable.swift; sourceTree = "<group>"; };
 		D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueuePriortizable.swift; sourceTree = "<group>"; };
@@ -576,6 +581,7 @@
 				351537362028441300165E83 /* RequestDelegate.swift */,
 				D9A72DDC212C6B2E00BDE067 /* QueuePriortizable.swift */,
 				D9B11A8521BD407A0084BED7 /* Pollable.swift */,
+				D951356C21D95AA50084F702 /* Syncable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1167,6 +1173,7 @@
 				357E3406201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7A1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				D9FD5BAB211579C60087A1BA /* _Requestable.swift in Sources */,
+				D951356F21D95AA50084F702 /* Syncable.swift in Sources */,
 				D9B11A9121BD40A20084BED7 /* Poll.swift in Sources */,
 				351537392028441300165E83 /* RequestDelegate.swift in Sources */,
 				35E6D3631CCBD75A007ABC05 /* Authentication.swift in Sources */,
@@ -1213,6 +1220,7 @@
 				357E3405201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA7B1D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				D9FD5BAA211579C60087A1BA /* _Requestable.swift in Sources */,
+				D951356E21D95AA50084F702 /* Syncable.swift in Sources */,
 				D9B11A9021BD40A20084BED7 /* Poll.swift in Sources */,
 				351537382028441300165E83 /* RequestDelegate.swift in Sources */,
 				35E6D3641CCBD75A007ABC05 /* Authentication.swift in Sources */,
@@ -1259,6 +1267,7 @@
 				3594EB7A2021E4FB006FFA6A /* NetworkReachability.swift in Sources */,
 				D9FD5BAC211579C60087A1BA /* _Requestable.swift in Sources */,
 				D9B11A9221BD40A20084BED7 /* Poll.swift in Sources */,
+				D951357021D95AA50084F702 /* Syncable.swift in Sources */,
 				35E6D3651CCBD75A007ABC05 /* Authentication.swift in Sources */,
 				3594EB7B2021E4FB006FFA6A /* RequestOperation.swift in Sources */,
 				3515373A2028441300165E83 /* RequestDelegate.swift in Sources */,
@@ -1339,6 +1348,7 @@
 				357E3404201DDE310093DCC5 /* Session.swift in Sources */,
 				3593CA791D8C6B5000075A15 /* SessionManagable.swift in Sources */,
 				D9FD5BA9211579C60087A1BA /* _Requestable.swift in Sources */,
+				D951356D21D95AA50084F702 /* Syncable.swift in Sources */,
 				D9B11A8F21BD40A20084BED7 /* Poll.swift in Sources */,
 				351537372028441300165E83 /* RequestDelegate.swift in Sources */,
 				35E6D3621CCBD75A007ABC05 /* Authentication.swift in Sources */,

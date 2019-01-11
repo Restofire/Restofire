@@ -30,10 +30,14 @@ extension CoreDataSyncable {
                         self.context.perform {
                             do {
                                 try self.insert(model: result) {
-                                    try self.context.performAndWait {
-                                        try self.context.save()
+                                    self.context.perform {
+                                        do {
+                                            try self.context.save()
+                                            DispatchQueue.main.async { completion?(nil) }
+                                        } catch {
+                                            DispatchQueue.main.async { completion?(error) }
+                                        }
                                     }
-                                    DispatchQueue.main.async { completion?(nil) }
                                 }
                             } catch {
                                 DispatchQueue.main.async { completion?(error) }

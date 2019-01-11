@@ -3,7 +3,7 @@
 //  Restofire
 //
 //  Created by RahulKatariya on 27/12/18.
-//  Copyright © 2018 RahulKatariya. All rights reserved.
+//  Copyright © 2018 Restofire. All rights reserved.
 //
 
 import CoreData

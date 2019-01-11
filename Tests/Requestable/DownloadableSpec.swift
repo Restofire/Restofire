@@ -52,9 +52,9 @@ class DownloadableSpec: BaseSpec {
                             return request
                         }
                         
-                        func didSend<R: _Requestable>(_ request: Request, requestable: R) {
-                            expect(request.request?.value(forHTTPHeaderField: "Authorization")!)
-                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+                        func willSend<R: _Requestable>(_ request: Request, requestable: R) {
+                            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
+                            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                             DownloadableSpec.startDelegateCalled = true
                         }
                         

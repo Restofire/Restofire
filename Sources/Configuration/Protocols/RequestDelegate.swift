@@ -16,13 +16,7 @@ public protocol RequestDelegate {
     func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest
     
     /// Called before the request is sent over the network.
-    func willSend<R: Requestable>(_ request: inout DataRequest, requestable: R)
-    
-    /// Called before the request is sent over the network.
-    func willSend<R: Downloadable>(_ request: inout DownloadRequest, requestable: R)
-    
-    /// Called before the request is sent over the network.
-    func willSend<R: Uploadable>(_ request: inout UploadRequest, requestable: R)
+    func willSend<R: _Requestable>(_ request: Request, requestable: R)
     
     /// Called when the request is sent over the network.
     func didSend<R: _Requestable>(_ request: Request, requestable: R)
@@ -39,20 +33,14 @@ public protocol RequestDelegate {
 }
 
 extension RequestDelegate {
-
+    
     /// `No-op`
     public func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
         return request
     }
-
-    /// `No-op`
-    public func willSend<R: Requestable>(_ request: inout DataRequest, requestable: R) {}
     
     /// `No-op`
-    public func willSend<R: Downloadable>(_ request: inout DownloadRequest, requestable: R) {}
-    
-    /// `No-op`
-    public func willSend<R: Uploadable>(_ request: inout UploadRequest, requestable: R) {}
+    public func willSend<R: _Requestable>(_ request: Request, requestable: R) {}
     
     /// `No-op`
     public func didSend<R: _Requestable>(_ request: Request, requestable: R) {}

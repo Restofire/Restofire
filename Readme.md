@@ -59,7 +59,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'Restofire', '~> 5.0.0-alpha.2'
+pod 'Restofire', '~> 5.0.0-alpha.3'
 ```
 
 Then, run the following command:
@@ -85,7 +85,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 5.0.0-alpha.2
+github "Restofire/Restofire" ~> 5.0.0-alpha.3
 ```
 
 </details>
@@ -101,7 +101,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", from: "5.0.0-alpha.2")
+        .Package(url: "https://github.com/Restofire/Restofire.git", from: "5.0.0-alpha.3")
     ]
 )
 ```

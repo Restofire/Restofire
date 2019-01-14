@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
  s.name = 'Restofire'
- s.version = '5.0.0-alpha.2'
+ s.version = '5.0.0-alpha.3'
  s.license = { :type => "MIT", :file => "LICENSE" }
  s.summary = 'Restofire is a protocol oriented networking client for Alamofire.'
  s.description = 'Restofire is a protocol oriented networking client for Alamofire.'

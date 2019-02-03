@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A Validation for RESTful Services.
 ///

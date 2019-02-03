@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// An NSOperation that executes the `Requestable` asynchronously.
 public class RequestOperation<R: Requestable>: NetworkOperation<R> {

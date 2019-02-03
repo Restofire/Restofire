@@ -7,21 +7,20 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Alamofire.Session` that is associated with `Requestable`.
 public protocol SessionManagable {
     
     /// The `session`.
-    var session: Alamofire.Session { get }
+    var session: Session { get }
     
 }
 
 public extension SessionManagable where Self: Configurable {
     
     /// `Session.default`
-    public var session: Alamofire.Session {
-        return Session.default.session
+    public var session: Session {
+        return SessionManager.default.session
     }
     
 }

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Alamofire.DataResponseSerializer` that is associated with `Requestable`.
 public protocol ResponseSerializable {
@@ -22,7 +21,6 @@ public protocol ResponseSerializable {
     var context: [String: Any]? { get }
     
 }
-
 
 public extension ResponseSerializable {
     

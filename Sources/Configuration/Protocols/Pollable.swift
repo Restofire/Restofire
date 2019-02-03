@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Pollable` that is associated with `Requestable`.
 public protocol Pollable {

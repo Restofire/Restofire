@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A Configuration for RESTful Services. You must provide a `host`.
 ///

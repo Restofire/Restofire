@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Validation` that is associated with `Requestable`.
 public protocol Validatable {

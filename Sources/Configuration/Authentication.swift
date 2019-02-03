@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// An Authentication for RESTful Services.
 ///

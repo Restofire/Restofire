@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A Retry for RESTful Services.
 ///

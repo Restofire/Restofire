@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// An NSOperation that executes the `Downloadable` asynchronously.
 public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {

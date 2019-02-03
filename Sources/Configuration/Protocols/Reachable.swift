@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Reachability` that is associated with `Requestable`.
 public protocol Reachable {

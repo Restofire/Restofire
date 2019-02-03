@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// An NSOperation that executes the `Uploadable` asynchronously.
 public class UploadOperation<R: Uploadable>: NetworkOperation<R> {

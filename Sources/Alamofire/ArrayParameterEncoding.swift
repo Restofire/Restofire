@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A type used to define how a set of array parameters are applied to a `URLRequest`.
 public protocol ArrayParameterEncoding {

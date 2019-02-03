@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `MultipartUploadable` for Alamofire.
 ///

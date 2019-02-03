@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// Represents a `Configurable` for Alamofire Services.
 /// `Configuration.default` by default.

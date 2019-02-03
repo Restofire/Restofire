@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A Reachability for RESTful Services.
 ///

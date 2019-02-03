@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 /// An NSOperation base class for all request operations
 open class NetworkOperation<R: _Requestable>: Operation {

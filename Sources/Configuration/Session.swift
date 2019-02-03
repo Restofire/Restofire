@@ -17,16 +17,16 @@ import Alamofire
 ///     sessionConfiguration.timeoutIntervalForRequest = 7
 ///     sessionConfiguration.timeoutIntervalForResource = 7
 ///     sessionConfiguration.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-///     return Alamofire.Session(configuration: sessionConfiguration)
+///     return Session(configuration: sessionConfiguration)
 /// }
 /// ```
-public struct Session {
+public struct SessionManager {
     
     /// The default session manager.
-    public static var `default` = Session()
+    public static var `default` = SessionManager()
 
     /// The Alamofire Session. `Alamofire.Session(startRequestsImmediately: false)` by default.
-    public var session = Alamofire.Session(startRequestsImmediately: false)
+    public var session = Session(startRequestsImmediately: false)
     
     /// `Session` Intializer
     ///

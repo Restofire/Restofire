@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 
 /// An NSOperation that executes the `Downloadable` asynchronously.
-public class DownloadOperation<R: Downloadable>: AOperation<R> {
+public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
     
     let downloadable: R
     let downloadRequest: () -> DownloadRequest
-    let completionHandler: ((R.Response?, DownloadResponse<R.Response>) -> Void)?
+    let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
     /// Intializes an download operation.
     ///
@@ -27,7 +27,7 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         downloadable: R,
         request: @escaping (() -> DownloadRequest),
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((R.Response?, DownloadResponse<R.Response>) -> Void)?
+        completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     ) {
         self.downloadable = downloadable
         self.downloadRequest = request
@@ -48,8 +48,8 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
         }
         res = downloadable.process(request, requestable: downloadable, response: res)
 
-        downloadable.callbackQueue.async {
-            self.completionHandler?(res.value, res)
+        downloadable.completionQueue.async {
+            self.completionHandler?(res)
         }
         
         switch res.result {
@@ -93,13 +93,12 @@ public class DownloadOperation<R: Downloadable>: AOperation<R> {
     }
     
     /// Creates a copy of self
-    open override func copy() -> AOperation<R> {
+    open override func copy() -> NetworkOperation<R> {
         let operation = DownloadOperation(
             downloadable: downloadable,
             request: downloadRequest,
             completionHandler: completionHandler
         )
-        operation.queuePriority = downloadable.priority
         return operation
     }
     

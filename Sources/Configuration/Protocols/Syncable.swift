@@ -22,29 +22,33 @@ extension Syncable {
         try completion(true)
     }
     
-    public func sync(completion: ((Error?) -> ())? = nil) {
+    public func sync(
+        completionQueue: DispatchQueue = .main,
+        completion: ((Error?) -> ())? = nil
+    ) {
         do {
             try self.shouldSync() { flag in
                 guard flag else {
-                    DispatchQueue.main.async { completion?(nil) }
+                    completionQueue.async { completion?(nil) }
                     return
                 }
-                try self.request.execute { result, response in
-                    guard let result = result else {
-                        DispatchQueue.main.async { completion?(response.error!) }
-                        return
-                    }
-                    do {
-                        try self.insert(model: result) {
-                            DispatchQueue.main.async { completion?(nil) }
+                try self.request.execute { response in
+                    switch response.result {
+                    case .success(let value):
+                        do {
+                            try self.insert(model: value) {
+                                completionQueue.async { completion?(nil) }
+                            }
+                        } catch {
+                            completionQueue.async { completion?(error) }
                         }
-                    } catch {
-                        DispatchQueue.main.async { completion?(error) }
+                    case .failure(let error):
+                        completionQueue.async { completion?(error) }
                     }
                 }
             }
         } catch {
-            DispatchQueue.main.async { completion?(error) }
+            completionQueue.async { completion?(error) }
         }
     }
     

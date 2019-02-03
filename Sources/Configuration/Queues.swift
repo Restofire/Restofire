@@ -12,15 +12,15 @@ import Foundation
 ///
 /// ```swift
 /// var queues = Queues()
-/// queues.callbackQueue = DispatchQueue.main
+/// queues.completionQueue = DispatchQueue.main
 /// ```
 public struct Queues {
     
     /// The default queues.
     public static var `default` = Queues()
     
-    /// The `callbackQueue`.
-    var callbackQueue: DispatchQueue = DispatchQueue.main
+    /// The `completionQueue`.
+    var completionQueue: DispatchQueue = DispatchQueue.main
     
     /// The `downloadProgressQueue`.
     var downloadProgressQueue: DispatchQueue = DispatchQueue.main

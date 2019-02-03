@@ -81,7 +81,7 @@ public extension Requestable {
     @discardableResult
     public func operation(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
         let request = try self.asRequest()
         return operation(
@@ -103,7 +103,7 @@ public extension Requestable {
     public func operation(
         request: @autoclosure @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) -> RequestOperation<Self> {
         let requestOperation = RequestOperation(
             requestable: self,
@@ -111,7 +111,6 @@ public extension Requestable {
             downloadProgressHandler: downloadProgressHandler,
             completionHandler: completionHandler
         )
-        requestOperation.queuePriority = priority
         return requestOperation
     }
     
@@ -127,7 +126,7 @@ public extension Requestable {
     @discardableResult
     public func execute(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
         let request = try self.asRequest()
         return execute(
@@ -151,7 +150,7 @@ public extension Requestable {
     public func execute(
         request: @autoclosure @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) -> RequestOperation<Self> {
         let requestOperation = operation(
             request: request,

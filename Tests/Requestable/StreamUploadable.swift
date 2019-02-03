@@ -71,12 +71,12 @@ class StreamUploadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute { value, response in
+                        let operation = try service.execute {response in
                             
                             defer { callbacks = callbacks + 1 }
                             
                             // Then
-                            expect(value).toNot(beNil())
+                            expect(response.value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

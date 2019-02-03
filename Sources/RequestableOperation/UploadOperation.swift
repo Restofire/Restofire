@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 
 /// An NSOperation that executes the `Uploadable` asynchronously.
-public class UploadOperation<R: Uploadable>: AOperation<R> {
+public class UploadOperation<R: Uploadable>: NetworkOperation<R> {
     
     let uploadable: R
     let uploadRequest: () -> UploadRequest
-    let completionHandler: ((R.Response?, DataResponse<R.Response>) -> Void)?
+    let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     /// Intializes an upload operation.
     ///
@@ -27,7 +27,7 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         uploadable: R,
         request: @escaping () -> UploadRequest,
         uploadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((R.Response?, DataResponse<R.Response>) -> Void)?
+        completionHandler: ((DataResponse<R.Response>) -> Void)?
     ) {
         self.uploadable = uploadable
         self.uploadRequest = request
@@ -48,8 +48,8 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
         }
         res = uploadable.process(request, requestable: uploadable, response: res)
 
-        uploadable.callbackQueue.async {
-            self.completionHandler?(res.value, res)
+        uploadable.completionQueue.async {
+            self.completionHandler?(res)
         }
         
         switch res.result {
@@ -92,13 +92,12 @@ public class UploadOperation<R: Uploadable>: AOperation<R> {
     }
     
     /// Creates a copy of self
-    open override func copy() -> AOperation<R> {
+    open override func copy() -> NetworkOperation<R> {
         let operation = UploadOperation(
             uploadable: uploadable,
             request: uploadRequest,
             completionHandler: completionHandler
         )
-        operation.queuePriority = uploadable.priority
         return operation
     }
     

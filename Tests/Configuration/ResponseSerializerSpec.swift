@@ -29,11 +29,11 @@ class ResponseSerializerSpec: BaseSpec {
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     do {
-                        try service.execute { value, response in
+                        try service.execute {response in
                             defer { done() }
                             
                             // Then
-                            expect(value).toNot(beNil())
+                            expect(response.value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())
@@ -69,11 +69,11 @@ class ResponseSerializerSpec: BaseSpec {
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     do {
-                        try service.execute { value, response in
+                        try service.execute {response in
                             defer { done() }
                             
                             // Then
-                            expect(value).toNot(beNil())
+                            expect(response.value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())
@@ -119,11 +119,11 @@ class ResponseSerializerSpec: BaseSpec {
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     do {
-                        try service.execute { value, response in
+                        try service.execute {response in
                             defer { done() }
                             
                             // Then
-                            expect(value).toNot(beNil())
+                            expect(response.value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

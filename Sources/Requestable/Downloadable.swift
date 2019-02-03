@@ -102,7 +102,7 @@ public extension Downloadable {
     @discardableResult
     public func operation(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DownloadResponse<Response>) -> Void)? = nil
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
         let request = try self.asRequest()
         return operation(
@@ -124,7 +124,7 @@ public extension Downloadable {
     public func operation(
         request: @autoclosure @escaping () -> DownloadRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DownloadResponse<Response>) -> Void)? = nil
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) -> DownloadOperation<Self> {
         let downloadOperation = DownloadOperation(
             downloadable: self,
@@ -132,7 +132,6 @@ public extension Downloadable {
             downloadProgressHandler: downloadProgressHandler,
             completionHandler: completionHandler
         )
-        downloadOperation.queuePriority = priority
         return downloadOperation
     }
     
@@ -148,7 +147,7 @@ public extension Downloadable {
     @discardableResult
     public func execute(
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DownloadResponse<Response>) -> Void)? = nil
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
         let request = try self.asRequest()
         return execute(
@@ -172,7 +171,7 @@ public extension Downloadable {
     public func execute(
         request: @autoclosure @escaping () -> DownloadRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DownloadResponse<Response>) -> Void)? = nil
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) -> DownloadOperation<Self> {
         let downloadOperation = operation(
             request: request,

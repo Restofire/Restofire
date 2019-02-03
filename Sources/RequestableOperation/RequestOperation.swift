@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 
 /// An NSOperation that executes the `Requestable` asynchronously.
-public class RequestOperation<R: Requestable>: AOperation<R> {
+public class RequestOperation<R: Requestable>: NetworkOperation<R> {
     
     let requestable: R
     let dataRequest: () -> DataRequest
-    let completionHandler: ((R.Response?, DataResponse<R.Response>) -> Void)?
+    let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     /// Intializes an request operation.
     ///
@@ -27,7 +27,7 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         requestable: R,
         request: @escaping () -> DataRequest,
         downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((R.Response?, DataResponse<R.Response>) -> Void)?
+        completionHandler: ((DataResponse<R.Response>) -> Void)?
     ) {
         self.requestable = requestable
         self.dataRequest = request
@@ -48,8 +48,8 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
         }
         res = requestable.process(request, requestable: requestable, response: res)
         
-        requestable.callbackQueue.async {
-            self.completionHandler?(res.value, res)
+        requestable.completionQueue.async {
+            self.completionHandler?(res)
         }
         
         switch res.result {
@@ -91,13 +91,12 @@ public class RequestOperation<R: Requestable>: AOperation<R> {
     }
     
     /// Creates a copy of self
-    open override func copy() -> AOperation<R> {
+    open override func copy() -> NetworkOperation<R> {
         let operation = RequestOperation(
             requestable: requestable,
             request: dataRequest,
             completionHandler: completionHandler
         )
-        operation.queuePriority = requestable.priority
         return operation
     }
     

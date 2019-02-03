@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 /// An NSOperation base class for all request operations
-open class AOperation<R: _Requestable>: Operation {
+open class NetworkOperation<R: _Requestable>: Operation {
     
     let _requestable: R
     let requestClosure: () -> Request
@@ -60,22 +60,27 @@ open class AOperation<R: _Requestable>: Operation {
         self.downloadProgressHandler = downloadProgressHandler
         self.uploadProgressHandler = uploadProgressHandler
         super.init()
+        self.name = "NetworkOperation<\(R.self)>"
         self.isReady = true
+        self.qualityOfService = requestable.qos
+        self.queuePriority = requestable.priority
     }
     
     /// Starts the request.
     override open func main() {
-        if isCancelled { return }
+        guard !isCancelled else { return }
         executeRequest()
     }
     
     /// Cancels the request.
     override open func cancel() {
+        guard !isCancelled else { return }
         super.cancel()
         request.cancel()
     }
     
     @objc func executeRequest() {
+        guard !isCancelled else { return }
         request = requestClosure()
         switch requestType {
         case .data:
@@ -124,13 +129,13 @@ open class AOperation<R: _Requestable>: Operation {
         request.logRequestIfNeeded()
     }
     
-    open func copy() -> AOperation {
+    open func copy() -> NetworkOperation {
         fatalError("override me")
     }
     
     func retry(afterDelay: TimeInterval = 0.0) {
         perform(
-            #selector(AOperation<R>.executeRequest),
+            #selector(NetworkOperation<R>.executeRequest),
             with: nil,
             afterDelay: afterDelay
         )
@@ -201,7 +206,7 @@ open class AOperation<R: _Requestable>: Operation {
                 error.code == .notConnectedToInternet {
                 isConnectivityError = true
                 _requestable.eventuallyOperationQueue.isSuspended = true
-                let eventuallyOperation: AOperation = self.copy()
+                let eventuallyOperation: NetworkOperation = self.copy()
                 reachability.setupListener()
                 _requestable.eventuallyOperationQueue.addOperation(eventuallyOperation)
             }

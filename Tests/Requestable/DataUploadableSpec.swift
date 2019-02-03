@@ -86,7 +86,7 @@ class DataUploadableSpec: BaseSpec {
                     do {
                         let operation = try service.execute(uploadProgressHandler: { progress in
                                 uploadProgressValues.append(progress.fractionCompleted)
-                        }) { value, response in
+                        }) {response in
                             
                             defer { callbacks = callbacks + 1 }
                             
@@ -96,7 +96,7 @@ class DataUploadableSpec: BaseSpec {
                                 fail("Response status code should be 200")
                             }
                             
-                            expect(value).toNot(beNil())
+                            expect(response.value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())

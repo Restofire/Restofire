@@ -34,7 +34,7 @@ public struct Reachability {
     public var eventuallyOperationQueue: OperationQueue = {
         let oq = OperationQueue()
         oq.maxConcurrentOperationCount = 1
-        if #available(OSX 10.10, *) { oq.qualityOfService = .utility }
+        oq.qualityOfService = .utility
         return oq
     }()
     #endif

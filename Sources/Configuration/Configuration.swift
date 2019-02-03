@@ -50,6 +50,9 @@ public struct Configuration {
     /// The request operation queue priority. `normal` by default.
     public var operationQueuePriority: Operation.QueuePriority = .normal
     
+    /// The request operation quality of service. `default` by default.
+    public var operationQualityOfService: QualityOfService = .default
+    
     /// `Configuration` Intializer
     ///
     /// - returns: new `Configuration` object

@@ -26,7 +26,7 @@ import Alamofire
 ///
 /// }
 /// ```
-public protocol Configurable: Authenticable, Pollable, Reachable, Retryable, RequestDelegate, SessionManagable, Validatable, Queueable, QueuePriortizable {
+public protocol Configurable: Authenticable, Pollable, Reachable, Retryable, RequestDelegate, SessionManagable, Validatable, Qosable, Queueable, QueuePriortizable {
 
     /// The `configuration`.
     var configuration: Configuration { get }

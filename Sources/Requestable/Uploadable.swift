@@ -68,7 +68,7 @@ public extension Uploadable {
     @discardableResult
     public func operation(
         uploadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> UploadOperation<Self> {
         let request = try self.asRequest()
         return operation(
@@ -90,7 +90,7 @@ public extension Uploadable {
     public func operation(
         request: @autoclosure @escaping () -> UploadRequest,
         uploadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) -> UploadOperation<Self> {
         let uploadOperation = UploadOperation(
             uploadable: self,
@@ -98,7 +98,6 @@ public extension Uploadable {
             uploadProgressHandler: uploadProgressHandler,
             completionHandler: completionHandler
         )
-        uploadOperation.queuePriority = priority
         return uploadOperation
     }
     
@@ -114,7 +113,7 @@ public extension Uploadable {
     @discardableResult
     public func execute(
         uploadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> UploadOperation<Self> {
         let request = try self.asRequest()
         return execute(
@@ -138,7 +137,7 @@ public extension Uploadable {
     public func execute(
         request: @autoclosure @escaping () -> UploadRequest,
         uploadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((Response?, DataResponse<Response>) -> Void)? = nil
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) -> UploadOperation<Self> {
         let uploadOperation = operation(
             request: request,

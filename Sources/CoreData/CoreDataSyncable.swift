@@ -14,39 +14,43 @@ public protocol CoreDataSyncable: Syncable {
 
 extension CoreDataSyncable {
     
-    public func sync(completion: ((Error?) -> ())? = nil) {
+    public func sync(
+        completionQueue: DispatchQueue = .main,
+        completion: ((Error?) -> ())? = nil
+    ) {
         self.context.perform {
             do {
                 try self.shouldSync() { flag in
                     guard flag else {
-                        DispatchQueue.main.async { completion?(nil) }
+                        completionQueue.async { completion?(nil) }
                         return
                     }
-                    try self.request.execute { result, response in
-                        guard let result = result else {
-                            DispatchQueue.main.async { completion?(response.error!) }
-                            return
-                        }
-                        self.context.perform {
-                            do {
-                                try self.insert(model: result) {
-                                    self.context.perform {
-                                        do {
-                                            try self.context.save()
-                                            DispatchQueue.main.async { completion?(nil) }
-                                        } catch {
-                                            DispatchQueue.main.async { completion?(error) }
+                    try self.request.execute { response in
+                        switch response.result {
+                        case .success(let value):
+                            self.context.perform {
+                                do {
+                                    try self.insert(model: value) {
+                                        self.context.perform {
+                                            do {
+                                                try self.context.save()
+                                                completionQueue.async { completion?(nil) }
+                                            } catch {
+                                                completionQueue.async { completion?(error) }
+                                            }
                                         }
                                     }
+                                } catch {
+                                    completionQueue.async { completion?(error) }
                                 }
-                            } catch {
-                                DispatchQueue.main.async { completion?(error) }
                             }
+                        case .failure(let error):
+                            completionQueue.async { completion?(error) }
                         }
                     }
                 }
             } catch {
-                DispatchQueue.main.async { completion?(error) }
+                completionQueue.async { completion?(error) }
             }
         }
     }

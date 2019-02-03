@@ -19,7 +19,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Requestable: _Requestable {
+public protocol Requestable: BaseRequestable {
 
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }
@@ -58,10 +58,123 @@ public extension Requestable {
     /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `DataRequest`.
-    func asRequest() throws -> DataRequest {
-        return RestofireRequest.dataRequest(
-            fromRequestable: self,
-            withUrlRequest: try asUrlRequest()
+    func asRequest<T: Encodable>(
+        parametersType: ParametersType<T>
+    ) throws -> () -> DataRequest {
+        let urlRequest = try asUrlRequest(parametersType: parametersType)
+        return {
+            RestofireRequest.dataRequest(
+                fromRequestable: self,
+                withUrlRequest: urlRequest
+            )
+        }
+    }
+    
+}
+
+public extension Requestable {
+    
+    /// Creates a `RequestOperation` for the specified `Requestable` object.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `RequestOperation`.
+    @discardableResult
+    func operation<T: Encodable>(
+        parametersType: ParametersType<T>,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> RequestOperation<Self> {
+        let request = try self.asRequest(parametersType: parametersType)
+        let requestOperation = RequestOperation(
+            requestable: self,
+            request: request,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
+        return requestOperation
+    }
+    
+    /// Creates a `RequestOperation` for the specified `Requestable` object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `Cancellable`.
+    @discardableResult
+    func enqueue<T: Encodable>(
+        parametersType: ParametersType<T>,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> Cancellable {
+        let requestOperation = try operation(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
+        requestQueue.addOperation(requestOperation)
+        return requestOperation
+    }
+}
+
+public extension Requestable {
+    
+    /// Creates a `RequestOperation` for the specified `Requestable` object.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `RequestOperation`.
+    @discardableResult
+    public func operation(
+        parameters: Any? = nil,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> RequestOperation<Self> {
+        let parametersType = ParametersType<EmptyCodable>.any(parameters)
+        return try operation(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
+    }
+    
+    /// Creates a `RequestOperation` for the specified `Requestable` object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `Cancellable`.
+    @discardableResult
+    public func enqueue(
+        parameters: Any? = nil,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DataResponse<Response>) -> Void)? = nil
+    ) throws -> Cancellable {
+        let parametersType = ParametersType<EmptyCodable>.any(parameters)
+        return try enqueue(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
         )
     }
     
@@ -78,39 +191,19 @@ public extension Requestable {
     ///
     /// - returns: The created `RequestOperation`.
     @discardableResult
-    public func operation(
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
+    public func operation<T: Encodable>(
+        parameters: T,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
-        let request = try self.asRequest()
-        return operation(
-            request: request,
+        let parametersType = ParametersType<T>.encodable(parameters)
+        return try operation(
+            parametersType: parametersType,
             downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
-    }
-    
-    /// Creates a `RequestOperation` for the specified `Requestable` object.
-    ///
-    /// - parameter request: A data request instance
-    /// - parameter downloadProgressHandler: A closure to be executed once the
-    ///                                      download progresses. `nil` by default.
-    /// - parameter completionHandler: A closure to be executed once the request
-    ///                                has finished. `nil` by default.
-    ///
-    /// - returns: The created `RequestOperation`.
-    public func operation(
-        request: @autoclosure @escaping () -> DataRequest,
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((DataResponse<Response>) -> Void)? = nil
-    ) -> RequestOperation<Self> {
-        let requestOperation = RequestOperation(
-            requestable: self,
-            request: request,
-            downloadProgressHandler: downloadProgressHandler,
-            completionHandler: completionHandler
-        )
-        return requestOperation
     }
     
     /// Creates a `RequestOperation` for the specified `Requestable` object and
@@ -121,43 +214,21 @@ public extension Requestable {
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created `RequestOperation`.
+    /// - returns: The created `Cancellable`.
     @discardableResult
-    public func execute(
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
+    public func enqueue<T: Encodable>(
+        parameters: T,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
-    ) throws -> RequestOperation<Self> {
-        let request = try self.asRequest()
-        return execute(
-            request: request,
+    ) throws -> Cancellable {
+        let parametersType = ParametersType<T>.encodable(parameters)
+        return try enqueue(
+            parametersType: parametersType,
             downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
-    }
-    
-    /// Creates a `RequestOperation` for the specified `Requestable` object and
-    /// asynchronously executes it.
-    ///
-    /// - parameter request: A data request instance
-    /// - parameter downloadProgressHandler: A closure to be executed once the
-    ///                                      download progresses. `nil` by default.
-    /// - parameter completionHandler: A closure to be executed once the request
-    ///                                has finished. `nil` by default.
-    ///
-    /// - returns: The created `RequestOperation`.
-    @discardableResult
-    public func execute(
-        request: @autoclosure @escaping () -> DataRequest,
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((DataResponse<Response>) -> Void)? = nil
-    ) -> RequestOperation<Self> {
-        let requestOperation = operation(
-            request: request,
-            downloadProgressHandler: downloadProgressHandler,
-            completionHandler: completionHandler
-        )
-        requestQueue.addOperation(requestOperation)
-        return requestOperation
     }
     
 }

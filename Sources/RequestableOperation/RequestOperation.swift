@@ -13,6 +13,7 @@ public class RequestOperation<R: Requestable>: NetworkOperation<R> {
     
     let requestable: R
     let dataRequest: () -> DataRequest
+    let completionQueue: DispatchQueue
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     /// Intializes an request operation.
@@ -25,11 +26,13 @@ public class RequestOperation<R: Requestable>: NetworkOperation<R> {
     public init(
         requestable: R,
         request: @escaping () -> DataRequest,
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue,
         completionHandler: ((DataResponse<R.Response>) -> Void)?
     ) {
         self.requestable = requestable
         self.dataRequest = request
+        self.completionQueue = completionQueue
         self.completionHandler = completionHandler
         super.init(
             requestable: requestable,
@@ -47,7 +50,7 @@ public class RequestOperation<R: Requestable>: NetworkOperation<R> {
         }
         res = requestable.process(request, requestable: requestable, response: res)
         
-        requestable.completionQueue.async {
+        completionQueue.async {
             self.completionHandler?(res)
         }
         
@@ -94,6 +97,7 @@ public class RequestOperation<R: Requestable>: NetworkOperation<R> {
         let operation = RequestOperation(
             requestable: requestable,
             request: dataRequest,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
         return operation

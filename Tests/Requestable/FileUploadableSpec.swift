@@ -18,54 +18,55 @@ class FileUploadableSpec: BaseSpec {
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
+    struct Service: FileUploadable {
+        
+        typealias Response = Any
+        var responseSerializer = AnyResponseSerializer<Result<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                return Result { try JSONResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+            })
+        
+        var path: String? = "post"
+        let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
+        
+        func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+            var request = request
+            let header = HTTPHeader.authorization(username: "user", password: "password")
+            request.setValue(header.value, forHTTPHeaderField: header.name)
+            expect(request.value(forHTTPHeaderField: "Authorization"))
+                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            return request
+        }
+        
+        func willSend<R: BaseRequestable>(_ request: Request, requestable: R) {
+            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
+            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            FileUploadableSpec.startDelegateCalled = true
+        }
+        
+        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: Response) {
+            FileUploadableSpec.successDelegateCalled = true
+            expect(value).toNot(beNil())
+        }
+        
+        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
+            FileUploadableSpec.errorDelegateCalled = true
+            fail(error.localizedDescription)
+        }
+    }
+    
+    var operation: UploadOperation<Service>!
+    
     override func spec() {
         describe("FileUploadable") {
-            
             it("request should succeed") {
-                
                 waitUntil(timeout: self.timeout) { done in
-                    struct Service: FileUploadable {
-                        
-                        typealias Response = Any
-                        var responseSerializer = AnyResponseSerializer<Result<Response>>
-                            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                                return Result { try JSONResponseSerializer()
-                                    .serialize(request: request,
-                                               response: response,
-                                               data: data,
-                                               error: error)
-                                }
-                            })
-                        
-                        var path: String? = "post"
-                        let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
-                        
-                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
-                            var request = request
-                            let header = HTTPHeader.authorization(username: "user", password: "password")
-                            request.setValue(header.value, forHTTPHeaderField: header.name)
-                            expect(request.value(forHTTPHeaderField: "Authorization"))
-                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            return request
-                        }
-                        
-                        func willSend<R: _Requestable>(_ request: Request, requestable: R) {
-                            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
-                            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            FileUploadableSpec.startDelegateCalled = true
-                        }
-                        
-                        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: Response) {
-                            FileUploadableSpec.successDelegateCalled = true
-                            expect(value).toNot(beNil())
-                        }
-                        
-                        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
-                            FileUploadableSpec.errorDelegateCalled = true
-                            fail(error.localizedDescription)
-                        }
-                    }
-                    
+                    // Given
                     let service = Service()
                     var uploadProgressValues: [Double] = []
                     
@@ -82,9 +83,9 @@ class FileUploadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute(uploadProgressHandler: { progress in
+                        self.operation = try service.operation(uploadProgressHandler: ({ progress in
                             uploadProgressValues.append(progress.fractionCompleted)
-                        }) {response in
+                        }, nil)) { response in
                             
                             defer { callbacks = callbacks + 1 }
                             
@@ -121,14 +122,13 @@ class FileUploadableSpec: BaseSpec {
                             }
                         }
                         
-                        operation.completionBlock = { callbacks = callbacks + 1 }
+                        self.operation.start()
+                        self.operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
             }
-            
         }
     }
-    
 }

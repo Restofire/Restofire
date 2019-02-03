@@ -18,68 +18,69 @@ class MultipartUploadableSpec: BaseSpec {
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
+    struct HTTPBin: Decodable {
+        let form: Form
+    }
+    
+    struct Form: Decodable {
+        let french: String
+        let japanese: String
+    }
+    
+    struct Service: MultipartUploadable {
+        typealias Response = HTTPBin
+        var responseSerializer = AnyResponseSerializer<Result<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                return Result { try DecodableResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+            })
+        
+        var path: String? = "post"
+        var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
+            multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")
+            multipartFormData.append("日本語".data(using: .utf8, allowLossyConversion: false)!, withName: "japanese")
+            multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "jpg"), withName: "image")
+            multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
+        }
+        
+        func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+            var request = request
+            let header = HTTPHeader.authorization(username: "user", password: "password")
+            request.setValue(header.value, forHTTPHeaderField: header.name)
+            expect(request.value(forHTTPHeaderField: "Authorization"))
+                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            return request
+        }
+        
+        func willSend<R: BaseRequestable>(_ request: Request, requestable: R) {
+            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
+            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            MultipartUploadableSpec.startDelegateCalled = true
+        }
+        
+        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: HTTPBin) {
+            MultipartUploadableSpec.successDelegateCalled = true
+            expect(value.form.french).to(equal("français"))
+            expect(value.form.japanese).to(equal("日本語"))
+        }
+        
+        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
+            MultipartUploadableSpec.errorDelegateCalled = true
+            fail(error.localizedDescription)
+        }
+    }
+    
+    var operation: UploadOperation<Service>!
+    
     override func spec() {
         describe("MultipartUpload") {
-            
             it("request should succeed") {
                 waitUntil(timeout: self.timeout) { done in
                     // Given
-                    struct HTTPBin: Decodable {
-                        let form: Form
-                    }
-                    
-                    struct Form: Decodable {
-                        let french: String
-                        let japanese: String
-                    }
-                    
-                    struct Service: MultipartUploadable {
-                        typealias Response = HTTPBin
-                        var responseSerializer = AnyResponseSerializer<Result<Response>>
-                            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                                return Result { try DecodableResponseSerializer()
-                                    .serialize(request: request,
-                                               response: response,
-                                               data: data,
-                                               error: error)
-                                }
-                        })
-                        
-                        var path: String? = "post"
-                        var multipartFormData: (MultipartFormData) -> Void = { multipartFormData in
-                            multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")
-                            multipartFormData.append("日本語".data(using: .utf8, allowLossyConversion: false)!, withName: "japanese")
-                            multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "jpg"), withName: "image")
-                            multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
-                        }
-                        
-                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
-                            var request = request
-                            let header = HTTPHeader.authorization(username: "user", password: "password")
-                            request.setValue(header.value, forHTTPHeaderField: header.name)
-                            expect(request.value(forHTTPHeaderField: "Authorization"))
-                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            return request
-                        }
-                        
-                        func willSend<R: _Requestable>(_ request: Request, requestable: R) {
-                            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
-                            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            MultipartUploadableSpec.startDelegateCalled = true
-                        }
-                        
-                        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: HTTPBin) {
-                            MultipartUploadableSpec.successDelegateCalled = true
-                            expect(value.form.french).to(equal("français"))
-                            expect(value.form.japanese).to(equal("日本語"))
-                        }
-                        
-                        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
-                            MultipartUploadableSpec.errorDelegateCalled = true
-                            fail(error.localizedDescription)
-                        }
-                    }
-                    
                     let service = Service()
                     var uploadProgressValues: [Double] = []
                     
@@ -96,9 +97,9 @@ class MultipartUploadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute(uploadProgressHandler: { progress in
+                        self.operation = try service.operation(uploadProgressHandler: ({ progress in
                             uploadProgressValues.append(progress.fractionCompleted)
-                        }) {response in
+                        }, nil)) { response in
                             
                             defer { callbacks = callbacks + 1 }
                             
@@ -142,14 +143,13 @@ class MultipartUploadableSpec: BaseSpec {
                             }
                         }
                         
-                        operation.completionBlock = { callbacks = callbacks + 1 }
+                        self.operation.start()
+                        self.operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
             }
-            
         }
     }
-    
 }

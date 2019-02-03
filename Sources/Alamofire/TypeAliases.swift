@@ -12,6 +12,11 @@ public typealias HTTPHeader = Alamofire.HTTPHeader
 public typealias HTTPHeaders = Alamofire.HTTPHeaders
 public typealias URLRequestConvertible = Alamofire.URLRequestConvertible
 
+// Encoder
+public typealias ParameterEncoder = Alamofire.ParameterEncoder
+public typealias JSONParameterEncoder = Alamofire.JSONParameterEncoder
+public typealias URLEncodedFormParameterEncoder = Alamofire.URLEncodedFormParameterEncoder
+
 // Encoding
 public typealias ParameterEncoding = Alamofire.ParameterEncoding
 public typealias JSONEncoding = Alamofire.JSONEncoding

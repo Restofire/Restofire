@@ -19,22 +19,13 @@ public struct Queues {
     /// The default queues.
     public static var `default` = Queues()
     
-    /// The `completionQueue`.
-    var completionQueue: DispatchQueue = DispatchQueue.main
-    
-    /// The `downloadProgressQueue`.
-    var downloadProgressQueue: DispatchQueue = DispatchQueue.main
-    
-    /// The `uploadProgressQueue`.
-    var uploadProgressQueue: DispatchQueue = DispatchQueue.main
-    
     /// The request operation queue
-    var requestQueue: OperationQueue = OperationQueue()
+    public var requestQueue: OperationQueue = OperationQueue()
     
     /// The download operation queue
-    var downloadQueue: OperationQueue = OperationQueue()
+    public var downloadQueue: OperationQueue = OperationQueue()
     
     /// The upload operation queue
-    var uploadQueue: OperationQueue = OperationQueue()
+    public var uploadQueue: OperationQueue = OperationQueue()
     
 }

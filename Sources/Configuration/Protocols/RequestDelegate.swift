@@ -12,13 +12,13 @@ import Foundation
 public protocol RequestDelegate {
     
     /// Called to modify a request before sending.
-    func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest
+    func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest
     
     /// Called before the request is sent over the network.
-    func willSend<R: _Requestable>(_ request: Request, requestable: R)
+    func willSend<R: BaseRequestable>(_ request: Request, requestable: R)
     
     /// Called when the request is sent over the network.
-    func didSend<R: _Requestable>(_ request: Request, requestable: R)
+    func didSend<R: BaseRequestable>(_ request: Request, requestable: R)
     
     /// Called before the request calls its completion handler.
     func process<R: Requestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response>
@@ -34,15 +34,15 @@ public protocol RequestDelegate {
 extension RequestDelegate {
     
     /// `No-op`
-    public func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    public func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
         return request
     }
     
     /// `No-op`
-    public func willSend<R: _Requestable>(_ request: Request, requestable: R) {}
+    public func willSend<R: BaseRequestable>(_ request: Request, requestable: R) {}
     
     /// `No-op`
-    public func didSend<R: _Requestable>(_ request: Request, requestable: R) {}
+    public func didSend<R: BaseRequestable>(_ request: Request, requestable: R) {}
     
     /// `No-op`
     public func process<R: Requestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> DataResponse<R.Response> {

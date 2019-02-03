@@ -24,7 +24,7 @@ import Foundation
 ///
 /// }
 /// ```
-public protocol Downloadable: _Requestable {
+public protocol Downloadable: BaseRequestable {
     
     /// The resume data.
     var resumeData: Data? { get }
@@ -79,39 +79,23 @@ public extension Downloadable {
     /// Creates a `DownloadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `DownloadRequest`.
-    func asRequest() throws -> DownloadRequest {
-        return RestofireRequest.downloadRequest(
-            fromRequestable: self,
-            withUrlRequest: try asUrlRequest()
-        )
+    func asRequest<T: Encodable>(
+        parametersType: ParametersType<T>
+    ) throws -> () -> DownloadRequest {
+        let urlRequest = try asUrlRequest(parametersType: parametersType)
+        return {
+            RestofireRequest.downloadRequest(
+                fromRequestable: self,
+                withUrlRequest: urlRequest
+            )
+        }
     }
     
 }
 
 public extension Downloadable {
     
-    /// Creates a `DownloadOperation` for the specified `Requestable` object.
-    ///
-    /// - parameter downloadProgressHandler: A closure to be executed once the
-    ///                                      download progresses. `nil` by default.
-    /// - parameter completionHandler: A closure to be executed once the request
-    ///                                has finished. `nil` by default.
-    ///
-    /// - returns: The created `RequestOperation`.
-    @discardableResult
-    public func operation(
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
-    ) throws -> DownloadOperation<Self> {
-        let request = try self.asRequest()
-        return operation(
-            request: request,
-            downloadProgressHandler: downloadProgressHandler,
-            completionHandler: completionHandler
-        )
-    }
-    
-    /// Creates a `DownloadOperation` for the specified `Requestable` object.
+    /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///
     /// - parameter request: A data request instance
     /// - parameter downloadProgressHandler: A closure to be executed once the
@@ -119,44 +103,25 @@ public extension Downloadable {
     /// - parameter completionHandler: A closure to be executed once the request
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created `RequestOperation`.
-    public func operation(
-        request: @autoclosure @escaping () -> DownloadRequest,
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
+    /// - returns: The created `DownloadOperation`.
+    func operation<T: Encodable>(
+        parametersType: ParametersType<T>,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
-    ) -> DownloadOperation<Self> {
+    ) throws -> DownloadOperation<Self> {
+        let request = try self.asRequest(parametersType: parametersType)
         let downloadOperation = DownloadOperation(
             downloadable: self,
             request: request,
             downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
         return downloadOperation
     }
     
-    /// Creates a `DownloadOperation` for the specified `Requestable` object and
-    /// asynchronously executes it.
-    ///
-    /// - parameter downloadProgressHandler: A closure to be executed once the
-    ///                                      download progresses. `nil` by default.
-    /// - parameter completionHandler: A closure to be executed once the download
-    ///                                has finished. `nil` by default.
-    ///
-    /// - returns: The created `DownloadOperation`.
-    @discardableResult
-    public func execute(
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
-        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
-    ) throws -> DownloadOperation<Self> {
-        let request = try self.asRequest()
-        return execute(
-            request: request,
-            downloadProgressHandler: downloadProgressHandler,
-            completionHandler: completionHandler
-        )
-    }
-    
-    /// Creates a `DownloadOperation` for the specified `Requestable` object and
+    /// Creates a `DownloadOperation` for the specified `Downloadable` object and
     /// asynchronously executes it.
     ///
     /// - parameter request: A download request instance
@@ -165,20 +130,128 @@ public extension Downloadable {
     /// - parameter completionHandler: A closure to be executed once the download
     ///                                has finished. `nil` by default.
     ///
-    /// - returns: The created `DownloadOperation`.
+    /// - returns: The created `Cancellable`.
     @discardableResult
-    public func execute(
-        request: @autoclosure @escaping () -> DownloadRequest,
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
+    func enqueue<T: Encodable>(
+        parametersType: ParametersType<T>,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
-    ) -> DownloadOperation<Self> {
-        let downloadOperation = operation(
-            request: request,
+    ) throws -> Cancellable {
+        let downloadOperation = try operation(
+            parametersType: parametersType,
             downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
         downloadQueue.addOperation(downloadOperation)
         return downloadOperation
+    }
+    
+}
+
+public extension Downloadable {
+    
+    /// Creates a `DownloadOperation` for the specified `Downloadable` object.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `DownloadOperation`.
+    @discardableResult
+    public func operation(
+        parameters: Any? = nil,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) throws -> DownloadOperation<Self> {
+        let parametersType = ParametersType<EmptyCodable>.any(parameters)
+        return try operation(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
+    }
+    
+    /// Creates a `DownloadOperation` for the specified `Downloadable` object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the download
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `Cancellable`.
+    @discardableResult
+    public func enqueue(
+        parameters: Any? = nil,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) throws -> Cancellable {
+        let parametersType = ParametersType<EmptyCodable>.any(parameters)
+        return try enqueue(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
+    }
+    
+}
+
+public extension Downloadable {
+    
+    /// Creates a `DownloadOperation` for the specified `Downloadable` object.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the request
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `RequestOperation`.
+    @discardableResult
+    public func operation<T: Encodable>(
+        parameters: T,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) throws -> DownloadOperation<Self> {
+        let parametersType = ParametersType<T>.encodable(parameters)
+        return try operation(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
+    }
+    
+    /// Creates a `DownloadOperation` for the specified `Downloadable` object and
+    /// asynchronously executes it.
+    ///
+    /// - parameter downloadProgressHandler: A closure to be executed once the
+    ///                                      download progresses. `nil` by default.
+    /// - parameter completionHandler: A closure to be executed once the download
+    ///                                has finished. `nil` by default.
+    ///
+    /// - returns: The created `Cancellable`.
+    @discardableResult
+    public func enqueue<T: Encodable>(
+        parameters: T,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue = .main,
+        completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
+    ) throws -> Cancellable {
+        let parametersType = ParametersType<T>.encodable(parameters)
+        return try enqueue(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            completionHandler: completionHandler
+        )
     }
     
 }

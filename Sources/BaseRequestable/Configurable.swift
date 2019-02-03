@@ -48,11 +48,11 @@ public protocol Configurable: Authenticable, Pollable, Reachable, Retryable, Req
     /// The request parameter encoding.
     var encoding: ParameterEncoding { get }
     
+    /// The request parameter encoder.
+    var parameterEncoder: ParameterEncoder { get }
+    
     /// The HTTP headers.
     var headers: HTTPHeaders? { get }
-    
-    /// The request parameters.
-    var parameters: Any? { get }
     
     /// The credential.
     var credential: URLCredential? { get }
@@ -129,13 +129,13 @@ public extension Configurable {
         return configuration.encoding
     }
     
-    /// `nil`
-    public var headers: HTTPHeaders? {
-        return nil
+    /// `Configuration.default.parameterEncoder`
+    public var parameterEncoder: ParameterEncoder {
+        return configuration.parameterEncoder
     }
     
     /// `nil`
-    public var parameters: Any? {
+    public var headers: HTTPHeaders? {
         return nil
     }
     

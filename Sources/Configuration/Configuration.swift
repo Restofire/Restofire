@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
 /// A Configuration for RESTful Services. You must provide a `host`.
 ///
 /// ```swift
 /// var configuration = Configuration()
-/// configuration.scheme: String = "https://"
+/// configuration.scheme: String = "https"
 /// configuration.baseURL = "www.mocky.io"
 /// configuration.version = "v2"
 /// configuration.headers = ["Content-Type": "application/json"]
@@ -22,8 +23,8 @@ public struct Configuration {
     /// The default configuration.
     public static var `default` = Configuration()
     
-    /// The scheme. `https://` by default.
-    public var scheme: String = "https://"
+    /// The scheme. `https` by default.
+    public var scheme: String = "https"
     
     /// The host. `nil` by default.
     public var host: String!
@@ -39,6 +40,9 @@ public struct Configuration {
     
     /// The request parameter encoding. `.JSON` by default.
     public var encoding: ParameterEncoding = JSONEncoding.default
+    
+    /// The request parameter encoder. `.JSON` by default.
+    public var parameterEncoder: ParameterEncoder = JSONParameterEncoder.default
     
     /// The HTTP headers. `nil` by default.
     public var headers: HTTPHeaders = [:]

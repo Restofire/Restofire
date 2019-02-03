@@ -27,7 +27,6 @@ class BaseSpec: QuickSpec {
             self.removeAllItemsInsideDirectory(at: BaseSpec.testDirectoryURL)
             self.createDirectory(at: BaseSpec.testDirectoryURL)
             
-            Configuration.default.scheme = "https://"
             Configuration.default.host = "httpbin.org"
         }
         

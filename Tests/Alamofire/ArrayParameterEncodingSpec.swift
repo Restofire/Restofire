@@ -21,10 +21,9 @@ class ArrayParameterEncodingSpec: BaseSpec {
                 struct Service: Requestable {
                     typealias Response = Data
                     var path: String? = "get"
-                    var parameters: Any? = ["foo","baz"]
                 }
                 
-                let urlRequest = try! Service().asUrlRequest()
+                let urlRequest = try! Service().asUrlRequest(parameters: ["foo","baz"])
                 let body = urlRequest.httpBody!
                 let params = String(data: body, encoding: .utf8)!
                 expect(params).to(equal("[\"foo\",\"baz\"]"))

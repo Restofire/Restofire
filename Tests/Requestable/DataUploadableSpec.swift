@@ -18,56 +18,57 @@ class DataUploadableSpec: BaseSpec {
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
+    struct Service: DataUploadable {
+        
+        typealias Response = Any
+        var responseSerializer = AnyResponseSerializer<Result<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                return Result { try JSONResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+            })
+        
+        var path: String? = "post"
+        var data: Data = {
+            return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
+        }()
+        
+        func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+            var request = request
+            let header = HTTPHeader.authorization(username: "user", password: "password")
+            request.setValue(header.value, forHTTPHeaderField: header.name)
+            expect(request.value(forHTTPHeaderField: "Authorization"))
+                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            return request
+        }
+        
+        func willSend<R: BaseRequestable>(_ request: Request, requestable: R) {
+            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
+            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            DataUploadableSpec.startDelegateCalled = true
+        }
+        
+        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: Response) {
+            DataUploadableSpec.successDelegateCalled = true
+            expect(value).toNot(beNil())
+        }
+        
+        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
+            DataUploadableSpec.errorDelegateCalled = true
+            fail(error.localizedDescription)
+        }
+    }
+    
+    var operation: UploadOperation<Service>!
+    
     override func spec() {
         describe("DataUploadable") {
-            
             it("request should succeed") {
-                
                 waitUntil(timeout: self.timeout) { done in
-                    struct Service: DataUploadable {
-                        
-                        typealias Response = Any
-                        var responseSerializer = AnyResponseSerializer<Result<Response>>
-                            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                                return Result { try JSONResponseSerializer()
-                                    .serialize(request: request,
-                                               response: response,
-                                               data: data,
-                                               error: error)
-                                }
-                            })
-                        
-                        var path: String? = "post"
-                        var data: Data = {
-                            return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
-                        }()
-                        
-                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
-                            var request = request
-                            let header = HTTPHeader.authorization(username: "user", password: "password")
-                            request.setValue(header.value, forHTTPHeaderField: header.name)
-                            expect(request.value(forHTTPHeaderField: "Authorization"))
-                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            return request
-                        }
-                        
-                        func willSend<R: _Requestable>(_ request: Request, requestable: R) {
-                            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
-                            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            DataUploadableSpec.startDelegateCalled = true
-                        }
-                        
-                        func request(_ request: UploadOperation<Service>, didCompleteWithValue value: Response) {
-                            DataUploadableSpec.successDelegateCalled = true
-                            expect(value).toNot(beNil())
-                        }
-                        
-                        func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
-                            DataUploadableSpec.errorDelegateCalled = true
-                            fail(error.localizedDescription)
-                        }
-                    }
-                    
+                    // Given
                     let service = Service()
                     var uploadProgressValues: [Double] = []
                     
@@ -84,9 +85,9 @@ class DataUploadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute(uploadProgressHandler: { progress in
+                        self.operation = try service.operation(uploadProgressHandler: ({ progress in
                                 uploadProgressValues.append(progress.fractionCompleted)
-                        }) {response in
+                        }, nil)) { response in
                             
                             defer { callbacks = callbacks + 1 }
                             
@@ -123,14 +124,13 @@ class DataUploadableSpec: BaseSpec {
                             }
                         }
                         
-                        operation.completionBlock = { callbacks = callbacks + 1 }
+                        self.operation.start()
+                        self.operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
             }
-            
         }
     }
-    
 }

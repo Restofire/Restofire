@@ -18,7 +18,7 @@ extension MockyConfigurable {
     
     public var configuration: Restofire.Configuration {
         var mockyConfiguration = Restofire.Configuration()
-        mockyConfiguration.scheme = "http://"
+        mockyConfiguration.scheme = "http"
         mockyConfiguration.host = "mocky.io"
         mockyConfiguration.version = "v2"
         return mockyConfiguration
@@ -80,7 +80,7 @@ class ConfigurationSpec: BaseSpec {
                 // Given
                 struct Service: MockyRequestable, MockyRetryable {
                     typealias Response = Data
-                    var scheme: String = "https://"
+                    var scheme: String = "https"
                     var path: String? = "get"
                 }
                 

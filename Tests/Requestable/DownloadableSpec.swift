@@ -18,57 +18,58 @@ class DownloadableSpec: BaseSpec {
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
     
+    struct Service: Downloadable {
+        typealias Response = HTTPBin
+        
+        var path: String? = "get"
+        var destination: DownloadRequest.Destination? = { _, _ in (BaseSpec.jsonFileURL, []) }
+        var responseSerializer = AnyResponseSerializer<Result<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
+                return Result { try DecodableResponseSerializer()
+                    .serialize(request: request,
+                               response: response,
+                               data: data,
+                               error: error)
+                }
+            })
+        
+        func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+            var request = request
+            let header = HTTPHeader.authorization(username: "user", password: "password")
+            request.setValue(header.value, forHTTPHeaderField: header.name)
+            expect(request.value(forHTTPHeaderField: "Authorization"))
+                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            return request
+        }
+        
+        func willSend<R: BaseRequestable>(_ request: Request, requestable: R) {
+            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
+            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
+            DownloadableSpec.startDelegateCalled = true
+        }
+        
+        func request(_ request: DownloadOperation<Service>, didCompleteWithValue value: HTTPBin) {
+            DownloadableSpec.successDelegateCalled = true
+            expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
+        }
+        
+        func request(_ request: DownloadOperation<Service>, didFailWithError error: Error) {
+            DownloadableSpec.errorDelegateCalled = true
+            fail(error.localizedDescription)
+        }
+    }
+    
+    struct HTTPBin: Decodable {
+        let url: URL
+    }
+    
+    var operation: DownloadOperation<Service>!
+    
     override func spec() {
         describe("Downloadable") {
-            
             it("request should succeed") {
-                // Given
-                struct HTTPBin: Decodable {
-                    let url: URL
-                }
-                
                 waitUntil(timeout: self.timeout) { done in
-                    struct Service: Downloadable {
-                        typealias Response = HTTPBin
-                        
-                        var path: String? = "get"
-                        var destination: DownloadRequest.Destination? = { _, _ in (BaseSpec.jsonFileURL, []) }
-                        var responseSerializer = AnyResponseSerializer<Result<Response>>
-                            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                                return Result { try DecodableResponseSerializer()
-                                    .serialize(request: request,
-                                               response: response,
-                                               data: data,
-                                               error: error)
-                                }
-                        })
-                        
-                        func prepare<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
-                            var request = request
-                            let header = HTTPHeader.authorization(username: "user", password: "password")
-                            request.setValue(header.value, forHTTPHeaderField: header.name)
-                            expect(request.value(forHTTPHeaderField: "Authorization"))
-                                .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            return request
-                        }
-                        
-                        func willSend<R: _Requestable>(_ request: Request, requestable: R) {
-                            let value = request.request?.value(forHTTPHeaderField: "Authorization")!
-                            expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
-                            DownloadableSpec.startDelegateCalled = true
-                        }
-                        
-                        func request(_ request: DownloadOperation<Service>, didCompleteWithValue value: HTTPBin) {
-                            DownloadableSpec.successDelegateCalled = true
-                            expect(value.url.absoluteString).to(equal("https://httpbin.org/get"))
-                        }
-                        
-                        func request(_ request: DownloadOperation<Service>, didFailWithError error: Error) {
-                            DownloadableSpec.errorDelegateCalled = true
-                            fail(error.localizedDescription)
-                        }
-                    }
-                    
+                    // Given
                     let service = Service()
                     var downloadProgressValues: [Double] = []
                     
@@ -85,9 +86,9 @@ class DownloadableSpec: BaseSpec {
                     
                     // When
                     do {
-                        let operation = try service.execute(downloadProgressHandler: { progress in
+                        self.operation = try service.operation(downloadProgressHandler: ({ progress in
                             downloadProgressValues.append(progress.fractionCompleted)
-                        }) {response in
+                        }, nil)) { response in
                             
                             defer { callbacks = callbacks + 1 }
                             
@@ -118,16 +119,13 @@ class DownloadableSpec: BaseSpec {
                             }
                         }
                         
-                        operation.completionBlock = { callbacks = callbacks + 1 }
+                        self.operation.start()
+                        self.operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {
                         fail(error.localizedDescription)
                     }
                 }
             }
-            
         }
     }
-    
 }
-
-

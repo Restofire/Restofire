@@ -115,7 +115,7 @@ class RestofireRequest {
         request.authenticate(with: credential)
     }
 
-    internal static func prepareRequest<R: _Requestable>(_ request: URLRequest, requestable: R) -> URLRequest {
+    internal static func prepareRequest<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
         precondition(requestable.session.startRequestsImmediately == false,
                      "The session should always have startRequestsImmediately to false")
         var request = request
@@ -126,14 +126,14 @@ class RestofireRequest {
         return request
     }
     
-    internal static func willSendRequest<R: _Requestable>(_ request: Request, requestable: R) {
+    internal static func willSendRequest<R: BaseRequestable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.willSend(request, requestable: requestable)
         }
         requestable.willSend(request, requestable: requestable)
     }
     
-    internal static func didSendRequest<R: _Requestable>(_ request: Request, requestable: R) {
+    internal static func didSendRequest<R: BaseRequestable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)
         }

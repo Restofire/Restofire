@@ -9,15 +9,15 @@
 import Foundation
 
 /// An NSOperation base class for all request operations
-open class NetworkOperation<R: _Requestable>: Operation {
+open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
     
-    let _requestable: R
+    let baseRequestable: R
     let requestClosure: () -> Request
-    let downloadProgressHandler: ((Progress) -> Void)?
-    let uploadProgressHandler: ((Progress) -> Void)?
+    let downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)?
+    let uploadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)?
     
     /// The underlying respect respective to requestable.
-    public private(set) var request: Request!
+    public private(set) var request: Request?
     var retryAttempts = 0
     
     enum RequestType {
@@ -37,23 +37,20 @@ open class NetworkOperation<R: _Requestable>: Operation {
             }
         }
     }
-    lazy var requestType: RequestType = {
-        RequestType(request: request)
-    }()
     
     #if !os(watchOS)
     lazy var reachability: NetworkReachability = {
-        return NetworkReachability(configurable: _requestable)
+        return NetworkReachability(configurable: baseRequestable)
     }()
     #endif
     
     init(
         requestable: R,
         request: @escaping (() -> Request),
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
-        uploadProgressHandler: ((Progress) -> Void)? = nil
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        uploadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil
     ) {
-        self._requestable = requestable
+        self.baseRequestable = requestable
         self.requestClosure = request
         self.retryAttempts = requestable.maxRetryAttempts
         self.downloadProgressHandler = downloadProgressHandler
@@ -75,18 +72,19 @@ open class NetworkOperation<R: _Requestable>: Operation {
     override open func cancel() {
         guard !isCancelled else { return }
         super.cancel()
-        request.cancel()
+        request?.cancel()
     }
     
     @objc func executeRequest() {
         guard !isCancelled else { return }
         request = requestClosure()
+        let requestType = RequestType(request: request!)
         switch requestType {
         case .data:
             let request = self.request as! DataRequest
             request
-                .downloadProgress(queue: _requestable.downloadProgressQueue) { [unowned self] progress in
-                    self.downloadProgressHandler?(progress)
+                .downloadProgress(queue: downloadProgressHandler?.1 ?? .main) { [unowned self] progress in
+                    self.downloadProgressHandler?.0(progress)
                 }
                 .response { [unowned self] in
                     if $0.error != nil {
@@ -99,8 +97,8 @@ open class NetworkOperation<R: _Requestable>: Operation {
         case .download:
             let request = self.request as! DownloadRequest
             request
-                .downloadProgress(queue: _requestable.downloadProgressQueue) { [unowned self] progress in
-                    self.downloadProgressHandler?(progress)
+                .downloadProgress(queue: downloadProgressHandler?.1 ?? .main) { [unowned self] progress in
+                    self.downloadProgressHandler?.0(progress)
                 }
                 .response { [unowned self] in
                     if $0.error != nil {
@@ -113,8 +111,8 @@ open class NetworkOperation<R: _Requestable>: Operation {
         case .upload:
             let request = self.request as! DataRequest
             request
-                .uploadProgress(queue: _requestable.uploadProgressQueue) { [unowned self] progress in
-                    self.uploadProgressHandler?(progress)
+                .uploadProgress(queue: uploadProgressHandler?.1 ?? .main) { [unowned self] progress in
+                    self.uploadProgressHandler?.0(progress)
                 }
                 .response { [unowned self] in
                     if $0.error != nil {
@@ -125,7 +123,7 @@ open class NetworkOperation<R: _Requestable>: Operation {
                     request.logDataRequestIfNeeded(result: $0)
             }
         }
-        request.logRequestIfNeeded()
+        request?.logRequestIfNeeded()
     }
     
     open func copy() -> NetworkOperation {
@@ -142,11 +140,12 @@ open class NetworkOperation<R: _Requestable>: Operation {
     
     // MARK:- Data Response
     func handleDataResponseIfNeeded(_ response: DataResponse<Data?>) {
+        guard let request = request else { assertionFailure("Request should not be nil"); return }
         let response = dataResponseResult(response: response)
         if response.error != nil {
             handleDataResponse(response)
-        } else if _requestable.shouldPoll(request, requestable: _requestable, response: response) {
-            retry(afterDelay: _requestable.pollingInterval)
+        } else if baseRequestable.shouldPoll(request, requestable: baseRequestable, response: response) {
+            retry(afterDelay: baseRequestable.pollingInterval)
         } else {
             handleDataResponse(response)
         }
@@ -170,11 +169,12 @@ open class NetworkOperation<R: _Requestable>: Operation {
     
     // MARK: - Download Response
     func handleDownloadResponseIfNeeded(_ response: DownloadResponse<URL?>) {
+        guard let request = request else { assertionFailure("Request should not be nil"); return }
         let response = downloadResponseResult(response: response)
         if response.error != nil {
             handleDownloadResponse(response)
-        } else if _requestable.shouldPoll(request, requestable: _requestable, response: response) {
-            retry(afterDelay: _requestable.pollingInterval)
+        } else if baseRequestable.shouldPoll(request, requestable: baseRequestable, response: response) {
+            retry(afterDelay: baseRequestable.pollingInterval)
         } else {
             handleDownloadResponse(response)
         }
@@ -201,21 +201,21 @@ open class NetworkOperation<R: _Requestable>: Operation {
         var handledError = true
         var isConnectivityError = false
         #if !os(watchOS)
-            if let error = error as? URLError, _requestable.waitsForConnectivity &&
+            if let error = error as? URLError, baseRequestable.waitsForConnectivity &&
                 error.code == .notConnectedToInternet {
                 isConnectivityError = true
-                _requestable.eventuallyOperationQueue.isSuspended = true
+                baseRequestable.eventuallyOperationQueue.isSuspended = true
                 let eventuallyOperation: NetworkOperation = self.copy()
                 reachability.setupListener()
-                _requestable.eventuallyOperationQueue.addOperation(eventuallyOperation)
+                baseRequestable.eventuallyOperationQueue.addOperation(eventuallyOperation)
             }
         #endif
         if isConnectivityError {
            // No-op
         } else if let error = error as? URLError, retryAttempts > 0 &&
-            _requestable.retryErrorCodes.contains(error.code) {
+            baseRequestable.retryErrorCodes.contains(error.code) {
             retryAttempts -= 1
-            retry(afterDelay: _requestable.retryInterval)
+            retry(afterDelay: baseRequestable.retryInterval)
         } else {
             handledError = false
         }

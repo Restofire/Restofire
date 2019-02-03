@@ -13,6 +13,7 @@ public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
     
     let downloadable: R
     let downloadRequest: () -> DownloadRequest
+    let completionQueue: DispatchQueue
     let completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     
     /// Intializes an download operation.
@@ -25,11 +26,13 @@ public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
     public init(
         downloadable: R,
         request: @escaping (() -> DownloadRequest),
-        downloadProgressHandler: ((Progress) -> Void)? = nil,
+        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue,
         completionHandler: ((DownloadResponse<R.Response>) -> Void)?
     ) {
         self.downloadable = downloadable
         self.downloadRequest = request
+        self.completionQueue = completionQueue
         self.completionHandler = completionHandler
         super.init(
             requestable: downloadable,
@@ -47,7 +50,7 @@ public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
         }
         res = downloadable.process(request, requestable: downloadable, response: res)
 
-        downloadable.completionQueue.async {
+        completionQueue.async {
             self.completionHandler?(res)
         }
         
@@ -96,6 +99,7 @@ public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
         let operation = DownloadOperation(
             downloadable: downloadable,
             request: downloadRequest,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
         return operation

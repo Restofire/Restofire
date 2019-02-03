@@ -14,15 +14,6 @@ public protocol Queueable {
     /// The `queues`.
     var queues: Queues { get }
     
-    /// The `completionQueue`.
-    var completionQueue: DispatchQueue { get }
-    
-    /// The `downloadProgressQueue`.
-    var downloadProgressQueue: DispatchQueue { get }
-    
-    /// The `uploadProgressQueue`.
-    var uploadProgressQueue: DispatchQueue { get }
-    
     /// The request operation queue
     var requestQueue: OperationQueue { get }
     
@@ -39,21 +30,6 @@ public extension Queueable where Self: Configurable {
     /// `Queues.default`
     public var queues: Queues {
         return Queues.default
-    }
-    
-    /// `Queues.default.completionQueue`
-    public var completionQueue: DispatchQueue {
-        return queues.completionQueue
-    }
-    
-    /// `Queues.default.downloadProgressQueue`
-    public var downloadProgressQueue: DispatchQueue {
-        return queues.downloadProgressQueue
-    }
-    
-    /// `Queues.default.uploadProgressQueue`
-    public var uploadProgressQueue: DispatchQueue {
-        return queues.uploadProgressQueue
     }
     
     /// `Queues.default.requestQueue`

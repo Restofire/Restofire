@@ -13,6 +13,7 @@ public class UploadOperation<R: Uploadable>: NetworkOperation<R> {
     
     let uploadable: R
     let uploadRequest: () -> UploadRequest
+    let completionQueue: DispatchQueue
     let completionHandler: ((DataResponse<R.Response>) -> Void)?
     
     /// Intializes an upload operation.
@@ -25,11 +26,13 @@ public class UploadOperation<R: Uploadable>: NetworkOperation<R> {
     public init(
         uploadable: R,
         request: @escaping () -> UploadRequest,
-        uploadProgressHandler: ((Progress) -> Void)? = nil,
+        uploadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        completionQueue: DispatchQueue,
         completionHandler: ((DataResponse<R.Response>) -> Void)?
     ) {
         self.uploadable = uploadable
         self.uploadRequest = request
+        self.completionQueue = completionQueue
         self.completionHandler = completionHandler
         super.init(
             requestable: uploadable,
@@ -47,7 +50,7 @@ public class UploadOperation<R: Uploadable>: NetworkOperation<R> {
         }
         res = uploadable.process(request, requestable: uploadable, response: res)
 
-        uploadable.completionQueue.async {
+        completionQueue.async {
             self.completionHandler?(res)
         }
         
@@ -95,6 +98,7 @@ public class UploadOperation<R: Uploadable>: NetworkOperation<R> {
         let operation = UploadOperation(
             uploadable: uploadable,
             request: uploadRequest,
+            completionQueue: completionQueue,
             completionHandler: completionHandler
         )
         return operation

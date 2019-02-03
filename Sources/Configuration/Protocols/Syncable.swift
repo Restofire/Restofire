@@ -9,12 +9,11 @@
 import Foundation
 
 public protocol Syncable {
-    associatedtype Response
-    associatedtype Request: Requestable where Request.Response == Response
+    associatedtype Request: Requestable
+    var request: Request { get }
     
-    func request() -> Request
     func shouldSync(completion: (Bool) throws -> ()) throws
-    func insert(model: Response, completion: @escaping () throws -> ()) throws
+    func insert(model: Request.Response, completion: @escaping () throws -> ()) throws
 }
 
 extension Syncable {
@@ -30,7 +29,7 @@ extension Syncable {
                     DispatchQueue.main.async { completion?(nil) }
                     return
                 }
-                try self.request().execute { result, response in
+                try self.request.execute { result, response in
                     guard let result = result else {
                         DispatchQueue.main.async { completion?(response.error!) }
                         return

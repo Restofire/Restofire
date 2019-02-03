@@ -22,7 +22,7 @@ extension CoreDataSyncable {
                         DispatchQueue.main.async { completion?(nil) }
                         return
                     }
-                    try self.request().execute { result, response in
+                    try self.request.execute { result, response in
                         guard let result = result else {
                             DispatchQueue.main.async { completion?(response.error!) }
                             return

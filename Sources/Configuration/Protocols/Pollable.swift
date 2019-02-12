@@ -15,10 +15,10 @@ public protocol Pollable {
     var poll: Poll { get }
     
     /// Called to check if it requires retry even if the request succeeded.
-    func shouldPoll<R: Configurable & ResponseSerializable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> Bool
+    func shouldPoll<R: BaseRequestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> Bool
     
     /// Called to check if it requires retry even if the request succeeded.
-    func shouldPoll<R: Configurable & ResponseSerializable>(_ request: Request, requestable: R, response: DownloadResponse<R.Response>) -> Bool
+    func shouldPoll<R: BaseRequestable>(_ request: Request, requestable: R, response: DownloadResponse<R.Response>) -> Bool
     
 }
 
@@ -30,12 +30,12 @@ extension Pollable where Self: Configurable {
     }
     
     /// `false`
-    public func shouldPoll<R: Configurable & ResponseSerializable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> Bool {
+    public func shouldPoll<R: BaseRequestable>(_ request: Request, requestable: R, response: DataResponse<R.Response>) -> Bool {
         return false
     }
     
     /// `false`
-    public func shouldPoll<R: Configurable & ResponseSerializable>(_ request: Request, requestable: R, response: DownloadResponse<R.Response>) -> Bool {
+    public func shouldPoll<R: BaseRequestable>(_ request: Request, requestable: R, response: DownloadResponse<R.Response>) -> Bool {
         return false
     }
     

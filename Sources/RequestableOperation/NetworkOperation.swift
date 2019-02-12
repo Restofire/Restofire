@@ -140,11 +140,9 @@ open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
     
     // MARK:- Data Response
     func handleDataResponseIfNeeded(_ response: DataResponse<Data?>) {
-        guard let request = request else { assertionFailure("Request should not be nil"); return }
+        guard let request = request else { fatalError("Request should not be nil"); }
         let response = dataResponseResult(response: response)
-        if response.error != nil {
-            handleDataResponse(response)
-        } else if baseRequestable.shouldPoll(request, requestable: baseRequestable, response: response) {
+        if baseRequestable.shouldPoll(request, requestable: baseRequestable, response: response) {
             retry(afterDelay: baseRequestable.pollingInterval)
         } else {
             handleDataResponse(response)
@@ -156,7 +154,8 @@ open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
     }
     
     func handleDataRequestError(_ response: DataResponse<Data?>) {
-        if !handleRequestError(response.error!) {
+        guard let error = response.error else { fatalError("Error should not be nil"); }
+        if handleRequestError(error) {
             handleDataResponseIfNeeded(response)
         } else {
             isFinished = true
@@ -169,11 +168,9 @@ open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
     
     // MARK: - Download Response
     func handleDownloadResponseIfNeeded(_ response: DownloadResponse<URL?>) {
-        guard let request = request else { assertionFailure("Request should not be nil"); return }
+        guard let request = request else { fatalError("Request should not be nil"); }
         let response = downloadResponseResult(response: response)
-        if response.error != nil {
-            handleDownloadResponse(response)
-        } else if baseRequestable.shouldPoll(request, requestable: baseRequestable, response: response) {
+        if baseRequestable.shouldPoll(request, requestable: baseRequestable, response: response) {
             retry(afterDelay: baseRequestable.pollingInterval)
         } else {
             handleDownloadResponse(response)
@@ -185,7 +182,8 @@ open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
     }
     
     func handleDownloadRequestError(_ response: DownloadResponse<URL?>) {
-        if !handleRequestError(response.error!) {
+        guard let error = response.error else { fatalError("Error should not be nil"); }
+        if handleRequestError(error) {
             handleDownloadResponseIfNeeded(response)
         } else {
             isFinished = true
@@ -198,7 +196,7 @@ open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
     
     // MARK: - Request Error
     func handleRequestError(_ error: Error) -> Bool {
-        var handledError = true
+        var handledError = false
         var isConnectivityError = false
         #if !os(watchOS)
             if let error = error as? URLError, baseRequestable.waitsForConnectivity &&
@@ -208,16 +206,16 @@ open class NetworkOperation<R: BaseRequestable>: Operation, Cancellable {
                 let eventuallyOperation: NetworkOperation = self.copy()
                 reachability.setupListener()
                 baseRequestable.eventuallyOperationQueue.addOperation(eventuallyOperation)
+                handledError = true
             }
         #endif
-        if isConnectivityError {
-           // No-op
-        } else if let error = error as? URLError, retryAttempts > 0 &&
-            baseRequestable.retryErrorCodes.contains(error.code) {
-            retryAttempts -= 1
-            retry(afterDelay: baseRequestable.retryInterval)
-        } else {
-            handledError = false
+        if let error = error as? URLError, !isConnectivityError {
+            if retryAttempts > 0 && baseRequestable.retryErrorCodes.contains(error.code) {
+                retryAttempts -= 1
+                retry(afterDelay: baseRequestable.retryInterval)
+            } else {
+                handledError = true
+            }
         }
         return handledError
     }

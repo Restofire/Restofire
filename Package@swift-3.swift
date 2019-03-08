@@ -33,7 +33,7 @@ let package = Package(
         .library(name: "Restofire", targets: ["Restofire"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-beta.2")
+        .package(url: "https://github.com/Alamofire/Alamofire.git", from: "5.0.0-beta.3")
     ],
     targets: [
         .target(

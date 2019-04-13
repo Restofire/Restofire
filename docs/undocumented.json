@@ -3,14 +3,14 @@
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
       "line": 19,
-      "symbol": "RFMultipartFormDataEncodingResult.success",
+      "symbol": "RFMultipartFormDataEncodingResult.success(request:streamingFromDisk:streamFileURL:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/MultipartUploadRequest.swift",
       "line": 24,
-      "symbol": "RFMultipartFormDataEncodingResult.failure",
+      "symbol": "RFMultipartFormDataEncodingResult.failure(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
@@ -40,6 +40,167 @@
       "line": null,
       "symbol": "Request",
       "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 11,
+      "symbol": "HTTPMethod",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 12,
+      "symbol": "SessionManager",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 15,
+      "symbol": "ParameterEncoding",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 16,
+      "symbol": "JSONEncoding",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 17,
+      "symbol": "URLEncoding",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 18,
+      "symbol": "PropertyListEncoding",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 21,
+      "symbol": "Request",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 22,
+      "symbol": "DataRequest",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 23,
+      "symbol": "DownloadRequest",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 24,
+      "symbol": "DownloadFileDestination",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 25,
+      "symbol": "UploadRequest",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 28,
+      "symbol": "DefaultDataResponse",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 29,
+      "symbol": "DataResponse",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 30,
+      "symbol": "DefaultDownloadResponse",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 31,
+      "symbol": "DownloadResponse",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 34,
+      "symbol": "DataResponseSerializerProtocol",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 35,
+      "symbol": "DataResponseSerializer",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 36,
+      "symbol": "DownloadResponseSerializerProtocol",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 37,
+      "symbol": "DownloadResponseSerializer",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 38,
+      "symbol": "MultipartFormData",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 39,
+      "symbol": "MultipartFormDataEncodingResult",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 40,
+      "symbol": "Result",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Restofire/Sources/Alamofire/TypeAliases.swift",
+      "line": 43,
+      "symbol": "NetworkReachabilityManager",
+      "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {

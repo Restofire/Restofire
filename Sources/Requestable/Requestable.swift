@@ -44,7 +44,7 @@ public extension Requestable {
     
 }
 
-public extension Requestable {
+extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.

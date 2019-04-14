@@ -43,7 +43,7 @@ public protocol DataResponseSerializable: _ResponseSerializable {
     
 }
 
-public extension DataResponseSerializable where Response == Data {
+extension DataResponseSerializable where Response == Data {
     
     /// `Alamofire.DataRequest.dataResponseSerializer()`
     public var responseSerializer: DataResponseSerializer<Response> {
@@ -60,7 +60,7 @@ public protocol DownloadResponseSerializable: _ResponseSerializable {
     
 }
 
-public extension DownloadResponseSerializable where Response == Data {
+extension DownloadResponseSerializable where Response == Data {
     
     /// `Alamofire.DownloadRequest.dataResponseSerializer()`
     public var responseSerializer: DownloadResponseSerializer<Response> {

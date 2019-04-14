@@ -28,7 +28,7 @@ public protocol Uploadable: _AUploadable, Configurable, DataResponseSerializable
     
 }
 
-public extension Uploadable {
+extension Uploadable {
     
     /// `Does Nothing`
     func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response) {}

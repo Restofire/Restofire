@@ -42,7 +42,7 @@ public protocol AConfigurable: _Configurable, Authenticable, SessionManagable, R
 }
 
 // MARK: - Default Implementation
-public extension AConfigurable {
+extension AConfigurable {
 
     /// `nil`
     public var credential: URLCredential? {

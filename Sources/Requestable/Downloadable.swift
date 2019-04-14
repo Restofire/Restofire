@@ -48,7 +48,7 @@ public extension Downloadable {
     
 }
 
-public extension Downloadable {
+extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Requestable` object and
     /// asynchronously executes it.

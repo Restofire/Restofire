@@ -29,7 +29,7 @@ public protocol ADataUploadable: _AUploadable {
     
 }
 
-public extension ADataUploadable {
+extension ADataUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

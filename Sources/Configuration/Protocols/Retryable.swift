@@ -16,7 +16,7 @@ public protocol Retryable {
     
 }
 
-public extension Retryable where Self: Configurable {
+extension Retryable where Self: Configurable {
     
     /// `Retry.default`
     public var retry: Retry {

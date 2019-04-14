@@ -19,7 +19,7 @@ public protocol _AUploadable: ARequestable {
     
 }
 
-public extension _AUploadable {
+extension _AUploadable {
     
     /// `.post`
     public var method: HTTPMethod {

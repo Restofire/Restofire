@@ -26,7 +26,7 @@ public protocol AFileUploadable: _AUploadable {
     
 }
 
-public extension AFileUploadable {
+extension AFileUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

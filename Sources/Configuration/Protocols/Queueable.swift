@@ -16,7 +16,7 @@ public protocol Queueable {
     
 }
 
-public extension Queueable where Self: Configurable {
+extension Queueable where Self: Configurable {
     
     /// `DispatchQueue.main`
     public var queue: DispatchQueue {

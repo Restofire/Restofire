@@ -57,7 +57,7 @@ public protocol _Configurable {
 }
 
 // MARK: - Default Implementation
-public extension _Configurable {
+extension _Configurable {
     
     /// `Configuration.default`
     public var configuration: Configuration {

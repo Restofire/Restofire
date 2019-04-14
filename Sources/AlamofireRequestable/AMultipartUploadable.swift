@@ -41,7 +41,7 @@ extension AMultipartUploadable {
     
 }
 
-public extension AMultipartUploadable {
+extension AMultipartUploadable {
     
     /// Use request(encodingCompletion:) method for MultipartUpload instead
     public var request: UploadRequest {

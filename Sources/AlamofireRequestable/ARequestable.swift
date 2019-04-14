@@ -25,7 +25,7 @@ public protocol ARequestable: _Requestable, AConfigurable {
 
 }
 
-public extension ARequestable {
+extension ARequestable {
     
     /// `Validation.default.dataValidation`
     public var validationBlock: DataRequest.Validation? {
@@ -34,7 +34,7 @@ public extension ARequestable {
     
 }
 
-public extension ARequestable {
+extension ARequestable {
     
     /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

@@ -26,7 +26,7 @@ public protocol AStreamUploadable: _AUploadable {
 
 }
 
-public extension AStreamUploadable {
+extension AStreamUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

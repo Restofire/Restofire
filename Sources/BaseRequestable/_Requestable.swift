@@ -25,7 +25,7 @@ public protocol _Requestable: _Configurable {
     
 }
 
-public extension _Requestable {
+extension _Requestable {
     
     /// `nil`
     public var path: String? {
@@ -35,11 +35,11 @@ public extension _Requestable {
 }
 
 // MARK: - URL Request
-public extension _Requestable {
+extension _Requestable {
     
     public var urlRequest: URLRequest {
         let url = [scheme + host, version, path]
-            .flatMap { $0 }
+            .compactMap { $0 }
             .joined(separator: "/")
         
         let allHeaders = headers + configuration.headers

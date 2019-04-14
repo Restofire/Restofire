@@ -32,7 +32,7 @@ public protocol ADownloadable: _Requestable, AConfigurable {
     var validationBlock: DownloadRequest.Validation? { get }
 }
 
-public extension ADownloadable {
+extension ADownloadable {
     
     /// `nil`
     public var destination: DownloadFileDestination? {
@@ -46,7 +46,7 @@ public extension ADownloadable {
     
 }
 
-public extension ADownloadable {
+extension ADownloadable {
     
     /// Creates a `DownloadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

@@ -50,7 +50,7 @@ public protocol Configurable: AConfigurable, Reachable, Retryable, Queueable {
 }
 
 // MARK: - Default Implementation
-public extension Configurable {
+extension Configurable {
     
     #if !os(watchOS)
     /// `Reachability.default.waitsForConnectivity`

@@ -27,7 +27,7 @@ import Foundation
 public protocol MultipartUploadable: Uploadable {
     
     /// The multipart form data.
-    var multipartFormData: (MultipartFormData) -> Void { get }
+    var multipartFormData: MultipartFormData { get }
     
     /// The encoding memory threashold.
     var encodingMemoryThreshold: UInt64 { get }
@@ -38,7 +38,7 @@ extension MultipartUploadable {
     
     /// `SessionManager.multipartFormDataEncodingMemoryThreshold`
     public var encodingMemoryThreshold: UInt64 {
-        return MultipartUpload.encodingMemoryThreshold
+        return MultipartFormData.encodingMemoryThreshold
     }
     
 }

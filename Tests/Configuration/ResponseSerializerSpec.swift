@@ -79,8 +79,8 @@ class ResponseSerializerSpec: BaseSpec {
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
                             
-                            if let value = response.result.value as? [String: Any],
-                                let url = value["url"] as? String {
+                            if let value = try? response.result.get() as? [String: Any],
+                                let url = value!["url"] as? String {
                                 expect(url).to(equal("https://httpbin.org/get"))
                             } else {
                                 fail("response.result.value should not be nil")
@@ -128,7 +128,7 @@ class ResponseSerializerSpec: BaseSpec {
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
-                            if let value = response.result.value {
+                            if let value = try? response.result.get() {
                                 expect(value.url.absoluteString)
                                     .to(equal("https://httpbin.org/get"))
                             } else {

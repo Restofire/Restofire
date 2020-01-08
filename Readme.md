@@ -305,7 +305,7 @@ class ViewController: UITableViewController {
 ```swift
 import Restofire
 
-struct NotesGetAllService: NYRequestable {
+struct NotesGetAllService: ApiaryRequestable {
     ...
 
     func request(_ request: RequestOperation<NotesGetAllService>, didCompleteWithValue value: [NoteResponseModel]) {

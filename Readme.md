@@ -213,21 +213,30 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 ```swift
 import Restofire
 
-protocol NYConfigurable: Configurable {}
+protocol ApiaryConfigurable: Configurable {}
 
-extension NYConfigurable {
-
+extension ApiaryConfigurable {
     public var configuration: Configuration {
         var configuration = Configuration.default
-        configuration.scheme = "http://"
-        configuration.host = "api.nytimes.com/svc/movies"
-        configuration.version = "v2"
+        configuration.host = "private-07c21-rahulkatariya.apiary-mock.com"
+        configuration.headers = ["Content-Type": "application/json"]
         return configuration
     }
-
 }
 
-protocol NYRequestable: Requestable, NYConfigurable {}
+protocol ApiaryRequestable: Requestable, ApiaryConfigurable {}
+
+import Restofire
+
+struct NoteResponseModel: Decodable {
+    var id: Int16
+    var title: String
+}
+
+struct NotesGETService: ApiaryRequestable {
+    typealias Response = [NoteResponseModel]
+    var path: String? = "notes"
+}
 ```
 
 - **Per Request Configuration** – The request configuration inherits all the values from the group configuration or directly from the global configuration.
@@ -235,17 +244,22 @@ protocol NYRequestable: Requestable, NYConfigurable {}
 ```swift
 import Restofire
 
-struct MoviesReviewGETService: NYRequestable {
+struct NoteRequestModel: Encodable {
+    var title: String
+}
 
-    typealias Response = [MovieReview]
-    var path: String?
+struct NotePOSTService: Requestable {
+    typealias Response = NoteResponseModel
+    let host: String = "private-07c21-rahulkatariya.apiary-mock.com"
+    let headers = ["Content-Type": "application/json"]
+    let path: String? = "notes"
+    let method: HTTPMethod = .post
     var parameters: Any?
 
-    init(path: String, parameters: Any) {
-        self.path += path
-        self.parameters = parameters
+    init(parameters: NoteRequestModel) {
+        let data = try! JSONEncoder().encode(parameters)
+        self.parameters = try! JSONSerialization.jsonObject(with: data, options: .allowFragments)
     }
-
 }
 ```
 
@@ -259,22 +273,28 @@ struct MoviesReviewGETService: NYRequestable {
 import Restofire
 
 class ViewController: UITableViewController {
+    var notes: [NoteResponseModel]!
+    var requestOp: RequestOperation<NotesGetAllService>!
 
-    var movieReviews: [MovieReview]!
-    var requestOp: RequestOperation<MoviesReviewGETService>!
-
-    func getReviews() {
-        requestOp = MoviesReviewGETService(parameters: ["name": "Rahul Katariya"]).execute() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // We want to cancel the request to save resources when the user pops the view controller.
+        requestOp = NotesGetAllService().execute() {
             if let value = $0.result.value {
-                self.movieReviews = value
+                self.notes = value
             }
         }
+    }
+
+    func postNote(title: String) {
+        let noteRequestModel = NoteRequestModel(title: title)
+        // We don't want to cancel the request even if user pops the view controller.
+        NotePOSTService(parameters: noteRequestModel).execute()
     }
 
     deinit {
         requestOp.cancel()
     }
-
 }
 ```
 
@@ -285,18 +305,12 @@ class ViewController: UITableViewController {
 ```swift
 import Restofire
 
-struct MoviesReviewGETService: NYRequestable {
-
+struct NotesGetAllService: NYRequestable {
     ...
 
-    static func loadMoviews() {
-      MoviesReviewGETService(parameters: ["name": "Rahul Katariya"])
-    }
-
-    func request(_ request: RequestOperation<MoviesReviewGETService>, didCompleteWithValue value: [MovieReview]) {
+    func request(_ request: RequestOperation<NotesGetAllService>, didCompleteWithValue value: [NoteResponseModel]) {
       // Here you can store the results into your cache and then listen for changes inside your view controller.
     }
-
 }
 ```
 
@@ -310,11 +324,9 @@ By adding the following snippet in your project, All `Requestable` associatedTyp
 import Restofire
 
 extension Restofire.DataResponseSerializable where Response: Decodable {
-
     public var responseSerializer: DataResponseSerializer<Response> {
         return DataRequest.JSONDecodableResponseSerializer()
     }
-
 }
 ```
 
@@ -326,11 +338,9 @@ By adding the following snippet in your project, All `Requestable` associatedTyp
 import Restofire
 
 extension Restofire.DataResponseSerializable where Response == Any {
-
     public var responseSerializer: DataResponseSerializer<Response> {
         return DataRequest.jsonResponseSerializer()
     }
-
 }
 ```
 

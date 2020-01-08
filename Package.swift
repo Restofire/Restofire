@@ -1,4 +1,4 @@
-// swift-tools-version:4.2
+// swift-tools-version:5.0
 //
 //  Restofire.swift
 //  Restofire
@@ -33,7 +33,7 @@ let package = Package(
         .library(name: "Restofire", targets: ["Restofire"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "4.8.0"))
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "4.9.0"))
     ],
     targets: [
         .target(
@@ -43,5 +43,5 @@ let package = Package(
             exclude: ["Supporting Files"]
         )
     ],
-    swiftLanguageVersions: [.v4, .v4_2]
+    swiftLanguageVersions: [.v4, .v5]
 )

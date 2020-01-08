@@ -9,12 +9,13 @@ Pod::Spec.new do |s|
  s.authors = { "Rahul Katariya" => "rahulkatariya@me.com" }
  s.source = { :git => "https://github.com/Restofire/Restofire.git", :tag => "v"+s.version.to_s }
  s.platforms = { :ios => "8.0", :osx => "10.10", :tvos => "9.0", :watchos => "2.0" }
+ s.swift_versions = ['4', '4.1', '4.2', '5', '5.1']
  s.requires_arc = true
 
  s.default_subspec = "Core"
  s.subspec "Core" do |ss|
      ss.source_files  = "Sources/**/*.swift"
-     ss.dependency "Alamofire", "~> 4.8"
+     ss.dependency "Alamofire", "~> 4.9"
      ss.framework  = "Foundation"
  end
 

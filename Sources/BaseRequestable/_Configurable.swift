@@ -89,13 +89,9 @@ extension _Configurable {
         return configuration.method
     }
     
-    /// `Configuration.default.encoding` but for requests with method get - URLEncoding.default.
+    /// `Configuration.default.encoding`
     public var encoding: ParameterEncoding {
-        if configuration.method == .get {
-            return URLEncoding.default
-        } else {
-            return configuration.encoding
-        }
+        return configuration.encoding
     }
     
     /// `nil`

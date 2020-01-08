@@ -27,7 +27,7 @@ env:
     - TVOS_FRAMEWORK_SCHEME="Restofire-tvOS"
     - WATCHOS_FRAMEWORK_SCHEME="Restofire-watchOS"
   matrix:
-    - DESTINATION="OS=13.2,name=iPhone 11 Pro"              SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
+    - DESTINATION="OS=13.3,name=iPhone 11 Pro"              SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=12.2,name=iPhone XS"                  SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=11.4,name=iPhone X"                   SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"
     - DESTINATION="OS=10.3.1,name=iPhone 7 Plus"            SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES"

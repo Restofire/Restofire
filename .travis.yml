@@ -23,7 +23,7 @@ env:
     - LANG=en_US.UTF-8
     - WORKSPACE=Restofire.xcworkspace
     - IOS_FRAMEWORK_SCHEME="Restofire-iOS"
-    - OSX_FRAMEWORK_SCHEME="Restofire-macOS"
+    - MACOS_FRAMEWORK_SCHEME="Restofire-macOS"
     - TVOS_FRAMEWORK_SCHEME="Restofire-tvOS"
     - WATCHOS_FRAMEWORK_SCHEME="Restofire-watchOS"
   matrix:

@@ -27,7 +27,7 @@ class FileUploadableSpec: BaseSpec {
                         
                         typealias Response = Data
                         var path: String? = "post"
-                        let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
+                        let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "png")
                         
                         func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: Data) {
                             FileUploadableSpec.successDelegateCalled = true

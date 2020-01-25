@@ -24,7 +24,11 @@ class ADataUploadableSpec: BaseSpec {
                 struct Upload: ADataUploadable {
                     var path: String? = "post"
                     var data: Data = {
-                        return "Lorem ipsum dolor sit amet, consectetur adipiscing elit.".data(using: .utf8, allowLossyConversion: false)!
+                        var text = ""
+                        for _ in 1...3_000 {
+                            text += "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                        }
+                        return text.data(using: .utf8, allowLossyConversion: false)!
                     }()
                     
                     func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
@@ -39,7 +43,6 @@ class ADataUploadableSpec: BaseSpec {
                             .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
                         ADataUploadableSpec.startDelegateCalled = true
                     }
-                    
                     
                 }
                 
@@ -76,7 +79,11 @@ class ADataUploadableSpec: BaseSpec {
                             
                             if let value = response.value as? [String: Any],
                                 let form = value["form"] as? [String: Any] {
-                                expect(form["Lorem ipsum dolor sit amet, consectetur adipiscing elit."]).toNot(beNil())
+                                var text = ""
+                                for _ in 1...3_000 {
+                                    text += "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+                                }
+                                expect(form[text]).toNot(beNil())
                             } else {
                                 fail("response value should not be nil")
                             }

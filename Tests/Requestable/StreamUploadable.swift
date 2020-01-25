@@ -29,7 +29,7 @@ class StreamUploadableSpec: BaseSpec {
                         
                         typealias Response = Data
                         var path: String? = "post"
-                        let stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
+                        let stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "png"))!
                         
                         func request(_ request: UploadOperation<Upload>, didCompleteWithValue value: Data) {
                             StreamUploadableSpec.successDelegateCalled = true

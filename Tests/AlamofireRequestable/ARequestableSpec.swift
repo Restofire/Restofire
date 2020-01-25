@@ -43,15 +43,10 @@ class ARequestableSpec: BaseSpec {
                 print(request.debugDescription)
                 
                 expect(ARequestableSpec.startDelegateCalled).to(beTrue())
-                
-                var progressValues: [Double] = []
-                
+
                 // When
                 waitUntil(timeout: self.timeout) { done in
                     request
-                        .downloadProgress { progress in
-                            progressValues.append(progress.fractionCompleted)
-                        }
                         .responseJSON { response in
                             defer { done() }
                             
@@ -71,19 +66,6 @@ class ARequestableSpec: BaseSpec {
                                 expect(url).to(equal("https://httpbin.org/get"))
                             } else {
                                 fail("response value should not be nil")
-                            }
-                            
-                            var previousProgress: Double = progressValues.first ?? 0.0
-                            
-                            for progress in progressValues {
-                                expect(progress).to(beGreaterThanOrEqualTo(previousProgress))
-                                previousProgress = progress
-                            }
-                            
-                            if let lastProgressValue = progressValues.last {
-                                expect(lastProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in progressValues should not be nil")
                             }
                     }
                 }

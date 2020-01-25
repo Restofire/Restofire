@@ -23,7 +23,7 @@ class AStreamUploadableSpec: BaseSpec {
                 // Given
                 struct Upload: AStreamUploadable {
                     var path: String? = "post"
-                    var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "jpg"))!
+                    var stream: InputStream = InputStream(url: BaseSpec.url(forResource: "rainbow", withExtension: "png"))!
                     
                     func prepare(_ request: URLRequest, requestable: AConfigurable) -> URLRequest {
                         var request = request

@@ -54,7 +54,7 @@ extension Uploadable {
     
 }
 
-public extension Uploadable {
+extension Uploadable {
     
     /// Creates a `UploadOperation` for the specified `Uploadable` object.
     ///
@@ -111,7 +111,7 @@ public extension Uploadable {
     
 }
 
-public extension Uploadable {
+extension Uploadable {
     
     /// Creates a `UploadOperation` for the specified `Uploadable` object.
     ///
@@ -164,7 +164,7 @@ public extension Uploadable {
     
 }
 
-public extension Uploadable {
+extension Uploadable {
     
     /// Creates a `UploadOperation` for the specified `Uploadable` object.
     ///

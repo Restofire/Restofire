@@ -19,7 +19,7 @@ public protocol BaseRequestable: Configurable, ResponseSerializable {
 
 }
 
-public extension BaseRequestable {
+extension BaseRequestable {
     
     /// `nil`
     public var path: String? {
@@ -28,7 +28,7 @@ public extension BaseRequestable {
 
 }
 
-public extension BaseRequestable {
+extension BaseRequestable {
     
     func asUrlRequest(parameters: Any? = nil) throws -> URLRequest {
         let parametersType = ParametersType<EmptyCodable>.any(parameters)

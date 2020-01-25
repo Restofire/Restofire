@@ -28,7 +28,7 @@ public protocol FileUploadable: Uploadable {
     
 }
 
-public extension FileUploadable {
+extension FileUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

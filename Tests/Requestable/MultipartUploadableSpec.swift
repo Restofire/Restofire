@@ -29,14 +29,13 @@ class MultipartUploadableSpec: BaseSpec {
     
     struct Service: MultipartUploadable {
         typealias Response = HTTPBin
-        var responseSerializer = AnyResponseSerializer<Result<Response>>
-            .init(dataSerializer: { (request, response, data, error) -> Result<Response> in
-                return Result { try DecodableResponseSerializer()
+        var responseSerializer = AnyResponseSerializer<RFResult<Response>>
+            .init(dataSerializer: { (request, response, data, error) -> RFResult<Response> in
+                return Result<Response, RFError>.serialize { try DecodableResponseSerializer()
                     .serialize(request: request,
                                response: response,
                                data: data,
-                               error: error)
-                }
+                               error: error) }
             })
         
         var path: String? = "post"

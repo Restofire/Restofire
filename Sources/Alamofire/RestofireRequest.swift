@@ -95,8 +95,8 @@ class RestofireRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.upload(
             multipartFormData: requestable.multipartFormData,
-            usingThreshold: requestable.encodingMemoryThreshold,
-            with: urlRequest
+            with: urlRequest,
+            usingThreshold: requestable.encodingMemoryThreshold
         )
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)

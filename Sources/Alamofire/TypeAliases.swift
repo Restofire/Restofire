@@ -29,15 +29,15 @@ public typealias DownloadRequest = Alamofire.DownloadRequest
 public typealias UploadRequest = Alamofire.UploadRequest
 
 // Response
-public typealias DataResponse = Alamofire.DataResponse
-public typealias DownloadResponse = Alamofire.DownloadResponse
+public typealias RFError = Alamofire.AFError
+public typealias DataResponse = Alamofire.AFDataResponse
+public typealias DownloadResponse = Alamofire.AFDownloadResponse
 
 // Features
 public typealias Session = Alamofire.Session
 public typealias DataResponseSerializer = Alamofire.DataResponseSerializer
-//public typealias MultipartUpload = Alamofire.MultipartUpload
 public typealias MultipartFormData = Alamofire.MultipartFormData
-public typealias Result = Alamofire.AFResult
+public typealias RFResult = Alamofire.AFResult
 
 #if !os(watchOS)
 public typealias NetworkReachabilityManager = Alamofire.NetworkReachabilityManager

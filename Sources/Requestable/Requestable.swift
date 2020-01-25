@@ -38,7 +38,7 @@ public protocol Requestable: BaseRequestable {
     
 }
 
-public extension Requestable {
+extension Requestable {
     
     /// `Validation.default.dataValidation`
     public var validationBlock: DataRequest.Validation? {
@@ -72,7 +72,7 @@ extension Requestable {
     
 }
 
-public extension Requestable {
+extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
@@ -127,7 +127,7 @@ public extension Requestable {
     }
 }
 
-public extension Requestable {
+extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
@@ -180,7 +180,7 @@ public extension Requestable {
     
 }
 
-public extension Requestable {
+extension Requestable {
     
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///

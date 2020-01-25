@@ -23,7 +23,7 @@ class NetworkReachability {
             assertionFailure("NetworkReachabilityManager should not be nil")
             return
         }
-        networkReachabilityManager.listener = { [unowned self] status in
+        networkReachabilityManager.startListening { [unowned self] status in
             switch status {
             case .reachable(_):
                 self.configurable.eventuallyOperationQueue.isSuspended = false
@@ -31,7 +31,6 @@ class NetworkReachability {
                 self.configurable.eventuallyOperationQueue.isSuspended = true
             }
         }
-        networkReachabilityManager.startListening()
     }
 }
     

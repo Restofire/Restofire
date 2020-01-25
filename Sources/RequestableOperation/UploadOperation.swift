@@ -65,21 +65,20 @@ public class UploadOperation<R: Uploadable>: NetworkOperation<R> {
     }
     
     override func dataResponseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
-        let result = Result { try uploadable.responseSerializer
+        let result = Result<R.Response, RFError>.serialize { try uploadable.responseSerializer
             .serialize(request: response.request,
                        response: response.response,
                        data: response.data,
-                       error: response.error)
-        }
-        
-        var responseResult: Result<R.Response>!
+                       error: response.error) }
+
+        var responseResult: RFResult<R.Response>!
         
         switch result {
         case .success(let value):
             responseResult = value
         case .failure(let error):
             assertionFailure(error.localizedDescription)
-            responseResult = Result.failure(error)
+            responseResult = RFResult<R.Response>.failure(error)
         }
         
         let dataResponse = DataResponse<R.Response>(

@@ -18,7 +18,7 @@ extension Request {
                 let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
                 if logLevel == "1" {
                     print("/**************************************** Request ****************************************/")
-                    print(self.debugDescription)
+                    print(self.cURLDescription())
                     print("/**************************************** RequestEnd ****************************************/")
                 }
             }
@@ -36,7 +36,7 @@ extension Request {
                     print("/**************************************** ResponseEnd ****************************************/")
                 } else if logLevel == "3" {
                     print("/**************************************** Request ****************************************/")
-                    print(self.debugDescription)
+                    print(self.cURLDescription())
                     print("/**************************************** RequestEnd ****************************************/")
                     print("")
                     print("/**************************************** Response ****************************************/")
@@ -63,7 +63,7 @@ extension Request {
                     print("/**************************************** ResponseEnd ****************************************/")
                 } else if logLevel == "3" {
                     print("/**************************************** Request ****************************************/")
-                    print(self.debugDescription)
+                    print(self.cURLDescription())
                     print("/**************************************** RequestEnd ****************************************/")
                     print("/**************************************** Response ****************************************/")
                     print(self.response.debugDescription)

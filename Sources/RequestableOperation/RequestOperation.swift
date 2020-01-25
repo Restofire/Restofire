@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// An NSOperation that executes the `Requestable` asynchronously.
 public class RequestOperation<R: Requestable>: NetworkOperation<R> {
@@ -65,20 +66,20 @@ public class RequestOperation<R: Requestable>: NetworkOperation<R> {
     }
     
     override func dataResponseResult(response: DataResponse<Data?>) -> DataResponse<R.Response> {
-        let result = Result { try requestable.responseSerializer
+        let result = Result<R.Response, RFError>.serialize { try requestable.responseSerializer
             .serialize(request: response.request,
                        response: response.response,
                        data: response.data,
                        error: response.error) }
-        
-        var responseResult: Result<R.Response>!
+
+        var responseResult: RFResult<R.Response>!
         
         switch result {
         case .success(let value):
             responseResult = value
         case .failure(let error):
             assertionFailure(error.localizedDescription)
-            responseResult = Result.failure(error)
+            responseResult = RFResult<R.Response>.failure(error)
         }
         
         let dataResponse = DataResponse<R.Response>(

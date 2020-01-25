@@ -31,7 +31,7 @@ public protocol DataUploadable: Uploadable {
     
 }
 
-public extension DataUploadable {
+extension DataUploadable {
 
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

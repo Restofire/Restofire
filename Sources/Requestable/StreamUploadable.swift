@@ -28,7 +28,7 @@ public protocol StreamUploadable: Uploadable {
 
 }
 
-public extension StreamUploadable {
+extension StreamUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

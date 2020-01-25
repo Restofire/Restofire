@@ -49,7 +49,7 @@ public protocol Downloadable: BaseRequestable {
     
 }
 
-public extension Downloadable {
+extension Downloadable {
     
     /// `nil`
     public var resumeData: Data? {
@@ -93,7 +93,7 @@ extension Downloadable {
     
 }
 
-public extension Downloadable {
+extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///
@@ -150,7 +150,7 @@ public extension Downloadable {
     
 }
 
-public extension Downloadable {
+extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///
@@ -203,7 +203,7 @@ public extension Downloadable {
     
 }
 
-public extension Downloadable {
+extension Downloadable {
     
     /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///

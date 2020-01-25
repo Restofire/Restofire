@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 /// An NSOperation that executes the `Downloadable` asynchronously.
 public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
@@ -65,21 +66,20 @@ public class DownloadOperation<R: Downloadable>: NetworkOperation<R> {
     }
     
     override func downloadResponseResult(response: DownloadResponse<URL?>) -> DownloadResponse<R.Response> {
-        let result = Result { try downloadable.responseSerializer
+        let result = Result<R.Response, RFError>.serialize { try downloadable.responseSerializer
             .serializeDownload(request: response.request,
                                response: response.response,
                                fileURL: response.fileURL,
-                               error: response.error)
-        }
+                               error: response.error) }
         
-        var responseResult: Result<R.Response>!
+        var responseResult: RFResult<R.Response>!
         
         switch result {
         case .success(let value):
             responseResult = value
         case .failure(let error):
             assertionFailure(error.localizedDescription)
-            responseResult = Result.failure(error)
+            responseResult = RFResult<R.Response>.failure(error)
         }
         
         let downloadResponse = DownloadResponse<R.Response>(

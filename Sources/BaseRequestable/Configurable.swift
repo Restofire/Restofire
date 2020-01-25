@@ -92,7 +92,7 @@ public protocol Configurable: Authenticable, Pollable, Reachable, Retryable, Req
 }
 
 // MARK: - Default Implementation
-public extension Configurable {
+extension Configurable {
 
     /// `Configuration.default`
     public var configuration: Configuration {

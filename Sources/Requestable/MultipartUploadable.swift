@@ -43,7 +43,7 @@ extension MultipartUploadable {
     
 }
 
-public extension MultipartUploadable {
+extension MultipartUploadable {
     
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

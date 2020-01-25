@@ -34,7 +34,7 @@ public protocol Uploadable: BaseRequestable {
     
 }
 
-public extension Uploadable {
+extension Uploadable {
     
     /// `.post`
     public var method: HTTPMethod {

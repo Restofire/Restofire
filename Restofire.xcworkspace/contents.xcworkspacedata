@@ -8,9 +8,6 @@
       location = "group:Restofire.playground">
    </FileRef>
    <FileRef
-      location = "group:/Users/rahulkatariya/Developer/Restofire/Restofire/Example/Example.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:scripts">
    </FileRef>
    <FileRef

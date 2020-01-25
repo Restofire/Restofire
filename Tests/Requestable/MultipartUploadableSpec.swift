@@ -44,7 +44,7 @@ class MultipartUploadableSpec: BaseSpec {
             let multipartFormData = MultipartFormData()
             multipartFormData.append("français".data(using: .utf8, allowLossyConversion: false)!, withName: "french")
             multipartFormData.append("日本語".data(using: .utf8, allowLossyConversion: false)!, withName: "japanese")
-            multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "jpg"), withName: "image")
+            multipartFormData.append(BaseSpec.url(forResource: "rainbow", withExtension: "png"), withName: "image")
             multipartFormData.append(BaseSpec.url(forResource: "unicorn", withExtension: "png"), withName: "image")
             return multipartFormData
         }()

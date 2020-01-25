@@ -32,7 +32,7 @@ class FileUploadableSpec: BaseSpec {
             })
         
         var path: String? = "post"
-        let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "jpg")
+        let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "png")
         
         func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
             var request = request

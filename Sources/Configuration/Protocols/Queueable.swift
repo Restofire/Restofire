@@ -25,7 +25,7 @@ public protocol Queueable {
     
 }
 
-public extension Queueable where Self: Configurable {
+extension Queueable where Self: Configurable {
     
     /// `Queues.default`
     public var queues: Queues {

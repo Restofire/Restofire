@@ -14,7 +14,7 @@
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Restofire Docs</a> (98% documented)</p>
+        <p><a href="index.html">Restofire Docs</a> (86% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -31,19 +31,27 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Classes/AOperation.html">AOperation</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="Classes/AnyResponseSerializer.html">AnyResponseSerializer</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/DownloadOperation.html">DownloadOperation</a>
               </li>
               <li class="nav-group-task">
+                <a href="Classes/NetworkOperation.html">NetworkOperation</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/RequestOperation.html">RequestOperation</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/UploadOperation.html">UploadOperation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/ParametersType.html">ParametersType</a>
               </li>
             </ul>
           </li>
@@ -65,10 +73,25 @@
                 <a href="Protocols/Authenticable.html">Authenticable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/BackgroundQosable.html">BackgroundQosable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BaseRequestable.html">BaseRequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Cancellable.html">Cancellable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Configurable.html">Configurable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/CoreDataSyncable.html">CoreDataSyncable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/DataUploadable.html">DataUploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/DefaultQosable.html">DefaultQosable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Downloadable.html">Downloadable</a>
@@ -90,6 +113,9 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Pollable.html">Pollable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/Qosable.html">Qosable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/QueuePriortizable.html">QueuePriortizable</a>
@@ -119,7 +145,19 @@
                 <a href="Protocols/StreamUploadable.html">StreamUploadable</a>
               </li>
               <li class="nav-group-task">
+                <a href="Protocols/Syncable.html">Syncable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Protocols/Uploadable.html">Uploadable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/UserInitiatedQosable.html">UserInitiatedQosable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/UserInteractiveQosable.html">UserInteractiveQosable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/UtilityQosable.html">UtilityQosable</a>
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/Validatable.html">Validatable</a>
@@ -129,9 +167,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="Protocols/VeryLowQueuePriortizable.html">VeryLowQueuePriortizable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/_Requestable.html">_Requestable</a>
               </li>
             </ul>
           </li>
@@ -157,10 +192,78 @@
                 <a href="Structs/Retry.html">Retry</a>
               </li>
               <li class="nav-group-task">
-                <a href="Structs/Session.html">Session</a>
+                <a href="Structs/SessionManager.html">SessionManager</a>
               </li>
               <li class="nav-group-task">
                 <a href="Structs/Validation.html">Validation</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire11DataRequesta">DataRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire22DataResponseSerializera">DataResponseSerializer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire15DownloadRequesta">DownloadRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire16DownloadResponsea">DownloadResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire10HTTPHeadera">HTTPHeader</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire11HTTPHeadersa">HTTPHeaders</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire10HTTPMethoda">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire12JSONEncodinga">JSONEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire20JSONParameterEncodera">JSONParameterEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire17MultipartFormDataa">MultipartFormData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire26NetworkReachabilityManagera">NetworkReachabilityManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire16ParameterEncodera">ParameterEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire17ParameterEncodinga">ParameterEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire7Requesta">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire6Resulta">Result</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire7Sessiona">Session</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire30URLEncodedFormParameterEncodera">URLEncodedFormParameterEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire11URLEncodinga">URLEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire21URLRequestConvertiblea">URLRequestConvertible</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:9Restofire13UploadRequesta">UploadRequest</a>
               </li>
             </ul>
           </li>
@@ -204,10 +307,37 @@
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire15BaseRequestableP"></a>
+                    <a name="//apple_ref/swift/Protocol/BaseRequestable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire15BaseRequestableP">BaseRequestable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an abstract <code>BaseRequestable</code>.</p>
+
+<p>Instead implement Requestable, Downloadable, FileUploadable, DataUploadable, StreamUploadable,
+MultipartUplodable protocols.</p>
+
+                        <a href="Protocols/BaseRequestable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BaseRequestable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Configurable.html">Configurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ResponseSerializable.html">ResponseSerializable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -243,52 +373,13 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Configurable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Authenticable.html">Authenticable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Pollable.html">Pollable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/QueuePriortizable.html">QueuePriortizable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Queueable.html">Queueable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Reachable.html">Reachable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/RequestDelegate.html">RequestDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Retryable.html">Retryable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/SessionManagable.html">SessionManagable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Validatable.html">Validatable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Configurable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Authenticable.html">Authenticable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Pollable.html">Pollable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Qosable.html">Qosable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/QueuePriortizable.html">QueuePriortizable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Queueable.html">Queueable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Reachable.html">Reachable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/RequestDelegate.html">RequestDelegate</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Retryable.html">Retryable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/SessionManagable.html">SessionManagable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/Validatable.html">Validatable</a></span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire12_RequestableP"></a>
-                    <a name="//apple_ref/swift/Protocol/_Requestable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire12_RequestableP">_Requestable</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Represents an abstract <code>_Requestable</code>.</p>
-
-<p>Instead implement Requestable, Downloadable, FileUploadable, DataUploadable, StreamUploadable,
-MultipartUplodable protocols.</p>
-
-                        <a href="Protocols/_Requestable.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="nv">_Requestable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Configurable.html">Configurable</a></span><span class="p">,</span> <span class="kt"><a href="Protocols/ResponseSerializable.html">ResponseSerializable</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -317,10 +408,34 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire11CancellableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Cancellable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire11CancellableP">Cancellable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Protocol to define the opaque type returned from a request.</p>
+
+                        <a href="Protocols/Cancellable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Cancellable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -349,10 +464,174 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire7QosableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Qosable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire7QosableP">Qosable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>Qosable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.</p>
+
+                        <a href="Protocols/Qosable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Qosable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire22UserInteractiveQosableP"></a>
+                    <a name="//apple_ref/swift/Protocol/UserInteractiveQosable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire22UserInteractiveQosableP">UserInteractiveQosable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>UserInteractiveQosable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.</p>
+
+                        <a href="Protocols/UserInteractiveQosable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UserInteractiveQosable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Qosable.html">Qosable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire20UserInitiatedQosableP"></a>
+                    <a name="//apple_ref/swift/Protocol/UserInitiatedQosable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire20UserInitiatedQosableP">UserInitiatedQosable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>UserInitiatedQosable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.</p>
+
+                        <a href="Protocols/UserInitiatedQosable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UserInitiatedQosable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Qosable.html">Qosable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire14DefaultQosableP"></a>
+                    <a name="//apple_ref/swift/Protocol/DefaultQosable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire14DefaultQosableP">DefaultQosable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>DefaultQosable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.</p>
+
+                        <a href="Protocols/DefaultQosable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DefaultQosable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Qosable.html">Qosable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire14UtilityQosableP"></a>
+                    <a name="//apple_ref/swift/Protocol/UtilityQosable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire14UtilityQosableP">UtilityQosable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>UtilityQosable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.</p>
+
+                        <a href="Protocols/UtilityQosable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UtilityQosable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Qosable.html">Qosable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire17BackgroundQosableP"></a>
+                    <a name="//apple_ref/swift/Protocol/BackgroundQosable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire17BackgroundQosableP">BackgroundQosable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents an <code>BackgroundQosable</code> that is associated with <code><a href="Protocols/Requestable.html">Requestable</a></code>.</p>
+
+                        <a href="Protocols/BackgroundQosable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BackgroundQosable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Qosable.html">Qosable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -521,10 +800,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -553,10 +828,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -585,10 +856,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -617,10 +884,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -649,10 +912,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -681,10 +940,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -713,10 +968,34 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire8SyncableP"></a>
+                    <a name="//apple_ref/swift/Protocol/Syncable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire8SyncableP">Syncable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/Syncable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Syncable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -745,10 +1024,34 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:9Restofire16CoreDataSyncableP"></a>
+                    <a name="//apple_ref/swift/Protocol/CoreDataSyncable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:9Restofire16CoreDataSyncableP">CoreDataSyncable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                        <a href="Protocols/CoreDataSyncable.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CoreDataSyncable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Syncable.html">Syncable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
                 <li class="item">
                   <div>
                     <code>
@@ -790,10 +1093,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -828,17 +1127,13 @@ MultipartUplodable protocols.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Downloadable</span> <span class="p">:</span> <span class="n"><a href="Protocols/_Requestable.html">_Requestable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Downloadable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/BaseRequestable.html">BaseRequestable</a></span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -877,10 +1172,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -922,10 +1213,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -955,17 +1242,13 @@ MultipartUplodable protocols.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Requestable</span> <span class="p">:</span> <span class="n"><a href="Protocols/_Requestable.html">_Requestable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Requestable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/BaseRequestable.html">BaseRequestable</a></span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1004,10 +1287,6 @@ MultipartUplodable protocols.</p>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -1032,7 +1311,7 @@ AMultipartUplodable protocols.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Uploadable</span> <span class="p">:</span> <span class="n"><a href="Protocols/_Requestable.html">_Requestable</a></span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Uploadable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/BaseRequestable.html">BaseRequestable</a></span></code></pre>
 
                         </div>
                       </div>
@@ -1044,8 +1323,8 @@ AMultipartUplodable protocols.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2018-12-11)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2020-01-25)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

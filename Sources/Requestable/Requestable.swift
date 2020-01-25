@@ -53,7 +53,7 @@ public extension Requestable {
     
 }
 
-public extension Requestable {
+extension Requestable {
     
     /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

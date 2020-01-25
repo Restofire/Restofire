@@ -17,7 +17,7 @@ import Foundation
 ///     typealias Response = Data
 ///
 ///     var path: String? = "post"
-///     let url: URL = FileManager.url(forResource: "rainbow", withExtension: "jpg")
+///     let url: URL = FileManager.url(forResource: "rainbow", withExtension: "png")
 ///
 /// }
 /// ```

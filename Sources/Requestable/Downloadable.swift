@@ -74,7 +74,7 @@ public extension Downloadable {
     
 }
 
-public extension Downloadable {
+extension Downloadable {
     
     /// Creates a `DownloadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///

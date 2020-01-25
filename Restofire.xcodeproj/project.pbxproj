@@ -21,9 +21,9 @@
 		350428D7201C704F00765D15 /* unicorn.png in Resources */ = {isa = PBXBuildFile; fileRef = 350428D5201C704F00765D15 /* unicorn.png */; };
 		350428D8201C704F00765D15 /* unicorn.png in Resources */ = {isa = PBXBuildFile; fileRef = 350428D5201C704F00765D15 /* unicorn.png */; };
 		350428D9201C704F00765D15 /* unicorn.png in Resources */ = {isa = PBXBuildFile; fileRef = 350428D5201C704F00765D15 /* unicorn.png */; };
-		350428DA201C704F00765D15 /* rainbow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 350428D6201C704F00765D15 /* rainbow.jpg */; };
-		350428DB201C704F00765D15 /* rainbow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 350428D6201C704F00765D15 /* rainbow.jpg */; };
-		350428DC201C704F00765D15 /* rainbow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 350428D6201C704F00765D15 /* rainbow.jpg */; };
+		350428DA201C704F00765D15 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 350428D6201C704F00765D15 /* rainbow.png */; };
+		350428DB201C704F00765D15 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 350428D6201C704F00765D15 /* rainbow.png */; };
+		350428DC201C704F00765D15 /* rainbow.png in Resources */ = {isa = PBXBuildFile; fileRef = 350428D6201C704F00765D15 /* rainbow.png */; };
 		350428EF201C876800765D15 /* ArrayParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428EE201C876800765D15 /* ArrayParameterEncoding.swift */; };
 		350428F0201C876800765D15 /* ArrayParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428EE201C876800765D15 /* ArrayParameterEncoding.swift */; };
 		350428F1201C876800765D15 /* ArrayParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350428EE201C876800765D15 /* ArrayParameterEncoding.swift */; };
@@ -410,7 +410,7 @@
 		3504288E201B8BD200765D15 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		350428C2201C64C200765D15 /* BaseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSpec.swift; sourceTree = "<group>"; };
 		350428D5201C704F00765D15 /* unicorn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unicorn.png; sourceTree = "<group>"; };
-		350428D6201C704F00765D15 /* rainbow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rainbow.jpg; sourceTree = "<group>"; };
+		350428D6201C704F00765D15 /* rainbow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rainbow.png; sourceTree = "<group>"; };
 		350428EE201C876800765D15 /* ArrayParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayParameterEncoding.swift; sourceTree = "<group>"; };
 		351537362028441300165E83 /* RequestDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDelegate.swift; sourceTree = "<group>"; };
 		35249B011D8E5A84005A2BAB /* CollectionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
@@ -630,7 +630,7 @@
 			isa = PBXGroup;
 			children = (
 				350428D5201C704F00765D15 /* unicorn.png */,
-				350428D6201C704F00765D15 /* rainbow.jpg */,
+				350428D6201C704F00765D15 /* rainbow.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1030,6 +1030,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 35B19DD11BEE134E001D3952;
@@ -1132,7 +1133,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350428DB201C704F00765D15 /* rainbow.jpg in Resources */,
+				350428DB201C704F00765D15 /* rainbow.png in Resources */,
 				350428D8201C704F00765D15 /* unicorn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1141,7 +1142,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350428DC201C704F00765D15 /* rainbow.jpg in Resources */,
+				350428DC201C704F00765D15 /* rainbow.png in Resources */,
 				350428D9201C704F00765D15 /* unicorn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1157,7 +1158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350428DA201C704F00765D15 /* rainbow.jpg in Resources */,
+				350428DA201C704F00765D15 /* rainbow.png in Resources */,
 				350428D7201C704F00765D15 /* unicorn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1466,6 +1467,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1493,6 +1495,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1520,6 +1523,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1547,6 +1551,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1575,6 +1580,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1587,6 +1593,7 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1603,6 +1610,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1615,6 +1623,7 @@
 				INFOPLIST_FILE = "Sources/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1848,6 +1857,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1858,6 +1868,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1870,6 +1881,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1880,6 +1892,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MARKETING_VERSION = 4.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.restofire.Restofire;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

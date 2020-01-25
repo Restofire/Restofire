@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:5.0
 //
 //  Restofire.swift
 //  Restofire
@@ -42,5 +42,6 @@ let package = Package(
             path: "Sources",
             exclude: ["Supporting Files"]
         )
-    ]
+    ],
+    swiftLanguageVersions: [.v4, .v5]
 )

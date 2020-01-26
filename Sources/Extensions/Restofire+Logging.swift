@@ -13,7 +13,7 @@ extension Request {
     @discardableResult
     func logIfNeeded() -> Request {
         if let argumentIndex = ProcessInfo.processInfo.arguments
-            .index(of: "-org.restofire.Restofire.Debug") {
+            .firstIndex(of: "-org.restofire.Restofire.Debug") {
             let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
             delegate.queue.addOperation {
                 if logLevel == "1" {

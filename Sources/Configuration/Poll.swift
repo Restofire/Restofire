@@ -15,11 +15,9 @@ import Foundation
 /// poll.pollingInterval = 1.0
 /// ```
 public struct Poll {
-    
     /// The default poll.
     public static var `default` = Poll()
-    
+
     /// The polling interval.
     public var pollingInterval: TimeInterval = 0.0
-    
 }

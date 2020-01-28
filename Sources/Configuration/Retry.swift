@@ -17,22 +17,20 @@ import Foundation
 /// retry.maxRetryAttempts = 10
 /// ```
 public struct Retry {
-
     /// The default retry.
     public static var `default` = Retry()
-    
+
     /// The retry error codes. `empty` by default.
     public var retryErrorCodes: Set<URLError.Code> = []
-    
+
     /// The retry interval. `10` by default.
     public var retryInterval: TimeInterval = 10
-    
+
     /// The max retry attempts. `5` by default.
     public var maxRetryAttempts = 5
-    
+
     /// `Retry` Intializer
     ///
     /// - returns: new `Retry` object
     public init() {}
-    
 }

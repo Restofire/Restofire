@@ -9,15 +9,14 @@
 import Foundation
 
 #if !os(watchOS)
-    
+
 class NetworkReachability {
-    
     let configurable: Configurable
-    
+
     init(configurable: Configurable) {
         self.configurable = configurable
     }
-    
+
     func setupListener() {
         guard let networkReachabilityManager = configurable.networkReachabilityManager else {
             assertionFailure("NetworkReachabilityManager should not be nil")
@@ -25,7 +24,7 @@ class NetworkReachability {
         }
         networkReachabilityManager.startListening { [unowned self] status in
             switch status {
-            case .reachable(_):
+            case .reachable:
                 self.configurable.eventuallyOperationQueue.isSuspended = false
             default:
                 self.configurable.eventuallyOperationQueue.isSuspended = true
@@ -33,5 +32,5 @@ class NetworkReachability {
         }
     }
 }
-    
+
 #endif

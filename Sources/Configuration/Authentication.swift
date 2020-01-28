@@ -19,16 +19,14 @@ import Foundation
 /// )
 /// ```
 public struct Authentication {
-    
     /// The default authentication.
     public static var `default` = Authentication()
-    
+
     /// The credential. `nil` by default.
     public var credential: URLCredential?
-    
+
     /// `Authentication` Intializer
     ///
     /// - returns: new `Authentication` object
     public init() {}
-    
 }

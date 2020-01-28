@@ -16,19 +16,18 @@ import Foundation
 /// reachability.networkReachabilityManager = NetworkReachabilityManager()!
 /// ```
 public struct Reachability {
-    
     /// The default reachability.
     public static var `default` = Reachability()
-    
+
     #if !os(watchOS)
     /// The eventually.
     public var waitsForConnectivity = false
-    
+
     /// The network reachability manager.
     public var networkReachabilityManager: NetworkReachabilityManager? = {
-        return NetworkReachabilityManager()
+        NetworkReachabilityManager()
     }()
-    
+
     /// The eventually operation queue.
     public var eventuallyOperationQueue: OperationQueue = {
         let oq = OperationQueue()
@@ -37,5 +36,4 @@ public struct Reachability {
         return oq
     }()
     #endif
-    
 }

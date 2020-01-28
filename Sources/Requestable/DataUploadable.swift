@@ -25,14 +25,11 @@ import Foundation
 /// }
 /// ```
 public protocol DataUploadable: Uploadable {
-    
     /// The data.
     var data: Data { get }
-    
 }
 
 extension DataUploadable {
-
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `UploadRequest`.
@@ -47,5 +44,4 @@ extension DataUploadable {
             )
         }
     }
-    
 }

@@ -19,43 +19,42 @@ import Alamofire
 /// configuration.headers = ["Content-Type": "application/json"]
 /// ```
 public struct Configuration {
-    
     /// The default configuration.
     public static var `default` = Configuration()
-    
+
     /// The scheme. `https` by default.
     public var scheme: String = "https"
-    
+
     /// The host. `nil` by default.
     public var host: String!
-    
+
     /// The version. `nil` by default.
     public var version: String?
-    
+
     /// The url request parameters. `nil` by default.
     public var queryParameters: [String: Any]?
-    
+
     /// The HTTP Method. `.GET` by default.
     public var method: HTTPMethod = .get
-    
+
     /// The request parameter encoding. `.JSON` by default.
     public var encoding: ParameterEncoding = JSONEncoding.default
-    
+
     /// The request parameter encoder. `.JSON` by default.
     public var parameterEncoder: ParameterEncoder = JSONParameterEncoder.default
-    
+
     /// The HTTP headers. `nil` by default.
     public var headers: HTTPHeaders = [:]
-    
+
     /// The request delegates. `empty` by default.
     public var requestDelegates: [RequestDelegate] = []
-    
+
     /// The request operation queue priority. `normal` by default.
     public var operationQueuePriority: Operation.QueuePriority = .normal
-    
+
     /// The request operation quality of service. `default` by default.
     public var operationQualityOfService: QualityOfService = .default
-    
+
     /// `Configuration` Intializer
     ///
     /// - returns: new `Configuration` object

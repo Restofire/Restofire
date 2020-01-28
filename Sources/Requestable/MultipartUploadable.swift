@@ -25,26 +25,21 @@ import Foundation
 /// }
 /// ```
 public protocol MultipartUploadable: Uploadable {
-    
     /// The multipart form data.
     var multipartFormData: MultipartFormData { get }
-    
+
     /// The encoding memory threashold.
     var encodingMemoryThreshold: UInt64 { get }
-
 }
 
 extension MultipartUploadable {
-    
     /// `SessionManager.multipartFormDataEncodingMemoryThreshold`
     public var encodingMemoryThreshold: UInt64 {
         return MultipartFormData.encodingMemoryThreshold
     }
-    
 }
 
 extension MultipartUploadable {
-    
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `UploadRequest`.
@@ -59,5 +54,4 @@ extension MultipartUploadable {
             )
         }
     }
-    
 }

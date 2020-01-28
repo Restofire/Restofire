@@ -20,41 +20,36 @@ import Foundation
 /// }
 /// ```
 public protocol Requestable: BaseRequestable {
-
     /// The Alamofire data request validation.
     var validationBlock: DataRequest.Validation? { get }
-    
+
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.DataRequest
     /// - parameter error: The Response
     func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response)
-    
+
     /// Called when the Request fails.
     ///
     /// - parameter request: The Alamofire.DataRequest
     /// - parameter error: The Error
     func request(_ request: RequestOperation<Self>, didFailWithError error: Error)
-    
 }
 
 extension Requestable {
-    
     /// `Validation.default.dataValidation`
     public var validationBlock: DataRequest.Validation? {
         return validation.dataValidation
     }
-    
+
     /// `Does Nothing`
     func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response) {}
-    
+
     /// `Does Nothing`
     func request(_ request: RequestOperation<Self>, didFailWithError error: Error) {}
-    
 }
 
 extension Requestable {
-    
     /// Creates a `DataRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `DataRequest`.
@@ -69,11 +64,9 @@ extension Requestable {
             )
         }
     }
-    
 }
 
 extension Requestable {
-    
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
     /// - parameter downloadProgressHandler: A closure to be executed once the
@@ -85,7 +78,7 @@ extension Requestable {
     @discardableResult
     func operation<T: Encodable>(
         parametersType: ParametersType<T>,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
@@ -99,7 +92,7 @@ extension Requestable {
         )
         return requestOperation
     }
-    
+
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
@@ -112,7 +105,7 @@ extension Requestable {
     @discardableResult
     func enqueue<T: Encodable>(
         parametersType: ParametersType<T>,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> Cancellable {
@@ -128,7 +121,6 @@ extension Requestable {
 }
 
 extension Requestable {
-    
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
     /// - parameter downloadProgressHandler: A closure to be executed once the
@@ -140,7 +132,7 @@ extension Requestable {
     @discardableResult
     public func operation(
         parameters: Any? = nil,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
@@ -152,7 +144,7 @@ extension Requestable {
             completionHandler: completionHandler
         )
     }
-    
+
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
@@ -165,7 +157,7 @@ extension Requestable {
     @discardableResult
     public func enqueue(
         parameters: Any? = nil,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> Cancellable {
@@ -177,11 +169,9 @@ extension Requestable {
             completionHandler: completionHandler
         )
     }
-    
 }
 
 extension Requestable {
-    
     /// Creates a `RequestOperation` for the specified `Requestable` object.
     ///
     /// - parameter downloadProgressHandler: A closure to be executed once the
@@ -193,7 +183,7 @@ extension Requestable {
     @discardableResult
     public func operation<T: Encodable>(
         parameters: T,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> RequestOperation<Self> {
@@ -205,7 +195,7 @@ extension Requestable {
             completionHandler: completionHandler
         )
     }
-    
+
     /// Creates a `RequestOperation` for the specified `Requestable` object and
     /// asynchronously executes it.
     ///
@@ -218,7 +208,7 @@ extension Requestable {
     @discardableResult
     public func enqueue<T: Encodable>(
         parameters: T,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DataResponse<Response>) -> Void)? = nil
     ) throws -> Cancellable {
@@ -230,5 +220,4 @@ extension Requestable {
             completionHandler: completionHandler
         )
     }
-    
 }

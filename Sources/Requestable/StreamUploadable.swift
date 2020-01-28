@@ -22,14 +22,11 @@ import Foundation
 /// }
 /// ```
 public protocol StreamUploadable: Uploadable {
-    
     /// The stream.
     var stream: InputStream { get }
-
 }
 
 extension StreamUploadable {
-    
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `UploadRequest`.
@@ -44,5 +41,4 @@ extension StreamUploadable {
             )
         }
     }
-    
 }

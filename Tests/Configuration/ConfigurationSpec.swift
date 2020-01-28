@@ -15,7 +15,6 @@ import Alamofire
 protocol MockyConfigurable: Configurable {}
 
 extension MockyConfigurable {
-    
     public var configuration: Restofire.Configuration {
         var mockyConfiguration = Restofire.Configuration()
         mockyConfiguration.scheme = "http"
@@ -23,36 +22,31 @@ extension MockyConfigurable {
         mockyConfiguration.version = "v2"
         return mockyConfiguration
     }
-    
 }
 
 protocol MockyRetryable: Retryable {}
 
 extension MockyRetryable {
-    
     public var retry: Retry {
         var mockyRetry = Retry()
         mockyRetry.maxRetryAttempts = 100
         mockyRetry.retryInterval = 25
         return mockyRetry
     }
-    
 }
 
 protocol MockyRequestable: Requestable, MockyConfigurable {}
 
 class ConfigurationSpec: BaseSpec {
-    
     override func spec() {
         describe("Configurable") {
-            
             it("should use global configuration") {
                 // Given
                 struct Service: Requestable {
                     typealias Response = Data
                     var path: String? = "get"
                 }
-                
+
                 let service = Service()
                 let urlRequest = try? service.asUrlRequest()
                 expect(urlRequest?.url?.absoluteString)
@@ -60,14 +54,14 @@ class ConfigurationSpec: BaseSpec {
                 expect(service.maxRetryAttempts).to(equal(5))
                 expect(service.retryInterval).to(equal(10))
             }
-            
+
             it("should apply group configuration") {
                 // Given
                 struct Service: MockyRequestable {
                     typealias Response = Data
                     var path: String? = "get"
                 }
-                
+
                 let service = Service()
                 let urlRequest = try? service.asUrlRequest()
                 expect(urlRequest?.url?.absoluteString)
@@ -75,7 +69,7 @@ class ConfigurationSpec: BaseSpec {
                 expect(service.maxRetryAttempts).to(equal(5))
                 expect(service.retryInterval).to(equal(10))
             }
-            
+
             it("should apply request configuration") {
                 // Given
                 struct Service: MockyRequestable, MockyRetryable {
@@ -83,7 +77,7 @@ class ConfigurationSpec: BaseSpec {
                     var scheme: String = "https"
                     var path: String? = "get"
                 }
-                
+
                 let service = Service()
                 let urlRequest = try? service.asUrlRequest()
                 expect(urlRequest?.url?.absoluteString)
@@ -91,8 +85,6 @@ class ConfigurationSpec: BaseSpec {
                 expect(service.maxRetryAttempts).to(equal(100))
                 expect(service.retryInterval).to(equal(25))
             }
-            
         }
     }
 }
-

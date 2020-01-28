@@ -25,57 +25,52 @@ import Foundation
 /// }
 /// ```
 public protocol Downloadable: BaseRequestable {
-    
     /// The resume data.
     var resumeData: Data? { get }
-    
+
     /// The download file destination.
     var destination: DownloadRequest.Destination? { get }
-    
+
     /// The Alamofire data request validation.
     var validationBlock: DownloadRequest.Validation? { get }
-    
+
     /// Called when the Request succeeds.
     ///
     /// - parameter request: The Alamofire.DownloadRequest
     /// - parameter value: The Response
     func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response)
-    
+
     /// Called when the Request fails
     ///
     /// - parameter request: The Alamofire.DownloadRequest
     /// - parameter error: The Error
     func request(_ request: DownloadOperation<Self>, didFailWithError error: Error)
-    
 }
 
 extension Downloadable {
-    
     /// `nil`
     public var resumeData: Data? {
         return nil
     }
-    
+
     /// `nil`
     public var destination: DownloadRequest.Destination? {
         return nil
     }
-    
+
     /// `Validation.default.downloadValidation`
     public var validationBlock: DownloadRequest.Validation? {
         return validation.downloadValidation
     }
-    
+
     /// `Does Nothing`
     func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response) {}
-    
+
     /// `Does Nothing`
     func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
-    
 }
 
 extension Downloadable {
-    
     /// Creates a `DownloadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `DownloadRequest`.
@@ -90,11 +85,9 @@ extension Downloadable {
             )
         }
     }
-    
 }
 
 extension Downloadable {
-    
     /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///
     /// - parameter request: A data request instance
@@ -106,7 +99,7 @@ extension Downloadable {
     /// - returns: The created `DownloadOperation`.
     func operation<T: Encodable>(
         parametersType: ParametersType<T>,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
@@ -120,7 +113,7 @@ extension Downloadable {
         )
         return downloadOperation
     }
-    
+
     /// Creates a `DownloadOperation` for the specified `Downloadable` object and
     /// asynchronously executes it.
     ///
@@ -134,7 +127,7 @@ extension Downloadable {
     @discardableResult
     func enqueue<T: Encodable>(
         parametersType: ParametersType<T>,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> Cancellable {
@@ -147,11 +140,9 @@ extension Downloadable {
         downloadQueue.addOperation(downloadOperation)
         return downloadOperation
     }
-    
 }
 
 extension Downloadable {
-    
     /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///
     /// - parameter downloadProgressHandler: A closure to be executed once the
@@ -163,7 +154,7 @@ extension Downloadable {
     @discardableResult
     public func operation(
         parameters: Any? = nil,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
@@ -175,7 +166,7 @@ extension Downloadable {
             completionHandler: completionHandler
         )
     }
-    
+
     /// Creates a `DownloadOperation` for the specified `Downloadable` object and
     /// asynchronously executes it.
     ///
@@ -188,7 +179,7 @@ extension Downloadable {
     @discardableResult
     public func enqueue(
         parameters: Any? = nil,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> Cancellable {
@@ -200,11 +191,9 @@ extension Downloadable {
             completionHandler: completionHandler
         )
     }
-    
 }
 
 extension Downloadable {
-    
     /// Creates a `DownloadOperation` for the specified `Downloadable` object.
     ///
     /// - parameter downloadProgressHandler: A closure to be executed once the
@@ -216,7 +205,7 @@ extension Downloadable {
     @discardableResult
     public func operation<T: Encodable>(
         parameters: T,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> DownloadOperation<Self> {
@@ -228,7 +217,7 @@ extension Downloadable {
             completionHandler: completionHandler
         )
     }
-    
+
     /// Creates a `DownloadOperation` for the specified `Downloadable` object and
     /// asynchronously executes it.
     ///
@@ -241,7 +230,7 @@ extension Downloadable {
     @discardableResult
     public func enqueue<T: Encodable>(
         parameters: T,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         completionHandler: ((DownloadResponse<Response>) -> Void)? = nil
     ) throws -> Cancellable {
@@ -253,5 +242,4 @@ extension Downloadable {
             completionHandler: completionHandler
         )
     }
-    
 }

@@ -13,23 +13,18 @@ import Foundation
 /// Instead implement Requestable, Downloadable, FileUploadable, DataUploadable, StreamUploadable,
 /// MultipartUplodable protocols.
 public protocol BaseRequestable: Configurable, ResponseSerializable {
-
     /// The path relative to base URL.
     var path: String? { get }
-
 }
 
 extension BaseRequestable {
-    
     /// `nil`
     public var path: String? {
         return nil
     }
-
 }
 
 extension BaseRequestable {
-    
     func asUrlRequest(parameters: Any? = nil) throws -> URLRequest {
         let parametersType = ParametersType<EmptyCodable>.any(parameters)
         return try asUrlRequest(parametersType: parametersType)
@@ -47,16 +42,16 @@ extension BaseRequestable {
         let url = scheme + "://" + [host, version, path]
             .compactMap { $0 }
             .joined(separator: "/")
-        
+
         var allHeaders = headers ?? HTTPHeaders()
         configuration.headers.forEach { (header: HTTPHeader) in
             allHeaders.add(header)
         }
         var request = try URLRequest(url: url, method: method, headers: allHeaders)
-        
+
         let allQueryParameters = queryParameters + configuration.queryParameters
         request = try URLEncoding.queryString.encode(request, with: allQueryParameters)
-        
+
         switch parametersType {
         case .any(let parameters):
             if let parameters = parameters as? [String: Any] {
@@ -69,8 +64,7 @@ extension BaseRequestable {
             request = try parameterEncoder.encode(parameters, into: request)
             return request
         }
-        
+
         return request
     }
-    
 }

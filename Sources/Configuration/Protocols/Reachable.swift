@@ -10,17 +10,13 @@ import Foundation
 
 /// Represents a `Reachability` that is associated with `Requestable`.
 public protocol Reachable {
-    
     /// The `reachable`.
     var reachability: Reachability { get }
-    
 }
 
 extension Reachable where Self: Configurable {
-    
     /// `Reachability.default`
     public var reachability: Reachability {
         return Reachability.default
     }
-    
 }

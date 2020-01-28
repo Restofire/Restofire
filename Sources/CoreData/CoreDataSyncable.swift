@@ -15,42 +15,46 @@ public protocol CoreDataSyncable: Syncable {
 extension CoreDataSyncable {
     public func sync(
         parameters: Any? = nil,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         immediate: Bool = false,
-        completion: ((Error?) -> ())? = nil
+        completion: ((Error?) -> Void)? = nil
     ) -> Cancellable? {
         let parametersType = ParametersType<EmptyCodable>.any(parameters)
-        return sync(parametersType: parametersType,
-                    downloadProgressHandler: downloadProgressHandler,
-                    completionQueue: completionQueue,
-                    immediate: immediate,
-                    completion: completion)
+        return sync(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            immediate: immediate,
+            completion: completion
+        )
     }
-    
+
     public func sync<T: Encodable>(
         parameters: T,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         immediate: Bool = false,
-        completion: ((Error?) -> ())? = nil
+        completion: ((Error?) -> Void)? = nil
     ) -> Cancellable? {
         let parametersType = ParametersType<T>.encodable(parameters)
-        return sync(parametersType: parametersType,
-                    downloadProgressHandler: downloadProgressHandler,
-                    completionQueue: completionQueue,
-                    immediate: immediate,
-                    completion: completion)
+        return sync(
+            parametersType: parametersType,
+            downloadProgressHandler: downloadProgressHandler,
+            completionQueue: completionQueue,
+            immediate: immediate,
+            completion: completion
+        )
     }
 
     public func sync<T: Encodable>(
         parametersType: ParametersType<T>,
-        downloadProgressHandler: (((Progress) -> Void), queue: DispatchQueue?)? = nil,
+        downloadProgressHandler: ((Progress) -> Void, queue: DispatchQueue?)? = nil,
         completionQueue: DispatchQueue = .main,
         immediate: Bool = false,
-        completion: ((Error?) -> ())? = nil
+        completion: ((Error?) -> Void)? = nil
     ) -> Cancellable? {
-        var networkOperation: Cancellable? = nil
+        var networkOperation: Cancellable?
         self.context.performAndWait {
             do {
                 let flag = try self.shouldSync()

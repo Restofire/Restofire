@@ -22,14 +22,11 @@ import Foundation
 /// }
 /// ```
 public protocol FileUploadable: Uploadable {
-    
     /// The url.
     var url: URL { get }
-    
 }
 
 extension FileUploadable {
-    
     /// Creates a `UploadRequest` to retrieve the contents of a URL based on the specified `Requestable`
     ///
     /// - returns: The created `UploadRequest`.
@@ -44,5 +41,4 @@ extension FileUploadable {
             )
         }
     }
-    
 }

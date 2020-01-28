@@ -15,17 +15,15 @@ import Foundation
 /// queues.completionQueue = DispatchQueue.main
 /// ```
 public struct Queues {
-    
     /// The default queues.
     public static var `default` = Queues()
-    
+
     /// The request operation queue
     public var requestQueue: OperationQueue = OperationQueue()
-    
+
     /// The download operation queue
     public var downloadQueue: OperationQueue = OperationQueue()
-    
+
     /// The upload operation queue
     public var uploadQueue: OperationQueue = OperationQueue()
-    
 }

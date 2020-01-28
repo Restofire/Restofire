@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 class RestofireRequest {
-    
     static func dataRequest<R: Requestable>(fromRequestable requestable: R, withUrlRequest urlRequest: URLRequest) -> DataRequest {
         let urlRequest = prepareRequest(urlRequest, requestable: requestable)
         let request = requestable.session.request(urlRequest)
@@ -116,8 +115,10 @@ class RestofireRequest {
     }
 
     internal static func prepareRequest<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
-        precondition(requestable.session.startRequestsImmediately == false,
-                     "The session should always have startRequestsImmediately to false")
+        precondition(
+            requestable.session.startRequestsImmediately == false,
+            "The session should always have startRequestsImmediately to false"
+        )
         var request = request
         requestable.delegates.forEach {
             request = $0.prepare(request, requestable: requestable)
@@ -125,14 +126,14 @@ class RestofireRequest {
         request = requestable.prepare(request, requestable: requestable)
         return request
     }
-    
+
     internal static func willSendRequest<R: BaseRequestable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.willSend(request, requestable: requestable)
         }
         requestable.willSend(request, requestable: requestable)
     }
-    
+
     internal static func didSendRequest<R: BaseRequestable>(_ request: Request, requestable: R) {
         requestable.delegates.forEach {
             $0.didSend(request, requestable: requestable)
@@ -148,5 +149,4 @@ class RestofireRequest {
         request = requestable.prepare(request, requestable: requestable)
         return request
     }
-    
 }

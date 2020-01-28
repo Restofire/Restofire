@@ -21,16 +21,14 @@ import Alamofire
 /// }
 /// ```
 public struct SessionManager {
-    
     /// The default session manager.
     public static var `default` = SessionManager()
 
     /// The Alamofire Session. `Alamofire.Session(startRequestsImmediately: false)` by default.
     public var session = Session(startRequestsImmediately: false)
-    
+
     /// `Session` Intializer
     ///
     /// - returns: new `Session` object
     public init() {}
-    
 }

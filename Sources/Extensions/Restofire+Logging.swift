@@ -10,12 +10,11 @@ import Foundation
 import Alamofire
 
 extension Request {
-    
     func logRequestIfNeeded() {
         if let argumentIndex = ProcessInfo.processInfo.arguments
             .index(of: "-org.restofire.Restofire.Debug") {
             underlyingQueue.sync { [unowned self] in
-                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
+                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
                 if logLevel == "1" {
                     print("/**************************************** Request ****************************************/")
                     print(self.cURLDescription())
@@ -24,12 +23,12 @@ extension Request {
             }
         }
     }
-    
+
     func logDataRequestIfNeeded(result: DataResponse<Data?>) {
         if let argumentIndex = ProcessInfo.processInfo.arguments
             .index(of: "-org.restofire.Restofire.Debug") {
             underlyingQueue.sync { [unowned self] in
-                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
+                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
                 if logLevel == "2" {
                     print("/**************************************** Response ****************************************/")
                     print(self.response.debugDescription)
@@ -51,12 +50,12 @@ extension Request {
             }
         }
     }
-    
+
     func logDownloadRequestIfNeeded(result: DownloadResponse<URL?>) {
         if let argumentIndex = ProcessInfo.processInfo.arguments
             .index(of: "-org.restofire.Restofire.Debug") {
             underlyingQueue.sync { [unowned self] in
-                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
+                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
                 if logLevel == "2" {
                     print("/**************************************** Response ****************************************/")
                     print(self.response.debugDescription)
@@ -75,5 +74,4 @@ extension Request {
             }
         }
     }
-    
 }

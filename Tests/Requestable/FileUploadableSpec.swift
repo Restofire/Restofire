@@ -13,26 +13,27 @@ import Alamofire
 @testable import Restofire
 
 class FileUploadableSpec: BaseSpec {
-    
     static var startDelegateCalled = false
     static var successDelegateCalled = false
     static var errorDelegateCalled = false
-    
+
     struct Service: FileUploadable {
-        
         typealias Response = Any
         var responseSerializer = AnyResponseSerializer<RFResult<Response>>
             .init(dataSerializer: { (request, response, data, error) -> RFResult<Response> in
-                return Result<Response, RFError>.serialize { try JSONResponseSerializer()
-                    .serialize(request: request,
-                               response: response,
-                               data: data,
-                               error: error) }
+                Result<Response, RFError>.serialize { try JSONResponseSerializer()
+                    .serialize(
+                        request: request,
+                        response: response,
+                        data: data,
+                        error: error
+                    )
+                }
             })
-        
+
         var path: String? = "post"
         let url: URL = BaseSpec.url(forResource: "rainbow", withExtension: "png")
-        
+
         func prepare<R: BaseRequestable>(_ request: URLRequest, requestable: R) -> URLRequest {
             var request = request
             let header = HTTPHeader.authorization(username: "user", password: "password")
@@ -41,26 +42,26 @@ class FileUploadableSpec: BaseSpec {
                 .to(equal("Basic dXNlcjpwYXNzd29yZA=="))
             return request
         }
-        
+
         func willSend<R: BaseRequestable>(_ request: Request, requestable: R) {
             let value = request.request?.value(forHTTPHeaderField: "Authorization")!
             expect(value).to(equal("Basic dXNlcjpwYXNzd29yZA=="))
             FileUploadableSpec.startDelegateCalled = true
         }
-        
+
         func request(_ request: UploadOperation<Service>, didCompleteWithValue value: Response) {
             FileUploadableSpec.successDelegateCalled = true
             expect(value).toNot(beNil())
         }
-        
+
         func request(_ request: UploadOperation<Service>, didFailWithError error: Error) {
             FileUploadableSpec.errorDelegateCalled = true
             fail(error.localizedDescription)
         }
     }
-    
+
     var operation: UploadOperation<Service>!
-    
+
     override func spec() {
         describe("FileUploadable") {
             it("request should succeed") {
@@ -68,7 +69,7 @@ class FileUploadableSpec: BaseSpec {
                     // Given
                     let service = Service()
                     var uploadProgressValues: [Double] = []
-                    
+
                     var callbacks: Int = 0 {
                         didSet {
                             if callbacks == 2 {
@@ -79,48 +80,48 @@ class FileUploadableSpec: BaseSpec {
                             }
                         }
                     }
-                    
+
                     // When
                     do {
                         self.operation = try service.operation(uploadProgressHandler: ({ progress in
                             uploadProgressValues.append(progress.fractionCompleted)
                         }, nil)) { response in
-                            
+
                             defer { callbacks = callbacks + 1 }
-                            
+
                             // Then
                             if let statusCode = response.response?.statusCode,
                                 statusCode != 200 {
                                 fail("Response status code should be 200")
                             }
-                            
+
                             expect(response.value).toNot(beNil())
                             expect(response.request).toNot(beNil())
                             expect(response.response).toNot(beNil())
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
-                            
+
                             if let value = response.value as? [String: Any],
                                 let data = value["data"] as? String {
                                 expect(data).toNot(beEmpty())
                             } else {
                                 fail("response value should not be nil")
                             }
-                            
+
                             var previousUploadProgress: Double = uploadProgressValues.first ?? 0.0
-                            
+
                             for uploadProgress in uploadProgressValues {
                                 expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
                                 previousUploadProgress = uploadProgress
                             }
-                            
+
                             if let lastUploadProgressValue = uploadProgressValues.last {
                                 expect(lastUploadProgressValue).to(equal(1.0))
                             } else {
                                 fail("last item in uploadProgressValues should not be nil")
                             }
                         }
-                        
+
                         self.operation.start()
                         self.operation.completionBlock = { callbacks = callbacks + 1 }
                     } catch {

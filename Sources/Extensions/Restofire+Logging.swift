@@ -12,7 +12,7 @@ import Alamofire
 extension Request {
     func logRequestIfNeeded() {
         if let argumentIndex = ProcessInfo.processInfo.arguments
-            .index(of: "-org.restofire.Restofire.Debug") {
+            .firstIndex(of: "-org.restofire.Restofire.Debug") {
             underlyingQueue.sync { [unowned self] in
                 let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
                 if logLevel == "1" {
@@ -26,7 +26,7 @@ extension Request {
 
     func logDataRequestIfNeeded(result: DataResponse<Data?>) {
         if let argumentIndex = ProcessInfo.processInfo.arguments
-            .index(of: "-org.restofire.Restofire.Debug") {
+            .firstIndex(of: "-org.restofire.Restofire.Debug") {
             underlyingQueue.sync { [unowned self] in
                 let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
                 if logLevel == "2" {
@@ -53,7 +53,7 @@ extension Request {
 
     func logDownloadRequestIfNeeded(result: DownloadResponse<URL?>) {
         if let argumentIndex = ProcessInfo.processInfo.arguments
-            .index(of: "-org.restofire.Restofire.Debug") {
+            .firstIndex(of: "-org.restofire.Restofire.Debug") {
             underlyingQueue.sync { [unowned self] in
                 let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
                 if logLevel == "2" {

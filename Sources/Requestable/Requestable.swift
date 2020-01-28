@@ -43,10 +43,10 @@ extension Requestable {
     }
 
     /// `Does Nothing`
-    func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response) {}
+    public func request(_ request: RequestOperation<Self>, didCompleteWithValue value: Response) {}
 
     /// `Does Nothing`
-    func request(_ request: RequestOperation<Self>, didFailWithError error: Error) {}
+    public func request(_ request: RequestOperation<Self>, didFailWithError error: Error) {}
 }
 
 extension Requestable {

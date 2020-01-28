@@ -44,10 +44,10 @@ extension Uploadable {
     }
 
     /// `Does Nothing`
-    func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response) {}
+    public func request(_ request: UploadOperation<Self>, didCompleteWithValue value: Response) {}
 
     /// `Does Nothing`
-    func request(_ request: UploadOperation<Self>, didFailWithError error: Error) {}
+    public func request(_ request: UploadOperation<Self>, didFailWithError error: Error) {}
 }
 
 extension Uploadable {

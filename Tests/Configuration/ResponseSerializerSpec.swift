@@ -78,7 +78,7 @@ class ResponseSerializerSpec: BaseSpec {
                             expect(response.data).toNot(beNil())
                             expect(response.error).to(beNil())
 
-                            if let value = try? response.result.get() as? [String: Any],
+                            if let value = ((try? response.result.get() as? [String: Any]) as [String : Any]??),
                                 let url = value!["url"] as? String {
                                 expect(url).to(equal("https://httpbin.org/get"))
                             } else {

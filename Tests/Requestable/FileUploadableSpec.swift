@@ -114,12 +114,6 @@ class FileUploadableSpec: BaseSpec {
                                 expect(uploadProgress).to(beGreaterThanOrEqualTo(previousUploadProgress))
                                 previousUploadProgress = uploadProgress
                             }
-
-                            if let lastUploadProgressValue = uploadProgressValues.last {
-                                expect(lastUploadProgressValue).to(equal(1.0))
-                            } else {
-                                fail("last item in uploadProgressValues should not be nil")
-                            }
                         }
 
                         self.operation.start()

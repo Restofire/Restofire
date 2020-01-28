@@ -64,10 +64,10 @@ extension Downloadable {
     }
 
     /// `Does Nothing`
-    func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response) {}
+    public func request(_ request: DownloadOperation<Self>, didCompleteWithValue value: Response) {}
 
     /// `Does Nothing`
-    func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
+    public func request(_ request: DownloadOperation<Self>, didFailWithError error: Error) {}
 }
 
 extension Downloadable {

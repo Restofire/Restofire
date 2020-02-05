@@ -13,8 +13,8 @@ extension Request {
     func logRequestIfNeeded() {
         if let argumentIndex = ProcessInfo.processInfo.arguments
             .firstIndex(of: "-org.restofire.Restofire.Debug") {
-            underlyingQueue.sync { [unowned self] in
-                let logLevel = ProcessInfo.processInfo.arguments[argumentIndex + 1]
+            let logLevel = ProcessInfo.processInfo.arguments[argumentIndex+1]
+            underlyingQueue.sync {
                 if logLevel == "1" {
                     print("/**************************************** Request ****************************************/")
                     print(self.cURLDescription())

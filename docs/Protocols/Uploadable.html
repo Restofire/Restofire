@@ -14,7 +14,7 @@
     <a title="Uploadable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Restofire Docs</a> (86% documented)</p>
+        <p><a href="../index.html">Restofire Docs</a> (85% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -60,6 +60,9 @@
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Extensions/JSONEncoding.html">JSONEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Result.html">Result</a>
               </li>
             </ul>
           </li>
@@ -245,10 +248,13 @@
                 <a href="../Typealiases.html#/s:9Restofire17ParameterEncodinga">ParameterEncoding</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Restofire7Requesta">Request</a>
+                <a href="../Typealiases.html#/s:9Restofire7RFErrora">RFError</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:9Restofire6Resulta">Result</a>
+                <a href="../Typealiases.html#/s:9Restofire8RFResulta">RFResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:9Restofire7Requesta">Request</a>
               </li>
               <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:9Restofire7Sessiona">Session</a>
@@ -357,6 +363,9 @@ AMultipartUplodable protocols.</p>
                     <a name="//apple_ref/swift/Method/request(_:didCompleteWithValue:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire10UploadableP7request_20didCompleteWithValueyAA15UploadOperationCyxG_8ResponseQztF">request(_:didCompleteWithValue:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -364,6 +373,11 @@ AMultipartUplodable protocols.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Called when the Request succeeds.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>Does Nothing</code></p>
 
                       </div>
                       <div class="declaration">
@@ -415,6 +429,9 @@ AMultipartUplodable protocols.</p>
                     <a name="//apple_ref/swift/Method/request(_:didFailWithError:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire10UploadableP7request_16didFailWithErroryAA15UploadOperationCyxG_s0G0_ptF">request(_:didFailWithError:)</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
@@ -422,6 +439,11 @@ AMultipartUplodable protocols.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Called when the Request fails</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p><code>Does Nothing</code></p>
 
                       </div>
                       <div class="declaration">
@@ -499,176 +521,6 @@ AMultipartUplodable protocols.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire10UploadablePAAE9operationyAA15UploadOperationCyxGAA14ParametersTypeOyqd__G_ySo10NSProgressCc_So17OS_dispatch_queueCSg0K0tSgANXetKcxAaBRzSERd__r__lF"></a>
-                    <a name="//apple_ref/swift/Method/operation(parametersType:uploadProgressHandler:completionQueue:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire10UploadablePAAE9operationyAA15UploadOperationCyxGAA14ParametersTypeOyqd__G_ySo10NSProgressCc_So17OS_dispatch_queueCSg0K0tSgANXetKcxAaBRzSERd__r__lF">operation(parametersType:uploadProgressHandler:completionQueue:completionHandler:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Extension method
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates a <code><a href="../Classes/UploadOperation.html">UploadOperation</a></code> for the specified <code>Uploadable</code> object.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="n">operation</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span>
-    <span class="nv">parametersType</span><span class="p">:</span> <span class="kt"><a href="../Enums/ParametersType.html">ParametersType</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">(((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-    <span class="nv">completionQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
-    <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a></span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span>
-<span class="p">)</span> <span class="k">throws</span>  <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadOperation.html">UploadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>request</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A data request instance</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>uploadProgressHandler</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure to be executed once the
-                               upload progresses. <code>nil</code> by default.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completionHandler</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure to be executed once the request
-                           has finished. <code>nil</code> by default.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The created <code><a href="../Classes/UploadOperation.html">UploadOperation</a></code>.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire10UploadablePAAE7enqueueyAA11Cancellable_pAA14ParametersTypeOyqd__G_ySo10NSProgressCc_So17OS_dispatch_queueCSg0J0tSgALXetKcxAaBRzSERd__r__lF"></a>
-                    <a name="//apple_ref/swift/Method/enqueue(parametersType:uploadProgressHandler:completionQueue:completionHandler:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire10UploadablePAAE7enqueueyAA11Cancellable_pAA14ParametersTypeOyqd__G_ySo10NSProgressCc_So17OS_dispatch_queueCSg0J0tSgALXetKcxAaBRzSERd__r__lF">enqueue(parametersType:uploadProgressHandler:completionQueue:completionHandler:)</a>
-                    </code>
-                      <span class="declaration-note">
-                        Extension method
-                      </span>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Creates a <code><a href="../Classes/UploadOperation.html">UploadOperation</a></code> for the specified <code>Uploadable</code> object and
-asynchronously executes it.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
-<span class="kd">func</span> <span class="n">enqueue</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span>
-    <span class="nv">parametersType</span><span class="p">:</span> <span class="kt"><a href="../Enums/ParametersType.html">ParametersType</a></span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">,</span>
-    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">(((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-    <span class="nv">completionQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
-    <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a></span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span>
-<span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Cancellable.html">Cancellable</a></span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>request</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>An upload request instance</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>uploadProgressHandler</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure to be executed once the
-                               upload progresses. <code>nil</code> by default.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>completionHandler</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>A closure to be executed once the download
-                           has finished. <code>nil</code> by default.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>The created <code><a href="../Classes/UploadOperation.html">UploadOperation</a></code>.</p>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
                     <a name="/s:9Restofire10UploadablePAAE9operationyAA15UploadOperationCyxGypSg_ySo10NSProgressCc_So17OS_dispatch_queueCSg0I0tSgALXetKcxAaBRzlF"></a>
                     <a name="//apple_ref/swift/Method/operation(parameters:uploadProgressHandler:completionQueue:completionHandler:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:9Restofire10UploadablePAAE9operationyAA15UploadOperationCyxGypSg_ySo10NSProgressCc_So17OS_dispatch_queueCSg0I0tSgALXetKcxAaBRzlF">operation(parameters:uploadProgressHandler:completionQueue:completionHandler:)</a>
@@ -692,7 +544,7 @@ asynchronously executes it.</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">operation</span><span class="p">(</span>
     <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">(((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">completionQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a></span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span>
 <span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadOperation.html">UploadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
@@ -766,7 +618,7 @@ asynchronously executes it.</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="nf">enqueue</span><span class="p">(</span>
     <span class="nv">parameters</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
-    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">(((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">completionQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a></span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span>
 <span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Cancellable.html">Cancellable</a></span></code></pre>
@@ -839,7 +691,7 @@ asynchronously executes it.</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="n">operation</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="nv">parameters</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
-    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">(((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">completionQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a></span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span>
 <span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/UploadOperation.html">UploadOperation</a></span><span class="o">&lt;</span><span class="k">Self</span><span class="o">&gt;</span></code></pre>
@@ -913,7 +765,7 @@ asynchronously executes it.</p>
                           <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
 <span class="kd">public</span> <span class="kd">func</span> <span class="n">enqueue</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">:</span> <span class="kt">Encodable</span><span class="o">&gt;</span><span class="p">(</span>
     <span class="nv">parameters</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
-    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">(((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">),</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
+    <span class="nv">uploadProgressHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt">Progress</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">,</span> <span class="nv">queue</span><span class="p">:</span> <span class="kt">DispatchQueue</span><span class="p">?)?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">,</span>
     <span class="nv">completionQueue</span><span class="p">:</span> <span class="kt">DispatchQueue</span> <span class="o">=</span> <span class="o">.</span><span class="n">main</span><span class="p">,</span>
     <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">((</span><span class="kt"><a href="../Typealiases.html#/s:9Restofire12DataResponsea">DataResponse</a></span><span class="o">&lt;</span><span class="kt">Response</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span> <span class="o">=</span> <span class="kc">nil</span>
 <span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/Cancellable.html">Cancellable</a></span></code></pre>
@@ -965,7 +817,7 @@ asynchronously executes it.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2020-01-25)</p>
+          <p>&copy; 2020 <a class="link" href="https://github.com/Restofire/Restofire" target="_blank" rel="external">Rahul Katariya</a>. All rights reserved. (Last updated: 2020-02-19)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

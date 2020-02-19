@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>ParametersType Enumeration Reference</title>
+    <title>Result Extension Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/ParametersType" class="dashAnchor"></a>
-    <a title="ParametersType Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Extension/Result" class="dashAnchor"></a>
+    <a title="Result Extension Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">Restofire Docs</a> (85% documented)</p>
@@ -21,7 +21,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">Restofire Reference</a>
         <img id="carat" src="../img/carat.png" />
-        ParametersType Enumeration Reference
+        Result Extension Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -278,15 +278,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>ParametersType</h1>
+            <h1>Result</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ParametersType</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt">Encodable</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">Result</span></code></pre>
 
                 </div>
               </div>
-            <p>Undocumented</p>
-
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -294,9 +293,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:9Restofire14ParametersTypeO3anyyACyxGypSgcAEmSERzlF"></a>
-                    <a name="//apple_ref/swift/Element/any(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire14ParametersTypeO3anyyACyxGypSgcAEmSERzlF">any(_:)</a>
+                    <a name="/s:s6ResultO9RestofireE9serializeyXeqd__yKXE_tcAByxq_Gms5ErrorR_r0__lFZ"></a>
+                    <a name="//apple_ref/swift/Method/serialize(catching:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:s6ResultO9RestofireE9serializeyXeqd__yKXE_tcAByxq_Gms5ErrorR_r0__lFZ">serialize(catching:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,34 +310,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">any</span><span class="p">(</span><span class="kt">Any</span><span class="p">?)</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:9Restofire14ParametersTypeO9encodableyACyxGxcAEmSERzlF"></a>
-                    <a name="//apple_ref/swift/Element/encodable(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:9Restofire14ParametersTypeO9encodableyACyxGxcAEmSERzlF">encodable(_:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Undocumented</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">encodable</span><span class="p">(</span><span class="kt">T</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="n">serialize</span><span class="o">&lt;</span><span class="kt">Success</span><span class="o">&gt;</span><span class="p">(</span><span class="n">catching</span> <span class="nv">body</span><span class="p">:</span> <span class="p">()</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Success</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Typealiases.html#/s:9Restofire8RFResulta">RFResult</a></span><span class="o">&lt;</span><span class="kt">Success</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>

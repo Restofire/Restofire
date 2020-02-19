@@ -9,14 +9,14 @@
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/AnyResponseSerializer.swift",
-      "line": 40,
+      "line": 41,
       "symbol": "AnyResponseSerializer.serialize(request:response:data:error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/AnyResponseSerializer.swift",
-      "line": 44,
+      "line": 45,
       "symbol": "AnyResponseSerializer.serializeDownload(request:response:fileURL:error:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -122,34 +122,27 @@
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/TypeAliases.swift",
       "line": 32,
-      "symbol": "RFError",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": 33,
       "symbol": "DataResponse",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": 34,
+      "line": 33,
       "symbol": "DownloadResponse",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": 37,
+      "line": 36,
       "symbol": "Session",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/TypeAliases.swift",
-      "line": 38,
+      "line": 37,
       "symbol": "DataResponseSerializer",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
@@ -164,7 +157,7 @@
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Alamofire/TypeAliases.swift",
       "line": 40,
-      "symbol": "RFResult",
+      "symbol": "Result",
       "symbol_kind": "source.lang.swift.decl.typealias",
       "warning": "undocumented"
     },
@@ -173,6 +166,20 @@
       "line": 43,
       "symbol": "NetworkReachabilityManager",
       "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Sources/BaseRequestable/BaseRequestable.swift",
+      "line": 33,
+      "symbol": "BaseRequestable.asUrlRequest(parameters:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rahulkatariya/Developer/Restofire/Sources/BaseRequestable/BaseRequestable.swift",
+      "line": 38,
+      "symbol": "BaseRequestable.asUrlRequest(parameters:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
@@ -219,28 +226,28 @@
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Configuration/Protocols/Syncable.swift",
-      "line": 20,
+      "line": 21,
       "symbol": "Syncable.shouldSync()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Configuration/Protocols/Syncable.swift",
-      "line": 24,
+      "line": 25,
       "symbol": "Syncable.sync(parameters:downloadProgressHandler:completionQueue:immediate:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Configuration/Protocols/Syncable.swift",
-      "line": 41,
+      "line": 40,
       "symbol": "Syncable.sync(parameters:downloadProgressHandler:completionQueue:immediate:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Configuration/Protocols/Syncable.swift",
-      "line": 58,
+      "line": 55,
       "symbol": "Syncable.sync(parametersType:downloadProgressHandler:completionQueue:immediate:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
@@ -275,23 +282,16 @@
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/CoreData/CoreDataSyncable.swift",
-      "line": 33,
+      "line": 31,
       "symbol": "CoreDataSyncable.sync(parameters:downloadProgressHandler:completionQueue:immediate:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/CoreData/CoreDataSyncable.swift",
-      "line": 50,
+      "line": 46,
       "symbol": "CoreDataSyncable.sync(parametersType:downloadProgressHandler:completionQueue:immediate:completion:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/rahulkatariya/Developer/Restofire/Sources/Extensions/Result+Restofire.swift",
-      "line": 13,
-      "symbol": "Result.serialize(catching:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
@@ -317,7 +317,7 @@
     },
     {
       "file": "/Users/rahulkatariya/Developer/Restofire/Sources/RequestableOperation/NetworkOperation.swift",
-      "line": 128,
+      "line": 129,
       "symbol": "NetworkOperation.copy()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"

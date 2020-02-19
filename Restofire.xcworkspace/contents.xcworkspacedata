@@ -20,13 +20,10 @@
       location = "group:Cartfile.resolved">
    </FileRef>
    <FileRef
+      location = "group:Package.swift">
+   </FileRef>
+   <FileRef
       location = "group:Restofire.podspec">
-   </FileRef>
-   <FileRef
-      location = "group:Package@swift-3.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Package@swift-4.swift">
    </FileRef>
    <FileRef
       location = "group:Gemfile"

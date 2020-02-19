@@ -1,4 +1,4 @@
-## ![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](Assets/restofire.png)
+## ![Restofire: A Protocol Oriented Networking Abstraction Layer in Swift](https://raw.githubusercontent.com/Restofire/Restofire/master/Assets/restofire.png)
 
 [![Platforms](https://img.shields.io/cocoapods/p/Restofire.svg)](https://cocoapods.org/pods/Restofire)
 [![License](https://img.shields.io/cocoapods/l/Restofire.svg)](https://raw.githubusercontent.com/Restofire/Restofire/master/LICENSE)
@@ -59,7 +59,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
 use_frameworks!
 
-pod 'Restofire', '~> 5.0.0-beta.1'
+pod 'Restofire', '~> 5.0'
 ```
 
 Then, run the following command:
@@ -85,7 +85,7 @@ $ brew install carthage
 To integrate Restofire into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Restofire/Restofire" ~> 5.0.0-beta.1
+github "Restofire/Restofire" ~> 5.0
 ```
 
 </details>
@@ -101,7 +101,7 @@ import PackageDescription
 let package = Package(
     name: "HelloRestofire",
     dependencies: [
-        .Package(url: "https://github.com/Restofire/Restofire.git", from: "5.0.0-beta.1")
+        .Package(url: "https://github.com/Restofire/Restofire.git", from: "5.0.0")
     ]
 )
 ```

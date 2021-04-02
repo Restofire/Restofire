@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 //
 //  Restofire.swift
 //  Restofire
@@ -29,18 +29,34 @@ import PackageDescription
 
 let package = Package(
     name: "Restofire",
+    platforms: [
+        .macOS(.v10_12),
+        .iOS(.v10),
+        .tvOS(.v10),
+        .watchOS(.v3)
+    ],
     products: [
         .library(name: "Restofire", targets: ["Restofire"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.0.0")),
+        .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.4.1")),
+        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "3.1.2")),
+        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "9.0.0")),
     ],
     targets: [
         .target(
             name: "Restofire",
             dependencies: ["Alamofire"],
-            path: "Sources",
-            exclude: ["Supporting Files"]
+            path: "Sources"
+        ),
+        .testTarget(
+            name: "RestofireTests",
+            dependencies: [
+                "Restofire",
+                "Quick",
+                "Nimble",
+            ],
+            path: "Tests"
         ),
     ],
     swiftLanguageVersions: [.v4, .v5]

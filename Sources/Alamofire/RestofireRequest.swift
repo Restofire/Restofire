@@ -15,13 +15,7 @@ class RestofireRequest {
         let request = requestable.session.request(urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireRequestValidation.validateDataRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendRequest(request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        resumeRequest(request, requestable: requestable)
         return request
     }
 
@@ -35,13 +29,7 @@ class RestofireRequest {
         }
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireDownloadValidation.validateDownloadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendRequest(request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        resumeRequest(request, requestable: requestable)
         return request
     }
 
@@ -50,13 +38,7 @@ class RestofireRequest {
         let request = requestable.session.upload(requestable.url, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendRequest(request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        resumeRequest(request, requestable: requestable)
         return request
     }
 
@@ -65,13 +47,7 @@ class RestofireRequest {
         let request = requestable.session.upload(requestable.data, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendRequest(request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        resumeRequest(request, requestable: requestable)
         return request
     }
 
@@ -80,13 +56,7 @@ class RestofireRequest {
         let request = requestable.session.upload(requestable.stream, with: urlRequest)
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendRequest(request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
-            }
-        }
+        resumeRequest(request, requestable: requestable)
         return request
     }
 
@@ -99,14 +69,20 @@ class RestofireRequest {
         )
         authenticateRequest(request, usingCredential: requestable.credential)
         RestofireUploadValidation.validateUploadRequest(request: request, requestable: requestable)
-        requestable.session.requestQueue.async {
-            requestable.session.rootQueue.async {
-                willSendRequest(request, requestable: requestable)
-                request.resume()
-                didSendRequest(request, requestable: requestable)
+        resumeRequest(request, requestable: requestable)
+        return request
+    }
+
+    internal static func resumeRequest<R: BaseRequestable>(_ request: Request, requestable: R) {
+        requestable.session.rootQueue.async {
+            requestable.session.requestQueue.async {
+                request.underlyingQueue.async {
+                    willSendRequest(request, requestable: requestable)
+                    request.resume()
+                    didSendRequest(request, requestable: requestable)
+                }
             }
         }
-        return request
     }
 
     internal static func authenticateRequest(_ request: Request, usingCredential credential: URLCredential?) {

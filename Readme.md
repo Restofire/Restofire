@@ -32,7 +32,6 @@ Restofire is a protocol oriented networking client for [Alamofire](https://githu
 - [x] Auto retry based on URLError codes
 - [x] Request eventually when network is reachable
 - [x] NSOperations
-- [x] [Complete Documentation](http://restofire.github.io/Restofire/)
 
 ## Requirements
 

@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import Foundation
 
 public class AnyResponseSerializer<Value>: ResponseSerializer {
     /// A closure which can be used to serialize data responses.

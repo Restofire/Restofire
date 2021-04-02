@@ -13,7 +13,7 @@ import Alamofire
 @testable import Restofire
 
 class BaseSpec: QuickSpec {
-    let timeout: TimeInterval = 120
+    let timeout: DispatchTimeInterval = .seconds(120)
     let pollInterval: TimeInterval = 1
 
     static var testDirectoryURL: URL { return URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true).appendingPathComponent("org.restofire.tests") }
@@ -30,7 +30,10 @@ class BaseSpec: QuickSpec {
     }
 
     static func url(forResource fileName: String, withExtension ext: String) -> URL {
-        return Bundle(for: BaseSpec.self).url(forResource: fileName, withExtension: ext)!
+        return URL(fileURLWithPath: #file)
+            .deletingLastPathComponent()
+            .appendingPathComponent("Supporting Files/Resources/Images")
+            .appendingPathComponent(fileName + "." + ext)
     }
 }
 
